@@ -8,7 +8,10 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"preact": "^10.22.1"
+		"preact": "^10.22.1",
+		"preact-iso": "^2.6.3",
+		"react95": "^4.0.0",
+		"styled-components": "^6.1.13"
 	},
 	"devDependencies": {
 		"@preact/preset-vite": "^2.9.0",

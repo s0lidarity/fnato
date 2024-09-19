@@ -1,32 +1,51 @@
 import { render } from 'preact';
+import { LocationProvider, Router, Route } from 'preact-iso';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import preactLogo from './assets/preact.svg';
+import { styleReset } from 'react95';
+import modernDark from  'react95/dist/themes/modernDark';
+import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
+import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
+
+import Home from './pages/Home';
+import About from './pages/About';
+import Header from './components/Header';
 import './style.css';
+
+const GlobalStyles = createGlobalStyle`
+	${styleReset}
+	@font-face {
+		font-family: 'ms_sans_serif';
+		src: url('${ms_sans_serif}') format('woff2');
+		font-weight: 400;
+		font-style: normal
+	}
+	@font-face {
+		font-family: 'ms_sans_serif';
+		src: url('${ms_sans_serif_bold}') format('woff2');
+		font-weight: bold;
+		font-style: normal
+	}
+	body, input, select, textarea {
+		font-family: 'ms_sans_serif';
+	}
+`;
 
 export function App() {
 	return (
 		<div>
-			<a href="https://preactjs.com" target="_blank">
-				<img src={preactLogo} alt="Preact logo" height="160" width="160" />
-			</a>
-			<h1>Get Started building Vite-powered Preact Apps </h1>
-			<section>
-				<Resource
-					title="Learn Preact"
-					description="If you're new to Preact, try the interactive tutorial to learn important concepts"
-					href="https://preactjs.com/tutorial"
-				/>
-				<Resource
-					title="Differences to React"
-					description="If you're coming from React, you may want to check out our docs to see where Preact differs"
-					href="https://preactjs.com/guide/v10/differences-to-react"
-				/>
-				<Resource
-					title="Learn Vite"
-					description="To learn more about Vite and how you can customize it to fit your needs, take a look at their excellent documentation"
-					href="https://vitejs.dev"
-				/>
-			</section>
+			<GlobalStyles />
+				<ThemeProvider theme={modernDark}>
+				<LocationProvider>
+					<Header />
+						<main>
+							<Router>
+								<Route path="/" component={Home} />
+								<Route path="/about" component={About} />
+							</Router>
+						</main>
+				</LocationProvider>
+				</ThemeProvider>
 		</div>
 	);
 }
