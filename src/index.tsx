@@ -3,7 +3,7 @@ import { LocationProvider, Router, Route } from 'preact-iso';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { styleReset } from 'react95';
-import modernDark from  'react95/dist/themes/modernDark';
+import tokyoDark from  'react95/dist/themes/tokyoDark';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 
@@ -35,7 +35,7 @@ export function App() {
 	return (
 		<div>
 			<GlobalStyles />
-				<ThemeProvider theme={modernDark}>
+				<ThemeProvider theme={tokyoDark}>
 				<LocationProvider>
 					<Header />
 						<main>
