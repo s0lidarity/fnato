@@ -12,7 +12,7 @@ function Header() {
     return (
         <AppBar>
             <Toolbar style={{ justifyContent: 'space-between' }}>
-            <div style={{ position: 'relative', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div style={{ position: 'relative', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                 <Button
                     onClick={() => setOpen(!open)}
                     active={open}
@@ -26,7 +26,7 @@ function Header() {
                     Start
                 </Button>
                 {open && ( <Menu /> )}
-                <h1>First Night at the Opera?</h1>
+                <h1 style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', margin: '0 auto' }}>First Night at the Opera?</h1>
             </div>
             </Toolbar>
         </AppBar>

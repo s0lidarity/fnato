@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { useLocation } from 'preact-iso';
 import { MenuList, MenuListItem } from "react95";
+import styled from 'styled-components';
 
 export interface MenuConfigItem {
     name: string;
@@ -31,30 +32,33 @@ export const MenuConfig: MenuConfigItem[] = [
     },
 ]
 
-{/* <nav>
-    <a href="/" class={url == '/' && 'active'}>Home</a>
-    <a href="/about" class={url === '/about' && 'active'}>About</a>
-</nav> */}
-
+const StyledMenu = styled.div`
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1001;
+`;
 
 function Menu() {
     const { url } = useLocation();
     const [open, setOpen] = useState(false);
 
     return (
-        <MenuList 
-            style={{position: 'absolute', left: '0'}}
-            open={open}
-            onClick={() => setOpen(!open)}
-        >
-            { MenuConfig.map((item) => (
-                <MenuListItem>
-                    <span role='img' aria-label={item.img}>
-                        <a href={item.url} class={url === item.url && 'active'}>{item.name}</a>
-                    </span>
-                </MenuListItem>
-            ))}
-        </MenuList>
+        <StyledMenu>
+            <MenuList 
+                style={{position: 'absolute', left: '0'}}
+                open={open}
+                onClick={() => setOpen(!open)}
+            >
+                { MenuConfig.map((item) => (
+                    <MenuListItem>
+                        <span role='img' aria-label={item.img}>
+                            <a href={item.url} class={url === item.url && 'active'}>{item.name}</a>
+                        </span>
+                    </MenuListItem>
+                ))}
+            </MenuList>
+        </StyledMenu>
     );
 };
 
