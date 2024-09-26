@@ -1,6 +1,7 @@
-import { expect, describe, test } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { h } from 'preact';
 import { render, screen, fireEvent } from '@testing-library/preact';
+import GlobalStyles from '../../GlobalStyles'
 import { LocationProvider } from 'preact-iso';
 import { ThemeProvider } from 'styled-components';
 import tokyoDark from  'react95/dist/themes/tokyoDark';
@@ -9,11 +10,13 @@ import Menu, { MenuConfig } from './Menu';
 describe('Menu Component', () => {
     test('renders menu items correctly', () => {
         render(
-            <ThemeProvider theme={tokyoDark}>
-                <LocationProvider>
-                    <Menu />
-                </LocationProvider>
-            </ThemeProvider>
+            <div>
+                <ThemeProvider theme={tokyoDark}>
+                    <LocationProvider>
+                        <Menu />
+                    </LocationProvider>
+                </ThemeProvider>
+            </div>
         );
         console.log(screen.logTestingPlaygroundURL());
         MenuConfig.forEach(item => {

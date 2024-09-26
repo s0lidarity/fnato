@@ -1,20 +1,82 @@
-
-interface Statistics {
-    strength: number;
-    dexterity: number;
-    constitution: number;
-    intelligence: number;
-    power: number;
-    charisma: number;
+interface Bond {
+    name: string;
+    detail: string;
+    score: number;
 }
 
+interface DerivedAttribute {
+    name: string;
+    currentValue: number;
+    maxValue: number;
+}
 interface DerivedAttributes {
     // needs max and current
-    hitPoints: number; // strength + constitution / 2 round up
-    willPower: number; // power
-    sanity: number; // power x 5
-    breakingPoint: number; // sanity - power
+    hitPoints: DerivedAttribute; // strength + constitution / 2 round up
+    willPower: DerivedAttribute; // power
+    sanity: DerivedAttribute; // power x 5
+    breakingPoint: DerivedAttribute; // sanity - power
 }
+interface DetailedDescription {
+    name: string;
+    age: number;
+    appearance: string;
+    residence: string; // maybe make it city, state, country
+    education: string;
+    personality: string;
+    beliefs: string;
+    hobbies: string;
+    obsessions: string;
+    motivations: string;
+    admire: string;
+    dislike: string;
+    trustInDeltaGreen: string;
+    deltaGreenAgreement: string;
+}
+interface Profession {
+    name: string;
+    affiliation: string;
+    professionalSkills: Skill[];
+    bondCount: number;
+    recommendedStats: StatisticKeys[];
+    chosenSkills: Skill[];
+    chosenSkillCount: number;
+}
+interface Skill {
+    name: string;
+    value: number;
+    base: number;
+    bonus: boolean;
+}
+interface Stat {
+    name: string;
+    score: number;
+    x5: number;
+    distinguishingFeature: string;
+}
+interface Statistics {
+    strength: Stat;
+    dexterity: Stat;
+    constitution: Stat;
+    intelligence: Stat;
+    power: Stat;
+    charisma: Stat;
+}
+
+interface DamagedVeteranAdjustment {
+
+}
+// Extreme Violence
+// Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s CHA and each Bond. Your Agent is adapted to violence (see page 73).
+// Captivity or Imprisonment
+// Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s POW. Your Agent is adapted to helplessness (see page 73).
+// Hard Experience
+// Add +10% to your Agent’s Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent’s SAN by 5. Remove one Bond.
+// Things Man Was Not Meant to Know
+// Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent’s SAN by his or
+// her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent’s Break- ing Point to his or her new SAN minus POW.
+
+type StatisticKeys = keyof Statistics;
+
 
 const character = {
     // roll 4d6, drop the lowest or assign from a pool of 72 points
