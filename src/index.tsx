@@ -9,6 +9,7 @@ import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 
 import Home from './pages/Home';
 import About from './pages/About';
+import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
 import './style.css';
 
@@ -42,6 +43,7 @@ export function App() {
 							<Router>
 								<Route path="/" component={Home} />
 								<Route path="/about" component={About} />
+								<Route path="/crucible" component={TheCrucible} />
 							</Router>
 						</main>
 				</LocationProvider>
