@@ -15,18 +15,18 @@ export function App() {
 	return (
 		<div>
 			<GlobalStyles />
-				<ThemeProvider theme={tokyoDark}>
-				<LocationProvider>
-					<Header />
-						<main>
-							<Router>
-								<Route path="/" component={Home} />
-								<Route path="/about" component={About} />
-								<Route path="/crucible" component={TheCrucible} />
-							</Router>
-						</main>
-				</LocationProvider>
-				</ThemeProvider>
+			<ThemeProvider theme={tokyoDark}>
+			<LocationProvider>
+				<Header />
+					<main>
+						<Router>
+							<Route path="/" component={Home} />
+							<Route path="/about" component={About} />
+							<Route path="/crucible" component={TheCrucible} />
+						</Router>
+					</main>
+			</LocationProvider>
+			</ThemeProvider>
 		</div>
 	);
 }

@@ -1,45 +1,40 @@
 import { describe, test, expect } from 'vitest';
 import { h } from 'preact';
 import { render, screen, fireEvent } from '@testing-library/preact';
-import GlobalStyles from '../../GlobalStyles'
 import { LocationProvider } from 'preact-iso';
 import { ThemeProvider } from 'styled-components';
 import tokyoDark from  'react95/dist/themes/tokyoDark';
 import Menu, { MenuConfig } from './Menu'; 
+import MockProvider from '../../../test/test-utils/MockProvider';
 
 describe('Menu Component', () => {
-    test('renders menu items correctly', () => {
+    beforeEach(() => {
         render(
             <div>
-                <ThemeProvider theme={tokyoDark}>
-                    <LocationProvider>
+                <MockProvider>
                         <Menu />
-                    </LocationProvider>
-                </ThemeProvider>
+                </MockProvider>
             </div>
         );
-        console.log(screen.logTestingPlaygroundURL());
+    });
+
+    test('renders menu items correctly', () => {
+        
         MenuConfig.forEach(item => {
             expect(screen.getByText(item.name)).toBeInTheDocument();
         });
     });
 
-    test('toggles menu visibility when clicked', () => {
-        render(
-            <ThemeProvider theme={tokyoDark}>
-                <LocationProvider>
-                    <Menu />
-                </LocationProvider>
-            </ThemeProvider>
-        );
+    test('each menu item has the expected href', () => {
+        MenuConfig.forEach(item => {
+            expect(screen.getByText(item.name).closest('a')).toHaveAttribute('href', item.url);
+        });
+    });
 
-        const menuButton = screen.getByRole('button');
-        fireEvent.click(menuButton);
-
-        const menuList = screen.getByRole('menu');
-        expect(menuList).toBeInTheDocument();
-
-        fireEvent.click(menuButton);
-        expect(menuList).toBeInTheDocument();
+    test('menu items are clickable', () => {
+        MenuConfig.forEach(item => {
+            fireEvent.click(screen.getByText(item.name));
+            expect(screen.getByText(item.name)).toHaveClass('active');
+        });
     });
 });
