@@ -9,6 +9,14 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: './test/setup.ts',
+		deps: {
+			optimizer: {
+				web: {
+					enabled: true,
+					include: ['styled-components', 'react95'],
+				},
+			},
+		},
 	},
 	// resolve: {
 	// 	alias: [{ find: "@", replacement: resolve(__dirname, "./src") }]
