@@ -36,10 +36,10 @@ export function Home() {
                 variant="outside"
                 shadow
                 style={{ padding: '0.5rem', lineHeight: '1.5', minWidth: 600, maxWidth: '90%' }}>
-                <Logo src={DGLogo} alt="Scienta Mors Est" />
                 <Description>
                     Memento Mori.
                 </Description>
+                <Logo src={DGLogo} alt="Scienta Mors Est" />
                 <Description>
                     We all must die. We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take.
                 </Description>

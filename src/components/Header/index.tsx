@@ -2,7 +2,8 @@ import h from 'preact';
 import { useState } from 'preact/hooks';
 import { useLocation } from 'preact-iso';
 import { AppBar, Button, MenuList, MenuListItem, Toolbar } from 'react95';
-import Menu from './Menu'
+import Menu from './Menu';
+import DownGreenTri from '../../assets/down-green-tri.png';
 
 
 function Header() {
@@ -19,7 +20,7 @@ function Header() {
                     style={{ fontWeight: 'bold' }}
                 >
                     <img
-                        src="public/down-green-tri.png" 
+                        src={ DownGreenTri }
                         alt='green-triangle'
                         style={{ height: '20px', marginRight: 4 }}
                     />
