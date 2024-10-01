@@ -51,7 +51,7 @@ function Menu() {
                 onClick={() => setOpen(!open)}
             >
                 { MenuConfig.map((item) => (
-                    <MenuListItem>
+                    <MenuListItem onClick={()=> setOpen(false)}>
                         <span role='img' aria-label={item.img}>
                             <a href={item.url} class={url === item.url && 'active'}>{item.name}</a>
                         </span>

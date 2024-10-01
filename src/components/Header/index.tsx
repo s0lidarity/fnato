@@ -19,7 +19,7 @@ function Header() {
                     style={{ fontWeight: 'bold' }}
                 >
                     <img
-                        src="src/assets/down-green-tri.png" 
+                        src="public/down-green-tri.png" 
                         alt='green-triangle'
                         style={{ height: '20px', marginRight: 4 }}
                     />
