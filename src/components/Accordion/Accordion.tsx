@@ -48,13 +48,14 @@ function Accordion({ items }: { items: AccordionConfig }) {
     };
 
     const renderedItems = items.map((item, index) => {
+        const isExpandable = !!item.content;
         return (
             <div key={index}>
-                <ItemContainer onClick={() => handleClick(index)}>
+                <ItemContainer onClick={() => isExpandable && handleClick(index)}>
                     <span style={{ marginRight: '0.5rem'}}>{item.icon}<Anchor href={item.href}> {item.label}</Anchor></span>
-                    <div>{expandedIndex === index ? '-' : '+'}</div>
+                    {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
                 </ItemContainer>
-                {expandedIndex === index && <DescriptionContainer>{item.description}</DescriptionContainer>}
+                {expandedIndex === index && isExpandable && <DescriptionContainer>{item.content}</DescriptionContainer>}
             </div>
         );
     });
