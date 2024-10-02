@@ -7,16 +7,7 @@ const Wrapper = styled.div`
     padding: 5rem;
     background: ${({ theme }) => theme.canvas};
     z-index: 5;
-    #default-buttons button {
-        margin-bottom: 1rem;
-        margin-right: 1rem;
-    }
-
-    #cutout {
-        background: ${({ theme }) => theme.canvas};
-        padding: 1rem;
-    width: 300px;
-    }
+    font-size: 1.2rem;
 `;
 
 const Logo = styled.img`
@@ -25,8 +16,7 @@ const Logo = styled.img`
     margin-bottom: 2rem;
 `;
 
-const Description = styled.p`
-    font-size: 1.2rem;
+const Blurb = styled.p`
     margin-bottom: 2rem;
 `;
 
@@ -37,19 +27,19 @@ export function Home() {
                 variant="outside"
                 shadow
                 style={{ padding: '0.5rem', lineHeight: '1.5', minWidth: 600, maxWidth: '90%' }}>
-                <Description>
+                <Blurb>
                     Memento Mori.
-                </Description>
+                </Blurb>
                 <Logo src={DGLogo} alt="Scienta Mors Est" />
-                <Description>
+                <Blurb>
                     We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take.
-                </Description>
-                <Description>
+                </Blurb>
+                <Blurb>
                     Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?
-                </Description>
-                <Description>
+                </Blurb>
+                <Blurb>
                     Tell me a little bit about yourself, agent. What's your deal?
-                </Description>
+                </Blurb>
                 <Frame
                     variant='well'
                     style={{ marginTop: '1rem', padding: '0.25rem 0.25rem', width: '100%' }}>

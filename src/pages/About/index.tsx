@@ -1,12 +1,19 @@
 import h from 'preact';
 import styled from 'styled-components';
-import { GroupBox } from 'react95';
+import { Anchor, GroupBox } from 'react95';
 import Accordion from '../../components/Accordion/Accordion';
 
 const GroupBoxContainer = styled.div`
     margin: 1rem;
     minWidth: 250px;
     maxWidth: 90%;
+`;
+
+const Content = styled.span`
+    display: block;
+    li {
+        padding-left: 1rem;
+    }
 `;
 
 const Panel = styled.div`
@@ -28,7 +35,13 @@ const authorConfig = [
         label: 'GitHub',
         href: "https://github.com/s0lidarity/fnato",
         icon: <>🐙</>,
-        content: <>Take a peek behind the curtain.</>,
+        content: <Content>Take a peek behind the curtain. Feel free to: 
+            <ul>
+                <li>report an <Anchor href="https://github.com/s0lidarity/fnato/issues/new">issue </Anchor></li>
+                <li>leave <Anchor href="https://github.com/s0lidarity/fnato/discussions">feedback/feature requests</Anchor></li>
+                <li>or ⭐️ Star the project to give my ego a boost.</li>
+            </ul>
+            </Content>
     },
     {
         id: 'linkedIn',
@@ -40,14 +53,17 @@ const authorConfig = [
         id: 'bio',
         label: 'Declassified Record',
         icon: <>📓</>,
-        content: <>Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.\n He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. \nHe Lives in <Spoiler>Seattle, WA</Spoiler> with his <Spoiler>wife, 5 cats, and a dog</Spoiler></>
+        content: <Content>Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 
+        2017.<br/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. 
+        He Lives in <Spoiler>Seattle, WA</Spoiler> with his <Spoiler>wife, 5 cats, and a dog</Spoiler></Content>
     },
     {
         id: 'coffee',
-        label: 'Ko-fi',
+        label: 'Support',
         icon: <>☕</>,
         href: "https://ko-fi.com/sobiesapps",
-        content: <>If you want to support his work, you can buy him <Spoiler>Happiness</Spoiler></>,
+        content: <Content>If you want to support this work, you can buy the developer <Spoiler>Happiness</Spoiler>
+        by with financial contributions through Ko-fi.</Content>
     }
 ];
 
@@ -57,21 +73,26 @@ const dgConfig = [
         label: 'What is Delta Green?',
         href: "https://www.delta-green.com/what-is-delta-green/",
         icon: <>👽</>,
-        content: <>If the intelligence community was a family, Delta Green would be the uncle nobody talks about.</>, 
+        content: <Content>If the intelligence community was a family, Delta Green would be the uncle nobody talks about. 
+        <br/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for 
+        their agents, other players, where a grey government operation works to protect the world from unkown
+        cosmic horrors.</Content>, 
     },
     {
         id: 'publisher',
         label: 'Arc Dream Publishing',
         href: "https://arcdream.com/home/",
         icon: <>📚</>,
-        content: <>The publisher behind Delta Green.</>,
+        content: <Content>Arc Dream Publishing is a small-press publisher that produces high-quality games, including 
+        roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta 
+        Green, Swords & Sorceries, and The Black Company RPG.</Content>,
     },
     {
         id: 'drivethru',
         label: 'DriveThruRPG',
         href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook",
         icon: <>🚗</>,
-        content: <>Visit DriveThruRPG to purchase Delta Green source materials and learn more.</>,
+        content: <Content>Visit DriveThruRPG to purchase Delta Green source materials and learn more.</Content>,
     }
 ];
 

@@ -14,13 +14,24 @@ export type AccordionConfigItem = {
 
 export type AccordionConfig = AccordionConfigItem[];
 
+const AccordionWrapper = styled.div`
+    width: 800px;
+    max-width: 100%;
+    margin: 0 auto;
+    @media (max-width: 768px) {
+        max-width: 400px%;
+`;
+
 const ItemContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     padding: 0.75rem;
     background: ${({ theme }) => theme.material};
     border-bottom: ${({ theme }) => theme.border};
+    width: 100%;
+    box-sizing: border-box;
     cursor: pointer;
 `;
 
@@ -28,10 +39,15 @@ const DescriptionContainer = styled.div`
     padding: 0.75rem;
     background: ${({ theme }) => theme.canvas};
     border: ${({ theme }) => theme.border};
+    text-align: left;
     white-space: pre-wrap;
     overflow-wrap: break-word;
     width: 100%;
     box-sizing: border-box;
+`;
+
+const IconWrapper = styled.span`
+    margin-right: 0.5rem;
 `;
 
 function Accordion({ items }: { items: AccordionConfig }) {
@@ -52,7 +68,10 @@ function Accordion({ items }: { items: AccordionConfig }) {
         return (
             <div key={index}>
                 <ItemContainer onClick={() => isExpandable && handleClick(index)}>
-                    <span style={{ marginRight: '0.5rem'}}>{item.icon}<Anchor href={item.href}> {item.label}</Anchor></span>
+                    <span style={{ marginRight: '0.5rem'}}>
+                        <IconWrapper>{item.icon}</IconWrapper>
+                        {item.href ? (<Anchor href={item.href}> {item.label}</Anchor>) :(item.label)}
+                    </span>
                     {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
                 </ItemContainer>
                 {expandedIndex === index && isExpandable && <DescriptionContainer>{item.content}</DescriptionContainer>}
@@ -61,7 +80,7 @@ function Accordion({ items }: { items: AccordionConfig }) {
     });
 
     return (
-        <div>{renderedItems}</div>
+        <AccordionWrapper>{renderedItems}</AccordionWrapper>
     );
 };
 
