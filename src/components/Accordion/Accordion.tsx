@@ -1,5 +1,5 @@
 // src/components/Accordion.tsx
-import { h } from 'preact';
+import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Anchor } from 'react95';

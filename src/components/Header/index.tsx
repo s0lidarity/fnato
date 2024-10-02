@@ -11,7 +11,7 @@ function Header() {
     const [open, setOpen] = useState(false);
 
     return (
-        <AppBar>
+        <AppBar style={{zIndex: 10}}>
             <Toolbar style={{ justifyContent: 'space-between' }}>
             <div style={{ position: 'relative', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                 <Button

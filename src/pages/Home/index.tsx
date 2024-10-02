@@ -1,22 +1,23 @@
 import h from 'preact';
 import styled from 'styled-components';
 import { Frame } from 'react95';
-import DGLogo from '../../assets/DG_logo.webp';
+import DGLogo from '../../assets/DG_logo.png';
 
 const Wrapper = styled.div`
-7  padding: 5rem;
-8  background: ${({ theme }) => theme.material};
-9  #default-buttons button {
-10    margin-bottom: 1rem;
-11    margin-right: 1rem;
-12  }
-13
-14  #cutout {
-15    background: ${({ theme }) => theme.canvas};
-16    padding: 1rem;
-17    width: 300px;
-18  }
-19`;
+    padding: 5rem;
+    background: ${({ theme }) => theme.canvas};
+    z-index: 5;
+    #default-buttons button {
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+    }
+
+    #cutout {
+        background: ${({ theme }) => theme.canvas};
+        padding: 1rem;
+    width: 300px;
+    }
+`;
 
 const Logo = styled.img`
     width: 200px;
@@ -41,7 +42,7 @@ export function Home() {
                 </Description>
                 <Logo src={DGLogo} alt="Scienta Mors Est" />
                 <Description>
-                    We all must die. We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take.
+                    We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take.
                 </Description>
                 <Description>
                     Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?
@@ -52,7 +53,7 @@ export function Home() {
                 <Frame
                     variant='well'
                     style={{ marginTop: '1rem', padding: '0.25rem 0.25rem', width: '100%' }}>
-                        What happens at the opera stays here. Not that anyone would believe you though. 
+                        What happens at the opera stays here. Not that anyone outside of the organization would believe you though. 
                 </Frame>
             </Frame>
         </Wrapper>

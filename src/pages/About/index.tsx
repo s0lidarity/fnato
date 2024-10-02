@@ -28,6 +28,7 @@ const authorConfig = [
         label: 'GitHub',
         href: "https://github.com/s0lidarity/fnato",
         icon: <>🐙</>,
+        content: <>Take a peek behind the curtain.</>,
     },
     {
         id: 'linkedIn',
@@ -39,13 +40,14 @@ const authorConfig = [
         id: 'bio',
         label: 'Declassified Record',
         icon: <>📓</>,
-        content: <>Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.\n He would make a terrible field agent but is prepared to fight the sisyphean cosmic fight. \nHe Lives in <Spoiler>Seattle, WA</Spoiler> with his wife, 5 cats, and a dog. \nIf you want to support his work, you can buy him <Spoiler>Happiness</Spoiler></>,
+        content: <>Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.\n He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. \nHe Lives in <Spoiler>Seattle, WA</Spoiler> with his <Spoiler>wife, 5 cats, and a dog</Spoiler></>
     },
     {
         id: 'coffee',
         label: 'Ko-fi',
         icon: <>☕</>,
         href: "https://ko-fi.com/sobiesapps",
+        content: <>If you want to support his work, you can buy him <Spoiler>Happiness</Spoiler></>,
     }
 ];
 
@@ -55,6 +57,21 @@ const dgConfig = [
         label: 'What is Delta Green?',
         href: "https://www.delta-green.com/what-is-delta-green/",
         icon: <>👽</>,
+        content: <>If the intelligence community was a family, Delta Green would be the uncle nobody talks about.</>, 
+    },
+    {
+        id: 'publisher',
+        label: 'Arc Dream Publishing',
+        href: "https://arcdream.com/home/",
+        icon: <>📚</>,
+        content: <>The publisher behind Delta Green.</>,
+    },
+    {
+        id: 'drivethru',
+        label: 'DriveThruRPG',
+        href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook",
+        icon: <>🚗</>,
+        content: <>Visit DriveThruRPG to purchase Delta Green source materials and learn more.</>,
     }
 ];
 

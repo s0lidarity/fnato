@@ -36,7 +36,7 @@ const StyledMenu = styled.div`
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1001;
+    z-index: 10;
 `;
 
 function Menu() {
