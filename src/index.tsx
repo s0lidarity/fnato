@@ -10,6 +10,7 @@ import Header from './components/Header';
 import GlobalStyles from './GlobalStyles';
 import './style.css';
 
+console.log('tokyoDark', tokyoDark);
 
 export function App() {
 	return (
