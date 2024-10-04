@@ -206,12 +206,22 @@ export interface Stat {
     score: number;
     x5: number;
     distinguishingFeature: string;
+    reminderText?: string;
 }
+
+export const statReminders: { [key in keyof Statistics]: string } = {
+    strength: "represents raw physical power",
+    constitution: "represents health and hardiness",
+    dexterity: "represents speed and physical agility",
+    intelligence: "represents cunning, logic, and intuition",
+    power: "represents will, spirit, and mental stability",
+    charisma: "represents personal and physical appeal",
+};
 
 export interface Statistics {
     strength: Stat;
-    dexterity: Stat;
     constitution: Stat;
+    dexterity: Stat;
     intelligence: Stat;
     power: Stat;
     charisma: Stat;
@@ -235,7 +245,7 @@ export type StatisticKeys = keyof Statistics;
 
 const character = {
     // roll 4d6, drop the lowest or assign from a pool of 72 points
-    statistics:{
+    statistics: {
         // min 3, max 18
         strength: 10,
         dexterity: 10,
@@ -244,62 +254,62 @@ const character = {
         power: 10,
         charisma: 10,
     },
-    derivedAttributes:{
+    derivedAttributes: {
 
     },
-    profession:{
+    profession: {
 
     },
-    skills:{
-//         Accounting (10%)
-//  Alertness (20%)
-//  Anthropology (0%)
-//  Archeology (0%)
-//  Art (0%):
-//  Artillery (0%)
-//  Athletics (30%)
-//  Bureaucracy (10%)
-//  Computer Science (0%)
-//  Craft (0%):
-//  Criminology (10%)
-//  Demolitions (0%)
-//  Disguise (10%)
-//  Dodge (30%)
-//  Drive (20%)
-//  Firearms (20%)
-//          
-//     
-// 
-// First Aid (10%)
-// Forensics (0%)
-// Heavy Machinery (10%)
-// Heavy Weapons (0%)
-// History (10%)
-// HUMINT (10%)
-// Law (0%)
-// Medicine (0%)
-// Melee Weapons (30%)
-// Military Science (0%):
-// Navigate (10%)
-// Occult (10%)
-// Persuade (20%)
-// Pharmacy (0%)
-// Pilot (0%):
-// Psychotherapy (10%)
-//  Ride (10%)
-//  Science (0%):
-//  Search (20%)
-//  SIGINT (0%)
-//  Stealth (10%)
-//  Surgery (0%)
-//  Survival (10%)
-//  Swim (20%)
-//  Unarmed Combat (40%)
-// Unnatural (0%)
-// Foreign Languages and Other Skills:
-//      
+    skills: {
+        //         Accounting (10%)
+        //  Alertness (20%)
+        //  Anthropology (0%)
+        //  Archeology (0%)
+        //  Art (0%):
+        //  Artillery (0%)
+        //  Athletics (30%)
+        //  Bureaucracy (10%)
+        //  Computer Science (0%)
+        //  Craft (0%):
+        //  Criminology (10%)
+        //  Demolitions (0%)
+        //  Disguise (10%)
+        //  Dodge (30%)
+        //  Drive (20%)
+        //  Firearms (20%)
+        //          
+        //     
+        // 
+        // First Aid (10%)
+        // Forensics (0%)
+        // Heavy Machinery (10%)
+        // Heavy Weapons (0%)
+        // History (10%)
+        // HUMINT (10%)
+        // Law (0%)
+        // Medicine (0%)
+        // Melee Weapons (30%)
+        // Military Science (0%):
+        // Navigate (10%)
+        // Occult (10%)
+        // Persuade (20%)
+        // Pharmacy (0%)
+        // Pilot (0%):
+        // Psychotherapy (10%)
+        //  Ride (10%)
+        //  Science (0%):
+        //  Search (20%)
+        //  SIGINT (0%)
+        //  Stealth (10%)
+        //  Surgery (0%)
+        //  Survival (10%)
+        //  Swim (20%)
+        //  Unarmed Combat (40%)
+        // Unnatural (0%)
+        // Foreign Languages and Other Skills:
+        //      
     },
-    bonds:[
+    bonds: [
         {
             name: "family",
             detail: "loves his family",
@@ -322,11 +332,11 @@ const character = {
         birthDate: "01/01/1970",
     },
     nationality: "American",
-    motivations:[
+    motivations: [
         "money",
         "fame",
     ],
-    mentalDisorders:[
+    mentalDisorders: [
         {
             name: "PTSD",
             description: "Post Traumatic Stress Disorder",

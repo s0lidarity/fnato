@@ -1,18 +1,33 @@
 import { createContext } from 'preact';
-import { useContext, useState } from 'preact/hooks';
+import { useContext, useEffect, useState } from 'preact/hooks';
 
-import { Bond, Character, DerivedAttributes, Stat, Statistics } from '../types/characterTypes';
+import { 
+	Bond, 
+	Character, 
+	DerivedAttributes, 
+	DetailedDescription, 
+	Profession, 
+	Skills, 
+	Stat, 
+	Statistics 
+} from '../types/characterTypes';
 import { createDefaultCharacter } from '../utils/CharacterGenerator';
 
 
-type StatsContextType = {
-    stats: Statistics;
+type CharacterContextType = {
+    character: Character;
+    setCharacter: (character: Character) => void;
+	setBonds: (bonds: Bond[]) => void;
+    setDerivedAttributes: (derivedAttributes: DerivedAttributes) => void;
+    setDetailedDescription: (description: DetailedDescription) => void;
+    setProfession: (profession: Profession) => void;
+    setSkills: (skills: Skills) => void;
     setStats: (stats: Statistics) => void;
 };
 
 const defaultCharacter = createDefaultCharacter();
 
-const CharacterContext = createContext<StatsContextType | undefined>(undefined);
+const CharacterContext = createContext<CharacterContextType | undefined>(undefined);
 
 export const useCharacter = () => {
     const context = useContext(CharacterContext);
@@ -23,10 +38,37 @@ export const useCharacter = () => {
 };
 
 export const CharacterProvider = ({ children }: { children: React.ReactNode }) => {
-    const [stats, setStats] = useState<Statistics>(defaultCharacter.statistics);
+    const [character, setCharacter] = useState<Character>(defaultCharacter);
+	const [bonds, setBonds] = useState<Bond[]>(defaultCharacter.bonds);
+	const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(defaultCharacter.derivedAttributes);
+	const [detailedDescription, setDetailedDescription] = useState(defaultCharacter.detailedDescription);
+	const [profession, setProfession] = useState(defaultCharacter.profession);
+	const [skills, setSkills] = useState(defaultCharacter.skills);
+	const [stats, setStats] = useState<Statistics>(defaultCharacter.statistics);
+
+	useEffect(() => {
+		setCharacter(prevCharacter => ({
+			...prevCharacter,
+			bonds,
+			derivedAttributes,
+			detailedDescription,
+			profession,
+			skills,
+			stats
+	}));
+	}, [bonds, derivedAttributes, detailedDescription, profession, skills, stats]);
 
     return (
-        <CharacterContext.Provider value={{ stats, setStats }}>
+        <CharacterContext.Provider value={{ 
+			character, 
+			setCharacter,
+            setBonds, 
+            setDerivedAttributes, 
+            setDetailedDescription, 
+            setProfession, 
+            setSkills, 
+            setStats 
+			}}>
             {children}
         </CharacterContext.Provider>
     );

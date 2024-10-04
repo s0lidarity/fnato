@@ -1,7 +1,7 @@
 import { render } from 'preact';
 import { LocationProvider, Router, Route } from 'preact-iso';
 import { ThemeProvider } from 'styled-components';
-import tokyoDark from  'react95/dist/themes/tokyoDark';
+import tokyoDark from 'react95/dist/themes/tokyoDark';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -9,6 +9,7 @@ import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
 import GlobalStyles from './GlobalStyles';
 import './style.css';
+import { CharacterProvider } from './providers/CharacterContext';
 
 console.log('tokyoDark', tokyoDark);
 
@@ -17,16 +18,18 @@ export function App() {
 		<div>
 			<GlobalStyles />
 			<ThemeProvider theme={tokyoDark}>
-			<LocationProvider>
-				<Header />
-					<main>
-						<Router>
-							<Route path="/" component={Home} />
-							<Route path="/about" component={About} />
-							<Route path="/crucible" component={TheCrucible} />
-						</Router>
-					</main>
-			</LocationProvider>
+				<CharacterProvider>
+					<LocationProvider>
+						<Header />
+						<main>
+							<Router>
+								<Route path="/" component={Home} />
+								<Route path="/about" component={About} />
+								<Route path="/crucible" component={TheCrucible} />
+							</Router>
+						</main>
+					</LocationProvider>
+				</CharacterProvider>
 			</ThemeProvider>
 		</div>
 	);

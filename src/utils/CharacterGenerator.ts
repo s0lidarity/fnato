@@ -1,7 +1,7 @@
-import { 
-	Bond, 
-	Character, 
-	DerivedAttribute, 
+import {
+	Bond,
+	Character,
+	DerivedAttribute,
 	DerivedAttributes,
 	DetailedDescription,
 	Profession,
@@ -10,6 +10,7 @@ import {
 	Stat,
 	Statistics,
 	StatisticKeys,
+	statReminders,
 	Skills,
 } from '../types/characterTypes';
 
@@ -56,18 +57,18 @@ const baseProfession: Profession = {
 };
 
 const baseStat: Stat = {
-    score: 10,
-    x5: 50,
-    distinguishingFeature: ''
+	score: 10,
+	x5: 50,
+	distinguishingFeature: ''
 };
 
 const baseStats: Statistics = {
-    strength: {...baseStat},
-    dexterity: {...baseStat},
-    constitution: {...baseStat},
-    intelligence: {...baseStat},
-    power: {...baseStat},
-    charisma: {...baseStat},
+	strength: { ...baseStat, reminderText: statReminders.strength },
+	constitution: { ...baseStat, reminderText: statReminders.constitution },
+	dexterity: { ...baseStat, reminderText: statReminders.dexterity },
+	intelligence: { ...baseStat, reminderText: statReminders.intelligence },
+	power: { ...baseStat, reminderText: statReminders.power },
+	charisma: { ...baseStat, reminderText: statReminders.charisma },
 };
 
 export const initializeSkills = (): Skills => {
@@ -116,6 +117,5 @@ export function createDefaultCharacter(): Character {
 		profession: baseProfession,
 		skills: initializeSkills(),
 		statistics: baseStats,
-		
 	}
 }
