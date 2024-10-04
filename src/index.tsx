@@ -8,7 +8,7 @@ import About from './pages/About';
 import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
 import GlobalStyles from './GlobalStyles';
-import './style.css';
+
 import { CharacterProvider } from './providers/CharacterContext';
 
 console.log('tokyoDark', tokyoDark);
