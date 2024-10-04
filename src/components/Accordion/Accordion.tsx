@@ -5,21 +5,21 @@ import styled from 'styled-components';
 import { Anchor } from 'react95';
 
 export type AccordionConfigItem = {
-        id: string;
-        label: string;
-        icon: JSX.Element;
-        href?: string;
-        content?: JSX.Element;
+    id: string;
+    label: string;
+    icon: JSX.Element;
+    href?: string;
+    content?: JSX.Element;
 };
 
 export type AccordionConfig = AccordionConfigItem[];
 
 const AccordionWrapper = styled.div`
-    width: 800px;
-    max-width: 100%;
+    width: clamp(300px, 80%, 800px);
     margin: 0 auto;
     @media (max-width: 768px) {
-        max-width: 400px%;
+        width: clamp(200px, 80%, 600px);
+    }
 `;
 
 const ItemContainer = styled.div`
@@ -55,7 +55,7 @@ function Accordion({ items }: { items: AccordionConfig }) {
 
     const handleClick = (newIndex) => {
         setExpandedIndex((currentExpandedIndex) => {
-            if(currentExpandedIndex === newIndex) {
+            if (currentExpandedIndex === newIndex) {
                 return -1;
             } else {
                 return newIndex;
@@ -68,9 +68,9 @@ function Accordion({ items }: { items: AccordionConfig }) {
         return (
             <div key={index}>
                 <ItemContainer onClick={() => isExpandable && handleClick(index)}>
-                    <span style={{ marginRight: '0.5rem'}}>
+                    <span style={{ marginRight: '0.5rem' }}>
                         <IconWrapper>{item.icon}</IconWrapper>
-                        {item.href ? (<Anchor href={item.href}> {item.label}</Anchor>) :(item.label)}
+                        {item.href ? (<Anchor href={item.href}> {item.label}</Anchor>) : (item.label)}
                     </span>
                     {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
                 </ItemContainer>
