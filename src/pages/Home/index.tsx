@@ -7,11 +7,8 @@ import PageWrapper from '../../components/SharedStyles/PageWrapper';
 const TextWrapper = styled.div`
     padding: 1rem;
     margin: 1rem;
-    max-width: 800px;
     background: ${({ theme }) => theme.material};
     font-size: 1.2rem;
-    @media (max-width: 768px) {
-        max-width: 400px;
 `;
 
 const LogoContainer = styled.div`
