@@ -20,6 +20,11 @@ const GlobalStyles = createGlobalStyle`
 	body, input, select, textarea {
 		font-family: 'ms_sans_serif';
 	}
+	main {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 `;
 
 export default GlobalStyles;

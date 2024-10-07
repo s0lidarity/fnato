@@ -6,8 +6,8 @@ import { PageWrapper } from '../../components/SharedStyles';
 
 const GroupBoxContainer = styled.div`
     margin: 1rem;
-    width: clamp(500px, 80%, 800px);
-    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 95%;
 `;
 
 const Content = styled.div`

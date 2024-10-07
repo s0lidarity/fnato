@@ -2,12 +2,7 @@ import h from 'preact';
 import styled from 'styled-components';
 import { Anchor, Frame } from 'react95';
 import DGLogo from '../../assets/DG_logo.png';
-
-const Wrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    background: ${({ theme }) => theme.material};
-`;
+import PageWrapper from '../../components/SharedStyles/PageWrapper';
 
 const TextWrapper = styled.div`
     padding: 1rem;
@@ -17,6 +12,12 @@ const TextWrapper = styled.div`
     font-size: 1.2rem;
     @media (max-width: 768px) {
         max-width: 400px;
+`;
+
+const LogoContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Logo = styled.img`
@@ -30,17 +31,22 @@ const Blurb = styled.p`
     margin-bottom: 2rem;
 `;
 
+const Title = styled.h1`
+    text-align: center; 
+    font-size: 2rem;
+`;
+
 export function Home() {
 	return (
-        <Wrapper>
+        <PageWrapper>
                 <Frame 
                     variant="outside"
                     shadow>
                     <TextWrapper>
-                        <Blurb>
+                        <Title>
                             Memento Mori.
-                        </Blurb>
-                        <Logo src={DGLogo} alt="Scienta Mors Est" />
+                        </Title>
+                        <LogoContainer><Logo src={DGLogo} alt="Scienta Mors Est" /></LogoContainer>
                         <Blurb>
                             We're fighting a war against the inevitable. And it's a war we're going to lose. 
                             But we're going to win the battles. We're going to make the bastards work for it. 
@@ -62,7 +68,7 @@ export function Home() {
                         </Frame>
                     </TextWrapper>
                 </Frame>
-        </Wrapper>
+        </PageWrapper>
     )
 };
 

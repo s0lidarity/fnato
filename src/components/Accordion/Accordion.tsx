@@ -15,10 +15,10 @@ export type AccordionConfigItem = {
 export type AccordionConfig = AccordionConfigItem[];
 
 const AccordionWrapper = styled.div`
-    margin: 0.5rem;
     display: block;
     align-items: center;
     position: relative;
+    padding: 1rem;
 `;
 
 const ItemContainer = styled.div`
@@ -26,7 +26,7 @@ const ItemContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem;
-    background: ${({ theme }) => theme.material};
+    background: ${({ theme }) => theme.flatDark};
     border-bottom: ${({ theme }) => theme.border};
     cursor: pointer;
     box-sizing: border-box;
@@ -34,6 +34,15 @@ const ItemContainer = styled.div`
 
 const IconWrapper = styled.span`
     margin-right: 0.5rem;
+`;
+
+const ContentContainer = styled.div`
+    padding-left: 1rem;
+    background: ${({ theme }) => theme.canvas};
+    box-sizing: border-box;
+    border-color: ${({ theme }) => theme.flatDark};
+    border-style: solid;
+    border-width: 0.25rem;
 `;
 
 function Accordion({ items }: { items: AccordionConfig }) {
@@ -60,7 +69,9 @@ function Accordion({ items }: { items: AccordionConfig }) {
                     </span>
                     {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
                 </ItemContainer>
-                {expandedIndex === index && isExpandable && item.content}
+                <ContentContainer>
+                    {expandedIndex === index && isExpandable && item.content}
+                </ContentContainer>
             </div>
         );
     });

@@ -3,6 +3,8 @@ import { describe, test, expect } from 'vitest';
 import { render, screen } from '@testing-library/preact';
 import { App } from './index';
 
+
+// AJS todo: try preact chai for shallow rendering
 describe.skip('App Component', () => {
     // beforeEach(() => {
     //     render(<App />);
