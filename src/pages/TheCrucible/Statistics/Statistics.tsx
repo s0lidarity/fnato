@@ -1,9 +1,10 @@
 import h from 'preact';
 import { useState } from 'preact/hooks';
-import { NumberInput } from 'react95';
+import { Button, NumberInput } from 'react95';
 
 import { Stat, Statistics } from '../../../types/characterTypes';
 import StatInput from './StatInput';
+import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
 
 const defaultStat: Stat = {
     score: 10,
@@ -20,6 +21,18 @@ const defaultStats: Statistics = {
     charisma: defaultStat,
 };
 
+export function rollStats(stats: Statistics): Statistics {
+    const updatedStats = { ...stats };
+
+    for (const stat in updatedStats) {
+        if (updatedStats.hasOwnProperty(stat)) {
+            updatedStats[stat as keyof Statistics] = generateStat(stat as keyof Statistics, rollDice(6, 4, 1));
+        }
+    }
+
+    return updatedStats;
+}
+
 const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats: Statistics) => void) => (value: number) => {
     const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
     setStats({ ...stats, [statKey]: updatedStat });
@@ -28,6 +41,11 @@ const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats
 export function Statisics() {
     // AJS switch these to the provider/context
     const [stats, setStats] = useState<Statistics>(defaultStats);
+
+    const handleRoll = () => {
+        const results = rollStats(stats);
+        setStats(results);
+    };
 
     return (
         <>
@@ -38,6 +56,9 @@ export function Statisics() {
                 <StatInput label="Intelligence" value={stats.intelligence.score} onChange={onChange('intelligence', stats, setStats)} />
                 <StatInput label="Power" value={stats.power.score} onChange={onChange('power', stats, setStats)} />
                 <StatInput label="Charisma" value={stats.charisma.score} onChange={onChange('charisma', stats, setStats)} />
+                <Button fullWidth onClick={handleRoll}>
+                    Roll 4d6 drop lowest
+                </Button>
             </form>
             <div>
                 <p>STR: {stats.strength.score}</p>

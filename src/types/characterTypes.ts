@@ -44,7 +44,124 @@ export interface DetailedDescription {
     deltaGreenAgreement?: string;
 }
 
-export interface optionalSkills {
+export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: string[] } = {
+    strength: [
+        "", "", "",
+        "Feeble",
+        "Frail",
+        "Weak",
+        "Soft",
+        "Sedentary",
+        "Couch Potato",
+        "Active Couch Potato",
+        "Average",
+        "Active",
+        "Weekend Warrior",
+        "Fit",
+        "Muscular",
+        "Athletic",
+        "Jacked",
+        "Huge",
+        "Swole",
+    ],
+    constitution:  [
+        "", "", "",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ],
+    dexterity:  [
+        "", "", "",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ],
+    intelligence:  [
+        "", "", "",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ],
+    power:  [
+        "", "", "",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ],
+    charisma:  [
+        "", "", "",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ],
+};
+
+export interface OptionalSkills {
     ForeignLanguages?: Skill[];
     OtherSkills?: Skill[];
 }
@@ -67,7 +184,7 @@ export interface Skill {
     reminderText?: string;
 }
 
-export const skillReminders: { [key in keyof Skills]: string } = {
+export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Accounting: "Business Math",
     Alertness: "Noticing things",
     Anthropology: "Study of ",
@@ -112,7 +229,7 @@ export const skillReminders: { [key in keyof Skills]: string } = {
     Unnatural: "It's a jeep thing, you wouldn't understand",
 };
 
-export const skillBaseValues: { [key in keyof Skills]: number } = {
+export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Accounting: 10,
     Alertness: 20,
     Anthropology: 0,
@@ -209,7 +326,7 @@ export interface Stat {
     reminderText?: string;
 }
 
-export const statReminders: { [key in keyof Statistics]: string } = {
+export const STAT_REMINDERS: { [key in keyof Statistics]: string } = {
     strength: "represents raw physical power",
     constitution: "represents health and hardiness",
     dexterity: "represents speed and physical agility",

@@ -2,11 +2,13 @@ import h from 'preact';
 import styled from 'styled-components';
 import { useState } from 'preact/hooks';
 import { Tabs, Tab, TabBody, Window, WindowContent, WindowHeader } from 'react95';
-import Statistics from './Statistics';
+import Statistics from './Statistics/Statistics';
 import Profession from './Profession';
 import Skills from './Skills';
 import Equipment from './Equipment';
 import Bonds from './Bonds';
+import { PageWrapper } from '../../components/SharedStyles';
+
 
 export function TheCrucible() {
     const [activeTab, setActiveTab] = useState(0);
@@ -14,8 +16,8 @@ export function TheCrucible() {
     const handleChange = (value: number, event:MouseEvent) => setActiveTab(value);
 
 	return (
-        <div>
-            <Window style={{ margin: '1rem', minWidth: '95%', height: '80vh' } }>
+        <PageWrapper>
+            <Window style={{ width: '100%', height: '80vh' } }>
                 <WindowHeader className='window-title'>
                     <span>The Crucible</span>
                 </WindowHeader>
@@ -36,7 +38,7 @@ export function TheCrucible() {
                     </TabBody>
                 </WindowContent>
             </Window>
-        </div>
+        </PageWrapper>
     )
 };
 

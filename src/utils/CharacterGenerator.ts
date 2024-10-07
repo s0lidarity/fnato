@@ -1,16 +1,18 @@
+import { RollResult } from './../types/diceTypes';
 import {
 	Bond,
 	Character,
 	DerivedAttribute,
 	DerivedAttributes,
 	DetailedDescription,
+	DISTINGUISHING_FEATURES,
 	Profession,
 	Skill,
-	skillBaseValues,
+	SKILL_BASE_VALUES,
 	Stat,
 	Statistics,
 	StatisticKeys,
-	statReminders,
+	STAT_REMINDERS,
 	Skills,
 } from '../types/characterTypes';
 
@@ -63,22 +65,22 @@ const baseStat: Stat = {
 };
 
 const baseStats: Statistics = {
-	strength: { ...baseStat, reminderText: statReminders.strength },
-	constitution: { ...baseStat, reminderText: statReminders.constitution },
-	dexterity: { ...baseStat, reminderText: statReminders.dexterity },
-	intelligence: { ...baseStat, reminderText: statReminders.intelligence },
-	power: { ...baseStat, reminderText: statReminders.power },
-	charisma: { ...baseStat, reminderText: statReminders.charisma },
+	strength: { ...baseStat, reminderText: STAT_REMINDERS.strength },
+	constitution: { ...baseStat, reminderText: STAT_REMINDERS.constitution },
+	dexterity: { ...baseStat, reminderText: STAT_REMINDERS.dexterity },
+	intelligence: { ...baseStat, reminderText: STAT_REMINDERS.intelligence },
+	power: { ...baseStat, reminderText: STAT_REMINDERS.power },
+	charisma: { ...baseStat, reminderText: STAT_REMINDERS.charisma },
 };
 
 export const initializeSkills = (): Skills => {
 	const skills: Partial<Skills> = {};
 
-	for (const skill in skillBaseValues) {
-		if (skillBaseValues.hasOwnProperty(skill)) {
+	for (const skill in SKILL_BASE_VALUES) {
+		if (SKILL_BASE_VALUES.hasOwnProperty(skill)) {
 			skills[skill as keyof Skills] = {
-				value: skillBaseValues[skill as keyof Skills],
-				base: skillBaseValues[skill as keyof Skills],
+				value: SKILL_BASE_VALUES[skill as keyof Skills],
+				base: SKILL_BASE_VALUES[skill as keyof Skills],
 				bonus: false,
 			} as Skill;
 		}
@@ -119,3 +121,31 @@ export function createDefaultCharacter(): Character {
 		statistics: baseStats,
 	}
 }
+
+// this could be more clever to run faster, but this is easier to read and follow
+export function rollDice(dSize: number, count: number, drop: number = 0): RollResult {
+	const roll = () => Math.floor(Math.random() * dSize) + 1;
+	let total = 0;
+	let rolls = [];
+	for (let i = 0; i < count; i++) {
+		rolls.push(roll());
+	};
+	rolls.sort();
+	rolls = rolls.slice(drop);
+	total = rolls.reduce((acc, val) => acc + val, 0);
+	return { result: total, rolls: rolls };
+}
+
+// AJS: this should probably be a constructor that takes in a rollResult, otherwise we lose the array of rolls
+export function generateStat(name: string, rr: RollResult): Stat {
+	if (!STAT_REMINDERS.hasOwnProperty(name) || !rr?.result || rr.result < 3 || rr.result > 18) {
+		return null;
+	};
+	return {
+		score: rr.result,
+		x5: rr.result * 5,
+		distinguishingFeature: DISTINGUISHING_FEATURES[name][rr.result],
+		reminderText: STAT_REMINDERS[name],
+	}
+}
+
