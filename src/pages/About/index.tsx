@@ -64,9 +64,7 @@ const authorConfig = [
         id: 'coffee',
         label: 'Support',
         icon: <>☕</>,
-        href: "https://ko-fi.com/sobiesapps",
-        content: <Content>If you want to support this work, you can buy the developer <Spoiler>Happiness</Spoiler>
-            by with financial contributions through Ko-fi.</Content>
+        content: <Content>If you want to support this work, you can buy some Delta Green content through my affiliate links.</Content>
     }
 ];
 
