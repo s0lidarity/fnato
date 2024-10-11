@@ -36,7 +36,7 @@ function Header() {
                         />
                         Start
                     </Button>
-                    {open && ( <Menu /> )}
+                    {open && ( <Menu open setOpen={setOpen} /> )}
                     <h1 style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', margin: '0 auto' }}>First Night at the Opera?</h1>
                 </div>
                 </Toolbar>

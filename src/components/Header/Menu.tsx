@@ -44,14 +44,16 @@ const StyledMenuList = styled(MenuList)`
 const StyledMenuListItem = styled(MenuListItem)`
     padding: 0.5rem 1rem;
     cursor: pointer;
+    justify-content: flex-start;
     &:hover {
+        cursor: pointer;
         background: ${({ theme }) => theme.hoverBackground};
     }
     &.active {
         background-color: ${({ theme }) => theme.focusSecondary};
         color: ${({ theme }) => theme.progress};
     }
-    `;
+`;
 
 const StyledMenu = styled.div`
     position: absolute;
@@ -64,9 +66,8 @@ const IconWrapper = styled.span`
     margin-right: 0.5rem;
 `;
 
-function Menu() {
+function Menu({open, setOpen}: {open: boolean, setOpen: (open: boolean) => void}) {
     const { url } = useLocation();
-    const [open, setOpen] = useState(false);
 
     return (
         <StyledMenu>
@@ -76,13 +77,13 @@ function Menu() {
                 onClick={() => setOpen(!open)}
             >
                 { MenuConfig.map((item) => (
-                    <StyledMenuListItem onClick={()=> setOpen(false)}>
-                        <span role='img' aria-label={item.img}>
-                            <a href={item.url} class={url === item.url ? 'active' : ''}>
-                                <IconWrapper>{item.img}</IconWrapper>{item.name}
-                            </a>
-                        </span>
-                    </StyledMenuListItem>
+                    <a href={item.url}>
+                        <StyledMenuListItem onClick={()=> setOpen(false)} className={url === item.url ? 'active' : ''}>
+                                <IconWrapper role='img' aria-label={item.img}>
+                                    {item.img}
+                                </IconWrapper>{item.name}
+                        </StyledMenuListItem>
+                    </a>
                 ))}
             </StyledMenuList>
         </StyledMenu>
