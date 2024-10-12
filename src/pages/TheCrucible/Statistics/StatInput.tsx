@@ -32,6 +32,7 @@ function StatInput({ label, value, onChange }) {
 			<NumberInput
 				min={3}
 				max={18}
+				width='5rem'
 				value={value}
 				onChange={onChange}
 			/>

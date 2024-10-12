@@ -59,6 +59,9 @@ export function Statisics() {
                 <Button fullWidth onClick={handleRoll}>
                     Roll 4d6 drop lowest
                 </Button>
+                <Button fullWidth onClick={() => setStats(defaultStats)}>
+                    Reset Stats
+                </Button>
             </form>
             <div>
                 <p>STR: {stats.strength.score}</p>
