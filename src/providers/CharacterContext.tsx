@@ -11,7 +11,7 @@ import {
 	Stat, 
 	Statistics 
 } from '../types/characterTypes';
-import { createDefaultCharacter } from '../utils/CharacterGenerator';
+import { calculateDerivedAttributes, createDefaultCharacter } from '../utils/CharacterGenerator';
 
 
 type CharacterContextType = {
@@ -47,10 +47,13 @@ export const CharacterProvider = ({ children }: { children: React.ReactNode }) =
 	const [stats, setStats] = useState<Statistics>(defaultCharacter.statistics);
 
 	useEffect(() => {
+		const newDerivedAttributes = calculateDerivedAttributes(stats);
+		console.log('nda: ', newDerivedAttributes);
+
 		setCharacter(prevCharacter => ({
 			...prevCharacter,
 			bonds,
-			derivedAttributes,
+			derivedAttributes: newDerivedAttributes,
 			detailedDescription,
 			profession,
 			skills,

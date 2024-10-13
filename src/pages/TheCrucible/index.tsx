@@ -9,6 +9,9 @@ import Equipment from './Equipment';
 import Bonds from './Bonds';
 import { PageWrapper } from '../../components/SharedStyles';
 
+const StyledWindow = styled(Window)`
+    width: 100%;
+`;
 
 export function TheCrucible() {
     const [activeTab, setActiveTab] = useState(0);
@@ -17,9 +20,9 @@ export function TheCrucible() {
 
 	return (
         <PageWrapper>
-            <Window style={{ width: '100%', height: '80vh' } }>
+            <StyledWindow>
                 <WindowHeader className='window-title'>
-                    <span>The Crucible</span>
+                    <h1>The Crucible</h1>
                 </WindowHeader>
                 <WindowContent>
                     <Tabs value={activeTab} onChange={handleChange}>
@@ -37,7 +40,7 @@ export function TheCrucible() {
                         {activeTab === 4 && <Bonds />}
                     </TabBody>
                 </WindowContent>
-            </Window>
+            </StyledWindow>
         </PageWrapper>
     )
 };

@@ -1,11 +1,15 @@
 import h from 'preact';
 import { useState } from 'preact/hooks';
-import { Button, NumberInput } from 'react95';
+import { Button } from 'react95';
+import styled from 'styled-components';
 
 import { Stat, Statistics } from '../../../types/characterTypes';
 import StatInput from './StatInput';
 import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
+import DerivedAttributes from './DerivedAttributes';
+import { useCharacter } from '../../../providers/CharacterContext';
 
+// AJS this file is too big, split it up
 const defaultStat: Stat = {
     score: 10,
     x5: 50,
@@ -20,6 +24,21 @@ const defaultStats: Statistics = {
     power: defaultStat,
     charisma: defaultStat,
 };
+
+const StatsAndDAContainer = styled.div`
+    display: flex;
+    align-itmems: stretch;
+`;
+
+const StatInputContainer = styled.div`
+    flex: 1;
+    padding: 1rem;
+`;
+
+const DAContainer = styled.div`
+    flex: 1;
+    padding: 1rem;
+`;
 
 export function rollStats(stats: Statistics): Statistics {
     const updatedStats = { ...stats };
@@ -40,22 +59,30 @@ const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats
 
 export function Statisics() {
     // AJS switch these to the provider/context
-    const [stats, setStats] = useState<Statistics>(defaultStats);
+    const { character, setStats} = useCharacter();
+
 
     const handleRoll = () => {
-        const results = rollStats(stats);
+        const results = rollStats(character.statistics);
         setStats(results);
     };
 
     return (
         <>
             <form>
-                <StatInput label="Strength" value={stats.strength.score} onChange={onChange('strength', stats, setStats)} />
-                <StatInput label="Constitution" value={stats.constitution.score} onChange={onChange('constitution', stats, setStats)} />
-                <StatInput label="Dexterity" value={stats.dexterity.score} onChange={onChange('dexterity', stats, setStats)} />
-                <StatInput label="Intelligence" value={stats.intelligence.score} onChange={onChange('intelligence', stats, setStats)} />
-                <StatInput label="Power" value={stats.power.score} onChange={onChange('power', stats, setStats)} />
-                <StatInput label="Charisma" value={stats.charisma.score} onChange={onChange('charisma', stats, setStats)} />
+                <StatsAndDAContainer>
+                    <StatInputContainer>
+                        <StatInput label="Strength" value={character.statistics.strength.score} onChange={onChange('strength', character.statistics, setStats)} />
+                        <StatInput label="Constitution" value={character.statistics.constitution.score} onChange={onChange('constitution', character.statistics, setStats)} />
+                        <StatInput label="Dexterity" value={character.statistics.dexterity.score} onChange={onChange('dexterity', character.statistics, setStats)} />
+                        <StatInput label="Intelligence" value={character.statistics.intelligence.score} onChange={onChange('intelligence', character.statistics, setStats)} />
+                        <StatInput label="Power" value={character.statistics.power.score} onChange={onChange('power', character.statistics, setStats)} />
+                        <StatInput label="Charisma" value={character.statistics.charisma.score} onChange={onChange('charisma', character.statistics, setStats)} />
+                    </StatInputContainer>
+                    <DAContainer>
+                        <DerivedAttributes />
+                    </DAContainer>
+                </StatsAndDAContainer>
                 <Button fullWidth onClick={handleRoll}>
                     Roll 4d6 drop lowest
                 </Button>
@@ -64,12 +91,12 @@ export function Statisics() {
                 </Button>
             </form>
             <div>
-                <p>STR: {stats.strength.score}</p>
-                <p>CON: {stats.constitution.score}</p>
-                <p>DEX: {stats.dexterity.score}</p>
-                <p>INT: {stats.intelligence.score}</p>
-                <p>POW: {stats.power.score}</p>
-                <p>CHA: {stats.charisma.score}</p>
+                <p>STR: {character.statistics.strength.score}</p>
+                <p>CON: {character.statistics.constitution.score}</p>
+                <p>DEX: {character.statistics.dexterity.score}</p>
+                <p>INT: {character.statistics.intelligence.score}</p>
+                <p>POW: {character.statistics.power.score}</p>
+                <p>CHA: {character.statistics.charisma.score}</p>
             </div>
         </>
     )

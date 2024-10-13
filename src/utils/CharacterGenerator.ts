@@ -103,6 +103,7 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 			maxValue: stats.power.score * 5,
 			currentValue: stats.power.score * 5,
 		},
+		// AJS fix this, always zero at the moment
 		breakingPoint: {
 			maxValue: stats.power.score - stats.power.score,
 			currentValue: stats.power.score - stats.power.score,
