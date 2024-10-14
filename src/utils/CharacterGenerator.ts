@@ -105,7 +105,6 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 			maxValue: referenceSanity,
 			currentValue: referenceSanity,
 		},
-		// AJS fix this, always zero at the moment
 		breakingPoint: {
 			maxValue: referenceSanity - stats.power.score,
 			currentValue: referenceSanity - stats.power.score,

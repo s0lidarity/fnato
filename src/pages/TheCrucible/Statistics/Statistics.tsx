@@ -8,6 +8,7 @@ import StatInput from './StatInput';
 import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
 import DerivedAttributes from './DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
+import ConfigurationBar from './ConfigurationBar';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -22,6 +23,9 @@ const StatInputContainer = styled.div`
 const DAContainer = styled.div`
     flex: 1;
     padding: 1rem;
+    display: flex;
+    height: 80%;
+    justify-content: center;
 `;
 
 export function rollStats(stats: Statistics): Statistics {
@@ -43,7 +47,9 @@ const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats
 
 export function Statisics() {
     // AJS switch these to the provider/context
-    const { derivedAttributes, resetStats, setStats, stats } = useStats();
+    const { resetStats, setStats, stats } = useStats();
+    // config needs a defined enum
+    const [config, setConfig] = useState(null);
 
 
     const handleRoll = () => {
@@ -54,6 +60,7 @@ export function Statisics() {
     return (
         <>
             <form>
+                <ConfigurationBar config={config} setConfig={setConfig} />
                 <StatsAndDAContainer>
                     <StatInputContainer>
                         <StatInput label="Strength" value={stats.strength.score} onChange={onChange('strength', stats, setStats)} />
@@ -74,14 +81,6 @@ export function Statisics() {
                     Reset Stats
                 </Button>
             </form>
-            <div>
-                <p>STR: {stats.strength.score}</p>
-                <p>CON: {stats.constitution.score}</p>
-                <p>DEX: {stats.dexterity.score}</p>
-                <p>INT: {stats.intelligence.score}</p>
-                <p>POW: {stats.power.score}</p>
-                <p>CHA: {stats.charisma.score}</p>
-            </div>
         </>
     )
 };

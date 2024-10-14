@@ -14,6 +14,7 @@ const DerivedAttributes = () => {
     const renderedDAs = Object.keys(derivedAttributes).map((key) => {
         return (
             <TableRow>
+                {/* AJS need to have a label instead of the key here */}
                 <TableDataCell>{key}</TableDataCell>
                 <TableDataCell>{derivedAttributes[key].maxValue}</TableDataCell>
             </TableRow>

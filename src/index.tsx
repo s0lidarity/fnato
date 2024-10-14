@@ -11,8 +11,6 @@ import GlobalStyles from './GlobalStyles';
 
 import { StatsProvider } from './providers/StatisticsContext';
 
-console.log('tokyoDark', tokyoDark);
-
 export function App() {
 	return (
 		<div>

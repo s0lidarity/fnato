@@ -14,6 +14,7 @@ export interface Character {
     statistics: Statistics;
 };
 
+// needs a label
 export interface DerivedAttribute {
     currentValue: number;
     maxValue: number;
