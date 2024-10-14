@@ -1,7 +1,7 @@
 import h from 'preact';
 import styled from 'styled-components';
 import { Anchor, Frame } from 'react95';
-import DGLogo from '../../assets/DG_logo.png';
+import DGLogo from "../../assets/DG_Logo.png";
 import PageWrapper from '../../components/SharedStyles/PageWrapper';
 
 const TextWrapper = styled.div`
