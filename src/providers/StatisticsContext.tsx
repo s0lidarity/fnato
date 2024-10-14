@@ -2,25 +2,13 @@ import { createContext, h } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
 import { Stat, Statistics, DerivedAttributes } from '../types/characterTypes';
 import { calculateDerivedAttributes } from '../utils/CharacterGenerator';
+import { defaultStats } from './defaultValues';
 
 type StatsContextType = {
-    stats: Statistics;
     derivedAttributes: DerivedAttributes;
+    resetStats: () => void;
     setStats: (stats: Statistics) => void;
-};
-const defaultStat: Stat = {
-    score: 10,
-    x5: 50,
-    distinguishingFeature: ''
-};
-
-const defaultStats: Statistics = {
-    strength: defaultStat,
-    dexterity: defaultStat,
-    constitution: defaultStat,
-    intelligence: defaultStat,
-    power: defaultStat,
-    charisma: defaultStat,
+    stats: Statistics;
 };
 
 const StatsContext = createContext<StatsContextType | undefined>(undefined);
@@ -42,8 +30,17 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
         setDerivedAttributes(newDerivedAttributes);
     }, [stats]);
 
+    const resetStats = () => {
+        setStats(defaultStats);
+    };
+
     return (
-        <StatsContext.Provider value={{ stats, derivedAttributes, setStats }}>
+        <StatsContext.Provider value={{ 
+            derivedAttributes,
+            resetStats,
+            setStats,
+            stats, 
+            }}>
             {children}
         </StatsContext.Provider>
     );

@@ -2,17 +2,20 @@ import { h } from 'preact';
 import { Table, TableBody, TableDataCell, TableRow, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 
-import { useCharacter } from '../../../providers/CharacterContext';
+import { useStats } from '../../../providers/StatisticsContext';
+
+const StyledTableTitle = styled.h2`
+    text-align: center;
+`;
 
 const DerivedAttributes = () => {
-    const { character } = useCharacter();
+    const { derivedAttributes } = useStats();
 
-    console.log('da keys: ', Object.keys(character.derivedAttributes));
-    const renderedDAs = Object.keys(character.derivedAttributes).map((key) => {
+    const renderedDAs = Object.keys(derivedAttributes).map((key) => {
         return (
             <TableRow>
                 <TableDataCell>{key}</TableDataCell>
-                <TableDataCell>{character.derivedAttributes[key].maxValue}</TableDataCell>
+                <TableDataCell>{derivedAttributes[key].maxValue}</TableDataCell>
             </TableRow>
         )
     });
@@ -20,7 +23,7 @@ const DerivedAttributes = () => {
     return (
         <Window>
             <WindowHeader>
-                <h1>Derived Attributes</h1>
+                <StyledTableTitle>Derived Attributes</StyledTableTitle>
             </WindowHeader>
             <WindowContent>
                 <Table>

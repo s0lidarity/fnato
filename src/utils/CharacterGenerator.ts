@@ -90,6 +90,8 @@ export const initializeSkills = (): Skills => {
 };
 
 export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes {
+	const referenceSanity = stats.power.score * 5;
+
 	return {
 		hitPoints: {
 			maxValue: Math.ceil((stats.strength.score + stats.constitution.score) / 2),
@@ -100,13 +102,13 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 			currentValue: stats.power.score,
 		},
 		sanity: {
-			maxValue: stats.power.score * 5,
-			currentValue: stats.power.score * 5,
+			maxValue: referenceSanity,
+			currentValue: referenceSanity,
 		},
 		// AJS fix this, always zero at the moment
 		breakingPoint: {
-			maxValue: stats.power.score - stats.power.score,
-			currentValue: stats.power.score - stats.power.score,
+			maxValue: referenceSanity - stats.power.score,
+			currentValue: referenceSanity - stats.power.score,
 		},
 	};
 }

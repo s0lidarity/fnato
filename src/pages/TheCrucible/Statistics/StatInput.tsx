@@ -8,17 +8,33 @@ const StyledToolTipInnerText = styled.span`
 	color: ${({ theme }) => theme.materialDark};
 `;
 
+const StatInputContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	border-color: ${({ theme }) => theme.borderDark};
+	border-style: solid;
+	border-width: 0.25rem;
+`;
+
+const StyledLabel = styled.label`
+	margin-left: 0.5rem;
+`;
+
 function StatInput({ label, value, onChange }) {
 	return (
-		<div>
+		<StatInputContainer>
+			{/* jsx in the text param works fine, error seems wrong */}
+			{/* @ts-ignore */}
 			<Tooltip className='tooltip-content' text={
 					<StyledToolTipInnerText>
 						{STAT_REMINDERS[label.toLowerCase()]}
 					</StyledToolTipInnerText>
 				} enterDelay={100} leaveDelay={500}>
-				<label>
+				<StyledLabel>
 					{label}
-				</label>
+				</StyledLabel>
 			</Tooltip>
 			<NumberInput
 				min={3}
@@ -27,7 +43,7 @@ function StatInput({ label, value, onChange }) {
 				value={value}
 				onChange={onChange}
 			/>
-		</div>
+		</StatInputContainer>
 	);
 };
 
