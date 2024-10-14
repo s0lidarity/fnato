@@ -1,6 +1,6 @@
 import h from 'preact';
 import { useState } from 'preact/hooks';
-import { Button } from 'react95';
+import { Button, Counter } from 'react95';
 import styled from 'styled-components';
 
 import { Stat, Statistics } from '../../../types/characterTypes';
@@ -9,6 +9,7 @@ import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
 import DerivedAttributes from './DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
 import ConfigurationBar from './ConfigurationBar';
+import { ConfigOptions } from './types';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -40,16 +41,17 @@ export function rollStats(stats: Statistics): Statistics {
     return updatedStats;
 }
 
+const DEFAULT_POINTS = 72;
+
 const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats: Statistics) => void) => (value: number) => {
     const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
     setStats({ ...stats, [statKey]: updatedStat });
 };
 
 export function Statisics() {
-    // AJS switch these to the provider/context
     const { resetStats, setStats, stats } = useStats();
-    // config needs a defined enum
-    const [config, setConfig] = useState(null);
+    const [config, setConfig] = useState(ConfigOptions.ManualInput);
+    const [points, setPoints] = useState(DEFAULT_POINTS);
 
 
     const handleRoll = () => {
@@ -74,9 +76,10 @@ export function Statisics() {
                         <DerivedAttributes />
                     </DAContainer>
                 </StatsAndDAContainer>
-                <Button fullWidth onClick={handleRoll}>
+                {config === ConfigOptions.Dice && <Button fullWidth onClick={handleRoll}>
                     Roll 4d6 drop lowest
-                </Button>
+                </Button>}
+                {config === ConfigOptions.PointBuy && <div><label>Points Remaining</label><Counter minLength={2} value={points} /></div>}
                 <Button fullWidth onClick={() => resetStats()}>
                     Reset Stats
                 </Button>
