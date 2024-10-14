@@ -9,16 +9,14 @@ import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
 import GlobalStyles from './GlobalStyles';
 
-import { CharacterProvider } from './providers/CharacterContext';
-
-console.log('tokyoDark', tokyoDark);
+import { StatsProvider } from './providers/StatisticsContext';
 
 export function App() {
 	return (
 		<div>
 			<GlobalStyles />
 			<ThemeProvider theme={tokyoDark}>
-				<CharacterProvider>
+				<StatsProvider>
 					<LocationProvider>
 						<Header />
 						<main>
@@ -29,7 +27,7 @@ export function App() {
 							</Router>
 						</main>
 					</LocationProvider>
-				</CharacterProvider>
+				</StatsProvider>
 			</ThemeProvider>
 		</div>
 	);

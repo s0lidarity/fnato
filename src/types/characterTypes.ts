@@ -14,6 +14,7 @@ export interface Character {
     statistics: Statistics;
 };
 
+// needs a label
 export interface DerivedAttribute {
     currentValue: number;
     maxValue: number;
@@ -327,12 +328,12 @@ export interface Stat {
 }
 
 export const STAT_REMINDERS: { [key in keyof Statistics]: string } = {
-    strength: "represents raw physical power",
-    constitution: "represents health and hardiness",
-    dexterity: "represents speed and physical agility",
-    intelligence: "represents cunning, logic, and intuition",
-    power: "represents will, spirit, and mental stability",
-    charisma: "represents personal and physical appeal",
+    strength: "Raw physical power",
+    constitution: "Health and hardiness",
+    dexterity: "Speed and physical agility",
+    intelligence: "Cunning, logic, and intuition",
+    power: "Will, spirit, and mental stability",
+    charisma: "Personal and physical appeal",
 };
 
 export interface Statistics {

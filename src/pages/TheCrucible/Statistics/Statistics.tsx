@@ -7,23 +7,8 @@ import { Stat, Statistics } from '../../../types/characterTypes';
 import StatInput from './StatInput';
 import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
 import DerivedAttributes from './DerivedAttributes';
-import { useCharacter } from '../../../providers/CharacterContext';
-
-// AJS this file is too big, split it up
-const defaultStat: Stat = {
-    score: 10,
-    x5: 50,
-    distinguishingFeature: ''
-};
-
-const defaultStats: Statistics = {
-    strength: defaultStat,
-    dexterity: defaultStat,
-    constitution: defaultStat,
-    intelligence: defaultStat,
-    power: defaultStat,
-    charisma: defaultStat,
-};
+import { useStats } from '../../../providers/StatisticsContext';
+import ConfigurationBar from './ConfigurationBar';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -38,6 +23,9 @@ const StatInputContainer = styled.div`
 const DAContainer = styled.div`
     flex: 1;
     padding: 1rem;
+    display: flex;
+    height: 80%;
+    justify-content: center;
 `;
 
 export function rollStats(stats: Statistics): Statistics {
@@ -59,25 +47,28 @@ const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats
 
 export function Statisics() {
     // AJS switch these to the provider/context
-    const { character, setStats} = useCharacter();
+    const { resetStats, setStats, stats } = useStats();
+    // config needs a defined enum
+    const [config, setConfig] = useState(null);
 
 
     const handleRoll = () => {
-        const results = rollStats(character.statistics);
+        const results = rollStats(stats);
         setStats(results);
     };
 
     return (
         <>
             <form>
+                <ConfigurationBar config={config} setConfig={setConfig} />
                 <StatsAndDAContainer>
                     <StatInputContainer>
-                        <StatInput label="Strength" value={character.statistics.strength.score} onChange={onChange('strength', character.statistics, setStats)} />
-                        <StatInput label="Constitution" value={character.statistics.constitution.score} onChange={onChange('constitution', character.statistics, setStats)} />
-                        <StatInput label="Dexterity" value={character.statistics.dexterity.score} onChange={onChange('dexterity', character.statistics, setStats)} />
-                        <StatInput label="Intelligence" value={character.statistics.intelligence.score} onChange={onChange('intelligence', character.statistics, setStats)} />
-                        <StatInput label="Power" value={character.statistics.power.score} onChange={onChange('power', character.statistics, setStats)} />
-                        <StatInput label="Charisma" value={character.statistics.charisma.score} onChange={onChange('charisma', character.statistics, setStats)} />
+                        <StatInput label="Strength" value={stats.strength.score} onChange={onChange('strength', stats, setStats)} />
+                        <StatInput label="Constitution" value={stats.constitution.score} onChange={onChange('constitution', stats, setStats)} />
+                        <StatInput label="Dexterity" value={stats.dexterity.score} onChange={onChange('dexterity', stats, setStats)} />
+                        <StatInput label="Intelligence" value={stats.intelligence.score} onChange={onChange('intelligence', stats, setStats)} />
+                        <StatInput label="Power" value={stats.power.score} onChange={onChange('power', stats, setStats)} />
+                        <StatInput label="Charisma" value={stats.charisma.score} onChange={onChange('charisma', stats, setStats)} />
                     </StatInputContainer>
                     <DAContainer>
                         <DerivedAttributes />
@@ -86,18 +77,10 @@ export function Statisics() {
                 <Button fullWidth onClick={handleRoll}>
                     Roll 4d6 drop lowest
                 </Button>
-                <Button fullWidth onClick={() => setStats(defaultStats)}>
+                <Button fullWidth onClick={() => resetStats()}>
                     Reset Stats
                 </Button>
             </form>
-            <div>
-                <p>STR: {character.statistics.strength.score}</p>
-                <p>CON: {character.statistics.constitution.score}</p>
-                <p>DEX: {character.statistics.dexterity.score}</p>
-                <p>INT: {character.statistics.intelligence.score}</p>
-                <p>POW: {character.statistics.power.score}</p>
-                <p>CHA: {character.statistics.charisma.score}</p>
-            </div>
         </>
     )
 };

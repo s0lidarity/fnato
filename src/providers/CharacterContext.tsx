@@ -1,6 +1,8 @@
 import { createContext } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
 
+// AJS: File currently reference only
+
 import { 
 	Bond, 
 	Character, 
@@ -40,15 +42,16 @@ export const useCharacter = () => {
 export const CharacterProvider = ({ children }: { children: React.ReactNode }) => {
     const [character, setCharacter] = useState<Character>(defaultCharacter);
 	const [bonds, setBonds] = useState<Bond[]>(defaultCharacter.bonds);
+	// DAs now in statsProvider
 	const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(defaultCharacter.derivedAttributes);
 	const [detailedDescription, setDetailedDescription] = useState(defaultCharacter.detailedDescription);
 	const [profession, setProfession] = useState(defaultCharacter.profession);
 	const [skills, setSkills] = useState(defaultCharacter.skills);
+	// stats now in stats provider
 	const [stats, setStats] = useState<Statistics>(defaultCharacter.statistics);
 
 	useEffect(() => {
 		const newDerivedAttributes = calculateDerivedAttributes(stats);
-		console.log('nda: ', newDerivedAttributes);
 
 		setCharacter(prevCharacter => ({
 			...prevCharacter,
