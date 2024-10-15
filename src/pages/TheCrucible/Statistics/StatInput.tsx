@@ -22,6 +22,7 @@ const StyledLabel = styled.label`
 	margin-left: 0.5rem;
 `;
 
+// AJS, might need to disable keyboard input for this component
 function StatInput({ label, value, onChange }) {
 	return (
 		<StatInputContainer>

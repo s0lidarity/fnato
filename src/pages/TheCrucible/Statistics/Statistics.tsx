@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { Stat, Statistics } from '../../../types/characterTypes';
 import StatInput from './StatInput';
-import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
+import { generateStat, RECOMMENDED_ARRAYS, rollDice } from '../../../utils/CharacterGenerator';
 import DerivedAttributes from './DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
 import ConfigurationBar from './ConfigurationBar';
@@ -43,6 +43,7 @@ export function rollStats(stats: Statistics): Statistics {
 
 const DEFAULT_POINTS = 72;
 
+// need to refactor this onChange, need to block raising values if points <=0
 const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats: Statistics) => void) => (value: number) => {
     const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
     setStats({ ...stats, [statKey]: updatedStat });
@@ -79,6 +80,11 @@ export function Statisics() {
         setStats(results);
     };
 
+    // ajs, use config to pick a type of statInput
+    // split the numeric stat input into a separate component
+    // split dice roller into a separate component
+    // point buy and manual input can be the same component
+    // recommended array will use a select to pick values from an array, radio to choose the pre-set array
     return (
         <>
             <form>
