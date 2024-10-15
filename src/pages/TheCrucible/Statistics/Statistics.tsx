@@ -1,5 +1,5 @@
 import h from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { Button, Counter } from 'react95';
 import styled from 'styled-components';
 
@@ -51,8 +51,28 @@ const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats
 export function Statisics() {
     const { resetStats, setStats, stats } = useStats();
     const [config, setConfig] = useState(ConfigOptions.ManualInput);
-    const [points, setPoints] = useState(DEFAULT_POINTS);
+    const [points, setPoints] = useState(DEFAULT_POINTS-(6*10));
 
+    const calculateRemainingPoints = (stats: Statistics) => {
+        let total = 0;
+        for (const stat in stats) {
+            if (stats.hasOwnProperty(stat)) {
+                total += stats[stat as keyof Statistics].score;
+            }
+        }
+        return (DEFAULT_POINTS - total);
+    };
+
+    // the Counter from React95 bugs out if the value goes below 0, this prevents that from happening
+    useEffect(() => {
+        if (config === ConfigOptions.PointBuy) {
+            resetStats();
+        }
+    }, [config]);
+
+    useEffect(() => {
+        setPoints(calculateRemainingPoints(stats));
+    }, [stats]);
 
     const handleRoll = () => {
         const results = rollStats(stats);
