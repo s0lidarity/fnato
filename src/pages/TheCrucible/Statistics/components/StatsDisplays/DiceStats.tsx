@@ -1,9 +1,9 @@
-import { useStats } from '../../../providers/StatisticsContext';
+import { useStats } from '../../../../../providers/StatisticsContext';
 import { PiDiceOne, PiDiceTwo, PiDiceThree, PiDiceFour, PiDiceFive, PiDiceSix } from 'react-icons/pi';
 import { Button } from "react95";
 
-import { rollDice, generateStat } from '../../../utils/CharacterGenerator';
-import { Statistics } from '../../../types/characterTypes';
+import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
+import { Statistics } from '../../../../../types/characterTypes';
 
 
 export function rollStats(stats: Statistics): Statistics {

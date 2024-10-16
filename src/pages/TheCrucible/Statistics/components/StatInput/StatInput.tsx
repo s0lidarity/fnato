@@ -1,7 +1,8 @@
 import { h } from 'preact';
 import { NumberInput, Tooltip } from 'react95';
 import styled from 'styled-components';
-import { STAT_REMINDERS } from '../../../types/characterTypes';
+import { STAT_REMINDERS } from '../../../../../types/characterTypes';
+import { useStats } from '../../../../../providers/StatisticsContext';
 
 const StyledToolTipInnerText = styled.span`
 	padding: 0.5rem;
@@ -23,26 +24,28 @@ const StyledLabel = styled.label`
 `;
 
 // AJS, might need to disable keyboard input for this component
-function StatInput({ label, value, onChange }) {
+function StatInput({ statKey, handleChange }) {
+	const { stats } = useStats();
+	
 	return (
 		<StatInputContainer>
 			{/* jsx in the text param works fine, error seems wrong */}
 			{/* @ts-ignore */}
 			<Tooltip className='tooltip-content' text={
 					<StyledToolTipInnerText>
-						{STAT_REMINDERS[label.toLowerCase()]}
+						{STAT_REMINDERS[statKey]}
 					</StyledToolTipInnerText>
 				} enterDelay={100} leaveDelay={500}>
 				<StyledLabel>
-					{label}
+					{stats[statKey].charAt(0).toUpperCase() + stats[statKey].slice(1)}
 				</StyledLabel>
 			</Tooltip>
 			<NumberInput
 				min={3}
 				max={18}
 				width='5rem'
-				value={value}
-				onChange={onChange}
+				value={stats[statKey].score}
+				onChange={handleChange}
 			/>
 		</StatInputContainer>
 	);

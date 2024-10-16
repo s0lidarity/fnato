@@ -1,6 +1,6 @@
 import { Button, Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
-import { ConfigOptions } from './types';
+import { ConfigOptions } from '../../types';
 
 type RenderRadioParams = {
     label: string;

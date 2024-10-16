@@ -2,8 +2,8 @@ import { useEffect, useState } from "preact/hooks";
 import { styled } from "styled-components";
 import { GroupBox, Radio, Select } from "react95";
 
-import { RECOMMENDED_ARRAYS } from "../../../utils/CharacterGenerator";
-import { useStats } from "../../../providers/StatisticsContext";
+import { RECOMMENDED_ARRAYS } from "../../../../../utils/CharacterGenerator";
+import { useStats } from "../../../../../providers/StatisticsContext";
 
 // AJS unify this shared styled component
 const StyledGroupBox = styled(GroupBox)`

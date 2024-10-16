@@ -4,14 +4,14 @@ import { Button, Counter } from 'react95';
 import styled from 'styled-components';
 
 import { Stat, Statistics } from '../../../types/characterTypes';
-import StatInput from './StatInput';
+import StatInput from './components/StatInput/StatInput';
 import { generateStat, RECOMMENDED_ARRAYS, rollDice } from '../../../utils/CharacterGenerator';
-import DerivedAttributes from './DerivedAttributes';
+import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
-import ConfigurationBar from './ConfigurationBar';
+import ConfigurationBar from './components/ConfigurationBar/ConfigurationBar';
 import { ConfigOptions } from './types';
-import DiceStats from './DiceStats';
-import ManualInputStats from './ManualInputStats';
+import DiceStats from './components/StatsDisplays/DiceStats';
+import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
