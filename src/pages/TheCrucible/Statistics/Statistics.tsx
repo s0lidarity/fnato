@@ -10,6 +10,8 @@ import DerivedAttributes from './DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
 import ConfigurationBar from './ConfigurationBar';
 import { ConfigOptions } from './types';
+import DiceStats from './DiceStats';
+import ManualInputStats from './ManualInputStats';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -92,20 +94,13 @@ export function Statisics() {
                 <ConfigurationBar config={config} setConfig={setConfig} />
                 <StatsAndDAContainer>
                     <StatInputContainer>
-                        <StatInput label="Strength" value={stats.strength.score} onChange={onChange('strength', stats, setStats)} />
-                        <StatInput label="Constitution" value={stats.constitution.score} onChange={onChange('constitution', stats, setStats)} />
-                        <StatInput label="Dexterity" value={stats.dexterity.score} onChange={onChange('dexterity', stats, setStats)} />
-                        <StatInput label="Intelligence" value={stats.intelligence.score} onChange={onChange('intelligence', stats, setStats)} />
-                        <StatInput label="Power" value={stats.power.score} onChange={onChange('power', stats, setStats)} />
-                        <StatInput label="Charisma" value={stats.charisma.score} onChange={onChange('charisma', stats, setStats)} />
+                        {config === ConfigOptions.ManualInput && <ManualInputStats />}
+                        {config === ConfigOptions.Dice && <DiceStats />}
                     </StatInputContainer>
                     <DAContainer>
                         <DerivedAttributes />
                     </DAContainer>
                 </StatsAndDAContainer>
-                {config === ConfigOptions.Dice && <Button fullWidth onClick={handleRoll}>
-                    Roll 4d6 drop lowest
-                </Button>}
                 {config === ConfigOptions.PointBuy && <div><label>Points Remaining</label><Counter minLength={2} value={points} /></div>}
                 <Button fullWidth onClick={() => resetStats()}>
                     Reset Stats
