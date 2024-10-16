@@ -151,8 +151,22 @@ export function generateStat(name: string, rr: RollResult): Stat {
 	}
 }
 
-export const RECOMMENDED_ARRAYS = {
-	wellRounded: [13, 13, 12, 12, 11, 11],
-	focused: [15, 14, 12, 11, 10, 10],
-	highlyFocused: [17, 14, 12, 10, 10, 9],
-};
+type RecommendedArray = { key: string, label: string, stats: number[]};
+
+export const RECOMMENDED_ARRAYS: RecommendedArray[] = [
+	{
+		key: 'wellRounded',
+		label: 'Well Rounded',
+		stats: [13, 13, 12, 12, 11, 11]
+	},
+	{
+		key: 'focused',
+		label: 'Focused',
+		stats: [15, 14, 12, 11, 10, 10],
+	},
+	{
+		key: 'highlyFocused',
+		label: 'Highly Focused',
+		stats: [17, 14, 12, 10, 10, 9],
+	},
+];
