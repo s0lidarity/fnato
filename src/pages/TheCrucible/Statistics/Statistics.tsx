@@ -85,6 +85,7 @@ export function Statisics() {
     // split dice roller into a separate component
     // point buy and manual input can be the same component
     // recommended array will use a select to pick values from an array, radio to choose the pre-set array
+    // need to be able to swap the stat components based on config
     return (
         <>
             <form>

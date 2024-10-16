@@ -16,18 +16,31 @@ const StyledGroupBox = styled(GroupBox)`
 
 export function RecommendedArrays() {
     const { stats, setStats } = useStats();
-    const [recommendedArray, setRecommendedArray] = useState(RECOMMENDED_ARRAYS[0]);
+    const [selectedArray, setSelectedArray] = useState(RECOMMENDED_ARRAYS[0].key);
+    const [usedStats, setUsedStats] = useState<number[]>([]);
+    const [availableStats, setAvailableStatts] = useState<number[]>(RECOMMENDED_ARRAYS[0].stats);
 
     const toggleCheck = (e) => {
-        setRecommendedArray(e.target.value);
+        setSelectedArray(e.target.value);
     };
+
+    // needs to update usedStats, removing selected stat from array
+    // might need to have a --- option to be able to deselect
+    const handleSelectChange = (e) => {
+
+    }
+
+    // needs to update available stats when a stat is used
+    useEffect(() => {
+
+    }, [usedStats]);
 
     const renderRARadios = () => {
         for(const ra of RECOMMENDED_ARRAYS) {
             return(
                 <Radio 
                     key={ra.key}
-                    checked={recommendedArray.key === ra.key}
+                    checked={selectedArray === ra.key}
                     name="recommendedArray"
                     label={ra.label}
                     value={ra.key}
@@ -38,7 +51,17 @@ export function RecommendedArrays() {
     };
 
     const renderSelects = () => {
-
+        for(const stat of Object.keys(stats)) {
+            return (
+                <span>
+                    <label>{stat}</label>
+                    <Select
+                        options={availableStats.map(stat => ({ label: stat.toString(), value: stat }))}
+                        onChange={handleSelectChange}  
+                    />
+                </span>
+            )
+        }
     }
 
     return (
@@ -50,8 +73,7 @@ export function RecommendedArrays() {
             </div>
             <div>
                 <StyledGroupBox>
-                    
-                    
+                    {renderSelects()}
                 </StyledGroupBox>
             </div>
         </div>
