@@ -49,7 +49,6 @@ function ConfigurationBar({ config, setConfig }) {
                 {renderRadio({ label: 'Manual Input', value: ConfigOptions.ManualInput })}
                 {renderRadio({ label: 'Point Buy', value: ConfigOptions.PointBuy })}
                 {renderRadio({ label: 'Dice', value: ConfigOptions.Dice })}
-                {renderRadio({ label: 'Recommended Array', value: ConfigOptions.RecommendedArray })}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )
