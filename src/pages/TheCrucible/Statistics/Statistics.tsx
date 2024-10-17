@@ -31,18 +31,6 @@ const DAContainer = styled.div`
     justify-content: center;
 `;
 
-export function rollStats(stats: Statistics): Statistics {
-    const updatedStats = { ...stats };
-
-    for (const stat in updatedStats) {
-        if (updatedStats.hasOwnProperty(stat)) {
-            updatedStats[stat as keyof Statistics] = generateStat(stat as keyof Statistics, rollDice(6, 4, 1));
-        }
-    }
-
-    return updatedStats;
-}
-
 const DEFAULT_POINTS = 72;
 
 // need to refactor this onChange, need to block raising values if points <=0
@@ -76,11 +64,6 @@ export function Statisics() {
     useEffect(() => {
         setPoints(calculateRemainingPoints(stats));
     }, [stats]);
-
-    const handleRoll = () => {
-        const results = rollStats(stats);
-        setStats(results);
-    };
 
     // ajs, use config to pick a type of statInput
     // split the numeric stat input into a separate component
