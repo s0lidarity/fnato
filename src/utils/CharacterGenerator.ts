@@ -139,14 +139,14 @@ export function rollDice(dSize: number, count: number, drop: number = 0): RollRe
 }
 
 // AJS: this should probably be a constructor that takes in a rollResult, otherwise we lose the array of rolls
-export function generateStat(name: string, rr: RollResult): Stat {
-	if (!STAT_REMINDERS.hasOwnProperty(name) || !rr?.result || rr.result < 3 || rr.result > 18) {
+export function generateStat(name: string, scoreValue: number): Stat {
+	if (!STAT_REMINDERS.hasOwnProperty(name) || !scoreValue || scoreValue < 3 || scoreValue > 18) {
 		return null;
 	};
 	return {
-		score: rr.result,
-		x5: rr.result * 5,
-		distinguishingFeature: DISTINGUISHING_FEATURES[name][rr.result],
+		score: scoreValue,
+		x5: scoreValue * 5,
+		distinguishingFeature: DISTINGUISHING_FEATURES[name][scoreValue],
 		reminderText: STAT_REMINDERS[name],
 	}
 }

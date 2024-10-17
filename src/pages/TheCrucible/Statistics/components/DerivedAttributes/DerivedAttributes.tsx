@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Table, TableBody, TableDataCell, TableRow, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 
-import { useStats } from '../../../providers/StatisticsContext';
+import { useStats } from '../../../../../providers/StatisticsContext';
 
 const StyledTableTitle = styled.h2`
     text-align: center;

@@ -27,6 +27,8 @@ const StyledLabel = styled.label`
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
 	
+	const labelText = (statKey?.charAt(0).toUpperCase() + statKey?.slice(1)) || "";
+	
 	return (
 		<StatInputContainer>
 			{/* jsx in the text param works fine, error seems wrong */}
@@ -37,7 +39,7 @@ function StatInput({ statKey, handleChange }) {
 					</StyledToolTipInnerText>
 				} enterDelay={100} leaveDelay={500}>
 				<StyledLabel>
-					{stats[statKey].charAt(0).toUpperCase() + stats[statKey].slice(1)}
+					{labelText}
 				</StyledLabel>
 			</Tooltip>
 			<NumberInput
