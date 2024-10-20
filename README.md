@@ -2,7 +2,7 @@
 
 ## A Delta Green Character Creation Wizard 🧙
 
-Built using Preact, Typescript and React95
+Built using Preact, Typescript, and React95
 
 [Check it out](https://fnato.netlify.app/)  
 We're using [Trello](https://trello.com/b/TkCYsiij/fnato) for planning/organization.  
