@@ -27,6 +27,7 @@ const PointsContainer = styled.div`
 const PointsLabel = styled.label <{ showWarning?: boolean }>`
     margin-right: 0.5rem;
     color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.materialTextDisabled : 'inherit'};
+    background-color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.canvasTextInvert : 'inherit'};
 `;
 
 interface ManualInputStatsProps {
