@@ -20,7 +20,7 @@ function StatInput({ statKey, handleChange }) {
 				max={18}
 				width='5rem'
 				value={stats[statKey].score}
-				onChange={handleChange}
+				onChange={handleChange(statKey)}
 			/>
 		</StatInputContainer>
 	);

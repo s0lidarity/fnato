@@ -3,7 +3,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { Button, Counter } from 'react95';
 import styled from 'styled-components';
 
-import { Stat, Statistics } from '../../../types/characterTypes';
+import { Stat, Statistics as StatisticsType } from '../../../types/characterTypes';
 import StatInput from './components/StatInput/StatInput';
 import { generateStat, RECOMMENDED_ARRAYS, rollDice } from '../../../utils/CharacterGenerator';
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
@@ -31,66 +31,48 @@ const DAContainer = styled.div`
     justify-content: center;
 `;
 
-const DEFAULT_POINTS = 72;
-
 // need to refactor this onChange, need to block raising values if points <=0
-const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats: Statistics) => void) => (value: number) => {
+const onChange = (statKey: keyof StatisticsType, stats: StatisticsType, setStats: (stats: StatisticsType) => void) => (value: number) => {
     const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
     setStats({ ...stats, [statKey]: updatedStat });
 };
 
-export function Statisics() {
+function Statistics() {
     const { resetStats, setStats, stats } = useStats();
     const [config, setConfig] = useState(ConfigOptions.ManualInput);
-    const [points, setPoints] = useState(DEFAULT_POINTS-(6*10));
-
-    const calculateRemainingPoints = (stats: Statistics) => {
-        let total = 0;
-        for (const stat in stats) {
-            if (stats.hasOwnProperty(stat)) {
-                total += stats[stat as keyof Statistics].score;
-            }
+    
+    const renderStatInputs = () => {
+        switch(config){
+            case ConfigOptions.Dice:
+                return <DiceStats />;
+            case ConfigOptions.PointBuy:
+            case ConfigOptions.ManualInput:
+                return <ManualInputStats config={config} />;
+            default:
+                return null;
         }
-        return (DEFAULT_POINTS - total);
     };
 
     // the Counter from React95 bugs out if the value goes below 0, this prevents that from happening
     useEffect(() => {
-        if (config === ConfigOptions.PointBuy) {
-            resetStats();
-        }
+        resetStats();
     }, [config]);
 
-    useEffect(() => {
-        setPoints(calculateRemainingPoints(stats));
-    }, [stats]);
-
-    // ajs, use config to pick a type of statInput
-    // split the numeric stat input into a separate component
-    // split dice roller into a separate component
-    // point buy and manual input can be the same component
-    // recommended array will use a select to pick values from an array, radio to choose the pre-set array
-    // need to be able to swap the stat components based on config
     return (
         <>
             <form>
                 <ConfigurationBar config={config} setConfig={setConfig} />
                 <StatsAndDAContainer>
                     <StatInputContainer>
-                        {config === ConfigOptions.ManualInput && <ManualInputStats />}
-                        {config === ConfigOptions.Dice && <DiceStats />}
+                        {renderStatInputs()}
                     </StatInputContainer>
                     <DAContainer>
                         <DerivedAttributes />
                     </DAContainer>
                 </StatsAndDAContainer>
-                {config === ConfigOptions.PointBuy && <div><label>Points Remaining</label><Counter minLength={2} value={points} /></div>}
-                <Button fullWidth onClick={() => resetStats()}>
-                    Reset Stats
-                </Button>
             </form>
         </>
     )
 };
 
-export default Statisics;
+export default Statistics;
