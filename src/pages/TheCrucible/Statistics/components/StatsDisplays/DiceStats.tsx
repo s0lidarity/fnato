@@ -138,8 +138,8 @@ function DiceStats() {
         <div>
             {renderStats()}
             <ButtonContainer>
-                <Button onClick={handleRoll}>Roll 4d6, drop lowest Result</Button>
                 <Button onClick={handleReset}>Reset Stats</Button>
+                <Button onClick={handleRoll}>Roll 4d6, drop lowest Result</Button>
             </ButtonContainer>
         </div>
     )

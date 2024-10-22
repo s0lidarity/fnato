@@ -1,19 +1,28 @@
 import styled from 'styled-components';
+import DigitalCounterFont from '../../../../../assets/fonts/digital_counter_7.ttf';
 
 const PointsCounterContainer = styled.div`
     display: flex;
-    justify-content: right;
     align-items: center;
 `;
 
 const ScoreboardDisplay = styled.div<{ color: string }>`
-    background-color: #000;
+    @font-face {
+        font-family: 'Digital Counter';
+        src: url(${DigitalCounterFont}) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    background-color: ${({ theme }) => theme.materialDark};
     color: ${props => props.color};
+    font-family: 'Digital Counter';
     font-size: 1.5rem;
-    padding: 0.25rem;
-    border-radius: 0.25rem;
+    padding: 0rem 0.25rem;
     min-width: 2rem;
-    text-align: right;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid ${({ theme }) => theme.borderDark};
 `;
 
 const getColor = (value: number): string => {

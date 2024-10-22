@@ -151,7 +151,8 @@ export function generateStat(name: string, scoreValue: number): Stat {
 	}
 }
 
-type RecommendedArray = { key: string, label: string, stats: number[]};
+// AJS: move this type to the CharacterTypes file
+export type RecommendedArray = { key: string, label: string, stats: number[]};
 
 export const RECOMMENDED_ARRAYS: RecommendedArray[] = [
 	{

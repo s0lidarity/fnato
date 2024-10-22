@@ -1,17 +1,15 @@
-import h from 'preact';
+
 import { useEffect, useState } from 'preact/hooks';
-import { Button, Counter } from 'react95';
 import styled from 'styled-components';
 
-import { Stat, Statistics as StatisticsType } from '../../../types/characterTypes';
-import StatInput from './components/StatInput/StatInput';
-import { generateStat, RECOMMENDED_ARRAYS, rollDice } from '../../../utils/CharacterGenerator';
+import { Statistics as StatisticsType } from '../../../types/characterTypes';
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
 import ConfigurationBar from './components/ConfigurationBar/ConfigurationBar';
 import { ConfigOptions } from './types';
 import DiceStats from './components/StatsDisplays/DiceStats';
 import ManualInputStats from './components/StatsDisplays/ManualInputStats';
+import RAReminder from './components/RAReminder/RAReminder';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -23,13 +21,15 @@ const StatInputContainer = styled.div`
     padding: 1rem;
 `;
 
-const DAContainer = styled.div`
+const RADAContainer = styled.div`
     flex: 1;
     padding: 1rem;
     display: flex;
-    height: 80%;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
 `;
+
 
 // need to refactor this onChange, need to block raising values if points <=0
 const onChange = (statKey: keyof StatisticsType, stats: StatisticsType, setStats: (stats: StatisticsType) => void) => (value: number) => {
@@ -66,9 +66,10 @@ function Statistics() {
                     <StatInputContainer>
                         {renderStatInputs()}
                     </StatInputContainer>
-                    <DAContainer>
+                    <RADAContainer>
+                        <RAReminder />
                         <DerivedAttributes />
-                    </DAContainer>
+                    </RADAContainer>
                 </StatsAndDAContainer>
             </form>
         </>
