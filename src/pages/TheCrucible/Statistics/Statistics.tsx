@@ -67,8 +67,10 @@ function Statistics() {
                         {renderStatInputs()}
                     </StatInputContainer>
                     <RADAContainer>
-                        <RAReminder />
                         <DerivedAttributes />
+                        {
+                            config !== ConfigOptions.Dice && (<RAReminder />)
+                        }
                     </RADAContainer>
                 </StatsAndDAContainer>
             </form>
