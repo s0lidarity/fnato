@@ -1,12 +1,9 @@
-import { h } from 'preact';
-import { NumberInput, Tooltip } from 'react95';
+import { NumberInput } from 'react95';
 import styled from 'styled-components';
-import { STAT_REMINDERS } from '../../../../../types/characterTypes';
 import { useStats } from '../../../../../providers/StatisticsContext';
 import StatTooltip from '../StatTooltip/StatTooltip';
 import StatInputContainer  from '../../styles/StatInputContainer';
 
-// AJS, might need to disable keyboard input for this component
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
 	

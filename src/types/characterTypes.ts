@@ -55,7 +55,7 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: string[] } = 
         "Sedentary",
         "Couch Potato",
         "Active Couch Potato",
-        "Average",
+        "Could take the stairs",
         "Active",
         "Weekend Warrior",
         "Fit",

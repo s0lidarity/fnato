@@ -10,6 +10,7 @@ import { ConfigOptions } from './types';
 import DiceStats from './components/StatsDisplays/DiceStats';
 import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 import RAReminder from './components/RAReminder/RAReminder';
+import StatDescriptors from './components/StatDescriptors/StatDescriptors';
 
 const StatsAndDAContainer = styled.div`
     display: flex;
@@ -73,6 +74,7 @@ function Statistics() {
                         }
                     </RADAContainer>
                 </StatsAndDAContainer>
+                <StatDescriptors />
             </form>
         </>
     )

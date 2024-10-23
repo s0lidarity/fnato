@@ -40,7 +40,6 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
     const [points, setPoints] = useState(DEFAULT_POINTS-(6*10));
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
-    // need to refactor this onChange, need to block raising values if points <=0
     const handleChange = (statKey: keyof Statistics)=> (value: number) => {
         const currentValue = stats[statKey].score;
         const difference = value - currentValue;
