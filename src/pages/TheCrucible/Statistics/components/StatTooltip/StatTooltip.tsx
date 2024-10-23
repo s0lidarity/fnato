@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { STAT_REMINDERS } from '../../../../../types/characterTypes';
 
+// AJS this is a shared style, put it somewhere we can share it
 const StyledTooltipInnerText = styled.span`
     padding: 0.5rem;
     color: ${({ theme }) => theme.materialDark};

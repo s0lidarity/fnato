@@ -33,10 +33,15 @@ function StatDescriptors() {
         setDescriptor(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}})
     }
+    // StatKey should be an enum
+    interface statDescriptorProps {
+        statKey: string;
+    }
 
     const statDescriptor = (statKey) => {
         return (
             <span>
+                {/* need to style the text within the tooltip to make it legible */}
                 <Tooltip text={DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}>
                     {/* AJS the following should be a util */}
                     <label>{statKey.charAt(0).toUpperCase() + statKey.slice(1)}</label>
