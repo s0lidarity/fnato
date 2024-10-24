@@ -170,6 +170,8 @@ export interface Profession {
     recommendedStats: StatisticKeys[];
     chosenSkills: Skill[];
     chosenSkillCount: number;
+    foreignLanguages?: { [language: string]: Skill };
+    otherSkills?: { [skillName: string]: Skill }; 
 }
 
 export interface Skill {
@@ -315,6 +317,8 @@ export interface Skills {
     Swim: Skill;
     UnarmedCombat: Skill;
     Unnatural: Skill;
+    foreignLanguages?: { [language: string]: Skill };
+    otherSkills?: { [skillName: string]: Skill };
 }
 
 export interface Stat {

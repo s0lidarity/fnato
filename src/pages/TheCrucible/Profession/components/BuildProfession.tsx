@@ -1,12 +1,15 @@
-import { Select } from 'react95';
+import { Select, TextInput } from 'react95';
 import styled from 'styled-components';
 
 
 function BuildProfession() {
     return (
-        <Select>
-            <option value="1">1</option>
-        </Select>
+        <div>
+            <form>
+                <label>Title:</label>
+                <TextInput />
+            </form>
+        </div>
     )
 }
 
