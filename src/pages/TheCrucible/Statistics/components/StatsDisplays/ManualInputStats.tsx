@@ -11,8 +11,8 @@ import PointsCounter from '../PointsCounter/PointsCounter';
 
 const ButtonContainer = styled.div`
     display: flex;
-    justify-content: space-between;
-    margin-top: 0.5rem;
+    justify-content: space-evenly;
+    margin-top: 0.75rem;
     align-items: center;
 `;
 
@@ -90,7 +90,7 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
         <div>
             {renderStatInputs()}
             <ButtonContainer>
-                <Button onClick={resetStats}>Reset Stats</Button>
+                <Button onClick={resetStats}>Reset Statistics</Button>
                 {config === ConfigOptions.PointBuy && 
                     <PointsContainer>
                         <PointsLabel showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       

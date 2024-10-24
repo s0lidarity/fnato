@@ -15,6 +15,7 @@ const StatLabelValueContainer = styled.div`
     align-items: center;
     padding: 0.25rem;
     justify-content: space-between;
+    flex: 1;
 `;
 
 const StatLabel = styled.div`
@@ -32,7 +33,7 @@ const StatValue = styled.span`
 const DiceContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0.25rem;
     font-size: 1.5rem;
 `;
@@ -50,6 +51,7 @@ const StyledDiceRowContainer = styled.div`
     justify-content: space-between;
     margin: 0.1rem 0;
     padding-top: 1px;
+    width: 100%;
 `;
 
 function DiceStats() {

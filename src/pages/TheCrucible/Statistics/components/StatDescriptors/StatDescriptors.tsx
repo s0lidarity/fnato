@@ -55,12 +55,6 @@ const StyledHeading = styled.h2`
 function StatDescriptors() {
     const { stats, setStats } = useStats();
 
-    // function to render a label and text input for each stat
-    // have placeholder text mapped from DISTINGUISHING_FEATURES
-    // button to insert placeholder text into input
-    // button to clear individual inputs
-
-    // save value of input to stat.key.distinguishingFeature onChange
     const handleChange = (e, statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };
@@ -69,7 +63,6 @@ function StatDescriptors() {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };
 
-    // need to limit this to the relevant statkey
     const handleClearAll = () => {
         const tempStats = {...stats};
         Object.keys(tempStats).forEach(key => {
@@ -84,11 +77,17 @@ function StatDescriptors() {
     };
 
     const assignAllSuggested = () => {
-        let tempStats = {...stats};
+        const tempStats = JSON.parse(JSON.stringify(stats));
         Object.keys(tempStats).forEach(key => {
-            console.log(key);
-            console.log(DISTINGUISHING_FEATURES[key][stats[key].score]);
-            tempStats[key].distinguishingFeature = DISTINGUISHING_FEATURES[key][stats[key].score];
+            const statKey = key as keyof typeof DISTINGUISHING_FEATURES;
+            const score = tempStats[statKey].score;
+            const suggestedFeature = DISTINGUISHING_FEATURES[statKey][score];
+
+            if(suggestedFeature){
+                tempStats[statKey].distinguishingFeature = suggestedFeature;
+            } else {
+                console.warn(`No suggested feature for ${statKey} with score ${score}`);
+            }
         });
         setStats(tempStats);
     };
@@ -100,9 +99,10 @@ function StatDescriptors() {
 
     const statDescriptor = (statKey) => {
         return (
-            <StyledStatDescriptorContainer>
+            <StyledStatDescriptorContainer key={`${statKey}-container`}>
                 <StyledInputContainer>
-                    <StyledTextInput 
+                    <StyledTextInput
+                        key={`${statKey}-input`}
                         type="text" 
                         id={`${statKey}-descriptor`} 
                         placeholder={DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}
