@@ -269,6 +269,9 @@ export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Unnatural: 0,
 };
 
+// need to account for optional skills in here
+// multiple foreign languages
+// multiple optional/custom skills
 export interface Skills {
     Accounting: Skill;
     Alertness: Skill;

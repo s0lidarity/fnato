@@ -1,4 +1,4 @@
-import { Button, Radio, GroupBox } from 'react95';
+import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { ConfigOptions } from '../../types';
 
