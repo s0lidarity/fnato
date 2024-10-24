@@ -1,88 +1,94 @@
-import h from 'preact';
-import { useState } from 'preact/hooks';
-import { Button } from 'react95';
+
+import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 
-import { Stat, Statistics } from '../../../types/characterTypes';
-import StatInput from './StatInput';
-import { generateStat, rollDice } from '../../../utils/CharacterGenerator';
-import DerivedAttributes from './DerivedAttributes';
+import { Statistics as StatisticsType } from '../../../types/characterTypes';
+import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
-import ConfigurationBar from './ConfigurationBar';
+import ConfigurationBar from './components/ConfigurationBar/ConfigurationBar';
+import { ConfigOptions } from './types';
+import DiceStats from './components/StatsDisplays/DiceStats';
+import ManualInputStats from './components/StatsDisplays/ManualInputStats';
+import RAReminder from './components/RAReminder/RAReminder';
+import StatDescriptors from './components/StatDescriptors/StatDescriptors';
 
-const StatsAndDAContainer = styled.div`
+const StatsContainer = styled.div`
     display: flex;
     align-itmems: stretch;
 `;
 
 const StatInputContainer = styled.div`
     flex: 1;
-    padding: 1rem;
 `;
 
 const DAContainer = styled.div`
     flex: 1;
     padding: 1rem;
     display: flex;
-    height: 80%;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
 `;
 
-export function rollStats(stats: Statistics): Statistics {
-    const updatedStats = { ...stats };
+const StyledGuidanceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1rem;
+`;
 
-    for (const stat in updatedStats) {
-        if (updatedStats.hasOwnProperty(stat)) {
-            updatedStats[stat as keyof Statistics] = generateStat(stat as keyof Statistics, rollDice(6, 4, 1));
-        }
-    }
+const StyledHeading = styled.h2`
+    margin-bottom: 1rem;
+    text-align: center;
+`;
 
-    return updatedStats;
-}
-
-const onChange = (statKey: keyof Statistics, stats: Statistics, setStats: (stats: Statistics) => void) => (value: number) => {
+// need to refactor this onChange, need to block raising values if points <=0
+const onChange = (statKey: keyof StatisticsType, stats: StatisticsType, setStats: (stats: StatisticsType) => void) => (value: number) => {
     const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
     setStats({ ...stats, [statKey]: updatedStat });
 };
 
-export function Statisics() {
-    // AJS switch these to the provider/context
+function Statistics() {
     const { resetStats, setStats, stats } = useStats();
-    // config needs a defined enum
-    const [config, setConfig] = useState(null);
-
-
-    const handleRoll = () => {
-        const results = rollStats(stats);
-        setStats(results);
+    const [config, setConfig] = useState(ConfigOptions.ManualInput);
+    
+    const renderStatInputs = () => {
+        switch(config){
+            case ConfigOptions.Dice:
+                return <DiceStats />;
+            case ConfigOptions.PointBuy:
+            case ConfigOptions.ManualInput:
+                return <ManualInputStats config={config} />;
+            default:
+                return null;
+        }
     };
+
+    // the Counter from React95 bugs out if the value goes below 0, this prevents that from happening
+    useEffect(() => {
+        resetStats();
+    }, [config]);
 
     return (
         <>
             <form>
                 <ConfigurationBar config={config} setConfig={setConfig} />
-                <StatsAndDAContainer>
+                <StyledGuidanceContainer>
+                    { config !== ConfigOptions.Dice && (<RAReminder />) }
+                </StyledGuidanceContainer>
+                <StatsContainer>
                     <StatInputContainer>
-                        <StatInput label="Strength" value={stats.strength.score} onChange={onChange('strength', stats, setStats)} />
-                        <StatInput label="Constitution" value={stats.constitution.score} onChange={onChange('constitution', stats, setStats)} />
-                        <StatInput label="Dexterity" value={stats.dexterity.score} onChange={onChange('dexterity', stats, setStats)} />
-                        <StatInput label="Intelligence" value={stats.intelligence.score} onChange={onChange('intelligence', stats, setStats)} />
-                        <StatInput label="Power" value={stats.power.score} onChange={onChange('power', stats, setStats)} />
-                        <StatInput label="Charisma" value={stats.charisma.score} onChange={onChange('charisma', stats, setStats)} />
+                        <StyledHeading>Base Statistics</StyledHeading>
+                        {renderStatInputs()}
                     </StatInputContainer>
-                    <DAContainer>
+                    <StatDescriptors />
+                </StatsContainer>
+                <DAContainer>
                         <DerivedAttributes />
-                    </DAContainer>
-                </StatsAndDAContainer>
-                <Button fullWidth onClick={handleRoll}>
-                    Roll 4d6 drop lowest
-                </Button>
-                <Button fullWidth onClick={() => resetStats()}>
-                    Reset Stats
-                </Button>
+                </DAContainer>
             </form>
         </>
     )
 };
 
-export default Statisics;
+export default Statistics;
