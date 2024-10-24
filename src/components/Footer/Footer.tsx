@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { version } from '../../../package.json';
 
 const FooterWrapper = styled.div`
     display: flex;
@@ -16,7 +17,7 @@ const VersionText = styled.span`
 function Footer() {
     return (
         <FooterWrapper>
-            <VersionText>v{import.meta.env.VITE_APP_VERSION}</VersionText>
+            <VersionText>v{version}</VersionText>
         </FooterWrapper>
     );
 }
