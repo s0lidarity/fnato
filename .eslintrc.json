@@ -149,8 +149,18 @@
 		"prefer-rest-params": 1,
 		"prefer-spread": 1,
 		"prefer-template": 1,
+		/**
+		* Import rules
+		*/
+		"import/order": [
+			2,
+			{
+				"groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+				"newlines-between": "always"
+			}
+		],
 		"quotes": [
-			0,
+			2,
 			"single",
 			{
 				"avoidEscape": true,

@@ -1,5 +1,11 @@
 import { Button, Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
+import { ConfigOptions } from '../../types';
+
+type RenderRadioParams = {
+    label: string;
+    value: ConfigOptions;
+}
 
 const ConfigurationBarContainer = styled.div`
     display: flex;
@@ -25,7 +31,7 @@ function ConfigurationBar({ config, setConfig }) {
         setConfig(e.target.value);
     };
 
-    const renderRadio = (label, value) => {
+    const renderRadio = ({label, value}: RenderRadioParams) => {
         return (
             <StyledRadio
                 checked={config === value}
@@ -40,10 +46,9 @@ function ConfigurationBar({ config, setConfig }) {
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label="Options">
-                {renderRadio('Manual Input', 'ManualInput')}                    
-                {renderRadio('Point Buy', 'PointBuy')}
-                {renderRadio('Dice', 'Dice')}
-                {renderRadio('Recommended Array', 'RecommendedArray')}
+                {renderRadio({ label: 'Manual Input', value: ConfigOptions.ManualInput })}
+                {renderRadio({ label: 'Point Buy', value: ConfigOptions.PointBuy })}
+                {renderRadio({ label: 'Dice', value: ConfigOptions.Dice })}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )
