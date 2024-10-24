@@ -8,6 +8,7 @@ import About from './pages/About';
 import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
 import GlobalStyles from './GlobalStyles';
+import Footer from './components/Footer/Footer';
 
 import { StatsProvider } from './providers/StatisticsContext';
 
@@ -26,6 +27,7 @@ export function App() {
 								<Route path="/crucible" component={TheCrucible} />
 							</Router>
 						</main>
+						<Footer />
 					</LocationProvider>
 				</StatsProvider>
 			</ThemeProvider>
