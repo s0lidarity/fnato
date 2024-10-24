@@ -43,6 +43,15 @@ const ButtonContainer = styled.div`
     margin-top: 1rem;
 `;
 
+const StyledDiceRowContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.1rem 0;
+    padding-top: 1px;
+`;
+
 function DiceStats() {
     const { resetStats, stats, setStats } = useStats();
     const [rollSets, setRollSets] = useState<Record<keyof Statistics, number[]>>({
@@ -98,19 +107,21 @@ function DiceStats() {
 
             return (
                 <StatInputContainer key={stat}>
-                    <StatLabelValueContainer>
-                        <StatLabel>
-                            <StatTooltip 
-                                statKey={stat} 
-                                labelText={stat.charAt(0).toUpperCase() + stat.slice(1)} />
-                        </StatLabel>
-                        <StatValue>
-                            {stats[stat as keyof Statistics].score}
-                        </StatValue>
-                    </StatLabelValueContainer>
-                    <DiceContainer>
-                        {rollSets[typedStat] && renderDice(rollSets[typedStat])}
-                    </DiceContainer>
+                    <StyledDiceRowContainer>
+                        <StatLabelValueContainer>
+                            <StatLabel>
+                                <StatTooltip 
+                                    statKey={stat} 
+                                    labelText={stat.charAt(0).toUpperCase() + stat.slice(1)} />
+                            </StatLabel>
+                            <StatValue>
+                                {stats[stat as keyof Statistics].score}
+                            </StatValue>
+                        </StatLabelValueContainer>
+                        <DiceContainer>
+                            {rollSets[typedStat] && renderDice(rollSets[typedStat])}
+                        </DiceContainer>
+                    </StyledDiceRowContainer>
                 </StatInputContainer>
             )
         })

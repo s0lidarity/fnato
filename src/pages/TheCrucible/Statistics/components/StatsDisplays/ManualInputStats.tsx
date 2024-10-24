@@ -12,7 +12,7 @@ import PointsCounter from '../PointsCounter/PointsCounter';
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     align-items: center;
 `;
 

@@ -12,17 +12,16 @@ import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 import RAReminder from './components/RAReminder/RAReminder';
 import StatDescriptors from './components/StatDescriptors/StatDescriptors';
 
-const StatsAndDAContainer = styled.div`
+const StatsContainer = styled.div`
     display: flex;
     align-itmems: stretch;
 `;
 
 const StatInputContainer = styled.div`
     flex: 1;
-    padding: 1rem;
 `;
 
-const RADAContainer = styled.div`
+const DAContainer = styled.div`
     flex: 1;
     padding: 1rem;
     display: flex;
@@ -31,6 +30,17 @@ const RADAContainer = styled.div`
     width: 100%;
 `;
 
+const StyledGuidanceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1rem;
+`;
+
+const StyledHeading = styled.h2`
+    margin-bottom: 1rem;
+    text-align: center;
+`;
 
 // need to refactor this onChange, need to block raising values if points <=0
 const onChange = (statKey: keyof StatisticsType, stats: StatisticsType, setStats: (stats: StatisticsType) => void) => (value: number) => {
@@ -63,18 +73,19 @@ function Statistics() {
         <>
             <form>
                 <ConfigurationBar config={config} setConfig={setConfig} />
-                <StatsAndDAContainer>
+                <StyledGuidanceContainer>
+                    { config !== ConfigOptions.Dice && (<RAReminder />) }
+                </StyledGuidanceContainer>
+                <StatsContainer>
                     <StatInputContainer>
+                        <StyledHeading>Base Statistics</StyledHeading>
                         {renderStatInputs()}
                     </StatInputContainer>
-                    <RADAContainer>
+                    <StatDescriptors />
+                </StatsContainer>
+                <DAContainer>
                         <DerivedAttributes />
-                        {
-                            config !== ConfigOptions.Dice && (<RAReminder />)
-                        }
-                    </RADAContainer>
-                </StatsAndDAContainer>
-                <StatDescriptors />
+                </DAContainer>
             </form>
         </>
     )
