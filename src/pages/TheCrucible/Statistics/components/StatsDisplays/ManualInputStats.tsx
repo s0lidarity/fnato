@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Button } from 'react95';   
@@ -6,7 +5,7 @@ import { Button } from 'react95';
 import { useStats } from '../../../../../providers/StatisticsContext';
 import StatInput from '../StatInput/StatInput';
 import { Statistics } from '../../../../../types/characterTypes';
-import { ConfigOptions } from '../../types';
+import { StatsConfigOptions } from '../../../../../types/componentTypes';
 import PointsCounter from '../PointsCounter/PointsCounter';
 
 const ButtonContainer = styled.div`
@@ -30,7 +29,7 @@ const PointsLabel = styled.label <{ showWarning?: boolean }>`
 `;
 
 interface ManualInputStatsProps {
-    config: ConfigOptions;
+    config: StatsConfigOptions;
 }
 
 const DEFAULT_POINTS = 72;
@@ -44,7 +43,7 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
         const currentValue = stats[statKey].score;
         const difference = value - currentValue;
 
-        if(config === ConfigOptions.PointBuy) {
+        if(config === StatsConfigOptions.PointBuy) {
             if(difference > points){
                 value = currentValue + points;
             }
@@ -91,7 +90,7 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
             {renderStatInputs()}
             <ButtonContainer>
                 <Button onClick={resetStats}>Reset Statistics</Button>
-                {config === ConfigOptions.PointBuy && 
+                {config === StatsConfigOptions.PointBuy && 
                     <PointsContainer>
                         <PointsLabel showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
                         <PointsCounter value={points} />

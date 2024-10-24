@@ -1,8 +1,9 @@
 import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
-import { ConfigOptions } from '../../../../../types/componentTypes';
 
-type RenderRadioParams = {
+import { ConfigOptions } from '../../types/componentTypes'
+
+type RenderedRadioParams = {
     label: string;
     value: ConfigOptions;
 }
@@ -26,12 +27,18 @@ const StyledRadio = styled(Radio)`
     vertical-align: middle;
 `
 
-function ConfigurationBar({ config, setConfig }) {
+interface ConfigurationBarProps {
+    config: ConfigOptions, 
+    setConfig: (config: ConfigOptions) => void, 
+    options: RenderedRadioParams[],
+};
+
+function ConfigurationBar({ config, setConfig, options }: ConfigurationBarProps) {
     const toggleCheck = (e) => {
         setConfig(e.target.value);
     };
 
-    const renderRadio = ({label, value}: RenderRadioParams) => {
+    const renderRadio = ({label, value}: RenderedRadioParams) => {
         return (
             <StyledRadio
                 checked={config === value}
@@ -46,9 +53,7 @@ function ConfigurationBar({ config, setConfig }) {
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label="Options">
-                {renderRadio({ label: 'Manual Input', value: ConfigOptions.ManualInput })}
-                {renderRadio({ label: 'Point Buy', value: ConfigOptions.PointBuy })}
-                {renderRadio({ label: 'Dice', value: ConfigOptions.Dice })}
+                {options.map(option => renderRadio(option))}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )

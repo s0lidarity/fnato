@@ -1,6 +1,6 @@
-import { createContext, h } from 'preact';
+import { createContext } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
-import { Stat, Statistics, DerivedAttributes } from '../types/characterTypes';
+import { Statistics, DerivedAttributes } from '../types/characterTypes';
 import { calculateDerivedAttributes } from '../utils/CharacterGenerator';
 import { defaultStats } from './defaultValues';
 

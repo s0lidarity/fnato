@@ -1,8 +1,24 @@
+import { useState } from 'preact/hooks';
+import styled from 'styled-components';
+import { ProfessionConfigOptions } from '../../../types/componentTypes';
+
+import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
+
 export function Profession() {
-	return (
+    const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
+    const configOptions = [
+        { label: 'Standard Professions', value: ProfessionConfigOptions.StandardProfessions },
+        { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
+    ];
+
+    return (
         <div>
-            <h1>Profession</h1>
-            <p>All Profession me</p>
+            <ConfigurationBar
+                config={config}
+                setConfig={(newConfig) => setConfig(newConfig as ProfessionConfigOptions)}
+                options={configOptions}
+            />
+            <p>All Profession methods</p>
         </div>
     )
 };

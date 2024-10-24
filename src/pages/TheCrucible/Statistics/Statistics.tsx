@@ -5,12 +5,13 @@ import styled from 'styled-components';
 import { Statistics as StatisticsType } from '../../../types/characterTypes';
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
-import ConfigurationBar from './components/ConfigurationBar/ConfigurationBar';
 import { ConfigOptions } from './types';
 import DiceStats from './components/StatsDisplays/DiceStats';
 import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 import RAReminder from './components/RAReminder/RAReminder';
 import StatDescriptors from './components/StatDescriptors/StatDescriptors';
+import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
+import { StatsConfigOptions } from '../../../types/componentTypes';
 
 const StatsContainer = styled.div`
     display: flex;
@@ -42,22 +43,23 @@ const StyledHeading = styled.h2`
     text-align: center;
 `;
 
-// need to refactor this onChange, need to block raising values if points <=0
-const onChange = (statKey: keyof StatisticsType, stats: StatisticsType, setStats: (stats: StatisticsType) => void) => (value: number) => {
-    const updatedStat = { ...stats[statKey], score: value, x5: value * 5 };
-    setStats({ ...stats, [statKey]: updatedStat });
-};
 
 function Statistics() {
     const { resetStats, setStats, stats } = useStats();
-    const [config, setConfig] = useState(ConfigOptions.ManualInput);
+    const [config, setConfig] = useState(StatsConfigOptions.ManualInput);
     
+    const configOptions = [
+        { label: 'Manual Input', value: 'ManualInput' },
+        { label: 'Point Buy', value: 'PointBuy' },
+        { label: 'Dice', value: 'Dice' },
+    ];
+
     const renderStatInputs = () => {
         switch(config){
-            case ConfigOptions.Dice:
+            case StatsConfigOptions.Dice:
                 return <DiceStats />;
-            case ConfigOptions.PointBuy:
-            case ConfigOptions.ManualInput:
+            case StatsConfigOptions.PointBuy:
+            case StatsConfigOptions.ManualInput:
                 return <ManualInputStats config={config} />;
             default:
                 return null;
@@ -72,9 +74,13 @@ function Statistics() {
     return (
         <>
             <form>
-                <ConfigurationBar config={config} setConfig={setConfig} />
+                <ConfigurationBar 
+                    config={config} 
+                    setConfig={(config: StatsConfigOptions) => setConfig(config)}
+                    options={configOptions}
+                    />
                 <StyledGuidanceContainer>
-                    { config !== ConfigOptions.Dice && (<RAReminder />) }
+                    { config !== StatsConfigOptions.Dice && (<RAReminder />) }
                 </StyledGuidanceContainer>
                 <StatsContainer>
                     <StatInputContainer>
