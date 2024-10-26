@@ -161,24 +161,24 @@ export interface OptionalSkills {
     OtherSkills?: Skill[];
 }
 
-// I need to map the professions in a constant or something
-// might be better as an api in the future
-export interface Profession {
+// foreign languages needs to be stored with a base score and type to be specified later
+export interface IProfession {
     affiliation?: string;
-    professionalSkills: Skill[];
+    professionalSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
     bondCount: number;
     recommendedStats: StatisticKeys[];
-    chosenSkills: Skill[];
+    choosableSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
     chosenSkillCount: number;
     foreignLanguages?: { [language: string]: Skill };
+    foreignLanguageCount?: number;
     otherSkills?: { [skillName: string]: Skill }; 
 }
 
 export interface Skill {
     value: number;
-    base: number;
     bonus: boolean;
     reminderText?: string;
+    subType?: string;
 }
 
 export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
@@ -191,7 +191,7 @@ export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Athletics: "Jumping, ducking, running, climbing, etc",
     Bureaucracy: "Greasing the wheels of government",
     ComputerScience: "010111100001",
-    Craft: "Inner Adam Savage",
+    Crafts: "Inner Adam Savage",
     Criminology: "Muddying the waters of a crime-scene",
     Demolitions: "Controlled explosions",
     Disguise: "Gene Parmesan, he's the best",
@@ -236,7 +236,7 @@ export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Athletics: 30,
     Bureaucracy: 10,
     ComputerScience: 0,
-    Craft: 0,
+    Crafts: 0,
     Criminology: 10,
     Demolitions: 0,
     Disguise: 10,
@@ -284,7 +284,7 @@ export interface Skills {
     Athletics: Skill;
     Bureaucracy: Skill;
     ComputerScience: Skill;
-    Craft: Skill;
+    Crafts: { [subtype: string]: Skill };
     Criminology: Skill;
     Demolitions: Skill;
     Disguise: Skill;
@@ -317,7 +317,7 @@ export interface Skills {
     Swim: Skill;
     UnarmedCombat: Skill;
     Unnatural: Skill;
-    foreignLanguages?: { [language: string]: Skill };
+    foreignLanguages?: { [skillName: string]: Skill };
     otherSkills?: { [skillName: string]: Skill };
 }
 

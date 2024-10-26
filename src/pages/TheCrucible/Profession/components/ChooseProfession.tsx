@@ -1,6 +1,8 @@
 import { Select } from 'react95';
 import styled from 'styled-components';
 
+
+
 function ChooseProfession() {
     return (
         <Select>
