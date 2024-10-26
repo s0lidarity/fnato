@@ -72,99 +72,50 @@ export const Anthropologist = new Profession({
     foreignLanguageCount: 2,
 });
 
-const Historian: Profession = {
-    affiliation: "",
+export const Historian = new Profession({
     professionalSkills: [
-        {
-            value: 50,
-            base: SKILL_BASE_VALUES['Archeology'],
-            bonus: false,
-        } as Skills['Archeology'],
-        {
-            value: 40,
-            base: SKILL_BASE_VALUES['Bureaucracy'],
-            bonus: false,
-        } as Skills['Bureaucracy'],
-        {
-            value: 60,
-            base: 0,
-            bonus: false,
-        } as Skills['History'],
-        {
-            value: 40,
-            base: 0,
-            bonus: false,
-        } as Skills['Occult'],
-        {
-            value: 40,
-            base: 0,
-            bonus: false,
-        } as Skills['Persuade'],
+        Profession.createSkill('Archeology', 50),
+        Profession.createSkill('Bureaucracy', 40),
+        Profession.createSkill('History', 60),
+        Profession.createSkill('Occult', 40),
+        Profession.createSkill('Persuade', 40),
+    ],
+    choosableSkills: [
+        Profession.createSkill('Anthropology', 50),
+        Profession.createSkill('HUMINT', 50),
+        Profession.createSkill('Navigate', 50),
+        Profession.createSkill('Search', 60),
+        Profession.createSkill('Survival', 50),
     ],
     bondCount: 4,
     recommendedStats: ['intelligence'],
-    chosenSkills: [
-        {
-            value: 40,
-            base: SKILL_BASE_VALUES['Anthropology'],
-            bonus: false,
-        } as Skills['Anthropology'],
-        {
-            value: 50,
-            base: SKILL_BASE_VALUES['HUMINT'],
-            bonus: false,
-        } as Skills['HUMINT'],
-        {
-            value: 50,
-            base: SKILL_BASE_VALUES['Navigate'],
-            bonus: false,
-        } as Skills['Navigate'],
-        {
-            value: 60,
-            base: SKILL_BASE_VALUES['Search'],
-            bonus: false,
-        } as Skills['Search'],
-        {
-            value: 50,
-            base: SKILL_BASE_VALUES['Survival'],
-            bonus: false,
-        } as Skills['Survival'],
-    ],
     chosenSkillCount: 2,
-    foreignLanguages: {
-        "TBD": {
-            value: 50,
-            base: 0,
-            bonus: false,
-        },
-        "TBD2": {
-            value: 40,
-            base: 0,
-            bonus: false,
-        },
-    },
     foreignLanguageCount: 2,
-};
+});
 
-const Engineer: Profession = {
-    affiliation: "",
+export const Engineer = new Profession({
     professionalSkills: [
-        {
-            value: 60,
-            base: SKILL_BASE_VALUES['ComputerScience'],
-            bonus: false,
-        } as Skills['ComputerScience'],
-        {
-            value: 40,
-            base: SKILL_BASE_VALUES['Crafts'],
-            bonus: false,
-        } as Skills['Crafts'],
+        Profession.createSkill('ComputerScience', 60),
+        Profession.createSkill('Crafts', 40, 'Electrician'),
+        Profession.createSkill('Crafts', 40, 'Mechanic'),
+        Profession.createSkill('Crafts', 40, 'Microelectronics'),
+        Profession.createSkill('Science', 40, 'Mathematics'),
+        Profession.createSkill('SIGINT', 40),   
+    ],
+    choosableSkills: [
+        Profession.createSkill('Accounting', 50),
+        Profession.createSkill('Bureaucracy', 50),
+        Profession.createSkill('Crafts', 40, 'TBD'),
+        Profession.createSkill('foreignLanguages', 40, 'TBD'),
+        Profession.createSkill('HeavyMachinery', 50),
+        Profession.createSkill('Law', 40),
+        Profession.createSkill('Science', 40, 'TBD'),
     ],
     bondCount: 4,
     recommendedStats: ['intelligence'],
-    chosenSkills: [],
     chosenSkillCount: 2,
-}
+    foreignLanguageCount: 2,
+});
 
 const professions = [
     Anthropologist,

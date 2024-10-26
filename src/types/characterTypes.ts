@@ -162,6 +162,7 @@ export interface OptionalSkills {
 }
 
 // foreign languages needs to be stored with a base score and type to be specified later
+// might not need to store foreign language and count, can treat it like any other skill
 export interface IProfession {
     affiliation?: string;
     professionalSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
