@@ -170,8 +170,6 @@ export interface IProfession {
     recommendedStats: StatisticKeys[];
     choosableSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
     chosenSkillCount: number;
-    foreignLanguages?: { [language: string]: Skill };
-    foreignLanguageCount?: number;
     otherSkills?: { [skillName: string]: Skill }; 
 }
 
@@ -201,6 +199,7 @@ export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Firearms: "pew-pew",
     FirstAid: "Minor urgent medical care",
     Forensics: "CSI",
+    ForeignLanguages: "Parles-vous Français?",
     HeavyMachinery: "Forklifts, cranes, excavators, etc",
     HeavyWeapons: "LMGs I think",
     History: "If you haven't studied it you're doomed to repeat it",
@@ -246,6 +245,7 @@ export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Firearms: 20,
     FirstAid: 10,
     Forensics: 0,
+    ForeignLanguages: 0,
     HeavyMachinery: 10,
     HeavyWeapons: 0,
     History: 10,
@@ -318,7 +318,7 @@ export interface Skills {
     Swim: Skill;
     UnarmedCombat: Skill;
     Unnatural: Skill;
-    foreignLanguages?: { [skillName: string]: Skill };
+    ForeignLanguages?: { [skillName: string]: Skill };
     otherSkills?: { [skillName: string]: Skill };
 }
 
