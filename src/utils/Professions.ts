@@ -154,10 +154,109 @@ export const FederalAgent = new Profession({
     chosenSkillCount: 3,
 });
 
+export const Physician = new Profession({
+    professionalSkills: Profession.createSkillList([
+        ['Bureaucracy', 50], 
+        ['FirstAid', 60],
+        ['Medicine', 60],
+        ['Persuade', 40],
+        ['Pharmacy', 50],
+        ['Science', 60, 'Biology'], 
+        ['Search', 40],
+    ]),
+    choosableSkills: Profession.createSkillList([
+        ['Forensics', 50],
+        ['Psychotherapy', 60],
+        ['Science', 50],
+        ['Surgery', 50],
+    ]),
+    bondCount: 3,
+    recommendedStats: ['intelligence', 'power', 'dexterity'],
+    chosenSkillCount: 2,
+});
+
+export const Scientist = new Profession({
+    professionalSkills: Profession.createSkillList([
+        ['Bureaucracy', 40],
+        ['ComputerScience', 40],
+        ['Science', 60],
+        ['Science', 50], 
+        ['Science', 50],
+    ]),
+    choosableSkills: Profession.createSkillList([
+        ['Accounting', 50],
+        ['Crafts', 40],
+        ['ForeignLanguages', 40], 
+        ['Forensics', 40],
+        ['Law', 40],
+        ['Pharmacy', 40],
+    ]),
+    bondCount: 4,
+    recommendedStats: ['intelligence'],
+    chosenSkillCount: 3,
+});
+
+export const SpecialOperator = new Profession({
+    professionalSkills: Profession.createSkillList([
+        ['Alertness', 60],
+        ['Athletics', 60],
+        ['Demolitions', 40],
+        ['Firearms', 60],
+        ['HeavyWeapons', 50],
+        ['MeleeWeapons', 50],
+        ['MilitaryScience', 60, 'Land'], 
+        ['Navigate', 50],
+        ['Stealth', 50],
+        ['Survival', 50],
+        ['Swim', 50],
+        ['UnarmedCombat', 60],
+    ]),
+    choosableSkills: [],
+    bondCount: 2,
+    recommendedStats: ['strength', 'constitution', 'power'],
+    chosenSkillCount: 0,
+});
+
+export const Soldier = new Profession({
+    professionalSkills: Profession.createSkillList([
+        ['Alertness', 50],
+        ['Athletics', 50],
+        ['Bureaucracy', 30],
+        ['Drive', 40],
+        ['Firearms', 40],
+        ['FirstAid', 40],
+        ['MilitaryScience', 40, 'Land'],
+        ['Navigate', 40],
+        ['Persuade', 30],
+        ['UnarmedCombat', 50],
+    ]),
+    choosableSkills: Profession.createSkillList([
+        ['Artillery', 40],
+        ['ComputerScience', 40],
+        ['Crafts', 40],
+        ['Demolitions', 40],
+        ['ForeignLanguages', 40],
+        ['HeavyMachinery', 50],
+        ['HeavyWeapons', 40],
+        ['Search', 60],
+        ['SIGINT', 40], 
+        ['Swim', 60],
+    ]),
+    bondCount: 4,
+    recommendedStats: ['strength', 'constitution'],
+    chosenSkillCount: 3,
+});
+
+// base professions, can break out 
 const professions = [
     Anthropologist,
     Historian,
     Engineer,
+    FederalAgent,
+    Physician,
+    Scientist,
+    SpecialOperator,
+    Soldier,
 ];
 
 export default professions;
