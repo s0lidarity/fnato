@@ -161,8 +161,6 @@ export interface OptionalSkills {
     OtherSkills?: Skill[];
 }
 
-// foreign languages needs to be stored with a base score and type to be specified later
-// might not need to store foreign language and count, can treat it like any other skill
 export interface IProfession {
     affiliation?: string;
     professionalSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
@@ -175,7 +173,7 @@ export interface IProfession {
 
 export interface Skill {
     value: number;
-    bonus: boolean;
+    bonus: number;
     reminderText?: string;
     subType?: string;
 }
@@ -272,9 +270,6 @@ export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Unnatural: 0,
 };
 
-// need to account for optional skills in here
-// multiple foreign languages
-// multiple optional/custom skills
 export interface Skills {
     Accounting: Skill;
     Alertness: Skill;

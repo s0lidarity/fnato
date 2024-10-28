@@ -5,13 +5,13 @@ type IProfessionalSkill = Skill & { skillName: keyof Skills; subType?: string };
 export class ProfessionalSkill implements IProfessionalSkill {
     skillName: keyof Skills;
     value: number;
-    bonus: boolean;
+    bonus: number;
     subType?: string;
 
     constructor(skillName: keyof Skills, value: number, subType?: string){
         this.skillName = skillName;
         this.value = value;
-        this.bonus = false;
+        this.bonus = 0;
         this.subType = subType;
     };
 };

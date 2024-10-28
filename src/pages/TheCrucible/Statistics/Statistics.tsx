@@ -25,7 +25,7 @@ const DAContainer = styled.div`
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: center;
     width: 100%;
 `;
 
