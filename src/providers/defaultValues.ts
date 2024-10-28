@@ -1,4 +1,11 @@
-import { Statistics, Stat } from '../types/characterTypes';
+import { 
+    Skill, 
+    SKILL_BASE_VALUES, 
+    SKILL_REMINDERS, 
+    Skills, 
+    Statistics, 
+    Stat
+} from '../types/characterTypes';
 
 export const defaultStat: Stat = {
     score: 10,
@@ -14,3 +21,15 @@ export const defaultStats: Statistics = {
     power: defaultStat,
     charisma: defaultStat,
 };
+
+export function generateDefaultSkills(): Skills {
+    const skills: Skills = {} as Skills;
+    Object.keys(SKILL_BASE_VALUES).forEach((skillName) => {
+        skills[skillName] = {
+            value: SKILL_BASE_VALUES[skillName],
+            bonus: 0,
+            reminderText: SKILL_REMINDERS[skillName],
+        };
+    });
+    return skills;
+}

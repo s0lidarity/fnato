@@ -156,11 +156,6 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
     },
 };
 
-export interface OptionalSkills {
-    ForeignLanguages?: Skill[];
-    OtherSkills?: Skill[];
-}
-
 export interface IProfession {
     affiliation?: string;
     professionalSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
