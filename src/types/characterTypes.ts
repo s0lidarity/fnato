@@ -9,7 +9,7 @@ export interface Character {
     bonds: Bond[];
     derivedAttributes: DerivedAttributes;
     detailedDescription: DetailedDescription;
-    profession: Profession;
+    profession: IProfession;
     skills: Skills;
     statistics: Statistics;
 };
@@ -322,6 +322,7 @@ export interface Skills {
     otherSkills?: { [skillName: string]: Skill };
 }
 
+// AJS consider adding shortHand value, ie: constitution -> con
 export interface Stat {
     score: number;
     x5: number;

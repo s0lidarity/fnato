@@ -2,10 +2,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 
-import { Statistics as StatisticsType } from '../../../types/characterTypes';
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
 import { useStats } from '../../../providers/StatisticsContext';
-import { ConfigOptions } from './types';
 import DiceStats from './components/StatsDisplays/DiceStats';
 import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 import RAReminder from './components/RAReminder/RAReminder';
@@ -43,16 +41,15 @@ const StyledHeading = styled.h2`
     text-align: center;
 `;
 
+const STATS_CONFIG_OPTIONS = [
+    { label: 'Manual Input', value: StatsConfigOptions.ManualInput },
+    { label: 'Point Buy', value: StatsConfigOptions.PointBuy },
+    { label: 'Dice', value: StatsConfigOptions.Dice },
+];
 
 function Statistics() {
     const { resetStats, setStats, stats } = useStats();
     const [config, setConfig] = useState(StatsConfigOptions.ManualInput);
-    
-    const configOptions = [
-        { label: 'Manual Input', value: 'ManualInput' },
-        { label: 'Point Buy', value: 'PointBuy' },
-        { label: 'Dice', value: 'Dice' },
-    ];
 
     const renderStatInputs = () => {
         switch(config){
@@ -77,7 +74,7 @@ function Statistics() {
                 <ConfigurationBar 
                     config={config} 
                     setConfig={(config: StatsConfigOptions) => setConfig(config)}
-                    options={configOptions}
+                    options={STATS_CONFIG_OPTIONS}
                     />
                 <StyledGuidanceContainer>
                     { config !== StatsConfigOptions.Dice && (<RAReminder />) }
