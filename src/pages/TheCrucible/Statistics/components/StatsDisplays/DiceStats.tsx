@@ -5,9 +5,8 @@ import styled from 'styled-components';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
-import { Statistics } from '../../../../../types/characterTypes';
-import { RollResult } from '../../../../../types/diceTypes';
-import StatTooltip from '../StatTooltip/StatTooltip';
+import { Statistics, STAT_REMINDERS } from '../../../../../types/characterTypes';
+import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import StatInputContainer from '../../styles/StatInputContainer';
 
 const StatLabelValueContainer = styled.div`
@@ -112,9 +111,10 @@ function DiceStats() {
                     <StyledDiceRowContainer>
                         <StatLabelValueContainer>
                             <StatLabel>
-                                <StatTooltip 
-                                    statKey={stat} 
-                                    labelText={stat.charAt(0).toUpperCase() + stat.slice(1)} />
+                                <ReminderTooltip 
+                                    itemKey={stat} 
+                                    labelText={stat.charAt(0).toUpperCase() + stat.slice(1)} 
+                                    reminders={STAT_REMINDERS} />
                             </StatLabel>
                             <StatValue>
                                 {stats[stat as keyof Statistics].score}

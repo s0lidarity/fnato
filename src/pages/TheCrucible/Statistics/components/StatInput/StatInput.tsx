@@ -1,7 +1,8 @@
 import { NumberInput } from 'react95';
-import styled from 'styled-components';
+
 import { useStats } from '../../../../../providers/StatisticsContext';
-import StatTooltip from '../StatTooltip/StatTooltip';
+import { STAT_REMINDERS } from '../../../../../types/characterTypes';
+import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import StatInputContainer  from '../../styles/StatInputContainer';
 
 function StatInput({ statKey, handleChange }) {
@@ -11,7 +12,12 @@ function StatInput({ statKey, handleChange }) {
 	
 	return (
 		<StatInputContainer>
-			<StatTooltip statKey={statKey} labelText={labelText} />
+			{/* Does the tooltip just need to wrap around a child? */}
+			<ReminderTooltip 
+				itemKey={statKey} 
+				labelText={labelText} 
+				reminders={STAT_REMINDERS} 
+			/>
 			<NumberInput
 				min={3}
 				max={18}
