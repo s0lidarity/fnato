@@ -5,6 +5,7 @@ import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import BuildProfession from './components/BuildProfession';
 import ChooseProfession from './components/ChooseProfession';
+import SkillForm from './components/SkillForm';
 
 export function Profession() {
     const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
@@ -19,6 +20,8 @@ export function Profession() {
                 return <ChooseProfession />;
             case ProfessionConfigOptions.CustomProfessions:
                 return <BuildProfession />;
+            default:
+                throw new Error(`Invalid profession config: ${config}`);
         }
     }
 
@@ -31,6 +34,10 @@ export function Profession() {
             />
             <div>
                 {renderProfessionInput(config)}
+            </div>
+            <div>
+                <h2>Skills</h2>
+                <SkillForm professionConfig={config} />
             </div>
         </div>
     )

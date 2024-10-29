@@ -1,18 +1,25 @@
-import { Window, WindowContent, WindowHeader } from 'react95';
+import { NumberInput, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 
+import { Skills } from '../../../../types/characterTypes';
 import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
+import SkillInput from './SkillInput';
 const StyledWindow = styled(Window)`
     width: 90%;
 `;
 
-const renderedSkillInputs = 
-    <div>
-        <label>Skill</label>
-        <input type="text" />
-    </div>  
-;
+const handleBonusChange = (skillKey: string) => {
+    return (value: number) => {
+        console.log(skillKey, value);
+    };
+};
+
+const renderSkillInputs = (skills: Skills) => {
+    return Object.keys(skills).map((skillKey) => {
+        return <SkillInput skillKey={skillKey} handleBonusChange={handleBonusChange} />
+    });
+};
 
 type SkillFormProps = {
     professionConfig: ProfessionConfigOptions;
@@ -26,7 +33,7 @@ const SkillForm = ({ professionConfig }: SkillFormProps) => {
                 Skills
             </WindowHeader>
             <WindowContent>
-                {renderedSkillInputs}
+                {renderSkillInputs(skills)}
             </WindowContent>
         </StyledWindow>
     );
