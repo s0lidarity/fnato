@@ -1,4 +1,4 @@
-import { NumberInput } from 'react95';
+import { NumberInput, Separator } from 'react95';
 import styled from 'styled-components';
 
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -24,6 +24,11 @@ const StyledSkillName = styled.div`
     justify-content: flex-start;
 `;
 
+const StyledValueContainer = styled.div`
+    justify-content: flex-end;
+    margin-right: 0.5rem;
+`;
+
 const StyledNumberInput = styled(NumberInput)`
     width: 3rem;
     flex-shrink: 0;
@@ -38,8 +43,9 @@ const StyledLabel = styled.label`
 const StyledBonusContainer = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: right;
-    gap: 0.5rem;
+    margin-left: 0.5rem;
 `;
 
 type SkillInputProps = {
@@ -59,19 +65,22 @@ function SkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
                     labelText={getSkillNameText(skillKey)} 
                     reminders={SKILL_REMINDERS} 
                 />
+                {/* need to be able to assign a subtype here */}
+                {skills[skillKey].subType}
             </StyledSkillName>
-            <span>
+            <StyledValueContainer>
                 {skills[skillKey].value}
-            </span>
+            </StyledValueContainer>
+            <Separator orientation="vertical" />
             <StyledBonusContainer>
-            <StyledLabel>Bonus</StyledLabel>
-            <StyledNumberInput
-                min={0}
-                max={8}
-                width="4rem"
-                value={skills[skillKey].bonus}
-                onChange={handleBonusChange(skillKey)}
-            />
+                <StyledLabel>Bonus</StyledLabel>
+                <StyledNumberInput
+                    min={0}
+                    max={8}
+                    width="4rem"
+                    value={skills[skillKey].bonus}
+                    onChange={handleBonusChange(skillKey)}
+                />
             </StyledBonusContainer>
         </SkillInputContainer>
     );
