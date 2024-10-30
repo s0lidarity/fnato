@@ -1,4 +1,3 @@
-import { NumberInput, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 
 import { Skills } from '../../../../types/characterTypes';
@@ -6,16 +5,13 @@ import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import SkillInput from './SkillInput';
 
-const StyledWindow = styled(Window)`
-    width: 100%;
-`;
-
 const SkillFormContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    gap: 1rem;
-    width: 90%;
-    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.5rem;
+    column-gap: 1rem;
+    width: 95%;
+    justify-content: space-between;
 `;
 
 const handleBonusChange = (skillKey: string) => {
@@ -44,16 +40,9 @@ const SkillForm = ({ professionConfig }: SkillFormProps) => {
     const { skills, setSkills, setSkillByKey } = useSkills();
 
     return (
-        <StyledWindow>
-            <WindowHeader>
-                Skills
-            </WindowHeader>
-            <WindowContent>
-                <SkillFormContainer>
-                    {renderSkillInputs(skills, professionConfig)}
-                </SkillFormContainer>
-            </WindowContent>
-        </StyledWindow>
+        <SkillFormContainer>
+            {renderSkillInputs(skills, professionConfig)}
+        </SkillFormContainer>
     );
 };
 

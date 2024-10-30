@@ -13,17 +13,17 @@ const SkillInputContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
-    padding: 0.5rem;
     width: 100%;
-    min-width: 0rem;
+    min-width: 0;
+    border: 2px solid ${({ theme }) => theme.borderDark};
 `;
 
-const StyledReminderTooltip = styled(ReminderTooltip)`
-    min-width: 0rem;
-    flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
+const StyledSkillName = styled.div`
+    flex-shrink: 0;
+    flex-grow: 1;
+    justify-content: flex-start;
 `;
+
 const StyledNumberInput = styled(NumberInput)`
     width: 3rem;
     flex-shrink: 0;
@@ -53,11 +53,13 @@ function SkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
 
     return (
         <SkillInputContainer>
-            <ReminderTooltip 
-                itemKey={skillKey} 
-                labelText={getSkillNameText(skillKey)} 
-                reminders={SKILL_REMINDERS} 
-            />
+            <StyledSkillName>
+                <ReminderTooltip 
+                    itemKey={skillKey} 
+                    labelText={getSkillNameText(skillKey)} 
+                    reminders={SKILL_REMINDERS} 
+                />
+            </StyledSkillName>
             <span>
                 {skills[skillKey].value}
             </span>
