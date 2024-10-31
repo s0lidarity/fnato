@@ -169,6 +169,8 @@ export interface IProfession {
 export interface Skill {
     value: number;
     bonus: number;
+    // ajs, should add a label value here to make it easier to display the skill name in the skill form
+    label?: string;
     reminderText?: string;
     subType?: string;
 }
@@ -263,6 +265,52 @@ export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
     Swim: 20,
     UnarmedCombat: 40,
     Unnatural: 0,
+};
+
+export const SKILL_SUBTYPES: { [key in keyof Skills]: string | undefined } = {
+    Accounting: undefined,
+    Alertness: undefined,
+    Anthropology: undefined,
+    Archeology: undefined,
+    Art: undefined,
+    Artillery: undefined,
+    Athletics: undefined,
+    Bureaucracy: undefined,
+    ComputerScience: undefined,
+    Crafts: "Macrame",
+    Criminology: undefined,
+    Demolitions: undefined,
+    Disguise: undefined,
+    Dodge: undefined,
+    Drive: undefined,
+    Firearms: undefined,
+    FirstAid: undefined,
+    Forensics: undefined,
+    ForeignLanguages: "French",
+    HeavyMachinery: undefined,
+    HeavyWeapons: undefined,
+    History: undefined,
+    HUMINT: undefined,
+    Law: undefined,
+    Medicine: undefined,
+    MeleeWeapons: undefined,
+    MilitaryScience: undefined,
+    Navigate: undefined,
+    Occult: undefined,
+    Persuade: undefined,
+    Pharmacy: undefined,
+    Pilot: undefined,
+    Psychotherapy: undefined,
+    Ride: undefined,
+    Science: "Theoretical Physics",
+    Search: undefined,
+    SIGINT: undefined,
+    Stealth: undefined,
+    Surgery: undefined,
+    Survival: undefined,
+    Swim: undefined,
+    UnarmedCombat: undefined,
+    Unnatural: undefined,
 };
 
 export interface Skills {

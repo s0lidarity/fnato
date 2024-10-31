@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Skills } from '../../../../types/characterTypes';
 import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
-import SkillInput from './SkillInput';
+import ProfessionSkillInput from './ProfessionSkillInput';
 
 const SkillFormContainer = styled.div`
     display: grid;
@@ -24,7 +24,7 @@ const handleBonusChange = (skillKey: string) => {
 const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOptions) => {
     return Object.keys(skills).map((skillKey) => {
         return (
-            <SkillInput 
+            <ProfessionSkillInput 
                 config={professionConfig}
                 skillKey={skillKey} 
                 handleBonusChange={handleBonusChange} 

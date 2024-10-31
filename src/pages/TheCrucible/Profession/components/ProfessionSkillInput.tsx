@@ -1,11 +1,15 @@
-import { NumberInput, Separator } from 'react95';
+import { Button, NumberInput, Separator, TextInput } from 'react95';
+import { useState } from 'preact/hooks';
 import styled from 'styled-components';
+import { IoAddSharp } from "react-icons/io5";
+
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import { getSkillNameText } from './utils';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import { SKILL_REMINDERS } from '../../../../types/characterTypes';
 import { ProfessionConfigOptions } from '../../../../types/componentTypes';
+import Dialogue from '../../../../components/Dialogue/Dialogue';
 
 const SkillInputContainer = styled.div`
     display: flex;
@@ -19,9 +23,30 @@ const SkillInputContainer = styled.div`
 `;
 
 const StyledSkillName = styled.div`
-    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
     flex-grow: 1;
-    justify-content: flex-start;
+    min-width: 0;
+`;
+
+const StyledSubtypeButton = styled(Button)`
+    flex-shrink: 0;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    min-width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const StyledSubtypeInput = styled(TextInput)`
+    width: 3rem;    
+    flex-shrink: 0;
+    height: 1rem;
 `;
 
 const StyledValueContainer = styled.div`
@@ -54,8 +79,9 @@ type SkillInputProps = {
     handleBonusChange: (skillKey: string) => (value: number) => void;
 };
 
-function SkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
+function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
     const { skills } = useSkills();
+    const [ showModal, setShowModal ] = useState(false);
 
     return (
         <SkillInputContainer>
@@ -65,8 +91,30 @@ function SkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
                     labelText={getSkillNameText(skillKey)} 
                     reminders={SKILL_REMINDERS} 
                 />
-                {/* need to be able to assign a subtype here */}
-                {skills[skillKey].subType}
+                <span>
+                    {/* this span needs to become its own component, it's getting too big */}
+                {
+                    skills[skillKey].subType && (
+                        <StyledSubtypeButton onClick={() => setShowModal(true)}>
+                            <IoAddSharp />
+                        </StyledSubtypeButton>
+                    )
+                }
+                {
+                    showModal && (
+                        <Dialogue
+                            title={`${getSkillNameText(skillKey)} Subtype`}
+                            show={showModal}
+                            setShow={setShowModal}
+                        >
+                            <StyledSubtypeInput
+                                value={skills[skillKey].subType}
+                                onChange={() => console.log('subtype changed')}
+                            />
+                        </Dialogue>
+                    )
+                }
+                </span>
             </StyledSkillName>
             <StyledValueContainer>
                 {skills[skillKey].value}
@@ -86,4 +134,4 @@ function SkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
     );
 };
 
-export default SkillInput;
+export default ProfessionSkillInput;
