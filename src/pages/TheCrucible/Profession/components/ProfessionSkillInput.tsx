@@ -1,7 +1,7 @@
 import { Button, NumberInput, Separator, TextInput } from 'react95';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import { IoAddSharp } from "react-icons/io5";
+import { IoAddSharp, IoCheckmarkSharp } from "react-icons/io5";
 
 
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -43,10 +43,25 @@ const StyledSubtypeButton = styled(Button)`
     justify-content: center;
 `;
 
+const StyledDialogueContent = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+`;
+
 const StyledSubtypeInput = styled(TextInput)`
-    width: 3rem;    
-    flex-shrink: 0;
+    flex-grow: 1;
     height: 1rem;
+`;
+
+const StyledAcceptButton = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: unset;
+    width: 2rem;
+    height: 2rem;
 `;
 
 const StyledValueContainer = styled.div`
@@ -107,10 +122,15 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                             show={showModal}
                             setShow={setShowModal}
                         >
-                            <StyledSubtypeInput
-                                value={skills[skillKey].subType}
-                                onChange={() => console.log('subtype changed')}
-                            />
+                            <StyledDialogueContent>
+                                <StyledSubtypeInput
+                                    value={skills[skillKey].subType}
+                                    onChange={() => console.log('subtype changed')}
+                                />
+                                <StyledAcceptButton onClick={() => setShowModal(false)}>
+                                    <IoCheckmarkSharp />
+                                </StyledAcceptButton>
+                            </StyledDialogueContent>
                         </Dialogue>
                     )
                 }

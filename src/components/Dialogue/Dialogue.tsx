@@ -1,5 +1,4 @@
 import { Window, WindowContent, WindowHeader, Button } from 'react95';
-import { useState } from 'preact/hooks';
 import { IoCloseSharp } from "react-icons/io5";
 import styled from 'styled-components';
 
@@ -12,7 +11,8 @@ type DialogueProps = {
 
 const StyledWindow = styled(Window)`
     z-index: 1000;
-    position: absolute;
+    position: fixed;
+    width: 20rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -20,16 +20,30 @@ const StyledWindow = styled(Window)`
 
 const StyledWindowHeaderContainer = styled.div`
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100%;
 `;
 
 const StyledWindowHeaderTitle = styled.div`
-    flex-grow: 1;
-    justify-self: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 `;
 
-export default function Dialogue({ children, title, show, setShow }: DialogueProps) {
+const StyledButton = styled(Button)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export default function Dialogue({ 
+    children, 
+    title, 
+    show, 
+    setShow,
+}: DialogueProps) {
     return (
         <>
             {show && (
