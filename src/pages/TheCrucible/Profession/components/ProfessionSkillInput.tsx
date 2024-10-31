@@ -1,8 +1,7 @@
 import { Button, NumberInput, Separator, TextInput } from 'react95';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import { IoAddSharp, IoCheckmarkSharp } from "react-icons/io5";
-
+import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import { getSkillNameText } from './utils';
@@ -18,7 +17,7 @@ const SkillInputContainer = styled.div`
     justify-content: space-between;
     gap: 0.5rem;
     width: 100%;
-    min-width: 0;
+    min-width: fit-content;
     border: 2px solid ${({ theme }) => theme.borderDark};
 `;
 
@@ -27,8 +26,8 @@ const StyledSkillName = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
-    flex-grow: 1;
-    min-width: 0;
+    flex: 1;
+    min-width: 250px;
 `;
 
 const StyledSubtypeButton = styled(Button)`
@@ -66,7 +65,7 @@ const StyledAcceptButton = styled(Button)`
 
 const StyledValueContainer = styled.div`
     justify-content: flex-end;
-    margin-right: 0.5rem;
+    min-width: 2rem;
 `;
 
 const StyledNumberInput = styled(NumberInput)`
@@ -85,7 +84,7 @@ const StyledBonusContainer = styled.div`
     flex-direction: row;
     justify-content: flex-end;
     align-items: right;
-    margin-left: 0.5rem;
+    min-width: fit-content;
 `;
 
 type SkillInputProps = {
@@ -103,7 +102,7 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
             <StyledSkillName>
                 <ReminderTooltip 
                     itemKey={skillKey} 
-                    labelText={getSkillNameText(skillKey)} 
+                    labelText={getSkillNameText(skills[skillKey])} 
                     reminders={SKILL_REMINDERS} 
                 />
                 <span>
@@ -111,14 +110,14 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                 {
                     skills[skillKey].subType && (
                         <StyledSubtypeButton onClick={() => setShowModal(true)}>
-                            <IoAddSharp />
+                            <IoPencilOutline />
                         </StyledSubtypeButton>
                     )
                 }
                 {
                     showModal && (
                         <Dialogue
-                            title={`${getSkillNameText(skillKey)} Subtype`}
+                            title={`${getSkillNameText(skills[skillKey])} Subtype`}
                             show={showModal}
                             setShow={setShowModal}
                         >

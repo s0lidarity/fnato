@@ -7,11 +7,19 @@ import ProfessionSkillInput from './ProfessionSkillInput';
 
 const SkillFormContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 0.5rem;
     column-gap: 1rem;
     width: 95%;
     justify-content: space-between;
+`;
+
+const SkillInputContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: fit-content;
+    align-items: center;
 `;
 
 const handleBonusChange = (skillKey: string) => {
@@ -24,11 +32,13 @@ const handleBonusChange = (skillKey: string) => {
 const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOptions) => {
     return Object.keys(skills).map((skillKey) => {
         return (
-            <ProfessionSkillInput 
-                config={professionConfig}
-                skillKey={skillKey} 
-                handleBonusChange={handleBonusChange} 
-            />
+            <SkillInputContainer>
+                <ProfessionSkillInput 
+                    config={professionConfig}
+                    skillKey={skillKey} 
+                    handleBonusChange={handleBonusChange} 
+                />
+            </SkillInputContainer>
         );
     });
 };

@@ -5,7 +5,8 @@ import {
     Skills, 
     Statistics, 
     Stat,
-    SKILL_SUBTYPES
+    SKILL_SUBTYPES,
+    SKILL_LABELS
 } from '../types/characterTypes';
 
 export const defaultStat: Stat = {
@@ -29,6 +30,7 @@ export function generateDefaultSkills(): Skills {
         skills[skillName] = {
             value: SKILL_BASE_VALUES[skillName],
             bonus: 0,
+            label: SKILL_LABELS[skillName],
             reminderText: SKILL_REMINDERS[skillName],
             subType: SKILL_SUBTYPES[skillName],
         };

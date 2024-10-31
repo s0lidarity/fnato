@@ -1,7 +1,7 @@
-export function getSkillNameText(skillKey: string) {
-    if(skillKey.toUpperCase() === skillKey) {
-        return skillKey;
+import { Skill } from "../../../../types/characterTypes"
+export function getSkillNameText(skill: Skill) {
+    if(skill.subType) {
+        return `${skill.label} (${skill.subType})`;
     }
-    const tempArray = skillKey.match(/[A-Z][a-z]+/g);
-    return tempArray?.join(' ');
+    return skill.label;
 }

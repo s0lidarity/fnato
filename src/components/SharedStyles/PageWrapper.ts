@@ -5,7 +5,7 @@ const PageWrapper = styled.div`
   background: ${({ theme }) => theme.material};
 	align-items: center;
 	justify-content: center;
-  width: clamp(300px, 80vw, 800px);
+  width: clamp(300px, 80vw, 1200px);
   margin-top: 1rem;
   @media (max-width: 768px) {
     width: clamp(200px, 95%, 600px);

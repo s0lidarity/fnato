@@ -36,7 +36,6 @@ export function Profession() {
                 {renderProfessionInput(config)}
             </div>
             <div>
-                <h2>Skills</h2>
                 <SkillForm professionConfig={config} />
             </div>
         </div>
