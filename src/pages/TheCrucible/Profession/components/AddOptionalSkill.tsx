@@ -13,18 +13,18 @@ const AddOptionalSkillContainer = styled.div`
 `;
 
 const AddOptionalSkill = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [show, setShow] = useState(false);
 
     return (
         <>
             <AddOptionalSkillContainer>
-                <Button onClick={() => setIsOpen(true)}>
+                <Button onClick={() => setShow(true)}>
                     <IoAddSharp />
                 </Button>
             </AddOptionalSkillContainer>
             <Dialogue
-                show={isOpen}
-                setShow={setIsOpen}
+                show={show}
+                setShow={setShow}
                 title="Add Optional Skill"
             >
                 <div>

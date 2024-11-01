@@ -4,7 +4,7 @@ import { Skill, Skills } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 
 type SKillsContextType = {
-    applyProfessionSkills: (professionSkills: Skills) => void;
+    applyProfessionSkills: (professionSkills: Skill[]) => void;
     resetSkills: () => void;
     skills: Skills;
     setSkills: (skills: Skills) => void;
@@ -37,8 +37,9 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
 
-    const applyProfessionSkills = (professionSkills: Skills) => {
-        const newSkills = { ...skills, ...professionSkills };
+    const applyProfessionSkills = (professionSkills: Skill[]) => {
+        const newSkills = { ...defaultSkills, ...professionSkills };
+        console.log(newSkills);
         setSkills(newSkills);
     };
 

@@ -11,6 +11,7 @@ const SkillFormContainer = styled.div`
     gap: 0.5rem;
     column-gap: 1rem;
     width: 95%;
+    justify-items: center;
     justify-content: space-between;
 `;
 

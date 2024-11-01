@@ -17,6 +17,7 @@ export class ProfessionalSkill implements IProfessionalSkill {
 };
 
 export class Profession implements IProfession {
+    name: string;
     affiliation?: string;
     bondCount: number;
     chosenSkillCount: number;
@@ -25,6 +26,7 @@ export class Profession implements IProfession {
     recommendedStats: StatisticKeys[];
 
     constructor(config: {
+        name: string;
         affiliation?: string;
         bondCount: number;
         chosenSkillCount: number;
@@ -32,6 +34,7 @@ export class Profession implements IProfession {
         professionalSkills: ProfessionalSkill[];
         recommendedStats: StatisticKeys[];
     }) {
+        this.name = config.name;
         this.affiliation = config.affiliation || "";
         this.bondCount = config.bondCount;
         this.chosenSkillCount = config.chosenSkillCount;
@@ -63,6 +66,7 @@ export class Profession implements IProfession {
 };
 
 export const Anthropologist = new Profession({
+    name: 'Anthropologist',
     professionalSkills: Profession.createSkillList([
             ['Anthropology', 50],
             ['Bureaucracy', 40],
@@ -86,6 +90,7 @@ export const Anthropologist = new Profession({
 });
 
 export const Historian = new Profession({
+    name: 'Historian',
     professionalSkills: Profession.createSkillList([
         ['Archeology', 50],
         ['Bureaucracy', 40],
@@ -106,6 +111,7 @@ export const Historian = new Profession({
 });
 
 export const Engineer = new Profession({
+    name: 'Engineer',
     professionalSkills: Profession.createSkillList([
         ['ComputerScience', 60],
         ['Crafts', 40, 'Electrician'],
@@ -129,6 +135,7 @@ export const Engineer = new Profession({
 });
 
 export const FederalAgent = new Profession({
+    name: 'Federal Agent',
     professionalSkills: Profession.createSkillList([
         ['Alertness', 50],
         ['Bureaucracy', 40],
@@ -155,6 +162,7 @@ export const FederalAgent = new Profession({
 });
 
 export const Physician = new Profession({
+    name: 'Physician',
     professionalSkills: Profession.createSkillList([
         ['Bureaucracy', 50], 
         ['FirstAid', 60],
@@ -176,6 +184,7 @@ export const Physician = new Profession({
 });
 
 export const Scientist = new Profession({
+    name: 'Scientist',
     professionalSkills: Profession.createSkillList([
         ['Bureaucracy', 40],
         ['ComputerScience', 40],
@@ -197,6 +206,7 @@ export const Scientist = new Profession({
 });
 
 export const SpecialOperator = new Profession({
+    name: 'Special Operator',
     professionalSkills: Profession.createSkillList([
         ['Alertness', 60],
         ['Athletics', 60],
@@ -218,6 +228,7 @@ export const SpecialOperator = new Profession({
 });
 
 export const Soldier = new Profession({
+    name: 'Soldier',
     professionalSkills: Profession.createSkillList([
         ['Alertness', 50],
         ['Athletics', 50],

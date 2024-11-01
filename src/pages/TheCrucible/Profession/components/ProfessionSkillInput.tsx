@@ -115,23 +115,21 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                     )
                 }
                 {
-                    showModal && (
-                        <Dialogue
-                            title={`${getSkillNameText(skills[skillKey])} Subtype`}
-                            show={showModal}
-                            setShow={setShowModal}
-                        >
-                            <StyledDialogueContent>
-                                <StyledSubtypeInput
-                                    value={skills[skillKey].subType}
-                                    onChange={() => console.log('subtype changed')}
-                                />
-                                <StyledAcceptButton onClick={() => setShowModal(false)}>
-                                    <IoCheckmarkSharp />
-                                </StyledAcceptButton>
-                            </StyledDialogueContent>
-                        </Dialogue>
-                    )
+                    <Dialogue
+                        title={`${getSkillNameText(skills[skillKey])} Subtype`}
+                        show={showModal}
+                        setShow={setShowModal}
+                    >
+                        <StyledDialogueContent>
+                            <StyledSubtypeInput
+                                value={skills[skillKey].subType}
+                                onChange={() => console.log('subtype changed')}
+                            />
+                            <StyledAcceptButton onClick={() => setShowModal(false)}>
+                                <IoCheckmarkSharp />
+                            </StyledAcceptButton>
+                        </StyledDialogueContent>
+                    </Dialogue>
                 }
                 </span>
             </StyledSkillName>
