@@ -5,6 +5,7 @@ import { useState } from 'preact/hooks';
 import { Profession } from '../../../../utils/Professions';
 import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
+import ChosenSkillPicker from './ChosenSkillPicker';
 
 const StyledSelectContainer = styled.div`
     display: flex;
@@ -50,7 +51,12 @@ function ChooseProfession() {
                     onChange={(selectedOption: any) => handleProfessionSelect(selectedOption.value)} 
                 />
             </StyledSelectContainer>
-            {showChosenSkillPicker && <ChosenSkillPicker chosenSkills={selectedProfession?.choosableSkills || []} />}
+            {showChosenSkillPicker 
+                && <ChosenSkillPicker 
+                    chosenSkills={selectedProfession?.choosableSkills || []} 
+                    count={selectedProfession?.chosenSkillCount || 0}
+                />
+            }
         </span>
     )
 }

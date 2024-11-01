@@ -72,7 +72,7 @@ function StatDescriptors() {
     };
 
     // need to limit this to the relevant statkey
-    const assignSuggested = (e, statKey) => {
+    const assignSuggested = (statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}})
     };
 
@@ -93,11 +93,8 @@ function StatDescriptors() {
     };
 
     // StatKey should be an enum
-    interface statDescriptorProps {
-        statKey: string;
-    };
 
-    const statDescriptor = (statKey) => {
+    const statDescriptor = (statKey: string) => {
         return (
             <StyledStatDescriptorContainer key={`${statKey}-container`}>
                 <StyledInputContainer>
@@ -110,7 +107,7 @@ function StatDescriptors() {
                         onChange={(e) => handleChange(e, statKey)}
                     />
                     <Button onClick={(e) => handleClear(e, statKey)}>Clear</Button>
-                    <Button onClick={(e) => assignSuggested(e, statKey)}>Use Suggested</Button>
+                    <Button onClick={() => assignSuggested(statKey)}>Use Suggested</Button>
                 </StyledInputContainer>
             </StyledStatDescriptorContainer>
         );

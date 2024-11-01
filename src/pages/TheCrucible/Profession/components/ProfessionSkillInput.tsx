@@ -18,7 +18,7 @@ const SkillInputContainer = styled.div`
     gap: 0.5rem;
     width: 100%;
     min-width: fit-content;
-    border: 2px solid ${({ theme }) => theme.borderDark};
+    border: 0.2rem solid ${({ theme }) => theme.borderDark};
 `;
 
 const StyledSkillName = styled.div`
@@ -94,8 +94,22 @@ type SkillInputProps = {
 };
 
 function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
-    const { skills } = useSkills();
+    const { skills, setSkillByKey } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
+    // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
+    const [ localSubType, setLocalSubType ] = useState(skills[skillKey].subType || '');
+
+
+    // AJS: get clarity on how to import the right type for this event
+    // console logs show the event coming in as InputEvent
+    const handleSubtypeChange = (e: any) => {
+        setLocalSubType(e?.target?.value);
+    };
+
+    const applySubtype = () => {
+        setSkillByKey(skillKey, { ...skills[skillKey], subType: localSubType });
+        setShowModal(false);
+    };
 
     return (
         <SkillInputContainer>
@@ -122,10 +136,13 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                     >
                         <StyledDialogueContent>
                             <StyledSubtypeInput
-                                value={skills[skillKey].subType}
-                                onChange={() => console.log('subtype changed')}
+                                key={`${skillKey}-subtype`}
+                                type="text"
+                                id={`${skillKey}-subtype`}
+                                value={localSubType}
+                                onChange={(e: any) => handleSubtypeChange(e)}
                             />
-                            <StyledAcceptButton onClick={() => setShowModal(false)}>
+                            <StyledAcceptButton onClick={applySubtype}>
                                 <IoCheckmarkSharp />
                             </StyledAcceptButton>
                         </StyledDialogueContent>

@@ -14,7 +14,9 @@ type ChosenSkillPickerProps = {
 
 const ChosenSkillPicker = ({chosenSkills, count}: ChosenSkillPickerProps) => {
     const [show, setShow] = useState(true);
+    // need to track chosen skills and remaining choices
     const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
+    const [remainingChoices, setRemainingChoices] = useState(count);
 
     const toggleSelectedSkill = (skill: Skill) => {
         setSelectedSkills((prevSkills) => prevSkills.includes(skill) ? prevSkills.filter((s) => s !== skill) : [...prevSkills, skill]);

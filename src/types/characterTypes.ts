@@ -294,7 +294,7 @@ export const SKILL_SUBTYPES: { [key in keyof Skills]: string | undefined } = {
     Law: undefined,
     Medicine: undefined,
     MeleeWeapons: undefined,
-    MilitaryScience: undefined,
+    MilitaryScience: "Land",
     Navigate: undefined,
     Occult: undefined,
     Persuade: undefined,

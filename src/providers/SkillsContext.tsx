@@ -8,7 +8,7 @@ type SKillsContextType = {
     resetSkills: () => void;
     skills: Skills;
     setSkills: (skills: Skills) => void;
-    setSkillByKey: (skillKey: string, value: number, bonus: number) => void;
+    setSkillByKey: (skillKey: string, skillUpdate: Partial<Skill>) => void;
 }
 
 const SkillsContext = createContext<SKillsContextType | undefined>(undefined);
@@ -30,10 +30,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setSkills(defaultSkills);
     };
 
-    const setSkillByKey = (skillKey: string, value: number, bonus: number = 0) => {
+    const setSkillByKey = (skillKey: string, skillUpdate: Partial<Skill>) => {
         setSkills({
             ...skills,
-            [skillKey]: { value, bonus },
+            [skillKey]: { ...skills[skillKey], ...skillUpdate },
         });
     };
 
