@@ -6,26 +6,13 @@ import { useStats } from '../../../../../providers/StatisticsContext';
 import StatInput from '../StatInput/StatInput';
 import { Statistics } from '../../../../../types/characterTypes';
 import { StatsConfigOptions } from '../../../../../types/componentTypes';
-import PointsCounter from '../PointsCounter/PointsCounter';
+import PointsCounter from '../../../../../components/PointsCounter/PointsCounter';
 
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     margin-top: 0.75rem;
     align-items: center;
-`;
-
-const PointsContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.25rem;
-`;
-
-const PointsLabel = styled.label <{ showWarning?: boolean }>`
-    margin-right: 0.5rem;
-    color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.materialTextDisabled : 'inherit'};
-    background-color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.canvasTextInvert : 'inherit'};
 `;
 
 interface ManualInputStatsProps {
@@ -90,11 +77,8 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
             {renderStatInputs()}
             <ButtonContainer>
                 <Button onClick={resetStats}>Reset Statistics</Button>
-                {config === StatsConfigOptions.PointBuy && 
-                    <PointsContainer>
-                        <PointsLabel showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
-                        <PointsCounter value={points} />
-                    </PointsContainer>}
+                {config === StatsConfigOptions.PointBuy 
+                && <PointsCounter value={points} showNoPointsWarning={showNoPointsWarning} />}
             </ButtonContainer>
         </div>
     );

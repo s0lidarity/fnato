@@ -90,12 +90,12 @@ const StyledBonusContainer = styled.div`
 type SkillInputProps = {
     config: ProfessionConfigOptions;
     skillKey: string;
-    handleBonusChange: (skillKey: string) => (value: number) => void;
 };
 
-function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInputProps) {
+function ProfessionSkillInput({ config, skillKey }: SkillInputProps) {
     const { skills, setSkillByKey } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
+    const [ localBonus, setLocalBonus ] = useState(skills[skillKey].bonus); 
     // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
     const [ localSubType, setLocalSubType ] = useState(skills[skillKey].subType || '');
 
@@ -109,6 +109,14 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
     const applySubtype = () => {
         setSkillByKey(skillKey, { ...skills[skillKey], subType: localSubType });
         setShowModal(false);
+    };
+
+    type handleBonusChangeProps = {
+        bonus: number;
+        skillKey: string;
+    };
+    const handleBonusChange = ({ bonus, skillKey }: handleBonusChangeProps) => {
+        setSkillByKey(skillKey, { ...skills[skillKey], bonus });
     };
 
     return (
@@ -130,7 +138,7 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                 }
                 {
                     <Dialogue
-                        title={`${getSkillNameText(skills[skillKey])} Subtype`}
+                        title="Enter a Subtype"
                         show={showModal}
                         setShow={setShowModal}
                     >
@@ -160,8 +168,8 @@ function ProfessionSkillInput({ config, skillKey, handleBonusChange }: SkillInpu
                     min={0}
                     max={8}
                     width="4rem"
-                    value={skills[skillKey].bonus}
-                    onChange={handleBonusChange(skillKey)}
+                    value={localBonus}
+                    onChange={() => handleBonusChange({ bonus: localBonus, skillKey })}
                 />
             </StyledBonusContainer>
         </SkillInputContainer>

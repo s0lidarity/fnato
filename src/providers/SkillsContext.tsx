@@ -11,6 +11,8 @@ type SKillsContextType = {
     setSkillByKey: (skillKey: string, skillUpdate: Partial<Skill>) => void;
 }
 
+const MAX_BONUS_POINTS = 8;
+
 const SkillsContext = createContext<SKillsContextType | undefined>(undefined);
 
 const defaultSkills = generateDefaultSkills();
@@ -25,6 +27,18 @@ export const useSkills = () => {
 
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skills, setSkills] = useState<Skills>(defaultSkills);
+    const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
+    
+
+    const calculateRemainingBonusPoints = (newSkills: Skills) => {
+        let total = 0;
+        Object.keys(skills).forEach(skillKey => {
+            if(skills[skillKey].bonus){
+                total += skills[skillKey].bonus;
+            }
+        });
+        return MAX_BONUS_POINTS - total;
+    };
 
     const resetSkills = () => {
         setSkills(defaultSkills);
@@ -39,8 +53,11 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const applyProfessionSkills = (professionSkills: Skill[]) => {
         const newSkills = { ...defaultSkills, ...professionSkills };
-        console.log(newSkills);
-        setSkills(newSkills);
+        if(calculateRemainingBonusPoints(newSkills) > 0){
+            setSkills(newSkills);
+        } else {
+            console.warn('Not enough bonus points remaining to apply profession skills');
+        }
     };
 
     return (

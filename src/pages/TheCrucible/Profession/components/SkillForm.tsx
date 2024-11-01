@@ -23,13 +23,6 @@ const SkillInputContainer = styled.div`
     align-items: center;
 `;
 
-const handleBonusChange = (skillKey: string) => {
-    return (value: number) => {
-        console.log(skillKey, value);
-    };
-    // we'll apply the bonus to the skill value and record both
-};
-
 const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOptions) => {
     return Object.keys(skills).map((skillKey) => {
         return (
@@ -37,7 +30,6 @@ const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOpt
                 <ProfessionSkillInput 
                     config={professionConfig}
                     skillKey={skillKey} 
-                    handleBonusChange={handleBonusChange} 
                 />
             </SkillInputContainer>
         );
