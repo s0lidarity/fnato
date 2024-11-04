@@ -17,7 +17,6 @@ const SkillInputContainer = styled.div`
     justify-content: space-between;
     gap: 0.5rem;
     width: 100%;
-    min-width: fit-content;
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
 `;
 
@@ -88,13 +87,13 @@ const StyledBonusContainer = styled.div`
 `;
 
 type SkillInputProps = {
-    config: ProfessionConfigOptions;
     skillKey: string;
 };
 
-function ProfessionSkillInput({ config, skillKey }: SkillInputProps) {
-    const { skills, setSkillByKey } = useSkills();
+function ProfessionSkillInput({ skillKey }: SkillInputProps) {
+    const { decrementBonusPoint, incrementBonusPoint, skills, setSkillByKey } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
+    // AJS, is localBonus necessary?
     const [ localBonus, setLocalBonus ] = useState(skills[skillKey].bonus); 
     // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
     const [ localSubType, setLocalSubType ] = useState(skills[skillKey].subType || '');
@@ -116,8 +115,17 @@ function ProfessionSkillInput({ config, skillKey }: SkillInputProps) {
         skillKey: string;
     };
     const handleBonusChange = ({ bonus, skillKey }: handleBonusChangeProps) => {
-        setSkillByKey(skillKey, { ...skills[skillKey], bonus });
+        const bonusChange = bonus - skills[skillKey].bonus;
+        setLocalBonus(bonus);
+        if(bonusChange > 0){
+            incrementBonusPoint(skillKey);
+        } else {
+            decrementBonusPoint(skillKey);
+        }
     };
+
+    // AJS need a special case to handle Crafts, Foreign Languages, and other skills
+    // they are objects containing skills, keyed by subType, might be better as arrays
 
     return (
         <SkillInputContainer>

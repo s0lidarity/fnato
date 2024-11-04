@@ -1,4 +1,9 @@
-import { IProfession, Skill, Skills, SKILL_BASE_VALUES, StatisticKeys } from "../types/characterTypes";
+import { 
+    IProfession, 
+    Skill, 
+    Skills, 
+    StatisticKeys 
+} from "../types/characterTypes";
 
 type IProfessionalSkill = Skill & { skillName: keyof Skills; subType?: string };
 

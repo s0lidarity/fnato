@@ -5,6 +5,9 @@ import { generateDefaultSkills } from './defaultValues';
 
 type SKillsContextType = {
     applyProfessionSkills: (professionSkills: Skill[]) => void;
+    bonusPointsRemaining: number;
+    decrementBonusPoint: (skillKey: string) => boolean;
+    incrementBonusPoint: (skillKey: string) => boolean;
     resetSkills: () => void;
     skills: Skills;
     setSkills: (skills: Skills) => void;
@@ -29,8 +32,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skills, setSkills] = useState<Skills>(defaultSkills);
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     
-
-    const calculateRemainingBonusPoints = (newSkills: Skills) => {
+    // AJS refactor opportunity, move this to a util function
+    const calculateRemainingBonusPoints = () => {
         let total = 0;
         Object.keys(skills).forEach(skillKey => {
             if(skills[skillKey].bonus){
@@ -38,6 +41,30 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             }
         });
         return MAX_BONUS_POINTS - total;
+    };
+
+    const incrementBonusPoint = (skillKey: string): boolean => {
+        if(bonusPointsRemaining > 0){
+            setBonusPointsRemaining(bonusPointsRemaining - 1);
+            setSkills({
+                ...skills,
+                [skillKey]: { ...skills[skillKey], bonus: skills[skillKey].bonus + 1 },
+            });
+            return true;
+        }
+        return false;
+    };
+
+    const decrementBonusPoint = (skillKey: string): boolean => {
+        if(skills[skillKey].bonus > 0 && bonusPointsRemaining < MAX_BONUS_POINTS){
+            setBonusPointsRemaining(bonusPointsRemaining + 1);
+            setSkills({
+                ...skills,
+                [skillKey]: { ...skills[skillKey], bonus: skills[skillKey].bonus - 1 },
+            });
+            return true;
+        }
+        return false;
     };
 
     const resetSkills = () => {
@@ -53,17 +80,20 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const applyProfessionSkills = (professionSkills: Skill[]) => {
         const newSkills = { ...defaultSkills, ...professionSkills };
-        if(calculateRemainingBonusPoints(newSkills) > 0){
-            setSkills(newSkills);
-        } else {
-            console.warn('Not enough bonus points remaining to apply profession skills');
-        }
+        // clear bonus points
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
+        // apply Profession skills
+        setSkills(newSkills);
+        setBonusPointsRemaining(calculateRemainingBonusPoints());
     };
 
     return (
         <SkillsContext.Provider 
             value={{ 
                 applyProfessionSkills,
+                bonusPointsRemaining,
+                decrementBonusPoint,
+                incrementBonusPoint,
                 resetSkills,
                 skills,
                 setSkills,

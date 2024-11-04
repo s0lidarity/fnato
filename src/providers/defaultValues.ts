@@ -1,12 +1,9 @@
 import { 
     Skill, 
-    SKILL_BASE_VALUES, 
-    SKILL_REMINDERS, 
     Skills, 
     Statistics, 
     Stat,
-    SKILL_SUBTYPES,
-    SKILL_LABELS
+    DEFAULT_SKILLS
 } from '../types/characterTypes';
 
 export const defaultStat: Stat = {
@@ -24,16 +21,28 @@ export const defaultStats: Statistics = {
     charisma: defaultStat,
 };
 
+export function generateSkillLabel(skill: Skill) {
+    if(skill.subType) {
+        return `${skill.label} (${skill.subType})`;
+    }
+    return skill.label;
+}
 export function generateDefaultSkills(): Skills {
-    const skills: Skills = {} as Skills;
-    Object.keys(SKILL_BASE_VALUES).forEach((skillName) => {
-        skills[skillName] = {
-            value: SKILL_BASE_VALUES[skillName],
-            bonus: 0,
-            label: SKILL_LABELS[skillName],
-            reminderText: SKILL_REMINDERS[skillName],
-            subType: SKILL_SUBTYPES[skillName],
-        };
-    });
+    const skills: Skills = {
+        ...DEFAULT_SKILLS,
+        otherSkills: {},
+        Crafts: {
+            "Macrame": {
+                ...DEFAULT_SKILLS.Crafts,
+                label: "Crafts (Macrame)",
+            }
+        },
+        ForeignLanguages: {
+            "French": {
+                ...DEFAULT_SKILLS.ForeignLanguages,
+                label: "Foreign Languages (French)",
+            }
+        }
+    };
     return skills;
 }

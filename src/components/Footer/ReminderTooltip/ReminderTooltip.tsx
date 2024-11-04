@@ -14,6 +14,7 @@ const StyledLabel = styled.label`
 interface ReminderTooltipProps {
     itemKey: string;
     labelText: string;
+    // AJS rework reminder to look at the value from the skill instead of the hard-look up
     reminders: { [key: string]: string };
 }
 
@@ -31,6 +32,7 @@ export function ReminderTooltip({ itemKey, labelText, reminders }: ReminderToolt
             leaveDelay={500}
         >
             <StyledLabel>{labelText}</StyledLabel>
+            {/* AJS let's add an icon here to indicate it's a tooltip */}
         </Tooltip>
     );
 };

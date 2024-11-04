@@ -4,6 +4,7 @@ import { Skills } from '../../../../types/characterTypes';
 import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillInput from './ProfessionSkillInput';
+import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 
 const SkillFormContainer = styled.div`
     display: grid;
@@ -28,7 +29,6 @@ const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOpt
         return (
             <SkillInputContainer>
                 <ProfessionSkillInput 
-                    config={professionConfig}
                     skillKey={skillKey} 
                 />
             </SkillInputContainer>
@@ -40,12 +40,15 @@ type SkillFormProps = {
     professionConfig: ProfessionConfigOptions;
 };
 const SkillForm = ({ professionConfig }: SkillFormProps) => {
-    const { skills, setSkills, setSkillByKey } = useSkills();
+    const { skills, bonusPointsRemaining, setSkills, setSkillByKey } = useSkills();
 
     return (
-        <SkillFormContainer>
-            {renderSkillInputs(skills, professionConfig)}
-        </SkillFormContainer>
+        <div>
+            <SkillFormContainer>
+                {renderSkillInputs(skills, professionConfig)}
+            </SkillFormContainer>
+            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning />
+        </div>
     );
 };
 
