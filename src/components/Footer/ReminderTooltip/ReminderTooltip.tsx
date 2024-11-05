@@ -9,6 +9,22 @@ const StyledTooltipInnerText = styled.span`
 
 const StyledLabel = styled.label`
     margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+`;
+
+const StyledQuestionmark = styled.span`
+    display: flex;
+    margin-left: 0.25rem;
+    font-size: 0.75rem;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.materialDark};
+    color: ${({ theme }) => theme.materialLight};
+    padding: 0.1rem;
+    cursor: help;
 `;
 
 interface ReminderTooltipProps {
@@ -31,8 +47,7 @@ export function ReminderTooltip({ itemKey, labelText, reminders }: ReminderToolt
             enterDelay={100}
             leaveDelay={500}
         >
-            <StyledLabel>{labelText}</StyledLabel>
-            {/* AJS let's add an icon here to indicate it's a tooltip */}
+            <StyledLabel>{labelText}<StyledQuestionmark>?</StyledQuestionmark></StyledLabel>
         </Tooltip>
     );
 };
