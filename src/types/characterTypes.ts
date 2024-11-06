@@ -167,17 +167,20 @@ export interface IProfession {
 }
 
 export interface Skill {
+    id: string;
+    name: string;
     value: number;
     bonus: number;
     label?: string;
     reminderText?: string;
     subType?: string;
+    isDefault?: boolean;
 }
 
 export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Accounting: "Business Math",
     Alertness: "Noticing things",
-    Anthropology: "Study of ",
+    Anthropology: "Study of humans and their cultures",
     Archeology: "Jurassic Park",
     Art: "Painting",
     Artillery: "Making things explode from far away",
@@ -220,52 +223,9 @@ export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Unnatural: "It's a jeep thing, you wouldn't understand",
 };
 
-export interface Skills {
-    Accounting: Skill;
-    Alertness: Skill;
-    Anthropology: Skill;
-    Archeology: Skill;
-    Art: Skill;
-    Artillery: Skill;
-    Athletics: Skill;
-    Bureaucracy: Skill;
-    ComputerScience: Skill;
-    Crafts: { [subtype: string]: Skill };
-    Criminology: Skill;
-    Demolitions: Skill;
-    Disguise: Skill;
-    Dodge: Skill;
-    Drive: Skill;
-    Firearms: Skill;
-    FirstAid: Skill;
-    Forensics: Skill;
-    HeavyMachinery: Skill;
-    HeavyWeapons: Skill;
-    History: Skill;
-    HUMINT: Skill;
-    Law: Skill;
-    Medicine: Skill;
-    MeleeWeapons: Skill;
-    MilitaryScience: Skill;
-    Navigate: Skill;
-    Occult: Skill;
-    Persuade: Skill;
-    Pharmacy: Skill;
-    Pilot: Skill;
-    Psychotherapy: Skill;
-    Ride: Skill;
-    Science: Skill;
-    Search: Skill;
-    SIGINT: Skill;
-    Stealth: Skill;
-    Surgery: Skill;
-    Survival: Skill;
-    Swim: Skill;
-    UnarmedCombat: Skill;
-    Unnatural: Skill;
-    ForeignLanguages?: { [skillName: string]: Skill };
-    otherSkills?: { [skillName: string]: Skill };
-}
+// AJS this is overdone, can we just have this be a collection of skills? initialzing on defaults
+// insert new skills at the end of the list, or alphabetically?
+export type Skills = Skill[];
 
 // AJS consider adding shortHand value, ie: constitution -> con
 export interface Stat {
@@ -308,270 +268,399 @@ interface DamagedVeteranAdjustment {
 
 export type StatisticKeys = keyof Statistics;
 
-export const DEFAULT_SKILLS: { [key in keyof Skills]: Skill & { label: string; reminderText: string } } = {
-    Accounting: {
+export const DEFAULT_SKILLS: Skill[] = [
+    {
+        id: 'accounting',
+        name: "Accounting",
         value: 10,
         bonus: 0,
         label: "Accounting",
         reminderText: "Business Math",
+        isDefault: true
     },
-    Alertness: {
+    {
+        id: 'alertness',
+        name: "Alertness",
         value: 20,
         bonus: 0,
         label: "Alertness",
         reminderText: "Noticing things",
+        isDefault: true
     },
-    Anthropology: {
+    {
+        id: 'anthropology',
+        name: "Anthropology",
         value: 0,
         bonus: 0,
         label: "Anthropology",
-        reminderText: "Study of ",
+        reminderText: "Study of humans and their cultures",
+        isDefault: true
     },
-    Archeology: {
+    {
+        id: 'archeology',
+        name: "Archeology",
         value: 0,
         bonus: 0,
         label: "Archeology",
         reminderText: "Jurassic Park",
+        isDefault: true
     },
-    Art: {
+    {
+        id: 'art',
+        name: "Art",
         value: 0,
         bonus: 0,
         label: "Art",
         reminderText: "Painting",
+        isDefault: true
     },
-    Artillery: {
+    {
+        id: 'artillery',
+        name: "Artillery",
         value: 0,
         bonus: 0,
         label: "Artillery",
         reminderText: "Making things explode from far away",
+        isDefault: true
     },
-    Athletics: {
+    {
+        id: 'athletics',
+        name: "Athletics",
         value: 30,
         bonus: 0,
         label: "Athletics",
         reminderText: "Jumping, ducking, running, climbing, etc",
+        isDefault: true
     },
-    Bureaucracy: {
+    {
+        id: 'bureaucracy',
+        name: "Bureaucracy",
         value: 10,
         bonus: 0,
         label: "Bureaucracy",
         reminderText: "Greasing the wheels of government",
+        isDefault: true
     },
-    ComputerScience: {
+    {
+        id: 'computer-science',
+        name: "Computer Science",
         value: 0,
         bonus: 0,
         label: "Computer Science",
         reminderText: "010111100001",
+        isDefault: true
     },
-    Crafts: {
+    {
+        id: 'crafts',
+        name: "Crafts",
         value: 0,
         bonus: 0,
         label: "Craft",
         reminderText: "Inner Adam Savage",
         subType: "Macrame",
+        isDefault: true
     },
-    Criminology: {
+    {
+        id: 'criminology',
+        name: "Criminology",
         value: 10,
         bonus: 0,
         label: "Criminology",
         reminderText: "Muddying the waters of a crime-scene",
+        isDefault: true
     },
-    Demolitions: {
+    {
+        id: 'demolitions',
+        name: "Demolitions",
         value: 0,
         bonus: 0,
         label: "Demolitions",
         reminderText: "Controlled explosions",
+        isDefault: true
     },
-    Disguise: {
+    {
+        id: 'disguise',
+        name: "Disguise",
         value: 10,
         bonus: 0,
         label: "Disguise",
         reminderText: "Gene Parmesan, he's the best",
+        isDefault: true
     },
-    Dodge: {
+    {
+        id: 'dodge',
+        name: "Dodge",
         value: 30,
         bonus: 0,
         label: "Dodge",
         reminderText: "Avoiding getting hit",
+        isDefault: true
     },
-    Drive: {
+    {
+        id: 'drive',
+        name: "Drive",
         value: 20,
         bonus: 0,
         label: "Drive",
         reminderText: "Opearting a motor-vehicle",
+        isDefault: true
     },
-    Firearms: {
+    {
+        id: 'firearms',
+        name: "Firearms",
         value: 20,
         bonus: 0,
         label: "Firearms",
         reminderText: "pew-pew",
+        isDefault: true
     },
-    FirstAid: {
+    {
+        id: 'first-aid',
+        name: "First Aid",
         value: 10,
         bonus: 0,
         label: "First Aid",
         reminderText: "Minor urgent medical care",
+        isDefault: true
     },
-    Forensics: {
+    {
+        id: 'forensics',
+        name: "Forensics",
         value: 0,
         bonus: 0,
         label: "Forensics",
         reminderText: "CSI",
+        isDefault: true
     },
-    ForeignLanguages: {
+    {
+        id: 'foreign-languages',
+        name: "Foreign Languages",
         value: 0,
         bonus: 0,
         label: "Foreign Languages",
         reminderText: "Parles-vous Français?",
         subType: "French",
+        isDefault: true
     },
-    HeavyMachinery: {
+    {
+        id: 'heavy-machinery',
+        name: "Heavy Machinery",
         value: 10,
         bonus: 0,
         label: "Heavy Machinery",
         reminderText: "Forklifts, cranes, excavators, etc",
+        isDefault: true
     },
-    HeavyWeapons: {
+    {
+        id: 'heavy-weapons',
+        name: "Heavy Weapons",
         value: 0,
         bonus: 0,
         label: "Heavy Weapons",
         reminderText: "LMGs I think",
+        isDefault: true
     },
-    History: {
+    {
+        id: 'history',
+        name: "History",
         value: 10,
         bonus: 0,
         label: "History",
         reminderText: "If you haven't studied it you're doomed to repeat it",
+        isDefault: true
     },
-    HUMINT: {
+    {
+        id: 'humint',
+        name: "HUMINT",
         value: 10,
         bonus: 0,
         label: "HUMINT",
         reminderText: "Understanding human behavior",
+        isDefault: true
     },
-    Law: {
+    {
+        id: 'law',
+        name: "Law",
         value: 0,
         bonus: 0,
         label: "Law",
         reminderText: "Lawyering",
+        isDefault: true
     },
-    Medicine: {
+    {
+        id: 'medicine',
+        name: "Medicine",
         value: 0,
         bonus: 0,
         label: "Medicine",
         reminderText: "Medical practice",
+        isDefault: true
     },
-    MeleeWeapons: {
+    {
+        id: 'melee-weapons',
+        name: "Melee Weapons",
         value: 30,
         bonus: 0,
         label: "Melee Weapons",
         reminderText: "Knives, hatchets, swords, etc",
+        isDefault: true
     },
-    MilitaryScience: {
+    {
+        id: 'military-science',
+        name: "Military Science",
         value: 0,
         bonus: 0,
         label: "Military Science",
         reminderText: "Military tactics",
         subType: "Land",
+        isDefault: true
     },
-    Navigate: {
+    {
+        id: 'navigate',
+        name: "Navigate",
         value: 10,
         bonus: 0,
         label: "Navigate",
         reminderText: "Finding the path",
+        isDefault: true
     },
-    Occult: {
+    {
+        id: 'occult',
+        name: "Occult",
         value: 10,
         bonus: 0,
         label: "Occult",
         reminderText: "Cult shit",
+        isDefault: true
     },
-    Persuade: {
+    {
+        id: 'persuade',
+        name: "Persuade",
         value: 20,
         bonus: 0,
         label: "Persuade",
         reminderText: "Convincing people",
+        isDefault: true
     },
-    Pharmacy: {
+    {
+        id: 'pharmacy',
+        name: "Pharmacy",
         value: 0,
         bonus: 0,
         label: "Pharmacy",
         reminderText: "Do you like drugs?",
+        isDefault: true
     },
-    Pilot: {
+    {
+        id: 'pilot',
+        name: "Pilot",
         value: 0,
         bonus: 0,
         label: "Pilot",
         reminderText: "Operating flying vehicles",
+        isDefault: true
     },
-    Psychotherapy: {
+    {
+        id: 'psychotherapy',
+        name: "Psychotherapy",
         value: 10,
         bonus: 0,
         label: "Psychotherapy",
         reminderText: "Analysing thought",
+        isDefault: true
     },
-    Ride: {
+    {
+        id: 'ride',
+        name: "Ride",
         value: 10,
         bonus: 0,
         label: "Ride",
         reminderText: "Horses and such",
+        isDefault: true
     },
-    Science: {
+    {
+        id: 'science',
+        name: "Science",
         value: 0,
         bonus: 0,
         label: "Science",
         reminderText: "Physics, Chemistry, Biology, etc",
         subType: "Theoretical Physics",
+        isDefault: true
     },
-    Search: {
+    {
+        id: 'search',
+        name: "Search",
         value: 20,
         bonus: 0,
         label: "Search",
         reminderText: "Finding things",
+        isDefault: true
     },
-    SIGINT: {
+    {
+        id: 'sigint',
+        name: "SIGINT",
         value: 0,
         bonus: 0,
         label: "SIGINT",
         reminderText: "Signal intelligence, breaking codes",
+        isDefault: true
     },
-    Stealth: {
+    {
+        id: 'stealth',
+        name: "Stealth",
         value: 10,
         bonus: 0,
         label: "Stealth",
         reminderText: "Sneaking around",
+        isDefault: true
     },
-    Surgery: {
+    {
+        id: 'surgery',
+        name: "Surgery",
         value: 0,
         bonus: 0,
         label: "Surgery",
         reminderText: "Removing a bullet, stitching a wound",
+        isDefault: true
     },
-    Survival: {
+    {
+        id: 'survival',
+        name: "Survival",
         value: 10,
         bonus: 0,
         label: "Survival",
         reminderText: "Camping, tracking, improvising in nature",
+        isDefault: true
     },
-    Swim: {
+    {
+        id: 'swim',
+        name: "Swim",
         value: 20,
         bonus: 0,
         label: "Swim",
         reminderText: "Moving oneself through water",
+        isDefault: true
     },
-    UnarmedCombat: {
+    {
+        id: 'unarmed-combat',
+        name: "Unarmed Combat",
         value: 40,
         bonus: 0,
         label: "Unarmed Combat",
         reminderText: "Punch, kick, grapple, bite, etc",
+        isDefault: true
     },
-    Unnatural: {
+    {
+        id: 'unnatural',
+        name: "Unnatural",
         value: 0,
         bonus: 0,
         label: "Unnatural",
         reminderText: "It's a jeep thing, you wouldn't understand",
+        isDefault: true
     },
-};
+];
 
 
 // ajs, replace this with an actual complete character when we get there

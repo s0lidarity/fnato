@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { 
     Skill, 
     Skills, 
@@ -27,22 +29,10 @@ export function generateSkillLabel(skill: Skill) {
     }
     return skill.label;
 }
+
 export function generateDefaultSkills(): Skills {
-    const skills: Skills = {
-        ...DEFAULT_SKILLS,
-        otherSkills: {},
-        Crafts: {
-            "Macrame": {
-                ...DEFAULT_SKILLS.Crafts,
-                label: "Crafts (Macrame)",
-            }
-        },
-        ForeignLanguages: {
-            "French": {
-                ...DEFAULT_SKILLS.ForeignLanguages,
-                label: "Foreign Languages (French)",
-            }
-        }
-    };
-    return skills;
+    return DEFAULT_SKILLS.map(skill => ({
+        ...skill,
+        id: uuidv4()
+    }));
 }
