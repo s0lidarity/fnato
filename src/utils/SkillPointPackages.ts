@@ -6,10 +6,8 @@
 import { Skill, Skills } from "../types/characterTypes";
 
 export type BonusSkillChoice = 
-| [keyof Skills]                // skill without subtype
-| [keyof Skills, string]         // skill with subtype
-| ["Personal Specialty"]         // wildcard skill
-| ["Personal Specialty", string] // wildcard with subtype
+| [string]                // skill without subtype
+| [string, string]         // skill with subtype
 
 export type IBonusSkillPackage = [
     BonusSkillChoice,
@@ -28,47 +26,47 @@ export const createBonusSkillPackage = (skills: IBonusSkillPackage): IBonusSkill
 
 // ARTIST, ACTOR, OR MUSICIAN: Alertness, Craft (choose one), Disguise, Persuade, Art (choose one), Art (choose another), Art (choose another), HUMINT.
 export const ArtistBSP = createBonusSkillPackage([
-    ["Alertness"],
-    ["Crafts"],
-    ["Disguise"],
-    ["Persuade"],
-    ["Art", "Creative Writing"],
-    ["Art", "Journalism"],
-    ["Art", "Poetry"],
-    ["HUMINT"],
+    ["alertness"],
+    ["crafts"],
+    ["disguise"],
+    ["persuade"],
+    ["art", "Creative Writing"],
+    ["art", "Journalism"],
+    ["art", "Poetry"],
+    ["humint"],
 ]);
 // ATHLETE: Alertness, Athletics, Dodge, First Aid, HUMINT, Persuade, Swim, Unarmed Combat.
 export const AthleteBSP = createBonusSkillPackage([
-    ["Alertness"],
-    ["Athletics"],
-    ["Dodge"],
-    ["FirstAid"],
-    ["HUMINT"],
-    ["Persuade"],
-    ["Swim"],
-    ["UnarmedCombat"],
+    ["alertness"],
+    ["athletics"],
+    ["dodge"],
+    ["first-aid"],
+    ["humint"],
+    ["persuade"],
+    ["swim"],
+    ["unarmed-combat"],
 ]);
 // AUTHOR, EDITOR, OR JOURNALIST: Anthropology, Art (Creative Writing, Journalism, Poetry, Scriptwriting, etc.), Bureaucracy, History, Law, Occult, Persuade, HUMINT.
 export const AuthorBSP = createBonusSkillPackage([
-    ["Anthropology"],
-    ["Art", "Creative Writing"],
-    ["Bureaucracy"],
-    ["History"],
-    ["Law"],
-    ["Occult"],
-    ["Persuade"],
-    ["HUMINT"],
+    ["anthropology"],
+    ["art", "Creative Writing"],
+    ["bureaucracy"],
+    ["history"],
+    ["law"],
+    ["occult"],
+    ["persuade"],
+    ["humint"],
 ]);
 // “BLACK BAG” TRAINING: Alertness, Athletics, Craft (Ele- trician), Craft (Locksmithing), Criminology, Disguise, Search, Stealth.
 export const BlackBagBSP = createBonusSkillPackage([
-    ["Alertness"],
-    ["Athletics"],
-    ["Crafts", "Electrical"],
-    ["Crafts", "Locksmithing"],
-    ["Criminology"],
-    ["Disguise"],
-    ["Search"],
-    ["Stealth"],
+    ["alertness"],
+    ["athletics"],
+    ["crafts", "Electrical"],
+    ["crafts", "Locksmithing"],
+    ["criminology"],
+    ["disguise"],
+    ["search"],
+    ["stealth"],
 ]);
 // BLUE-COLLAR WORKER: Alertness, Craft (choose one), Craft (choose another), Drive, First Aid, Heavy Ma- chinery, Navigate, Search.
 // BUREAUCRAT: Accounting, Bureaucracy, Computer Sci- ence, Criminology, HUMINT, Law, Persuade, and one other as a personal specialty.

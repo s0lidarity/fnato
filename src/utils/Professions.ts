@@ -1,33 +1,17 @@
 import { 
+    DEFAULT_SKILLS,
     IProfession, 
     Skill, 
-    Skills, 
     StatisticKeys 
 } from "../types/characterTypes";
-
-type IProfessionalSkill = Skill & { skillName: keyof Skills; subType?: string };
-
-export class ProfessionalSkill implements IProfessionalSkill {
-    skillName: keyof Skills;
-    value: number;
-    bonus: number;
-    subType?: string;
-
-    constructor(skillName: keyof Skills, value: number, subType?: string){
-        this.skillName = skillName;
-        this.value = value;
-        this.bonus = 0;
-        this.subType = subType;
-    };
-};
 
 export class Profession implements IProfession {
     name: string;
     affiliation?: string;
     bondCount: number;
     chosenSkillCount: number;
-    choosableSkills: ProfessionalSkill[];
-    professionalSkills: ProfessionalSkill[];
+    choosableSkills: Skill[];
+    professionalSkills: Skill[];
     recommendedStats: StatisticKeys[];
 
     constructor(config: {
@@ -35,8 +19,8 @@ export class Profession implements IProfession {
         affiliation?: string;
         bondCount: number;
         chosenSkillCount: number;
-        choosableSkills: ProfessionalSkill[];
-        professionalSkills: ProfessionalSkill[];
+        choosableSkills: Skill[];
+        professionalSkills: Skill[];
         recommendedStats: StatisticKeys[];
     }) {
         this.name = config.name;
@@ -48,14 +32,24 @@ export class Profession implements IProfession {
         this.recommendedStats = config.recommendedStats;
     };
     
-    static createSkill(skillName: keyof Skills, value: number, subType?: string): ProfessionalSkill {
-        return new ProfessionalSkill(skillName, value, subType);
+    static createSkill(id: string, value: number, subType?: string): Skill {
+        const defaultSkill = DEFAULT_SKILLS.find(s => s.id === id);
+        const newSkill: Skill = {
+            id: id,
+            name: defaultSkill.name,
+            value: value,
+            bonus: 0,
+            label: defaultSkill.label,
+            reminderText: defaultSkill.reminderText,
+            subType: subType,
+        };
+        return newSkill;
     };
 
     static createSkillList(rawSkills: Array<
-        | [keyof Skills, number]            // [skillName, value]
-        | [keyof Skills, number, string]    // [skillName, value, subType]
-    >): ProfessionalSkill[] {
+        | [string, number]            // [skillName, value]
+        | [string, number, string]    // [skillName, value, subType]
+    >): Skill[] {
         return rawSkills.map((skill) => {
             switch (skill.length) {
                 case 2:
@@ -73,21 +67,21 @@ export class Profession implements IProfession {
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
     professionalSkills: Profession.createSkillList([
-            ['Anthropology', 50],
-            ['Bureaucracy', 40],
-            ['ForeignLanguages', 50],
-            ['ForeignLanguages', 40],
-            ['History', 60],
-            ['Occult', 40],
-            ['Persuade', 40],
+            ['anthropology', 50],
+            ['bureaucracy', 40],
+            ['foreign-languages', 50],
+            ['foreign-languages', 40],
+            ['history', 60],
+            ['occult', 40],
+            ['persuade', 40],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Anthropology', 50],
-        ['Archeology', 40],
-        ['HUMINT', 50],
-        ['Navigate', 50],
-        ['Search', 60],
-        ['Survival', 50],
+        ['anthropology', 50],
+        ['archeology', 40],
+        ['humint', 50],
+        ['navigate', 50],
+        ['search', 60],
+        ['survival', 50],
     ]),
     bondCount: 4,
     recommendedStats: ['intelligence'],
@@ -97,18 +91,18 @@ export const Anthropologist = new Profession({
 export const Historian = new Profession({
     name: 'Historian',
     professionalSkills: Profession.createSkillList([
-        ['Archeology', 50],
-        ['Bureaucracy', 40],
-        ['History', 60],
-        ['Occult', 40],
-        ['Persuade', 40]
+        ['archeology', 50],
+        ['bureaucracy', 40],
+        ['history', 60],
+        ['occult', 40],
+        ['persuade', 40]
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Anthropology', 50],
-        ['HUMINT', 50],
-        ['Navigate', 50],
-        ['Search', 60],
-        ['Survival', 50],
+        ['anthropology', 50],
+        ['humint', 50],
+        ['navigate', 50],
+        ['search', 60],
+        ['survival', 50],
     ]),
     bondCount: 4,
     recommendedStats: ['intelligence'],
@@ -118,21 +112,21 @@ export const Historian = new Profession({
 export const Engineer = new Profession({
     name: 'Engineer',
     professionalSkills: Profession.createSkillList([
-        ['ComputerScience', 60],
-        ['Crafts', 40, 'Electrician'],
-        ['Crafts', 40, 'Mechanic'],
-        ['Crafts', 40, 'Microelectronics'],
-        ['Science', 40, 'Mathematics'],
-        ['SIGINT', 40],   
+        ['computer-science', 60],
+        ['crafts', 40, 'Electrician'],
+        ['crafts', 40, 'Mechanic'],
+        ['crafts', 40, 'Microelectronics'],
+        ['science', 40, 'Mathematics'],
+        ['sigint', 40],   
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Accounting', 50],
-        ['Bureaucracy', 50],
-        ['Crafts', 40],
-        ['ForeignLanguages', 40],
-        ['HeavyMachinery', 50],
-        ['Law', 40],
-        ['Science', 40],
+        ['accounting', 50],
+        ['bureaucracy', 50],
+        ['crafts', 40],
+        ['foreign-languages', 40],
+        ['heavy-machinery', 50],
+        ['law', 40],
+        ['science', 40],
     ]),
     bondCount: 3,
     recommendedStats: ['intelligence'],
@@ -142,24 +136,24 @@ export const Engineer = new Profession({
 export const FederalAgent = new Profession({
     name: 'Federal Agent',
     professionalSkills: Profession.createSkillList([
-        ['Alertness', 50],
-        ['Bureaucracy', 40],
-        ['Criminology', 50],
-        ['Drive', 50],
-        ['Firearms', 50],
-        ['Forensics', 30],
-        ['HUMINT', 60],
-        ['Law', 30],
-        ['Persuade', 50],
-        ['Search', 50],
-        ['UnarmedCombat', 60],
+        ['alertness', 50],
+        ['bureaucracy', 40],
+        ['criminology', 50],
+        ['drive', 50],
+        ['firearms', 50],
+        ['forensics', 30],
+        ['humint', 60],
+        ['law', 30],
+        ['persuade', 50],
+        ['search', 50],
+        ['unarmed-combat', 60],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Accounting', 60],
-        ['ComputerScience', 50],
-        ['ForeignLanguages',  50],
-        ['HeavyWeapons', 50],
-        ['Pharmacy', 50],
+        ['accounting', 60],
+        ['computer-science', 50],
+        ['foreign-languages', 50],
+        ['heavy-weapons', 50],
+        ['pharmacy', 50],
     ]),
     bondCount: 3,
     recommendedStats: ['constitution', 'power', 'charisma'],
@@ -169,19 +163,19 @@ export const FederalAgent = new Profession({
 export const Physician = new Profession({
     name: 'Physician',
     professionalSkills: Profession.createSkillList([
-        ['Bureaucracy', 50], 
-        ['FirstAid', 60],
-        ['Medicine', 60],
-        ['Persuade', 40],
-        ['Pharmacy', 50],
-        ['Science', 60, 'Biology'], 
-        ['Search', 40],
+        ['bureaucracy', 50], 
+        ['first-aid', 60],
+        ['medicine', 60],
+        ['persuade', 40],
+        ['pharmacy', 50],
+        ['science', 60, 'Biology'], 
+        ['search', 40],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Forensics', 50],
-        ['Psychotherapy', 60],
-        ['Science', 50],
-        ['Surgery', 50],
+        ['forensics', 50],
+        ['psychotherapy', 60],
+        ['science', 50],
+        ['surgery', 50],
     ]),
     bondCount: 3,
     recommendedStats: ['intelligence', 'power', 'dexterity'],
@@ -191,19 +185,19 @@ export const Physician = new Profession({
 export const Scientist = new Profession({
     name: 'Scientist',
     professionalSkills: Profession.createSkillList([
-        ['Bureaucracy', 40],
-        ['ComputerScience', 40],
-        ['Science', 60],
-        ['Science', 50], 
-        ['Science', 50],
+        ['bureaucracy', 40],
+        ['computer-science', 40],
+        ['science', 60],
+        ['science', 50], 
+        ['science', 50],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Accounting', 50],
-        ['Crafts', 40],
-        ['ForeignLanguages', 40], 
-        ['Forensics', 40],
-        ['Law', 40],
-        ['Pharmacy', 40],
+        ['accounting', 50],
+        ['crafts', 40],
+        ['foreign-languages', 40], 
+        ['forensics', 40],
+        ['law', 40],
+        ['pharmacy', 40],
     ]),
     bondCount: 4,
     recommendedStats: ['intelligence'],
@@ -213,18 +207,18 @@ export const Scientist = new Profession({
 export const SpecialOperator = new Profession({
     name: 'Special Operator',
     professionalSkills: Profession.createSkillList([
-        ['Alertness', 60],
-        ['Athletics', 60],
-        ['Demolitions', 40],
-        ['Firearms', 60],
-        ['HeavyWeapons', 50],
-        ['MeleeWeapons', 50],
-        ['MilitaryScience', 60, 'Land'], 
-        ['Navigate', 50],
-        ['Stealth', 50],
-        ['Survival', 50],
-        ['Swim', 50],
-        ['UnarmedCombat', 60],
+        ['alertness', 60],
+        ['athletics', 60],
+        ['demolitions', 40],
+        ['firearms', 60],
+        ['heavy-weapons', 50],
+        ['melee-weapons', 50],
+        ['military-science', 60, 'Land'], 
+        ['navigate', 50],
+        ['stealth', 50],
+        ['survival', 50],
+        ['swim', 50],
+        ['unarmed-combat', 60],
     ]),
     choosableSkills: [],
     bondCount: 2,
@@ -235,28 +229,28 @@ export const SpecialOperator = new Profession({
 export const Soldier = new Profession({
     name: 'Soldier',
     professionalSkills: Profession.createSkillList([
-        ['Alertness', 50],
-        ['Athletics', 50],
-        ['Bureaucracy', 30],
-        ['Drive', 40],
-        ['Firearms', 40],
-        ['FirstAid', 40],
-        ['MilitaryScience', 40, 'Land'],
-        ['Navigate', 40],
-        ['Persuade', 30],
-        ['UnarmedCombat', 50],
+        ['alertness', 50],
+        ['athletics', 50],
+        ['bureaucracy', 30],
+        ['drive', 40],
+        ['firearms', 40],
+        ['first-aid', 40],
+        ['military-science', 40, 'Land'],
+        ['navigate', 40],
+        ['persuade', 30],
+        ['unarmed-combat', 50],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['Artillery', 40],
-        ['ComputerScience', 40],
-        ['Crafts', 40],
-        ['Demolitions', 40],
-        ['ForeignLanguages', 40],
-        ['HeavyMachinery', 50],
-        ['HeavyWeapons', 40],
-        ['Search', 60],
-        ['SIGINT', 40], 
-        ['Swim', 60],
+        ['artillery', 40],
+        ['computer-science', 40],
+        ['crafts', 40],
+        ['demolitions', 40],
+        ['foreign-languages', 40],
+        ['heavy-machinery', 50],
+        ['heavy-weapons', 40],
+        ['search', 60],
+        ['sigint', 40], 
+        ['swim', 60],
     ]),
     bondCount: 4,
     recommendedStats: ['strength', 'constitution'],

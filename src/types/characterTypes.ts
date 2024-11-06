@@ -158,10 +158,10 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
 
 export interface IProfession {
     affiliation?: string;
-    professionalSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
+    professionalSkills: Skill[];
     bondCount: number;
     recommendedStats: StatisticKeys[];
-    choosableSkills: (Skill & { skillName: keyof Skills; subType?: string })[];
+    choosableSkills: Skill[];
     chosenSkillCount: number;
     otherSkills?: { [skillName: string]: Skill }; 
 }
@@ -177,7 +177,7 @@ export interface Skill {
     isDefault?: boolean;
 }
 
-export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
+export const SKILL_REMINDERS: { [key: string]: string } = {
     Accounting: "Business Math",
     Alertness: "Noticing things",
     Anthropology: "Study of humans and their cultures",
@@ -253,8 +253,12 @@ export interface Statistics {
     charisma: Stat;
 }
 
-interface DamagedVeteranAdjustment {
-
+// AJS Damaged Veteran Adjustment will likely need to be refactored when we get there
+export interface DamagedVeteranAdjustment {
+    name: string;
+    description: string;
+    statAdjustment: { [key in keyof Statistics]: number };
+    skillAdjustment: { [key in keyof Skills]: number };
 }
 // Extreme Violence
 // Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s CHA and each Bond. Your Agent is adapted to violence (see page 73).
