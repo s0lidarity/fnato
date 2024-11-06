@@ -8,23 +8,24 @@ import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 
 const SkillFormContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 0.5rem;
-    column-gap: 1rem;
+    column-gap: 0.5rem;
     width: 95%;
     justify-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 `;
 
 const SkillInputContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
+    width: 95%;
     min-width: fit-content;
     align-items: center;
 `;
 
-const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOptions) => {
+const renderSkillInputs = (skills: Skills) => {
     return Object.keys(skills).map((skillKey) => {
         return (
             <SkillInputContainer>
@@ -36,16 +37,13 @@ const renderSkillInputs = (skills: Skills, professionConfig: ProfessionConfigOpt
     });
 };
 
-type SkillFormProps = {
-    professionConfig: ProfessionConfigOptions;
-};
-const SkillForm = ({ professionConfig }: SkillFormProps) => {
+const SkillForm = () => {
     const { skills, bonusPointsRemaining, setSkills, setSkillByKey } = useSkills();
 
     return (
         <div>
             <SkillFormContainer>
-                {renderSkillInputs(skills, professionConfig)}
+                {renderSkillInputs(skills)}
             </SkillFormContainer>
             <PointsCounter value={bonusPointsRemaining} showNoPointsWarning />
         </div>
