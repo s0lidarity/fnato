@@ -129,6 +129,7 @@ export function generateStat(name: string, scoreValue: number): Stat {
 		return null;
 	};
 	return {
+		label: name.charAt(0).toUpperCase() + name.slice(1),
 		score: scoreValue,
 		x5: scoreValue * 5,
 		distinguishingFeature: DISTINGUISHING_FEATURES[name][scoreValue],

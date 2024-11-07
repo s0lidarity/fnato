@@ -229,6 +229,7 @@ export type Skills = Skill[];
 
 // AJS consider adding shortHand value, ie: constitution -> con
 export interface Stat {
+    label: string;
     score: number;
     x5: number;
     distinguishingFeature: string;

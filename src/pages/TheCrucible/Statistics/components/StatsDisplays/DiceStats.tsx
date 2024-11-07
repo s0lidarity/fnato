@@ -111,10 +111,9 @@ function DiceStats() {
                     <StyledDiceRowContainer>
                         <StatLabelValueContainer>
                             <StatLabel>
-                                <ReminderTooltip 
-                                    itemKey={stat} 
-                                    labelText={stat.charAt(0).toUpperCase() + stat.slice(1)} 
-                                    reminders={STAT_REMINDERS} />
+                                <ReminderTooltip  
+                                    labelText={stats[stat as keyof Statistics].label}
+                                    reminderText={stats[stat as keyof Statistics].reminderText} />
                             </StatLabel>
                             <StatValue>
                                 {stats[stat as keyof Statistics].score}

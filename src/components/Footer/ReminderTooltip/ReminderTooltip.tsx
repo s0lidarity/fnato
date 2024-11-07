@@ -16,20 +16,20 @@ const StyledLabel = styled.label`
 `;
 
 interface ReminderTooltipProps {
-    itemKey: string;
     labelText: string;
     // AJS refactor reminder to look at the value from the skill instead of the hard-look up
-    reminders: { [key: string]: string };
+    reminderText: string;
 }
 
-export function ReminderTooltip({ itemKey, labelText, reminders }: ReminderTooltipProps) {
+export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
+    console.log('reminders & keys', reminderText);
     return (
         <Tooltip
             // jsx in the text param works fine, error seems wrong
             // @ts-ignore
             text={
                 <StyledTooltipInnerText>
-                    {reminders[itemKey]}
+                    {reminderText}
                 </StyledTooltipInnerText>
             }
             enterDelay={100}

@@ -14,9 +14,8 @@ function StatInput({ statKey, handleChange }) {
 		<StatInputContainer>
 			{/* Does the tooltip just need to wrap around a child? */}
 			<ReminderTooltip 
-				itemKey={statKey} 
 				labelText={labelText} 
-				reminders={STAT_REMINDERS} 
+				reminderText={stats[statKey].reminderText} 
 			/>
 			<NumberInput
 				min={3}

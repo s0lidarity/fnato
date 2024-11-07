@@ -131,9 +131,8 @@ function ProfessionSkillInput({ skillKey }: SkillInputProps) {
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    itemKey={skillKey} 
-                    labelText={getSkillNameText(skills[skillKey])} 
-                    reminders={SKILL_REMINDERS} 
+                    labelText={skills[skillKey].label} 
+                    reminderText={skills[skillKey].reminderText} 
                 />
                 <span>
                     {/* this span needs to become its own component, it's getting too big */}
