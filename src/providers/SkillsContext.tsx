@@ -31,51 +31,56 @@ export const useSkills = () => {
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skills, setSkills] = useState<Skills>(defaultSkills);
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
+
+    // AJS refactor needed, update skill by using skills.findIndex
+    const setSkillByKey = (skillKey: string, skillUpdate: Partial<Skill>):boolean => {
+        const si = skills.findIndex(s => s.id === skillKey);
+        if(si !== -1){
+            const newSkills = [...skills];
+            newSkills[si] = {
+                ...newSkills[si],
+                ...skillUpdate,
+            };
+            setSkills(newSkills);
+            return true;
+        }
+        return false;
+    };
     
     // AJS refactor opportunity, move this to a util function
     const calculateRemainingBonusPoints = () => {
-        let total = 0;
-        Object.keys(skills).forEach(skillKey => {
-            if(skills[skillKey].bonus){
-                total += skills[skillKey].bonus;
+        const total = skills.reduce((acc, s) => {
+            if(s.bonus){
+                acc += s.bonus;
             }
-        });
+            return acc;
+        }, 0);
         return MAX_BONUS_POINTS - total;
     };
 
     const incrementBonusPoint = (skillKey: string): boolean => {
         if(bonusPointsRemaining > 0){
-            setBonusPointsRemaining(bonusPointsRemaining - 1);
-            setSkills({
-                ...skills,
-                [skillKey]: { ...skills[skillKey], bonus: skills[skillKey].bonus + 1 },
-            });
-            return true;
+            if(setSkillByKey(skillKey, { bonus: skills[skillKey].bonus + 1 })){
+                setBonusPointsRemaining(bonusPointsRemaining - 1);
+                return true;
+            }
         }
         return false;
     };
 
+    // AJS pick up here, adjust the logic to match the increment
     const decrementBonusPoint = (skillKey: string): boolean => {
-        if(skills[skillKey].bonus > 0 && bonusPointsRemaining < MAX_BONUS_POINTS){
-            setBonusPointsRemaining(bonusPointsRemaining + 1);
-            setSkills({
-                ...skills,
-                [skillKey]: { ...skills[skillKey], bonus: skills[skillKey].bonus - 1 },
-            });
-            return true;
+        if(bonusPointsRemaining < MAX_BONUS_POINTS){
+            if(setSkillByKey(skillKey, { bonus: skills[skillKey].bonus - 1 })){
+                setBonusPointsRemaining(bonusPointsRemaining + 1);
+                return true;
+            }
         }
         return false;
     };
 
     const resetSkills = () => {
         setSkills(defaultSkills);
-    };
-
-    const setSkillByKey = (skillKey: string, skillUpdate: Partial<Skill>) => {
-        setSkills({
-            ...skills,
-            [skillKey]: { ...skills[skillKey], ...skillUpdate },
-        });
     };
 
     const applyProfessionSkills = (professionSkills: Skill[]) => {
