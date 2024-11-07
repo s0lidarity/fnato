@@ -46,6 +46,7 @@ export class Profession implements IProfession {
         return newSkill;
     };
 
+    // AJS createSkillList is not creating subtyped skills properlys
     static createSkillList(rawSkills: Array<
         | [string, number]            // [skillName, value]
         | [string, number, string]    // [skillName, value, subType]
@@ -55,8 +56,7 @@ export class Profession implements IProfession {
                 case 2:
                     return this.createSkill(skill[0], skill[1]);
                 case 3:
-                    this.createSkill(skill[0], skill[1], skill[2]);
-                    break;
+                    return this.createSkill(skill[0], skill[1], skill[2]);
                 default:
                     throw new Error('Invalid skill array');
             }
@@ -69,8 +69,8 @@ export const Anthropologist = new Profession({
     professionalSkills: Profession.createSkillList([
             ['anthropology', 50],
             ['bureaucracy', 40],
-            ['foreign-languages', 50],
-            ['foreign-languages', 40],
+            ['foreign-languages', 50, 'French'],
+            ['foreign-languages', 40, 'German'],
             ['history', 60],
             ['occult', 40],
             ['persuade', 40],

@@ -32,13 +32,12 @@ const PointsContainer = styled.div`
     padding: 0.25rem;
 `;
 
-const PointsLabel = styled.label <{ showWarning?: boolean }>`
+const PointsLabel = styled.label <{ $showWarning?: boolean }>`
     margin-right: 0.5rem;
     padding: 0.25rem;
-    color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.materialTextDisabled : 'inherit'};
-    background-color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.canvasTextInvert : 'inherit'};
+    color: ${({ $showWarning }) => $showWarning ? ({ theme }) => theme.materialTextDisabled : 'inherit'};
+    background-color: ${({ $showWarning }) => $showWarning ? ({ theme }) => theme.canvasTextInvert : 'inherit'};
 `;
-
 
 const getColor = (value: number): string => {
     if (value <= 0) return 'red'; 
@@ -59,7 +58,7 @@ const PointsCounter = ({ value, showNoPointsWarning, minDigits = 2 }: PointsCoun
 
     return (
         <PointsContainer>
-            <PointsLabel showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
+            <PointsLabel $showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
             <PointsCounterContainer>
                 <ScoreboardDisplay color={color}>{displayValue}</ScoreboardDisplay>
             </PointsCounterContainer>

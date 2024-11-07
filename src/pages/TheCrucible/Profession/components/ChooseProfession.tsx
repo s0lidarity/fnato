@@ -5,7 +5,7 @@ import { useState } from 'preact/hooks';
 import { Profession } from '../../../../utils/Professions';
 import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
-import ChosenSkillPicker from './ChosenSkillPicker';
+import ProfessionSkillPicker from './ProfessionSkillPicker';
 
 const StyledSelectContainer = styled.div`
     display: flex;
@@ -25,38 +25,34 @@ const StyledSelect = styled(SelectNative)`
 function ChooseProfession() {
     const [selectedProfession, setSelectedProfession] = useState<Profession | null>(null);
     const { applyProfessionSkills } = useSkills();
-    const [showChosenSkillPicker, setShowChosenSkillPicker] = useState(false);
 
     const generateProfessionOptions = () => {
         const options = [];
         professions.forEach((profession) => {
-            options.push({ label: profession.name, value: profession });
+            options.push({ label: profession.name, value: profession.name });
         });
         return options;
     };
 
-    const handleProfessionSelect = (profession: Profession) => {
-        setSelectedProfession(profession);
-        applyProfessionSkills(profession.professionalSkills);
-        setShowChosenSkillPicker(true);
+    const handleProfessionSelect = (professionName: string) => {
+        const newProfession = professions.find((p) => p.name === professionName);
+        setSelectedProfession(newProfession);
+        applyProfessionSkills(newProfession.professionalSkills);
     };
 
+    // AJS, this select should live in the same groupbox as the skill picker for clarity
     return (
         <span>
             <StyledSelectContainer>
                 <h3>Professional Background</h3>
                 <StyledSelect 
                     options={generateProfessionOptions()}
-                    value={selectedProfession?.name || ''}
-                    onChange={(selectedOption: any) => handleProfessionSelect(selectedOption.value)} 
+                    onChange={(e: any) => handleProfessionSelect(e.value)} 
                 />
             </StyledSelectContainer>
-            {showChosenSkillPicker 
-                && <ChosenSkillPicker 
-                    chosenSkills={selectedProfession?.choosableSkills || []} 
-                    count={selectedProfession?.chosenSkillCount || 0}
-                />
-            }
+            <ProfessionSkillPicker
+                profession={selectedProfession}
+            />
         </span>
     )
 }

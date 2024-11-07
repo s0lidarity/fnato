@@ -4,11 +4,9 @@ import styled from 'styled-components';
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 
 import { useSkills } from '../../../../providers/SkillsContext';
-import { getSkillNameText } from './utils';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
-import { SKILL_REMINDERS } from '../../../../types/characterTypes';
-import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import Dialogue from '../../../../components/Dialogue/Dialogue';
+import { Skill } from '../../../../types/characterTypes';
 
 const SkillInputContainer = styled.div`
     display: flex;
@@ -87,16 +85,16 @@ const StyledBonusContainer = styled.div`
 `;
 
 type SkillInputProps = {
-    skillKey: string;
+    skill: Skill;
 };
 
-function ProfessionSkillInput({ skillKey }: SkillInputProps) {
-    const { decrementBonusPoint, incrementBonusPoint, skills, setSkillByKey } = useSkills();
+function ProfessionSkillInput({ skill }: SkillInputProps) {
+    const { decrementBonusPoint, incrementBonusPoint, skills, setSkillById } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     // AJS, is localBonus necessary?
-    const [ localBonus, setLocalBonus ] = useState(skills[skillKey].bonus); 
+    const [ localBonus, setLocalBonus ] = useState(skill.bonus); 
     // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
-    const [ localSubType, setLocalSubType ] = useState(skills[skillKey].subType || '');
+    const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
 
 
     // AJS: get clarity on how to import the right type for this event
@@ -106,38 +104,37 @@ function ProfessionSkillInput({ skillKey }: SkillInputProps) {
     };
 
     const applySubtype = () => {
-        setSkillByKey(skillKey, { ...skills[skillKey], subType: localSubType });
+        setSkillById(skill.id, { subType: localSubType });
         setShowModal(false);
     };
 
     type handleBonusChangeProps = {
         bonus: number;
-        skillKey: string;
+        skillId: string;
     };
-    const handleBonusChange = ({ bonus, skillKey }: handleBonusChangeProps) => {
-        const bonusChange = bonus - skills[skillKey].bonus;
+    const handleBonusChange = ({ bonus }: handleBonusChangeProps) => {
+        const bonusChange = bonus - skill.bonus;
         setLocalBonus(bonus);
         if(bonusChange > 0){
-            incrementBonusPoint(skillKey);
+            incrementBonusPoint(skill.id);
         } else {
-            decrementBonusPoint(skillKey);
+            decrementBonusPoint(skill.id);
         }
     };
 
-    // AJS need a special case to handle Crafts, Foreign Languages, and other skills
-    // they are objects containing skills, keyed by subType, might be better as arrays
+    const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
 
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={skills[skillKey].label} 
-                    reminderText={skills[skillKey].reminderText} 
+                    labelText={skillLabel}
+                    reminderText={skill.reminderText} 
                 />
                 <span>
                     {/* this span needs to become its own component, it's getting too big */}
                 {
-                    skills[skillKey].subType && (
+                    skill.subType && (
                         <StyledSubtypeButton onClick={() => setShowModal(true)}>
                             <IoPencilOutline />
                         </StyledSubtypeButton>
@@ -151,9 +148,9 @@ function ProfessionSkillInput({ skillKey }: SkillInputProps) {
                     >
                         <StyledDialogueContent>
                             <StyledSubtypeInput
-                                key={`${skillKey}-subtype`}
+                                key={`${skill.name}-subtype`}
                                 type="text"
-                                id={`${skillKey}-subtype`}
+                                id={`${skill.name}-subtype`}
                                 value={localSubType}
                                 onChange={(e: any) => handleSubtypeChange(e)}
                             />
@@ -166,7 +163,7 @@ function ProfessionSkillInput({ skillKey }: SkillInputProps) {
                 </span>
             </StyledSkillName>
             <StyledValueContainer>
-                {skills[skillKey].value}
+                {skill.value}
             </StyledValueContainer>
             <Separator orientation="vertical" />
             <StyledBonusContainer>
@@ -176,7 +173,7 @@ function ProfessionSkillInput({ skillKey }: SkillInputProps) {
                     max={8}
                     width="4rem"
                     value={localBonus}
-                    onChange={() => handleBonusChange({ bonus: localBonus, skillKey })}
+                    onChange={() => handleBonusChange({ bonus: localBonus, skillId: skill.id })}
                 />
             </StyledBonusContainer>
         </SkillInputContainer>

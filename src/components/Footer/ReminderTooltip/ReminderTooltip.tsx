@@ -17,12 +17,10 @@ const StyledLabel = styled.label`
 
 interface ReminderTooltipProps {
     labelText: string;
-    // AJS refactor reminder to look at the value from the skill instead of the hard-look up
     reminderText: string;
 }
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
-    console.log('reminders & keys', reminderText);
     return (
         <Tooltip
             // jsx in the text param works fine, error seems wrong

@@ -26,11 +26,11 @@ const SkillInputContainer = styled.div`
 `;
 
 const renderSkillInputs = (skills: Skills) => {
-    return Object.keys(skills).map((skillKey) => {
+    return skills.map((s) => {
         return (
             <SkillInputContainer>
                 <ProfessionSkillInput 
-                    skillKey={skillKey} 
+                    skill={s} 
                 />
             </SkillInputContainer>
         );
@@ -45,7 +45,7 @@ const SkillForm = () => {
             <SkillFormContainer>
                 {renderSkillInputs(skills)}
             </SkillFormContainer>
-            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning />
+            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning={false} />
         </div>
     );
 };

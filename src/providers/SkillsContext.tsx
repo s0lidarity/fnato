@@ -11,7 +11,7 @@ type SKillsContextType = {
     resetSkills: () => void;
     skills: Skills;
     setSkills: (skills: Skills) => void;
-    setSkillByKey: (skillKey: string, skillUpdate: Partial<Skill>) => void;
+    setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => void;
 }
 
 const MAX_BONUS_POINTS = 8;
@@ -33,8 +33,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
 
     // AJS refactor needed, update skill by using skills.findIndex
-    const setSkillByKey = (skillKey: string, skillUpdate: Partial<Skill>):boolean => {
-        const si = skills.findIndex(s => s.id === skillKey);
+    const setSkillById = (skillId: string, skillUpdate: Partial<Skill>):boolean => {
+        const si = skills.findIndex(s => s.id === skillId);
         if(si !== -1){
             const newSkills = [...skills];
             newSkills[si] = {
@@ -58,9 +58,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return MAX_BONUS_POINTS - total;
     };
 
-    const incrementBonusPoint = (skillKey: string): boolean => {
+    const incrementBonusPoint = (skillId: string): boolean => {
         if(bonusPointsRemaining > 0){
-            if(setSkillByKey(skillKey, { bonus: skills[skillKey].bonus + 1 })){
+            // AJS bonus update looks wrong
+            if(setSkillById(skillId, { bonus: skills[skillId].bonus + 1 })){
                 setBonusPointsRemaining(bonusPointsRemaining - 1);
                 return true;
             }
@@ -69,9 +70,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     // AJS pick up here, adjust the logic to match the increment
-    const decrementBonusPoint = (skillKey: string): boolean => {
+    const decrementBonusPoint = (skillId: string): boolean => {
         if(bonusPointsRemaining < MAX_BONUS_POINTS){
-            if(setSkillByKey(skillKey, { bonus: skills[skillKey].bonus - 1 })){
+            // AJS bonus update looks wrong
+            if(setSkillById(skillId, { bonus: skills[skillId].bonus - 1 })){
                 setBonusPointsRemaining(bonusPointsRemaining + 1);
                 return true;
             }
@@ -102,7 +104,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 resetSkills,
                 skills,
                 setSkills,
-                setSkillByKey,
+                setSkillById,
             }}>
             {children}
         </SkillsContext.Provider>
