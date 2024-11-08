@@ -1,4 +1,4 @@
-import { SelectNative } from 'react95';
+import { GroupBox,SelectNative } from 'react95';
 import styled from 'styled-components';
 import { useState } from 'preact/hooks';
 
@@ -42,18 +42,19 @@ function ChooseProfession() {
 
     // AJS, this select should live in the same groupbox as the skill picker for clarity
     return (
-        <span>
+        <GroupBox>
             <StyledSelectContainer>
                 <h3>Professional Background</h3>
                 <StyledSelect 
                     options={generateProfessionOptions()}
+                    value={selectedProfession?.name || ''}
                     onChange={(e: any) => handleProfessionSelect(e.value)} 
                 />
             </StyledSelectContainer>
             <ProfessionSkillPicker
                 profession={selectedProfession}
             />
-        </span>
+        </GroupBox>
     )
 }
 

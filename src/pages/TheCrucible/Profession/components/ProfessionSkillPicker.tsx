@@ -6,7 +6,7 @@ import { Button, Checkbox, GroupBox } from 'react95';
 import { IProfession, Skill } from '../../../../types/characterTypes';
 
 
-const GroupBoxContainer = styled.div`
+const PSPContainer = styled.div`
     width: 95%;
     margin-bottom: 1rem;
 `;
@@ -31,7 +31,6 @@ const ProfessionSkillPicker = ({
     const renderProfessionSkills = () => {
         let renderedOutput = null;
 
-        console.log('profession', profession);
         renderedOutput = profession?.professionalSkills.map((skill) => {
             return <div>
                 {skill.label} starts at {skill.value}
@@ -42,11 +41,9 @@ const ProfessionSkillPicker = ({
     }
 
     return (
-        <GroupBoxContainer>
-            <GroupBox>
-                {renderProfessionSkills()}
-            </GroupBox>
-        </GroupBoxContainer>
+        <PSPContainer>
+            {renderProfessionSkills()}
+        </PSPContainer>
     );
 };
 

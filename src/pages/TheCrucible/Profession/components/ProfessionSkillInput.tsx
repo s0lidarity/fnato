@@ -89,7 +89,7 @@ type SkillInputProps = {
 };
 
 function ProfessionSkillInput({ skill }: SkillInputProps) {
-    const { decrementBonusPoint, incrementBonusPoint, skills, setSkillById } = useSkills();
+    const { adjustBonus, skills, setSkillById } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     // AJS, is localBonus necessary?
     const [ localBonus, setLocalBonus ] = useState(skill.bonus); 
@@ -113,13 +113,7 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         skillId: string;
     };
     const handleBonusChange = ({ bonus }: handleBonusChangeProps) => {
-        const bonusChange = bonus - skill.bonus;
-        setLocalBonus(bonus);
-        if(bonusChange > 0){
-            incrementBonusPoint(skill.id);
-        } else {
-            decrementBonusPoint(skill.id);
-        }
+        adjustBonus(skill.id, bonus);
     };
 
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;

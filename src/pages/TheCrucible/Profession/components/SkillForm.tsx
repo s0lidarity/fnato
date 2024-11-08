@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import { Skills } from '../../../../types/characterTypes';
-import { ProfessionConfigOptions } from '../../../../types/componentTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
@@ -26,6 +25,8 @@ const SkillInputContainer = styled.div`
 `;
 
 const renderSkillInputs = (skills: Skills) => {
+    // avoids a console error if the skills array is empty
+    if(!skills.length) return null;
     return skills.map((s) => {
         return (
             <SkillInputContainer>
@@ -38,7 +39,7 @@ const renderSkillInputs = (skills: Skills) => {
 };
 
 const SkillForm = () => {
-    const { skills, bonusPointsRemaining, setSkills, setSkillByKey } = useSkills();
+    const { skills, bonusPointsRemaining, setSkills, setSkillById } = useSkills();
 
     return (
         <div>
