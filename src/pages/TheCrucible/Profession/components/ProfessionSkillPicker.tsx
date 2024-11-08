@@ -1,14 +1,27 @@
 import styled from 'styled-components';
-import { useState } from 'preact/hooks';
-import { Button, Checkbox, GroupBox } from 'react95';
 
-
+import ChooseSkills from './ChooseSkills';
 import { IProfession, Skill } from '../../../../types/characterTypes';
 
 
 const PSPContainer = styled.div`
     width: 95%;
+    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+`;
+
+const ProfessionalSkillsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
+    flex: 1;
+`;
+
+const SkillChoiceContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 `;
 
 type ChosenSkillPickerProps = {
@@ -18,16 +31,11 @@ type ChosenSkillPickerProps = {
 const ProfessionSkillPicker = ({
     profession, 
 }: ChosenSkillPickerProps) => {
-    // need to track chosen skills and remaining choices
-    const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
-    const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
-
     const renderSubtypedSkill = (skill: Skill) => {
         return (<div>
             {skill.label} starts at {skill.value} Choose a subtype below.
         </div>);
     };
-    // we need to be able to handle subtyped skills, choosing a foreign language or science for example
     const renderProfessionSkills = () => {
         let renderedOutput = null;
 
@@ -40,12 +48,27 @@ const ProfessionSkillPicker = ({
         return renderedOutput;
     }
 
+    // AJS, this should all be in ChooseSkills, not this mess
+    const renderSkillChoices = () => {
+        let renderedOutput = null;
+        // AJS pick up here
+        if(profession?.choosableSkills.length) {
+            renderedOutput = <ChooseSkills profession={profession} />
+        }
+        return renderedOutput;
+    }
+
     return (
         <PSPContainer>
-            {renderProfessionSkills()}
+            <ProfessionalSkillsContainer>
+                {renderProfessionSkills()}
+            </ProfessionalSkillsContainer>
+            <SkillChoiceContainer>
+                {renderSkillChoices()}
+            </SkillChoiceContainer>
         </PSPContainer>
     );
 };
 
-// AJS rename to ProfessionSkillPicker
+// AJS rename, ProfessionChoices or something
 export default ProfessionSkillPicker;
