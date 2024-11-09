@@ -5,11 +5,15 @@ import ChooseSkills from './ChooseSkills';
 import { IProfession, Skill } from '../../../../types/characterTypes';
 
 
-const PSPContainer = styled.div`
+const PSPContainer = styled.div.attrs<any>({
+    'data-testid': 'profession-skill-picker-container',
+    'data-component': 'ProfessionSkillPicker/PSPContainer'
+})`
     width: 95%;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    justify-content: space-between;
 `;
 
 const ProfessionalSkillsContainer = styled.div`

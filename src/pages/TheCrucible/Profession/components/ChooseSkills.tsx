@@ -10,13 +10,18 @@ import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 type ChooseSkillsProps = {
     profession: IProfession;
 };
-
-const StyledGroupBox = styled(GroupBox)`
+const StyledGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'choose-skills-group',
+    'data-component': 'ChooseSkills/StyledGroupBox'
+})`
     background-color: ${({ theme }) => theme.materialDark};
     width: 100%;
 `;
 
-const StyledSkillContainer = styled.div`
+const StyledSkillContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-container',
+    'data-component': 'ChooseSkills/StyledSkillContainer'
+})`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -25,20 +30,31 @@ const StyledSkillContainer = styled.div`
 
 function ChooseSkills({ profession }: ChooseSkillsProps) {
     // need to track chosen skills and remaining choices
-    // maybe make this track skill ids
     const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
     const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
     const { setSkillById } = useSkills();
 
     const toggleSkill = (skillId: string) => {
-        // check if skill is already selected, if so always remove it 
-        // if not selected, check if adding it will put us over the limit
-        // update skills and remaining choices
-        console.log(skillId);
+        if (selectedSkillsIds.includes(skillId)) {
+            // Remove skill
+            setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
+            setRemainingChoices(prev => prev + 1);
+            setSkillById(skillId, { value: 0 }); // Reset skill value
+        } else if (remainingChoices > 0) {
+            // Add skill if we have choices remaining
+            setSelectedSkillsIds(prev => [...prev, skillId]);
+            setRemainingChoices(prev => prev - 1);
+            
+            // Find the skill to get its profession value
+            const skill = profession.choosableSkills.find(s => s.id === skillId);
+            if (skill) {
+                setSkillById(skillId, { value: skill.value });
+            }
+        }
     };
 
     return (
-        <StyledGroupBox variant='flat' label={`Choose ${remainingChoices} Additional Skills`}>
+        <StyledGroupBox variant='flat' label={`Choose ${remainingChoices > 0 ? remainingChoices : ''} Additional Skills`}>
             {profession.choosableSkills.map((skill) => {
                 return (
                     <StyledSkillContainer>
