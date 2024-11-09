@@ -8,7 +8,10 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
 
-const SkillInputContainer = styled.div`
+const SkillInputContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-input-container',
+    'data-component': 'ProfessionSkillInput/SkillInputContainer'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,7 +21,10 @@ const SkillInputContainer = styled.div`
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
 `;
 
-const StyledSkillName = styled.div`
+const StyledSkillName = styled.div.attrs<any>({
+    'data-testid': 'skill-name',
+    'data-component': 'ProfessionSkillInput/StyledSkillName'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,7 +33,10 @@ const StyledSkillName = styled.div`
     min-width: 250px;
 `;
 
-const StyledSubtypeButton = styled(Button)`
+const StyledSubtypeButton = styled(Button).attrs<any>({
+    'data-testid': 'subtype-button',
+    'data-component': 'ProfessionSkillInput/StyledSubtypeButton'
+})`
     flex-shrink: 0;
     border-radius: 50%;
     width: 1.5rem;
@@ -39,19 +48,28 @@ const StyledSubtypeButton = styled(Button)`
     justify-content: center;
 `;
 
-const StyledDialogueContent = styled.div`
+const StyledDialogueContent = styled.div.attrs<any>({
+    'data-testid': 'dialogue-content',
+    'data-component': 'ProfessionSkillInput/StyledDialogueContent'
+})`
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
 `;
 
-const StyledSubtypeInput = styled(TextInput)`
+const StyledSubtypeInput = styled(TextInput).attrs<any>({
+    'data-testid': 'subtype-input',
+    'data-component': 'ProfessionSkillInput/StyledSubtypeInput'
+})`
     flex-grow: 1;
     height: 1rem;
 `;
 
-const StyledAcceptButton = styled(Button)`
+const StyledAcceptButton = styled(Button).attrs<any>({
+    'data-testid': 'accept-button',
+    'data-component': 'ProfessionSkillInput/StyledAcceptButton'
+})`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,23 +78,35 @@ const StyledAcceptButton = styled(Button)`
     height: 2rem;
 `;
 
-const StyledValueContainer = styled.div`
+const StyledValueContainer = styled.div.attrs<any>({
+    'data-testid': 'value-container',
+    'data-component': 'ProfessionSkillInput/StyledValueContainer'
+})`
     justify-content: flex-end;
     min-width: 2rem;
 `;
 
-const StyledNumberInput = styled(NumberInput)`
+const StyledNumberInput = styled(NumberInput).attrs<any>({
+    'data-testid': 'number-input',
+    'data-component': 'ProfessionSkillInput/StyledNumberInput'
+})`
     width: 3rem;
     flex-shrink: 0;
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label.attrs<any>({
+    'data-testid': 'label',
+    'data-component': 'ProfessionSkillInput/StyledLabel'
+})`
     white-space: nowrap;
     font-size: 0.9rem;
     align-self: center;
 `;
 
-const StyledBonusContainer = styled.div`
+const StyledBonusContainer = styled.div.attrs<any>({
+    'data-testid': 'bonus-container',
+    'data-component': 'ProfessionSkillInput/StyledBonusContainer'
+})`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -113,6 +143,7 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         skillId: string;
     };
     const handleBonusChange = ({ bonus }: handleBonusChangeProps) => {
+        // AJS pick up here, borked at the moment
         adjustBonus(skill.id, bonus);
     };
 

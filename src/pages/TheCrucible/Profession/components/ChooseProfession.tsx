@@ -8,13 +8,27 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillPicker from './ProfessionSkillPicker';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 
-const ChooseProfessionHeader = styled.div`
+const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'choose-profession-group-box',
+    'data-component': 'ChooseProfession/ChooseProfessionGroupBox'
+})`
+    width: 95%;
+    margin-bottom: 1rem;
+`;
+
+const ChooseProfessionHeader = styled.div.attrs<any>({
+    'data-testid': 'choose-profession-header',
+    'data-component': 'ChooseProfession/ChooseProfessionHeader'
+})`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 `;
 
-const StyledSelectContainer = styled.div`
+const StyledSelectContainer = styled.div.attrs<any>({
+    'data-testid': 'select-container',
+    'data-component': 'ChooseProfession/StyledSelectContainer'
+})`
     display: flex;
     flex-direction: rows;
     align-items: center;
@@ -24,11 +38,18 @@ const StyledSelectContainer = styled.div`
     margin-bottom: 1rem;
 `;
 
-const StyledSelect = styled(SelectNative)`
+// using a SelectNative because the standard kept putting the dropdown arrow in ugly spots
+const StyledSelect = styled(SelectNative).attrs<any>({
+    'data-testid': 'select',
+    'data-component': 'ChooseProfession/StyledSelect'
+})`
     min-width: fit-content;
 `;
 
-const KeyStatsContainer = styled.div`
+const KeyStatsContainer = styled.div.attrs<any>({
+    'data-testid': 'key-stats-container',
+    'data-component': 'ChooseProfession/KeyStatsContainer'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -37,7 +58,10 @@ const KeyStatsContainer = styled.div`
     margin-bottom: 1rem;
 `;
 
-const KeyStatsLabel = styled.span`
+const KeyStatsLabel = styled.span.attrs<any>({
+    'data-testid': 'key-stats-label',
+    'data-component': 'ChooseProfession/KeyStatsLabel'
+})`
     margin-left: 0.5rem;
 `;
 
@@ -61,7 +85,7 @@ function ChooseProfession() {
     };
 
     return (
-        <GroupBox>
+        <ChooseProfessionGroupBox>
             <ChooseProfessionHeader>
                 <StyledSelectContainer>
                     <ReminderTooltip 
@@ -88,7 +112,7 @@ function ChooseProfession() {
             <ProfessionSkillPicker
                 profession={selectedProfession}
             />
-        </GroupBox>
+        </ChooseProfessionGroupBox>
     )
 }
 

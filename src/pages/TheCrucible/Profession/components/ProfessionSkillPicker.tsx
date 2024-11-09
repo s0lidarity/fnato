@@ -16,20 +16,29 @@ const PSPContainer = styled.div.attrs<any>({
     justify-content: space-between;
 `;
 
-const ProfessionalSkillsContainer = styled.div`
+const ProfessionalSkillsContainer = styled.div.attrs<any>({
+    'data-testid': 'professional-skills-container',
+    'data-component': 'ProfessionSkillPicker/ProfessionalSkillsContainer'
+})`
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
     flex: 1;
 `;
 
-const SkillChoiceContainer = styled.div`
+const SkillChoiceContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-choice-container',
+    'data-component': 'ProfessionSkillPicker/SkillChoiceContainer'
+})`
     display: flex;
     flex-direction: column;
     flex: 1;
 `;
 
-const StyledGroupBox = styled(GroupBox)`
+const StyledGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'group-box',
+    'data-component': 'ProfessionSkillPicker/StyledGroupBox'
+})`
     background-color: ${({ theme }) => theme.materialDark};
 `;
 

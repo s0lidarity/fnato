@@ -61,6 +61,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return MAX_BONUS_POINTS - total;
     };
 
+    // AJS pick up here, it doesn't seem to do anything at the moment
     const adjustBonus = (skillId: string, adjustment: number): boolean => {
         const oldBonus = getSkillProperty(skillId, 'bonus');
         const newBonus = typeof oldBonus === 'number' ? oldBonus + adjustment : 0;
@@ -98,7 +99,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
 
         const sortedSkills = newSkills.sort((a, b) => a.name.localeCompare(b.name));
-        
+
         // Reset bonus points and update skills
         setBonusPointsRemaining(MAX_BONUS_POINTS);
         setSkills(sortedSkills);
