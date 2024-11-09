@@ -62,10 +62,27 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     // AJS pick up here, it doesn't seem to do anything at the moment
-    const adjustBonus = (skillId: string, adjustment: number): boolean => {
-        const oldBonus = getSkillProperty(skillId, 'bonus');
-        const newBonus = typeof oldBonus === 'number' ? oldBonus + adjustment : 0;
-        return setSkillById(skillId, { bonus: newBonus });
+    const adjustBonus = (skillId: string, newBonus: number): boolean => {
+        const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
+        const pointDifference = Number(newBonus) - Number(currentBonus);
+        
+        // Check if we have enough points
+        if (bonusPointsRemaining - pointDifference < 0) {
+            return false;
+        }
+
+        // Update the bonus
+        const success = setSkillById(skillId, { bonus: newBonus });
+        
+        // AJS pcik up here
+        // Update remaining points & update skill values if successful
+        if (success) {
+            setBonusPointsRemaining(bonusPointsRemaining - pointDifference);
+        }
+        
+
+
+        return success;
     };
 
     const resetSkills = () => {

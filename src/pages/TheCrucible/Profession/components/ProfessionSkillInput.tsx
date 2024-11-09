@@ -119,16 +119,10 @@ type SkillInputProps = {
 };
 
 function ProfessionSkillInput({ skill }: SkillInputProps) {
-    const { adjustBonus, skills, setSkillById } = useSkills();
+    const { adjustBonus, skills, setSkillById, bonusPointsRemaining } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
-    // AJS, is localBonus necessary?
-    const [ localBonus, setLocalBonus ] = useState(skill.bonus); 
-    // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
 
-
-    // AJS: get clarity on how to import the right type for this event
-    // console logs show the event coming in as InputEvent
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
     };
@@ -138,13 +132,8 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         setShowModal(false);
     };
 
-    type handleBonusChangeProps = {
-        bonus: number;
-        skillId: string;
-    };
-    const handleBonusChange = ({ bonus }: handleBonusChangeProps) => {
-        // AJS pick up here, borked at the moment
-        adjustBonus(skill.id, bonus);
+    const handleBonusChange = (value: number) => {
+        adjustBonus(skill.id, value);
     };
 
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
@@ -195,10 +184,10 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
                 <StyledLabel>Bonus</StyledLabel>
                 <StyledNumberInput
                     min={0}
-                    max={8}
+                    max={Math.min(8, (bonusPointsRemaining || 0) + (skill.bonus || 0))}
                     width="4rem"
-                    value={localBonus}
-                    onChange={() => handleBonusChange({ bonus: localBonus, skillId: skill.id })}
+                    value={skill.bonus || 0}
+                    onChange={(value) => handleBonusChange(value)}
                 />
             </StyledBonusContainer>
         </SkillInputContainer>
