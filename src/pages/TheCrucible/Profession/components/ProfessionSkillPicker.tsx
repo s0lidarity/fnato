@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GroupBox } from 'react95';
 
 import ChooseSkills from './ChooseSkills';
 import { IProfession, Skill } from '../../../../types/characterTypes';
@@ -24,6 +25,10 @@ const SkillChoiceContainer = styled.div`
     flex: 1;
 `;
 
+const StyledGroupBox = styled(GroupBox)`
+    background-color: ${({ theme }) => theme.materialDark};
+`;
+
 type ChosenSkillPickerProps = {
     profession: IProfession;
 };
@@ -31,11 +36,13 @@ type ChosenSkillPickerProps = {
 const ProfessionSkillPicker = ({
     profession, 
 }: ChosenSkillPickerProps) => {
+    // AJS, use this to indicate when a skill has a subtype that needs to be entered
     const renderSubtypedSkill = (skill: Skill) => {
         return (<div>
             {skill.label} starts at {skill.value} Choose a subtype below.
         </div>);
     };
+
     const renderProfessionSkills = () => {
         let renderedOutput = null;
 
@@ -45,7 +52,11 @@ const ProfessionSkillPicker = ({
             </div>;
         });
 
-        return renderedOutput;
+        return( 
+            <StyledGroupBox variant='flat' label='Preset Professional Skills'>
+                {renderedOutput} 
+            </StyledGroupBox>
+        );
     }
 
     // AJS, this should all be in ChooseSkills, not this mess

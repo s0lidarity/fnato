@@ -50,15 +50,16 @@ type PointsCounterProps = {
     value: number;
     showNoPointsWarning?: boolean;
     minDigits?: number;
+    label?: string
 };
 
-const PointsCounter = ({ value, showNoPointsWarning, minDigits = 2 }: PointsCounterProps ) => {
+const PointsCounter = ({ value, showNoPointsWarning, minDigits = 2, label = 'Points Remaining' }: PointsCounterProps ) => {
     const color = getColor(value);
     const displayValue = value.toString().padStart(minDigits, '0');
 
     return (
         <PointsContainer>
-            <PointsLabel $showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
+            <PointsLabel $showWarning={showNoPointsWarning}>{label}</PointsLabel>                       
             <PointsCounterContainer>
                 <ScoreboardDisplay color={color}>{displayValue}</ScoreboardDisplay>
             </PointsCounterContainer>

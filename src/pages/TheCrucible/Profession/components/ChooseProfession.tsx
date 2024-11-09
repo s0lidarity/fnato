@@ -11,7 +11,7 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 const ChooseProfessionHeader = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 `;
 
 const StyledSelectContainer = styled.div`
@@ -19,7 +19,7 @@ const StyledSelectContainer = styled.div`
     flex-direction: rows;
     align-items: center;
     flex: 1;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 1rem;
 `;
@@ -31,6 +31,9 @@ const StyledSelect = styled(SelectNative)`
 const KeyStatsContainer = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
     margin-bottom: 1rem;
 `;
 
@@ -57,7 +60,6 @@ function ChooseProfession() {
         applyProfessionSkills(newProfession.professionalSkills);
     };
 
-    // AJS, this select should live in the same groupbox as the skill picker for clarity
     return (
         <GroupBox>
             <ChooseProfessionHeader>

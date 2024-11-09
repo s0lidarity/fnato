@@ -10,15 +10,15 @@ type RenderedRadioParams = {
 
 const ConfigurationBarContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem;
 `;
 
 const StyledGroupBox = styled(GroupBox)`
     display: flex;
-    width: 100%;
+    width: fit-content%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 1rem;
 `;
 
