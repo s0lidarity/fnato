@@ -8,13 +8,17 @@ const StyledTableTitle = styled.h2`
     text-align: center;
 `;
 
+const StyledWindow = styled(Window)`
+    width: 90%;
+    margin-right: 2rem;
+`;
+
 const DerivedAttributes = () => {
     const { derivedAttributes } = useStats();
 
     const renderedDAs = Object.keys(derivedAttributes).map((key) => {
         return (
             <TableRow>
-                {/* AJS need to have a label instead of the key here */}
                 <TableDataCell>{key}</TableDataCell>
                 <TableDataCell>{derivedAttributes[key].maxValue}</TableDataCell>
             </TableRow>
@@ -22,7 +26,7 @@ const DerivedAttributes = () => {
     });
 
     return (
-        <Window>
+        <StyledWindow>
             <WindowHeader>
                 <StyledTableTitle>Derived Attributes</StyledTableTitle>
             </WindowHeader>
@@ -33,7 +37,7 @@ const DerivedAttributes = () => {
                     </TableBody>
                 </Table>
             </WindowContent>
-        </Window>
+        </StyledWindow>
     );
 
 };

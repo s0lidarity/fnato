@@ -1,8 +1,7 @@
-import { h } from 'preact';
 import { Tooltip } from 'react95';
 import styled from 'styled-components';
 
-import { STAT_REMINDERS } from '../../../../../types/characterTypes';
+import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
 
 // AJS this is a shared style, put it somewhere we can share it
 const StyledTooltipInnerText = styled.span`
@@ -12,29 +11,31 @@ const StyledTooltipInnerText = styled.span`
 
 const StyledLabel = styled.label`
     margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
 `;
 
-interface StatTooltipProps {
-    statKey: string;
+interface ReminderTooltipProps {
     labelText: string;
+    reminderText: string;
 }
 
-export function StatTooltip({ statKey, labelText }: StatTooltipProps) {
+export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
     return (
         <Tooltip
             // jsx in the text param works fine, error seems wrong
             // @ts-ignore
             text={
                 <StyledTooltipInnerText>
-                    {STAT_REMINDERS[statKey]}
+                    {reminderText}
                 </StyledTooltipInnerText>
             }
             enterDelay={100}
             leaveDelay={500}
         >
-            <StyledLabel>{labelText}</StyledLabel>
+            <StyledLabel>{labelText}<TooltipIndicator /></StyledLabel>
         </Tooltip>
     );
 };
 
-export default StatTooltip;
+export default ReminderTooltip;

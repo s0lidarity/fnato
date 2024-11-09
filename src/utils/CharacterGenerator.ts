@@ -6,15 +6,16 @@ import {
 	DerivedAttributes,
 	DetailedDescription,
 	DISTINGUISHING_FEATURES,
-	Profession,
+	IProfession,
 	Skill,
-	SKILL_BASE_VALUES,
 	Stat,
 	Statistics,
 	StatisticKeys,
 	STAT_REMINDERS,
 	Skills,
+	DEFAULT_SKILLS,
 } from '../types/characterTypes';
+import { generateDefaultSkills } from '../providers/defaultValues';
 
 const baseBonds: Bond[] = [
 	{
@@ -49,12 +50,12 @@ const baseDetailedDescription: DetailedDescription = {
 	deltaGreenAgreement: 'Yes',
 };
 
-const baseProfession: Profession = {
+const baseProfession: IProfession = {
 	affiliation: 'Private Sector',
 	professionalSkills: [],
 	bondCount: 2,
 	recommendedStats: ['intelligence', 'power'],
-	chosenSkills: [],
+	choosableSkills: [],
 	chosenSkillCount: 0,
 };
 
@@ -71,22 +72,6 @@ const baseStats: Statistics = {
 	intelligence: { ...baseStat, reminderText: STAT_REMINDERS.intelligence },
 	power: { ...baseStat, reminderText: STAT_REMINDERS.power },
 	charisma: { ...baseStat, reminderText: STAT_REMINDERS.charisma },
-};
-
-export const initializeSkills = (): Skills => {
-	const skills: Partial<Skills> = {};
-
-	for (const skill in SKILL_BASE_VALUES) {
-		if (SKILL_BASE_VALUES.hasOwnProperty(skill)) {
-			skills[skill as keyof Skills] = {
-				value: SKILL_BASE_VALUES[skill as keyof Skills],
-				base: SKILL_BASE_VALUES[skill as keyof Skills],
-				bonus: false,
-			} as Skill;
-		}
-	}
-
-	return skills as Skills;
 };
 
 export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes {
@@ -119,7 +104,7 @@ export function createDefaultCharacter(): Character {
 		derivedAttributes: calculateDerivedAttributes(baseStats),
 		detailedDescription: baseDetailedDescription,
 		profession: baseProfession,
-		skills: initializeSkills(),
+		skills: generateDefaultSkills(),
 		statistics: baseStats,
 	}
 }
@@ -144,6 +129,7 @@ export function generateStat(name: string, scoreValue: number): Stat {
 		return null;
 	};
 	return {
+		label: name.charAt(0).toUpperCase() + name.slice(1),
 		score: scoreValue,
 		x5: scoreValue * 5,
 		distinguishingFeature: DISTINGUISHING_FEATURES[name][scoreValue],

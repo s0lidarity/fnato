@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Button } from 'react95';   
@@ -6,8 +5,8 @@ import { Button } from 'react95';
 import { useStats } from '../../../../../providers/StatisticsContext';
 import StatInput from '../StatInput/StatInput';
 import { Statistics } from '../../../../../types/characterTypes';
-import { ConfigOptions } from '../../types';
-import PointsCounter from '../PointsCounter/PointsCounter';
+import { StatsConfigOptions } from '../../../../../types/componentTypes';
+import PointsCounter from '../../../../../components/PointsCounter/PointsCounter';
 
 const ButtonContainer = styled.div`
     display: flex;
@@ -16,21 +15,8 @@ const ButtonContainer = styled.div`
     align-items: center;
 `;
 
-const PointsContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.25rem;
-`;
-
-const PointsLabel = styled.label <{ showWarning?: boolean }>`
-    margin-right: 0.5rem;
-    color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.materialTextDisabled : 'inherit'};
-    background-color: ${({ showWarning }) => showWarning ? ({ theme }) => theme.canvasTextInvert : 'inherit'};
-`;
-
 interface ManualInputStatsProps {
-    config: ConfigOptions;
+    config: StatsConfigOptions;
 }
 
 const DEFAULT_POINTS = 72;
@@ -44,7 +30,7 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
         const currentValue = stats[statKey].score;
         const difference = value - currentValue;
 
-        if(config === ConfigOptions.PointBuy) {
+        if(config === StatsConfigOptions.PointBuy) {
             if(difference > points){
                 value = currentValue + points;
             }
@@ -91,11 +77,8 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
             {renderStatInputs()}
             <ButtonContainer>
                 <Button onClick={resetStats}>Reset Statistics</Button>
-                {config === ConfigOptions.PointBuy && 
-                    <PointsContainer>
-                        <PointsLabel showWarning={showNoPointsWarning}>Points Remaining</PointsLabel>                       
-                        <PointsCounter value={points} />
-                    </PointsContainer>}
+                {config === StatsConfigOptions.PointBuy 
+                && <PointsCounter value={points} showNoPointsWarning={showNoPointsWarning} />}
             </ButtonContainer>
         </div>
     );

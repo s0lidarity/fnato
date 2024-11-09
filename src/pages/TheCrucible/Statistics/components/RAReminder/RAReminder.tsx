@@ -8,36 +8,45 @@ import { FaWindowMaximize } from "react-icons/fa6";
 import { RECOMMENDED_ARRAYS, RecommendedArray } from '../../../../../utils/CharacterGenerator';
 
 const StyledTableTitle = styled.h2`
-    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 `;
 
 const StyledWindowHeader = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding-left: 0.5rem;
 `;
 
 const StyledWindow = styled(Window)`
-    margin-top: 1rem;
     width: 100%;
 `;
 
 const StyledGuidanceButton = styled(Button)`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    margin-top: 1rem;
     gap: 0.5rem;
 `;
 
-const StyledButton = styled(Button)`
-    margin-left: 0.5rem;
+const StyledButtonText = styled.div`
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+`;
+
+const StyledMinButton = styled(Button)`
+    display: flex;
+    margin-top: 0.25rem;
+    margin-right: 1px;
+    align-items: center;
+    align-self: center;
 `;
 
 const StyledMaximizeIcon = styled(FaWindowMaximize)`
     color: ${({ theme }) => theme.canvasTextInvert};
-    padding: 0.25rem;
 `;
 
 
@@ -66,14 +75,17 @@ function RAReminder() {
     return (
         <>
             {!reminderIsOpen ? (
-                <StyledGuidanceButton onClick={() => setReminderIsOpen(true)}>Guidance <StyledMaximizeIcon /></StyledGuidanceButton>
+                <StyledGuidanceButton onClick={() => setReminderIsOpen(true)}>
+                    <StyledButtonText>Guidance</StyledButtonText>
+                    <StyledMaximizeIcon />
+                </StyledGuidanceButton>
             ) :
             (
                 <StyledWindow>
                     <WindowHeader>
                         <StyledWindowHeader>
                             <StyledTableTitle>Stat Guide</StyledTableTitle>
-                            <StyledButton onClick={() => setReminderIsOpen(false)}><FaRegWindowMinimize /></StyledButton>
+                            <StyledMinButton onClick={() => setReminderIsOpen(false)}><FaRegWindowMinimize /></StyledMinButton>
                         </StyledWindowHeader>
                     </WindowHeader>
                     <WindowContent>

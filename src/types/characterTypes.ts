@@ -9,7 +9,7 @@ export interface Character {
     bonds: Bond[];
     derivedAttributes: DerivedAttributes;
     detailedDescription: DetailedDescription;
-    profession: Profession;
+    profession: IProfession;
     skills: Skills;
     statistics: Statistics;
 };
@@ -156,40 +156,38 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
     },
 };
 
-export interface OptionalSkills {
-    ForeignLanguages?: Skill[];
-    OtherSkills?: Skill[];
-}
-
-// I need to map the professions in a constant or something
-// might be better as an api in the future
-export interface Profession {
+export interface IProfession {
     affiliation?: string;
     professionalSkills: Skill[];
     bondCount: number;
     recommendedStats: StatisticKeys[];
-    chosenSkills: Skill[];
+    choosableSkills: Skill[];
     chosenSkillCount: number;
+    otherSkills?: { [skillName: string]: Skill }; 
 }
 
 export interface Skill {
+    id: string;
+    name: string;
     value: number;
-    base: number;
-    bonus: boolean;
+    bonus: number;
+    label?: string;
     reminderText?: string;
+    subType?: string;
+    isDefault?: boolean;
 }
 
-export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
+export const SKILL_REMINDERS: { [key: string]: string } = {
     Accounting: "Business Math",
     Alertness: "Noticing things",
-    Anthropology: "Study of ",
+    Anthropology: "Study of humans and their cultures",
     Archeology: "Jurassic Park",
     Art: "Painting",
     Artillery: "Making things explode from far away",
     Athletics: "Jumping, ducking, running, climbing, etc",
     Bureaucracy: "Greasing the wheels of government",
     ComputerScience: "010111100001",
-    Craft: "Inner Adam Savage",
+    Crafts: "Inner Adam Savage",
     Criminology: "Muddying the waters of a crime-scene",
     Demolitions: "Controlled explosions",
     Disguise: "Gene Parmesan, he's the best",
@@ -198,6 +196,7 @@ export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Firearms: "pew-pew",
     FirstAid: "Minor urgent medical care",
     Forensics: "CSI",
+    ForeignLanguages: "Parles-vous Français?",
     HeavyMachinery: "Forklifts, cranes, excavators, etc",
     HeavyWeapons: "LMGs I think",
     History: "If you haven't studied it you're doomed to repeat it",
@@ -224,97 +223,13 @@ export const SKILL_REMINDERS: { [key in keyof Skills]: string } = {
     Unnatural: "It's a jeep thing, you wouldn't understand",
 };
 
-export const SKILL_BASE_VALUES: { [key in keyof Skills]: number } = {
-    Accounting: 10,
-    Alertness: 20,
-    Anthropology: 0,
-    Archeology: 0,
-    Art: 0,
-    Artillery: 0,
-    Athletics: 30,
-    Bureaucracy: 10,
-    ComputerScience: 0,
-    Craft: 0,
-    Criminology: 10,
-    Demolitions: 0,
-    Disguise: 10,
-    Dodge: 30,
-    Drive: 20,
-    Firearms: 20,
-    FirstAid: 10,
-    Forensics: 0,
-    HeavyMachinery: 10,
-    HeavyWeapons: 0,
-    History: 10,
-    HUMINT: 10,
-    Law: 0,
-    Medicine: 0,
-    MeleeWeapons: 30,
-    MilitaryScience: 0,
-    Navigate: 10,
-    Occult: 10,
-    Persuade: 20,
-    Pharmacy: 0,
-    Pilot: 0,
-    Psychotherapy: 10,
-    Ride: 10,
-    Science: 0,
-    Search: 20,
-    SIGINT: 0,
-    Stealth: 10,
-    Surgery: 0,
-    Survival: 10,
-    Swim: 20,
-    UnarmedCombat: 40,
-    Unnatural: 0,
-};
+// AJS this is overdone, can we just have this be a collection of skills? initialzing on defaults
+// insert new skills at the end of the list, or alphabetically?
+export type Skills = Skill[];
 
-export interface Skills {
-    Accounting: Skill;
-    Alertness: Skill;
-    Anthropology: Skill;
-    Archeology: Skill;
-    Art: Skill;
-    Artillery: Skill;
-    Athletics: Skill;
-    Bureaucracy: Skill;
-    ComputerScience: Skill;
-    Craft: Skill;
-    Criminology: Skill;
-    Demolitions: Skill;
-    Disguise: Skill;
-    Dodge: Skill;
-    Drive: Skill;
-    Firearms: Skill;
-    FirstAid: Skill;
-    Forensics: Skill;
-    HeavyMachinery: Skill;
-    HeavyWeapons: Skill;
-    History: Skill;
-    HUMINT: Skill;
-    Law: Skill;
-    Medicine: Skill;
-    MeleeWeapons: Skill;
-    MilitaryScience: Skill;
-    Navigate: Skill;
-    Occult: Skill;
-    Persuade: Skill;
-    Pharmacy: Skill;
-    Pilot: Skill;
-    Psychotherapy: Skill;
-    Ride: Skill;
-    Science: Skill;
-    Search: Skill;
-    SIGINT: Skill;
-    Stealth: Skill;
-    Surgery: Skill;
-    Survival: Skill;
-    Swim: Skill;
-    UnarmedCombat: Skill;
-    Unnatural: Skill;
-}
-
+// AJS consider adding shortHand value, ie: constitution -> con
 export interface Stat {
+    label: string;
     score: number;
     x5: number;
     distinguishingFeature: string;
@@ -339,8 +254,12 @@ export interface Statistics {
     charisma: Stat;
 }
 
-interface DamagedVeteranAdjustment {
-
+// AJS Damaged Veteran Adjustment will likely need to be refactored when we get there
+export interface DamagedVeteranAdjustment {
+    name: string;
+    description: string;
+    statAdjustment: { [key in keyof Statistics]: number };
+    skillAdjustment: { [key in keyof Skills]: number };
 }
 // Extreme Violence
 // Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s CHA and each Bond. Your Agent is adapted to violence (see page 73).
@@ -354,8 +273,403 @@ interface DamagedVeteranAdjustment {
 
 export type StatisticKeys = keyof Statistics;
 
+export const DEFAULT_SKILLS: Skill[] = [
+    {
+        id: 'accounting',
+        name: "Accounting",
+        value: 10,
+        bonus: 0,
+        label: "Accounting",
+        reminderText: "Business Math",
+        isDefault: true
+    },
+    {
+        id: 'alertness',
+        name: "Alertness",
+        value: 20,
+        bonus: 0,
+        label: "Alertness",
+        reminderText: "Noticing things",
+        isDefault: true
+    },
+    {
+        id: 'anthropology',
+        name: "Anthropology",
+        value: 0,
+        bonus: 0,
+        label: "Anthropology",
+        reminderText: "Study of humans and their cultures",
+        isDefault: true
+    },
+    {
+        id: 'archeology',
+        name: "Archeology",
+        value: 0,
+        bonus: 0,
+        label: "Archeology",
+        reminderText: "Jurassic Park",
+        isDefault: true
+    },
+    {
+        id: 'art',
+        name: "Art",
+        value: 0,
+        bonus: 0,
+        label: "Art",
+        reminderText: "Painting",
+        isDefault: true
+    },
+    {
+        id: 'artillery',
+        name: "Artillery",
+        value: 0,
+        bonus: 0,
+        label: "Artillery",
+        reminderText: "Making things explode from far away",
+        isDefault: true
+    },
+    {
+        id: 'athletics',
+        name: "Athletics",
+        value: 30,
+        bonus: 0,
+        label: "Athletics",
+        reminderText: "Jumping, ducking, running, climbing, etc",
+        isDefault: true
+    },
+    {
+        id: 'bureaucracy',
+        name: "Bureaucracy",
+        value: 10,
+        bonus: 0,
+        label: "Bureaucracy",
+        reminderText: "Greasing the wheels of government",
+        isDefault: true
+    },
+    {
+        id: 'computer-science',
+        name: "Computer Science",
+        value: 0,
+        bonus: 0,
+        label: "Computer Science",
+        reminderText: "010111100001",
+        isDefault: true
+    },
+    {
+        id: 'crafts',
+        name: "Crafts",
+        value: 0,
+        bonus: 0,
+        label: "Craft",
+        reminderText: "Inner Adam Savage",
+        subType: "Macrame",
+        isDefault: true
+    },
+    {
+        id: 'criminology',
+        name: "Criminology",
+        value: 10,
+        bonus: 0,
+        label: "Criminology",
+        reminderText: "Muddying the waters of a crime-scene",
+        isDefault: true
+    },
+    {
+        id: 'demolitions',
+        name: "Demolitions",
+        value: 0,
+        bonus: 0,
+        label: "Demolitions",
+        reminderText: "Controlled explosions",
+        isDefault: true
+    },
+    {
+        id: 'disguise',
+        name: "Disguise",
+        value: 10,
+        bonus: 0,
+        label: "Disguise",
+        reminderText: "Gene Parmesan, he's the best",
+        isDefault: true
+    },
+    {
+        id: 'dodge',
+        name: "Dodge",
+        value: 30,
+        bonus: 0,
+        label: "Dodge",
+        reminderText: "Avoiding getting hit",
+        isDefault: true
+    },
+    {
+        id: 'drive',
+        name: "Drive",
+        value: 20,
+        bonus: 0,
+        label: "Drive",
+        reminderText: "Opearting a motor-vehicle",
+        isDefault: true
+    },
+    {
+        id: 'firearms',
+        name: "Firearms",
+        value: 20,
+        bonus: 0,
+        label: "Firearms",
+        reminderText: "pew-pew",
+        isDefault: true
+    },
+    {
+        id: 'first-aid',
+        name: "First Aid",
+        value: 10,
+        bonus: 0,
+        label: "First Aid",
+        reminderText: "Minor urgent medical care",
+        isDefault: true
+    },
+    {
+        id: 'forensics',
+        name: "Forensics",
+        value: 0,
+        bonus: 0,
+        label: "Forensics",
+        reminderText: "CSI",
+        isDefault: true
+    },
+    {
+        id: 'foreign-languages',
+        name: "Foreign Languages",
+        value: 0,
+        bonus: 0,
+        label: "Foreign Languages",
+        reminderText: "Parles-vous Français?",
+        subType: "French",
+        isDefault: true
+    },
+    {
+        id: 'heavy-machinery',
+        name: "Heavy Machinery",
+        value: 10,
+        bonus: 0,
+        label: "Heavy Machinery",
+        reminderText: "Forklifts, cranes, excavators, etc",
+        isDefault: true
+    },
+    {
+        id: 'heavy-weapons',
+        name: "Heavy Weapons",
+        value: 0,
+        bonus: 0,
+        label: "Heavy Weapons",
+        reminderText: "LMGs I think",
+        isDefault: true
+    },
+    {
+        id: 'history',
+        name: "History",
+        value: 10,
+        bonus: 0,
+        label: "History",
+        reminderText: "If you haven't studied it you're doomed to repeat it",
+        isDefault: true
+    },
+    {
+        id: 'humint',
+        name: "HUMINT",
+        value: 10,
+        bonus: 0,
+        label: "HUMINT",
+        reminderText: "Understanding human behavior",
+        isDefault: true
+    },
+    {
+        id: 'law',
+        name: "Law",
+        value: 0,
+        bonus: 0,
+        label: "Law",
+        reminderText: "Lawyering",
+        isDefault: true
+    },
+    {
+        id: 'medicine',
+        name: "Medicine",
+        value: 0,
+        bonus: 0,
+        label: "Medicine",
+        reminderText: "Medical practice",
+        isDefault: true
+    },
+    {
+        id: 'melee-weapons',
+        name: "Melee Weapons",
+        value: 30,
+        bonus: 0,
+        label: "Melee Weapons",
+        reminderText: "Knives, hatchets, swords, etc",
+        isDefault: true
+    },
+    {
+        id: 'military-science',
+        name: "Military Science",
+        value: 0,
+        bonus: 0,
+        label: "Military Science",
+        reminderText: "Military tactics",
+        subType: "Land",
+        isDefault: true
+    },
+    {
+        id: 'navigate',
+        name: "Navigate",
+        value: 10,
+        bonus: 0,
+        label: "Navigate",
+        reminderText: "Finding the path",
+        isDefault: true
+    },
+    {
+        id: 'occult',
+        name: "Occult",
+        value: 10,
+        bonus: 0,
+        label: "Occult",
+        reminderText: "Cult shit",
+        isDefault: true
+    },
+    {
+        id: 'persuade',
+        name: "Persuade",
+        value: 20,
+        bonus: 0,
+        label: "Persuade",
+        reminderText: "Convincing people",
+        isDefault: true
+    },
+    {
+        id: 'pharmacy',
+        name: "Pharmacy",
+        value: 0,
+        bonus: 0,
+        label: "Pharmacy",
+        reminderText: "Do you like drugs?",
+        isDefault: true
+    },
+    {
+        id: 'pilot',
+        name: "Pilot",
+        value: 0,
+        bonus: 0,
+        label: "Pilot",
+        reminderText: "Operating flying vehicles",
+        isDefault: true
+    },
+    {
+        id: 'psychotherapy',
+        name: "Psychotherapy",
+        value: 10,
+        bonus: 0,
+        label: "Psychotherapy",
+        reminderText: "Analysing thought",
+        isDefault: true
+    },
+    {
+        id: 'ride',
+        name: "Ride",
+        value: 10,
+        bonus: 0,
+        label: "Ride",
+        reminderText: "Horses and such",
+        isDefault: true
+    },
+    {
+        id: 'science',
+        name: "Science",
+        value: 0,
+        bonus: 0,
+        label: "Science",
+        reminderText: "Physics, Chemistry, Biology, etc",
+        subType: "Theoretical Physics",
+        isDefault: true
+    },
+    {
+        id: 'search',
+        name: "Search",
+        value: 20,
+        bonus: 0,
+        label: "Search",
+        reminderText: "Finding things",
+        isDefault: true
+    },
+    {
+        id: 'sigint',
+        name: "SIGINT",
+        value: 0,
+        bonus: 0,
+        label: "SIGINT",
+        reminderText: "Signal intelligence, breaking codes",
+        isDefault: true
+    },
+    {
+        id: 'stealth',
+        name: "Stealth",
+        value: 10,
+        bonus: 0,
+        label: "Stealth",
+        reminderText: "Sneaking around",
+        isDefault: true
+    },
+    {
+        id: 'surgery',
+        name: "Surgery",
+        value: 0,
+        bonus: 0,
+        label: "Surgery",
+        reminderText: "Removing a bullet, stitching a wound",
+        isDefault: true
+    },
+    {
+        id: 'survival',
+        name: "Survival",
+        value: 10,
+        bonus: 0,
+        label: "Survival",
+        reminderText: "Camping, tracking, improvising in nature",
+        isDefault: true
+    },
+    {
+        id: 'swim',
+        name: "Swim",
+        value: 20,
+        bonus: 0,
+        label: "Swim",
+        reminderText: "Moving oneself through water",
+        isDefault: true
+    },
+    {
+        id: 'unarmed-combat',
+        name: "Unarmed Combat",
+        value: 40,
+        bonus: 0,
+        label: "Unarmed Combat",
+        reminderText: "Punch, kick, grapple, bite, etc",
+        isDefault: true
+    },
+    {
+        id: 'unnatural',
+        name: "Unnatural",
+        value: 0,
+        bonus: 0,
+        label: "Unnatural",
+        reminderText: "It's a jeep thing, you wouldn't understand",
+        isDefault: true
+    },
+];
 
-const character = {
+
+// ajs, replace this with an actual complete character when we get there
+export const character = {
     // roll 4d6, drop the lowest or assign from a pool of 72 points
     statistics: {
         // min 3, max 18

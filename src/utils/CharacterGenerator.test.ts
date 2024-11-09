@@ -19,7 +19,7 @@ describe('CharacterGenerator', () => {
     });
 
     test('generateStat returns a valid Stat object', () => {
-        const stat = generateStat('strength', rollDice(6, 4, 1));
+        const stat = generateStat('strength', rollDice(6, 4, 1).result);
         expect(stat).toHaveProperty('score');
         expect(stat.score).toBeLessThan(19);
         expect(stat.score).toBeGreaterThan(2);
@@ -30,7 +30,7 @@ describe('CharacterGenerator', () => {
     });
 
     test('generateStat returns null for an invalid stat name', () => {
-        const stat = generateStat('invalid', {result: 18, rolls: [6,6,6]});
+        const stat = generateStat('invalid', 18);
         expect(stat).toBeNull();
     });
 
@@ -40,12 +40,12 @@ describe('CharacterGenerator', () => {
     });
 
     test('generateStat returns null for a roll result less than 3', () => {
-        const stat = generateStat('strength', {result: 2, rolls: [1,1,1]});
+        const stat = generateStat('strength', 2);
         expect(stat).toBeNull();
     });
 
     test('generateStat returns null for a roll result greater than 18', () => {
-        const stat = generateStat('strength', {result: 19, rolls: [6,6,6]});
+        const stat = generateStat('strength', 19);
         expect(stat).toBeNull();
     });
 });

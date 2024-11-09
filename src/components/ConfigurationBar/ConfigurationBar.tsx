@@ -1,23 +1,24 @@
 import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
-import { StatsConfigOptions, ConfigOptions } from '../../../../../types/componentTypes';
 
-type RenderRadioParams = {
+import { ConfigOptions } from '../../types/componentTypes'
+
+type RenderedRadioParams = {
     label: string;
     value: ConfigOptions;
 }
 
 const ConfigurationBarContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1rem;
 `;
 
 const StyledGroupBox = styled(GroupBox)`
     display: flex;
-    width: 100%;
+    width: fit-content%;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 1rem;
 `;
 
@@ -26,12 +27,18 @@ const StyledRadio = styled(Radio)`
     vertical-align: middle;
 `
 
-function ConfigurationBar({ config, setConfig }) {
+interface ConfigurationBarProps {
+    config: ConfigOptions, 
+    setConfig: (config: ConfigOptions) => void, 
+    options: RenderedRadioParams[],
+};
+
+function ConfigurationBar({ config, setConfig, options }: ConfigurationBarProps) {
     const toggleCheck = (e) => {
         setConfig(e.target.value);
     };
 
-    const renderRadio = ({label, value}: RenderRadioParams) => {
+    const renderRadio = ({label, value}: RenderedRadioParams) => {
         return (
             <StyledRadio
                 checked={config === value}
@@ -46,9 +53,7 @@ function ConfigurationBar({ config, setConfig }) {
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label="Options">
-                {renderRadio({ label: 'Manual Input', value: StatsConfigOptions.ManualInput })}
-                {renderRadio({ label: 'Point Buy', value: StatsConfigOptions.PointBuy })}
-                {renderRadio({ label: 'Dice', value: StatsConfigOptions.Dice })}
+                {options.map(option => renderRadio(option))}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )
