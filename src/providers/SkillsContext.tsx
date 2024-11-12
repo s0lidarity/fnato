@@ -14,6 +14,7 @@ type SKillsContextType = {
 }
 
 const MAX_BONUS_POINTS = 8;
+const SKILL_CAP = 80;
 
 const SkillsContext = createContext<SKillsContextType | undefined>(undefined);
 
@@ -61,6 +62,13 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return MAX_BONUS_POINTS - total;
     };
 
+    // AJS refactor move this to a util function for testing convenience
+    const calculateSkillValue = (skillId: string, skillBonus: number): number => {
+        const skillValue = getSkillProperty(skillId, 'value');
+        const calculatedValue = Number(skillValue) + Number(skillBonus * 20);
+        return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
+    }
+
     // AJS pick up here, it doesn't seem to do anything at the moment
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
         const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
@@ -71,16 +79,14 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             return false;
         }
 
-        // Update the bonus
-        const success = setSkillById(skillId, { bonus: newBonus });
+        // Update the skill value and bonus
+        const newValue = calculateSkillValue(skillId, newBonus);
+        const success = setSkillById(skillId, { value: newValue, bonus: newBonus });
         
-        // AJS pcik up here
         // Update remaining points & update skill values if successful
         if (success) {
             setBonusPointsRemaining(bonusPointsRemaining - pointDifference);
         }
-        
-
 
         return success;
     };

@@ -46,7 +46,6 @@ export class Profession implements IProfession {
         return newSkill;
     };
 
-    // AJS createSkillList is not creating subtyped skills properlys
     static createSkillList(rawSkills: Array<
         | [string, number]            // [skillName, value]
         | [string, number, string]    // [skillName, value, subType]

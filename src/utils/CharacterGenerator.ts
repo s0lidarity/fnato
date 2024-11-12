@@ -123,7 +123,6 @@ export function rollDice(dSize: number, count: number, drop: number = 0): RollRe
 	return { result: total, rolls: rolls };
 }
 
-// AJS: this should probably be a constructor that takes in a rollResult, otherwise we lose the array of rolls
 export function generateStat(name: string, scoreValue: number): Stat {
 	if (!STAT_REMINDERS.hasOwnProperty(name) || !scoreValue || scoreValue < 3 || scoreValue > 18) {
 		return null;
@@ -137,7 +136,6 @@ export function generateStat(name: string, scoreValue: number): Stat {
 	}
 }
 
-// AJS: move this type to the CharacterTypes file
 export type RecommendedArray = { key: string, label: string, stats: number[]};
 
 export const RECOMMENDED_ARRAYS: RecommendedArray[] = [

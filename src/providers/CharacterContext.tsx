@@ -8,7 +8,7 @@ import {
 	Character, 
 	DerivedAttributes, 
 	DetailedDescription, 
-	Profession, 
+	IProfession, 
 	Skills, 
 	Stat, 
 	Statistics 
@@ -22,7 +22,7 @@ type CharacterContextType = {
 	setBonds: (bonds: Bond[]) => void;
     setDerivedAttributes: (derivedAttributes: DerivedAttributes) => void;
     setDetailedDescription: (description: DetailedDescription) => void;
-    setProfession: (profession: Profession) => void;
+    setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setStats: (stats: Statistics) => void;
 };

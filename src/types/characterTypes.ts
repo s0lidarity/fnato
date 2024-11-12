@@ -223,8 +223,6 @@ export const SKILL_REMINDERS: { [key: string]: string } = {
     Unnatural: "It's a jeep thing, you wouldn't understand",
 };
 
-// AJS this is overdone, can we just have this be a collection of skills? initialzing on defaults
-// insert new skills at the end of the list, or alphabetically?
 export type Skills = Skill[];
 
 // AJS consider adding shortHand value, ie: constitution -> con
@@ -563,6 +561,7 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Pilot",
         reminderText: "Operating flying vehicles",
+        subType: "Aircraft",
         isDefault: true
     },
     {
@@ -668,7 +667,7 @@ export const DEFAULT_SKILLS: Skill[] = [
 ];
 
 
-// ajs, replace this with an actual complete character when we get there
+// AJS, replace this with an actual complete character when we get there
 export const character = {
     // roll 4d6, drop the lowest or assign from a pool of 72 points
     statistics: {
