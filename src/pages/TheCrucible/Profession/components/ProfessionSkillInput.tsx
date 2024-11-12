@@ -119,7 +119,7 @@ type SkillInputProps = {
 };
 
 function ProfessionSkillInput({ skill }: SkillInputProps) {
-    const { adjustBonus, skills, setSkillById, bonusPointsRemaining } = useSkills();
+    const { adjustBonus, calculateSkillValue, setSkillById, bonusPointsRemaining } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
 
@@ -177,7 +177,7 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
                 </span>
             </StyledSkillName>
             <StyledValueContainer>
-                {skill.value}
+                {calculateSkillValue(skill.id)}
             </StyledValueContainer>
             <Separator orientation="vertical" />
             <StyledBonusContainer>

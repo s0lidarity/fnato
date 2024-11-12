@@ -6,6 +6,7 @@ import { generateDefaultSkills } from './defaultValues';
 type SKillsContextType = {
     applyProfessionSkills: (professionSkills: Skill[]) => void;
     bonusPointsRemaining: number;
+    calculateSkillValue: (skillId: string) => number;
     adjustBonus: (skillKey: string, adjustment: number) => boolean;
     resetSkills: () => void;
     skills: Skills;
@@ -63,13 +64,13 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     // AJS refactor move this to a util function for testing convenience
-    const calculateSkillValue = (skillId: string, skillBonus: number): number => {
-        const skillValue = getSkillProperty(skillId, 'value');
-        const calculatedValue = Number(skillValue) + Number(skillBonus * 20);
+    const calculateSkillValue = (skillId: string): number => {
+        const skillValue = Number(getSkillProperty(skillId, 'value'));
+        const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
+        const calculatedValue = skillValue + bonusValue;
         return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
     }
 
-    // AJS pick up here, it doesn't seem to do anything at the moment
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
         const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
         const pointDifference = Number(newBonus) - Number(currentBonus);
@@ -79,10 +80,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             return false;
         }
 
-        // Update the skill value and bonus
-        const newValue = calculateSkillValue(skillId, newBonus);
-        const success = setSkillById(skillId, { value: newValue, bonus: newBonus });
-        
+        // Update the bonus
+        const success = setSkillById(skillId, { bonus: newBonus });
         // Update remaining points & update skill values if successful
         if (success) {
             setBonusPointsRemaining(bonusPointsRemaining - pointDifference);
@@ -134,6 +133,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             value={{ 
                 applyProfessionSkills,
                 bonusPointsRemaining,
+                calculateSkillValue,
                 adjustBonus,
                 resetSkills,
                 skills,

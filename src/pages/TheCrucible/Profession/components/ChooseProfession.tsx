@@ -84,6 +84,7 @@ function ChooseProfession() {
         applyProfessionSkills(newProfession.professionalSkills);
     };
 
+    // AJS, pick up here, skills not updating when additional skills are chosen
     return (
         <ChooseProfessionGroupBox>
             <ChooseProfessionHeader>
