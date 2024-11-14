@@ -3,8 +3,8 @@ import {
     Anthropologist, 
     Engineer,
     FederalAgent 
-} from './Professions';
-import { DEFAULT_SKILLS } from '../types/characterTypes';
+} from '../Professions';
+import { DEFAULT_SKILLS } from '../../types/characterTypes';
 
 describe('Profession Class', () => {
     describe('createSkill', () => {
@@ -76,7 +76,7 @@ describe('Predefined Professions', () => {
     describe('Engineer', () => {
         it('should have correct crafts subtypes', () => {
             const craftsSkills = Engineer.professionalSkills.filter(
-                skill => skill.id === 'crafts'
+                skill => skill.id.includes('crafts')
             );
 
             expect(craftsSkills).toHaveLength(3);
@@ -91,7 +91,7 @@ describe('Predefined Professions', () => {
     describe('Anthropologist', () => {
         it('should have correct foreign language skills', () => {
             const languageSkills = Anthropologist.professionalSkills.filter(
-                skill => skill.id === 'foreign-languages'
+                skill => skill.id.includes('foreign-languages')
             );
 
             expect(languageSkills).toHaveLength(2);

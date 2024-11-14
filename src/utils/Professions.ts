@@ -49,10 +49,10 @@ export class Profession implements IProfession {
         
         const newSkill: Skill = {
             id: skillId,
-            name: name,
+            name: name.charAt(0).toUpperCase() + name.slice(1),
             value: value,
             bonus: 0,
-            label: defaultSkill?.label || name,
+            label: defaultSkill?.label || name.charAt(0).toUpperCase() + name.slice(1),
             reminderText: defaultSkill?.reminderText,
             subType: subType,
         };
