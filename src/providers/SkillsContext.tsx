@@ -94,8 +94,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const resetSkills = () => {
         setSkills(defaultSkills);
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
+    // AJS this is bugged, it adds new skills instead of updating existing ones
     const applyProfessionSkills = (professionSkills: Skill[]) => {
         // Create new skills array by merging default skills with profession skills
         const newSkills = defaultSkills.map(defaultSkill => {

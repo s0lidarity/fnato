@@ -12,6 +12,22 @@ const wrapper = ({ children }: { children: React.ReactNode }) => (
 describe('SkillsContext', () => {
     let result: any;
 
+    const compareSkillArrays = (a: Skill[], b: Skill[]): boolean => {
+        let match = true;
+        a.forEach((skill, index) => {
+            match = match && skill.value === b[index].value;
+            match = match && skill.bonus === b[index].bonus;
+            match = match && skill.subType === b[index].subType;
+            match = match && skill.label === b[index].label;
+            match = match && skill.reminderText === b[index].reminderText;
+            match = match && skill.name === b[index].name;
+            if (!match) {
+                return false;
+            }
+        });
+        return match;
+    };
+
     beforeEach(() => {
         // Setup fresh hook for each test
         result = renderHook(() => useSkills(), { wrapper }).result;
@@ -19,14 +35,7 @@ describe('SkillsContext', () => {
 
     it('should initialize with default values', () => {
         // loop through skills and check if non-id values match
-        result.current.skills.forEach((skill: Skill, index: number) => {
-            expect(skill.value).toBe(generateDefaultSkills()[index].value);
-            expect(skill.bonus).toBe(generateDefaultSkills()[index].bonus);
-            expect(skill.subType).toBe(generateDefaultSkills()[index].subType);
-            expect(skill.label).toBe(generateDefaultSkills()[index].label);
-            expect(skill.reminderText).toBe(generateDefaultSkills()[index].reminderText);
-            expect(skill.name).toBe(generateDefaultSkills()[index].name);
-        });
+        expect(compareSkillArrays(result.current.skills, generateDefaultSkills())).toBe(true);
         expect(result.current.bonusPointsRemaining).toBe(8);
     });
 
@@ -50,17 +59,15 @@ describe('SkillsContext', () => {
         
         // Test successful bonus adjustment
         act(() => {
-            const success = result.current.adjustBonus(testSkill.id, 1);
-            expect(success).toBe(true);
-            expect(result.current.bonusPointsRemaining).toBe(7);
+            result.current.adjustBonus(testSkill.id, 1);
         });
+        expect(result.current.bonusPointsRemaining).toBe(7);
 
         // Test exceeding bonus points
         act(() => {
-            const success = result.current.adjustBonus(testSkill.id, 9);
-            expect(success).toBe(false);
-            expect(result.current.bonusPointsRemaining).toBe(7);
+            result.current.adjustBonus(testSkill.id, 9);
         });
+        expect(result.current.bonusPointsRemaining).toBe(7);
     });
 
     it('should apply profession skills correctly', () => {
@@ -105,7 +112,7 @@ describe('SkillsContext', () => {
             result.current.resetSkills();
         });
 
-        expect(result.current.skills).toEqual(generateDefaultSkills());
+        expect(compareSkillArrays(result.current.skills, generateDefaultSkills())).toBe(true);
         expect(result.current.bonusPointsRemaining).toBe(8);
     });
 

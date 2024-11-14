@@ -1,8 +1,8 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/preact';
 
-import Menu, { MenuConfig } from './Menu'; 
-import MockProvider from '../../../test/test-utils/MockProvider';
+import Menu, { MenuConfig } from '../Menu'; 
+import MockProvider from '../../../../test/test-utils/MockProvider';
 
 describe('Menu Component', () => {
     beforeEach(() => {
