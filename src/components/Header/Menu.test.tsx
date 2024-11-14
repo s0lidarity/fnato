@@ -1,9 +1,6 @@
 import { describe, test, expect } from 'vitest';
-import { h } from 'preact';
 import { render, screen, fireEvent } from '@testing-library/preact';
-import { LocationProvider } from 'preact-iso';
-import { ThemeProvider } from 'styled-components';
-import tokyoDark from  'react95/dist/themes/tokyoDark';
+
 import Menu, { MenuConfig } from './Menu'; 
 import MockProvider from '../../../test/test-utils/MockProvider';
 
@@ -12,7 +9,7 @@ describe('Menu Component', () => {
         render(
             <div>
                 <MockProvider>
-                        <Menu />
+                        <Menu open={false} setOpen={() => {}} />
                 </MockProvider>
             </div>
         );

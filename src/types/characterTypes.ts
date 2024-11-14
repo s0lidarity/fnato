@@ -354,7 +354,7 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true
     },
     {
-        id: 'crafts',
+        id: 'crafts-macrame',
         name: "Crafts",
         value: 0,
         bonus: 0,
@@ -436,13 +436,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true
     },
     {
-        id: 'foreign-languages',
+        id: 'foreign-languages-french',
         name: "Foreign Languages",
         value: 0,
         bonus: 0,
+        subType: "French",
         label: "Foreign Languages",
         reminderText: "Parles-vous Français?",
-        subType: "French",
         isDefault: true
     },
     {
@@ -509,7 +509,7 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true
     },
     {
-        id: 'military-science',
+        id: 'military-science-land',
         name: "Military Science",
         value: 0,
         bonus: 0,
@@ -555,7 +555,7 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true
     },
     {
-        id: 'pilot',
+        id: 'pilot-aircraft',
         name: "Pilot",
         value: 0,
         bonus: 0,
@@ -583,7 +583,7 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true
     },
     {
-        id: 'science',
+        id: 'science-theoretical-physics',
         name: "Science",
         value: 0,
         bonus: 0,

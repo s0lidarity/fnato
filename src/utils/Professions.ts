@@ -5,6 +5,12 @@ import {
     StatisticKeys 
 } from "../types/characterTypes";
 
+// Add this utility function to standardize skill ID creation
+const createSkillId = (name: string, subType?: string): string => {
+    const baseId = name.toLowerCase().replace(/\s+/g, '-');
+    return subType ? `${baseId}-${subType.toLowerCase().replace(/\s+/g, '-')}` : baseId;
+};
+
 export class Profession implements IProfession {
     name: string;
     affiliation?: string;
@@ -32,15 +38,22 @@ export class Profession implements IProfession {
         this.recommendedStats = config.recommendedStats;
     };
     
-    static createSkill(id: string, value: number, subType?: string): Skill {
-        const defaultSkill = DEFAULT_SKILLS.find(s => s.id === id);
+    static createSkill(name: string, value: number, subType?: string): Skill {
+        // Change to use name instead of id for lookup
+        const defaultSkill = DEFAULT_SKILLS.find(s => s.name.toLowerCase() === name.toLowerCase());
+        if (!defaultSkill) {
+            console.warn(`No default skill found for ${name}`);
+        }
+        
+        const skillId = createSkillId(name, subType);
+        
         const newSkill: Skill = {
-            id: id,
-            name: defaultSkill.name,
+            id: skillId,
+            name: name,
             value: value,
             bonus: 0,
-            label: defaultSkill.label,
-            reminderText: defaultSkill.reminderText,
+            label: defaultSkill?.label || name,
+            reminderText: defaultSkill?.reminderText,
             subType: subType,
         };
         return newSkill;

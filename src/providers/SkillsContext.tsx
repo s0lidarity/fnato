@@ -11,7 +11,7 @@ type SKillsContextType = {
     resetSkills: () => void;
     skills: Skills;
     setSkills: (skills: Skills) => void;
-    setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => void;
+    setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
 }
 
 const MAX_BONUS_POINTS = 8;
@@ -48,6 +48,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             setSkills(newSkills);
             return true;
         }
+        console.warn(`Skill with id: ${skillId} not found}`);
+        console.log('skills: ', skills);
         return false;
     };
     

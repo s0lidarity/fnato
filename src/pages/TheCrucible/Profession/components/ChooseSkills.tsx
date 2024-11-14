@@ -1,11 +1,11 @@
 import { useState } from 'preact/hooks';
-import { Skill } from '../../../../types/characterTypes';
 import styled from 'styled-components';
 import { Checkbox, GroupBox } from 'react95';
 
 import { IProfession } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
+import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 
 type ChooseSkillsProps = {
     profession: IProfession;
@@ -31,25 +31,22 @@ const StyledSkillContainer = styled.div.attrs<any>({
 function ChooseSkills({ profession }: ChooseSkillsProps) {
     // need to track chosen skills and remaining choices
     const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
+    // AJS we need to clear selectedSkillsIds when profession changes
     const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
-    const { setSkillById } = useSkills();
+    const { setSkillById, applyProfessionSkills } = useSkills();
 
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             // Remove skill
-            setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
-            setRemainingChoices(prev => prev + 1);
-            setSkillById(skillId, { value: 0 }); // Reset skill value
-        } else if (remainingChoices > 0) {
-            // Add skill if we have choices remaining
-            setSelectedSkillsIds(prev => [...prev, skillId]);
-            setRemainingChoices(prev => prev - 1);
-            
-            // Find the skill to get its profession value
-            const skill = profession.choosableSkills.find(s => s.id === skillId);
-            if (skill) {
-                setSkillById(skillId, { value: skill.value });
+            const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
+            const success = setSkillById(skillId, { value: defaultValue });
+            if (success) {
+                setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
+                setRemainingChoices(prev => prev + 1);
             }
+        } else if (remainingChoices > 0) {
+            // apply profession skill if we have choices remaining
+            applyProfessionSkills([profession.choosableSkills.find(s => s.id === skillId)]);
         }
     };
 
