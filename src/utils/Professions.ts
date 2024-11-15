@@ -39,8 +39,8 @@ export class Profession implements IProfession {
     };
     
     static createSkill(name: string, value: number, subType?: string): Skill {
-        // Change to use name instead of id for lookup
-        const defaultSkill = DEFAULT_SKILLS.find(s => s.name.toLowerCase() === name.toLowerCase());
+        const formattedName = name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        const defaultSkill = DEFAULT_SKILLS.find(s => s.name === formattedName);
         if (!defaultSkill) {
             console.warn(`No default skill found for ${name}`);
         }
@@ -49,7 +49,7 @@ export class Profession implements IProfession {
         
         const newSkill: Skill = {
             id: skillId,
-            name: name.charAt(0).toUpperCase() + name.slice(1),
+            name: formattedName,
             value: value,
             bonus: 0,
             label: defaultSkill?.label || name.charAt(0).toUpperCase() + name.slice(1),
@@ -90,7 +90,7 @@ export const Anthropologist = new Profession({
     choosableSkills: Profession.createSkillList([
         ['anthropology', 50],
         ['archeology', 40],
-        ['humint', 50],
+        ['HUMINT', 50],
         ['navigate', 50],
         ['search', 60],
         ['survival', 50],
@@ -111,7 +111,7 @@ export const Historian = new Profession({
     ]),
     choosableSkills: Profession.createSkillList([
         ['anthropology', 50],
-        ['humint', 50],
+        ['HUMINT', 50],
         ['navigate', 50],
         ['search', 60],
         ['survival', 50],
@@ -129,7 +129,7 @@ export const Engineer = new Profession({
         ['crafts', 40, 'Mechanic'],
         ['crafts', 40, 'Microelectronics'],
         ['science', 40, 'Mathematics'],
-        ['sigint', 40],   
+        ['SIGINT', 40],   
     ]),
     choosableSkills: Profession.createSkillList([
         ['accounting', 50],
@@ -154,7 +154,7 @@ export const FederalAgent = new Profession({
         ['drive', 50],
         ['firearms', 50],
         ['forensics', 30],
-        ['humint', 60],
+        ['HUMINT', 60],
         ['law', 30],
         ['persuade', 50],
         ['search', 50],
@@ -261,7 +261,7 @@ export const Soldier = new Profession({
         ['heavy-machinery', 50],
         ['heavy-weapons', 40],
         ['search', 60],
-        ['sigint', 40], 
+        ['SIGINT', 40], 
         ['swim', 60],
     ]),
     bondCount: 4,

@@ -3,6 +3,7 @@ import { describe, expect, it, beforeEach } from 'vitest';
 import { SkillsProvider, useSkills } from '../SkillsContext';
 import { generateDefaultSkills } from '../defaultValues';
 import { Skill } from '../../types/characterTypes';
+import { Anthropologist, Engineer, SpecialOperator } from '../../utils/Professions';
 
 // Test wrapper to provide context
 const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -127,5 +128,55 @@ describe('SkillsContext', () => {
 
         const updatedSkill = result.current.skills.find((s: Skill) => s.id === testSkill.id);
         expect(updatedSkill.value).toBe(45);
+    });
+
+    // AJS start here
+    describe('apply profession skills correctly', () => {
+        // mostly checking for Science - Mathematics and Crafts - Electrician, Mechanic, Microelectronics here
+        it('should apply Engineer skills correctly', () => {
+            act(() => {
+                result.current.applyProfessionSkills(Engineer.professionalSkills);
+            });
+
+            expect(result.current.skills.find(s => s.name === 'Computer Science').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Crafts' && s.subType === 'Electrician').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'Crafts' && s.subType === 'Mechanic').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'Crafts' && s.subType === 'Microelectronics').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'Science' && s.subType === 'Mathematics').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'SIGINT').value).toBe(40);
+        });
+
+        // mostly checking for Foreign Languages -French and German here
+        it('should apply Anthropologist skills correctly', () => {
+            act(() => {
+                result.current.applyProfessionSkills(Anthropologist.professionalSkills);
+            });
+
+            expect(result.current.skills.find(s => s.name === 'Anthropology').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Foreign Languages' && s.subType === 'French').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Foreign Languages' && s.subType === 'German').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'History').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Occult').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'Persuade').value).toBe(40);
+        });
+
+        // mostly checking for Military Science -Land here
+        it('should apply Special Operator skills correctly', () => {
+            act(() => {
+                result.current.applyProfessionSkills(SpecialOperator.professionalSkills);
+            });
+            expect(result.current.skills.find(s => s.name === 'Alertness').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Athletics').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Demolitions').value).toBe(40);
+            expect(result.current.skills.find(s => s.name === 'Firearms').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Heavy Weapons').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Melee Weapons').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Military Science' && s.subType === 'Land').value).toBe(60);
+            expect(result.current.skills.find(s => s.name === 'Navigate').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Stealth').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Survival').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Swim').value).toBe(50);
+            expect(result.current.skills.find(s => s.name === 'Unarmed Combat').value).toBe(60);
+        });
     });
 }); 

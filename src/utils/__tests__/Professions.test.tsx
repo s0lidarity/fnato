@@ -29,6 +29,11 @@ describe('Profession Class', () => {
             expect(skill.subType).toBe('Biology');
             expect(skill.value).toBe(40);
         });
+
+        it('should create the expected skill name for two word skill names', () => {
+            const skill = Profession.createSkill('computer-science', 60);
+            expect(skill.name).toBe('Computer Science');
+        });
     });
 
     describe('createSkillList', () => {
@@ -98,6 +103,10 @@ describe('Predefined Professions', () => {
             expect(languageSkills.map(skill => skill.subType)).toEqual([
                 'French',
                 'German'
+            ]);
+            expect(languageSkills.map(skill => skill.name)).toEqual([
+                'Foreign Languages',
+                'Foreign Languages'
             ]);
         });
     });
