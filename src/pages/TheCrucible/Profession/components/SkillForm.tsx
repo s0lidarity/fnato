@@ -47,11 +47,9 @@ const renderSkillInputs = (skills: Skills) => {
 
 const SkillForm = () => {
     const { skills, bonusPointsRemaining } = useSkills();
-    // AJS, currently only flashes when you first run out of points
-    // should flash when you try to spend points you don't have
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
-
+    // applies temp styling to the PointsCounter when you run out of bonus points
     useEffect(() => {
         if(bonusPointsRemaining <= 0) {
             setShowNoPointsWarning(true);

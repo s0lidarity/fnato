@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { STAT_REMINDERS } from '../types/characterTypes';
 
 import { 
-    Skill, 
     Skills, 
     Statistics, 
     Stat,

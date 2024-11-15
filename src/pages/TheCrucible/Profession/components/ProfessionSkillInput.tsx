@@ -133,6 +133,7 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
     };
 
     const handleBonusChange = (value: number) => {
+        // maybe send a signal to SkillForm to update NoPointsWarning2
         adjustBonus(skill.id, value);
     };
 

@@ -45,6 +45,7 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             // Remove skill
+            // need to look this up by name
             const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
             const success = setSkillById(skillId, { value: defaultValue });
             if (success) {
@@ -53,39 +54,51 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
             }
         } else if (remainingChoices > 0) {
             // apply profession skill if we have choices remaining
-            applyProfessionSkills([profession.choosableSkills.find(s => s.id === skillId)]);
+            const skillToApply = profession.choosableSkills.find(s => s.id === skillId);
+            if (skillToApply) {
+                applyProfessionSkills([skillToApply]);
+                setSelectedSkillsIds(prev => [...prev, skillToApply.id]);
+                setRemainingChoices(prev => prev - 1);
+            }
         } else if (remainingChoices <= 0) {
             setShowNoChoicesWarning(true);
             setTimeout(() => setShowNoChoicesWarning(false), 500);
         }
     };
 
-    // AJS, need to move over 'renderSkillChoices' from ProfessionSkillPicker to make this work
-    const noChoices = <div>`${profession.name} has no flexible skills to choose from.`</div>
+    const noChoices = () => {
+        return (profession ? 
+            (<div>{`${profession?.name} has no flexible skills to choose from.`}</div>)
+            : null 
+        );
+    } 
+
+    const chooseSkillsCheckboxes = () => {
+        return profession.choosableSkills.map((skill) => (
+                <StyledSkillContainer key={skill.id}>
+                    <Checkbox
+                        name={skill.name}
+                        value={skill.id}
+                        checked={selectedSkillsIds.includes(skill.id)} 
+                        onChange={() => toggleSkill(skill.id)}
+                    />
+                    {skill.label} ({skill.value})
+                </StyledSkillContainer>
+        ));
+    };
 
     return (
         <StyledGroupBox variant='flat' label={`Choose ${remainingChoices > 0 ? remainingChoices : ''} Additional Skills`}>
-            {profession.choosableSkills.length === 0 && noChoices}
-
-            {profession.choosableSkills.map((skill) => {
-                return (
-                    <StyledSkillContainer>
-                        <Checkbox
-                            name={skill.name}
-                            value={skill.id}
-                            checked={selectedSkillsIds.includes(skill.id)} 
-                            onChange={() => toggleSkill(skill.id)}
-                        />
-                        {skill.label} ({skill.value})
-                    </StyledSkillContainer>
-                );
-            })}
+            { !profession || profession?.choosableSkills?.length === 0 
+                ? noChoices() 
+                : chooseSkillsCheckboxes()
+            }
             <div>
                 <PointsCounter 
                     value={remainingChoices}
                     showNoPointsWarning={showNoChoicesWarning}
                     minDigits={1}
-                    label='Skills Remaining'
+                    label='Skill Choices Remaining'
                 />
             </div>
         </StyledGroupBox>

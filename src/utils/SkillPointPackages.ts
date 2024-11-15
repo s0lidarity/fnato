@@ -24,16 +24,18 @@ export const createBonusSkillPackage = (skills: IBonusSkillPackage): IBonusSkill
     return skills;
 };
 
+// AJS we're going to need a way to apply the bonsus skills to skills from skillscontext
+
 // ARTIST, ACTOR, OR MUSICIAN: Alertness, Craft (choose one), Disguise, Persuade, Art (choose one), Art (choose another), Art (choose another), HUMINT.
 export const ArtistBSP = createBonusSkillPackage([
     ["alertness"],
     ["crafts"],
     ["disguise"],
     ["persuade"],
-    ["art", "Creative Writing"],
+    ["art", "Painting"],
     ["art", "Journalism"],
-    ["art", "Poetry"],
-    ["humint"],
+    ["art", "Slam Poetry"],
+    ["HUMINT"],
 ]);
 // ATHLETE: Alertness, Athletics, Dodge, First Aid, HUMINT, Persuade, Swim, Unarmed Combat.
 export const AthleteBSP = createBonusSkillPackage([
@@ -41,7 +43,7 @@ export const AthleteBSP = createBonusSkillPackage([
     ["athletics"],
     ["dodge"],
     ["first-aid"],
-    ["humint"],
+    ["HUMINT"],
     ["persuade"],
     ["swim"],
     ["unarmed-combat"],
@@ -55,7 +57,7 @@ export const AuthorBSP = createBonusSkillPackage([
     ["law"],
     ["occult"],
     ["persuade"],
-    ["humint"],
+    ["HUMINT"],
 ]);
 // “BLACK BAG” TRAINING: Alertness, Athletics, Craft (Ele- trician), Craft (Locksmithing), Criminology, Disguise, Search, Stealth.
 export const BlackBagBSP = createBonusSkillPackage([

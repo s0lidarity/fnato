@@ -315,8 +315,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Art",
-        reminderText: "Painting",
-        isDefault: true
+        reminderText: "Creative pursuits",
+        isDefault: true,
+        subType: "Painting",
     },
     {
         id: 'artillery',

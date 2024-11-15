@@ -1,5 +1,4 @@
 import { buildStat, generateDefaultSkills } from '../defaultValues';
-// import { DEFAULT_SKILLS } from '../../types/characterTypes';
 
 describe('defaultValues', () => {
     describe('buildStat', () => {

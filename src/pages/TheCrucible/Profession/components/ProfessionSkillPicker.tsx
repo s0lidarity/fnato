@@ -72,23 +72,13 @@ const ProfessionSkillPicker = ({
         );
     }
 
-    // AJS easy fix, this should all be in ChooseSkills, not this mess
-    const renderSkillChoices = () => {
-        let renderedOutput = null;
-        // AJS pick up here
-        if(profession?.choosableSkills.length) {
-            renderedOutput = <ChooseSkills profession={profession} />
-        }
-        return renderedOutput;
-    }
-
     return (
         <PSPContainer>
             <ProfessionalSkillsContainer>
                 {renderProfessionSkills()}
             </ProfessionalSkillsContainer>
             <SkillChoiceContainer>
-                {renderSkillChoices()}
+                <ChooseSkills profession={profession} />
             </SkillChoiceContainer>
         </PSPContainer>
     );
