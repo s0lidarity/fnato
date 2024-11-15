@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import { Checkbox, GroupBox } from 'react95';
 
@@ -31,10 +31,17 @@ const StyledSkillContainer = styled.div.attrs<any>({
 function ChooseSkills({ profession }: ChooseSkillsProps) {
     // need to track chosen skills and remaining choices
     const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
-    // AJS we need to clear selectedSkillsIds when profession changes
     const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
+    const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
     const { setSkillById, applyProfessionSkills } = useSkills();
 
+    // clear selectedSkillsIds when profession changes
+    useEffect(() => {
+        setSelectedSkillsIds([]);
+        setRemainingChoices(profession?.chosenSkillCount || 0);
+    }, [profession]);
+
+    // AJS start here. Checks not rendering correctly. applies skills any time you click the checkbox
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             // Remove skill
@@ -47,11 +54,19 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
         } else if (remainingChoices > 0) {
             // apply profession skill if we have choices remaining
             applyProfessionSkills([profession.choosableSkills.find(s => s.id === skillId)]);
+        } else if (remainingChoices <= 0) {
+            setShowNoChoicesWarning(true);
+            setTimeout(() => setShowNoChoicesWarning(false), 500);
         }
     };
 
+    // AJS, need to move over 'renderSkillChoices' from ProfessionSkillPicker to make this work
+    const noChoices = <div>`${profession.name} has no flexible skills to choose from.`</div>
+
     return (
         <StyledGroupBox variant='flat' label={`Choose ${remainingChoices > 0 ? remainingChoices : ''} Additional Skills`}>
+            {profession.choosableSkills.length === 0 && noChoices}
+
             {profession.choosableSkills.map((skill) => {
                 return (
                     <StyledSkillContainer>
@@ -68,7 +83,7 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
             <div>
                 <PointsCounter 
                     value={remainingChoices}
-                    showNoPointsWarning={remainingChoices <= 0}
+                    showNoPointsWarning={showNoChoicesWarning}
                     minDigits={1}
                     label='Skills Remaining'
                 />

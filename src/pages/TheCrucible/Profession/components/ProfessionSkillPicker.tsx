@@ -72,7 +72,7 @@ const ProfessionSkillPicker = ({
         );
     }
 
-    // AJS, this should all be in ChooseSkills, not this mess
+    // AJS easy fix, this should all be in ChooseSkills, not this mess
     const renderSkillChoices = () => {
         let renderedOutput = null;
         // AJS pick up here

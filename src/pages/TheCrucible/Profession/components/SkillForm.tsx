@@ -4,8 +4,12 @@ import { Skills } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
+import { useEffect, useState } from 'preact/hooks';
 
-const SkillFormContainer = styled.div`
+const SkillFormContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-form-container',
+    'data-component': 'SkillForm/SkillFormContainer'
+})`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 0.5rem;
@@ -15,7 +19,10 @@ const SkillFormContainer = styled.div`
     justify-content: space-evenly;
 `;
 
-const SkillInputContainer = styled.div`
+const SkillInputContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-input-container',
+    'data-component': 'SkillForm/SkillInputContainer'
+})`
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -39,14 +46,25 @@ const renderSkillInputs = (skills: Skills) => {
 };
 
 const SkillForm = () => {
-    const { skills, bonusPointsRemaining, setSkills, setSkillById } = useSkills();
+    const { skills, bonusPointsRemaining } = useSkills();
+    // AJS, currently only flashes when you first run out of points
+    // should flash when you try to spend points you don't have
+    const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
+
+
+    useEffect(() => {
+        if(bonusPointsRemaining <= 0) {
+            setShowNoPointsWarning(true);
+            setTimeout(() => setShowNoPointsWarning(false), 500);
+        }
+    }, [bonusPointsRemaining]);
 
     return (
         <div>
             <SkillFormContainer>
                 {renderSkillInputs(skills)}
             </SkillFormContainer>
-            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning={false} />
+            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning={showNoPointsWarning} />
         </div>
     );
 };

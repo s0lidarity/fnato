@@ -157,6 +157,7 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
 };
 
 export interface IProfession {
+    name: string;
     affiliation?: string;
     professionalSkills: Skill[];
     bondCount: number;
