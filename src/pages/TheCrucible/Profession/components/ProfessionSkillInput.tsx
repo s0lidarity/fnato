@@ -122,6 +122,7 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
     const { adjustBonus, calculateSkillValue, setSkillById, bonusPointsRemaining } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
+    const [ usesBonusPoints, setUsesBonusPoints ] = useState(false);
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
@@ -136,6 +137,8 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         // maybe send a signal to SkillForm to update NoPointsWarning2
         adjustBonus(skill.id, value);
     };
+
+    // AJS start here bonus assignment should only be rendered if a user does not want to use a preset skill point package
 
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
 

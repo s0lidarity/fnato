@@ -2,6 +2,7 @@ import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
 import { Skill, Skills } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
+import { IBonusSkillPackage } from '../utils/SkillPointPackages';
 
 type SKillsContextType = {
     applyProfessionSkills: (professionSkills: Skill[]) => void;
@@ -32,6 +33,7 @@ export const useSkills = () => {
 export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skills, setSkills] = useState<Skills>(defaultSkills);
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
+    const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
 
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -71,6 +73,14 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
         const calculatedValue = skillValue + bonusValue;
         return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
+    }
+
+    const applyBonusSkillPackage = (bonusSkillPackage: IBonusSkillPackage) => {
+        setBonusSkillPackage(bonusSkillPackage);
+        // call adjust bonus to 1 for each skill in the package
+            // prompt for subytpes when applicable
+
+        // update bonus points remaining
     }
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {

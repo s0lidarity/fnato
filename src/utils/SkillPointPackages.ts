@@ -3,28 +3,31 @@
 // If you like, grab a package to quickly choose the eight skills for your Agent’s bonus skill points 
 // these give a flat +20 to the selected bonus skills
 
-import { Skill, Skills } from "../types/characterTypes";
+export type BonusSkillChoice = {
+    skill: string;
+    subType?: string;
+    isChoosable?: boolean;
+    choiceCount?: number;
 
-export type BonusSkillChoice = 
-| [string]                // skill without subtype
-| [string, string]         // skill with subtype
-
-export type IBonusSkillPackage = [
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice,
-    BonusSkillChoice // 8 total
-];
-
-export const createBonusSkillPackage = (skills: IBonusSkillPackage): IBonusSkillPackage => {
-    return skills;
+}
+export type IBonusSkillPackage = {
+    name: string;
+    skills: BonusSkillChoice[];
+    personalSpecialties?: number;
 };
 
+export const createBonusSkillPackage = (name: string, skills: BonusSkillChoice[], personalSpecialties?: number): IBonusSkillPackage => {
+    return {
+        name,
+        skills,
+        personalSpecialties,
+    };
+};
+
+
 // AJS we're going to need a way to apply the bonsus skills to skills from skillscontext
+// need to add a new skill when 'choose another' is applied
+// choose any 'gives bonus skill points to be added'
 
 // ARTIST, ACTOR, OR MUSICIAN: Alertness, Craft (choose one), Disguise, Persuade, Art (choose one), Art (choose another), Art (choose another), HUMINT.
 export const ArtistBSP = createBonusSkillPackage([
