@@ -1,16 +1,23 @@
 import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
-import { Skill, Skills } from '../types/characterTypes';
+import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
 
 type SKillsContextType = {
-    applyProfessionSkills: (professionSkills: Skill[]) => void;
+    // State values
     bonusPointsRemaining: number;
-    calculateSkillValue: (skillId: string) => number;
-    adjustBonus: (skillKey: string, adjustment: number) => boolean;
-    resetSkills: () => void;
+    currentBonusPackage: IBonusSkillPackage | null;
+    currentProfession: IProfession | null;
     skills: Skills;
+
+    // Functions
+    adjustBonus: (skillKey: string, adjustment: number) => boolean;
+    applyBonusSkillPackage: (bsp: IBonusSkillPackage) => void;
+    applyProfessionSkills: (professionSkills: Skill[]) => void;
+    calculateSkillValue: (skillId: string) => number;
+    resetSkills: () => void;
+    setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
 }
@@ -34,6 +41,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skills, setSkills] = useState<Skills>(defaultSkills);
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
+    const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
+    const [currentBonusPackage, setCurrentBonusPackage] = useState<IBonusSkillPackage | null>(null);
 
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -51,7 +60,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             return true;
         }
         console.warn(`Skill with id: ${skillId} not found}`);
-        console.log('skills: ', skills);
         return false;
     };
     
@@ -75,12 +83,19 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
     }
 
-    const applyBonusSkillPackage = (bonusSkillPackage: IBonusSkillPackage) => {
-        setBonusSkillPackage(bonusSkillPackage);
+    const applyBonusSkillPackage = (bsp: IBonusSkillPackage) => {
+        setBonusSkillPackage(bsp);
         // call adjust bonus to 1 for each skill in the package
-            // prompt for subytpes when applicable
+            // form will need to allow for subytpes when applicable
+        bsp.skills.forEach(skill => {
+            const bspID = skills.find(s => s.name === skill.skillName && s.subType === skill.subType)?.id;
+            if(bspID){
+                setSkillById(bspID, { bonus: 1 });
+            }
+        });
 
-        // update bonus points remaining
+        // update bonus points remaining (personalSpecialties)
+        setBonusPointsRemaining(bsp.personalSpecialties);
     }
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
@@ -142,15 +157,24 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusPointsRemaining(calculateRemainingBonusPoints());
     };
 
+    const setProfession = (profession: IProfession) => {
+        setCurrentProfession(profession);
+        applyProfessionSkills(profession.professionalSkills);
+    };
+
     return (
         <SkillsContext.Provider 
             value={{ 
-                applyProfessionSkills,
                 bonusPointsRemaining,
-                calculateSkillValue,
-                adjustBonus,
-                resetSkills,
+                currentBonusPackage,
+                currentProfession,
                 skills,
+                adjustBonus,
+                applyBonusSkillPackage,
+                applyProfessionSkills,
+                calculateSkillValue,
+                resetSkills,
+                setProfession,
                 setSkills,
                 setSkillById,
             }}>
