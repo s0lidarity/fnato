@@ -7,6 +7,7 @@ import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillPicker from './ProfessionSkillPicker';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
+import BonusSkillPackageChoices from './BonsSkillPackageChoices';
 
 const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-profession-group-box',
@@ -78,6 +79,7 @@ function ChooseProfession() {
         return options;
     };
 
+    // AJS store profession in the skills context instead of locally to this component
     const handleProfessionSelect = (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
         setSelectedProfession(newProfession);
@@ -112,6 +114,7 @@ function ChooseProfession() {
             <ProfessionSkillPicker
                 profession={selectedProfession}
             />
+            { selectedProfession && <BonusSkillPackageChoices /> }
         </ChooseProfessionGroupBox>
     )
 }

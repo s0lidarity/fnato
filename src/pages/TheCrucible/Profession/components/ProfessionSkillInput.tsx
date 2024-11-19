@@ -122,7 +122,6 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
     const { adjustBonus, calculateSkillValue, setSkillById, bonusPointsRemaining } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
-    const [ usesBonusPoints, setUsesBonusPoints ] = useState(false);
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);

@@ -3,19 +3,19 @@
 // If you like, grab a package to quickly choose the eight skills for your Agent’s bonus skill points 
 // these give a flat +20 to the selected bonus skills
 
-export type BonusSkillChoice = {
+export type IBonusSkillChoice = {
     skillName: string;
     subType?: string;
 }
 export type IBonusSkillPackage = {
     name: string;
-    skills: BonusSkillChoice[];
+    skills: IBonusSkillChoice[];
     personalSpecialties?: number;
 };
 
 export const createBonusSkillPackage = (
     name: string, 
-    skills: BonusSkillChoice[], 
+    skills: IBonusSkillChoice[], 
     personalSpecialties: number = 0
 ): IBonusSkillPackage => {
     return {
@@ -34,13 +34,13 @@ export const createBonusSkillPackage = (
 export const ArtistBSP = createBonusSkillPackage(
     "Artist",
     [
-        { skillName: "alertness" },
-        { skillName: "crafts", subType: "choose one" },
-        { skillName: "disguise" },
-        { skillName: "persuade" },
-        { skillName: "art", subType: "Painting" },
-        { skillName: "art", subType: "Scultpture" },
-        { skillName: "art", subType: "Graphic Design" },
+        { skillName: "Alertness" },
+        { skillName: "Crafts", subType: "Macrame" },
+        { skillName: "Disguise" },
+        { skillName: "Persuade" },
+        { skillName: "Art", subType: "Painting" },
+        { skillName: "Art", subType: "Scultpture" },
+        { skillName: "Art", subType: "Graphic Design" },
         { skillName: "HUMINT" },
     ],
 );
@@ -48,27 +48,27 @@ export const ArtistBSP = createBonusSkillPackage(
 export const AthleteBSP = createBonusSkillPackage(
     "Athlete",
     [
-        { skillName: "alertness" },
-        { skillName: "athletics" },
-        { skillName: "dodge" },
-        { skillName: "first-aid" },
+        { skillName: "Alertness" },
+        { skillName: "Athletics" },
+        { skillName: "Dodge" },
+        { skillName: "First Aid" },
         { skillName: "HUMINT" },
-        { skillName: "persuade" },
-        { skillName: "swim" },
-        { skillName: "unarmed-combat" },
+        { skillName: "Persuade" },
+        { skillName: "Swim" },
+        { skillName: "Unarmed Combat" },
     ],
 );
 // AUTHOR, EDITOR, OR JOURNALIST: Anthropology, Art (Creative Writing, Journalism, Poetry, Scriptwriting, etc.), Bureaucracy, History, Law, Occult, Persuade, HUMINT.
 export const AuthorBSP = createBonusSkillPackage(
     "Author",
     [
-        { skillName: "anthropology" },
-        { skillName: "art", subType: "Creative Writing" },
-        { skillName: "bureaucracy" },
-        { skillName: "history" },
-        { skillName: "law" },
-        { skillName: "occult" },
-        { skillName: "persuade" },
+        { skillName: "Anthropology" },
+        { skillName: "Art", subType: "Creative Writing" },
+        { skillName: "Bureaucracy" },
+        { skillName: "History" },
+        { skillName: "Law" },
+        { skillName: "Occult" },
+        { skillName: "Persuade" },
         { skillName: "HUMINT" },
     ],
 );
@@ -76,14 +76,14 @@ export const AuthorBSP = createBonusSkillPackage(
 export const BlackBagBSP = createBonusSkillPackage(
     "Black Bag",
     [
-        { skillName: "alertness" },
-        { skillName: "athletics" },
-        { skillName: "crafts", subType: "Electrical" },
-        { skillName: "crafts", subType: "Locksmithing" },
-        { skillName: "criminology" },
-        { skillName: "disguise" },
-        { skillName: "search" },
-        { skillName: "stealth" },
+        { skillName: "Alertness" },
+        { skillName: "Athletics" },
+        { skillName: "Crafts", subType: "Electrical" },
+        { skillName: "Crafts", subType: "Locksmithing" },
+        { skillName: "Criminology" },
+        { skillName: "Disguise" },
+        { skillName: "Search" },
+        { skillName: "Stealth" },
     ],
 );
 // BLUE-COLLAR WORKER: Alertness, Craft (choose one), Craft (choose another), Drive, First Aid, Heavy Ma- chinery, Navigate, Search.
@@ -92,13 +92,13 @@ export const BlackBagBSP = createBonusSkillPackage(
 export const BeurocratBSP = createBonusSkillPackage(
     "Beurocrat",
     [
-        { skillName: "accounting" },
-        { skillName: "bureaucracy" },
-        { skillName: "computer-science" },
-        { skillName: "criminology" },
+        { skillName: "Accounting" },
+        { skillName: "Bureaucracy" },
+        { skillName: "Computer Science" },
+        { skillName: "Criminology" },
         { skillName: "HUMINT" },
-        { skillName: "law" },
-        { skillName: "persuade" },
+        { skillName: "Law" },
+        { skillName: "Persuade" },
     ],
     1,
 );
@@ -107,14 +107,14 @@ export const BeurocratBSP = createBonusSkillPackage(
 export const ClergyBSP = createBonusSkillPackage(
     "Clergy",
     [
-        { skillName: "foreign-language", subType: "French" },
-        { skillName: "foreign-language", subType: "German" },
-        { skillName: "foreign-language", subType: "Spanish" },
-        { skillName: "history" },
+        { skillName: "Foreign Language", subType: "French" },
+        { skillName: "Foreign Language", subType: "German" },
+        { skillName: "Foreign Language", subType: "Spanish" },
+        { skillName: "History" },
         { skillName: "HUMINT" },
-        { skillName: "occult" },
-        { skillName: "persuade" },
-        { skillName: "psychotherapy" },
+        { skillName: "Occult" },
+        { skillName: "Persuade" },
+        { skillName: "Psychotherapy" },
     ],
 );
 // COMBAT VETERAN: Alertness, Dodge, Firearms, First Aid, Heavy Weapons, Melee Weapons, Stealth, Unarmed Combat.

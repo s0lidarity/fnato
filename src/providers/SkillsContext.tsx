@@ -85,16 +85,16 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const applyBonusSkillPackage = (bsp: IBonusSkillPackage) => {
         setBonusSkillPackage(bsp);
-        // call adjust bonus to 1 for each skill in the package
-            // form will need to allow for subytpes when applicable
+        const updatedSkills = [...skills];
+
         bsp.skills.forEach(skill => {
-            const bspID = skills.find(s => s.name === skill.skillName && s.subType === skill.subType)?.id;
-            if(bspID){
-                setSkillById(bspID, { bonus: 1 });
+            const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName && s.subType === skill.subType);
+            if(skillIndex !== -1){
+                updatedSkills[skillIndex].bonus = 1;
             }
         });
-
-        // update bonus points remaining (personalSpecialties)
+        
+        setSkills(updatedSkills);
         setBonusPointsRemaining(bsp.personalSpecialties);
     }
 

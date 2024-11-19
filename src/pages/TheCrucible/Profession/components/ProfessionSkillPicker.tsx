@@ -46,6 +46,7 @@ type ChosenSkillPickerProps = {
     profession: IProfession;
 };
 
+// AJS make this a function instead of a const to make style consistent
 const ProfessionSkillPicker = ({
     profession, 
 }: ChosenSkillPickerProps) => {
