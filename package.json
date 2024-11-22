@@ -10,7 +10,11 @@
 		"prepare": "husky install"
 	},
 	"dependencies": {
+		"i18next": "^23.16.8",
+		"i18next-browser-languagedetector": "^8.0.0",
+		"i18next-http-backend": "^3.0.1",
 		"preact": "^10.22.1",
+		"preact-i18next": "^11.8.5",
 		"preact-iso": "^2.6.3",
 		"react": "npm:@preact/compat",
 		"react-dom": "npm:@preact/compat",

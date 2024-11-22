@@ -7,7 +7,7 @@ import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillPicker from './ProfessionSkillPicker';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
-import BonusSkillPackageChoices from './BonsSkillPackageChoices';
+import BonusSkillPackageChoices from './BonusSkillPackageChoices';
 
 const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-profession-group-box',

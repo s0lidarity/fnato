@@ -7,7 +7,7 @@ import { IBonusSkillPackage } from '../utils/SkillPointPackages';
 type SKillsContextType = {
     // State values
     bonusPointsRemaining: number;
-    currentBonusPackage: IBonusSkillPackage | null;
+    BonusSkillPackage: IBonusSkillPackage | null;
     currentProfession: IProfession | null;
     skills: Skills;
 
@@ -16,10 +16,12 @@ type SKillsContextType = {
     applyBonusSkillPackage: (bsp: IBonusSkillPackage) => void;
     applyProfessionSkills: (professionSkills: Skill[]) => void;
     calculateSkillValue: (skillId: string) => number;
+    clearBonusSkillPackage: () => void;
     resetSkills: () => void;
     setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
+    
 }
 
 const MAX_BONUS_POINTS = 8;
@@ -42,7 +44,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
     const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
-    const [currentBonusPackage, setCurrentBonusPackage] = useState<IBonusSkillPackage | null>(null);
 
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -93,7 +94,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 updatedSkills[skillIndex].bonus = 1;
             }
         });
-        
+
         setSkills(updatedSkills);
         setBonusPointsRemaining(bsp.personalSpecialties);
     }
@@ -162,17 +163,30 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         applyProfessionSkills(profession.professionalSkills);
     };
 
+    const clearBonusSkillPackage = () => {
+        setBonusSkillPackage(null);
+        // Reset all bonus values to 0
+        const updatedSkills = skills.map(skill => ({
+            ...skill,
+            bonus: 0
+        }));
+        setSkills(updatedSkills);
+        // Reset bonus points to maximum
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
+    };
+
     return (
         <SkillsContext.Provider 
             value={{ 
                 bonusPointsRemaining,
-                currentBonusPackage,
+                BonusSkillPackage,
                 currentProfession,
                 skills,
                 adjustBonus,
                 applyBonusSkillPackage,
                 applyProfessionSkills,
                 calculateSkillValue,
+                clearBonusSkillPackage,
                 resetSkills,
                 setProfession,
                 setSkills,
