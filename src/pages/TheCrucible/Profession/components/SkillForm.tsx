@@ -31,6 +31,16 @@ const SkillInputContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
+const PointsCounterContainer = styled.div.attrs<any>({
+    'data-testid': 'points-counter-container',
+    'data-component': 'SkillForm/PointsCounterContainer'
+})`
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    margin-top: 1rem;
+`;
+
 const renderSkillInputs = (skills: Skills) => {
     // avoids a console error if the skills array is empty
     if(!skills.length) return null;
@@ -62,7 +72,12 @@ const SkillForm = () => {
             <SkillFormContainer>
                 {renderSkillInputs(skills)}
             </SkillFormContainer>
-            <PointsCounter value={bonusPointsRemaining} showNoPointsWarning={showNoPointsWarning} />
+            <PointsCounterContainer>
+                <PointsCounter 
+                    value={bonusPointsRemaining} 
+                    showNoPointsWarning={showNoPointsWarning}
+                />
+            </PointsCounterContainer>
         </div>
     );
 };
