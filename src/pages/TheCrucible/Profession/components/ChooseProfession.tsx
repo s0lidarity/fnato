@@ -5,7 +5,7 @@ import { useState } from 'preact/hooks';
 import { Profession } from '../../../../utils/Professions';
 import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
-import ProfessionSkillPicker from './ProfessionSkillPicker';
+import ProfessionChoices from './ProfessionChoices';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import BonusSkillPackageChoices from './BonusSkillPackageChoices';
 
@@ -111,7 +111,7 @@ function ChooseProfession() {
                 </KeyStatsContainer>
             </ChooseProfessionHeader>
             <Separator />
-            <ProfessionSkillPicker
+            <ProfessionChoices
                 profession={selectedProfession}
             />
             { selectedProfession && <BonusSkillPackageChoices /> }
