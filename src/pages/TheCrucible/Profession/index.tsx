@@ -1,11 +1,10 @@
 import { useState } from 'preact/hooks';
-import styled from 'styled-components';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import BuildProfession from './components/BuildProfession';
 import ChooseProfession from './components/ChooseProfession';
-import SkillForm from './components/SkillForm';
+import SkillForm from './components/StandardSkillForm';
 
 export function Profession() {
     const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);

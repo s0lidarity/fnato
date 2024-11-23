@@ -55,7 +55,8 @@ const renderSkillInputs = (skills: Skills) => {
     });
 };
 
-function SkillForm() {
+// AJS start with the advice from claude in chat
+function StandardSkillForm() {
     const { skills, bonusPointsRemaining } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
@@ -82,4 +83,4 @@ function SkillForm() {
     );
 };
 
-export default SkillForm;
+export default StandardSkillForm;

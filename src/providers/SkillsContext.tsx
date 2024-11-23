@@ -6,6 +6,7 @@ import { IBonusSkillPackage } from '../utils/SkillPointPackages';
 
 type SKillsContextType = {
     // State values
+    bonds: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
     currentProfession: IProfession | null;
@@ -18,10 +19,10 @@ type SKillsContextType = {
     calculateSkillValue: (skillId: string) => number;
     clearBonusSkillPackage: () => void;
     resetSkills: () => void;
+    setBonds: (bonds: number) => void;
     setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
-    
 }
 
 const MAX_BONUS_POINTS = 8;
@@ -44,6 +45,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
     const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
+    const [bonds, setBonds] = useState(3);
 
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -179,6 +181,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <SkillsContext.Provider 
             value={{ 
+                bonds,
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 currentProfession,
@@ -189,6 +192,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 calculateSkillValue,
                 clearBonusSkillPackage,
                 resetSkills,
+                setBonds,
                 setProfession,
                 setSkills,
                 setSkillById,
