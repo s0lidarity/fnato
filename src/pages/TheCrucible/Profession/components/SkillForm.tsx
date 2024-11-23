@@ -55,7 +55,7 @@ const renderSkillInputs = (skills: Skills) => {
     });
 };
 
-const SkillForm = () => {
+function SkillForm() {
     const { skills, bonusPointsRemaining } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 

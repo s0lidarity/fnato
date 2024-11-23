@@ -123,7 +123,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
-    // AJS this is bugged, it adds new skills instead of updating existing ones
+    
     const applyProfessionSkills = (professionSkills: Skill[]) => {
         // Create new skills array by merging default skills with profession skills
         const newSkills = defaultSkills.map(defaultSkill => {
@@ -137,6 +137,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             return matchingProfSkills[0] || defaultSkill;
         });
 
+        // AJS start here, add bonds and rename function
         // Add any profession skills that weren't in default skills (like subtyped skills)
         professionSkills.forEach(profSkill => {
             const exists = newSkills.some(s => 

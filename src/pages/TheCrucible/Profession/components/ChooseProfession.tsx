@@ -47,16 +47,31 @@ const StyledSelect = styled(SelectNative).attrs<any>({
     min-width: fit-content;
 `;
 
-const KeyStatsContainer = styled.div.attrs<any>({
+const KeyStatSection = styled.div.attrs<any>({
+    'data-testid': 'key-stat-section',
+    'data-component': 'ChooseProfession/KeyStatSection'
+})`
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex: 1;
+`;
+
+const KeyStatContainer = styled.div.attrs<any>({
     'data-testid': 'key-stats-container',
     'data-component': 'ChooseProfession/KeyStatsContainer'
 })`
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-grow: 1;
-    justify-content: center;
+    justify-content: flex-start;
+    flex: 0 1 auto;
+    min-width: 200px;
     margin-bottom: 1rem;
+    padding: 0 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
 const KeyStatsLabel = styled.span.attrs<any>({
@@ -84,6 +99,7 @@ function ChooseProfession() {
         const newProfession = professions.find((p) => p.name === professionName);
         setSelectedProfession(newProfession);
         applyProfessionSkills(newProfession.professionalSkills);
+        console.log('selectedProfession', newProfession);
     };
 
     return (
@@ -100,15 +116,26 @@ function ChooseProfession() {
                         onChange={(e: any) => handleProfessionSelect(e.value)} 
                     />
                 </StyledSelectContainer>
-                <KeyStatsContainer>
-                    <ReminderTooltip 
-                        labelText='Key Stats'
-                        reminderText='Recommended best stats for your chosen profession.'
-                    />
-                    <KeyStatsLabel>
-                        {selectedProfession?.recommendedStats.join(', ')}
-                    </KeyStatsLabel>
-                </KeyStatsContainer>
+                <KeyStatSection>
+                    <KeyStatContainer>
+                        <ReminderTooltip 
+                            labelText='Key Stats'
+                            reminderText='Recommended best stats for your chosen profession.'
+                        />
+                        <KeyStatsLabel>
+                            {selectedProfession?.recommendedStats.join(', ')}
+                        </KeyStatsLabel>
+                    </KeyStatContainer>
+                    <KeyStatContainer>
+                        <ReminderTooltip 
+                            labelText='Bonds'
+                            reminderText='Number of social connections available to your character.'
+                        />
+                        <KeyStatsLabel>
+                            {selectedProfession?.bondCount || 0}
+                        </KeyStatsLabel>
+                    </KeyStatContainer>
+                </KeyStatSection>
             </ChooseProfessionHeader>
             <Separator />
             <ProfessionChoices
