@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'preact/hooks';
+import { NumberInput } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillInput from './ProfessionSkillInput';
@@ -31,8 +32,11 @@ const BondsContainer = styled.div.attrs<any>({
 
 // AJS put these in a constants file
 const DEFAULT_BONDS = 3;
+const DEFAULT_MAX_BONDS = 4;
+const DEFAULT_MIN_BONDS = 1;
 const DEFAULT_SKILL_POINTS = 400;
 const BONDS_TO_POINTS_MULTIPLIER = 50;
+const DEFAULT_MAX_SKILL_VALUE = 60;
 
 function CustomSkillForm() {
     const { skills, setBonds } = useSkills();
@@ -41,7 +45,7 @@ function CustomSkillForm() {
     const [skillPoints, setSkillPoints] = useState(DEFAULT_SKILL_POINTS);
 
     const handleBondsChange = (newBonds: number) => {
-        if(newBonds >=1 && newBonds <=4) {
+        if(newBonds >= DEFAULT_MIN_BONDS && newBonds <= DEFAULT_MAX_BONDS) {
             setLocalBonds(newBonds);
             const pointDiff = (3 - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
             setSkillPoints(skillPoints + pointDiff);
@@ -52,14 +56,23 @@ function CustomSkillForm() {
     return (
         <div>
             <BondsContainer>
-                <h3>Bonds: {bonds}</h3>
+                <h3><PointsCounter value={bonds} minDigits={1} label={'Bonds'} /></h3>
                 <div>
-                    {/* AJS start here, finish from claude */}
+                    <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
                 </div>
+                <SkillFormContainer>
+                    {skills.map((s) => (
+                        <ProfessionSkillInput 
+                            key={s.id}
+                            skill={s}
+                            maxValue={DEFAULT_MAX_SKILL_VALUE}
+                        />
+                    ))}
+                </SkillFormContainer>
+                <PointsCounter value={skillPoints} minDigits={3} />
             </BondsContainer>
-        <SkillFormContainer>
-
-        </SkillFormContainer>
         </div>
     );
 };
+
+export default CustomSkillForm;

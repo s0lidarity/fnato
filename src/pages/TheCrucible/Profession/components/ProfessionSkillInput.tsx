@@ -116,12 +116,35 @@ const StyledBonusContainer = styled.div.attrs<any>({
 
 type SkillInputProps = {
     skill: Skill;
+    maxValue?: number;
+    isCustom?: boolean;
 };
 
-function ProfessionSkillInput({ skill }: SkillInputProps) {
-    const { adjustBonus, calculateSkillValue, setSkillById, bonusPointsRemaining } = useSkills();
+function ProfessionSkillInput({ 
+    skill, 
+    maxValue = 80, 
+    isCustom = false 
+}: SkillInputProps) {
+    const { 
+        adjustBonus,
+        adjustCustomPoints, 
+        calculateSkillValue, 
+        setSkillById, 
+        bonusPointsRemaining 
+    } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
+
+    // AJS does this make sense? Claude spit it out but I don't trust it
+    const handleValueChange = (value: number) => {
+        if(isCustom){
+            const currentValue = calculateSkillValue(skill.id);
+            const diff = value - currentValue;
+            adjustCustomPoints(skill.id, diff);
+        } else {
+            adjustBonus(skill.id, value);
+        }
+    }
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
@@ -137,9 +160,9 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         adjustBonus(skill.id, value);
     };
 
-    // AJS start here bonus assignment should only be rendered if a user does not want to use a preset skill point package
-
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
+
+    // AJS start with an input for custom skill points in the StyledValueContainer
 
     return (
         <SkillInputContainer>
