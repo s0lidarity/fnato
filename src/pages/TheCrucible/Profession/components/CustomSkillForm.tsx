@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { NumberInput } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
-import ProfessionSkillInput from './ProfessionSkillInput';
+import CustomSkillInput from './CustomSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
-import {Skills} from '../../../../types/characterTypes';
+import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 
 const SkillFormContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-container',
@@ -25,9 +25,30 @@ const BondsContainer = styled.div.attrs<any>({
     'data-component': 'CustomSkillForm/BondsContainer',
 })`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
     align-items: center;
     margin: 1rem 0;
+`;
+
+const AllPointsContainer = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-form-all-points-container',
+    'data-component': 'CustomSkillForm/AllPointsContainer',
+})`
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+`;
+
+const PointsContainer = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-form-points-container',
+    'data-component': 'CustomSkillForm/PointsContainer',
+})`
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
 `;
 
 // AJS put these in a constants file
@@ -39,7 +60,7 @@ const BONDS_TO_POINTS_MULTIPLIER = 50;
 const DEFAULT_MAX_SKILL_VALUE = 60;
 
 function CustomSkillForm() {
-    const { skills, setBonds } = useSkills();
+    const { skills, setBonds, bonusPointsRemaining } = useSkills();
     // AJS why are we using both the context and local state?
     const [ bonds, setLocalBonds] = useState(DEFAULT_BONDS);
     const [skillPoints, setSkillPoints] = useState(DEFAULT_SKILL_POINTS);
@@ -56,21 +77,36 @@ function CustomSkillForm() {
     return (
         <div>
             <BondsContainer>
-                <h3><PointsCounter value={bonds} minDigits={1} label={'Bonds'} /></h3>
+                <div>
+                    <ReminderTooltip
+                        labelText={'Bonds'}
+                        reminderText={'Bonds represent meaningful relationships your agent has with non-player characters.'}
+                    />
+                </div>
                 <div>
                     <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
                 </div>
-                <SkillFormContainer>
-                    {skills.map((s) => (
-                        <ProfessionSkillInput 
-                            key={s.id}
-                            skill={s}
-                            maxValue={DEFAULT_MAX_SKILL_VALUE}
-                        />
-                    ))}
-                </SkillFormContainer>
-                <PointsCounter value={skillPoints} minDigits={3} />
+                <div>
+                <PointsCounter value={skillPoints} label={'Skill Points Remaining'} minDigits={3} />
+                </div>
             </BondsContainer>
+            <SkillFormContainer>
+                {skills.map((s) => (
+                    <CustomSkillInput
+                        key={s.id}
+                        skill={s}
+                        maxValue={DEFAULT_MAX_SKILL_VALUE}
+                    />
+                ))}
+            </SkillFormContainer>
+            <AllPointsContainer>
+                <PointsContainer>
+                    <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
+                </PointsContainer>
+                <PointsContainer>
+                    <PointsCounter value={skillPoints} label={'Skill Points Remaining'} minDigits={3} />
+                </PointsContainer>
+            </AllPointsContainer>
         </div>
     );
 };

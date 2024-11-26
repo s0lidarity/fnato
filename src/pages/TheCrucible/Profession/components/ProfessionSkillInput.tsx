@@ -116,35 +116,19 @@ const StyledBonusContainer = styled.div.attrs<any>({
 
 type SkillInputProps = {
     skill: Skill;
-    maxValue?: number;
-    isCustom?: boolean;
 };
 
 function ProfessionSkillInput({ 
     skill, 
-    maxValue = 80, 
-    isCustom = false 
 }: SkillInputProps) {
     const { 
-        adjustBonus,
-        adjustCustomPoints, 
+        adjustBonus, 
         calculateSkillValue, 
         setSkillById, 
         bonusPointsRemaining 
     } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
-
-    // AJS does this make sense? Claude spit it out but I don't trust it
-    const handleValueChange = (value: number) => {
-        if(isCustom){
-            const currentValue = calculateSkillValue(skill.id);
-            const diff = value - currentValue;
-            adjustCustomPoints(skill.id, diff);
-        } else {
-            adjustBonus(skill.id, value);
-        }
-    }
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
@@ -156,7 +140,6 @@ function ProfessionSkillInput({
     };
 
     const handleBonusChange = (value: number) => {
-        // maybe send a signal to SkillForm to update NoPointsWarning2
         adjustBonus(skill.id, value);
     };
 
@@ -213,7 +196,7 @@ function ProfessionSkillInput({
                     max={Math.min(8, (bonusPointsRemaining || 0) + (skill.bonus || 0))}
                     width="4rem"
                     value={skill.bonus || 0}
-                    onChange={(value) => handleBonusChange(value)}
+                    onChange={(value: number) => handleBonusChange(value)}
                 />
             </StyledBonusContainer>
         </SkillInputContainer>

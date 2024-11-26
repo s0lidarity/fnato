@@ -57,7 +57,7 @@ const renderSkillInputs = (skills: Skills) => {
 
 // AJS start with the advice from claude in chat
 function StandardSkillForm() {
-    const { skills, bonusPointsRemaining } = useSkills();
+    const { bonusPointsRemaining, skills } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
     // applies temp styling to the PointsCounter when you run out of bonus points
@@ -77,6 +77,7 @@ function StandardSkillForm() {
                 <PointsCounter 
                     value={bonusPointsRemaining} 
                     showNoPointsWarning={showNoPointsWarning}
+                    label="Bonus Points Remaining"
                 />
             </PointsCounterContainer>
         </div>
