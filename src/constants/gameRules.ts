@@ -5,3 +5,4 @@ export const DEFAULT_MIN_BONDS = 1;
 export const DEFAULT_SKILL_POINTS = 400;
 export const BONDS_TO_POINTS_MULTIPLIER = 50;
 export const DEFAULT_MAX_SKILL_VALUE = 60; 
+export const DEFAULT_BONUS_VALUE = 20;

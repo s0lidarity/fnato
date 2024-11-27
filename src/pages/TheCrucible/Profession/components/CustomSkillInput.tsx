@@ -7,7 +7,7 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
-import { DEFAULT_MAX_SKILL_VALUE } from '../../../../constants/gameRules';
+import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE } from '../../../../constants/gameRules';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',
@@ -16,10 +16,42 @@ const SkillInputContainer = styled.div.attrs<any>({
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-self: center;
     gap: 0.5rem;
     width: 100%;
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
+`;
+
+const InputGroup = styled.div.attrs<any>({
+    'data-testid': 'input-group',
+    'data-component': 'CustomSkillInput/InputGroup'
+})`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 2;
+`;
+
+const ValueGroup = styled.div.attrs<any>({
+    'data-testid': 'value-group',
+    'data-component': 'CustomSkillInput/ValueGroup'
+})`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 12rem;
+`;
+
+const BaseGroup = styled.div.attrs<any>({
+    'data-testid': 'base-group',
+    'data-component': 'CustomSkillInput/BaseGroup'
+})`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 12rem;
 `;
 
 const StyledSkillName = styled.div.attrs<any>({
@@ -31,16 +63,7 @@ const StyledSkillName = styled.div.attrs<any>({
     align-items: center;
     gap: 0.5rem;
     flex: 1;
-    width: 20rem;
-`;
-
-const BaseGroup = styled.div.attrs<any>({
-    'data-testid': 'base-group',
-    'data-component': 'CustomSkillInput/BaseGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    min-width: 18rem;
 `;
 
 const StyledBaseValue = styled.div.attrs<any>({
@@ -50,6 +73,8 @@ const StyledBaseValue = styled.div.attrs<any>({
     margin: 0.5rem;
     font-weight: bold;
     padding: 0.2rem;
+    min-width: 1.5rem;
+    text-align: right;
     background-color: ${({ theme }) => theme.flatLight};
     color: ${({ theme }) => theme.materialTextDisabled};
 `;
@@ -59,6 +84,7 @@ const StyledValueInput = styled(TextInput).attrs<any>({
     'data-component': 'CustomSkillInput/StyledValueInput'
 })`
     width: 3rem;
+    text-align: right;
 `;
 
 const StyledBonusInput = styled(NumberInput).attrs<any>({
@@ -77,26 +103,6 @@ const StyledLabel = styled.label.attrs<any>({
     align-self: center;
 `;
 
-const InputGroup = styled.div.attrs<any>({
-    'data-testid': 'input-group',
-    'data-component': 'CustomSkillInput/InputGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-`;
-
-const ValueGroup = styled.div.attrs<any>({
-    'data-testid': 'value-group',
-    'data-component': 'CustomSkillInput/ValueGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-`;
-
 interface CustomSkillInputProps {
     skill: Skill;
     maxValue?: number;
@@ -113,20 +119,18 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const [localPoints, setLocalPoints] = useState(skill.pointsAllocated || 0);
 
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
-
+    const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
 
     const handleChange = (e: any) => {
-        console.log('e', e);
-        const value = e.target.value || 0;
+        const value = e.target.value;
         console.log(`handleChange: skill ${skill.name}`, value);
-        if(value === '' || (isNaN(Number(value)) && Number(value) >= 0)) {
-            setLocalPoints(value === '' ? 0 : Number(value));
-        }
+        setLocalPoints(value);
     };
 
-    const handleAllocatePoints = (value: number | string) => {
-        const numericValue = value === '' ? 0 : Number(value);
-        console.log('numericValue', numericValue, '\nvalue', value);
+    // AJS needs to be able to handle string or number input
+    const handleAllocatePoints = (inputValue: string) => {
+        const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
+        console.log('numericValue', numericValue, '\nvalue', inputValue);
         const currentPoints = skill.pointsAllocated || 0;
         const diff = numericValue - currentPoints;
 
@@ -141,6 +145,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         if(diff > skillPointsRemaining) {
             // flash the UI
 
+            // AJS start here, it's not forcing the displayed localPoints back to pointsAllocated
             // force the localPoints back to pointsAllocated
             setLocalPoints(skill.pointsAllocated || 0);
             return;
@@ -183,19 +188,11 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                     <StyledBaseValue>{baseValue}</StyledBaseValue>
                 </BaseGroup>
                 <ValueGroup>
-                    {/* AJS start here */}
-                    {/* let's show the base value, the points allocated, the bonus, then the total
-                    base should be a label
-                    points allocated should be a TextInput
-                    bonus should be a label and a NumberInput
-                    total should show calcualted value
-                    might need to have just one input per line in custom skill form */}
                     <StyledLabel>Skill Points Allocated</StyledLabel>
                     <StyledValueInput
                         min={0}
                         max={maxValue - baseValue}
                         value={localPoints}
-                        // AJS start here, add onChange to store value in local state then update in the blur
                         onChange={handleChange}
                         onBlur={() => handleAllocatePoints(localPoints)}
                     />
@@ -214,7 +211,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                 <Separator orientation="vertical" />
                 <ValueGroup>
                     <StyledLabel>Total</StyledLabel>
-                    <div>{calculateSkillValue(skill.id)}</div>
+                    <div>{totalValue}</div>
                 </ValueGroup>
             </InputGroup>
         </SkillInputContainer>

@@ -15,17 +15,14 @@ import {
     DEFAULT_MAX_SKILL_VALUE
 } from '../../../../constants/gameRules';
 
-const SkillFormContainer = styled.div.attrs<any>({
-    'data-testid': 'custom-skill-form-container',
-    'data-component': 'CustomSkillForm/SkillFormContainer',
+const FormWrapper = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-form-wrapper',
+    'data-component': 'CustomSkillForm/FormWrapper',
 })`
-    display: grid;
-    grid-template-columns: 1;
-    gap: 0.5rem;
-    column-gap: 0.5rem;
-    width: 95;
-    justify-items: center;
-    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 `;
 
 const BondsContainer = styled.div.attrs<any>({
@@ -59,23 +56,34 @@ const PointsContainer = styled.div.attrs<any>({
     justify-content: center;
 `;
 
+const SkillFormContainer = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-form-container',
+    'data-component': 'CustomSkillForm/SkillFormContainer',
+})`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 95%;
+    align-items: center;
+`;
+
 function CustomSkillForm() {
     const { skills, setBonds, bonusPointsRemaining } = useSkills();
     // AJS why are we using both the context and local state?
     const [ bonds, setLocalBonds] = useState(DEFAULT_BONDS);
-    const [skillPoints, setSkillPoints] = useState(DEFAULT_SKILL_POINTS);
+    const { skillPointsRemaining, setSkillPointsRemaining } = useSkills();
 
     const handleBondsChange = (newBonds: number) => {
         if(newBonds >= DEFAULT_MIN_BONDS && newBonds <= DEFAULT_MAX_BONDS) {
             setLocalBonds(newBonds);
             const pointDiff = (3 - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
-            setSkillPoints(skillPoints + pointDiff);
+            setSkillPointsRemaining(skillPointsRemaining + pointDiff);
             setBonds(newBonds);
         }
     };
 
     return (
-        <div>
+        <FormWrapper>
             <BondsContainer>
                 <div>
                     <ReminderTooltip
@@ -87,7 +95,7 @@ function CustomSkillForm() {
                     <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
                 </div>
                 <div>
-                <PointsCounter value={skillPoints} label={'Skill Points Remaining'} minDigits={3} />
+                <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
                 </div>
             </BondsContainer>
             <SkillFormContainer>
@@ -104,10 +112,10 @@ function CustomSkillForm() {
                     <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
                 </PointsContainer>
                 <PointsContainer>
-                    <PointsCounter value={skillPoints} label={'Skill Points Remaining'} minDigits={3} />
+                    <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
                 </PointsContainer>
             </AllPointsContainer>
-        </div>
+        </FormWrapper>
     );
 };
 
