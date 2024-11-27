@@ -6,13 +6,21 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import CustomSkillInput from './CustomSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
+import {
+    DEFAULT_BONDS,
+    DEFAULT_MAX_BONDS,
+    DEFAULT_MIN_BONDS,
+    DEFAULT_SKILL_POINTS,
+    BONDS_TO_POINTS_MULTIPLIER,
+    DEFAULT_MAX_SKILL_VALUE
+} from '../../../../constants/gameRules';
 
 const SkillFormContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-container',
     'data-component': 'CustomSkillForm/SkillFormContainer',
 })`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: 1;
     gap: 0.5rem;
     column-gap: 0.5rem;
     width: 95;
@@ -50,14 +58,6 @@ const PointsContainer = styled.div.attrs<any>({
     display: flex;
     justify-content: center;
 `;
-
-// AJS put these in a constants file
-const DEFAULT_BONDS = 3;
-const DEFAULT_MAX_BONDS = 4;
-const DEFAULT_MIN_BONDS = 1;
-const DEFAULT_SKILL_POINTS = 400;
-const BONDS_TO_POINTS_MULTIPLIER = 50;
-const DEFAULT_MAX_SKILL_VALUE = 60;
 
 function CustomSkillForm() {
     const { skills, setBonds, bonusPointsRemaining } = useSkills();

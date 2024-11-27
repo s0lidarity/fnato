@@ -1,8 +1,17 @@
 import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
+
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
+import {
+    DEFAULT_BONDS,
+    DEFAULT_MAX_BONDS,
+    DEFAULT_MIN_BONDS,
+    DEFAULT_SKILL_POINTS,
+    BONDS_TO_POINTS_MULTIPLIER,
+    DEFAULT_MAX_SKILL_VALUE
+} from '../constants/gameRules';
 
 type SKillsContextType = {
     // State values
@@ -47,8 +56,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
     const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
-    const [bonds, setBonds] = useState(3);
-    const [skillPointsRemaining, setSkillPointsRemaining] = useState(0);
+    const [bonds, setBonds] = useState(DEFAULT_BONDS);
+    const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
     };
