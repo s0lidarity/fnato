@@ -1,6 +1,7 @@
 import { NumberInput, Separator, TextInput } from 'react95';
-import { useState } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 import styled from 'styled-components';
+import debounce from 'lodash/debounce';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -121,13 +122,18 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
     const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
 
+    const debouncedAllocatePoints = useCallback(
+        debounce((value: string) => handleAllocatePoints(value), 500),
+        []
+    );
+
     const handleChange = (e: any) => {
         const value = e.target.value;
-        console.log(`handleChange: skill ${skill.name}`, value);
+        // AJS maybe here to fix the issue of the displayed localPoints not being updated here
         setLocalPoints(value);
+        debouncedAllocatePoints(value);
     };
 
-    // AJS needs to be able to handle string or number input
     const handleAllocatePoints = (inputValue: string) => {
         const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
         console.log('numericValue', numericValue, '\nvalue', inputValue);
@@ -138,6 +144,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         if (numericValue < 0 || isNaN(numericValue)) {
             setSkillById(skill.id, { ...skill, pointsAllocated: 0 });
             setSkillPointsRemaining(skillPointsRemaining + currentPoints);
+            setLocalPoints(0);
             return;
         }
 
@@ -156,6 +163,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
             const allowedPoints = maxValue - baseValue;
             setSkillById(skill.id, { ...skill, pointsAllocated: allowedPoints });
             setSkillPointsRemaining(skillPointsRemaining + (currentPoints - allowedPoints));
+            setLocalPoints(allowedPoints);
             return;
         }
 
@@ -194,7 +202,6 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                         max={maxValue - baseValue}
                         value={localPoints}
                         onChange={handleChange}
-                        onBlur={() => handleAllocatePoints(localPoints)}
                     />
                 </ValueGroup>
                 <Separator orientation="vertical" />
