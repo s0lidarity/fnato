@@ -5,6 +5,7 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 import { useEffect, useState } from 'preact/hooks';
+import ChooseProfession from './ChooseProfession';
 
 const SkillFormContainer = styled.div.attrs<any>({
     'data-testid': 'skill-form-container',
@@ -70,6 +71,7 @@ function StandardSkillForm() {
 
     return (
         <div>
+            <ChooseProfession />
             <SkillFormContainer>
                 {renderSkillInputs(skills)}
             </SkillFormContainer>

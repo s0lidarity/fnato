@@ -14,19 +14,6 @@ export function Profession() {
         { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
     ];
 
-    // AJS refactor this to combine ChooseProfession and StandardSkillForm into one component,
-    // combine BuildProfession and CustomSkillForm into another
-    const renderProfessionInput = (config: ProfessionConfigOptions) => {
-        switch(config){
-            case ProfessionConfigOptions.StandardProfessions:
-                return <ChooseProfession />;
-            case ProfessionConfigOptions.CustomProfessions:
-                return <BuildProfession />;
-            default:
-                throw new Error(`Invalid profession config: ${config}`);
-        }
-    }
-
     const renderSkillForm = (config: ProfessionConfigOptions) => {
         switch(config){
             case ProfessionConfigOptions.StandardProfessions:
@@ -45,9 +32,6 @@ export function Profession() {
                 setConfig={(newConfig) => setConfig(newConfig as ProfessionConfigOptions)}
                 options={configOptions}
             />
-            <div>
-                {renderProfessionInput(config)}
-            </div>
             <div>
                 {renderSkillForm(config)}
             </div>

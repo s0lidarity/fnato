@@ -18,6 +18,7 @@ type SKillsContextType = {
     bonds: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
+    // AJS todo: rename this to profession
     currentProfession: IProfession | null;
     skills: Skills;
     skillPointsRemaining: number;

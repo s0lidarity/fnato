@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { NumberInput } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
+import BuildProfession from './BuildProfession';
 import CustomSkillInput from './CustomSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -25,7 +26,7 @@ const FormWrapper = styled.div.attrs<any>({
     width: 100%;
 `;
 
-const BondsContainer = styled.div.attrs<any>({
+const HeaderContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-bonds-container',
     'data-component': 'CustomSkillForm/BondsContainer',
 })`
@@ -84,7 +85,10 @@ function CustomSkillForm() {
 
     return (
         <FormWrapper>
-            <BondsContainer>
+            <HeaderContainer>
+                <div>
+                    <BuildProfession />
+                </div>
                 <div>
                     <ReminderTooltip
                         labelText={'Bonds'}
@@ -97,7 +101,7 @@ function CustomSkillForm() {
                 <div>
                 <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
                 </div>
-            </BondsContainer>
+            </HeaderContainer>
             <SkillFormContainer>
                 {skills.map((s) => (
                     <CustomSkillInput
