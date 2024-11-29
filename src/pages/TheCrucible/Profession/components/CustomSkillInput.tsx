@@ -8,7 +8,7 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
-import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE } from '../../../../constants/gameRules';
+import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',
@@ -83,9 +83,21 @@ const StyledBaseValue = styled.div.attrs<any>({
 const StyledValueInput = styled(TextInput).attrs<any>({
     'data-testid': 'value-input',
     'data-component': 'CustomSkillInput/StyledValueInput'
-})`
+})<{ $isFlashing?: boolean }>`
     width: 3rem;
     text-align: right;
+    animation: ${({ $isFlashing }) => $isFlashing ? 'flash 0.5s' : 'none'};
+
+    @keyframes flash {
+        0%, 100% {
+            background-color: inherit;
+            color: inherit;
+        }
+        50% {
+            background-color: ${({ theme }) => theme.material.focusSecondary};
+            color: ${({ theme }) => theme.materialTextDisabled};
+        }
+    }
 `;
 
 const StyledBonusInput = styled(NumberInput).attrs<any>({
@@ -118,6 +130,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         setSkillPointsRemaining
     } = useSkills();
     const [localPoints, setLocalPoints] = useState(skill.pointsAllocated || 0);
+    const [isFlashing, setIsFlashing] = useState(false);
 
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
     const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
@@ -150,10 +163,8 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
 
         // do we have enough points left?
         if(diff > skillPointsRemaining) {
-            // flash the UI
-
-            // AJS start here, it's not forcing the displayed localPoints back to pointsAllocated
-            // force the localPoints back to pointsAllocated
+            setIsFlashing(true);
+            setTimeout(() => setIsFlashing(false), 500);
             setLocalPoints(skill.pointsAllocated || 0);
             return;
         }
@@ -164,6 +175,8 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
             setSkillById(skill.id, { ...skill, pointsAllocated: allowedPoints });
             setSkillPointsRemaining(skillPointsRemaining + (currentPoints - allowedPoints));
             setLocalPoints(allowedPoints);
+            setIsFlashing(true);
+            setTimeout(() => setIsFlashing(false), 500);
             return;
         }
 
@@ -202,11 +215,15 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                         max={maxValue - baseValue}
                         value={localPoints}
                         onChange={handleChange}
+                        $isFlashing={isFlashing}
                     />
                 </ValueGroup>
                 <Separator orientation="vertical" />
                 <ValueGroup>
-                    <StyledLabel>Bonus</StyledLabel>
+                    <StyledLabel>
+                        {/* AJS move this to the header */}
+                        <ReminderTooltip labelText='Bonus' reminderText={`Adds ${DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at ${DEFAULT_TOTAL_CAP})`} />
+                    </StyledLabel>
                     <StyledBonusInput
                         min={0}
                         max={8}
