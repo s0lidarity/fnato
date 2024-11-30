@@ -221,8 +221,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                 <Separator orientation="vertical" />
                 <ValueGroup>
                     <StyledLabel>
-                        {/* AJS move this to the header */}
-                        <ReminderTooltip labelText='Bonus' reminderText={`Adds ${DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at ${DEFAULT_TOTAL_CAP})`} />
+                        Bonus
                     </StyledLabel>
                     <StyledBonusInput
                         min={0}

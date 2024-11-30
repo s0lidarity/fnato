@@ -13,7 +13,9 @@ import {
     DEFAULT_MIN_BONDS,
     DEFAULT_SKILL_POINTS,
     BONDS_TO_POINTS_MULTIPLIER,
-    DEFAULT_MAX_SKILL_VALUE
+    DEFAULT_MAX_SKILL_VALUE,
+    DEFAULT_BONUS_VALUE,
+    DEFAULT_TOTAL_CAP
 } from '../../../../constants/gameRules';
 
 const FormWrapper = styled.div.attrs<any>({
@@ -57,6 +59,16 @@ const PointsContainer = styled.div.attrs<any>({
     justify-content: center;
 `;
 
+const BonusPointsContainer = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-form-bonus-points-container',
+    'data-component': 'CustomSkillForm/BonusPointsContainer',
+})`
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 const SkillFormContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-container',
     'data-component': 'CustomSkillForm/SkillFormContainer',
@@ -68,9 +80,10 @@ const SkillFormContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
+
+
 function CustomSkillForm() {
     const { skills, setBonds, bonusPointsRemaining } = useSkills();
-    // AJS why are we using both the context and local state?
     const [ bonds, setLocalBonds] = useState(DEFAULT_BONDS);
     const { skillPointsRemaining, setSkillPointsRemaining } = useSkills();
 
@@ -99,8 +112,12 @@ function CustomSkillForm() {
                     <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
                 </div>
                 <div>
-                <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
+                    <PointsCounter value={skillPointsRemaining} label={'Skill Points'} minDigits={3} />
                 </div>
+                <BonusPointsContainer>
+                    <ReminderTooltip labelText='Bonus Points' reminderText={`Adds ${DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at ${DEFAULT_TOTAL_CAP})`} />
+                    <PointsCounter value={bonusPointsRemaining} label='' minDigits={1} />
+                </BonusPointsContainer>
             </HeaderContainer>
             <SkillFormContainer>
                 {skills.map((s) => (
@@ -113,10 +130,10 @@ function CustomSkillForm() {
             </SkillFormContainer>
             <AllPointsContainer>
                 <PointsContainer>
-                    <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
+                    <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
                 </PointsContainer>
                 <PointsContainer>
-                    <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
+                    <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
                 </PointsContainer>
             </AllPointsContainer>
         </FormWrapper>

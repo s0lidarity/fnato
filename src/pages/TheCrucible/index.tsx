@@ -7,7 +7,7 @@ import { PiCookingPotFill } from "react-icons/pi";
 
 import Statistics from './Statistics/Statistics';
 import Profession from './Profession';
-import Skills from './Skills';
+import PersonalDetails from './PersonalDetails';
 import Equipment from './Equipment';
 import Bonds from './Bonds';
 import { PageWrapper } from '../../components/SharedStyles';
@@ -37,20 +37,22 @@ export function TheCrucible() {
                     <PiCookingPotFill />
                 </StyledHeader>
                 <WindowContent>
+                    {/* AJS TODO */}
                     {/* show an icon when tab is complete, maybe context for completion? */}
                     <Tabs value={activeTab} onChange={handleChange}>
                         <Tab value={0}>Statistics</Tab>
-                        <Tab value={1}>Profession</Tab>
-                        <Tab value={2}>Skills</Tab>
-                        <Tab value={3}>Equipment</Tab>
-                        <Tab value={4}>Bonds</Tab>
+                        <Tab value={1}>Profession & Skills</Tab>
+                        <Tab value={2}>Bonds</Tab>
+                        <Tab value={3}>Personal Details</Tab>
+                        <Tab value={4}>Equipment</Tab>
+                        
                     </Tabs>
                     <TabBody>
                         {activeTab === 0 && <Statistics />}
                         {activeTab === 1 && <Profession />}
-                        {activeTab === 2 && <Skills />}
-                        {activeTab === 3 && <Equipment />}
-                        {activeTab === 4 && <Bonds />}
+                        {activeTab === 3 && <PersonalDetails />}
+                        {activeTab === 4 && <Equipment />}
+                        {activeTab === 5 && <Bonds />}
                     </TabBody>
                     {/* when tab complete, have option to advance to next incomplete tab */}
                 </WindowContent>
