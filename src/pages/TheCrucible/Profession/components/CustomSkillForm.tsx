@@ -11,7 +11,6 @@ import {
     DEFAULT_BONDS,
     DEFAULT_MAX_BONDS,
     DEFAULT_MIN_BONDS,
-    DEFAULT_SKILL_POINTS,
     BONDS_TO_POINTS_MULTIPLIER,
     DEFAULT_MAX_SKILL_VALUE,
     DEFAULT_BONUS_VALUE,
@@ -128,6 +127,7 @@ function CustomSkillForm() {
                     />
                 ))}
             </SkillFormContainer>
+            {/* AJS consider allowing users to add custom skills */}
             <AllPointsContainer>
                 <PointsContainer>
                     <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
