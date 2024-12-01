@@ -8,7 +8,10 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
 
-const SkillInputContainer = styled.div`
+const SkillInputContainer = styled.div.attrs<any>({
+    'data-testid': 'skill-input-container',
+    'data-component': 'ProfessionSkillInput/SkillInputContainer'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,7 +21,10 @@ const SkillInputContainer = styled.div`
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
 `;
 
-const StyledSkillName = styled.div`
+const StyledSkillName = styled.div.attrs<any>({
+    'data-testid': 'skill-name',
+    'data-component': 'ProfessionSkillInput/StyledSkillName'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,7 +33,10 @@ const StyledSkillName = styled.div`
     min-width: 250px;
 `;
 
-const StyledSubtypeButton = styled(Button)`
+const StyledSubtypeButton = styled(Button).attrs<any>({
+    'data-testid': 'subtype-button',
+    'data-component': 'ProfessionSkillInput/StyledSubtypeButton'
+})`
     flex-shrink: 0;
     border-radius: 50%;
     width: 1.5rem;
@@ -39,19 +48,28 @@ const StyledSubtypeButton = styled(Button)`
     justify-content: center;
 `;
 
-const StyledDialogueContent = styled.div`
+const StyledDialogueContent = styled.div.attrs<any>({
+    'data-testid': 'dialogue-content',
+    'data-component': 'ProfessionSkillInput/StyledDialogueContent'
+})`
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
     align-items: center;
 `;
 
-const StyledSubtypeInput = styled(TextInput)`
+const StyledSubtypeInput = styled(TextInput).attrs<any>({
+    'data-testid': 'subtype-input',
+    'data-component': 'ProfessionSkillInput/StyledSubtypeInput'
+})`
     flex-grow: 1;
     height: 1rem;
 `;
 
-const StyledAcceptButton = styled(Button)`
+const StyledAcceptButton = styled(Button).attrs<any>({
+    'data-testid': 'accept-button',
+    'data-component': 'ProfessionSkillInput/StyledAcceptButton'
+})`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,23 +78,35 @@ const StyledAcceptButton = styled(Button)`
     height: 2rem;
 `;
 
-const StyledValueContainer = styled.div`
+const StyledValueContainer = styled.div.attrs<any>({
+    'data-testid': 'value-container',
+    'data-component': 'ProfessionSkillInput/StyledValueContainer'
+})`
     justify-content: flex-end;
     min-width: 2rem;
 `;
 
-const StyledNumberInput = styled(NumberInput)`
+const StyledNumberInput = styled(NumberInput).attrs<any>({
+    'data-testid': 'number-input',
+    'data-component': 'ProfessionSkillInput/StyledNumberInput'
+})`
     width: 3rem;
     flex-shrink: 0;
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label.attrs<any>({
+    'data-testid': 'label',
+    'data-component': 'ProfessionSkillInput/StyledLabel'
+})`
     white-space: nowrap;
     font-size: 0.9rem;
     align-self: center;
 `;
 
-const StyledBonusContainer = styled.div`
+const StyledBonusContainer = styled.div.attrs<any>({
+    'data-testid': 'bonus-container',
+    'data-component': 'ProfessionSkillInput/StyledBonusContainer'
+})`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -88,17 +118,18 @@ type SkillInputProps = {
     skill: Skill;
 };
 
-function ProfessionSkillInput({ skill }: SkillInputProps) {
-    const { adjustBonus, skills, setSkillById } = useSkills();
+function ProfessionSkillInput({ 
+    skill, 
+}: SkillInputProps) {
+    const { 
+        adjustBonus, 
+        calculateSkillValue, 
+        setSkillById, 
+        bonusPointsRemaining 
+    } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
-    // AJS, is localBonus necessary?
-    const [ localBonus, setLocalBonus ] = useState(skill.bonus); 
-    // keeping localSubType here to avoid mucking with the original skill while it's used elsehwere
     const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
 
-
-    // AJS: get clarity on how to import the right type for this event
-    // console logs show the event coming in as InputEvent
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
     };
@@ -108,15 +139,13 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
         setShowModal(false);
     };
 
-    type handleBonusChangeProps = {
-        bonus: number;
-        skillId: string;
-    };
-    const handleBonusChange = ({ bonus }: handleBonusChangeProps) => {
-        adjustBonus(skill.id, bonus);
+    const handleBonusChange = (value: number) => {
+        adjustBonus(skill.id, value);
     };
 
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
+
+    // AJS start with an input for custom skill points in the StyledValueContainer
 
     return (
         <SkillInputContainer>
@@ -157,17 +186,17 @@ function ProfessionSkillInput({ skill }: SkillInputProps) {
                 </span>
             </StyledSkillName>
             <StyledValueContainer>
-                {skill.value}
+                {calculateSkillValue(skill.id)}
             </StyledValueContainer>
             <Separator orientation="vertical" />
             <StyledBonusContainer>
                 <StyledLabel>Bonus</StyledLabel>
                 <StyledNumberInput
                     min={0}
-                    max={8}
+                    max={Math.min(8, (bonusPointsRemaining || 0) + (skill.bonus || 0))}
                     width="4rem"
-                    value={localBonus}
-                    onChange={() => handleBonusChange({ bonus: localBonus, skillId: skill.id })}
+                    value={skill.bonus || 0}
+                    onChange={(value: number) => handleBonusChange(value)}
                 />
             </StyledBonusContainer>
         </SkillInputContainer>

@@ -5,6 +5,12 @@ import {
     StatisticKeys 
 } from "../types/characterTypes";
 
+// Add this utility function to standardize skill ID creation
+const createSkillId = (name: string, subType?: string): string => {
+    const baseId = name.toLowerCase().replace(/\s+/g, '-');
+    return subType ? `${baseId}-${subType.toLowerCase().replace(/\s+/g, '-')}` : baseId;
+};
+
 export class Profession implements IProfession {
     name: string;
     affiliation?: string;
@@ -32,21 +38,27 @@ export class Profession implements IProfession {
         this.recommendedStats = config.recommendedStats;
     };
     
-    static createSkill(id: string, value: number, subType?: string): Skill {
-        const defaultSkill = DEFAULT_SKILLS.find(s => s.id === id);
+    static createSkill(name: string, value: number, subType?: string): Skill {
+        const formattedName = name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        const defaultSkill = DEFAULT_SKILLS.find(s => s.name === formattedName);
+        if (!defaultSkill) {
+            console.warn(`No default skill found for ${name}`);
+        }
+        
+        const skillId = createSkillId(name, subType);
+        
         const newSkill: Skill = {
-            id: id,
-            name: defaultSkill.name,
+            id: skillId,
+            name: formattedName,
             value: value,
             bonus: 0,
-            label: defaultSkill.label,
-            reminderText: defaultSkill.reminderText,
+            label: defaultSkill?.label || name.charAt(0).toUpperCase() + name.slice(1),
+            reminderText: defaultSkill?.reminderText,
             subType: subType,
         };
         return newSkill;
     };
 
-    // AJS createSkillList is not creating subtyped skills properlys
     static createSkillList(rawSkills: Array<
         | [string, number]            // [skillName, value]
         | [string, number, string]    // [skillName, value, subType]
@@ -78,7 +90,7 @@ export const Anthropologist = new Profession({
     choosableSkills: Profession.createSkillList([
         ['anthropology', 50],
         ['archeology', 40],
-        ['humint', 50],
+        ['HUMINT', 50],
         ['navigate', 50],
         ['search', 60],
         ['survival', 50],
@@ -99,7 +111,7 @@ export const Historian = new Profession({
     ]),
     choosableSkills: Profession.createSkillList([
         ['anthropology', 50],
-        ['humint', 50],
+        ['HUMINT', 50],
         ['navigate', 50],
         ['search', 60],
         ['survival', 50],
@@ -117,7 +129,7 @@ export const Engineer = new Profession({
         ['crafts', 40, 'Mechanic'],
         ['crafts', 40, 'Microelectronics'],
         ['science', 40, 'Mathematics'],
-        ['sigint', 40],   
+        ['SIGINT', 40],   
     ]),
     choosableSkills: Profession.createSkillList([
         ['accounting', 50],
@@ -142,7 +154,7 @@ export const FederalAgent = new Profession({
         ['drive', 50],
         ['firearms', 50],
         ['forensics', 30],
-        ['humint', 60],
+        ['HUMINT', 60],
         ['law', 30],
         ['persuade', 50],
         ['search', 50],
@@ -249,7 +261,7 @@ export const Soldier = new Profession({
         ['heavy-machinery', 50],
         ['heavy-weapons', 40],
         ['search', 60],
-        ['sigint', 40], 
+        ['SIGINT', 40], 
         ['swim', 60],
     ]),
     bondCount: 4,

@@ -157,6 +157,7 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
 };
 
 export interface IProfession {
+    name: string;
     affiliation?: string;
     professionalSkills: Skill[];
     bondCount: number;
@@ -175,6 +176,7 @@ export interface Skill {
     reminderText?: string;
     subType?: string;
     isDefault?: boolean;
+    pointsAllocated?: number;
 }
 
 export const SKILL_REMINDERS: { [key: string]: string } = {
@@ -223,8 +225,6 @@ export const SKILL_REMINDERS: { [key: string]: string } = {
     Unnatural: "It's a jeep thing, you wouldn't understand",
 };
 
-// AJS this is overdone, can we just have this be a collection of skills? initialzing on defaults
-// insert new skills at the end of the list, or alphabetically?
 export type Skills = Skill[];
 
 // AJS consider adding shortHand value, ie: constitution -> con
@@ -281,7 +281,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Accounting",
         reminderText: "Business Math",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'alertness',
@@ -290,7 +291,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Alertness",
         reminderText: "Noticing things",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'anthropology',
@@ -299,7 +301,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Anthropology",
         reminderText: "Study of humans and their cultures",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'archeology',
@@ -308,7 +311,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Archeology",
         reminderText: "Jurassic Park",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'art',
@@ -316,8 +320,10 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Art",
-        reminderText: "Painting",
-        isDefault: true
+        reminderText: "Creative pursuits",
+        isDefault: true,
+        pointsAllocated: 0,
+        subType: "Painting",
     },
     {
         id: 'artillery',
@@ -326,7 +332,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Artillery",
         reminderText: "Making things explode from far away",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'athletics',
@@ -335,7 +342,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Athletics",
         reminderText: "Jumping, ducking, running, climbing, etc",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'bureaucracy',
@@ -344,7 +352,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Bureaucracy",
         reminderText: "Greasing the wheels of government",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'computer-science',
@@ -353,17 +362,19 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Computer Science",
         reminderText: "010111100001",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
-        id: 'crafts',
+        id: 'crafts-macrame',
         name: "Crafts",
         value: 0,
         bonus: 0,
         label: "Craft",
         reminderText: "Inner Adam Savage",
         subType: "Macrame",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'criminology',
@@ -372,7 +383,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Criminology",
         reminderText: "Muddying the waters of a crime-scene",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'demolitions',
@@ -381,7 +393,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Demolitions",
         reminderText: "Controlled explosions",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'disguise',
@@ -390,7 +403,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Disguise",
         reminderText: "Gene Parmesan, he's the best",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'dodge',
@@ -399,7 +413,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Dodge",
         reminderText: "Avoiding getting hit",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'drive',
@@ -408,7 +423,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Drive",
         reminderText: "Opearting a motor-vehicle",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'firearms',
@@ -417,7 +433,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Firearms",
         reminderText: "pew-pew",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'first-aid',
@@ -426,7 +443,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "First Aid",
         reminderText: "Minor urgent medical care",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'forensics',
@@ -435,17 +453,19 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Forensics",
         reminderText: "CSI",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
-        id: 'foreign-languages',
+        id: 'foreign-languages-french',
         name: "Foreign Languages",
         value: 0,
         bonus: 0,
+        subType: "French",
         label: "Foreign Languages",
         reminderText: "Parles-vous Français?",
-        subType: "French",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'heavy-machinery',
@@ -454,7 +474,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Heavy Machinery",
         reminderText: "Forklifts, cranes, excavators, etc",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'heavy-weapons',
@@ -463,7 +484,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Heavy Weapons",
         reminderText: "LMGs I think",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'history',
@@ -472,7 +494,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "History",
         reminderText: "If you haven't studied it you're doomed to repeat it",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'humint',
@@ -481,7 +504,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "HUMINT",
         reminderText: "Understanding human behavior",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'law',
@@ -490,7 +514,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Law",
         reminderText: "Lawyering",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'medicine',
@@ -499,7 +524,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Medicine",
         reminderText: "Medical practice",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'melee-weapons',
@@ -508,17 +534,19 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Melee Weapons",
         reminderText: "Knives, hatchets, swords, etc",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
-        id: 'military-science',
+        id: 'military-science-land',
         name: "Military Science",
         value: 0,
         bonus: 0,
         label: "Military Science",
         reminderText: "Military tactics",
         subType: "Land",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'navigate',
@@ -527,7 +555,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Navigate",
         reminderText: "Finding the path",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'occult',
@@ -536,7 +565,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Occult",
         reminderText: "Cult shit",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'persuade',
@@ -545,7 +575,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Persuade",
         reminderText: "Convincing people",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'pharmacy',
@@ -554,16 +585,19 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Pharmacy",
         reminderText: "Do you like drugs?",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
-        id: 'pilot',
+        id: 'pilot-aircraft',
         name: "Pilot",
         value: 0,
         bonus: 0,
         label: "Pilot",
         reminderText: "Operating flying vehicles",
-        isDefault: true
+        subType: "Aircraft",
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'psychotherapy',
@@ -572,7 +606,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Psychotherapy",
         reminderText: "Analysing thought",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'ride',
@@ -581,17 +616,19 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Ride",
         reminderText: "Horses and such",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
-        id: 'science',
+        id: 'science-theoretical-physics',
         name: "Science",
         value: 0,
         bonus: 0,
         label: "Science",
         reminderText: "Physics, Chemistry, Biology, etc",
         subType: "Theoretical Physics",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'search',
@@ -600,7 +637,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Search",
         reminderText: "Finding things",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'sigint',
@@ -609,7 +647,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "SIGINT",
         reminderText: "Signal intelligence, breaking codes",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'stealth',
@@ -618,7 +657,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Stealth",
         reminderText: "Sneaking around",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'surgery',
@@ -627,7 +667,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Surgery",
         reminderText: "Removing a bullet, stitching a wound",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'survival',
@@ -636,7 +677,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Survival",
         reminderText: "Camping, tracking, improvising in nature",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'swim',
@@ -645,7 +687,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Swim",
         reminderText: "Moving oneself through water",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'unarmed-combat',
@@ -654,7 +697,8 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Unarmed Combat",
         reminderText: "Punch, kick, grapple, bite, etc",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
     {
         id: 'unnatural',
@@ -663,12 +707,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         label: "Unnatural",
         reminderText: "It's a jeep thing, you wouldn't understand",
-        isDefault: true
+        isDefault: true,
+        pointsAllocated: 0,
     },
 ];
 
 
-// ajs, replace this with an actual complete character when we get there
+// AJS, replace this with an actual complete character when we get there
 export const character = {
     // roll 4d6, drop the lowest or assign from a pool of 72 points
     statistics: {

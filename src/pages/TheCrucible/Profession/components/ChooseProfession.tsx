@@ -5,16 +5,31 @@ import { useState } from 'preact/hooks';
 import { Profession } from '../../../../utils/Professions';
 import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
-import ProfessionSkillPicker from './ProfessionSkillPicker';
+import ProfessionChoices from './ProfessionChoices';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
+import BonusSkillPackageChoices from './BonusSkillPackageChoices';
 
-const ChooseProfessionHeader = styled.div`
+const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'choose-profession-group-box',
+    'data-component': 'ChooseProfession/ChooseProfessionGroupBox'
+})`
+    width: 95%;
+    margin-bottom: 1rem;
+`;
+
+const ChooseProfessionHeader = styled.div.attrs<any>({
+    'data-testid': 'choose-profession-header',
+    'data-component': 'ChooseProfession/ChooseProfessionHeader'
+})`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 `;
 
-const StyledSelectContainer = styled.div`
+const StyledSelectContainer = styled.div.attrs<any>({
+    'data-testid': 'select-container',
+    'data-component': 'ChooseProfession/StyledSelectContainer'
+})`
     display: flex;
     flex-direction: rows;
     align-items: center;
@@ -24,20 +39,45 @@ const StyledSelectContainer = styled.div`
     margin-bottom: 1rem;
 `;
 
-const StyledSelect = styled(SelectNative)`
+// using a SelectNative because the standard kept putting the dropdown arrow in ugly spots
+const StyledSelect = styled(SelectNative).attrs<any>({
+    'data-testid': 'select',
+    'data-component': 'ChooseProfession/StyledSelect'
+})`
     min-width: fit-content;
 `;
 
-const KeyStatsContainer = styled.div`
+const KeyStatSection = styled.div.attrs<any>({
+    'data-testid': 'key-stat-section',
+    'data-component': 'ChooseProfession/KeyStatSection'
+})`
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-start;
+    flex: 1;
+`;
+
+const KeyStatContainer = styled.div.attrs<any>({
+    'data-testid': 'key-stats-container',
+    'data-component': 'ChooseProfession/KeyStatsContainer'
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-grow: 1;
-    justify-content: center;
+    justify-content: flex-start;
+    flex: 0 1 auto;
+    min-width: 200px;
     margin-bottom: 1rem;
+    padding: 0 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `;
 
-const KeyStatsLabel = styled.span`
+const KeyStatsLabel = styled.span.attrs<any>({
+    'data-testid': 'key-stats-label',
+    'data-component': 'ChooseProfession/KeyStatsLabel'
+})`
     margin-left: 0.5rem;
 `;
 
@@ -54,14 +94,16 @@ function ChooseProfession() {
         return options;
     };
 
+    // AJS store profession in the skills context instead of locally to this component
     const handleProfessionSelect = (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
         setSelectedProfession(newProfession);
         applyProfessionSkills(newProfession.professionalSkills);
+        console.log('selectedProfession', newProfession);
     };
 
     return (
-        <GroupBox>
+        <ChooseProfessionGroupBox>
             <ChooseProfessionHeader>
                 <StyledSelectContainer>
                     <ReminderTooltip 
@@ -74,21 +116,33 @@ function ChooseProfession() {
                         onChange={(e: any) => handleProfessionSelect(e.value)} 
                     />
                 </StyledSelectContainer>
-                <KeyStatsContainer>
-                    <ReminderTooltip 
-                        labelText='Key Stats'
-                        reminderText='Recommended best stats for your chosen profession.'
-                    />
-                    <KeyStatsLabel>
-                        {selectedProfession?.recommendedStats.join(', ')}
-                    </KeyStatsLabel>
-                </KeyStatsContainer>
+                <KeyStatSection>
+                    <KeyStatContainer>
+                        <ReminderTooltip 
+                            labelText='Key Stats'
+                            reminderText='Recommended best stats for your chosen profession.'
+                        />
+                        <KeyStatsLabel>
+                            {selectedProfession?.recommendedStats.join(', ')}
+                        </KeyStatsLabel>
+                    </KeyStatContainer>
+                    <KeyStatContainer>
+                        <ReminderTooltip 
+                            labelText='Bonds'
+                            reminderText='Number of social connections available to your character.'
+                        />
+                        <KeyStatsLabel>
+                            {selectedProfession?.bondCount || 0}
+                        </KeyStatsLabel>
+                    </KeyStatContainer>
+                </KeyStatSection>
             </ChooseProfessionHeader>
             <Separator />
-            <ProfessionSkillPicker
+            <ProfessionChoices
                 profession={selectedProfession}
             />
-        </GroupBox>
+            { selectedProfession && <BonusSkillPackageChoices /> }
+        </ChooseProfessionGroupBox>
     )
 }
 

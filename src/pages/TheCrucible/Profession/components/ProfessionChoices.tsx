@@ -5,27 +5,40 @@ import ChooseSkills from './ChooseSkills';
 import { IProfession, Skill } from '../../../../types/characterTypes';
 
 
-const PSPContainer = styled.div`
+const PCContainer = styled.div.attrs<any>({
+    'data-testid': 'profession-choices--container',
+    'data-component': 'ProfessionChoices/PSPContainer'
+})`
     width: 95%;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    justify-content: space-between;
 `;
 
-const ProfessionalSkillsContainer = styled.div`
+const ProfessionalSkillsContainer = styled.div.attrs<any>({
+    'data-testid': 'professional-skills-container',
+    'data-component': 'ProfessionChoices/ProfessionalSkillsContainer'
+})`
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
     flex: 1;
 `;
 
-const SkillChoiceContainer = styled.div`
+const SkillChoiceContainer = styled.div.attrs<any>({
+    'data-testid': 'profession-choices-skill-choice-container',
+    'data-component': 'ProfessionChoices/SkillChoiceContainer'
+})`
     display: flex;
     flex-direction: column;
     flex: 1;
 `;
 
-const StyledGroupBox = styled(GroupBox)`
+const StyledGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'profession-choices-group-box',
+    'data-component': 'ProfessionChoices/StyledGroupBox'
+})`
     background-color: ${({ theme }) => theme.materialDark};
 `;
 
@@ -33,22 +46,17 @@ type ChosenSkillPickerProps = {
     profession: IProfession;
 };
 
-const ProfessionSkillPicker = ({
+// AJS make this a function instead of a const to make style consistent
+function ProfessionChoices({
     profession, 
-}: ChosenSkillPickerProps) => {
-    // AJS, use this to indicate when a skill has a subtype that needs to be entered
-    const renderSubtypedSkill = (skill: Skill) => {
-        return (<div>
-            {skill.label} starts at {skill.value} Choose a subtype below.
-        </div>);
-    };
+}: ChosenSkillPickerProps) {
 
     const renderProfessionSkills = () => {
         let renderedOutput = null;
 
         renderedOutput = profession?.professionalSkills.map((skill) => {
             return <div>
-                {skill.label} starts at {skill.value}
+                {skill.label} {skill.subType ? ` (${skill.subType})` : ''} starts at {skill.value}
             </div>;
         });
 
@@ -59,27 +67,16 @@ const ProfessionSkillPicker = ({
         );
     }
 
-    // AJS, this should all be in ChooseSkills, not this mess
-    const renderSkillChoices = () => {
-        let renderedOutput = null;
-        // AJS pick up here
-        if(profession?.choosableSkills.length) {
-            renderedOutput = <ChooseSkills profession={profession} />
-        }
-        return renderedOutput;
-    }
-
     return (
-        <PSPContainer>
+        <PCContainer>
             <ProfessionalSkillsContainer>
                 {renderProfessionSkills()}
             </ProfessionalSkillsContainer>
             <SkillChoiceContainer>
-                {renderSkillChoices()}
+                <ChooseSkills profession={profession} />
             </SkillChoiceContainer>
-        </PSPContainer>
+        </PCContainer>
     );
 };
 
-// AJS rename, ProfessionChoices or something
-export default ProfessionSkillPicker;
+export default ProfessionChoices;

@@ -102,13 +102,13 @@ export function About() {
         <>
             <PageWrapper>
                 <GroupBoxContainer>
-                    <GroupBox label='About the Author'>
-                        <Accordion items={authorConfig} />
+                    <GroupBox label='About the Game'>
+                        <Accordion items={dgConfig} />
                     </GroupBox>
                 </GroupBoxContainer>
                 <GroupBoxContainer>
-                    <GroupBox label='About the Game'>
-                        <Accordion items={dgConfig} />
+                    <GroupBox label='About the Author'>
+                        <Accordion items={authorConfig} />
                     </GroupBox>
                 </GroupBoxContainer>
             </PageWrapper>

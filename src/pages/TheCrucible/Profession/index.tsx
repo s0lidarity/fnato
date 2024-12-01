@@ -1,11 +1,11 @@
 import { useState } from 'preact/hooks';
-import styled from 'styled-components';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import BuildProfession from './components/BuildProfession';
 import ChooseProfession from './components/ChooseProfession';
-import SkillForm from './components/SkillForm';
+import StandardSkillForm from './components/StandardSkillForm';
+import CustomSkillForm from './components/CustomSkillForm';
 
 export function Profession() {
     const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
@@ -14,12 +14,12 @@ export function Profession() {
         { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
     ];
 
-    const renderProfessionInput = (config: ProfessionConfigOptions) => {
+    const renderSkillForm = (config: ProfessionConfigOptions) => {
         switch(config){
             case ProfessionConfigOptions.StandardProfessions:
-                return <ChooseProfession />;
+                return <StandardSkillForm />;
             case ProfessionConfigOptions.CustomProfessions:
-                return <BuildProfession />;
+                return <CustomSkillForm />;
             default:
                 throw new Error(`Invalid profession config: ${config}`);
         }
@@ -33,10 +33,7 @@ export function Profession() {
                 options={configOptions}
             />
             <div>
-                {renderProfessionInput(config)}
-            </div>
-            <div>
-                <SkillForm />
+                {renderSkillForm(config)}
             </div>
         </div>
     )

@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 
-import { generateStat, rollDice } from './CharacterGenerator';
+import { generateStat, rollDice } from '../CharacterGenerator';
 
 describe('CharacterGenerator', () => {
     test('rollDice rolling 4d6 drop 1 lowest yields values between 3 and 18', () => {

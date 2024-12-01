@@ -8,7 +8,10 @@ import { Statistics } from '../../../../../types/characterTypes';
 import { StatsConfigOptions } from '../../../../../types/componentTypes';
 import PointsCounter from '../../../../../components/PointsCounter/PointsCounter';
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div.attrs<any>({
+    'data-testid': 'button-container',
+    'data-component': 'ManualInputStats/ButtonContainer'
+})`
     display: flex;
     justify-content: space-evenly;
     margin-top: 0.75rem;

@@ -3,8 +3,8 @@ import {
     Anthropologist, 
     Engineer,
     FederalAgent 
-} from './Professions';
-import { DEFAULT_SKILLS } from '../types/characterTypes';
+} from '../Professions';
+import { DEFAULT_SKILLS } from '../../types/characterTypes';
 
 describe('Profession Class', () => {
     describe('createSkill', () => {
@@ -28,6 +28,11 @@ describe('Profession Class', () => {
             
             expect(skill.subType).toBe('Biology');
             expect(skill.value).toBe(40);
+        });
+
+        it('should create the expected skill name for two word skill names', () => {
+            const skill = Profession.createSkill('computer-science', 60);
+            expect(skill.name).toBe('Computer Science');
         });
     });
 
@@ -76,7 +81,7 @@ describe('Predefined Professions', () => {
     describe('Engineer', () => {
         it('should have correct crafts subtypes', () => {
             const craftsSkills = Engineer.professionalSkills.filter(
-                skill => skill.id === 'crafts'
+                skill => skill.id.includes('crafts')
             );
 
             expect(craftsSkills).toHaveLength(3);
@@ -91,13 +96,17 @@ describe('Predefined Professions', () => {
     describe('Anthropologist', () => {
         it('should have correct foreign language skills', () => {
             const languageSkills = Anthropologist.professionalSkills.filter(
-                skill => skill.id === 'foreign-languages'
+                skill => skill.id.includes('foreign-languages')
             );
 
             expect(languageSkills).toHaveLength(2);
             expect(languageSkills.map(skill => skill.subType)).toEqual([
                 'French',
                 'German'
+            ]);
+            expect(languageSkills.map(skill => skill.name)).toEqual([
+                'Foreign Languages',
+                'Foreign Languages'
             ]);
         });
     });
