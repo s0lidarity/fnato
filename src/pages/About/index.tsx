@@ -42,7 +42,7 @@ const authorConfig = [
             <ul>
                 <li>report an <Anchor href="https://github.com/s0lidarity/fnato/issues/new">issue </Anchor></li>
                 <li>leave <Anchor href="https://github.com/s0lidarity/fnato/discussions">feedback/feature requests</Anchor></li>
-                <li>or ⭐️ Star the project to give my ego a boost.</li>
+                <li>or ⭐️ Star the project to give the author ego a boost.</li>
             </ul>
         </Content>
     },
@@ -64,7 +64,7 @@ const authorConfig = [
         id: 'coffee',
         label: 'Support',
         icon: <>☕</>,
-        content: <Content>If you want to support this work, you can buy some Delta Green content through my affiliate links.</Content>
+        content: <Content>If you want to support this work, you can buy some Delta Green content through affiliate links.</Content>
     }
 ];
 

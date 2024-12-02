@@ -1,12 +1,10 @@
-import h from 'preact';
-
 export function Bonds() {
 	return (
         <div>
             <h1>Bonds</h1>
             <li>Pull in bonds from skills context</li>
             <ul>
-                <li>Each Bond begins with a score equal to your
+                <li>`Each Bond begins with a score equal to your
 Agent’s CHA. Bonds’ scores often deteriorate because
 of your Agent’s involvement in Delta Green. A Bond
 increases if it is cultivated between operations (see
@@ -30,7 +28,7 @@ who are alive and can be interacted with.</li>
 9. Siblings (group)
 10. Colleagues in an intense job (group)
 11. Church or support group (group)
-12. Survivors of a shared trauma (group)</li>
+12. Survivors of a shared trauma (group)`</li>
             </ul>
             <p>
                 <ul>

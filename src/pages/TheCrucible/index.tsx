@@ -1,4 +1,3 @@
-import h from 'preact';
 import styled from 'styled-components';
 import { useState } from 'preact/hooks';
 import { Tabs, Tab, TabBody, Window, WindowContent, WindowHeader } from 'react95';
@@ -50,9 +49,10 @@ export function TheCrucible() {
                     <TabBody>
                         {activeTab === 0 && <Statistics />}
                         {activeTab === 1 && <Profession />}
+                        {activeTab === 2 && <Bonds />}
                         {activeTab === 3 && <PersonalDetails />}
                         {activeTab === 4 && <Equipment />}
-                        {activeTab === 5 && <Bonds />}
+                        
                     </TabBody>
                     {/* when tab complete, have option to advance to next incomplete tab */}
                 </WindowContent>
