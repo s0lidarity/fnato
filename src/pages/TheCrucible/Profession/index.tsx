@@ -2,8 +2,6 @@ import { useState } from 'preact/hooks';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
-import BuildProfession from './components/BuildProfession';
-import ChooseProfession from './components/ChooseProfession';
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
 
@@ -32,6 +30,9 @@ export function Profession() {
                 setConfig={(newConfig) => setConfig(newConfig as ProfessionConfigOptions)}
                 options={configOptions}
             />
+            <div>
+
+            </div>
             <div>
                 {renderSkillForm(config)}
             </div>

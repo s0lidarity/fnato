@@ -48,7 +48,7 @@ const STATS_CONFIG_OPTIONS = [
 ];
 
 function Statistics() {
-    const { resetStats, setStats, stats } = useStats();
+    const { resetStats } = useStats();
     const [config, setConfig] = useState(StatsConfigOptions.ManualInput);
 
     const renderStatInputs = () => {
