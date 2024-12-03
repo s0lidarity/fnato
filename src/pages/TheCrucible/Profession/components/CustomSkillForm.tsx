@@ -73,9 +73,11 @@ const SkillFormContainer = styled.div.attrs<any>({
     'data-component': 'CustomSkillForm/SkillFormContainer',
 })`
     display: flex;
+    justify-self: center;
+    justify-content: center;
     flex-direction: column;
     gap: 0.5rem;
-    width: 95%;
+    width: 100;
     align-items: center;
 `;
 

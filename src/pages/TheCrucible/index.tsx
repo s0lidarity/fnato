@@ -1,4 +1,3 @@
-import h from 'preact';
 import styled from 'styled-components';
 import { useState } from 'preact/hooks';
 import { Tabs, Tab, TabBody, Window, WindowContent, WindowHeader } from 'react95';

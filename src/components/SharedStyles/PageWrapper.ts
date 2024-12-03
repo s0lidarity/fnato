@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const PageWrapper = styled.div`
-	display: block;
+	display: flex;
+  flex-direction: column;
   background: ${({ theme }) => theme.material};
 	align-items: center;
 	justify-content: center;
