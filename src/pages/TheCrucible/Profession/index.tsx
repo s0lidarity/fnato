@@ -4,6 +4,7 @@ import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
+import ProfessionalGuidance from './components/ProfessionalGuidance';
 
 export function Profession() {
     const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
@@ -31,7 +32,7 @@ export function Profession() {
                 options={configOptions}
             />
             <div>
-
+                <ProfessionalGuidance />
             </div>
             <div>
                 {renderSkillForm(config)}

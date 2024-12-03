@@ -1,14 +1,10 @@
-import { useState } from 'preact/hooks';
-import { Button, Table, TableBody, TableDataCell, TableHead, TableRow, Window, WindowContent, WindowHeader } from 'react95';
+import { Table, TableBody, TableDataCell, TableHead, TableHeadCell, TableRow, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
-import { FaRegWindowMinimize } from "react-icons/fa";
-import { FaWindowMaximize } from "react-icons/fa6";
-import { DEFAULT_MAX_SKILL_VALUE } from '../../../../constants/gameRules';
+
+import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
+import Guidance from '../../../../components/Guidance/Guidance';
 
 function ProfessionalGuidance() {
-    const [isOpen, setIsOpen] = useState(false);
-
-
     const tableContent = [
         {
             rating: '01% to 19%',
@@ -45,18 +41,26 @@ function ProfessionalGuidance() {
         )
     }
 
-    const skillCapText = `Skills can reach ${DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit 80% with bonus points. If your bonus points would exceed {DEFAULT_TOTAL_CAP}%, the skill will cap at 80% and any excess points will be lost.`;
+    const skillCapText = `Skills can reach ${DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit 80% with bonus points. If your bonus points would exceed ${DEFAULT_TOTAL_CAP}%, the skill will cap at 80% and any excess points will be lost.`;
 
 
     return (
-        <div>
-            <h1>Professional Guidance</h1>
-            <Table>
-                <TableBody>
-                    {tableContent.map(renderTableRow)}
-                </TableBody>
-            </Table>
-        </div>
+        <Guidance title="Professional Guidance" buttonText="Professional Guidance">
+            <Window>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableHeadCell>Skill Rating</TableHeadCell>
+                            <TableHeadCell>Description</TableHeadCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {tableContent.map(renderTableRow)}
+                    </TableBody>
+                </Table>
+                <p>{skillCapText}</p>
+            </Window>
+        </Guidance>
     )
 };
 
