@@ -1,8 +1,12 @@
+import { useState } from 'preact/hooks';
+
+// AJS let's start with a context for the bonds
+
 export function Bonds() {
 	return (
         <div>
             <h1>Bonds</h1>
-            <li>Pull in bonds from skills context</li>
+            <p>Pull in bonds from skills context</p>
             <ul>
                 <li>`Each Bond begins with a score equal to your
 Agent’s CHA. Bonds’ scores often deteriorate because
