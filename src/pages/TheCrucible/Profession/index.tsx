@@ -1,11 +1,22 @@
 import { useState } from 'preact/hooks';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
+import styled from 'styled-components';
 
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
-import BuildProfession from './components/BuildProfession';
-import ChooseProfession from './components/ChooseProfession';
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
+import ProfessionalGuidance from './components/ProfessionalGuidance';
+
+
+const ProfessionalGuidanceContainer = styled.div.attrs<any>({
+    'data-testid': 'profession-professional-guidance-container',
+    'data-component': 'Profession/ProfessionalGuidanceContainer',
+})`
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    width: 90%;
+`;
 
 export function Profession() {
     const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
@@ -32,6 +43,9 @@ export function Profession() {
                 setConfig={(newConfig) => setConfig(newConfig as ProfessionConfigOptions)}
                 options={configOptions}
             />
+            <ProfessionalGuidanceContainer>
+                <ProfessionalGuidance />
+            </ProfessionalGuidanceContainer>
             <div>
                 {renderSkillForm(config)}
             </div>
