@@ -1,7 +1,6 @@
-import h from 'preact';
 import styled from 'styled-components';
 import { Anchor, Frame } from 'react95';
-import DGLogo from "../../assets/DG_Logo.png";
+import ALT_DG_LOGO from "../../assets/Triangle-placeholder.jpg"
 import PageWrapper from '../../components/SharedStyles/PageWrapper';
 
 const TextWrapper = styled.div`
@@ -43,7 +42,7 @@ export function Home() {
                         <Title>
                             Memento Mori.
                         </Title>
-                        <LogoContainer><Logo src={DGLogo} alt="Scienta Mors Est" /></LogoContainer>
+                        <LogoContainer><Logo src={ALT_DG_LOGO} alt="Scienta Mors Est" /></LogoContainer>
                         <Blurb>
                             We're fighting a war against the inevitable. And it's a war we're going to lose. 
                             But we're going to win the battles. We're going to make the bastards work for it. 
