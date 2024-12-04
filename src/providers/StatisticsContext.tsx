@@ -13,6 +13,7 @@ type StatsContextType = {
 
 const StatsContext = createContext<StatsContextType | undefined>(undefined);
 
+// AJS TODO: clean up Stats vs Statistics consistency across app
 export const useStats = () => {
     const context = useContext(StatsContext);
     if (!context) {

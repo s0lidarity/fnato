@@ -15,6 +15,7 @@ import {
 
 type SKillsContextType = {
     // State values
+    // AJS Start here, do we need bond count in skills context?
     bonds: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
