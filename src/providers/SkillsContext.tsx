@@ -12,11 +12,12 @@ import {
     BONDS_TO_POINTS_MULTIPLIER,
     DEFAULT_MAX_SKILL_VALUE
 } from '../constants/gameRules';
+import { bondCountSignal } from '../signals/bondSignal';
 
 type SKillsContextType = {
     // State values
     // AJS Start here, do we need bond count in skills context?
-    bonds: number;
+    bondCount: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
     // AJS todo: rename this to profession
@@ -31,7 +32,7 @@ type SKillsContextType = {
     calculateSkillValue: (skillId: string) => number;
     clearBonusSkillPackage: () => void;
     resetSkills: () => void;
-    setBonds: (bonds: number) => void;
+    setBondCount: (bonds: number) => void;
     setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
@@ -58,7 +59,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
     const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
-    const [bonds, setBonds] = useState(DEFAULT_BONDS);
     const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -194,7 +194,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <SkillsContext.Provider 
             value={{ 
-                bonds,
+                bondCount: bondCountSignal.value,
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 currentProfession,
@@ -206,7 +206,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 calculateSkillValue,
                 clearBonusSkillPackage,
                 resetSkills,
-                setBonds,
+                setBondCount: (count: number) => bondCountSignal.value = count,
                 setProfession,
                 setSkills,
                 setSkillById,

@@ -16,6 +16,7 @@ import {
     DEFAULT_BONUS_VALUE,
     DEFAULT_TOTAL_CAP
 } from '../../../../constants/gameRules';
+import { bondCountSignal } from '../../../../signals/bondSignal';
 
 const FormWrapper = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-wrapper',
@@ -84,16 +85,13 @@ const SkillFormContainer = styled.div.attrs<any>({
 
 
 function CustomSkillForm() {
-    const { skills, setBonds, bonusPointsRemaining } = useSkills();
-    const [ bonds, setLocalBonds] = useState(DEFAULT_BONDS);
-    const { skillPointsRemaining, setSkillPointsRemaining } = useSkills();
+    const { skillPointsRemaining, setSkillPointsRemaining, bonusPointsRemaining } = useSkills();
 
     const handleBondsChange = (newBonds: number) => {
         if(newBonds >= DEFAULT_MIN_BONDS && newBonds <= DEFAULT_MAX_BONDS) {
-            setLocalBonds(newBonds);
-            const pointDiff = (3 - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
+            const pointDiff = (bondCountSignal.value - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
             setSkillPointsRemaining(skillPointsRemaining + pointDiff);
-            setBonds(newBonds);
+            bondCountSignal.value = newBonds;
         }
     };
 
@@ -110,7 +108,10 @@ function CustomSkillForm() {
                     />
                 </div>
                 <div>
-                    <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
+                    <NumberInput 
+                        value={bondCountSignal.value} 
+                        onChange={(value) => handleBondsChange(value)} 
+                    />
                 </div>
                 <div>
                     <PointsCounter value={skillPointsRemaining} label={'Skill Points'} minDigits={3} />
