@@ -8,6 +8,7 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionChoices from './ProfessionChoices';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import BonusSkillPackageChoices from './BonusSkillPackageChoices';
+import { bondCountSignal } from '../../../../signals/bondSignal';
 
 const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-profession-group-box',
@@ -99,7 +100,7 @@ function ChooseProfession() {
         const newProfession = professions.find((p) => p.name === professionName);
         setSelectedProfession(newProfession);
         applyProfessionSkills(newProfession.professionalSkills);
-        console.log('selectedProfession', newProfession);
+        bondCountSignal.value = newProfession.bondCount;
     };
 
     return (
