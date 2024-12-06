@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState } from 'preact/hooks';
 import { NumberInput } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -8,7 +7,6 @@ import CustomSkillInput from './CustomSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import {
-    DEFAULT_BONDS,
     DEFAULT_MAX_BONDS,
     DEFAULT_MIN_BONDS,
     BONDS_TO_POINTS_MULTIPLIER,
@@ -85,7 +83,7 @@ const SkillFormContainer = styled.div.attrs<any>({
 
 
 function CustomSkillForm() {
-    const { skillPointsRemaining, setSkillPointsRemaining, bonusPointsRemaining } = useSkills();
+    const { skills, skillPointsRemaining, setSkillPointsRemaining, bonusPointsRemaining } = useSkills();
 
     const handleBondsChange = (newBonds: number) => {
         if(newBonds >= DEFAULT_MIN_BONDS && newBonds <= DEFAULT_MAX_BONDS) {
