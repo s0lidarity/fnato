@@ -3,13 +3,21 @@ import styled from 'styled-components';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
 
+// AJS TODO: move this folder up one level
+
 // AJS this is a shared style, put it somewhere we can share it
-const StyledTooltipInnerText = styled.span`
+const StyledTooltipInnerText = styled.span.attrs<any>({
+    'data-testid': 'reminder-tooltip-inner-text',
+    'data-component': 'ReminderTooltip/StyledTooltipInnerText',
+})`
     padding: 0.5rem;
     color: ${({ theme }) => theme.materialDark};
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label.attrs<any>({
+    'data-testid': 'reminder-tooltip-label',
+    'data-component': 'ReminderTooltip/StyledLabel',
+})`
     margin-left: 0.5rem;
     display: flex;
     align-items: center;

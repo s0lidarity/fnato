@@ -1,11 +1,28 @@
-import { useState } from 'preact/hooks';
-
-import { useBonds } from '../../../providers/BondsContext';
-// AJS let's start with a context for the bonds
+import { bondCountSignal } from '../../../signals/bondSignal';
+import BondInput from './components/BondInput';
 
 export function Bonds() {
+    const bondCount = bondCountSignal.value;
+
+
+    const renderBondInputs = () => {
+        const bondInputs = [];
+        for (let i = 0; i < bondCount; i++) {
+            bondInputs.push(<BondInput key={i} index={i} />);
+        }
+        return bondInputs;
+    };
+
 	return (
         <div>
+            {renderBondInputs()}
+        </div>
+    )
+};
+
+export default Bonds;
+
+{/* <div>
             <h1>Bonds</h1>
             <p>Pull in bonds from skills context</p>
             <ul>
@@ -43,8 +60,4 @@ who are alive and can be interacted with.</li>
                     <li>Show sample bonds as reference somewhere</li>
                 </ul>
             </p>
-        </div>
-    )
-};
-
-export default Bonds;
+        </div> */}
