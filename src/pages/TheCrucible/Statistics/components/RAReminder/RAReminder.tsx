@@ -13,7 +13,7 @@ function RAReminder() {
     }
 
     return (
-        <Guidance title="Stat Guide" buttonText="Guidance">
+        <Guidance title="Statistics Details" buttonText="Statistics Details">
             <Table>
                 <TableBody>
                     {RECOMMENDED_ARRAYS.map(renderTableRow)}

@@ -4,18 +4,11 @@ import { useContext, useState } from 'preact/hooks';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import {
-    DEFAULT_BONDS,
-    DEFAULT_MAX_BONDS,
-    DEFAULT_MIN_BONDS,
-    DEFAULT_SKILL_POINTS,
-    BONDS_TO_POINTS_MULTIPLIER,
-    DEFAULT_MAX_SKILL_VALUE
-} from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS } from '../constants/gameRules';
+import { bondCountSignal } from '../signals/bondSignal';
 
 type SKillsContextType = {
     // State values
-    bonds: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
     // AJS todo: rename this to profession
@@ -30,7 +23,6 @@ type SKillsContextType = {
     calculateSkillValue: (skillId: string) => number;
     clearBonusSkillPackage: () => void;
     resetSkills: () => void;
-    setBonds: (bonds: number) => void;
     setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
@@ -57,7 +49,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonusPointsRemaining, setBonusPointsRemaining] = useState(MAX_BONUS_POINTS);
     const [BonusSkillPackage, setBonusSkillPackage] = useState<IBonusSkillPackage | null>(null);
     const [currentProfession, setCurrentProfession] = useState<IProfession | null>(null);
-    const [bonds, setBonds] = useState(DEFAULT_BONDS);
     const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
@@ -193,7 +184,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <SkillsContext.Provider 
             value={{ 
-                bonds,
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 currentProfession,
@@ -205,7 +195,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 calculateSkillValue,
                 clearBonusSkillPackage,
                 resetSkills,
-                setBonds,
                 setProfession,
                 setSkills,
                 setSkillById,

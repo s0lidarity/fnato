@@ -1,8 +1,34 @@
+import { bondCountSignal } from '../../../signals/bondSignal';
+import BondGuidance from './components/BondGuidance';
+import BondInput from './components/BondInput';
+
 export function Bonds() {
+    const bondCount = bondCountSignal.value;
+
+
+    const renderBondInputs = () => {
+        const bondInputs = [];
+        for (let i = 0; i < bondCount; i++) {
+            bondInputs.push(<BondInput key={i} index={i} />);
+        }
+        return bondInputs;
+    };
+
 	return (
         <div>
+        <BondGuidance />
+            <div>
+                {renderBondInputs()}
+            </div>
+        </div>
+    )
+};
+
+export default Bonds;
+
+{/* <div>
             <h1>Bonds</h1>
-            <li>Pull in bonds from skills context</li>
+            <p>Pull in bonds from skills context</p>
             <ul>
                 <li>`Each Bond begins with a score equal to your
 Agent’s CHA. Bonds’ scores often deteriorate because
@@ -38,8 +64,4 @@ who are alive and can be interacted with.</li>
                     <li>Show sample bonds as reference somewhere</li>
                 </ul>
             </p>
-        </div>
-    )
-};
-
-export default Bonds;
+        </div> */}

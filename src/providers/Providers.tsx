@@ -4,6 +4,7 @@ import tokyoDark from 'react95/dist/themes/tokyoDark';
 
 import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
+import { BondsProvider } from './BondsContext';
 
 function Providers({ children }: { children: React.ReactNode }) {
     return (
@@ -11,7 +12,9 @@ function Providers({ children }: { children: React.ReactNode }) {
             <ThemeProvider theme={tokyoDark}>
                 <StatsProvider>
                     <SkillsProvider>
-                        {children}
+                        <BondsProvider>
+                            {children}
+                        </BondsProvider>
                     </SkillsProvider>
                 </StatsProvider>
             </ThemeProvider>

@@ -70,7 +70,7 @@ function ProfessionalGuidance() {
 
     return (
         <GuidanceContainer>
-            <Guidance title="Professional Guidance" buttonText="Professional Guidance">
+            <Guidance title="Profession Details" buttonText="Profession Details">
                 <Window>
                 <Table>
                     <TableHead>

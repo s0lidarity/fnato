@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState } from 'preact/hooks';
 import { NumberInput } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -8,7 +7,6 @@ import CustomSkillInput from './CustomSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import {
-    DEFAULT_BONDS,
     DEFAULT_MAX_BONDS,
     DEFAULT_MIN_BONDS,
     BONDS_TO_POINTS_MULTIPLIER,
@@ -16,6 +14,7 @@ import {
     DEFAULT_BONUS_VALUE,
     DEFAULT_TOTAL_CAP
 } from '../../../../constants/gameRules';
+import { bondCountSignal } from '../../../../signals/bondSignal';
 
 const FormWrapper = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-wrapper',
@@ -84,16 +83,13 @@ const SkillFormContainer = styled.div.attrs<any>({
 
 
 function CustomSkillForm() {
-    const { skills, setBonds, bonusPointsRemaining } = useSkills();
-    const [ bonds, setLocalBonds] = useState(DEFAULT_BONDS);
-    const { skillPointsRemaining, setSkillPointsRemaining } = useSkills();
+    const { skills, skillPointsRemaining, setSkillPointsRemaining, bonusPointsRemaining } = useSkills();
 
     const handleBondsChange = (newBonds: number) => {
         if(newBonds >= DEFAULT_MIN_BONDS && newBonds <= DEFAULT_MAX_BONDS) {
-            setLocalBonds(newBonds);
-            const pointDiff = (3 - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
+            const pointDiff = (bondCountSignal.value - newBonds) * BONDS_TO_POINTS_MULTIPLIER;
             setSkillPointsRemaining(skillPointsRemaining + pointDiff);
-            setBonds(newBonds);
+            bondCountSignal.value = newBonds;
         }
     };
 
@@ -110,7 +106,10 @@ function CustomSkillForm() {
                     />
                 </div>
                 <div>
-                    <NumberInput value={bonds} onChange={(value) => handleBondsChange(value)} />
+                    <NumberInput 
+                        value={bondCountSignal.value} 
+                        onChange={(value) => handleBondsChange(value)} 
+                    />
                 </div>
                 <div>
                     <PointsCounter value={skillPointsRemaining} label={'Skill Points'} minDigits={3} />
