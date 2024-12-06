@@ -4,20 +4,11 @@ import { useContext, useState } from 'preact/hooks';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import {
-    DEFAULT_BONDS,
-    DEFAULT_MAX_BONDS,
-    DEFAULT_MIN_BONDS,
-    DEFAULT_SKILL_POINTS,
-    BONDS_TO_POINTS_MULTIPLIER,
-    DEFAULT_MAX_SKILL_VALUE
-} from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS } from '../constants/gameRules';
 import { bondCountSignal } from '../signals/bondSignal';
 
 type SKillsContextType = {
     // State values
-    // AJS Start here, do we need bond count in skills context?
-    bondCount: number;
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
     // AJS todo: rename this to profession
@@ -32,7 +23,6 @@ type SKillsContextType = {
     calculateSkillValue: (skillId: string) => number;
     clearBonusSkillPackage: () => void;
     resetSkills: () => void;
-    setBondCount: (bonds: number) => void;
     setProfession: (profession: IProfession) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
@@ -194,7 +184,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <SkillsContext.Provider 
             value={{ 
-                bondCount: bondCountSignal.value,
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 currentProfession,
@@ -206,7 +195,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 calculateSkillValue,
                 clearBonusSkillPackage,
                 resetSkills,
-                setBondCount: (count: number) => bondCountSignal.value = count,
                 setProfession,
                 setSkills,
                 setSkillById,

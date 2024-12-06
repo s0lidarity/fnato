@@ -7,11 +7,9 @@ import { Bond } from '../types/characterTypes';
 type BondsContextType = {
     // state
     bonds: Bond[];
-    bondCount: number;
 
     // functions
     setBonds: (bonds: Bond[]) => void;
-    setBondCount: (count: number) => void;
 };
 
 const BondsContext = createContext<BondsContextType | undefined>(undefined);
@@ -34,9 +32,7 @@ export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
         <BondsContext.Provider 
             value={{ 
                 bonds, 
-                setBonds, 
-                bondCount: bondCountSignal.value, 
-                setBondCount 
+                setBonds,
             }}>
                 {children}
         </BondsContext.Provider>
