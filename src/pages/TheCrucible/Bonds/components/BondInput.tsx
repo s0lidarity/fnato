@@ -55,12 +55,13 @@ const BondDetailContainer = styled.div.attrs<any>({
 })`
     display: flex;
     flex-direction: row;
-    width: 1005;
+    width: 100%;
     align-items: center;
     justify-content: flex-start;
+    gap: 0.5rem;
 
     input { flex: 1;
-        min-height: 2rem;
+        min-height: 3rem;
     }
 `;
 
@@ -140,6 +141,7 @@ function BondInput({ index }: { index: number }) {
                     value={bondDetail} 
                     onChange={(e) => handleBondDetailChange(e)}
                     multiline
+                    rows={3}
                 />
             </BondDetailContainer>
         </BondInputContainer>

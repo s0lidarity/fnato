@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import Guidance from '../../../../components/Guidance/Guidance';
 import { useStats } from '../../../../providers/StatisticsContext';
 
+// AJS start here, make it pretty
 function BondGuidance() {
     const { stats } = useStats();
     return (
-        <Guidance title="Bond Guidance" buttonText="Bond Guidance">
+        <Guidance title="Bonds Details" buttonText="Bonds Details">
             <p>
                 {`Bonds represent your Agent's relationships with other people.
                 Each bond starts with a score equal to your Agent's Charisma (${stats.charisma.score}).

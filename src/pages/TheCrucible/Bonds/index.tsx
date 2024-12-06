@@ -1,4 +1,5 @@
 import { bondCountSignal } from '../../../signals/bondSignal';
+import BondGuidance from './components/BondGuidance';
 import BondInput from './components/BondInput';
 
 export function Bonds() {
@@ -15,7 +16,10 @@ export function Bonds() {
 
 	return (
         <div>
-            {renderBondInputs()}
+        <BondGuidance />
+            <div>
+                {renderBondInputs()}
+            </div>
         </div>
     )
 };
