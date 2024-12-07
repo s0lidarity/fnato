@@ -6,6 +6,7 @@ import ConfigurationBar from '../../../components/ConfigurationBar/Configuration
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
 import ProfessionalGuidance from './components/ProfessionalGuidance';
+import { useSkills } from '../../../providers/SkillsContext';
 
 
 const ProfessionalGuidanceContainer = styled.div.attrs<any>({
@@ -19,7 +20,7 @@ const ProfessionalGuidanceContainer = styled.div.attrs<any>({
 `;
 
 export function Profession() {
-    const [config, setConfig] = useState(ProfessionConfigOptions.StandardProfessions);
+    const { config, setConfig } = useSkills();
     const configOptions = [
         { label: 'Standard Professions', value: ProfessionConfigOptions.StandardProfessions },
         { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },

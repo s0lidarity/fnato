@@ -24,7 +24,7 @@ const TitleContainer = styled.div.attrs<any>({
 `;
 
 function BuildProfession() {
-    const { currentProfession, setProfession } = useSkills();
+    const { profession, changeProfession } = useSkills();
 
     const customProfession: IProfession = {
         name: '',
@@ -37,7 +37,7 @@ function BuildProfession() {
 
     const handleChange = (value: string) => {
         const newProfession = { ...customProfession, name: value }; 
-        setProfession(newProfession);
+        changeProfession(newProfession);
     };
 
     return (
@@ -45,7 +45,7 @@ function BuildProfession() {
             <form>
                 <TitleContainer>
                     <ReminderTooltip labelText='Title:' reminderText="The title of your agent's day-job" />
-                    <TextInput value={currentProfession?.name || '' } onChange={(e) => handleChange(e.target.value)} />
+                    <TextInput value={profession?.name || '' } onChange={(e) => handleChange(e.target.value)} />
                 </TitleContainer>
             </form>
         </FormWrapper>

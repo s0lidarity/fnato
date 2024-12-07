@@ -84,7 +84,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const [selectedProfession, setSelectedProfession] = useState<Profession | null>(null);
+    const { profession, changeProfession } = useSkills();
     const { applyProfessionSkills } = useSkills();
 
     const generateProfessionOptions = () => {
@@ -98,7 +98,7 @@ function ChooseProfession() {
     // AJS store profession in the skills context instead of locally to this component
     const handleProfessionSelect = (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
-        setSelectedProfession(newProfession);
+        changeProfession(newProfession);
         applyProfessionSkills(newProfession.professionalSkills);
         bondCountSignal.value = newProfession.bondCount;
     };
@@ -113,7 +113,7 @@ function ChooseProfession() {
                     />
                     <StyledSelect 
                         options={generateProfessionOptions()}
-                        value={selectedProfession?.name || ''}
+                        value={profession?.name || ''}
                         onChange={(e: any) => handleProfessionSelect(e.value)} 
                     />
                 </StyledSelectContainer>
@@ -124,7 +124,7 @@ function ChooseProfession() {
                             reminderText='Recommended best stats for your chosen profession.'
                         />
                         <KeyStatsLabel>
-                            {selectedProfession?.recommendedStats.join(', ')}
+                            {profession?.recommendedStats.join(', ')}
                         </KeyStatsLabel>
                     </KeyStatContainer>
                     <KeyStatContainer>
@@ -133,16 +133,16 @@ function ChooseProfession() {
                             reminderText='Number of social connections available to your character.'
                         />
                         <KeyStatsLabel>
-                            {selectedProfession?.bondCount || 0}
+                            {profession?.bondCount || 0}
                         </KeyStatsLabel>
                     </KeyStatContainer>
                 </KeyStatSection>
             </ChooseProfessionHeader>
             <Separator />
             <ProfessionChoices
-                profession={selectedProfession}
+                profession={profession}
             />
-            { selectedProfession && <BonusSkillPackageChoices /> }
+            { profession && <BonusSkillPackageChoices /> }
         </ChooseProfessionGroupBox>
     )
 }

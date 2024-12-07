@@ -30,10 +30,9 @@ const StyledSkillContainer = styled.div.attrs<any>({
 
 function ChooseSkills({ profession }: ChooseSkillsProps) {
     // need to track chosen skills and remaining choices
-    const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
     const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
-    const { setSkillById, applyProfessionSkills } = useSkills();
+    const { setSkillById, applyProfessionSkills, selectedSkillsIds, setSelectedSkillsIds } = useSkills();
 
     // clear selectedSkillsIds when profession changes
     useEffect(() => {
@@ -49,6 +48,7 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
             const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
             const success = setSkillById(skillId, { value: defaultValue });
             if (success) {
+                // AJS start here, fix this 
                 setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
                 setRemainingChoices(prev => prev + 1);
             }

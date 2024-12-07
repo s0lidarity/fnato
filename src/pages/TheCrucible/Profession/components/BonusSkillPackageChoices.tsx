@@ -70,6 +70,8 @@ function BonusSkillPackageChoices(){
 
         const bsp = Object.values(BonusSkillPackages).find(bsp => bsp.name === packageName);
         if(bsp){
+            // need to clear previous bonus package/custom bonus package before applying new one
+            clearBonusSkillPackage();
             applyBonusSkillPackage(bsp);
         }
     }
