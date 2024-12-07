@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
@@ -48,8 +48,7 @@ const STATS_CONFIG_OPTIONS = [
 ];
 
 function Statistics() {
-    const { resetStats } = useStats();
-    const [config, setConfig] = useState(StatsConfigOptions.ManualInput);
+    const { config, resetStats, setConfig } = useStats();
 
     const renderStatInputs = () => {
         switch(config){
@@ -63,17 +62,17 @@ function Statistics() {
         }
     };
 
-    // the Counter from React95 bugs out if the value goes below 0, this prevents that from happening
-    useEffect(() => {
+    const handleConfigChange = (config: StatsConfigOptions) => {
+        setConfig(config);
         resetStats();
-    }, [config]);
+    };
 
     return (
         <>
             <form>
                 <ConfigurationBar 
                     config={config} 
-                    setConfig={(config: StatsConfigOptions) => setConfig(config)}
+                    setConfig={handleConfigChange}
                     options={STATS_CONFIG_OPTIONS}
                     />
                 <StyledGuidanceContainer>
