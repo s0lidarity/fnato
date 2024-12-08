@@ -28,13 +28,13 @@ const StyledSkillContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
-function ChooseSkills({ profession }: ChooseSkillsProps) {
+function ChooseSkills() {
     // need to track chosen skills and remaining choices
-    const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
-    const { setSkillById, applyProfessionSkills, selectedSkillsIds, setSelectedSkillsIds } = useSkills();
+    const { setSkillById, applyProfessionSkills, selectedSkillsIds, setSelectedSkillsIds, profession } = useSkills();
+    const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
 
-    // clear selectedSkillsIds when profession changes
+    // AJS start here, move this clear to when another profession is chosen
     useEffect(() => {
         setSelectedSkillsIds([]);
         setRemainingChoices(profession?.chosenSkillCount || 0);
@@ -48,8 +48,8 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
             const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
             const success = setSkillById(skillId, { value: defaultValue });
             if (success) {
-                // AJS start here, fix this 
-                setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
+                // AJS start here, fix this
+                setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
                 setRemainingChoices(prev => prev + 1);
             }
         } else if (remainingChoices > 0) {

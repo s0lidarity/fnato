@@ -29,7 +29,7 @@ type SKillsContextType = {
     resetSkills: () => void;
     setConfig: (config: ProfessionConfigOptions) => void;
     setProfession: (profession: IProfession) => void;
-    setSelectedSkillsIds: (selectedSkillsIds: string[]) => void;
+    setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
@@ -204,6 +204,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 BonusSkillPackage,
                 config,
                 profession,
+                selectedSkillsIds,
                 skills,
                 skillPointsRemaining,
                 adjustBonus,
