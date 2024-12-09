@@ -2,14 +2,10 @@ import { useState, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import { Checkbox, GroupBox } from 'react95';
 
-import { IProfession } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 
-type ChooseSkillsProps = {
-    profession: IProfession;
-};
 const StyledGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-skills-group',
     'data-component': 'ChooseSkills/StyledGroupBox'
@@ -28,39 +24,48 @@ const StyledSkillContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
-function ChooseSkills({ profession }: ChooseSkillsProps) {
+function ChooseSkills() {
     // need to track chosen skills and remaining choices
-    const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
-    const [remainingChoices, setRemainingChoices] = useState(profession?.chosenSkillCount || 0);
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
-    const { setSkillById, applyProfessionSkills } = useSkills();
-
-    // clear selectedSkillsIds when profession changes
-    useEffect(() => {
-        setSelectedSkillsIds([]);
-        setRemainingChoices(profession?.chosenSkillCount || 0);
-    }, [profession]);
+    const { 
+            setSkillById, 
+            applyProfessionSkills, 
+            selectedSkillsIds, 
+            setSelectedSkillsIds, 
+            profession, 
+            remainingSkillChoices,
+            setRemainingSkillChoices
+        } = useSkills();
 
     // AJS start here. Checks not rendering correctly. applies skills any time you click the checkbox
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
-            // Remove skill
-            // need to look this up by name
-            const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
-            const success = setSkillById(skillId, { value: defaultValue });
-            if (success) {
-                setSelectedSkillsIds(prev => prev.filter(id => id !== skillId));
-                setRemainingChoices(prev => prev + 1);
+            const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
+            if(!skillToRemove){
+                console.warn(`Skill with id: ${skillId} not found in ${profession?.name} choosable skills`);
+                return;
             }
-        } else if (remainingChoices > 0) {
+
+            const defaultSkill = DEFAULT_SKILLS.find(s => 
+                s.name === skillToRemove.name && (!s.subType || s.subType === skillToRemove.subType)
+            );
+
+            if(defaultSkill){
+                const success = setSkillById(skillId, { value: defaultSkill.value });
+                if(success){
+                    setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
+                    setRemainingSkillChoices(prev => prev + 1);
+                }
+            }
+        } else if (remainingSkillChoices > 0) {
             // apply profession skill if we have choices remaining
             const skillToApply = profession.choosableSkills.find(s => s.id === skillId);
             if (skillToApply) {
                 applyProfessionSkills([skillToApply]);
                 setSelectedSkillsIds(prev => [...prev, skillToApply.id]);
-                setRemainingChoices(prev => prev - 1);
+                setRemainingSkillChoices(prev => prev - 1);
             }
-        } else if (remainingChoices <= 0) {
+        } else if (remainingSkillChoices <= 0) {
             setShowNoChoicesWarning(true);
             setTimeout(() => setShowNoChoicesWarning(false), 500);
         }
@@ -88,14 +93,14 @@ function ChooseSkills({ profession }: ChooseSkillsProps) {
     };
 
     return (
-        <StyledGroupBox variant='flat' label={`Choose ${remainingChoices > 0 ? remainingChoices : ''} Additional Skills`}>
+        <StyledGroupBox variant='flat' label={`Choose ${remainingSkillChoices > 0 ? remainingSkillChoices : ''} Additional Skills`}>
             { !profession || profession?.choosableSkills?.length === 0 
                 ? noChoices() 
                 : chooseSkillsCheckboxes()
             }
             <div>
                 <PointsCounter 
-                    value={remainingChoices}
+                    value={remainingSkillChoices}
                     showNoPointsWarning={showNoChoicesWarning}
                     minDigits={1}
                     label='Skill Choices Remaining'

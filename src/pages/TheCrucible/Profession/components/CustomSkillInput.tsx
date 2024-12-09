@@ -124,7 +124,6 @@ interface CustomSkillInputProps {
 function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomSkillInputProps) {
     const { 
         adjustBonus,
-        calculateSkillValue,
         skillPointsRemaining,
         setSkillById,
         setSkillPointsRemaining
@@ -149,7 +148,6 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
 
     const handleAllocatePoints = (inputValue: string) => {
         const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
-        console.log('numericValue', numericValue, '\nvalue', inputValue);
         const currentPoints = skill.pointsAllocated || 0;
         const diff = numericValue - currentPoints;
 
@@ -181,11 +179,8 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         }
 
         // default happy path, set the new value
-        console.log('skillPointsRemaining pre set', skillPointsRemaining);
-        console.log('diff', diff);
         setSkillById(skill.id, { ...skill, pointsAllocated: numericValue });
         setSkillPointsRemaining(skillPointsRemaining - diff);
-        console.log('skillPointsRemaining post set', skillPointsRemaining);
     };
 
     const handleBonusChange = (value: number) => {

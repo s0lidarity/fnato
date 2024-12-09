@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { GroupBox } from 'react95';
 
 import ChooseSkills from './ChooseSkills';
-import { IProfession, Skill } from '../../../../types/characterTypes';
+import { useSkills } from '../../../../providers/SkillsContext';
 
 
 const PCContainer = styled.div.attrs<any>({
@@ -42,16 +42,10 @@ const StyledGroupBox = styled(GroupBox).attrs<any>({
     background-color: ${({ theme }) => theme.materialDark};
 `;
 
-type ChosenSkillPickerProps = {
-    profession: IProfession;
-};
-
-// AJS make this a function instead of a const to make style consistent
-function ProfessionChoices({
-    profession, 
-}: ChosenSkillPickerProps) {
+function ProfessionChoices() {
 
     const renderProfessionSkills = () => {
+        const { profession } = useSkills();
         let renderedOutput = null;
 
         renderedOutput = profession?.professionalSkills.map((skill) => {
@@ -73,7 +67,7 @@ function ProfessionChoices({
                 {renderProfessionSkills()}
             </ProfessionalSkillsContainer>
             <SkillChoiceContainer>
-                <ChooseSkills profession={profession} />
+                <ChooseSkills />
             </SkillChoiceContainer>
         </PCContainer>
     );

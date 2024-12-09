@@ -1,15 +1,12 @@
 import { createContext } from 'preact';
-import { useContext, useState } from 'preact/hooks';
-import { bondCountSignal } from '../signals/bondSignal';
-
+import { useContext, useState, useEffect } from 'preact/hooks';
+import { useStats } from './StatisticsContext';
 import { Bond } from '../types/characterTypes';
 
 type BondsContextType = {
-    // state
     bonds: Bond[];
-
-    // functions
     setBonds: (bonds: Bond[]) => void;
+    setBondByIndex: (index: number, bond: Partial<Bond>) => void;
 };
 
 const BondsContext = createContext<BondsContextType | undefined>(undefined);
@@ -24,8 +21,27 @@ export const useBonds = () => {
 
 export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonds, setBonds] = useState<Bond[]>([]);
-    const setBondCount = (count: number) => {
-        bondCountSignal.value = count;
+    const { stats } = useStats();
+
+    // Update all bond scores when charisma changes
+    useEffect(() => {
+        if (bonds.length > 0) {
+            const updatedBonds = bonds.map(bond => ({
+                ...bond,
+                score: stats.charisma.score
+            }));
+            setBonds(updatedBonds);
+        }
+    }, [stats.charisma.score]);
+
+    const setBondByIndex = (index: number, bondUpdate: Partial<Bond>) => {
+        const newBonds = [...bonds];
+        newBonds[index] = {
+            ...newBonds[index],
+            ...bondUpdate,
+            score: stats.charisma.score // Ensure score is always set from charisma
+        };
+        setBonds(newBonds);
     };
 
     return (
@@ -33,6 +49,7 @@ export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
             value={{ 
                 bonds, 
                 setBonds,
+                setBondByIndex,
             }}>
                 {children}
         </BondsContext.Provider>
