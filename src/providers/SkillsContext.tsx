@@ -112,6 +112,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusSkillPackage(bsp);
         const updatedSkills = [...skills];
 
+        // AJS start here, subtyped skills are not being applied
         bsp.skills.forEach(skill => {
             const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName && s.subType === skill.subType);
             if(skillIndex !== -1){
