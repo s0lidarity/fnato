@@ -10,6 +10,7 @@ type BondsContextType = {
 
     // functions
     setBonds: (bonds: Bond[]) => void;
+    setBondByIndex: (index: number, bond: Bond) => void;
 };
 
 const BondsContext = createContext<BondsContextType | undefined>(undefined);
@@ -24,8 +25,11 @@ export const useBonds = () => {
 
 export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
     const [bonds, setBonds] = useState<Bond[]>([]);
-    const setBondCount = (count: number) => {
-        bondCountSignal.value = count;
+
+    const setBondByIndex = (index: number, bond: Bond) => {
+        const newBonds = [...bonds];
+        newBonds[index] = bond;
+        setBonds(newBonds);
     };
 
     return (
@@ -33,6 +37,7 @@ export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
             value={{ 
                 bonds, 
                 setBonds,
+                setBondByIndex,
             }}>
                 {children}
         </BondsContext.Provider>

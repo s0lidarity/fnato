@@ -73,40 +73,28 @@ const StyledTextInput = styled(TextInput).attrs<any>({
     min-height: 2rem;
 `;
 
-
-
 function BondInput({ index }: { index: number }) {
-    const [bondName, setBondName] = useState('');
-    const [bondType, setBondType] = useState('individual');
-    const [bondDetail, setBondDetail] = useState('');
-
-    const { bonds, setBonds } = useBonds();
-    const { stats } = useStats();
-    
-
-    useEffect(() => {
-        const newBond = {
-            name: bondName,
-            detail: bondDetail,
-            type: bondType,
-            score: stats.charisma.score,
-        };
-
-        let newBonds = [...bonds];
-        newBonds[index] = newBond;
-        setBonds(newBonds);
-    }, [bondDetail, bondName, bondType]);
+    const { bonds, setBondByIndex } = useBonds();
 
     const handleBondNameChange = (e: any) => {
-        setBondName(e.target.value);
+        setBondByIndex(index, {
+            ...bonds[index],
+            name: e.target.value,
+        });
     };
 
     const handleBondTypeChange = (e: any) => {
-        setBondType(e.target.value);
+        setBondByIndex(index, {
+            ...bonds[index],
+            type: e.target.value,
+        });
     };
 
     const handleBondDetailChange = (e: any) => {
-        setBondDetail(e.target.value);
+        setBondByIndex(index, {
+            ...bonds[index],
+            detail: e.target.value,
+        });
     };
 
     return (
@@ -114,19 +102,19 @@ function BondInput({ index }: { index: number }) {
             <TopRowContainer>
                 <BondNameContainer>
                     <ReminderTooltip labelText="Bond Name" reminderText="The name of the individual or group your agent is bonded to." />
-                    <TextInput value={bondName} onChange={(e) => handleBondNameChange(e)} />
+                    <TextInput value={bonds[index]?.name || ''} onChange={(e) => handleBondNameChange(e)} />
                 </BondNameContainer>
                 <BondTypeContainer>
                     <GroupBox label="Bond Type">
                         <Radio
-                            checked={bondType === 'individual'}
+                            checked={bonds[index]?.type === 'individual'}
                             onChange={(e) => handleBondTypeChange(e)}
                             name="Bond Type"
                             value="individual" 
                             label="Individual" 
                         />
                         <Radio
-                            checked={bondType === 'group'}
+                            checked={bonds[index]?.type === 'group'}
                             onChange={(e) => handleBondTypeChange(e)}
                             name="Bond Type"
                             value="group" 
@@ -138,7 +126,7 @@ function BondInput({ index }: { index: number }) {
             <BondDetailContainer>
                 <ReminderTooltip labelText="Bond Detail" reminderText="Note additional details about the bond" />
                 <StyledTextInput 
-                    value={bondDetail} 
+                    value={bonds[index]?.detail || ''} 
                     onChange={(e) => handleBondDetailChange(e)}
                     multiline
                     rows={3}

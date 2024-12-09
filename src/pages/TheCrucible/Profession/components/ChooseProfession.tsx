@@ -1,8 +1,6 @@
 import { GroupBox,SelectNative, Separator } from 'react95';
 import styled from 'styled-components';
-import { useState } from 'preact/hooks';
 
-import { Profession } from '../../../../utils/Professions';
 import professions from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionChoices from './ProfessionChoices';
