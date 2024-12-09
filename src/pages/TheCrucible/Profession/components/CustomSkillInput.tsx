@@ -124,7 +124,6 @@ interface CustomSkillInputProps {
 function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomSkillInputProps) {
     const { 
         adjustBonus,
-        calculateSkillValue,
         skillPointsRemaining,
         setSkillById,
         setSkillPointsRemaining
