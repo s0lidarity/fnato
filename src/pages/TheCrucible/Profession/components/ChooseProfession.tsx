@@ -84,7 +84,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const { profession, changeProfession } = useSkills();
+    const { profession, changeProfession, setSelectedSkillsIds } = useSkills();
     const { applyProfessionSkills } = useSkills();
 
     const generateProfessionOptions = () => {
@@ -95,7 +95,6 @@ function ChooseProfession() {
         return options;
     };
 
-    // AJS store profession in the skills context instead of locally to this component
     const handleProfessionSelect = (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
         changeProfession(newProfession);

@@ -14,6 +14,7 @@ type SKillsContextType = {
     BonusSkillPackage: IBonusSkillPackage | null;
     config: ProfessionConfigOptions;
     profession: IProfession | null;
+    remainingSkillChoices: number;
     selectedSkillsIds: string[];
     skills: Skills;
     skillPointsRemaining: number;
@@ -29,6 +30,7 @@ type SKillsContextType = {
     resetSkills: () => void;
     setConfig: (config: ProfessionConfigOptions) => void;
     setProfession: (profession: IProfession) => void;
+    setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
     setSkills: (skills: Skills) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
@@ -58,6 +60,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [selectedSkillsIds, setSelectedSkillsIds] = useState<string[]>([]);
     const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const [config, setConfig] = useState<ProfessionConfigOptions>(ProfessionConfigOptions.StandardProfessions);
+    const [remainingSkillChoices, setRemainingSkillChoices] = useState(profession?.chosenSkillCount || 0);
     const getSkillProperty = (skillId: string, property: keyof Skill) => {
         return skills.find(s => s.id === skillId)?.[property];
     };
@@ -183,6 +186,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const changeProfession = (profession: IProfession) => {
         setProfession(profession);
         applyProfessionSkills(profession.professionalSkills);
+        setRemainingSkillChoices(profession.chosenSkillCount);
     };
 
     const clearBonusSkillPackage = () => {
@@ -204,6 +208,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 BonusSkillPackage,
                 config,
                 profession,
+                remainingSkillChoices,
                 selectedSkillsIds,
                 skills,
                 skillPointsRemaining,
@@ -217,6 +222,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 resetSkills,
                 setConfig,
                 setProfession,
+                setRemainingSkillChoices,
                 setSelectedSkillsIds,
                 setSkills,
                 setSkillById,
