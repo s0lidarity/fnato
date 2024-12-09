@@ -35,7 +35,6 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     }, [stats]);
 
     const resetStats = () => {
-        console.log('resetting stats');
         setStats(defaultStats);
     };
 
