@@ -42,8 +42,6 @@ const StyledGroupBox = styled(GroupBox).attrs<any>({
     background-color: ${({ theme }) => theme.materialDark};
 `;
 
-
-// AJS make this a function instead of a const to make style consistent
 function ProfessionChoices() {
 
     const renderProfessionSkills = () => {

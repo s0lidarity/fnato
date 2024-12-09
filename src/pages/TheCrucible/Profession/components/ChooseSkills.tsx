@@ -40,14 +40,22 @@ function ChooseSkills() {
     // AJS start here. Checks not rendering correctly. applies skills any time you click the checkbox
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
-            // Remove skill
-            // need to look this up by name
-            const defaultValue = DEFAULT_SKILLS.find(s => s.id === skillId)?.value || 0;
-            const success = setSkillById(skillId, { value: defaultValue });
-            if (success) {
-                // AJS start here, fix this
-                setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
-                setRemainingSkillChoices(prev => prev + 1);
+            const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
+            if(!skillToRemove){
+                console.warn(`Skill with id: ${skillId} not found in ${profession?.name} choosable skills`);
+                return;
+            }
+
+            const defaultSkill = DEFAULT_SKILLS.find(s => 
+                s.name === skillToRemove.name && (!s.subType || s.subType === skillToRemove.subType)
+            );
+
+            if(defaultSkill){
+                const success = setSkillById(skillId, { value: defaultSkill.value });
+                if(success){
+                    setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
+                    setRemainingSkillChoices(prev => prev + 1);
+                }
             }
         } else if (remainingSkillChoices > 0) {
             // apply profession skill if we have choices remaining

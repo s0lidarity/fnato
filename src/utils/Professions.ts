@@ -42,7 +42,7 @@ export class Profession implements IProfession {
         const formattedName = name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
         const defaultSkill = DEFAULT_SKILLS.find(s => s.name === formattedName);
         if (!defaultSkill) {
-            console.warn(`No default skill found for ${name}`);
+            console.warn(`No default skill found for ${name} / ${formattedName}`);
         }
         
         const skillId = createSkillId(name, subType);

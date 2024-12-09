@@ -76,7 +76,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             setSkills(newSkills);
             return true;
         }
-        console.warn(`Skill with id: ${skillId} not found}`);
+        console.warn(`Skill with id: ${skillId} not found`);
         return false;
     };
     
