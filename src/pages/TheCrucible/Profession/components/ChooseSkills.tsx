@@ -28,15 +28,15 @@ function ChooseSkills() {
     // need to track chosen skills and remaining choices
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
     const { 
-            setSkillById,
-            skills, 
-            setSkills,
-            applyProfessionSkills, 
             selectedSkillsIds, 
-            setSelectedSkillsIds, 
             profession, 
+            skills, 
             remainingSkillChoices,
-            setRemainingSkillChoices
+            applyProfessionSkills, 
+            setRemainingSkillChoices,
+            setSelectedSkillsIds, 
+            setSkillById,
+            setSkills
         } = useSkills();
 
     // AJS start here, subtyped skills not working well
