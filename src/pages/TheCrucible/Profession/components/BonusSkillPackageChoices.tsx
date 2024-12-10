@@ -22,14 +22,6 @@ const StyledSeparator = styled(Separator).attrs<any>({
     margin: 0.5rem 0;
 `;
 
-
-const StyledLabel = styled.label.attrs<any>({
-    'data-testid': 'bonus-skill-package-choices-label',
-    'data-component': 'BonusSkillPackageChoices/StyledLabel'
-})`
-    margin: 0.5rem;
-`;
-
 const StyledSelect = styled(SelectNative).attrs<any>({
     'data-testid': 'bonus-skill-package-choices-select',
     'data-component': 'BonusSkillPackageChoices/StyledSelect'

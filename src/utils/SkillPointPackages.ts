@@ -103,13 +103,13 @@ export const BeurocratBSP = createBonusSkillPackage(
     1,
 );
 
-// CLERGY: Foreign Languages (choose three), History, HUMINT, Occult, Persuade, Psychotherapy.
+// CLERGY: Foreign Languagess (choose three), History, HUMINT, Occult, Persuade, Psychotherapy.
 export const ClergyBSP = createBonusSkillPackage(
     "Clergy",
     [
-        { skillName: "Foreign Language", subType: "French" },
-        { skillName: "Foreign Language", subType: "German" },
-        { skillName: "Foreign Language", subType: "Spanish" },
+        { skillName: "Foreign Languages", subType: "French" },
+        { skillName: "Foreign Languages", subType: "German" },
+        { skillName: "Foreign Languages", subType: "Spanish" },
         { skillName: "History" },
         { skillName: "HUMINT" },
         { skillName: "Occult" },
@@ -119,24 +119,24 @@ export const ClergyBSP = createBonusSkillPackage(
 );
 // COMBAT VETERAN: Alertness, Dodge, Firearms, First Aid, Heavy Weapons, Melee Weapons, Stealth, Unarmed Combat.
 // COMPUTER ENTHUSIAST OR HACKER: Computer Science, Craft (Microelectronics), Science (Mathematics), SIGINT, and any four others as personal specialties.
-// COUNSELOR: Bureaucracy, First Aid, Foreign Language (choose one), HUMINT, Law, Persuade, Psychothera- py, Search.
+// COUNSELOR: Bureaucracy, First Aid, Foreign Languages (choose one), HUMINT, Law, Persuade, Psychothera- py, Search.
 // CRIMINALIST: Accounting, Bureaucracy, Computer Sci- ence, Criminology, Forensics, Law, Pharmacy, Search.
 // FIREFIGHTER: Alertness, Demolitions, Drive, First Aid, Forensics, Heavy Machinery, Navigate, Search.
-// GANGSTER OR DEEP COVER: Alertness, Criminology, Dodge, Drive, Persuade, Stealth; choose two from: Athletics, Foreign Language (choose one), Firearms, HUMINT, Melee Weapons, Pharmacy, or Unarmed Combat.
-// INTERROGATOR: Criminology, Foreign Language (choose one), Foreign Language (choose another), HUMINT, Law, Persuade, Pharmacy, Search.
-// LIBERAL ARTS DEGREE: Anthropology or Archeology, Art (choose one), Foreign Language (choose one), History, Persuade, and any three others as personal specialties.
+// GANGSTER OR DEEP COVER: Alertness, Criminology, Dodge, Drive, Persuade, Stealth; choose two from: Athletics, Foreign Languages (choose one), Firearms, HUMINT, Melee Weapons, Pharmacy, or Unarmed Combat.
+// INTERROGATOR: Criminology, Foreign Languages (choose one), Foreign Languages (choose another), HUMINT, Law, Persuade, Pharmacy, Search.
+// LIBERAL ARTS DEGREE: Anthropology or Archeology, Art (choose one), Foreign Languages (choose one), History, Persuade, and any three others as personal specialties.
 // MILITARY OFFICER: Bureaucracy, Firearms, History, Mil- itary Science (choose one), Navigate, Persuade, Un- armed Combat; choose one: Artillery, Heavy Machin- ery, Heavy Weapons, HUMINT, Pilot (choose one), or SIGINT.
 // MBA: Accounting, Bureaucracy, HUMINT, Law, Per- suade, and any three others as personal specialties.
 // NURSE, PARAMEDIC, OR PRE-MED: Alertness, First Aid, Medicine, Persuade, Pharmacy, Psychotherapy, Science (Biology), Search.
 // OCCULT INVESTIGATOR OR CONSPIRACY THEORIST: Anthro- pology, Archeology, Computer Science, Criminology, History, Occult, Persuade, Search.
 // OUTDOORSMAN: Alertness, Athletics, Firearms, Navi- gate, Ride, Search, Stealth, Survival.
 // PHOTOGRAPHER: Alertness, Art (Photography), Com- puter Science, Persuade, Search, Stealth, and any two others as personal specialties.
-// PILOT OR SAILOR: Alertness, Craft (Mechanic), First Aid, Foreign Language (choose one), Navigate, Pilot (choose one), Survival, Swim.
+// PILOT OR SAILOR: Alertness, Craft (Mechanic), First Aid, Foreign Languages (choose one), Navigate, Pilot (choose one), Survival, Swim.
 // POLICE OFFICER: Alertness, Criminology, Drive, Firearms, HUMINT, Law, Melee Weapons, Unarmed Combat.
-// SCIENCE GRAD STUDENT: Bureaucracy, Computer Sci- ence, Craft (choose one), Foreign Language (choose one), Science (choose one), Science (choose another), Science (choose another); choose one: Accounting, Forensics, Law, or Pharmacy.
-// SOCIAL WORKER OR CRIMINAL JUSTICE DEGREE: Bureaucracy, Criminology, Forensics, Foreign Language (choose one), HUMINT, Law, Persuade, Search.
+// SCIENCE GRAD STUDENT: Bureaucracy, Computer Sci- ence, Craft (choose one), Foreign Languages (choose one), Science (choose one), Science (choose another), Science (choose another); choose one: Accounting, Forensics, Law, or Pharmacy.
+// SOCIAL WORKER OR CRIMINAL JUSTICE DEGREE: Bureaucracy, Criminology, Forensics, Foreign Languages (choose one), HUMINT, Law, Persuade, Search.
 // SOLDIER OR MARINE: Alertness, Artillery, Athletics, Drive, Firearms, Heavy Weapons, Military Science (Land), Unarmed Combat.
-// TRANSLATOR: Anthropology, Foreign Language (choose one), Foreign Language (choose another), Foreign Language (choose another), History, HUMINT, Per- suade, and any one other as a personal specialty.
+// TRANSLATOR: Anthropology, Foreign Languages (choose one), Foreign Languages (choose another), Foreign Languages (choose another), History, HUMINT, Per- suade, and any one other as a personal specialty.
 // URBAN EXPLORER: Alertness, Athletics, Craft (choose one), Law, Navigate, Persuade, Search, Stealth.
 
 export const BonusSkillPackages = {

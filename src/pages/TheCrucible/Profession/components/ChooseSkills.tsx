@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Checkbox, GroupBox } from 'react95';
 
@@ -28,7 +28,9 @@ function ChooseSkills() {
     // need to track chosen skills and remaining choices
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
     const { 
-            setSkillById, 
+            setSkillById,
+            skills, 
+            setSkills,
             applyProfessionSkills, 
             selectedSkillsIds, 
             setSelectedSkillsIds, 
@@ -37,7 +39,7 @@ function ChooseSkills() {
             setRemainingSkillChoices
         } = useSkills();
 
-    // AJS start here. Checks not rendering correctly. applies skills any time you click the checkbox
+    // AJS start here, subtyped skills not working well
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
@@ -46,17 +48,31 @@ function ChooseSkills() {
                 return;
             }
 
-            const defaultSkill = DEFAULT_SKILLS.find(s => 
-                s.name === skillToRemove.name && (!s.subType || s.subType === skillToRemove.subType)
+            // If this is a subtyped skill that was added (not in profession skills)
+            const isProfessionSkill = profession?.professionalSkills.some(ps => 
+                ps.name === skillToRemove.name && 
+                ps.subType === skillToRemove.subType
             );
 
-            if(defaultSkill){
-                const success = setSkillById(skillId, { value: defaultSkill.value });
-                if(success){
-                    setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
-                    setRemainingSkillChoices(prev => prev + 1);
+            if (!isProfessionSkill && skillToRemove.subType) {
+                // Remove the skill entirely from context
+                const newSkills = skills.filter(s => 
+                    !(s.name === skillToRemove.name && s.subType === skillToRemove.subType)
+                );
+                setSkills(newSkills);
+            } else {
+                // Reset to default value if it's not a subtyped skill or is in profession skills
+                const defaultSkill = DEFAULT_SKILLS.find(s => 
+                    s.name === skillToRemove.name && (!s.subType || s.subType === skillToRemove.subType)
+                );
+
+                if(defaultSkill){
+                    setSkillById(skillId, { value: defaultSkill.value });
                 }
             }
+            
+            setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
+            setRemainingSkillChoices(prev => prev + 1);
         } else if (remainingSkillChoices > 0) {
             // apply profession skill if we have choices remaining
             const skillToApply = profession.choosableSkills.find(s => s.id === skillId);
@@ -82,7 +98,7 @@ function ChooseSkills() {
         return profession.choosableSkills.map((skill) => (
                 <StyledSkillContainer key={skill.id}>
                     <Checkbox
-                        name={skill.name}
+                        name={`${skill.name} (${skill.subType})`}
                         value={skill.id}
                         checked={selectedSkillsIds.includes(skill.id)} 
                         onChange={() => toggleSkill(skill.id)}

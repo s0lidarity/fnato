@@ -82,7 +82,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const { profession, changeProfession, setSelectedSkillsIds } = useSkills();
+    const { profession, changeProfession } = useSkills();
     const { applyProfessionSkills } = useSkills();
 
     const generateProfessionOptions = () => {
@@ -136,9 +136,7 @@ function ChooseProfession() {
                 </KeyStatSection>
             </ChooseProfessionHeader>
             <Separator />
-            <ProfessionChoices
-                profession={profession}
-            />
+            <ProfessionChoices />
             { profession && <BonusSkillPackageChoices /> }
         </ChooseProfessionGroupBox>
     )
