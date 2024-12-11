@@ -237,15 +237,30 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const clearBonusSkillPackage = () => {
+        console.log('Clearing bonus skill package');
+        console.log('Current skills:', skills);
+        
         setBonusSkillPackage(null);
-        // Reset all bonus values to 0
-        // also need to remove skills if they are not in the default skills array
-        const updatedSkills = skills.map(skill => {
-            const defaultSkill = DEFAULT_SKILLS.find(s => s.name === skill.name && s.subType === skill.subType);
-            return defaultSkill || { ...skill, bonus: 0 };
-        });
+        
+        // Reset all bonus values to 0 and remove any non-default skills
+        const updatedSkills = skills
+            .filter(skill => {
+                const isDefaultSkill = DEFAULT_SKILLS.some(ds => ds.name === skill.name);
+                console.log(`Filtering skill ${skill.name}: isDefault=${isDefaultSkill}`);
+                return isDefaultSkill;
+            })
+            .map(skill => {
+                const updatedSkill = {
+                    ...skill,
+                    bonus: 0,
+                    subType: DEFAULT_SKILLS.find(ds => ds.name === skill.name)?.subType
+                };
+                console.log(`Updating skill ${skill.name}: old bonus=${skill.bonus}, new bonus=${updatedSkill.bonus}`);
+                return updatedSkill;
+            });
+        
+        console.log('Updated skills:', updatedSkills);
         setSkills(updatedSkills);
-        // Reset bonus points to maximum
         setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
