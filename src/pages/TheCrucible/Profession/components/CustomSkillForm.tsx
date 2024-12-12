@@ -23,7 +23,9 @@ const FormWrapper = styled.div.attrs<any>({
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    justify-content: center;
+    width: 95%;
+    margin: auto;
 `;
 
 const HeaderContainer = styled.div.attrs<any>({
@@ -72,12 +74,28 @@ const SkillFormContainer = styled.div.attrs<any>({
     'data-component': 'CustomSkillForm/SkillFormContainer',
 })`
     display: flex;
-    justify-self: center;
-    justify-content: center;
     flex-direction: column;
     gap: 0.5rem;
-    width: 100;
+    width: 100%;
+    align-items: stretch;
+`;
+
+const SkillInputContainer = styled.div.attrs<any>({
+    'data-testid': 'custom-skill-input-container',
+    'data-component': 'CustomSkillInput/SkillInputContainer'
+})`
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    flex: 1 1 100%;
+    align-self: stretch;
+    border: 0.2rem solid ${({ theme }) => theme.borderDark};
+    overflow: hidden;
+    flex-wrap: wrap;
+    padding: 0.5rem;
 `;
 
 

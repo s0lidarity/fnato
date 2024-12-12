@@ -1,5 +1,5 @@
-import { NumberInput, Separator, TextInput } from 'react95';
-import { useState, useCallback } from 'preact/hooks';
+import { NumberInput, TextInput } from 'react95';
+import { useState, useCallback, useMemo, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 
@@ -14,45 +14,13 @@ const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',
     'data-component': 'CustomSkillInput/SkillInputContainer'
 })`
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: minmax(200px, 300px) repeat(4, auto);
     align-items: center;
-    justify-self: center;
-    gap: 0.5rem;
     width: 100%;
+    padding: 0.5rem;
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
-`;
-
-const InputGroup = styled.div.attrs<any>({
-    'data-testid': 'input-group',
-    'data-component': 'CustomSkillInput/InputGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-    flex: 2;
-`;
-
-const ValueGroup = styled.div.attrs<any>({
-    'data-testid': 'value-group',
-    'data-component': 'CustomSkillInput/ValueGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
-    min-width: 12rem;
-`;
-
-const BaseGroup = styled.div.attrs<any>({
-    'data-testid': 'base-group',
-    'data-component': 'CustomSkillInput/BaseGroup'
-})`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    min-width: 12rem;
+    gap: 2rem;
 `;
 
 const StyledSkillName = styled.div.attrs<any>({
@@ -63,8 +31,18 @@ const StyledSkillName = styled.div.attrs<any>({
     flex-direction: row;
     align-items: center;
     gap: 0.5rem;
-    flex: 1;
-    min-width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+const ValueSection = styled.div.attrs<any>({
+    'data-testid': 'value-section',
+    'data-component': 'CustomSkillInput/ValueSection'
+})`
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
 `;
 
 const StyledBaseValue = styled.div.attrs<any>({
@@ -134,26 +112,17 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
     const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
 
-    const debouncedAllocatePoints = useCallback(
-        debounce((value: string) => handleAllocatePoints(value), 500),
-        []
-    );
-
-    const handleChange = (e: any) => {
-        const value = e.target.value;
-        // AJS maybe here to fix the issue of the displayed localPoints not being updated here
-        setLocalPoints(value);
-        debouncedAllocatePoints(value);
-    };
-
-    const handleAllocatePoints = (inputValue: string) => {
+    const handleAllocatePoints = useCallback((inputValue: string) => {
         const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
         const currentPoints = skill.pointsAllocated || 0;
         const diff = numericValue - currentPoints;
 
         // handle negative inputs or NaN
         if (numericValue < 0 || isNaN(numericValue)) {
-            setSkillById(skill.id, { ...skill, pointsAllocated: 0 });
+            setSkillById(skill.id, { 
+                ...skill,
+                pointsAllocated: 0
+            });
             setSkillPointsRemaining(skillPointsRemaining + currentPoints);
             setLocalPoints(0);
             return;
@@ -170,7 +139,10 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         // check max value
         if (numericValue + baseValue > maxValue) {
             const allowedPoints = maxValue - baseValue;
-            setSkillById(skill.id, { ...skill, pointsAllocated: allowedPoints });
+            setSkillById(skill.id, { 
+                ...skill,
+                pointsAllocated: allowedPoints
+            });
             setSkillPointsRemaining(skillPointsRemaining + (currentPoints - allowedPoints));
             setLocalPoints(allowedPoints);
             setIsFlashing(true);
@@ -179,8 +151,29 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         }
 
         // default happy path, set the new value
-        setSkillById(skill.id, { ...skill, pointsAllocated: numericValue });
+        setSkillById(skill.id, { 
+            ...skill,
+            pointsAllocated: numericValue
+        });
         setSkillPointsRemaining(skillPointsRemaining - diff);
+    }, [skill, skillPointsRemaining, maxValue, baseValue, setSkillById, setSkillPointsRemaining]);
+
+    const debouncedAllocatePoints = useMemo(
+        () => debounce((value: string) => handleAllocatePoints(value), 500),
+        [handleAllocatePoints]
+    );
+
+    // Cleanup debounce on unmount
+    useEffect(() => {
+        return () => {
+            debouncedAllocatePoints.cancel();
+        };
+    }, [debouncedAllocatePoints]);
+
+    const handleChange = (e: any) => {
+        const value = e.target.value;
+        setLocalPoints(value);
+        debouncedAllocatePoints(value);
     };
 
     const handleBonusChange = (value: number) => {
@@ -198,40 +191,38 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
                 />
                 <SubtypeEditor skill={skill} />
             </StyledSkillName>
-            <InputGroup>
-                <BaseGroup>
-                    <StyledLabel>Starts at: </StyledLabel>
-                    <StyledBaseValue>{baseValue}</StyledBaseValue>
-                </BaseGroup>
-                <ValueGroup>
-                    <StyledLabel>Skill Points Allocated</StyledLabel>
-                    <StyledValueInput
-                        min={0}
-                        max={maxValue - baseValue}
-                        value={localPoints}
-                        onChange={handleChange}
-                        $isFlashing={isFlashing}
-                    />
-                </ValueGroup>
-                <Separator orientation="vertical" />
-                <ValueGroup>
-                    <StyledLabel>
-                        Bonus
-                    </StyledLabel>
-                    <StyledBonusInput
-                        min={0}
-                        max={8}
-                        width={'4rem'}
-                        value={skill.bonus || 0}
-                        onChange={handleBonusChange}
-                    />
-                </ValueGroup>
-                <Separator orientation="vertical" />
-                <ValueGroup>
-                    <StyledLabel>Total</StyledLabel>
-                    <div>{totalValue}</div>
-                </ValueGroup>
-            </InputGroup>
+            
+            <ValueSection>
+                <StyledLabel>Starts at:</StyledLabel>
+                <StyledBaseValue>{baseValue}</StyledBaseValue>
+            </ValueSection>
+            
+            <ValueSection>
+                <StyledLabel>Skill Points Allocated</StyledLabel>
+                <StyledValueInput
+                    min={0}
+                    max={maxValue - baseValue}
+                    value={localPoints}
+                    onChange={handleChange}
+                    $isFlashing={isFlashing}
+                />
+            </ValueSection>
+            
+            <ValueSection>
+                <StyledLabel>Bonus</StyledLabel>
+                <StyledBonusInput
+                    min={0}
+                    max={8}
+                    width={'4rem'}
+                    value={skill.bonus || 0}
+                    onChange={handleBonusChange}
+                />
+            </ValueSection>
+            
+            <ValueSection>
+                <StyledLabel>Total</StyledLabel>
+                <div>{totalValue.toString().padStart(2, '0')}</div>
+            </ValueSection>
         </SkillInputContainer>
     );
 }
