@@ -37,6 +37,46 @@ const StyledComponent = styled.element.attrs<any>({
   - ProfessionContext: Manages profession-related state
   - ThemeContext: Manages UI theme state
 
+### Context Organization
+
+- Organize context types with clear separation between state and functions:
+
+  ```typescript
+  type ExampleContextType = {
+    // State values (alphabetically ordered)
+    count: number;
+    isLoading: boolean;
+    user: User;
+    
+    // Functions (alphabetically ordered)
+    decrementCount: () => void;
+    incrementCount: () => void;
+    setUser: (user: User) => void;
+  }
+  ```
+
+- When consuming context in components, maintain the same ordering:
+
+  ```typescript
+  function Component() {
+    const {
+      // State values (alphabetically ordered)
+      count,
+      isLoading,
+      user,
+      
+      // Functions (alphabetically ordered)
+      decrementCount,
+      incrementCount,
+      setUser,
+    } = useExampleContext();
+  }
+  ```
+
+- Use clear type separation with comments to improve readability
+- Keep related state and functions grouped in the same context
+- Consider splitting contexts if they grow too large or handle unrelated concerns
+
 ### File Structure
 
 src/

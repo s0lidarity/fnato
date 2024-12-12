@@ -8,7 +8,7 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
-import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
+import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE } from '../../../../constants/gameRules';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',

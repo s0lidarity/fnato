@@ -186,7 +186,7 @@ export const Physician = new Profession({
     choosableSkills: Profession.createSkillList([
         ['forensics', 50],
         ['psychotherapy', 60],
-        ['science', 50, 'Biology'],
+        ['science', 50, 'Chemistry'],
         ['surgery', 50],
     ]),
     bondCount: 3,

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { GroupBox, SelectNative, Separator } from 'react95';
 import { useTranslation } from 'preact-i18next';
+import { useState, useEffect } from 'react';
 
 import { IBonusSkillPackage } from '../../../../utils/SkillPointPackages';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -20,14 +21,6 @@ const StyledSeparator = styled(Separator).attrs<any>({
     align-self: center;
     justify-self: center;
     margin: 0.5rem 0;
-`;
-
-
-const StyledLabel = styled.label.attrs<any>({
-    'data-testid': 'bonus-skill-package-choices-label',
-    'data-component': 'BonusSkillPackageChoices/StyledLabel'
-})`
-    margin: 0.5rem;
 `;
 
 const StyledSelect = styled(SelectNative).attrs<any>({
@@ -53,6 +46,25 @@ const SkillsListGroupBox = styled(GroupBox).attrs<any>({
 function BonusSkillPackageChoices(){
     const { t } = useTranslation();
     const { applyBonusSkillPackage, BonusSkillPackage, clearBonusSkillPackage } = useSkills();
+    const [pendingPackage, setPendingPackage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (pendingPackage) {
+            const bsp = Object.values(BonusSkillPackages).find(bsp => bsp.name === pendingPackage);
+            if (bsp) {
+                applyBonusSkillPackage(bsp);
+            }
+            setPendingPackage(null);
+        }
+    }, [pendingPackage]);
+
+    const handleBonusSkillPackageSelect = (packageName: string) => {
+        clearBonusSkillPackage();
+        if (!packageName) {
+            return;
+        }
+        setPendingPackage(packageName);
+    };
 
     const options = [
         { label: "No Package (Manual Bonus Points)", value: "" },
@@ -61,20 +73,6 @@ function BonusSkillPackageChoices(){
             value: bsp.name 
         }))
     ];
-
-    const handleBonusSkillPackageSelect = (packageName: string) => {
-        if (!packageName) {
-            clearBonusSkillPackage();
-            return;
-        }
-
-        const bsp = Object.values(BonusSkillPackages).find(bsp => bsp.name === packageName);
-        if(bsp){
-            // need to clear previous bonus package/custom bonus package before applying new one
-            clearBonusSkillPackage();
-            applyBonusSkillPackage(bsp);
-        }
-    }
     
     return (
         <BonusSkillPackageChoicesContainer>
