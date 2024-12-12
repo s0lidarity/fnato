@@ -62,8 +62,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const [config, setConfig] = useState<ProfessionConfigOptions>(ProfessionConfigOptions.StandardProfessions);
     const [remainingSkillChoices, setRemainingSkillChoices] = useState(profession?.chosenSkillCount || 0);
-    const getSkillProperty = (skillId: string, property: keyof Skill) => {
-        return skills.find(s => s.id === skillId)?.[property];
+    const getSkillProperty = (skillId: string, property: keyof Skill): any => {
+        const skill = skills.find(s => s.id === skillId);
+        if (!skill) return null;
+        return skill[property];
     };
     
     const setSkillById = (skillId: string, skillUpdate: Partial<Skill>):boolean => {
@@ -106,6 +108,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         const skillValue = Number(getSkillProperty(skillId, 'value'));
         const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
         const calculatedValue = skillValue + bonusValue;
+        
         return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
     }
 
@@ -113,16 +116,12 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusSkillPackage(bsp);
         const updatedSkills = [...skills];
 
-        // AJS start here, subtyped skills are not being applied
         bsp.skills.forEach(skill => {
-            // need branching logic here, update if name matches but no subType, or if name and subType match
-            console.log('bsp skill', skill);
             const nameMatches = updatedSkills.some(s => s.name === skill.skillName);
             const hasSubType = skill.subType !== undefined;
             const subTypeMatches = updatedSkills.some(s => s.name === skill.skillName && s.subType === skill.subType);
 
             if(nameMatches && !hasSubType || (subTypeMatches)) {
-                console.log('name matches and subtype matches', nameMatches, hasSubType);
                 const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName && s.subType === skill.subType);
                 if(skillIndex !== -1){
                     updatedSkills[skillIndex].bonus = 1;
@@ -135,13 +134,11 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 // if no points are allocated there, update the subtype of the skill in context to match the one from the bonus package
                 if(updatedSkills[skillIndex].value !== DEFAULT_SKILLS.find(s => s.name === skill.skillName)?.value){
                     if(skillIndex !== -1){
-                        console.log('updating skill with new subtype', skill.skillName, skill.subType);
                         updatedSkills[skillIndex].bonus = 1;
                         updatedSkills[skillIndex].subType = skill.subType;
                     }
                 // if points are allocated there, add another skill with the name and subtype from the bonus package
                 } else {
-                    console.log('adding new skill', skill.skillName, skill.subType);
                     const newSkill = {
                         ...DEFAULT_SKILLS.find(s => s.name === skill.skillName),
                         bonus: 1,
@@ -237,30 +234,29 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const clearBonusSkillPackage = () => {
-        console.log('Clearing bonus skill package');
-        console.log('Current skills:', skills);
+        // Create updated skills array with cleared bonuses and remove unused subtyped skills
+        const updatedSkills = skills.filter(skill => {
+            // Always keep skills that are in DEFAULT_SKILLS with their subtypes
+            const defaultSkillWithSubtype = DEFAULT_SKILLS.find(ds => 
+                ds.name === skill.name && ds.subType === skill.subType
+            );
+            
+            // Keep the skill if:
+            // 1. It exists in DEFAULT_SKILLS with the same subtype, or
+            // 2. It has no subtype, or
+            // 3. It has been manually modified (value different from default)
+            const defaultSkill = DEFAULT_SKILLS.find(ds => ds.name === skill.name);
+            const isDefaultValue = skill.value === defaultSkill?.value;
+            
+            return defaultSkillWithSubtype || !skill.subType || !isDefaultValue;
+        }).map(skill => ({
+            ...skill,
+            bonus: 0
+        }));
         
-        setBonusSkillPackage(null);
-        
-        // Reset all bonus values to 0 and remove any non-default skills
-        const updatedSkills = skills
-            .filter(skill => {
-                const isDefaultSkill = DEFAULT_SKILLS.some(ds => ds.name === skill.name);
-                console.log(`Filtering skill ${skill.name}: isDefault=${isDefaultSkill}`);
-                return isDefaultSkill;
-            })
-            .map(skill => {
-                const updatedSkill = {
-                    ...skill,
-                    bonus: 0,
-                    subType: DEFAULT_SKILLS.find(ds => ds.name === skill.name)?.subType
-                };
-                console.log(`Updating skill ${skill.name}: old bonus=${skill.bonus}, new bonus=${updatedSkill.bonus}`);
-                return updatedSkill;
-            });
-        
-        console.log('Updated skills:', updatedSkills);
+        // Update all state at once
         setSkills(updatedSkills);
+        setBonusSkillPackage(null);
         setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
