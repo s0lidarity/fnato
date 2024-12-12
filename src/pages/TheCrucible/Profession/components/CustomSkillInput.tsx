@@ -198,7 +198,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
             </ValueSection>
             
             <ValueSection>
-                <StyledLabel>Skill Points Allocated</StyledLabel>
+                <StyledLabel>Points</StyledLabel>
                 <StyledValueInput
                     min={0}
                     max={maxValue - baseValue}
