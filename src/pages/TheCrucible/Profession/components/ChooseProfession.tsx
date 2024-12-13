@@ -82,8 +82,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const { profession, changeProfession } = useSkills();
-    const { applyProfessionSkills, clearBonusSkillPackage } = useSkills();
+    const { applyProfessionSkills, clearBonusSkillPackage, profession, changeProfession, resetAllBonusPoints } = useSkills();
 
     const generateProfessionOptions = () => {
         const options = [];
@@ -98,6 +97,7 @@ function ChooseProfession() {
         changeProfession(newProfession);
         clearBonusSkillPackage();
         applyProfessionSkills(newProfession.professionalSkills);
+        resetAllBonusPoints();
         bondCountSignal.value = newProfession.bondCount;
     };
 
