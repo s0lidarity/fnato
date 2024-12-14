@@ -1,4 +1,3 @@
-import { useState } from 'preact/hooks';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import styled from 'styled-components';
 

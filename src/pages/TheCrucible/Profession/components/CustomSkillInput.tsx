@@ -110,6 +110,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const [isFlashing, setIsFlashing] = useState(false);
 
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
+    // AJS TODO cap total value
     const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
 
     const handleAllocatePoints = useCallback((inputValue: string) => {
