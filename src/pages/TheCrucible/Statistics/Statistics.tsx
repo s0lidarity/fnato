@@ -1,5 +1,4 @@
 
-import { useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';

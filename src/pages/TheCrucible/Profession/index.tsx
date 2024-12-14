@@ -20,7 +20,7 @@ const ProfessionalGuidanceContainer = styled.div.attrs<any>({
 `;
 
 export function Profession() {
-    const { config, setConfig } = useSkills();
+    const { config, changeConfig } = useSkills();
     const configOptions = [
         { label: 'Standard Professions', value: ProfessionConfigOptions.StandardProfessions },
         { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
@@ -41,7 +41,7 @@ export function Profession() {
         <div>
             <ConfigurationBar
                 config={config}
-                setConfig={(newConfig) => setConfig(newConfig as ProfessionConfigOptions)}
+                setConfig={(newConfig) => changeConfig(newConfig as ProfessionConfigOptions)}
                 options={configOptions}
             />
             <ProfessionalGuidanceContainer>

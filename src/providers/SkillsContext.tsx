@@ -4,9 +4,10 @@ import { useContext, useState } from 'preact/hooks';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
+import { bondCountSignal } from '../signals/bondSignal';
 
 
 type SKillsContextType = {
@@ -30,7 +31,7 @@ type SKillsContextType = {
     clearBonusSkillPackage: () => void;
     resetAllBonusPoints: () => void;
     resetSkills: () => void;
-    setConfig: (config: ProfessionConfigOptions) => void;
+    // AJS start here, don't export setConfig, only export changeConfig
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
@@ -97,6 +98,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         if(newConfig === ProfessionConfigOptions.CustomProfessions){
             setSelectedSkillsIds([]);
             applyProfessionSkills([]);
+            bondCountSignal.value = DEFAULT_BONDS;
         }
         setConfig(newConfig);
     }
@@ -295,7 +297,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 clearBonusSkillPackage,
                 resetAllBonusPoints,
                 resetSkills,
-                setConfig,
                 setProfession,
                 setRemainingSkillChoices,
                 setSelectedSkillsIds,
