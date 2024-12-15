@@ -1,10 +1,47 @@
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import { DetailedDescription } from '../../../types/characterTypes';
+import { TextInput, GroupBox } from 'react95';
+import styled from 'styled-components';
+
+const FormContainer = styled.div.attrs<any>({
+    'data-testid': 'personal-details-form-container',
+    'data-component': 'PersonalDetails/FormContainer'
+})`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    gap: 0.5rem;
+    column-gap: 0.5rem;
+    width: 95%;
+    justify-items: center;
+    justify-content: space-evenly;
+`;
+
+const InputContainer = styled.div.attrs<any>({
+    'data-testid': 'personal-details-input-container',
+    'data-component': 'PersonalDetails/InputContainer'
+})`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 95%;
+    min-width: fit-content;
+    margin-bottom: 1rem;
+
+    label {
+        margin-bottom: 0.5rem;
+    }
+`;
+
+const StyledGroupBox = styled(GroupBox)`
+    padding: 1rem;
+    margin: 1rem;
+    width: 95%;
+`;
 
 export function PersonalDetails() {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: { target: { name: string; value: string } }) => {
         const { name, value } = e.target;
         setPersonalDetails({
             ...personalDetails,
@@ -13,154 +50,184 @@ export function PersonalDetails() {
     };
 
     return (
-        <div className="personal-details-form">
-            <h1>Personal Details</h1>
-            <form>
-                <div>
+        <StyledGroupBox label="Personal Details">
+            <FormContainer>
+                <InputContainer>
                     <label htmlFor="name">Name:</label>
-                    <input
-                        type="text"
+                    <TextInput
                         id="name"
                         name="name"
                         value={personalDetails.name}
                         onChange={handleChange}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="alias">Alias:</label>
-                    <input
-                        type="text"
+                    <TextInput
                         id="alias"
                         name="alias"
                         value={personalDetails.alias || ''}
                         onChange={handleChange}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="age">Age:</label>
-                    <input
+                    <TextInput
                         type="number"
                         id="age"
                         name="age"
                         value={personalDetails.age}
                         onChange={handleChange}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="appearance">Appearance:</label>
-                    <textarea
+                    <TextInput
                         id="appearance"
                         name="appearance"
                         value={personalDetails.appearance}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="education">Education:</label>
-                    <input
-                        type="text"
+                    <TextInput
                         id="education"
                         name="education"
                         value={personalDetails.education || ''}
                         onChange={handleChange}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="personality">Personality:</label>
-                    <textarea
+                    <TextInput
                         id="personality"
                         name="personality"
                         value={personalDetails.personality || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="beliefs">Beliefs:</label>
-                    <textarea
+                    <TextInput
                         id="beliefs"
                         name="beliefs"
                         value={personalDetails.beliefs || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="hobbies">Hobbies:</label>
-                    <textarea
+                    <TextInput
                         id="hobbies"
                         name="hobbies"
                         value={personalDetails.hobbies || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="obsessions">Obsessions:</label>
-                    <textarea
+                    <TextInput
                         id="obsessions"
                         name="obsessions"
                         value={personalDetails.obsessions || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="motivations">Motivations:</label>
-                    <textarea
+                    <TextInput
                         id="motivations"
                         name="motivations"
                         value={personalDetails.motivations || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="admire">Something you admire:</label>
-                    <textarea
+                    <TextInput
                         id="admire"
                         name="admire"
                         value={personalDetails.admire || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="dislike">Something you dislike:</label>
-                    <textarea
+                    <TextInput
                         id="dislike"
                         name="dislike"
                         value={personalDetails.dislike || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="trustInDeltaGreen">Why does Delta Green trust this agent?</label>
-                    <textarea
+                    <TextInput
                         id="trustInDeltaGreen"
                         name="trustInDeltaGreen"
                         value={personalDetails.trustInDeltaGreen || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
+                </InputContainer>
 
-                <div>
+                <InputContainer>
                     <label htmlFor="deltaGreenAgreement">Why does this agent serve Delta Green?</label>
-                    <textarea
+                    <TextInput
                         id="deltaGreenAgreement"
                         name="deltaGreenAgreement"
                         value={personalDetails.deltaGreenAgreement || ''}
                         onChange={handleChange}
+                        multiline
+                        rows={3}
+                        fullWidth
                     />
-                </div>
-            </form>
-        </div>
+                </InputContainer>
+            </FormContainer>
+        </StyledGroupBox>
     );
 }
 
