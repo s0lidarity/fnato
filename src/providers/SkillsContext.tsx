@@ -155,20 +155,11 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
-        // When resetting all bonuses, we don't need to check remaining points
-        if (newBonus === 0) {
-            const success = setSkillById(skillId, { bonus: 0 });
-            if (success) {
-                // Recalculate total bonus points after reset
-                setBonusPointsRemaining(calculateRemainingBonusPoints());
-            }
-            return success;
-        }
-
         const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
         const pointDifference = Number(newBonus) - Number(currentBonus);
         
-        if (bonusPointsRemaining - pointDifference < 0) {
+        // Check if we have enough points (only when increasing)
+        if (pointDifference > 0 && bonusPointsRemaining - pointDifference < 0) {
             return false;
         }
 
