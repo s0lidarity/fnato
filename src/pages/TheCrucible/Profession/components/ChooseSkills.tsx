@@ -49,7 +49,6 @@ function ChooseSkills() {
             setSkills
         } = useSkills();
 
-    // AJS start here, subtyped skills not working well
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);

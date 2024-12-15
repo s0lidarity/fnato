@@ -18,7 +18,7 @@ const SkillInputContainer = styled.div.attrs<any>({
     grid-template-columns: minmax(200px, 300px) repeat(4, auto);
     align-items: center;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.1rem;
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
     gap: 2rem;
 `;
@@ -49,9 +49,8 @@ const StyledBaseValue = styled.div.attrs<any>({
     'data-testid': 'base-value',
     'data-component': 'CustomSkillInput/StyledBaseValue'
 })`
-    margin: 0.5rem;
+    margin: 0.2rem;
     font-weight: bold;
-    padding: 0.2rem;
     min-width: 1.5rem;
     text-align: right;
     background-color: ${({ theme }) => theme.flatLight};
@@ -176,7 +175,6 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         debouncedAllocatePoints(value);
     };
 
-    // AJS TODO: when bonus drops to 0, it does not always update the remaining bonus points
     const handleBonusChange = (value: number) => {
         adjustBonus(skill.id, value);
     };

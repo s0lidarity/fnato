@@ -31,7 +31,6 @@ type SKillsContextType = {
     clearBonusSkillPackage: () => void;
     resetAllBonusPoints: () => void;
     resetSkills: () => void;
-    // AJS start here, don't export setConfig, only export changeConfig
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;

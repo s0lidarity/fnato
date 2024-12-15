@@ -148,7 +148,6 @@ function CustomSkillForm() {
                 </PointsContainer>
                 <PointsContainer>
                     <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
-                    {/* AJS start with the disabled check, they not disabled */}
                     <Button 
                         disabled={bonusPointsRemaining === DEFAULT_SKILL_POINTS}
                         onClick={resetAllBonusPoints}
