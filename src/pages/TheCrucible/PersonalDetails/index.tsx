@@ -2,6 +2,7 @@ import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import { DetailedDescription } from '../../../types/characterTypes';
 import { TextInput, GroupBox } from 'react95';
 import styled from 'styled-components';
+import { JSX } from 'preact';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -41,11 +42,11 @@ const StyledGroupBox = styled(GroupBox)`
 export function PersonalDetails() {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
 
-    const handleChange = (e: { target: { name: string; value: string } }) => {
-        const { name, value } = e.target;
+    const handleChange = (e: JSX.TargetedEvent<HTMLInputElement | HTMLTextAreaElement, Event>) => {
+        const target = e.currentTarget;
         setPersonalDetails({
             ...personalDetails,
-            [name]: value,
+            [target.name]: target.value,
         });
     };
 
