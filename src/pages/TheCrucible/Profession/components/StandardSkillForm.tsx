@@ -6,6 +6,8 @@ import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 import { useEffect, useState } from 'preact/hooks';
 import ChooseProfession from './ChooseProfession';
+import { Button } from 'react95';
+import { MAX_BONUS_POINTS } from '../../../../constants/gameRules';
 
 const SkillFormContainer = styled.div.attrs<any>({
     'data-testid': 'skill-form-container',
@@ -37,9 +39,11 @@ const PointsCounterContainer = styled.div.attrs<any>({
     'data-component': 'SkillForm/PointsCounterContainer'
 })`
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 95%;
     margin-top: 1rem;
+    gap: 0.5rem;
 `;
 
 const renderSkillInputs = (skills: Skills) => {
@@ -56,10 +60,13 @@ const renderSkillInputs = (skills: Skills) => {
     });
 };
 
-// AJS start with the advice from claude in chat
 function StandardSkillForm() {
-    const { bonusPointsRemaining, skills } = useSkills();
+    const { bonusPointsRemaining, skills, resetAllBonusPoints } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
+
+    const handleResetBonusPoints = () => {
+        resetAllBonusPoints();
+    };
 
     // applies temp styling to the PointsCounter when you run out of bonus points
     useEffect(() => {
@@ -79,11 +86,16 @@ function StandardSkillForm() {
                 <PointsCounter 
                     value={bonusPointsRemaining} 
                     showNoPointsWarning={showNoPointsWarning}
-                    label="Bonus Points Remaining"
-                />
+                    label="Bonus Points Remaining"/>
+                <Button 
+                    disabled={bonusPointsRemaining === MAX_BONUS_POINTS}
+                    onClick={handleResetBonusPoints}>
+                    Reset Bonus Points
+                </Button>
             </PointsCounterContainer>
         </div>
     );
 };
 
+// AJS TODO rename to ProfessionSkillForm
 export default StandardSkillForm;

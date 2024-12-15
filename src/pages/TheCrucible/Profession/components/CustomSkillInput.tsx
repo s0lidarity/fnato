@@ -8,7 +8,7 @@ import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/Remin
 import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
-import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE } from '../../../../constants/gameRules';
+import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',
@@ -18,7 +18,7 @@ const SkillInputContainer = styled.div.attrs<any>({
     grid-template-columns: minmax(200px, 300px) repeat(4, auto);
     align-items: center;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.1rem;
     border: 0.2rem solid ${({ theme }) => theme.borderDark};
     gap: 2rem;
 `;
@@ -49,9 +49,8 @@ const StyledBaseValue = styled.div.attrs<any>({
     'data-testid': 'base-value',
     'data-component': 'CustomSkillInput/StyledBaseValue'
 })`
-    margin: 0.5rem;
+    margin: 0.2rem;
     font-weight: bold;
-    padding: 0.2rem;
     min-width: 1.5rem;
     text-align: right;
     background-color: ${({ theme }) => theme.flatLight};
@@ -110,7 +109,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const [isFlashing, setIsFlashing] = useState(false);
 
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
-    const totalValue = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
+    const totalValue = Math.min(DEFAULT_TOTAL_CAP, baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE));
 
     const handleAllocatePoints = useCallback((inputValue: string) => {
         const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
@@ -137,8 +136,8 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         }
 
         // check max value
-        if (numericValue + baseValue > maxValue) {
-            const allowedPoints = maxValue - baseValue;
+        if (numericValue + baseValue > DEFAULT_MAX_SKILL_VALUE) {
+            const allowedPoints = DEFAULT_MAX_SKILL_VALUE - baseValue;
             setSkillById(skill.id, { 
                 ...skill,
                 pointsAllocated: allowedPoints

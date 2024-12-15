@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import { Checkbox, GroupBox } from 'react95';
+import { Checkbox, GroupBox, Button } from 'react95';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
@@ -24,6 +24,16 @@ const StyledSkillContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
+const HeaderContainer = styled.div.attrs<any>({
+    'data-testid': 'choose-skills-header',
+    'data-component': 'ChooseSkills/HeaderContainer'
+})`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`;
+
 function ChooseSkills() {
     // need to track chosen skills and remaining choices
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
@@ -39,7 +49,6 @@ function ChooseSkills() {
             setSkills
         } = useSkills();
 
-    // AJS start here, subtyped skills not working well
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
@@ -108,8 +117,38 @@ function ChooseSkills() {
         ));
     };
 
+    const handleClearSelectedSkills = () => {
+        // Reset all selected skills to their default values
+        selectedSkillsIds.forEach(skillId => {
+            const skillToReset = profession?.choosableSkills.find(s => s.id === skillId);
+            if (skillToReset) {
+                const defaultSkill = DEFAULT_SKILLS.find(s => 
+                    s.name === skillToReset.name && (!s.subType || s.subType === skillToReset.subType)
+                );
+                if (defaultSkill) {
+                    setSkillById(skillId, { value: defaultSkill.value });
+                }
+            }
+        });
+
+        // Reset selected skills IDs
+        setSelectedSkillsIds([]);
+        
+        // Reset remaining choices to original value
+        setRemainingSkillChoices(profession?.chosenSkillCount || 0);
+    };
+
     return (
-        <StyledGroupBox variant='flat' label={`Choose ${remainingSkillChoices > 0 ? remainingSkillChoices : ''} Additional Skills`}>
+        <StyledGroupBox variant='flat'>
+            <HeaderContainer>
+                <div>{`Choose ${remainingSkillChoices > 0 ? remainingSkillChoices : ''} Additional Skills`}</div>
+                <Button 
+                    onClick={handleClearSelectedSkills}
+                    disabled={selectedSkillsIds.length === 0}
+                >
+                    Clear Selected Skills
+                </Button>
+            </HeaderContainer>
             { !profession || profession?.choosableSkills?.length === 0 
                 ? noChoices() 
                 : chooseSkillsCheckboxes()

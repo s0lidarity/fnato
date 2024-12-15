@@ -130,7 +130,6 @@ describe('SkillsContext', () => {
         expect(updatedSkill.value).toBe(45);
     });
 
-    // AJS start here
     describe('apply profession skills correctly', () => {
         // mostly checking for Science - Mathematics and Crafts - Electrician, Mechanic, Microelectronics here
         it('should apply Engineer skills correctly', () => {

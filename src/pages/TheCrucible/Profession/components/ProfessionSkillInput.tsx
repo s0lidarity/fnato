@@ -145,8 +145,6 @@ function ProfessionSkillInput({
 
     const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
 
-    // AJS start with an input for custom skill points in the StyledValueContainer
-
     return (
         <SkillInputContainer>
             <StyledSkillName>

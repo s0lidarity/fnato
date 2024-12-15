@@ -19,7 +19,6 @@ const BondPrimer = styled.p.attrs<any>({
     margin: 1rem;
 `;
 
-// AJS start here, make it pretty
 function BondGuidance() {
     const { stats } = useStats();
 

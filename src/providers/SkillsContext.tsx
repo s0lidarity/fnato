@@ -4,9 +4,10 @@ import { useContext, useState } from 'preact/hooks';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
+import { bondCountSignal } from '../signals/bondSignal';
 
 
 type SKillsContextType = {
@@ -28,8 +29,8 @@ type SKillsContextType = {
     changeConfig: (newConfig: ProfessionConfigOptions) => void;
     changeProfession: (profession: IProfession) => void;
     clearBonusSkillPackage: () => void;
+    resetAllBonusPoints: () => void;
     resetSkills: () => void;
-    setConfig: (config: ProfessionConfigOptions) => void;
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
@@ -37,9 +38,6 @@ type SKillsContextType = {
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
 }
-
-const MAX_BONUS_POINTS = 8;
-const SKILL_CAP = 80;
 
 const SkillsContext = createContext<SKillsContextType | undefined>(undefined);
 
@@ -99,6 +97,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         if(newConfig === ProfessionConfigOptions.CustomProfessions){
             setSelectedSkillsIds([]);
             applyProfessionSkills([]);
+            bondCountSignal.value = DEFAULT_BONDS;
         }
         setConfig(newConfig);
     }
@@ -109,7 +108,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
         const calculatedValue = skillValue + bonusValue;
         
-        return SKILL_CAP < calculatedValue ? SKILL_CAP : calculatedValue;
+        return DEFAULT_TOTAL_CAP < calculatedValue ? DEFAULT_TOTAL_CAP : calculatedValue;
     }
 
     const applyBonusSkillPackage = (bsp: IBonusSkillPackage) => {
@@ -158,14 +157,12 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
         const pointDifference = Number(newBonus) - Number(currentBonus);
         
-        // Check if we have enough points
-        if (bonusPointsRemaining - pointDifference < 0) {
+        // Check if we have enough points (only when increasing)
+        if (pointDifference > 0 && bonusPointsRemaining - pointDifference < 0) {
             return false;
         }
 
-        // Update the bonus
         const success = setSkillById(skillId, { bonus: newBonus });
-        // Update remaining points & update skill values if successful
         if (success) {
             setBonusPointsRemaining(bonusPointsRemaining - pointDifference);
         }
@@ -260,6 +257,16 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
+    const resetAllBonusPoints = () => {
+        const newSkills = skills.map(skill => ({
+            ...skill,
+            bonus: 0
+        }));
+        setSkills(newSkills);
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
+        setBonusSkillPackage(null);
+    };
+
     return (
         <SkillsContext.Provider 
             value={{ 
@@ -278,8 +285,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 changeProfession,
                 changeConfig,
                 clearBonusSkillPackage,
+                resetAllBonusPoints,
                 resetSkills,
-                setConfig,
                 setProfession,
                 setRemainingSkillChoices,
                 setSelectedSkillsIds,
