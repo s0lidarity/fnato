@@ -30,6 +30,7 @@ export interface DerivedAttributes {
 
 export interface DetailedDescription {
     name: string;
+    alias?: string;
     age: number;
     appearance: string;
     residence?: string; // maybe make it city, state, country
@@ -43,6 +44,8 @@ export interface DetailedDescription {
     dislike?: string;
     trustInDeltaGreen?: string;
     deltaGreenAgreement?: string;
+    damagedVeteranTemplates?: string[];
+    personalMotivations?: string[];
 }
 
 export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: number]: string} } = {
