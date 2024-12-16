@@ -3,6 +3,8 @@ import { DetailedDescription } from '../../../types/characterTypes';
 import { TextInput, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { JSX } from 'preact';
+import PersonalMotivations from './PersonalMotivations';
+import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -52,6 +54,7 @@ export function PersonalDetails() {
 
     return (
         <StyledGroupBox label="Personal Details">
+            {/* AJS add a guidance for the page here */}
             <FormContainer>
                 <InputContainer>
                     <label htmlFor="name">Name:</label>
@@ -227,6 +230,8 @@ export function PersonalDetails() {
                         fullWidth
                     />
                 </InputContainer>
+                <DamagedVeteranTemplates />
+                <PersonalMotivations />
             </FormContainer>
         </StyledGroupBox>
     );
