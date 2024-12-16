@@ -10,11 +10,20 @@ const PersonalDetailsGuidanceContainer = styled.div.attrs<any>({
     flex-direction: column;
 `;
 
+const ContentContainer = styled.div.attrs<any>({
+    'data-testid': 'personal-details-guidance-content-container',
+    'data-component': 'PersonalDetails/PersonalDetailsGuidanceContentContainer',
+})`
+    text-wrap: pretty;
+`;
+
+const content = `Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`
+
 function PersonalDetailsGuidance() {
     return (
         <PersonalDetailsGuidanceContainer>
             <Guidance title="Personal Details" buttonText="Personal Details">
-                <p>Personal Details Guidance</p>
+                <ContentContainer>{content}</ContentContainer>
             </Guidance>
         </PersonalDetailsGuidanceContainer>
     );

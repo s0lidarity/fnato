@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { JSX } from 'preact';
 import PersonalMotivations from './PersonalMotivations';
 import DamagedVeteranTemplates from './DamagedVeteranTemplates';
+import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -54,7 +55,7 @@ export function PersonalDetails() {
 
     return (
         <StyledGroupBox label="Personal Details">
-            {/* AJS add a guidance for the page here */}
+            <PersonalDetailsGuidance />
             <FormContainer>
                 <InputContainer>
                     <label htmlFor="name">Name:</label>
