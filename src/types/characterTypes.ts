@@ -257,22 +257,69 @@ export interface Statistics {
     charisma: Stat;
 }
 
-// AJS Damaged Veteran Adjustment will likely need to be refactored when we get there
+// AJS starting point: templates need to handle adjustments to derived attributes and bonds
 export interface DamagedVeteranAdjustment {
-    name: string;
+    label: string;
     description: string;
-    statAdjustment: { [key in keyof Statistics]: number };
-    skillAdjustment: { [key in keyof Skills]: number };
+    statAdjustment: { [statName in string]: number };
+    skillAdjustment: { [skillName: string]: number };
 }
 // Extreme Violence
 // Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s CHA and each Bond. Your Agent is adapted to violence (see page 73).
+export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
+    id: "extreme-violence",
+    label: "Extreme Violence",
+    description: "Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s CHA and each Bond. Your Agent is adapted to violence (see page 73).",
+    statAdjustment: {
+        charisma: -3,
+        power: -3,
+    },
+    skillAdjustment: {
+        occult: 10,
+    },
+}
 // Captivity or Imprisonment
 // Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s POW. Your Agent is adapted to helplessness (see page 73).
+export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
+    id: "captivity-or-imprisonment",
+    label: "Captivity or Imprisonment",
+    description: "Add +10% to your Agent’s Occult skill. Reduce SAN by 5. Subtract 3 from your Agent’s POW. Your Agent is adapted to helplessness (see page 73).",
+    statAdjustment: {
+        power: -3,
+    },
+    skillAdjustment: {
+        occult: 10,
+    },
+}
 // Hard Experience
 // Add +10% to your Agent’s Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent’s SAN by 5. Remove one Bond.
+// AJS: we need a way to represent the cap at 90% and that it is 5 skills of the user's choice
+export const HARD_EXPERIENCE: DamagedVeteranAdjustment = {
+    id: "hard-experience",
+    label: "Hard Experience",
+    description: "Add +10% to your Agent’s Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent’s SAN by 5. Remove one Bond.",
+    statAdjustment: {
+        sanity: -5,
+    },
+    skillAdjustment: {
+        occult: 10,
+    },
+}
 // Things Man Was Not Meant to Know
 // Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent’s SAN by his or
 // her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent’s Break- ing Point to his or her new SAN minus POW.
+// AJS: we need a way to represent the new disorder and the breaking point
+export const THINGS_MAN_WAS_NOT_MEANT_TO_KNOW: DamagedVeteranAdjustment = {
+    id: "things-man-was-not-meant-to-know",
+    label: "Things Man Was Not Meant to Know",
+    description: "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent’s SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent’s Break- ing Point to his or her new SAN minus POW.",
+    statAdjustment: {
+        sanity: -5,
+    },
+    skillAdjustment: {
+        occult: 10,
+    },
+}
 
 export type StatisticKeys = keyof Statistics;
 
