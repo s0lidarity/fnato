@@ -8,6 +8,10 @@ const PersonalMotivationsContainer = styled.div.attrs<any>({
     flex-direction: column;
 `;
 
+
+// AJS starting point
+// whenever a user types in one text area, add another until there are 5 total
+
 function PersonalMotivations() {
     return (
         <PersonalMotivationsContainer>

@@ -1,7 +1,14 @@
 import styled from 'styled-components';
-import { GroupBox, Checkbox, Button } from 'react95';
+import { GroupBox, Button } from 'react95';
+import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
+import { 
+    EXTREME_VIOLENCE, 
+    HARD_EXPERIENCE, 
+    CAPTIVITY_OR_IMPRISONMENT,
+    THINGS_MAN_WAS_NOT_MEANT_TO_KNOW
+} from '../../../types/characterTypes';
 
 const DamagedVeteranTemplatesContainer = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-templates-container',
@@ -38,27 +45,14 @@ function DamagedVeteranTemplates() {
         });
     };
 
-    const toggleTemplate = (templateId: string) => {
-        console.log("toggleTemplate", templateId, personalDetails);
-        const updatedTemplates = personalDetails.damagedVeteranTemplates.includes(templateId)
-            ? personalDetails.damagedVeteranTemplates.filter(id => id !== templateId)
-            : [...personalDetails.damagedVeteranTemplates, templateId];
-            
-        setPersonalDetails({
-            ...personalDetails,
-            damagedVeteranTemplates: updatedTemplates
-        });
-    };
-
     return (
         <DamagedVeteranTemplatesContainer>
-            <StyledGroupBox title="Damaged Veteran Templates">
+            <StyledGroupBox label="Damaged Veteran Templates">
                 <CheckboxContainer>
-                    <Checkbox
-                        checked={personalDetails?.damagedVeteranTemplates?.includes("extreme-violence") || false}
-                        value="extreme-violence"
-                        label="Extreme Violence"
-                        onChange={() => toggleTemplate("extreme-violence")} />
+                    <DamagedVeteranCheckbox template={EXTREME_VIOLENCE} />
+                    <DamagedVeteranCheckbox template={CAPTIVITY_OR_IMPRISONMENT} />
+                    <DamagedVeteranCheckbox template={HARD_EXPERIENCE} />
+                    <DamagedVeteranCheckbox template={THINGS_MAN_WAS_NOT_MEANT_TO_KNOW} />
                 </CheckboxContainer>
                 <Button onClick={handleClearTemplates}>Clear Templates</Button>
             </StyledGroupBox>

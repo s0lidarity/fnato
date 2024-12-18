@@ -259,6 +259,7 @@ export interface Statistics {
 
 // AJS starting point: templates need to handle adjustments to derived attributes and bonds
 export interface DamagedVeteranAdjustment {
+    id: string;
     label: string;
     description: string;
     statAdjustment: { [statName in string]: number };

@@ -1,7 +1,8 @@
 import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
-import { DetailedDescription } from '../types/characterTypes';
 
+import { DetailedDescription } from '../types/characterTypes';
+import { DEFAULT_DETAILED_DESCRIPTION } from '../constants/personalDetailsDefaults';
 type PersonalDetailsContextType = {
     personalDetails: DetailedDescription;
     setPersonalDetails: (details: DetailedDescription) => void;
@@ -18,12 +19,7 @@ export const usePersonalDetails = () => {
 };
 
 export const PersonalDetailsProvider = ({ children }: { children: React.ReactNode }) => {
-    const [personalDetails, setPersonalDetails] = useState<DetailedDescription>({
-        name: '',
-        age: 0,
-        appearance: '',
-        // ... other default values
-    });
+    const [personalDetails, setPersonalDetails] = useState<DetailedDescription>(DEFAULT_DETAILED_DESCRIPTION);
 
     return (
         <PersonalDetailsContext.Provider 

@@ -11,4 +11,11 @@ export const DEFAULT_DETAILED_DESCRIPTION: DetailedDescription = {
     beliefs: "",
     hobbies: "",
     obsessions: "",
+    motivations: "",
+    admire: "",
+    dislike: "",
+    trustInDeltaGreen: "",
+    deltaGreenAgreement: "",
+    damagedVeteranTemplates: [],
+    personalMotivations: [],
 }
