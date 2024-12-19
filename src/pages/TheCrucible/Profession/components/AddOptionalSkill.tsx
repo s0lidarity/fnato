@@ -6,6 +6,8 @@ import { Button, TextInput } from "react95";
 import { useSkills } from "../../../../providers/SkillsContext";
 import Dialogue from "../../../../components/Dialogue/Dialogue";
 
+// AJS starting point, unfinished feature
+
 const AddOptionalSkillContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -15,7 +17,7 @@ const AddOptionalSkillContainer = styled.div`
 const AddOptionalSkill = () => {
     const [show, setShow] = useState(false);
     const [skillName, setSkillName] = useState('');
-    const { skills,  } = useSkills();
+    const { skills  } = useSkills();
 
     const handleAddSkill = () => {
         // check if skillName is already in skills

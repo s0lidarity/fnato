@@ -18,7 +18,6 @@ function DamagedVeteranCheckbox({ template }: {template: DamagedVeteranAdjustmen
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
 
     const toggleTemplate = (templateId: string) => {
-        console.log("toggleTemplate", templateId, personalDetails);
         const updatedTemplates = personalDetails.damagedVeteranTemplates.includes(templateId)
             ? personalDetails.damagedVeteranTemplates.filter(id => id !== templateId)
             : [...personalDetails.damagedVeteranTemplates, templateId];
