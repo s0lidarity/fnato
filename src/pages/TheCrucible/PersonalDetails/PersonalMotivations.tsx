@@ -42,11 +42,11 @@ function PersonalMotivations() {
 
     return (
         <PersonalMotivationsContainer>
-            <Guidance title="Personal Motivations" buttonText="Personal Motivations">
-                <p>{reminderTextA}</p>
-                <p>{reminderTextB}</p>
-            </Guidance>
             <GroupBox label="Personal Motivations">
+                <Guidance title="Personal Motivations" buttonText="Personal Motivations">
+                    <p>{reminderTextA}</p>
+                    <p>{reminderTextB}</p>
+                </Guidance>
                 {renderMotivations(personalDetails.personalMotivations)}
             </GroupBox>
         </PersonalMotivationsContainer>
