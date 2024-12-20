@@ -6,41 +6,41 @@ import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
 import styled from 'styled-components';
 
 const CharacterSheet = styled.div`
-    max-width: 800px;
-    border: 2px solid black;
-    padding: 20px;
+    max-width: 50rem;
+    border: 0.125rem solid black;
+    padding: 1.25rem;
     background: white;
 `;
 
 const Header = styled.h1`
     text-align: center;
     font-size: 2em;
-    margin: 0 0 20px 0;
+    margin: 0 0 1.25rem 0;
     text-transform: uppercase;
 `;
 
 const Section = styled.div`
-    margin-bottom: 20px;
-    border: 1px solid black;
-    padding: 10px;
+    margin-bottom: 1.25rem;
+    border: 0.0625rem solid black;
+    padding: 0.625rem;
 `;
 
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 0.625rem;
 `;
 
 const PersonalDataGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 0.625rem;
 `;
 
 const FormRow = styled.div`
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 0.625rem;
+    margin-bottom: 0.625rem;
 `;
 
 const FormField = styled.div`
@@ -50,26 +50,26 @@ const FormField = styled.div`
         display: block;
         font-size: 0.8em;
         text-transform: uppercase;
-        margin-bottom: 4px;
+        margin-bottom: 0.25rem;
     }
 
     input {
         width: 100%;
-        padding: 4px;
-        border: 1px solid black;
+        padding: 0.25rem;
+        border: 0.0625rem solid black;
     }
 `;
 
 const StatsGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 0.625rem;
 `;
 
 const StatRow = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
-    gap: 10px;
+    gap: 0.625rem;
     align-items: center;
     
     label {
@@ -81,24 +81,56 @@ const StatRow = styled.div`
 const SkillsGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 20px;
+    gap: 0.625rem;
+    margin-top: 1.25rem;
 `;
 
 const SkillItem = styled.div`
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
     
     input[type="checkbox"] {
-        width: 16px;
-        height: 16px;
+        width: 1rem;
+        height: 1rem;
+    }
+`;
+
+const PsychSection = styled(Section)`
+    h3 {
+        font-size: 0.9em;
+        text-transform: uppercase;
+        margin-bottom: 0.625rem;
+    }
+`;
+
+const TextArea = styled.textarea`
+    width: 100%;
+    min-height: 5rem;
+    padding: 0.25rem;
+    border: 0.0625rem solid black;
+    resize: vertical;
+`;
+
+const SanityTracker = styled.div`
+    margin-top: 1.25rem;
+    
+    .incidents {
+        display: flex;
+        gap: 0.625rem;
+        align-items: center;
+        margin-top: 0.625rem;
+    }
+    
+    .checkboxes {
+        display: flex;
+        gap: 0.25rem;
     }
 `;
 
 export function Summary() {
     const { stats } = useStats();
-    const { skills } = useSkills();
+    const { skills, profession } = useSkills();
     const { bonds } = useBonds();
     const { personalDetails } = usePersonalDetails();
 
@@ -116,7 +148,7 @@ export function Summary() {
                         </FormField>
                         <FormField>
                             <label>Profession (Rank if Applicable)</label>
-                            <input type="text" value={personalDetails.profession} />
+                            <input type="text" value={profession.name} />
                         </FormField>
                         <FormField>
                             <label>Employer</label>
@@ -164,6 +196,39 @@ export function Summary() {
                         </FormRow>
                     ))}
                 </Section>
+
+                <PsychSection>
+                    <h2>Psychological Data</h2>
+                    
+                    <div>
+                        <h3>Motivations and Mental Disorders</h3>
+                        <TextArea 
+                            placeholder="List character motivations and any mental disorders..."
+                            value={personalDetails.mentalDisorders}
+                        />
+                    </div>
+
+                    <SanityTracker>
+                        <h3>Incidents of San Loss Without Going Insane</h3>
+                        <div className="incidents">
+                            <span>Violence</span>
+                            <div className="checkboxes">
+                                <input type="checkbox" />
+                                <input type="checkbox" />
+                                <input type="checkbox" />
+                            </div>
+                            <span>adapted</span>
+                            
+                            <span style={{ marginLeft: '1.25rem' }}>Helplessness</span>
+                            <div className="checkboxes">
+                                <input type="checkbox" />
+                                <input type="checkbox" />
+                                <input type="checkbox" />
+                            </div>
+                            <span>adapted</span>
+                        </div>
+                    </SanityTracker>
+                </PsychSection>
 
                 <SkillsGrid>
                     {Object.entries(skills).map(([skill, value]) => (
