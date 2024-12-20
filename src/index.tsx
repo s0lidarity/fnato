@@ -9,6 +9,7 @@ import GlobalStyles from './GlobalStyles';
 import Footer from './components/Footer/Footer';
 
 import Providers from './providers/Providers';
+import Summary from './pages/Summary';
 
 export function App() {
 	return (
@@ -21,6 +22,7 @@ export function App() {
 						<Route path="/" component={Home} />
 						<Route path="/about" component={About} />
 						<Route path="/crucible" component={TheCrucible} />
+						<Route path="/summary" component={Summary} />
 					</Router>
 				</main>
 				<Footer />
