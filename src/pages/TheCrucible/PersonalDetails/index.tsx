@@ -1,11 +1,11 @@
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
-import { DetailedDescription } from '../../../types/characterTypes';
 import { TextInput, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { JSX } from 'preact';
 import PersonalMotivations from './PersonalMotivations';
 import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
+import StyledCalendar from '../../../components/RetroDatePicker';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -58,11 +58,33 @@ export function PersonalDetails() {
             <PersonalDetailsGuidance />
             <FormContainer>
                 <InputContainer>
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="firstName">First Name:</label>
                     <TextInput
-                        id="name"
-                        name="name"
-                        value={personalDetails.name}
+                        id="firstName"
+                        name="firstName"
+                        value={personalDetails.firstName}
+                        onChange={handleChange}
+                        fullWidth
+                    />
+                </InputContainer>
+
+                <InputContainer>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <TextInput
+                        id="lastName"
+                        name="lastName"
+                        value={personalDetails.lastName}
+                        onChange={handleChange}
+                        fullWidth
+                    />
+                </InputContainer>
+
+                <InputContainer>
+                    <label htmlFor="middleInitial">Middle Initial:</label>
+                    <TextInput
+                        id="middleInitial"
+                        name="middleInitial"
+                        value={personalDetails.middleInitial || ''}
                         onChange={handleChange}
                         fullWidth
                     />
@@ -79,13 +101,27 @@ export function PersonalDetails() {
                     />
                 </InputContainer>
 
+                {/* AJS starint point, convert this one to a modal */}
                 <InputContainer>
-                    <label htmlFor="age">Age:</label>
+                    <label htmlFor="dateOfBirth">Date of Birth:</label>
+                    <StyledCalendar
+                        value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
+                        onChange={(date) => {
+                            setPersonalDetails({
+                                ...personalDetails,
+                                dateOfBirth: date ? (date as Date) : null,
+                            });
+                        }}
+                    />
+                </InputContainer>
+
+                {/* AJS starting point, convert to radios for male, female, typed in manually */}
+                <InputContainer>
+                    <label htmlFor="sex">Sex:</label>
                     <TextInput
-                        type="number"
-                        id="age"
-                        name="age"
-                        value={personalDetails.age}
+                        id="sex"
+                        name="sex"
+                        value={personalDetails.sex || ''}
                         onChange={handleChange}
                         fullWidth
                     />

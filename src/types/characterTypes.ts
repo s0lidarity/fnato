@@ -29,9 +29,14 @@ export interface DerivedAttributes {
 }
 
 export interface DetailedDescription {
-    name: string;
+    firstName: string;
+    lastName: string;
+    middleInitial?: string;
     alias?: string;
-    age: number;
+    dateOfBirth: Date;
+    sex?: string;
+    employer?: string;
+    nationality?: string;
     appearance: string;
     residence?: string; // maybe make it city, state, country
     education?: string;
