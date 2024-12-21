@@ -148,25 +148,25 @@ export function Summary() {
                         </FormField>
                         <FormField>
                             <label>Profession (Rank if Applicable)</label>
-                            <input type="text" value={profession.name} />
+                            <input type="text" value={profession?.name || ""} />
                         </FormField>
                         <FormField>
                             <label>Employer</label>
-                            <input type="text" value={personalDetails.employer} />
+                            <input type="text" value={personalDetails?.employer || ""} />
                         </FormField>
                         <FormField>
                             <label>Nationality</label>
-                            <input type="text" value={personalDetails.nationality} />
+                            <input type="text" value={personalDetails?.nationality || ""} />
                         </FormField>
                     </PersonalDataGrid>
                     <FormRow>
                         <FormField>
                             <label>Sex</label>
-                            <input type="text" value={personalDetails.sex} />
+                            <input type="text" value={personalDetails?.sex || ""} />
                         </FormField>
                         <FormField>
                             <label>Age and D.O.B.</label>
-                            <input type="text" value={personalDetails.age} />
+                            <input type="text" value={personalDetails?.age || ""} />
                         </FormField>
                     </FormRow>
                 </Section>
@@ -189,9 +189,9 @@ export function Summary() {
                     {bonds.map((bond, index) => (
                         <FormRow key={index}>
                             <FormField>
-                                <input type="checkbox" checked={bond.damaged} />
-                                <input type="text" value={bond.description} />
-                                <input type="number" value={bond.score} />
+                                <input type="checkbox" checked={false} />
+                                <input type="text" value={bond?.name} />
+                                <input type="number" value={bond?.score} />
                             </FormField>
                         </FormRow>
                     ))}
@@ -204,7 +204,7 @@ export function Summary() {
                         <h3>Motivations and Mental Disorders</h3>
                         <TextArea 
                             placeholder="List character motivations and any mental disorders..."
-                            value={personalDetails.mentalDisorders}
+                            value={""}
                         />
                     </div>
 
@@ -233,7 +233,7 @@ export function Summary() {
                 <SkillsGrid>
                     {Object.entries(skills).map(([skill, value]) => (
                         <SkillItem key={skill}>
-                            <input type="checkbox" checked={value.failed} />
+                            <input type="checkbox" checked={false} />
                             <span>{skill} ({value.base}%)</span>
                         </SkillItem>
                     ))}

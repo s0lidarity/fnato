@@ -102,7 +102,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setConfig(newConfig);
     }
 
-    // AJS refactor move this to a util function for testing convenience
+    // AJS starting point, needs to be determined by config
     const calculateSkillValue = (skillId: string): number => {
         const skillValue = Number(getSkillProperty(skillId, 'value'));
         const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
