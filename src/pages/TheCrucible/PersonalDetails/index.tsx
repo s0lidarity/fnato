@@ -1,11 +1,17 @@
-import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
-import { TextInput, GroupBox } from 'react95';
+
 import styled from 'styled-components';
 import { JSX } from 'preact';
+import { TextInput, GroupBox, Button } from 'react95';
+import { useState } from 'preact/hooks';
+
+import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
 import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 import StyledCalendar from '../../../components/RetroDatePicker';
+import Dialogue from '../../../components/Dialogue/Dialogue';
+import { IoCheckmarkSharp } from 'react-icons/io5';
+
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -36,15 +42,26 @@ const InputContainer = styled.div.attrs<any>({
     }
 `;
 
-const StyledGroupBox = styled(GroupBox)`
+const StyledGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'personal-details-group-box',
+    'data-component': 'PersonalDetails/GroupBox'
+})`
     padding: 1rem;
     margin: 1rem;
     width: 95%;
 `;
 
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+`;
+
 export function PersonalDetails() {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
+    const [showDateOfBirth, setShowDateOfBirth] = useState(false);
 
+    // AJS todo apply this JSX event to change event handlers where e: any is applied
     const handleChange = (e: JSX.TargetedEvent<HTMLInputElement | HTMLTextAreaElement, Event>) => {
         const target = e.currentTarget;
         setPersonalDetails({
@@ -101,18 +118,29 @@ export function PersonalDetails() {
                     />
                 </InputContainer>
 
-                {/* AJS starint point, convert this one to a modal */}
                 <InputContainer>
                     <label htmlFor="dateOfBirth">Date of Birth:</label>
-                    <StyledCalendar
-                        value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
-                        onChange={(date) => {
-                            setPersonalDetails({
-                                ...personalDetails,
-                                dateOfBirth: date ? (date as Date) : null,
-                            });
-                        }}
-                    />
+                    <Button onClick={() => setShowDateOfBirth(true)}>
+                        {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : 'Select Date of Birth'}
+                    </Button>
+                    <Dialogue
+                        title="Date of Birth"
+                        show={showDateOfBirth}
+                        setShow={setShowDateOfBirth}
+                    >
+                        <StyledCalendar
+                            value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
+                            onChange={(date) => {
+                                setPersonalDetails({
+                                    ...personalDetails,
+                                    dateOfBirth: date ? (date as Date) : null,
+                                });
+                            }}
+                        />
+                        <ButtonContainer>
+                            <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
+                        </ButtonContainer>
+                    </Dialogue>
                 </InputContainer>
 
                 {/* AJS starting point, convert to radios for male, female, typed in manually */}
