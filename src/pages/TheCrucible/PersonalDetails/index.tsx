@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { JSX } from 'preact';
 import { TextInput, GroupBox, Button } from 'react95';
 import { useState } from 'preact/hooks';
+import { IoCheckmarkSharp } from 'react-icons/io5';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
@@ -10,7 +11,8 @@ import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 import StyledCalendar from '../../../components/RetroDatePicker';
 import Dialogue from '../../../components/Dialogue/Dialogue';
-import { IoCheckmarkSharp } from 'react-icons/io5';
+import SexPicker from './SexPicker';
+
 
 
 const FormContainer = styled.div.attrs<any>({
@@ -57,7 +59,7 @@ const ButtonContainer = styled.div`
     margin-top: 0.5rem;
 `;
 
-export function PersonalDetails() {
+function PersonalDetails() {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
     const [showDateOfBirth, setShowDateOfBirth] = useState(false);
 
@@ -146,13 +148,7 @@ export function PersonalDetails() {
                 {/* AJS starting point, convert to radios for male, female, typed in manually */}
                 <InputContainer>
                     <label htmlFor="sex">Sex:</label>
-                    <TextInput
-                        id="sex"
-                        name="sex"
-                        value={personalDetails.sex || ''}
-                        onChange={handleChange}
-                        fullWidth
-                    />
+                    <SexPicker />
                 </InputContainer>
 
                 <InputContainer>
