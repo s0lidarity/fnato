@@ -5,11 +5,14 @@ import styled from 'styled-components';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
-import { Statistics, STAT_REMINDERS } from '../../../../../types/characterTypes';
+import { Statistics } from '../../../../../types/characterTypes';
 import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import StatInputContainer from '../../styles/StatInputContainer';
 
-const StatLabelValueContainer = styled.div`
+const StatLabelValueContainer = styled.div.attrs<any>({
+    'data-component': 'Statistics/DiceStats/StatLabelValueContainer',
+    'data-testid': 'dice-stats-stat-label-value-container',
+})`
     display: flex;
     align-items: center;
     padding: 0.25rem;
@@ -17,19 +20,28 @@ const StatLabelValueContainer = styled.div`
     flex: 1;
 `;
 
-const StatLabel = styled.div`
+const StatLabel = styled.div.attrs<any>({
+    'data-component': 'Statistics/DiceStats/StatLabel',
+    'data-testid': 'dice-stats-stat-label',
+})`
     width: 4rem;
     display: flex;
     align-items: center;
 `;
 
-const StatValue = styled.span`
+const StatValue = styled.span.attrs<any>({
+    'data-component': 'Statistics/DiceStats/StatValue',
+    'data-testid': 'dice-stats-stat-value',
+})`
     margin-left: 0.5rem;
     text-align: right;
     min-width: 4rem;
 `;
 
-const DiceContainer = styled.div`
+const DiceContainer = styled.div.attrs<any>({
+    'data-component': 'Statistics/DiceStats/DiceContainer',
+    'data-testid': 'dice-stats-dice-container',
+})`
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -37,13 +49,19 @@ const DiceContainer = styled.div`
     font-size: 1.5rem;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div.attrs<any>({
+    'data-component': 'Statistics/DiceStats/ButtonContainer',
+    'data-testid': 'dice-stats-button-container',
+})`
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
 `;
 
-const StyledDiceRowContainer = styled.div`
+const StyledDiceRowContainer = styled.div.attrs<any>({
+    'data-component': 'Statistics/DiceStats/StyledDiceRowContainer',
+    'data-testid': 'dice-stats-styled-dice-row-container',
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
