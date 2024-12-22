@@ -2,18 +2,13 @@ import { RollResult } from './../types/diceTypes';
 import {
 	Bond,
 	Character,
-	DerivedAttribute,
 	DerivedAttributes,
 	DetailedDescription,
 	DISTINGUISHING_FEATURES,
 	IProfession,
-	Skill,
 	Stat,
 	Statistics,
-	StatisticKeys,
 	STAT_REMINDERS,
-	Skills,
-	DEFAULT_SKILLS,
 } from '../types/characterTypes';
 import { generateDefaultSkills } from '../providers/defaultValues';
 
@@ -34,8 +29,12 @@ const baseBonds: Bond[] = [
 
 // AJS: generate some of this with Faker.js
 const baseDetailedDescription: DetailedDescription = {
-	name: 'Homer Thompson',
-	age: 35,
+	firstName: 'Homer',
+	lastName: 'Thompson',
+	middleInitial: 'J',
+	dateOfBirth: new Date('1956-05-12'),
+	nationality: 'American',
+	employer: 'Springfield Nuclear Power Plant',
 	appearance: 'Average height, brown hair, blue eyes, average build',
 	residence: '742 Evergreen Terrace, Point Roberts, WA 98281 USA',
 	education: 'Bachelor of Science in Computer Science',
@@ -57,12 +56,14 @@ const baseProfession: IProfession = {
 	recommendedStats: ['intelligence', 'power'],
 	choosableSkills: [],
 	chosenSkillCount: 0,
+	name: 'Nuclear Safety Inspector'
 };
 
 const baseStat: Stat = {
 	score: 10,
 	x5: 50,
-	distinguishingFeature: ''
+	distinguishingFeature: '',
+	label: ''
 };
 
 const baseStats: Statistics = {

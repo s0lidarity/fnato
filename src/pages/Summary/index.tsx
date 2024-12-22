@@ -159,7 +159,7 @@ const SkillsGrid = styled.div.attrs<any>({
 })`
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(15, auto);
+    grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
     gap: 0.625rem;
     margin-top: 1.25rem;
@@ -172,6 +172,7 @@ const SkillItem = styled.div.attrs<any>({
     display: flex;
     align-items: center;
     border: 0.0625rem solid black;
+    gap: 0.625rem;
     
     input[type="checkbox"] {
         width: 1rem;
@@ -320,8 +321,39 @@ const BondsHeaderRow = styled(HeaderRow)`
     }
 `;
 
+const DerivedStatsSection = styled.div.attrs<any>({
+    'data-testid': 'derived-stats-section',
+    'data-component': 'Summary/DerivedStatsSection'
+})`
+    margin-top: 1.25rem;
+    border-top: 0.0625rem solid black;
+    padding-top: 0.625rem;
+`;
+
+const DerivedStatRow = styled.div.attrs<any>({
+    'data-testid': 'derived-stat-row',
+    'data-component': 'Summary/DerivedStatRow'
+})`
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0.625rem;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    
+    label {
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    input {
+        width: 3rem;
+        padding: 0.25rem;
+        border: 0.0625rem solid black;
+    }
+`;
+
 export function Summary() {
-    const { stats } = useStats();
+    const { stats, derivedAttributes } = useStats();
     const { skills, profession, calculateSkillValue } = useSkills();
     const { bonds } = useBonds();
     const { personalDetails } = usePersonalDetails();
@@ -337,7 +369,7 @@ export function Summary() {
                         <FormRow>
                             <FormField>
                                 <label>1. Last Name, First Name, Middle Initial</label>
-                                <input type="text" value={`${personalDetails.lastName}, ${personalDetails.firstName} ${personalDetails.middleInitial}`} />
+                                <input type="text" value={`${personalDetails.lastName || ''} ${personalDetails.firstName || ''} ${personalDetails.middleInitial || ''}`} />
                             </FormField>
                             <FormField>
                                 <label>2. Profession (Rank if Applicable)</label>
@@ -388,20 +420,33 @@ export function Summary() {
                                 <StatRow key={stat}>
                                     <label>{stat}</label>
                                     <input type="number" value={value.score} />
-                                    <input 
-                                        type="text" 
-                                        className="multiplier"
-                                        value={value.x5} 
-                                        placeholder="×5" 
-                                    />
-                                    <input 
-                                        type="text" 
-                                        className="feature"
-                                        value={value.distinguishingFeature || ''}
-                                        placeholder="Distinguishing Feature"
-                                    />
+                                    <input type="text" className="multiplier" value={value.x5} />
+                                    <input type="text" className="feature" value={value.distinguishingFeature} />
                                 </StatRow>
                             ))}
+
+                            <DerivedStatsSection>
+                                <DerivedStatRow>
+                                    <label>Hit Points</label>
+                                    <input type="number" value={derivedAttributes?.hitPoints?.currentValue || 0} />
+                                    <input type="number" value={derivedAttributes?.hitPoints?.maxValue || 0} />
+                                </DerivedStatRow>
+                                <DerivedStatRow>
+                                    <label>Willpower</label>
+                                    <input type="number" value={derivedAttributes?.willPower?.currentValue || 0} />
+                                    <input type="number" value={derivedAttributes?.willPower?.maxValue || 0} />
+                                </DerivedStatRow>
+                                <DerivedStatRow>
+                                    <label>Sanity</label>
+                                    <input type="number" value={derivedAttributes?.sanity?.currentValue || 0} />
+                                    <input type="number" value={derivedAttributes?.sanity?.maxValue || 0} />
+                                </DerivedStatRow>
+                                <DerivedStatRow>
+                                    <label>Breaking Point</label>
+                                    <input type="number" value={derivedAttributes?.breakingPoint?.currentValue || 0} />
+                                    <input type="number" value={derivedAttributes?.breakingPoint?.maxValue || 0} />
+                                </DerivedStatRow>
+                            </DerivedStatsSection>
                         </StatsGrid>
                     </StatisticalDataSection>
 
@@ -462,7 +507,7 @@ export function Summary() {
                     </PsychSection>
                 </DataSectionsContainer>
 
-                <SkillsGrid>
+                <SkillsGrid skillCount={skills.length}>
                     {skills.map((skill) => (
                         <SkillItem key={skill.id}>
                             <input type="checkbox" checked={false} />
