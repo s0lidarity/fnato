@@ -165,6 +165,28 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
+                    <label htmlFor="employer">Employer:</label>
+                    <TextInput
+                        id="employer"
+                        name="employer"
+                        value={personalDetails.employer || ''}
+                        onChange={handleChange}
+                        fullWidth
+                    />
+                </InputContainer>
+
+                <InputContainer>
+                    <label htmlFor="nationality">Nationality:</label>
+                    <TextInput
+                        id="nationality"
+                        name="nationality"
+                        value={personalDetails.nationality || ''}
+                        onChange={handleChange}
+                        fullWidth
+                    />
+                </InputContainer>
+
+                <InputContainer>
                     <label htmlFor="education">Education:</label>
                     <TextInput
                         id="education"

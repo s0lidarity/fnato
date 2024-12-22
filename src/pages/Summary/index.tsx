@@ -91,6 +91,7 @@ const FormField = styled.div.attrs<any>({
     'data-testid': 'form-field',
 })`
     flex: 1;
+    padding: 0 0.625rem;
     
     label {
         display: block;
@@ -103,6 +104,14 @@ const FormField = styled.div.attrs<any>({
         width: 100%;
         padding: 0.25rem;
         border: 0.0625rem solid black;
+    }
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
     }
 `;
 
@@ -149,6 +158,8 @@ const SkillsGrid = styled.div.attrs<any>({
     'data-testid': 'skills-grid',
 })`
     display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(15, auto);
     grid-template-columns: repeat(3, 1fr);
     gap: 0.625rem;
     margin-top: 1.25rem;
@@ -160,11 +171,15 @@ const SkillItem = styled.div.attrs<any>({
 })`
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    border: 0.0625rem solid black;
     
     input[type="checkbox"] {
         width: 1rem;
         height: 1rem;
+    }
+
+    span {
+        font-size: 0.9em;
     }
 `;
 
@@ -242,9 +257,72 @@ const DataSectionsContainer = styled.div.attrs<any>({
     margin-bottom: 1.25rem;
 `;
 
+const BondsSection = styled.div.attrs<any>({
+    'data-testid': 'bonds-section',
+    'data-component': 'Summary/BondsSection'
+})`
+    margin: 1.25rem 0;
+`;
+
+const BondRow = styled.div.attrs<any>({
+    'data-testid': 'bond-row',
+    'data-component': 'Summary/BondRow'
+})`
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.625rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+
+    input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+    }
+
+    input[type="text"] {
+        border: none;
+        border-bottom: 0.0625rem solid black;
+        padding: 0.25rem;
+    }
+
+    input[type="number"] {
+        width: 3rem;
+        padding: 0.25rem;
+        border: 0.0625rem solid black;
+    }
+`;
+
+const HeaderRow = styled.div.attrs<any>({
+    'data-testid': 'header-row',
+    'data-component': 'Summary/HeaderRow'
+})`
+    display: grid;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+`;
+
+const StatsHeaderRow = styled(HeaderRow)`
+    grid-template-columns: 2fr 1fr 1fr 3fr;
+    gap: 0.625rem;
+    padding-right: 0.25rem;
+`;
+
+const BondsHeaderRow = styled(HeaderRow)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    
+    span:last-child {
+        margin-right: 0.625rem;
+    }
+`;
+
 export function Summary() {
     const { stats } = useStats();
-    const { skills, profession } = useSkills();
+    const { skills, profession, calculateSkillValue } = useSkills();
     const { bonds } = useBonds();
     const { personalDetails } = usePersonalDetails();
 
@@ -263,7 +341,7 @@ export function Summary() {
                             </FormField>
                             <FormField>
                                 <label>2. Profession (Rank if Applicable)</label>
-                                <input type="text" value={personalDetails.profession} />
+                                <input type="text" value={profession?.name || ''} />
                             </FormField>
                         </FormRow>
                         <FormRow>
@@ -300,6 +378,12 @@ export function Summary() {
                     <StatisticalDataSection>
                         <VerticalHeader>Statistical Data</VerticalHeader>
                         <StatsGrid>
+                            <StatsHeaderRow>
+                                <span>Attribute</span>
+                                <span>Score</span>
+                                <span>x5</span>
+                                <span>Distinguishing Feature</span>
+                            </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
                                 <StatRow key={stat}>
                                     <label>{stat}</label>
@@ -307,7 +391,7 @@ export function Summary() {
                                     <input 
                                         type="text" 
                                         className="multiplier"
-                                        value={value.multiplier} 
+                                        value={value.x5} 
                                         placeholder="×5" 
                                     />
                                     <input 
@@ -324,12 +408,36 @@ export function Summary() {
                     <PsychSection>
                         <VerticalHeader>Psychological Data</VerticalHeader>
                         <div>
+                            <BondsSection>
+                                <BondsHeaderRow>
+                                    <span>Bonds</span>
+                                    <span>Score</span>
+                                </BondsHeaderRow>
+                                {bonds.map((bond, index) => (
+                                    <BondRow key={index}>
+                                        <input 
+                                            type="checkbox" 
+                                            checked={false}
+                                            aria-label={`Bond ${index + 1} damaged status`}
+                                        />
+                                        <input 
+                                            type="text" 
+                                            value={bond.name}
+                                            placeholder="Bond description"
+                                        />
+                                        <input 
+                                            type="number" 
+                                            value={bond.score}
+                                            aria-label={`Bond ${index + 1} score`}
+                                        />
+                                    </BondRow>
+                                ))}
+                            </BondsSection>
                             <h3>Motivations and Mental Disorders</h3>
                             <TextArea 
                                 placeholder="List character motivations and any mental disorders..."
-                                value={personalDetails.mentalDisorders}
+                                value={""}
                             />
-
                             <SanityTracker>
                                 <h3>Incidents of San Loss Without Going Insane</h3>
                                 <div className="incidents">
@@ -354,24 +462,11 @@ export function Summary() {
                     </PsychSection>
                 </DataSectionsContainer>
 
-                <Section>
-                    <h2>Bonds</h2>
-                    {bonds.map((bond, index) => (
-                        <FormRow key={index}>
-                            <FormField>
-                                <input type="checkbox" checked={false} />
-                                <input type="text" value={bond?.name} />
-                                <input type="number" value={bond?.score} />
-                            </FormField>
-                        </FormRow>
-                    ))}
-                </Section>
-
                 <SkillsGrid>
-                    {Object.entries(skills).map(([skill, value]) => (
-                        <SkillItem key={skill}>
+                    {skills.map((skill) => (
+                        <SkillItem key={skill.id}>
                             <input type="checkbox" checked={false} />
-                            <span>{skill} ({value.base}%)</span>
+                            <span>{skill.name} ({calculateSkillValue(skill.id)}%)</span>
                         </SkillItem>
                     ))}
                 </SkillsGrid>
