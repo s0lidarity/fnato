@@ -101,9 +101,17 @@ const FormField = styled.div.attrs<any>({
     }
 
     input {
-        width: 100%;
+        width: calc(100% - 1.25rem);
         padding: 0.25rem;
         border: 0.0625rem solid black;
+    }
+
+    textarea {
+        width: calc(100% - 1.25rem);
+        padding: 0.25rem;
+        border: 0.0625rem solid black;
+        min-height: 5rem;
+        resize: vertical;
     }
 
     &:first-child {
@@ -112,6 +120,21 @@ const FormField = styled.div.attrs<any>({
 
     &:last-child {
         padding-right: 0;
+    }
+`;
+
+const SingleFieldRow = styled(FormRow).attrs<any>({
+    'data-component': 'Summary/SingleFieldRow',
+    'data-testid': 'single-field-row',
+})`
+    padding-left: 0;
+    
+    > ${FormField} {
+        padding-right: 0;
+
+        textarea {
+            width: calc(100% - 1.25rem);
+        }
     }
 `;
 
@@ -210,7 +233,7 @@ const TextArea = styled.textarea.attrs<any>({
     'data-component': 'Summary/TextArea',
     'data-testid': 'text-area',
 })`
-    width: 100%;
+    width: calc(100% - 1.25rem);
     min-height: 5rem;
     padding: 0.25rem;
     border: 0.0625rem solid black;
@@ -222,6 +245,7 @@ const SanityTracker = styled.div.attrs<any>({
     'data-testid': 'sanity-tracker',
 })`
     margin-top: 1.25rem;
+    margin-right: 1.25rem;
     
     .incidents {
         display: flex;
@@ -282,6 +306,7 @@ const BondRow = styled.div.attrs<any>({
     }
 
     input[type="text"] {
+        width: calc(100% - 1.25rem);
         border: none;
         border-bottom: 0.0625rem solid black;
         padding: 0.25rem;
@@ -291,6 +316,7 @@ const BondRow = styled.div.attrs<any>({
         width: 3rem;
         padding: 0.25rem;
         border: 0.0625rem solid black;
+        margin-right: 0.625rem;
     }
 `;
 
@@ -338,6 +364,7 @@ const DerivedStatRow = styled.div.attrs<any>({
     grid-template-columns: 2fr 1fr 1fr;
     gap: 0.625rem;
     align-items: center;
+    
     margin-bottom: 0.25rem;
     
     label {
@@ -350,6 +377,17 @@ const DerivedStatRow = styled.div.attrs<any>({
         padding: 0.25rem;
         border: 0.0625rem solid black;
     }
+`;
+
+const MMDTextArea = styled(TextArea).attrs<any>({
+    'data-component': 'Summary/MMDTextArea',
+    'data-testid': 'mmd-text-area',
+})`
+    width: calc(100% - 1.25rem);
+    min-height: 5rem;
+    padding: 0.25rem;
+    border: 0.0625rem solid black;
+    resize: vertical;
 `;
 
 export function Summary() {
@@ -396,13 +434,15 @@ export function Summary() {
                                 <input type="text" value={personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : ''} />
                             </FormField>
                         </FormRow>
-                        <FormField>
-                            <label>7. Education and Occupational History</label>
-                            <TextArea 
-                                value={personalDetails.education}
-                                rows={3}
-                            />
-                        </FormField>
+                        <SingleFieldRow>
+                            <FormField>
+                                <label>7. Education and Occupational History</label>
+                                <MMDTextArea 
+                                    value={personalDetails.education}
+                                    rows={3}
+                                />
+                            </FormField>
+                        </SingleFieldRow>
                     </PersonalDataGrid>
                 </PersonalDataSection>
 
@@ -426,6 +466,11 @@ export function Summary() {
                             ))}
 
                             <DerivedStatsSection>
+                                <DerivedStatRow>
+                                    <span></span>
+                                    <label style={{ fontSize: '0.8em' }}>Current</label>
+                                    <label style={{ fontSize: '0.8em' }}>Max</label>
+                                </DerivedStatRow>
                                 <DerivedStatRow>
                                     <label>Hit Points</label>
                                     <input type="number" value={derivedAttributes?.hitPoints?.currentValue || 0} />
@@ -479,7 +524,7 @@ export function Summary() {
                                 ))}
                             </BondsSection>
                             <h3>Motivations and Mental Disorders</h3>
-                            <TextArea 
+                            <MMDTextArea 
                                 placeholder="List character motivations and any mental disorders..."
                                 value={""}
                             />
