@@ -49,9 +49,13 @@ const PointsCounterContainer = styled.div.attrs<any>({
 const renderSkillInputs = (skills: Skills) => {
     // avoids a console error if the skills array is empty
     if(!skills.length) return null;
+    
+    console.log('Rendering skills:', skills);
+    
     return skills.map((s) => {
+        console.log('Rendering skill:', s.name, s.value);
         return (
-            <SkillInputContainer>
+            <SkillInputContainer key={s.id}>
                 <ProfessionSkillInput 
                     skill={s} 
                 />
@@ -61,14 +65,18 @@ const renderSkillInputs = (skills: Skills) => {
 };
 
 function StandardSkillForm() {
-    const { bonusPointsRemaining, skills, resetAllBonusPoints } = useSkills();
+    const { skills, bonusPointsRemaining, resetAllBonusPoints } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
+
+    // Log when skills change
+    useEffect(() => {
+        console.log('Skills updated in StandardSkillForm:', skills);
+    }, [skills]);
 
     const handleResetBonusPoints = () => {
         resetAllBonusPoints();
     };
 
-    // applies temp styling to the PointsCounter when you run out of bonus points
     useEffect(() => {
         if(bonusPointsRemaining <= 0) {
             setShowNoPointsWarning(true);

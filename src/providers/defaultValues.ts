@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
 import { STAT_REMINDERS } from '../types/characterTypes';
+import { createSkillId } from '../utils/Professions';
 
 import { 
     Skills, 
@@ -30,6 +30,6 @@ export const defaultStats: Statistics = {
 export function generateDefaultSkills(): Skills {
     return DEFAULT_SKILLS.map(skill => ({
         ...skill,
-        id: uuidv4()
+        id: createSkillId(skill.name, skill?.subType)
     }));
 }

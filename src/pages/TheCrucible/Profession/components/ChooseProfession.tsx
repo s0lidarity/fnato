@@ -96,7 +96,6 @@ function ChooseProfession() {
         const newProfession = professions.find((p) => p.name === professionName);
         changeProfession(newProfession);
         clearBonusSkillPackage();
-        applyProfessionSkills(newProfession.professionalSkills);
         resetAllBonusPoints();
         bondCountSignal.value = newProfession.bondCount;
     };

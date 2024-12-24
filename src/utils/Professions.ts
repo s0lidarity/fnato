@@ -5,8 +5,8 @@ import {
     StatisticKeys 
 } from "../types/characterTypes";
 
-// Add this utility function to standardize skill ID creation
-const createSkillId = (name: string, subType?: string): string => {
+// Export the createSkillId function
+export const createSkillId = (name: string, subType?: string): string => {
     const baseId = name.toLowerCase().replace(/\s+/g, '-');
     return subType ? `${baseId}-${subType.toLowerCase().replace(/\s+/g, '-')}` : baseId;
 };
