@@ -31,6 +31,7 @@ type SkillsContextType = {
     clearBonusSkillPackage: () => void;
     resetAllBonusPoints: () => void;
     resetSkills: () => void;
+    setBonusPointsRemaining: (bonusPointsRemaining: number) => void;
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
@@ -313,6 +314,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 clearBonusSkillPackage,
                 resetAllBonusPoints,
                 resetSkills,
+                setBonusPointsRemaining,
                 setProfession,
                 setRemainingSkillChoices,
                 setSelectedSkillsIds,
