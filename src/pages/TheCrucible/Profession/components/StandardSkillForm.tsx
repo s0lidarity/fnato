@@ -47,13 +47,13 @@ const PointsCounterContainer = styled.div.attrs<any>({
 `;
 
 const renderSkillInputs = (skills: Skills) => {
-    // avoids a console error if the skills array is empty
+    // Avoids a console error if the skills array is empty
     if(!skills.length) return null;
     
     console.log('Rendering skills:', skills);
     
     return skills.map((s) => {
-        console.log('Rendering skill:', s.name, s.value);
+        console.log('Rendering skill:', s.id, s.name, s.value, s.subType);
         return (
             <SkillInputContainer key={s.id}>
                 <ProfessionSkillInput 
@@ -65,7 +65,7 @@ const renderSkillInputs = (skills: Skills) => {
 };
 
 function StandardSkillForm() {
-    const { skills, bonusPointsRemaining, resetAllBonusPoints } = useSkills();
+    const { bonusPointsRemaining, skills, resetAllBonusPoints, profession } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
     // Log when skills change
@@ -83,6 +83,12 @@ function StandardSkillForm() {
             setTimeout(() => setShowNoPointsWarning(false), 500);
         }
     }, [bonusPointsRemaining]);
+
+    useEffect(() => {
+        if (profession) {
+            console.log('Profession changed, skills count:', skills.length);
+        }
+    }, [profession, skills]);
 
     return (
         <div>

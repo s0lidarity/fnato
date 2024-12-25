@@ -82,7 +82,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const { applyProfessionSkills, clearBonusSkillPackage, profession, changeProfession, resetAllBonusPoints } = useSkills();
+    const { clearBonusSkillPackage, profession, changeProfession, resetAllBonusPoints } = useSkills();
 
     const generateProfessionOptions = () => {
         const options = [];
@@ -92,11 +92,14 @@ function ChooseProfession() {
         return options;
     };
 
-    const handleProfessionSelect = (professionName: string) => {
+    const handleProfessionSelect = async (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
-        changeProfession(newProfession);
-        clearBonusSkillPackage();
-        resetAllBonusPoints();
+        await changeProfession(newProfession);
+        // AJS starting point don't forget to clear the bonus skill package
+        // clearBonusSkillPackage();
+        // AJS starting point, reset the bonus points while clearing the bonus skill package
+        // this seems to be what was resetting state after applying a new profession
+        // resetAllBonusPoints();
         bondCountSignal.value = newProfession.bondCount;
     };
 
