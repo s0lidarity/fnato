@@ -51,9 +51,8 @@ const renderSkillInputs = (skills: Skills) => {
     if(!skills.length) return null;
     
     return skills.map((s) => {
-        const key = `${s.id}-${s.name}-${s.subType}`;
         return (
-            <SkillInputContainer key={key}>
+            <SkillInputContainer key={`${s.id}-${s.name}-${s.subType}`}>
                 <ProfessionSkillInput 
                     skill={s} 
                 />
