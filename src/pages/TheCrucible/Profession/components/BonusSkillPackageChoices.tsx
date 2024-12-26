@@ -59,6 +59,7 @@ function BonusSkillPackageChoices(){
     }, [pendingPackage]);
 
     const handleBonusSkillPackageSelect = (packageName: string) => {
+        // AJS starting point, can duplicate keys in skills with overlapping subtypes
         clearBonusSkillPackage();
         if (!packageName) {
             return;

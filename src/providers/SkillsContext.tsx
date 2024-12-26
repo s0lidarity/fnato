@@ -4,7 +4,7 @@ import { createContext } from 'preact';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE, DEFAULT_MAX_SKILL_VALUE } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
 import { bondCountSignal } from '../signals/bondSignal';
@@ -88,11 +88,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
 
     const changeConfig = (newConfig: ProfessionConfigOptions) => {
-        if(newConfig === ProfessionConfigOptions.CustomProfessions){
-            setSelectedSkillsIds([]);
-            applyProfessionSkills([]);
-            bondCountSignal.value = DEFAULT_BONDS;
-        }
+        setSelectedSkillsIds([]);
+        applyProfessionSkills([]);
+        resetAllBonusPoints();
+        bondCountSignal.value = DEFAULT_BONDS;
         setConfig(newConfig);
     }
 
@@ -105,24 +104,8 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             console.warn(`Skill not found for ID: ${skillId}`);
             return 0;
         }
-        
-        if (skill.subType) {
-            const exactMatch = skillsToUse.find(s => s.id === skillId);
-            if (exactMatch) {
-                return (exactMatch.value ?? 0) + (exactMatch.bonus ?? 0);
-            }
-            
-            const subtypedSkill = skillsToUse.find(s => 
-                s.name === skill.name && 
-                s.subType === skill.subType
-            );
-            
-            if (subtypedSkill) {
-                return (subtypedSkill.value ?? 0) + (subtypedSkill.bonus ?? 0);
-            }
-        }
-        
-        return (skill.value ?? 0) + (skill.bonus ?? 0);
+
+        return Math.min(DEFAULT_TOTAL_CAP, skill.value + (skill.bonus * DEFAULT_BONUS_VALUE));
     };
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
@@ -246,16 +229,12 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const changeProfession = (profession: IProfession) => {
-        console.log('==== Starting profession change ====');
-        
         setSelectedSkillsIds([]);
         setProfession(profession);
         setRemainingSkillChoices(profession.chosenSkillCount);
         
         // Apply new profession skills
         const newSkills = applyProfessionSkills(profession.professionalSkills);
-        
-        console.log('Skills after profession change:', newSkills);
         
         return newSkills;
     };
