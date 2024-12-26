@@ -556,7 +556,7 @@ export function Summary() {
                     {skills.map((skill) => (
                         <SkillItem key={skill.id}>
                             <input type="checkbox" checked={false} />
-                            <span>{skill.name} ({calculateSkillValue(skill.id)}%)</span>
+                            <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
                         </SkillItem>
                     ))}
                 </SkillsGrid>

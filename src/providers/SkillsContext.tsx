@@ -104,8 +104,18 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
             console.warn(`Skill not found for ID: ${skillId}`);
             return 0;
         }
+        let total = 0;
+        switch(config){
+            case ProfessionConfigOptions.StandardProfessions:
+                total = skill.value + (skill.bonus * DEFAULT_BONUS_VALUE);
+                break;
+            case ProfessionConfigOptions.CustomProfessions:
+                const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
+                total = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
+                break;
+        }
 
-        return Math.min(DEFAULT_TOTAL_CAP, skill.value + (skill.bonus * DEFAULT_BONUS_VALUE));
+        return Math.min(DEFAULT_TOTAL_CAP, total);
     };
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {

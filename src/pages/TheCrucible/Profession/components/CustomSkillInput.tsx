@@ -105,6 +105,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         setSkillById,
         setSkillPointsRemaining
     } = useSkills();
+    // local points are used to prevent user from setting points allocated higher than the max
     const [localPoints, setLocalPoints] = useState(skill.pointsAllocated || 0);
     const [isFlashing, setIsFlashing] = useState(false);
 
