@@ -1,9 +1,14 @@
+import html2pdf from 'html2pdf.js';
+import styled from 'styled-components';
+import { IoMdPrint } from "react-icons/io";
+
 import { PageWrapper } from '../../components/SharedStyles';
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
-import styled from 'styled-components';
+import { Button } from 'react95';
+
 
 const CharacterSheet = styled.div.attrs<any>({
     'data-component': 'Summary/CharacterSheet',
@@ -390,11 +395,52 @@ const MMDTextArea = styled(TextArea).attrs<any>({
     resize: vertical;
 `;
 
+const ExportButton = styled(Button).attrs<any>({
+    'data-component': 'Summary/ExportButton',
+    'data-testid': 'export-button',
+})`
+    position: relative;
+    margin: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+        opacity: 0.9;
+    }
+`;
+
 export function Summary() {
     const { stats, derivedAttributes } = useStats();
     const { skills, profession, calculateSkillValue } = useSkills();
     const { bonds } = useBonds();
     const { personalDetails } = usePersonalDetails();
+
+
+    const handleExport = () => {
+        const pdf = document.querySelector('[data-testid="character-sheet"]');
+        const opt = {
+            margin: 10,
+            filename: 'character-sheet.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { 
+                scale: 2,
+                useCORS: true,
+                letterRendering: true
+            },
+            jsPDF: { 
+                unit: 'mm', 
+                format: 'a4',
+                orientation: 'portrait'
+            }
+        };
+
+        html2pdf().set(opt).from(pdf).save();
+    }
 
     return (
         <PageWrapper>
@@ -554,13 +600,17 @@ export function Summary() {
 
                 <SkillsGrid skillCount={skills.length}>
                     {skills.map((skill) => (
-                        <SkillItem key={skill.id}>
+                        <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
                             <input type="checkbox" checked={false} />
                             <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
                         </SkillItem>
                     ))}
                 </SkillsGrid>
             </CharacterSheet>
+            <ExportButton 
+                onClick={handleExport}>
+                    Export as PDF <IoMdPrint />
+            </ExportButton>
         </PageWrapper>
     );
 }

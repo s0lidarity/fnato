@@ -4,7 +4,7 @@ import { createContext } from 'preact';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE, DEFAULT_MAX_SKILL_VALUE } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
 import { bondCountSignal } from '../signals/bondSignal';
