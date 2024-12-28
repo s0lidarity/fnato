@@ -421,6 +421,7 @@ export function Summary() {
     const { personalDetails } = usePersonalDetails();
 
 
+    // I have learned that this is a pain
     const handleExport = () => {
         const pdf = document.querySelector('[data-testid="character-sheet"]');
         const opt = {
@@ -430,7 +431,7 @@ export function Summary() {
             html2canvas: { 
                 scale: 2,
                 useCORS: true,
-                letterRendering: true
+                letterRendering: true,
             },
             jsPDF: { 
                 unit: 'mm', 
