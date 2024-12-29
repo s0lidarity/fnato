@@ -65,12 +65,14 @@ const PersonalDataSection = styled(Section).attrs<any>({
     gap: 1rem;
 `;
 
+// AJS might have to rethink the vertical header
 const VerticalHeader = styled.div.attrs<any>({
     'data-testid': 'vertical-header',
     'data-component': 'Summary/VerticalHeader'
 })`
     writing-mode: vertical-lr;
     transform: rotate(180deg);
+    text-align: end;
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
@@ -79,6 +81,10 @@ const VerticalHeader = styled.div.attrs<any>({
     background: black;
     color: white;
     padding: 0.5rem 0;
+
+    @media print {
+        writing-mode: sideways-lr;
+    }
 `;
 
 const PersonalDataGrid = styled.div.attrs<any>({
@@ -457,7 +463,12 @@ export function Summary() {
                 <CensoredHeader />
                 
                 <PersonalDataSection>
-                    <VerticalHeader>Personal Data</VerticalHeader>
+                    <VerticalHeader>
+                        {/* AJS play with this, it is working-ish */}
+                        <svg width="30" height="100">
+                            <text fill="white" fontSize="10px">Personal Data</text>
+                        </svg>
+                    </VerticalHeader>
                     <PersonalDataGrid>
                         <FormRow>
                             <FormField>
