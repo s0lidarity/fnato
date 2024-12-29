@@ -17,10 +17,14 @@ const CharacterSheet = styled.div.attrs<any>({
     border: 0.125rem solid black;
     padding: 1.25rem;
     background: white;
+    width: 210mm; /* A4 width */
+    height: 297mm; /* A4 height */
+    margin: 0 auto; /* Center the sheet */
+    box-sizing: border-box;
 
     @media print {
-        width: 210mm; /* A4 width */
-        height: 297mm; /* A4 height */
+        width: 210mm;
+        height: 297mm;
         box-sizing: border-box;
         padding: 10mm;
         overflow: hidden;
@@ -61,8 +65,9 @@ const PersonalDataSection = styled(Section).attrs<any>({
     'data-component': 'Summary/PersonalDataSection'
 })`
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
 `;
 
 // AJS might have to rethink the vertical header
@@ -80,7 +85,8 @@ const VerticalHeader = styled.div.attrs<any>({
     justify-content: center;
     background: black;
     color: white;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
+    font-size: 0.8rem;
 
     @media print {
         writing-mode: vertical-lr;
@@ -110,27 +116,28 @@ const FormField = styled.div.attrs<any>({
     'data-testid': 'form-field',
 })`
     flex: 1;
-    padding: 0 0.625rem;
+    padding: 0 0.5rem;
     
     label {
         display: block;
-        font-size: 0.8em;
+        font-size: 0.7rem;
         text-transform: uppercase;
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.125rem;
     }
 
     input {
-        width: calc(100% - 1.25rem);
-        padding: 0.25rem;
+        width: calc(100% - 0.5rem);
+        padding: 0.125rem;
         border: 0.0625rem solid black;
+        font-size: 0.8rem;
     }
 
     textarea {
-        width: calc(100% - 1.25rem);
-        padding: 0.25rem;
+        width: calc(100% - 0.5rem); 
+        padding: 0.125rem;
         border: 0.0625rem solid black;
-        min-height: 5rem;
-        resize: vertical;
+        min-height: 3rem;
+        font-size: 0.8rem;
     }
 
     &:first-child {
@@ -173,25 +180,27 @@ const StatRow = styled.div.attrs<any>({
 })`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 3fr;
-    gap: 0.625rem;
+    gap: 0.5rem;
     align-items: center;
+    font-size: 0.8rem;
     
     label {
         text-transform: uppercase;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 
     input {
-        height: 1.5rem;
-        padding: 0 0.25rem;
+        height: 1.25rem;
+        padding: 0 0.125rem;
+        font-size: 0.8rem;
     }
 
     input[type="number"] {
-        width: 3rem;
+        width: 2.5rem;
     }
 
     input[type="text"].multiplier {
-        width: 2rem;
+        width: 1.5rem;
     }
 `;
 
@@ -203,8 +212,9 @@ const SkillsGrid = styled.div.attrs<any>({
     grid-auto-flow: column;
     grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.625rem;
-    margin-top: 1.25rem;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
 `;
 
 const SkillItem = styled.div.attrs<any>({
@@ -214,15 +224,16 @@ const SkillItem = styled.div.attrs<any>({
     display: flex;
     align-items: center;
     border: 0.0625rem solid black;
-    gap: 0.625rem;
+    gap: 0.375rem;
+    padding: 0.125rem;
     
     input[type="checkbox"] {
-        width: 1rem;
-        height: 1rem;
+        width: 0.8rem;
+        height: 0.8rem;
     }
 
     span {
-        font-size: 0.9em;
+        font-size: 0.8rem;
     }
 `;
 
@@ -231,20 +242,21 @@ const PsychSection = styled(Section).attrs<any>({
     'data-testid': 'psych-section',
 })`
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
-    flex: 1;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0.5rem;
+    width: 55%;
     border: 0.0625rem solid black;
     padding: 0;
     margin: 0;
 
     > div {
-        padding: 0.625rem;
+        padding: 0.5rem;
     }
 
     h3 {
-        font-size: 0.9em;
-        margin-bottom: 0.625rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        margin-bottom: 0.375rem;
     }
 `;
 
@@ -253,6 +265,7 @@ const SkillsSection = styled(Section).attrs<any>({
     'data-testid': 'skills-section',
 })`
     display: grid;
+    width: 100%;
     grid-template-columns: 2rem 1fr;
     gap: 1rem;
 `;
@@ -272,19 +285,37 @@ const SanityTracker = styled.div.attrs<any>({
     'data-component': 'Summary/SanityTracker',
     'data-testid': 'sanity-tracker',
 })`
-    margin-top: 1.25rem;
-    margin-right: 1.25rem;
+    margin-top: 0.75rem;
+    
+    h3 {
+        margin-bottom: 0.375rem;
+        font-size: 0.7rem;
+    }
     
     .incidents {
         display: flex;
-        gap: 0.625rem;
+        flex-wrap: wrap;
+        gap: 0.375rem;
         align-items: center;
-        margin-top: 0.625rem;
+        font-size: 0.7rem;
     }
     
     .checkboxes {
         display: flex;
         gap: 0.25rem;
+        
+        input[type="checkbox"] {
+            width: 0.7rem;
+            height: 0.7rem;
+            margin: 0;
+        }
+    }
+
+    span {
+        &.adapted {
+            margin-left: 0.25rem;
+            margin-right: 0.5rem;
+        }
     }
 `;
 
@@ -293,9 +324,9 @@ const StatisticalDataSection = styled(Section).attrs<any>({
     'data-component': 'Summary/StatisticalDataSection'
 })`
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
-    width: 50%;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0.5rem;
+    width: 45%;
     border: 0.0625rem solid black;
     padding: 0;
     margin: 0;
@@ -306,8 +337,9 @@ const DataSectionsContainer = styled.div.attrs<any>({
     'data-component': 'Summary/DataSectionsContainer'
 })`
     display: flex;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
 `;
 
 const BondsSection = styled.div.attrs<any>({
@@ -323,28 +355,30 @@ const BondRow = styled.div.attrs<any>({
 })`
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 0.625rem;
+    gap: 0.375rem;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 
     input[type="checkbox"] {
-        width: 1rem;
-        height: 1rem;
+        width: 0.8rem;
+        height: 0.8rem;
         margin: 0;
     }
 
     input[type="text"] {
-        width: calc(100% - 1.25rem);
+        width: calc(100% - 0.5rem);
         border: none;
         border-bottom: 0.0625rem solid black;
-        padding: 0.25rem;
+        padding: 0.125rem;
+        font-size: 0.8rem;
     }
 
     input[type="number"] {
-        width: 3rem;
-        padding: 0.25rem;
+        width: 2.5rem;
+        padding: 0.125rem;
         border: 0.0625rem solid black;
-        margin-right: 0.625rem;
+        margin-right: 0.375rem;
+        font-size: 0.8rem;
     }
 `;
 
@@ -543,7 +577,8 @@ export function Summary() {
                                 <span>Attribute</span>
                                 <span>Score</span>
                                 <span>x5</span>
-                                <span>Distinguishing Feature</span>
+                                {/* AJS start here, make this header smaller */}
+                                <span>Distinguishing Features</span>
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
                                 <StatRow key={stat}>
@@ -628,15 +663,15 @@ export function Summary() {
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                     </div>
-                                    <span>adapted</span>
+                                    <span className="adapted">adapted</span>
                                     
-                                    <span style={{ marginLeft: '1.25rem' }}>Helplessness</span>
+                                    <span>Helplessness</span>
                                     <div className="checkboxes">
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                     </div>
-                                    <span>adapted</span>
+                                    <span className="adapted">adapted</span>
                                 </div>
                             </SanityTracker>
                         </div>
