@@ -17,6 +17,14 @@ const CharacterSheet = styled.div.attrs<any>({
     border: 0.125rem solid black;
     padding: 1.25rem;
     background: white;
+
+    @media print {
+        width: 210mm; /* A4 width */
+        height: 297mm; /* A4 height */
+        box-sizing: border-box;
+        padding: 10mm;
+        overflow: hidden;
+    }
 `;
 
 const CensoredHeader = styled.div.attrs<any>({
