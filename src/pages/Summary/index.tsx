@@ -83,7 +83,7 @@ const VerticalHeader = styled.div.attrs<any>({
     padding: 0.5rem 0;
 
     @media print {
-        writing-mode: sideways-lr;
+        writing-mode: vertical-lr;
     }
 `;
 
@@ -246,6 +246,15 @@ const PsychSection = styled(Section).attrs<any>({
         font-size: 0.9em;
         margin-bottom: 0.625rem;
     }
+`;
+
+const SkillsSection = styled(Section).attrs<any>({
+    'data-component': 'Summary/SkillsSection',
+    'data-testid': 'skills-section',
+})`
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
 `;
 
 const TextArea = styled.textarea.attrs<any>({
@@ -428,6 +437,21 @@ const ExportButton = styled(Button).attrs<any>({
     }
 `;
 
+const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
+    <svg width="2rem" height="12rem">
+        <text 
+            x="50%"
+            y="50%"
+            fill="white" 
+            fontSize="0.875rem"
+            textAnchor="middle"
+            dominantBaseline="middle"
+        >
+            {children}
+        </text>
+    </svg>
+);
+
 export function Summary() {
     const { stats, derivedAttributes } = useStats();
     const { skills, profession, calculateSkillValue } = useSkills();
@@ -464,10 +488,7 @@ export function Summary() {
                 
                 <PersonalDataSection>
                     <VerticalHeader>
-                        {/* AJS play with this, it is working-ish */}
-                        <svg width="30" height="100">
-                            <text fill="white" fontSize="10px">Personal Data</text>
-                        </svg>
+                        <VerticalHeaderText>Statistical Data</VerticalHeaderText>
                     </VerticalHeader>
                     <PersonalDataGrid>
                         <FormRow>
@@ -514,7 +535,9 @@ export function Summary() {
 
                 <DataSectionsContainer>
                     <StatisticalDataSection>
-                        <VerticalHeader>Statistical Data</VerticalHeader>
+                        <VerticalHeader>
+                            <VerticalHeaderText>Statistical Data</VerticalHeaderText>
+                        </VerticalHeader>
                         <StatsGrid>
                             <StatsHeaderRow>
                                 <span>Attribute</span>
@@ -562,7 +585,9 @@ export function Summary() {
                     </StatisticalDataSection>
 
                     <PsychSection>
-                        <VerticalHeader>Psychological Data</VerticalHeader>
+                        <VerticalHeader>
+                            <VerticalHeaderText>Psychological Data</VerticalHeaderText>
+                        </VerticalHeader>
                         <div>
                             <BondsSection>
                                 <BondsHeaderRow>
@@ -618,14 +643,23 @@ export function Summary() {
                     </PsychSection>
                 </DataSectionsContainer>
 
-                <SkillsGrid skillCount={skills.length}>
-                    {skills.map((skill) => (
-                        <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
-                            <input type="checkbox" checked={false} />
-                            <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
-                        </SkillItem>
-                    ))}
-                </SkillsGrid>
+                <DataSectionsContainer>
+                    <SkillsSection>
+                        <VerticalHeader>
+                            <VerticalHeaderText>Applicable Skill Sets</VerticalHeaderText>
+                        </VerticalHeader>
+                        <SkillsGrid skillCount={skills.length}>
+                            
+                            {skills.map((skill) => (
+                                <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
+                                    <input type="checkbox" checked={false} />
+                                    <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
+                                </SkillItem>
+                            ))}
+                        </SkillsGrid>
+                        </SkillsSection>
+                    </DataSectionsContainer>
+                
             </CharacterSheet>
             <ExportButton 
                 onClick={handleExport}>
