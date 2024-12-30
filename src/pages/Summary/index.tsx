@@ -15,7 +15,7 @@ const CharacterSheet = styled.div.attrs<any>({
     'data-testid': 'character-sheet',
 })`
     border: 0.125rem solid black;
-    padding: 1.25rem;
+    padding: 0.25rem;
     background: white;
     width: 210mm; /* A4 width */
     height: 297mm; /* A4 height */
@@ -35,10 +35,10 @@ const CensoredHeader = styled.div.attrs<any>({
     'data-testid': 'censored-header',
     'data-component': 'Summary/CensoredHeader'
 })`
-    height: 2.5rem;
+    height: 1.25rem;
     background: black;
-    margin: 0 0 1.25rem 0;
-    width: 20rem;
+    margin: 0 0 0.25rem 0;
+    width: 15rem;
     justify-self: center;
 `;
 
@@ -46,9 +46,7 @@ const Section = styled.div.attrs<any>({
     'data-component': 'Summary/Section',
     'data-testid': 'section',
 })`
-    margin-bottom: 1.25rem;
     border: 0.0625rem solid black;
-    padding: 0.625rem;
 `;
 
 const Grid = styled.div.attrs<any>({
@@ -60,14 +58,29 @@ const Grid = styled.div.attrs<any>({
     gap: 0.625rem;
 `;
 
+const PersonalDataGrid = styled.div.attrs<any>({
+    'data-testid': 'personal-data-grid',
+    'data-component': 'Summary/PersonalDataGrid'
+})`
+    display: grid;
+    grid-template-columns: 1fr;
+`;
+
 const PersonalDataSection = styled(Section).attrs<any>({
     'data-testid': 'personal-data-section',
     'data-component': 'Summary/PersonalDataSection'
 })`
     display: grid;
     grid-template-columns: 1.5rem 1fr;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0.0625rem solid black;
+    border-bottom: none;
+
+    > ${PersonalDataGrid} {
+        padding: 0.125rem;
+    }
 `;
 
 // AJS might have to rethink the vertical header
@@ -85,21 +98,15 @@ const VerticalHeader = styled.div.attrs<any>({
     justify-content: center;
     background: black;
     color: white;
-    padding: 0.25rem 0;
+    padding: 0;
     font-size: 0.8rem;
+    height: 100%;
+    min-height: 0;
+    margin-right: 0.25rem;
 
     @media print {
         writing-mode: vertical-lr;
     }
-`;
-
-const PersonalDataGrid = styled.div.attrs<any>({
-    'data-testid': 'personal-data-grid',
-    'data-component': 'Summary/PersonalDataGrid'
-})`
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.625rem;
 `;
 
 const FormRow = styled.div.attrs<any>({
@@ -108,7 +115,7 @@ const FormRow = styled.div.attrs<any>({
 })`
     display: flex;
     gap: 0.625rem;
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.125rem;
 `;
 
 const FormField = styled.div.attrs<any>({
@@ -153,13 +160,21 @@ const SingleFieldRow = styled(FormRow).attrs<any>({
     'data-component': 'Summary/SingleFieldRow',
     'data-testid': 'single-field-row',
 })`
-    padding-left: 0;
+    padding: 0;
     
     > ${FormField} {
-        padding-right: 0;
+        padding: 0 0.5rem;
+
+        &:first-child {
+            padding-left: 0.0rem;
+        }
+
+        &:last-child {
+            padding-right: 0.5rem;
+        }
 
         textarea {
-            width: calc(100% - 1.25rem);
+            width: 100%;
         }
     }
 `;
@@ -170,8 +185,8 @@ const StatsGrid = styled.div.attrs<any>({
 })`
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.625rem;
-    padding: 0.625rem;
+    gap: 0.125rem;
+    margin: 0.125rem;
 `;
 
 const StatRow = styled.div.attrs<any>({
@@ -193,6 +208,8 @@ const StatRow = styled.div.attrs<any>({
         height: 1.25rem;
         padding: 0 0.125rem;
         font-size: 0.8rem;
+        background: black;
+        border: 0.0625rem solid black;
     }
 
     input[type="number"] {
@@ -212,8 +229,7 @@ const SkillsGrid = styled.div.attrs<any>({
     grid-auto-flow: column;
     grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5rem;
-    margin-top: 0.75rem;
+    gap: 0.25rem;
     font-size: 0.8rem;
 `;
 
@@ -243,15 +259,12 @@ const PsychSection = styled(Section).attrs<any>({
 })`
     display: grid;
     grid-template-columns: 1.5rem 1fr;
-    gap: 0.5rem;
-    width: 55%;
+    gap: 0;
+    width: 50%;
     border: 0.0625rem solid black;
+    border-bottom: none;
     padding: 0;
     margin: 0;
-
-    > div {
-        padding: 0.5rem;
-    }
 
     h3 {
         font-size: 0.7rem;
@@ -266,15 +279,22 @@ const SkillsSection = styled(Section).attrs<any>({
 })`
     display: grid;
     width: 100%;
-    grid-template-columns: 2rem 1fr;
-    gap: 1rem;
+    grid-template-columns: 1.5rem 1fr;
+    gap: 0;
+    margin-bottom: 0;
+    padding: 0;
+    border: 0.0625rem solid black;
+
+    > ${SkillsGrid} {
+        padding: 0.5rem;
+    }
 `;
 
 const TextArea = styled.textarea.attrs<any>({
     'data-component': 'Summary/TextArea',
     'data-testid': 'text-area',
 })`
-    width: calc(100% - 1.25rem);
+    width: 100%;
     min-height: 5rem;
     padding: 0.25rem;
     border: 0.0625rem solid black;
@@ -325,11 +345,20 @@ const StatisticalDataSection = styled(Section).attrs<any>({
 })`
     display: grid;
     grid-template-columns: 1.5rem 1fr;
-    gap: 0.5rem;
-    width: 45%;
+    gap: 0;
+    width: 50%;
     border: 0.0625rem solid black;
+    border-bottom: none;
     padding: 0;
     margin: 0;
+`;
+
+const PhysicalDescriptionSection = styled.div.attrs<any>({
+    'data-testid': 'physical-description-section',
+    'data-component': 'Summary/PhysicalDescriptionSection'
+})`
+    margin-top: 0.25rem;
+    border-top: 0.0625rem solid black;
 `;
 
 const DataSectionsContainer = styled.div.attrs<any>({
@@ -337,16 +366,17 @@ const DataSectionsContainer = styled.div.attrs<any>({
     'data-component': 'Summary/DataSectionsContainer'
 })`
     display: flex;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
     width: 100%;
+    border-bottom: 0.0625rem solid black;
+    margin-bottom: -0.0625rem;
+    margin-top: -0.0625rem;
 `;
 
 const BondsSection = styled.div.attrs<any>({
     'data-testid': 'bonds-section',
     'data-component': 'Summary/BondsSection'
 })`
-    margin: 1.25rem 0;
+    margin: 0.125rem 0;
 `;
 
 const BondRow = styled.div.attrs<any>({
@@ -389,13 +419,22 @@ const HeaderRow = styled.div.attrs<any>({
     display: grid;
     font-size: 0.8em;
     text-transform: uppercase;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.125rem;
 `;
 
 const StatsHeaderRow = styled(HeaderRow)`
-    grid-template-columns: 2fr 1fr 1fr 3fr;
+    grid-template-columns: 2fr 1fr 1fr 2fr;
     gap: 0.625rem;
     padding-right: 0.25rem;
+    align-items: center;
+`;
+
+const StatHeaderLongSpan = styled.span.attrs<any>({
+    'data-component': 'Summary/StatHeaderLongSpan',
+    'data-testid': 'stat-header-long-span'
+})`
+    font-size: 0.7rem;
+    white-space: nowrap;
 `;
 
 const BondsHeaderRow = styled(HeaderRow)`
@@ -413,7 +452,6 @@ const DerivedStatsSection = styled.div.attrs<any>({
     'data-testid': 'derived-stats-section',
     'data-component': 'Summary/DerivedStatsSection'
 })`
-    margin-top: 1.25rem;
     border-top: 0.0625rem solid black;
     padding-top: 0.625rem;
 `;
@@ -427,11 +465,9 @@ const DerivedStatRow = styled.div.attrs<any>({
     gap: 0.625rem;
     align-items: center;
     
-    margin-bottom: 0.25rem;
-    
     label {
         text-transform: uppercase;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 
     input {
@@ -446,8 +482,7 @@ const MMDTextArea = styled(TextArea).attrs<any>({
     'data-testid': 'mmd-text-area',
 })`
     width: calc(100% - 1.25rem);
-    min-height: 5rem;
-    padding: 0.25rem;
+    min-height: 3rem;
     border: 0.0625rem solid black;
     resize: vertical;
 `;
@@ -519,10 +554,9 @@ export function Summary() {
         <PageWrapper>
             <CharacterSheet>
                 <CensoredHeader />
-                
                 <PersonalDataSection>
                     <VerticalHeader>
-                        <VerticalHeaderText>Statistical Data</VerticalHeaderText>
+                        <VerticalHeaderText>Personal Data</VerticalHeaderText>
                     </VerticalHeader>
                     <PersonalDataGrid>
                         <FormRow>
@@ -574,11 +608,11 @@ export function Summary() {
                         </VerticalHeader>
                         <StatsGrid>
                             <StatsHeaderRow>
-                                <span>Attribute</span>
+                                <span>8. Statistics</span>
                                 <span>Score</span>
                                 <span>x5</span>
                                 {/* AJS start here, make this header smaller */}
-                                <span>Distinguishing Features</span>
+                                <StatHeaderLongSpan>Distinguishing Features</StatHeaderLongSpan>
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
                                 <StatRow key={stat}>
@@ -591,7 +625,7 @@ export function Summary() {
 
                             <DerivedStatsSection>
                                 <DerivedStatRow>
-                                    <span></span>
+                                    <label>9. Derived Attributes</label>
                                     <label style={{ fontSize: '0.8em' }}>Current</label>
                                     <label style={{ fontSize: '0.8em' }}>Max</label>
                                 </DerivedStatRow>
@@ -616,6 +650,13 @@ export function Summary() {
                                     <input type="number" value={derivedAttributes?.breakingPoint?.maxValue || 0} />
                                 </DerivedStatRow>
                             </DerivedStatsSection>
+                            <PhysicalDescriptionSection>
+                                <label>10. Physical Description</label>
+                                <MMDTextArea 
+                                    value={""}
+                                    rows={3}
+                                />
+                            </PhysicalDescriptionSection>
                         </StatsGrid>
                     </StatisticalDataSection>
 

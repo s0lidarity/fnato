@@ -49,6 +49,8 @@ function ChooseSkills() {
             setSkills
         } = useSkills();
 
+    // AJS starting point, bug fix
+    // can overwrite skills from profession/bonus skill packages
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
