@@ -15,31 +15,30 @@ const CharacterSheet = styled.div.attrs<any>({
     'data-testid': 'character-sheet',
 })`
     border: 0.125rem solid black;
-    padding: 0.25rem;
     background: white;
-    width: 210mm; /* A4 width */
-    height: 297mm; /* A4 height */
-    margin: 0 auto; /* Center the sheet */
+    padding: 0.3125rem;
+    width: 210mm;
+    height: 296mm;
+    margin: 0 auto;
     box-sizing: border-box;
+    overflow: hidden;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    display: flex;
+    flex-direction: column;
 
     @media print {
         width: 210mm;
-        height: 297mm;
+        height: 296mm;
+        margin: 0;
+        padding: 0.3125rem;
         box-sizing: border-box;
-        padding: 10mm;
         overflow: hidden;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        page-break-before: avoid;
     }
-`;
-
-const CensoredHeader = styled.div.attrs<any>({
-    'data-testid': 'censored-header',
-    'data-component': 'Summary/CensoredHeader'
-})`
-    height: 1.25rem;
-    background: black;
-    margin: 0 0 0.25rem 0;
-    width: 15rem;
-    justify-self: center;
 `;
 
 const Section = styled.div.attrs<any>({
@@ -532,7 +531,6 @@ export function Summary() {
     const handleExport = () => {
         const pdf = document.querySelector('[data-testid="character-sheet"]');
         const opt = {
-            margin: 10,
             filename: 'character-sheet.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { 
@@ -542,9 +540,20 @@ export function Summary() {
             },
             jsPDF: { 
                 unit: 'mm', 
-                format: 'a4',
-                orientation: 'portrait'
-            }
+                format: [210, 296],
+                orientation: 'portrait',
+                compress: true,
+                precision: 2,
+                margins: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                },
+                putOnlyUsedFonts: true,
+                floatPrecision: 16
+            },
+            pagebreak: { mode: 'avoid-all' }
         };
 
         html2pdf().set(opt).from(pdf).save();
@@ -553,7 +562,7 @@ export function Summary() {
     return (
         <PageWrapper>
             <CharacterSheet>
-                <CensoredHeader />
+                {/* <CensoredHeader /> */}
                 <PersonalDataSection>
                     <VerticalHeader>
                         <VerticalHeaderText>Personal Data</VerticalHeaderText>
