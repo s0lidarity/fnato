@@ -1,6 +1,7 @@
 import html2pdf from 'html2pdf.js';
 import styled from 'styled-components';
 import { IoMdPrint } from "react-icons/io";
+import { useEffect } from 'preact/hooks';
 
 import { PageWrapper } from '../../components/SharedStyles';
 import { useStats } from '../../providers/StatisticsContext';
@@ -558,6 +559,23 @@ export function Summary() {
 
         html2pdf().set(opt).from(pdf).save();
     }
+
+    useEffect(() => {
+        const handlePrintCommand = (e: KeyboardEvent) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                handleExport();
+            }
+        };
+
+        // Add event listener
+        window.addEventListener('keydown', handlePrintCommand);
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('keydown', handlePrintCommand);
+        };
+    }, []); // Empty dependency array since handleExport is stable
 
     return (
         <PageWrapper>
