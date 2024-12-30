@@ -694,7 +694,7 @@ export function Summary() {
                         <div>
                             <BondsSection>
                                 <BondsHeaderRow>
-                                    <span>Bonds</span>
+                                    <span>11. Bonds</span>
                                     <span>Score</span>
                                 </BondsHeaderRow>
                                 {bonds.map((bond, index) => (
@@ -717,13 +717,13 @@ export function Summary() {
                                     </BondRow>
                                 ))}
                             </BondsSection>
-                            <h3>Motivations and Mental Disorders</h3>
+                            <h3>12. Motivations and Mental Disorders</h3>
                             <MMDTextArea 
                                 placeholder="List character motivations and any mental disorders..."
                                 value={""}
                             />
                             <SanityTracker>
-                                <h3>Incidents of San Loss Without Going Insane</h3>
+                                <h3>13. Incidents of San Loss Without Going Insane</h3>
                                 <div className="incidents">
                                     <span>Violence</span>
                                     <div className="checkboxes">
