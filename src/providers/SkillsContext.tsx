@@ -35,7 +35,7 @@ type SkillsContextType = {
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
-    setSkills: (skills: Skills) => void;
+    setSkills: (skills: Skills | ((prev: Skills) => Skills)) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
     getSkillById: (id: string) => Skill | undefined;

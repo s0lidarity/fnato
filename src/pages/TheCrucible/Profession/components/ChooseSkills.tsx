@@ -44,7 +44,6 @@ function ChooseSkills() {
         profession, 
         skills, 
         remainingSkillChoices,
-        applyProfessionSkills, 
         setRemainingSkillChoices,
         setSelectedSkillsIds, 
         setSkillById,
