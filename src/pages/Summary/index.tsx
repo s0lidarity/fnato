@@ -30,15 +30,17 @@ const CharacterSheet = styled.div.attrs<any>({
     flex-direction: column;
 
     @media print {
-        width: 210mm;
-        height: 296mm;
         margin: 0;
         padding: 0.3125rem;
+        width: 210mm;
+        height: 296mm;
         box-sizing: border-box;
         overflow: hidden;
         page-break-inside: avoid;
         page-break-after: avoid;
         page-break-before: avoid;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
 `;
 
@@ -113,7 +115,8 @@ const FormRow = styled.div.attrs<any>({
     'data-component': 'Summary/FormRow',
     'data-testid': 'form-row',
 })`
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.625rem;
     margin-bottom: 0.125rem;
 `;
@@ -122,59 +125,38 @@ const FormField = styled.div.attrs<any>({
     'data-component': 'Summary/FormField',
     'data-testid': 'form-field',
 })`
-    flex: 1;
-    padding: 0 0.5rem;
+    display: grid;
+    grid-template-rows: auto 1.25rem;
+    gap: 0.125rem;
     
     label {
-        display: block;
         font-size: 0.7rem;
+        margin-top: 0.25rem;
         text-transform: uppercase;
-        margin-bottom: 0.125rem;
+        white-space: nowrap;
     }
 
     input {
-        width: calc(100% - 0.5rem);
+        height: 1.25rem;
         padding: 0.125rem;
         border: 0.0625rem solid black;
         font-size: 0.8rem;
-    }
-
-    textarea {
-        width: calc(100% - 0.5rem); 
-        padding: 0.125rem;
-        border: 0.0625rem solid black;
-        min-height: 3rem;
-        font-size: 0.8rem;
-    }
-
-    &:first-child {
-        padding-left: 0;
-    }
-
-    &:last-child {
-        padding-right: 0;
     }
 `;
 
-const SingleFieldRow = styled(FormRow).attrs<any>({
-    'data-component': 'Summary/SingleFieldRow',
-    'data-testid': 'single-field-row',
-})`
-    padding: 0;
+const SingleFieldRow = styled(FormRow)`
+    grid-template-columns: 1fr;
     
-    > ${FormField} {
-        padding: 0 0.5rem;
-
-        &:first-child {
-            padding-left: 0.0rem;
-        }
-
-        &:last-child {
-            padding-right: 0.5rem;
-        }
-
+    ${FormField} {
+        grid-template-rows: auto 1fr;
+        
         textarea {
-            width: 100%;
+            height: 1.25rem;
+            width: calc(100% - 0.375rem);
+            padding: 0.125rem;
+            border: 0.0625rem solid black;
+            font-size: 0.8rem;
+            align-self: start;
         }
     }
 `;
@@ -195,13 +177,14 @@ const StatRow = styled.div.attrs<any>({
 })`
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 3fr;
-    gap: 0.5rem;
+    gap: 0.375rem;
     align-items: center;
     font-size: 0.8rem;
     
     label {
         text-transform: uppercase;
         font-size: 0.8em;
+        white-space: nowrap;
     }
 
     input {
@@ -385,7 +368,7 @@ const BondRow = styled.div.attrs<any>({
 })`
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 0.375rem;
+    gap: 0.25rem;
     align-items: center;
     margin-bottom: 0.25rem;
 
@@ -396,11 +379,12 @@ const BondRow = styled.div.attrs<any>({
     }
 
     input[type="text"] {
-        width: calc(100% - 0.5rem);
+        width: 100%;
         border: none;
         border-bottom: 0.0625rem solid black;
         padding: 0.125rem;
         font-size: 0.8rem;
+        box-sizing: border-box;
     }
 
     input[type="number"] {
@@ -453,7 +437,8 @@ const DerivedStatsSection = styled.div.attrs<any>({
     'data-component': 'Summary/DerivedStatsSection'
 })`
     border-top: 0.0625rem solid black;
-    padding-top: 0.625rem;
+    padding-top: 0.375rem;
+    margin-top: 0.375rem;
 `;
 
 const DerivedStatRow = styled.div.attrs<any>({
@@ -461,19 +446,25 @@ const DerivedStatRow = styled.div.attrs<any>({
     'data-component': 'Summary/DerivedStatRow'
 })`
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 0.625rem;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    gap: 0.25rem;
+    align-content: top;
     align-items: center;
+    margin-bottom: 0.125rem;
     
     label {
         text-transform: uppercase;
-        font-size: 0.8em;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        padding-right: 0.25rem;
     }
 
     input {
-        width: 3rem;
-        padding: 0.25rem;
+        width: 2.5rem;
+        height: 1rem;
         border: 0.0625rem solid black;
+        font-size: 0.8rem;
+        text-align: center;
     }
 `;
 
@@ -523,38 +514,26 @@ const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
 
 export function Summary() {
     const { stats, derivedAttributes } = useStats();
-    const { skills, profession, calculateSkillValue } = useSkills();
+    const { skills, BonusSkillPackage, profession, calculateSkillValue } = useSkills();
     const { bonds } = useBonds();
     const { personalDetails } = usePersonalDetails();
 
-
-    // I have learned that this is a pain
     const handleExport = () => {
+        const docName = `${personalDetails?.lastName || ''}-${personalDetails.firstName || ''}-${profession?.name || ''}.pdf`
         const pdf = document.querySelector('[data-testid="character-sheet"]');
         const opt = {
-            filename: 'character-sheet.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
+            filename: docName.length > 2 ? docName : 'character-sheet.pdf',
+            margin: 0,
+            image: { type: 'jpeg' },
             html2canvas: { 
                 scale: 2,
-                useCORS: true,
-                letterRendering: true,
+                useCORS: true
             },
             jsPDF: { 
                 unit: 'mm', 
-                format: [210, 296],
-                orientation: 'portrait',
-                compress: true,
-                precision: 2,
-                margins: {
-                    top: 0,
-                    right: 0,
-                    bottom: 0,
-                    left: 0
-                },
-                putOnlyUsedFonts: true,
-                floatPrecision: 16
-            },
-            pagebreak: { mode: 'avoid-all' }
+                format: 'a4',
+                orientation: 'portrait'
+            }
         };
 
         html2pdf().set(opt).from(pdf).save();
@@ -577,6 +556,19 @@ export function Summary() {
         };
     }, []); // Empty dependency array since handleExport is stable
 
+    let nameDisplay = personalDetails.lastName;
+    if (personalDetails.firstName) {
+        nameDisplay += `, ${personalDetails.firstName}`;
+        if (personalDetails.middleInitial) {
+            nameDisplay += `, ${personalDetails.middleInitial}`;
+        }
+    }
+
+    let professionDisplay = profession?.name;
+    if(BonusSkillPackage?.name){
+        professionDisplay = `${profession?.name} (${BonusSkillPackage?.name})`;
+    }
+    
     return (
         <PageWrapper>
             <CharacterSheet>
@@ -589,11 +581,11 @@ export function Summary() {
                         <FormRow>
                             <FormField>
                                 <label>1. Last Name, First Name, Middle Initial</label>
-                                <input type="text" value={`${personalDetails.lastName || ''} ${personalDetails.firstName || ''} ${personalDetails.middleInitial || ''}`} />
+                                <input type="text" value={nameDisplay} />
                             </FormField>
                             <FormField>
                                 <label>2. Profession (Rank if Applicable)</label>
-                                <input type="text" value={profession?.name || ''} />
+                                <input type="text" value={professionDisplay || ''} />
                             </FormField>
                         </FormRow>
                         <FormRow>
