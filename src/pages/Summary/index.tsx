@@ -193,6 +193,7 @@ const StatRow = styled.div.attrs<any>({
         font-size: 0.8rem;
         background: black;
         border: 0.0625rem solid black;
+        text-align: center;
     }
 
     input[type="number"] {
@@ -378,21 +379,24 @@ const BondRow = styled.div.attrs<any>({
         margin: 0;
     }
 
-    input[type="text"] {
-        width: 100%;
-        border: none;
-        border-bottom: 0.0625rem solid black;
-        padding: 0.125rem;
+    input[type="text"],
+    input[type="number"] {
+        height: 1.25rem;
+        padding: 0 0.125rem;
+        border: 0.0625rem solid black;
         font-size: 0.8rem;
         box-sizing: border-box;
     }
 
+    input[type="text"] {
+        width: 100%;
+        margin-right: 0.375rem;
+    }
+
     input[type="number"] {
         width: 2.5rem;
-        padding: 0.125rem;
-        border: 0.0625rem solid black;
         margin-right: 0.375rem;
-        font-size: 0.8rem;
+        text-align: center;
     }
 `;
 
@@ -461,7 +465,8 @@ const DerivedStatRow = styled.div.attrs<any>({
 
     input {
         width: 2.5rem;
-        height: 1rem;
+        height: 1.25rem;
+        padding: 0.125rem;
         border: 0.0625rem solid black;
         font-size: 0.8rem;
         text-align: center;
@@ -472,7 +477,7 @@ const MMDTextArea = styled(TextArea).attrs<any>({
     'data-component': 'Summary/MMDTextArea',
     'data-testid': 'mmd-text-area',
 })`
-    width: calc(100% - 1.25rem);
+    width: calc(100% - 0.75rem);
     min-height: 3rem;
     border: 0.0625rem solid black;
     resize: vertical;
