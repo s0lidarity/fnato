@@ -5,6 +5,7 @@ import { Checkbox, GroupBox, Button } from 'react95';
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
+import { createSkillId } from '../../../../utils/Professions';
 
 const StyledGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-skills-group',
@@ -38,17 +39,19 @@ function ChooseSkills() {
     // need to track chosen skills and remaining choices
     const [showNoChoicesWarning, setShowNoChoicesWarning] = useState(false);
     const { 
-            selectedSkillsIds, 
-            profession, 
-            skills, 
-            remainingSkillChoices,
-            applyProfessionSkills, 
-            setRemainingSkillChoices,
-            setSelectedSkillsIds, 
-            setSkillById,
-            setSkills
+        BonusSkillPackage,
+        selectedSkillsIds, 
+        profession, 
+        skills, 
+        remainingSkillChoices,
+        setRemainingSkillChoices,
+        setSelectedSkillsIds, 
+        setSkillById,
+        setSkills
         } = useSkills();
 
+    // AJS starting point, bug fix
+    // adding foreign language from choose skills did not work as expected
     const toggleSkill = (skillId: string) => {
         if (selectedSkillsIds.includes(skillId)) {
             const skillToRemove = profession?.choosableSkills.find(s => s.id === skillId);
@@ -57,37 +60,41 @@ function ChooseSkills() {
                 return;
             }
 
-            // If this is a subtyped skill that was added (not in profession skills)
-            const isProfessionSkill = profession?.professionalSkills.some(ps => 
-                ps.name === skillToRemove.name && 
-                ps.subType === skillToRemove.subType
+            // Check if skill is from profession or bonus package
+            const isProfessionSkill = profession?.professionalSkills.some(ps => ps.id === skillId);
+            const isBonusPackageSkill = BonusSkillPackage?.skills.some(bs => 
+                createSkillId(bs.skillName, bs.subType) === skillId
             );
 
-            if (!isProfessionSkill && skillToRemove.subType) {
-                // Remove the skill entirely from context
-                const newSkills = skills.filter(s => 
-                    !(s.name === skillToRemove.name && s.subType === skillToRemove.subType)
-                );
-                setSkills(newSkills);
-            } else {
-                // Reset to default value if it's not a subtyped skill or is in profession skills
-                const defaultSkill = DEFAULT_SKILLS.find(s => 
-                    s.name === skillToRemove.name && (!s.subType || s.subType === skillToRemove.subType)
-                );
-
-                if(defaultSkill){
-                    setSkillById(skillId, { value: defaultSkill.value });
+            // Only modify the skill if it's not from profession or bonus package
+            if (!isProfessionSkill && !isBonusPackageSkill) {
+                if (skillToRemove.subType) {
+                    // Remove subtyped skill entirely if it was added by choice
+                    const newSkills = skills.filter(s => s.id !== skillId);
+                    setSkills(newSkills);
+                } else {
+                    // Reset to default value if it's a base skill
+                    const defaultSkill = DEFAULT_SKILLS.find(s => s.name === skillToRemove.name);
+                    if(defaultSkill){
+                        setSkillById(skillId, { value: defaultSkill.value });
+                    }
                 }
             }
             
             setSelectedSkillsIds((prev: string[]) => prev.filter((id: string) => id !== skillId));
             setRemainingSkillChoices(prev => prev + 1);
         } else if (remainingSkillChoices > 0) {
-            // apply profession skill if we have choices remaining
-            const skillToApply = profession.choosableSkills.find(s => s.id === skillId);
+            // Add single skill without affecting other skills
+            const skillToApply = profession?.choosableSkills.find(s => s.id === skillId);
             if (skillToApply) {
-                applyProfessionSkills([skillToApply]);
-                setSelectedSkillsIds(prev => [...prev, skillToApply.id]);
+                if (skillToApply.subType) {
+                    // For subtyped skills, add as new skill
+                    setSkills(prev => [...prev, skillToApply].sort((a, b) => a.name.localeCompare(b.name)));
+                } else {
+                    // For base skills, update existing skill
+                    setSkillById(skillId, { value: skillToApply.value });
+                }
+                setSelectedSkillsIds(prev => [...prev, skillId]);
                 setRemainingSkillChoices(prev => prev - 1);
             }
         } else if (remainingSkillChoices <= 0) {

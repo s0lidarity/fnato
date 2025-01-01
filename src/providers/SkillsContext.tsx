@@ -1,16 +1,16 @@
-import { createContext } from 'preact';
 import { useContext, useState } from 'preact/hooks';
+import { createContext } from 'preact';
 
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
 import { bondCountSignal } from '../signals/bondSignal';
+import { createSkillId } from '../utils/Professions';
 
-
-type SKillsContextType = {
+type SkillsContextType = {
     // State values
     bonusPointsRemaining: number;
     BonusSkillPackage: IBonusSkillPackage | null;
@@ -31,15 +31,17 @@ type SKillsContextType = {
     clearBonusSkillPackage: () => void;
     resetAllBonusPoints: () => void;
     resetSkills: () => void;
+    setBonusPointsRemaining: (bonusPointsRemaining: number) => void;
     setProfession: (profession: IProfession) => void;
     setRemainingSkillChoices: (remainingSkillChoices: number | ((prev: number) => number)) => void;
     setSelectedSkillsIds: (selectedSkillsIds: string[] | ((prev: string[]) => string[])) => void;
-    setSkills: (skills: Skills) => void;
+    setSkills: (skills: Skills | ((prev: Skills) => Skills)) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
+    getSkillById: (id: string) => Skill | undefined;
 }
 
-const SkillsContext = createContext<SKillsContextType | undefined>(undefined);
+const SkillsContext = createContext<SkillsContextType | undefined>(undefined);
 
 const defaultSkills = generateDefaultSkills();
 
@@ -60,104 +62,66 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const [skillPointsRemaining, setSkillPointsRemaining] = useState(DEFAULT_SKILL_POINTS);
     const [config, setConfig] = useState<ProfessionConfigOptions>(ProfessionConfigOptions.StandardProfessions);
     const [remainingSkillChoices, setRemainingSkillChoices] = useState(profession?.chosenSkillCount || 0);
+    
+    // Helper Functions
     const getSkillProperty = (skillId: string, property: keyof Skill): any => {
         const skill = skills.find(s => s.id === skillId);
         if (!skill) return null;
         return skill[property];
     };
     
-    const setSkillById = (skillId: string, skillUpdate: Partial<Skill>):boolean => {
-        const si = skills.findIndex(s => s.id === skillId);
-        if(si !== -1){
-            const newSkills = [...skills];
-            newSkills[si] = {
-                ...newSkills[si],
-                ...skillUpdate,
-            };
+    const setSkillById = (skillId: string, skillUpdate: Partial<Skill>): boolean => {
+        const index = skills.findIndex(s => s.id === skillId);
+        if(index !== -1){
+            const updatedSkill = { ...skills[index], ...skillUpdate };
+            const newSkills = [
+                ...skills.slice(0, index),
+                updatedSkill,
+                ...skills.slice(index + 1)
+            ];
             setSkills(newSkills);
             return true;
         }
         console.warn(`Skill with id: ${skillId} not found`);
         return false;
     };
-    
-    // AJS refactor opportunity, move this to a util function
-    const calculateRemainingBonusPoints = () => {
-        if(!skills.length) return MAX_BONUS_POINTS;
-        const total = skills.reduce((acc, s) => {
-            if(s.bonus){
-                acc += s.bonus;
-            }
-            return acc;
-        }, 0);
-        return MAX_BONUS_POINTS - total;
-    };
+
 
     const changeConfig = (newConfig: ProfessionConfigOptions) => {
-        if(newConfig === ProfessionConfigOptions.CustomProfessions){
-            setSelectedSkillsIds([]);
-            applyProfessionSkills([]);
-            bondCountSignal.value = DEFAULT_BONDS;
-        }
+        setSelectedSkillsIds([]);
+        applyProfessionSkills([]);
+        resetAllBonusPoints();
+        bondCountSignal.value = DEFAULT_BONDS;
         setConfig(newConfig);
     }
 
-    // AJS refactor move this to a util function for testing convenience
-    const calculateSkillValue = (skillId: string): number => {
-        const skillValue = Number(getSkillProperty(skillId, 'value'));
-        const bonusValue = Number(getSkillProperty(skillId, 'bonus')) * 20;
-        const calculatedValue = skillValue + bonusValue;
-        
-        return DEFAULT_TOTAL_CAP < calculatedValue ? DEFAULT_TOTAL_CAP : calculatedValue;
-    }
+    // AJS starting point, bonus is applied wrong needs to be based off of config as well
+    const calculateSkillValue = (skillId: string, currentSkills?: Skills): number => {
+        const skillsToUse = currentSkills || skills;
 
-    const applyBonusSkillPackage = (bsp: IBonusSkillPackage) => {
-        setBonusSkillPackage(bsp);
-        const updatedSkills = [...skills];
+        const skill = skillsToUse.find(s => s.id === skillId);
+        if (!skill) {
+            console.warn(`Skill not found for ID: ${skillId}`);
+            return 0;
+        }
+        let total = 0;
+        switch(config){
+            case ProfessionConfigOptions.StandardProfessions:
+                total = skill.value + (skill.bonus * DEFAULT_BONUS_VALUE);
+                break;
+            case ProfessionConfigOptions.CustomProfessions:
+                const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
+                total = baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE);
+                break;
+        }
 
-        bsp.skills.forEach(skill => {
-            const nameMatches = updatedSkills.some(s => s.name === skill.skillName);
-            const hasSubType = skill.subType !== undefined;
-            const subTypeMatches = updatedSkills.some(s => s.name === skill.skillName && s.subType === skill.subType);
-
-            if(nameMatches && !hasSubType || (subTypeMatches)) {
-                const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName && s.subType === skill.subType);
-                if(skillIndex !== -1){
-                    updatedSkills[skillIndex].bonus = 1;
-                }
-            }
-
-            // if name matches, but subtype doesn't match, check the skill value of the name matching skill
-            if(nameMatches && !subTypeMatches){
-                const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName);
-                // if no points are allocated there, update the subtype of the skill in context to match the one from the bonus package
-                if(updatedSkills[skillIndex].value !== DEFAULT_SKILLS.find(s => s.name === skill.skillName)?.value){
-                    if(skillIndex !== -1){
-                        updatedSkills[skillIndex].bonus = 1;
-                        updatedSkills[skillIndex].subType = skill.subType;
-                    }
-                // if points are allocated there, add another skill with the name and subtype from the bonus package
-                } else {
-                    const newSkill = {
-                        ...DEFAULT_SKILLS.find(s => s.name === skill.skillName),
-                        bonus: 1,
-                        subType: skill.subType
-                    };
-                    updatedSkills.push(newSkill);
-                }
-            }
-        });
-
-        const sortedSkills = updatedSkills.sort((a, b) => a.name.localeCompare(b.name));
-        setSkills(sortedSkills);
-        setBonusPointsRemaining(bsp.personalSpecialties);
-    }
+        return Math.min(DEFAULT_TOTAL_CAP, total);
+    };
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
         const currentBonus = typeof getSkillProperty(skillId, 'bonus') === 'number' ? getSkillProperty(skillId, 'bonus') : 0;
         const pointDifference = Number(newBonus) - Number(currentBonus);
         
-        // Check if we have enough points (only when increasing)
         if (pointDifference > 0 && bonusPointsRemaining - pointDifference < 0) {
             return false;
         }
@@ -175,83 +139,131 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonusPointsRemaining(MAX_BONUS_POINTS);
     };
 
-    
-    const applyProfessionSkills = (professionSkills: Skill[]) => {
-        // Start with default skills that don't match any profession skills
-        const newSkills = defaultSkills.filter(defaultSkill => 
-            !professionSkills.some(ps => ps.name === defaultSkill.name)
-        );
+    const applyBonusSkillPackage = (bsp: IBonusSkillPackage) => {
+        setBonusSkillPackage(bsp);
+        const updatedSkills = [...skills];
 
-        // First add all profession skills
-        professionSkills.forEach(profSkill => {
-            // Check if we already added this exact skill (same name and subtype)
-            const alreadyAdded = newSkills.some(s => 
-                s.name === profSkill.name && 
-                s.subType === profSkill.subType
-            );
-            
-            if (!alreadyAdded) {
-                newSkills.push(profSkill);
+        bsp.skills.forEach(skill => {
+            const nameMatches = updatedSkills.some(s => s.name === skill.skillName);
+            const hasSubType = skill.subType !== undefined;
+            const subTypeMatches = updatedSkills.some(s => s.name === skill.skillName && s.subType === skill.subType);
+
+            if((nameMatches && !hasSubType) || subTypeMatches) {
+                const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName && s.subType === skill.subType);
+                if(skillIndex !== -1){
+                    updatedSkills[skillIndex].bonus = 1;
+                }
             }
-        });
 
-        // Then add any chosen skills that have different subtypes
-        skills.forEach(chosenSkill => {
-            const isChosen = chosenSkill.value !== DEFAULT_SKILLS.find(ds => ds.name === chosenSkill.name)?.value;
-            const matchingProfSkill = professionSkills.find(ps => 
-                ps.name === chosenSkill.name && 
-                ps.subType === chosenSkill.subType
-            );
-            
-            // If it's a chosen skill and doesn't match any profession skill exactly (name + subtype)
-            if (isChosen && !matchingProfSkill) {
-                const alreadyAdded = newSkills.some(s => 
-                    s.name === chosenSkill.name && 
-                    s.subType === chosenSkill.subType
-                );
-                
-                if (!alreadyAdded) {
-                    newSkills.push(chosenSkill);
+            if(nameMatches && !subTypeMatches){
+                const skillIndex = updatedSkills.findIndex(s => s.name === skill.skillName);
+                if(updatedSkills[skillIndex].value !== DEFAULT_SKILLS.find(s => s.name === skill.skillName)?.value){
+                    if(skillIndex !== -1){
+                        updatedSkills[skillIndex].bonus = 1;
+                        updatedSkills[skillIndex].subType = skill.subType;
+                    }
+                } else {
+                    const newSkill = {
+                        ...DEFAULT_SKILLS.find(s => s.name === skill.skillName),
+                        bonus: 1,
+                        subType: skill.subType
+                    };
+                    updatedSkills.push(newSkill);
                 }
             }
         });
 
-        const sortedSkills = newSkills.sort((a, b) => a.name.localeCompare(b.name));
+        updatedSkills.sort((a, b) => a.name.localeCompare(b.name));
+        setSkills(updatedSkills);
+        setBonusPointsRemaining(bsp.personalSpecialties);
+    }
 
-        setBonusPointsRemaining(MAX_BONUS_POINTS);
+    const applyProfessionSkills = (professionSkills: Skill[]) => {
+        // Start with default skills to ensure we have a clean base
+        const updatedSkills = [...defaultSkills];
+        
+        professionSkills.forEach(profSkill => {
+            if (profSkill.subType) {
+                // For subtyped skills, we need to create a new skill entry
+                const baseSkill = defaultSkills.find(s => 
+                    s.name.toLowerCase() === profSkill.name.toLowerCase()
+                );
+                
+                if (!baseSkill) {
+                    console.warn(`No base skill found for ${profSkill.name}`);
+                    return;
+                }
+
+                const skillId = createSkillId(profSkill.name, profSkill.subType);
+                
+                // Remove any existing skill with the same ID
+                const existingIndex = updatedSkills.findIndex(s => s.id === skillId);
+                if (existingIndex !== -1) {
+                    updatedSkills.splice(existingIndex, 1);
+                }
+
+                // Add the new subtyped skill
+                updatedSkills.push({
+                    ...baseSkill,
+                    id: skillId,
+                    subType: profSkill.subType,
+                    value: profSkill.value,
+                    bonus: 0
+                });
+            } else {
+                // For regular skills, update the existing entry
+                const existingIndex = updatedSkills.findIndex(s => s.id === profSkill.id);
+                if (existingIndex !== -1) {
+                    updatedSkills[existingIndex] = {
+                        ...updatedSkills[existingIndex],
+                        value: profSkill.value,
+                        bonus: 0
+                    };
+                }
+            }
+        });
+
+        // Sort skills
+        const sortedSkills = updatedSkills.sort((a, b) => {
+            const nameCompare = a.name.localeCompare(b.name);
+            if (nameCompare !== 0) return nameCompare;
+            
+            if (!a.subType && !b.subType) return 0;
+            if (!a.subType) return -1;
+            if (!b.subType) return 1;
+            return a.subType.localeCompare(b.subType);
+        });
+
         setSkills(sortedSkills);
-        setBonusPointsRemaining(calculateRemainingBonusPoints());
+        return sortedSkills;
     };
 
     const changeProfession = (profession: IProfession) => {
         setSelectedSkillsIds([]);
         setProfession(profession);
-        applyProfessionSkills(profession.professionalSkills);
         setRemainingSkillChoices(profession.chosenSkillCount);
+        
+        // Apply new profession skills
+        const newSkills = applyProfessionSkills(profession.professionalSkills);
+        
+        return newSkills;
     };
 
     const clearBonusSkillPackage = () => {
-        // Create updated skills array with cleared bonuses and remove unused subtyped skills
         const updatedSkills = skills.filter(skill => {
-            // Always keep skills that are in DEFAULT_SKILLS with their subtypes
             const defaultSkillWithSubtype = DEFAULT_SKILLS.find(ds => 
                 ds.name === skill.name && ds.subType === skill.subType
             );
-            
-            // Keep the skill if:
-            // 1. It exists in DEFAULT_SKILLS with the same subtype, or
-            // 2. It has no subtype, or
-            // 3. It has been manually modified (value different from default)
+
             const defaultSkill = DEFAULT_SKILLS.find(ds => ds.name === skill.name);
             const isDefaultValue = skill.value === defaultSkill?.value;
-            
+
             return defaultSkillWithSubtype || !skill.subType || !isDefaultValue;
         }).map(skill => ({
             ...skill,
             bonus: 0
         }));
         
-        // Update all state at once
         setSkills(updatedSkills);
         setBonusSkillPackage(null);
         setBonusPointsRemaining(MAX_BONUS_POINTS);
@@ -265,6 +277,10 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         setSkills(newSkills);
         setBonusPointsRemaining(MAX_BONUS_POINTS);
         setBonusSkillPackage(null);
+    };
+
+    const getSkillById = (id: string): Skill | undefined => {
+        return skills.find(s => s.id === id);
     };
 
     return (
@@ -287,12 +303,14 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 clearBonusSkillPackage,
                 resetAllBonusPoints,
                 resetSkills,
+                setBonusPointsRemaining,
                 setProfession,
                 setRemainingSkillChoices,
                 setSelectedSkillsIds,
                 setSkills,
                 setSkillById,
                 setSkillPointsRemaining,
+                getSkillById,
             }}>
             {children}
         </SkillsContext.Provider>

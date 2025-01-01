@@ -1,4 +1,3 @@
-import h from 'preact';
 import styled from 'styled-components';
 import { Anchor, GroupBox } from 'react95';
 import Accordion from '../../components/Accordion/Accordion';

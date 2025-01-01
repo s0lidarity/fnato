@@ -14,7 +14,11 @@
 		"paths": {
 			"react": ["./node_modules/preact/compat/"],
 			"react-dom": ["./node_modules/preact/compat/"]
-		}
+		},
+		"typeRoots": [
+			"./node_modules/@types",
+			"./src/types"
+		]
 	},
 	"include": ["node_modules/vite/client.d.ts", "**/*"]
 }

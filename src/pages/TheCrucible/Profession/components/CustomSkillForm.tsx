@@ -133,7 +133,7 @@ function CustomSkillForm() {
             <SkillFormContainer>
                 {skills.map((s) => (
                     <CustomSkillInput
-                        key={s.id}
+                        key={`${s.id}-${s.name}-${s.subType}`}
                         skill={s}
                         maxValue={DEFAULT_MAX_SKILL_VALUE}
                     />

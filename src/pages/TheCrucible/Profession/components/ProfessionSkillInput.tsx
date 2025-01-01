@@ -123,7 +123,7 @@ function ProfessionSkillInput({
 }: SkillInputProps) {
     const { 
         adjustBonus, 
-        calculateSkillValue, 
+        calculateSkillValue,
         setSkillById, 
         bonusPointsRemaining 
     } = useSkills();

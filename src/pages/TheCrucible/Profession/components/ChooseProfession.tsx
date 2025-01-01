@@ -7,6 +7,7 @@ import ProfessionChoices from './ProfessionChoices';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import BonusSkillPackageChoices from './BonusSkillPackageChoices';
 import { bondCountSignal } from '../../../../signals/bondSignal';
+import { MAX_BONUS_POINTS } from '../../../../constants/gameRules';
 
 const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-profession-group-box',
@@ -82,7 +83,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 
 function ChooseProfession() {
-    const { applyProfessionSkills, clearBonusSkillPackage, profession, changeProfession, resetAllBonusPoints } = useSkills();
+    const { profession, changeProfession, setBonusPointsRemaining } = useSkills();
 
     const generateProfessionOptions = () => {
         const options = [];
@@ -92,12 +93,16 @@ function ChooseProfession() {
         return options;
     };
 
-    const handleProfessionSelect = (professionName: string) => {
+    const handleProfessionSelect = async (professionName: string) => {
         const newProfession = professions.find((p) => p.name === professionName);
-        changeProfession(newProfession);
-        clearBonusSkillPackage();
-        applyProfessionSkills(newProfession.professionalSkills);
-        resetAllBonusPoints();
+        await changeProfession(newProfession);
+        // AJS starting point don't forget to clear the bonus skill package
+        // clearBonusSkillPackage();
+        // AJS starting point, reset the bonus points while clearing the bonus skill package
+        // this seems to be what was resetting state after applying a new profession
+        // resetAllBonusPoints();
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
+        // AJS need to make bonus point package null again here
         bondCountSignal.value = newProfession.bondCount;
     };
 

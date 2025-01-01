@@ -29,6 +29,8 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const [stats, setStats] = useState<Statistics>(defaultStats);
     const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(calculateDerivedAttributes(defaultStats));
     const [config, setConfig] = useState<StatsConfigOptions>(StatsConfigOptions.ManualInput);
+
+    // AJS TODO, don't maintain derivedAttributes in state, just calculate on demand
     useEffect(() => {
         const newDerivedAttributes = calculateDerivedAttributes(stats);
         setDerivedAttributes(newDerivedAttributes);
