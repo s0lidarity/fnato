@@ -1,6 +1,6 @@
 import h from 'preact';
 
-export function Equipment() {
+function Equipment() {
 	return (
         <div>
             <h1>Equipment</h1>
