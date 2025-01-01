@@ -85,7 +85,6 @@ const PersonalDataSection = styled(Section).attrs<any>({
     }
 `;
 
-// AJS might have to rethink the vertical header
 const VerticalHeader = styled.div.attrs<any>({
     'data-testid': 'vertical-header',
     'data-component': 'Summary/VerticalHeader'
@@ -205,6 +204,34 @@ const StatRow = styled.div.attrs<any>({
     }
 `;
 
+const SkillsSection = styled(Section).attrs<any>({
+    'data-testid': 'skills-section',
+    'data-component': 'Summary/SkillsSection'
+})`
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2rem 1fr;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0.0625rem solid black;
+    border-top: none;
+
+    > div {
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    ${VerticalHeader} {
+        height: 100%;
+        width: 1.25rem;
+        margin: 0;
+        padding: 0;
+    }
+`;
+
 const SkillsGrid = styled.div.attrs<any>({
     'data-component': 'Summary/SkillsGrid',
     'data-testid': 'skills-grid',
@@ -213,8 +240,16 @@ const SkillsGrid = styled.div.attrs<any>({
     grid-auto-flow: column;
     grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.25rem;
+    gap: 0.125rem;
     font-size: 0.8rem;
+`;
+
+const SkillsLabel = styled.label.attrs<any>({
+    'data-component': 'Summary/SkillsLabel',
+    'data-testid': 'skills-label',
+})`
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
 `;
 
 const SkillItem = styled.div.attrs<any>({
@@ -235,6 +270,13 @@ const SkillItem = styled.div.attrs<any>({
     span {
         font-size: 0.8rem;
     }
+
+    label {
+        font-size: 0.7rem;
+        margin: 0.25rem;
+        padding: 0.25rem;
+        text-wrap: pretty;
+    }
 `;
 
 const PsychSection = styled(Section).attrs<any>({
@@ -254,23 +296,6 @@ const PsychSection = styled(Section).attrs<any>({
         font-size: 0.7rem;
         text-transform: uppercase;
         margin-bottom: 0.375rem;
-    }
-`;
-
-const SkillsSection = styled(Section).attrs<any>({
-    'data-component': 'Summary/SkillsSection',
-    'data-testid': 'skills-section',
-})`
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1.5rem 1fr;
-    gap: 0;
-    margin-bottom: 0;
-    padding: 0;
-    border: 0.0625rem solid black;
-
-    > ${SkillsGrid} {
-        padding: 0.5rem;
     }
 `;
 
@@ -352,8 +377,7 @@ const DataSectionsContainer = styled.div.attrs<any>({
     display: flex;
     width: 100%;
     border-bottom: 0.0625rem solid black;
-    margin-bottom: -0.0625rem;
-    margin-top: -0.0625rem;
+    border-top: none;
 `;
 
 const BondsSection = styled.div.attrs<any>({
@@ -361,6 +385,11 @@ const BondsSection = styled.div.attrs<any>({
     'data-component': 'Summary/BondsSection'
 })`
     margin: 0.125rem 0;
+
+    label {
+        font-size: 0.7rem;
+        margin-bottom: 0.25rem;
+    }
 `;
 
 const BondRow = styled.div.attrs<any>({
@@ -677,7 +706,7 @@ export function Summary() {
                             <PhysicalDescriptionSection>
                                 <label>10. Physical Description</label>
                                 <MMDTextArea 
-                                    value={""}
+                                    value={personalDetails.appearance || ""}
                                     rows={3}
                                 />
                             </PhysicalDescriptionSection>
@@ -712,7 +741,11 @@ export function Summary() {
                                             aria-label={`Bond ${index + 1} score`}
                                         />
                                     </BondRow>
+                                    // AJS starting point, add reminder text about purpose of checbox
                                 ))}
+                                <label>
+                                    Check a Bond’s box when projecting sanity damage
+                                </label>
                             </BondsSection>
                             <h3>12. Motivations and Mental Disorders</h3>
                             <MMDTextArea 
@@ -748,17 +781,21 @@ export function Summary() {
                         <VerticalHeader>
                             <VerticalHeaderText>Applicable Skill Sets</VerticalHeaderText>
                         </VerticalHeader>
-                        <SkillsGrid skillCount={skills.length}>
-                            
-                            {skills.map((skill) => (
-                                <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
-                                    <input type="checkbox" checked={false} />
-                                    <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
-                                </SkillItem>
-                            ))}
-                        </SkillsGrid>
-                        </SkillsSection>
-                    </DataSectionsContainer>
+                        <div>
+                            <SkillsGrid skillCount={skills.length}>
+                                {skills.map((skill) => (
+                                    <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
+                                        <input type="checkbox" checked={false} />
+                                        <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
+                                    </SkillItem>
+                                ))}
+                            </SkillsGrid>
+                            <SkillsLabel>
+                                Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check.
+                            </SkillsLabel>
+                        </div>
+                    </SkillsSection>
+                </DataSectionsContainer>
                 
             </CharacterSheet>
             <ExportButton 
