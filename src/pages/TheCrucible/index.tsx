@@ -7,9 +7,10 @@ import { PiCookingPotFill } from "react-icons/pi";
 import Statistics from './Statistics/Statistics';
 import Profession from './Profession';
 import PersonalDetails from './PersonalDetails';
-import Equipment from './Equipment';
 import Bonds from './Bonds';
 import { PageWrapper } from '../../components/SharedStyles';
+import Dossier from './Dossier';
+import ArrowNavigators from './components/ArrowNavigators';
 
 const StyledWindow = styled(Window)`
     width: 100%;
@@ -43,7 +44,7 @@ export function TheCrucible() {
                         <Tab value={1}>Profession & Skills</Tab>
                         <Tab value={2}>Bonds</Tab>
                         <Tab value={3}>Personal Details</Tab>
-                        <Tab value={4}>Equipment</Tab>
+                        <Tab value={4}>Dossier</Tab>
                         
                     </Tabs>
                     <TabBody>
@@ -51,11 +52,12 @@ export function TheCrucible() {
                         {activeTab === 1 && <Profession />}
                         {activeTab === 2 && <Bonds />}
                         {activeTab === 3 && <PersonalDetails />}
-                        {activeTab === 4 && <Equipment />}
+                        {activeTab === 4 && <Dossier />}
                         
                     </TabBody>
-                    {/* when tab complete, have option to advance to next incomplete tab */}
                 </WindowContent>
+                {/* AJS TODO clean up the magic number, let's put the tabs in an array and use the length */}
+                <ArrowNavigators activeTab={activeTab} setActiveTab={setActiveTab} maxTab={4} />
             </StyledWindow>
         </PageWrapper>
     )

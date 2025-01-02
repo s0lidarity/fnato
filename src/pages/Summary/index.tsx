@@ -664,7 +664,6 @@ export function Summary() {
                                 <span>8. Statistics</span>
                                 <span>Score</span>
                                 <span>x5</span>
-                                {/* AJS start here, make this header smaller */}
                                 <StatHeaderLongSpan>Distinguishing Features</StatHeaderLongSpan>
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
