@@ -678,6 +678,7 @@ export function Summary() {
                             <DerivedStatsSection>
                                 <DerivedStatRow>
                                     <label>9. Derived Attributes</label>
+                                    {/* // AJS todo, ffs put this in tye styled component */}
                                     <label style={{ fontSize: '0.8em' }}>Current</label>
                                     <label style={{ fontSize: '0.8em' }}>Max</label>
                                 </DerivedStatRow>
