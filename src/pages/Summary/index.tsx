@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
 
-import { PageWrapper } from '../../components/SharedStyles';
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
@@ -531,6 +530,14 @@ const ExportButton = styled(Button).attrs<any>({
     }
 `;
 
+export const ButtonsContainer = styled.div.attrs<any>({
+    'data-component': 'Summary/ButtonsContainer',
+    'data-testid': 'buttons-container',
+})`
+    display: flex;
+    justify-content: center;
+`;
+
 const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
     <svg width="2rem" height="12rem">
         <text 
@@ -604,9 +611,8 @@ export function Summary() {
     }
     
     return (
-        <PageWrapper>
+        <div>
             <CharacterSheet>
-                {/* <CensoredHeader /> */}
                 <PersonalDataSection>
                     <VerticalHeader>
                         <VerticalHeaderText>Personal Data</VerticalHeaderText>
@@ -664,7 +670,6 @@ export function Summary() {
                                 <span>8. Statistics</span>
                                 <span>Score</span>
                                 <span>x5</span>
-                                {/* AJS start here, make this header smaller */}
                                 <StatHeaderLongSpan>Distinguishing Features</StatHeaderLongSpan>
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
@@ -679,6 +684,7 @@ export function Summary() {
                             <DerivedStatsSection>
                                 <DerivedStatRow>
                                     <label>9. Derived Attributes</label>
+                                    {/* // AJS todo, ffs put this in tye styled component */}
                                     <label style={{ fontSize: '0.8em' }}>Current</label>
                                     <label style={{ fontSize: '0.8em' }}>Max</label>
                                 </DerivedStatRow>
@@ -796,13 +802,14 @@ export function Summary() {
                         </div>
                     </SkillsSection>
                 </DataSectionsContainer>
-                
             </CharacterSheet>
-            <ExportButton 
-                onClick={handleExport}>
-                    Export as PDF <IoMdPrint />
-            </ExportButton>
-        </PageWrapper>
+            <ButtonsContainer>
+                <ExportButton 
+                    onClick={handleExport}>
+                        Export as PDF <IoMdPrint />
+                </ExportButton>
+            </ButtonsContainer>
+        </div>
     );
 }
 
