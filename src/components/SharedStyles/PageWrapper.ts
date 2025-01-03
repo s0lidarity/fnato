@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-const PageWrapper = styled.div`
+const PageWrapper = styled.div.attrs<any>({
+    'data-component': 'SharedStyles/PageWrapper',
+    'data-testid': 'page-wrapper',
+})`
 	display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.material};

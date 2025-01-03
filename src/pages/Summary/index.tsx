@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
 
-import { PageWrapper } from '../../components/SharedStyles';
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
@@ -531,6 +530,14 @@ const ExportButton = styled(Button).attrs<any>({
     }
 `;
 
+export const ButtonsContainer = styled.div.attrs<any>({
+    'data-component': 'Summary/ButtonsContainer',
+    'data-testid': 'buttons-container',
+})`
+    display: flex;
+    justify-content: center;
+`;
+
 const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
     <svg width="2rem" height="12rem">
         <text 
@@ -604,7 +611,7 @@ export function Summary() {
     }
     
     return (
-        <PageWrapper>
+        <div>
             <CharacterSheet>
                 <PersonalDataSection>
                     <VerticalHeader>
@@ -795,13 +802,14 @@ export function Summary() {
                         </div>
                     </SkillsSection>
                 </DataSectionsContainer>
-                
             </CharacterSheet>
-            <ExportButton 
-                onClick={handleExport}>
-                    Export as PDF <IoMdPrint />
-            </ExportButton>
-        </PageWrapper>
+            <ButtonsContainer>
+                <ExportButton 
+                    onClick={handleExport}>
+                        Export as PDF <IoMdPrint />
+                </ExportButton>
+            </ButtonsContainer>
+        </div>
     );
 }
 
