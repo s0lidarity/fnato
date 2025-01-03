@@ -1,11 +1,11 @@
-import styled from "styled-components";
 
+// import { Summary } from "../../Summary";
+import { Summary2 } from "../../Summary/Summary2";
 
 // AJS starting point, import character sheet and render it here
 function Dossier() {
-    return(<div>
-        <h1>Dossier</h1>
-    </div>
+    return(
+        <Summary2 />
     );
 }
 

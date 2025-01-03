@@ -6,6 +6,7 @@ import { useBonds } from '../../../providers/BondsContext';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import { PersonalDataSection } from '../styles/PersonalData.styles';
 import { StatisticalDataSection } from '../styles/StatisticalData.styles';
+import { PsychologicalDataSection } from './PsychologicalDataSection';
 
 export const CharacterSheet = () => {
     const { stats, derivedAttributes } = useStats();

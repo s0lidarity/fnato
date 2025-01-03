@@ -18,9 +18,7 @@ export const SkillsSection = ({
 }: SkillsSectionProps) => {
     return (
         <StyledSkillsSection>
-            <VerticalHeader>
-                Applicable Skill Sets
-            </VerticalHeader>
+            <VerticalHeader>Applicable Skill Sets</VerticalHeader>
             <div>
                 <SkillsGrid skillCount={skills.length}>
                     {skills.map((skill) => (

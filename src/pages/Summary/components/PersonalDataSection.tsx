@@ -26,28 +26,28 @@ export const PersonalDataSection = ({
             <PersonalDataGrid>
                 <FormRow>
                     <FormField>
-                        <label>1. Last Name, First Name, Middle Initial</label>
+                        <label>1. Name</label>
                         <input type="text" value={nameDisplay} readOnly />
                     </FormField>
                     <FormField>
-                        <label>2. Profession (Rank if Applicable)</label>
+                        <label>2. Profession</label>
                         <input type="text" value={professionDisplay || ''} readOnly />
                     </FormField>
                 </FormRow>
                 <FormRow>
                     <FormField>
                         <label>3. Employer</label>
-                        <input type="text" value={personalDetails.employer} readOnly />
+                        <input type="text" value={personalDetails.employer || ''} readOnly />
                     </FormField>
                     <FormField>
                         <label>4. Nationality</label>
-                        <input type="text" value={personalDetails.nationality} readOnly />
+                        <input type="text" value={personalDetails.nationality || ''} readOnly />
                     </FormField>
                 </FormRow>
                 <FormRow>
                     <FormField>
                         <label>5. Sex</label>
-                        <input type="text" value={personalDetails.sex} readOnly />
+                        <input type="text" value={personalDetails.sex || ''} readOnly />
                     </FormField>
                     <FormField>
                         <label>6. Age and D.O.B.</label>
@@ -62,7 +62,7 @@ export const PersonalDataSection = ({
                     <FormField>
                         <label>7. Education and Occupational History</label>
                         <MMDTextArea 
-                            value={personalDetails.education}
+                            value={personalDetails.education || ''}
                             rows={3}
                             readOnly
                         />

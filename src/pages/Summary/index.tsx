@@ -606,7 +606,6 @@ export function Summary() {
     return (
         <PageWrapper>
             <CharacterSheet>
-                {/* <CensoredHeader /> */}
                 <PersonalDataSection>
                     <VerticalHeader>
                         <VerticalHeaderText>Personal Data</VerticalHeaderText>
