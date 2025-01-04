@@ -1,6 +1,6 @@
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import styled from 'styled-components';
-
+import { Button } from 'react95';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
@@ -18,8 +18,17 @@ const ProfessionalGuidanceContainer = styled.div.attrs<any>({
     width: 90%;
 `;
 
+const ButtonsContainer = styled.div.attrs<any>({
+    'data-testid': 'profession-buttons-container',
+    'data-component': 'Profession/ButtonsContainer',
+})`
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+`;
+
 export function Profession() {
-    const { config, changeConfig } = useSkills();
+    const { config, changeConfig, resetProfession } = useSkills();
     const configOptions = [
         { label: 'Standard Professions', value: ProfessionConfigOptions.StandardProfessions },
         { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
@@ -49,6 +58,9 @@ export function Profession() {
             <div>
                 {renderSkillForm(config)}
             </div>
+            <ButtonsContainer>
+                <Button onClick={resetProfession}>Reset Profession</Button>
+            </ButtonsContainer>
         </div>
     )
 };

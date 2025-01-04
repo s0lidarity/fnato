@@ -5,6 +5,7 @@ import { Bond } from '../types/characterTypes';
 
 type BondsContextType = {
     bonds: Bond[];
+    resetBonds: () => void;
     setBonds: (bonds: Bond[]) => void;
     setBondByIndex: (index: number, bond: Partial<Bond>) => void;
 };
@@ -44,12 +45,17 @@ export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonds(newBonds);
     };
 
+    const resetBonds = () => {
+        setBonds([]);
+    };
+
     return (
         <BondsContext.Provider 
             value={{ 
                 bonds, 
                 setBonds,
                 setBondByIndex,
+                resetBonds,
             }}>
                 {children}
         </BondsContext.Provider>

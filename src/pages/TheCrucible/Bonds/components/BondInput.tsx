@@ -1,10 +1,8 @@
-import { useEffect, useState } from 'preact/hooks';
 import { GroupBox, Radio, TextInput } from 'react95'
 import styled from 'styled-components';
 
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import { useBonds } from '../../../../providers/BondsContext';
-import { useStats } from '../../../../providers/StatisticsContext';
 
 const BondInputContainer = styled.div.attrs<any>({
     'data-testid': 'bond-input-container',
@@ -39,6 +37,14 @@ const BondNameContainer = styled.div.attrs<any>({
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    flex: 1;
+`;
+
+const BondNameTextInput = styled(TextInput).attrs<any>({
+    'data-testid': 'bond-input-name-text-input',
+    'data-component': 'BondInput/BondNameTextInput',
+})`
+    flex: 1;
 `;
 
 const BondTypeContainer = styled.div.attrs<any>({
@@ -102,7 +108,7 @@ function BondInput({ index }: { index: number }) {
             <TopRowContainer>
                 <BondNameContainer>
                     <ReminderTooltip labelText="Bond Name" reminderText="The name of the individual or group your agent is bonded to." />
-                    <TextInput value={bonds[index]?.name || ''} onChange={(e) => handleBondNameChange(e)} />
+                    <BondNameTextInput value={bonds[index]?.name || ''} onChange={(e) => handleBondNameChange(e)} />
                 </BondNameContainer>
                 <BondTypeContainer>
                     <GroupBox label="Bond Type">

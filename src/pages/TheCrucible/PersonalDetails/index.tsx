@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 import { JSX } from 'preact';
-import { TextInput, GroupBox, Button } from 'react95';
+import { TextInput, Button } from 'react95';
 import { useState } from 'preact/hooks';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 
@@ -12,8 +12,7 @@ import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 import StyledCalendar from '../../../components/RetroDatePicker';
 import Dialogue from '../../../components/Dialogue/Dialogue';
 import SexPicker from './SexPicker';
-
-
+import { ButtonsContainer } from '../../Summary';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -44,15 +43,6 @@ const InputContainer = styled.div.attrs<any>({
     }
 `;
 
-const StyledGroupBox = styled(GroupBox).attrs<any>({
-    'data-testid': 'personal-details-group-box',
-    'data-component': 'PersonalDetails/GroupBox'
-})`
-    padding: 1rem;
-    margin: 1rem;
-    width: 95%;
-`;
-
 const ButtonContainer = styled.div`
     display: flex;
     justify-content: flex-end;
@@ -60,7 +50,7 @@ const ButtonContainer = styled.div`
 `;
 
 function PersonalDetails() {
-    const { personalDetails, setPersonalDetails } = usePersonalDetails();
+    const { personalDetails, resetPersonalDetails, setPersonalDetails } = usePersonalDetails();
     const [showDateOfBirth, setShowDateOfBirth] = useState(false);
 
     // AJS todo apply this JSX event to change event handlers where e: any is applied
@@ -73,7 +63,7 @@ function PersonalDetails() {
     };
 
     return (
-        <StyledGroupBox label="Personal Details">
+        <div>
             <PersonalDetailsGuidance />
             <FormContainer>
                 <InputContainer>
@@ -316,7 +306,10 @@ function PersonalDetails() {
                 <DamagedVeteranTemplates />
                 <PersonalMotivations />
             </FormContainer>
-        </StyledGroupBox>
+            <ButtonsContainer>
+                <Button onClick={resetPersonalDetails}>Reset Personal Details</Button>
+            </ButtonsContainer>
+        </div>
     );
 }
 

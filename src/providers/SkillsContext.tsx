@@ -30,6 +30,7 @@ type SkillsContextType = {
     changeProfession: (profession: IProfession) => void;
     clearBonusSkillPackage: () => void;
     resetAllBonusPoints: () => void;
+    resetProfession: () => void;
     resetSkills: () => void;
     setBonusPointsRemaining: (bonusPointsRemaining: number) => void;
     setProfession: (profession: IProfession) => void;
@@ -132,6 +133,15 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         return success;
+    };
+
+    const resetProfession = () => {
+        setProfession(null);
+        setSelectedSkillsIds([]);
+        setSkillPointsRemaining(DEFAULT_SKILL_POINTS);
+        setRemainingSkillChoices(0);
+        setBonusPointsRemaining(MAX_BONUS_POINTS);
+        setSkills(defaultSkills);
     };
 
     const resetSkills = () => {
@@ -241,6 +251,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const changeProfession = (profession: IProfession) => {
         setSelectedSkillsIds([]);
         setProfession(profession);
+        setSkillPointsRemaining(DEFAULT_SKILL_POINTS);
         setRemainingSkillChoices(profession.chosenSkillCount);
         
         // Apply new profession skills
@@ -302,6 +313,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 changeConfig,
                 clearBonusSkillPackage,
                 resetAllBonusPoints,
+                resetProfession,
                 resetSkills,
                 setBonusPointsRemaining,
                 setProfession,

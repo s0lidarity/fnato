@@ -109,6 +109,10 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
     const [localPoints, setLocalPoints] = useState(skill.pointsAllocated || 0);
     const [isFlashing, setIsFlashing] = useState(false);
 
+    useEffect(() => {
+        setLocalPoints(skill.pointsAllocated || 0);
+    }, [skill.pointsAllocated]);
+
     const baseValue = DEFAULT_SKILLS.find(s => s.name === skill.name)?.value || 0;
     const totalValue = Math.min(DEFAULT_TOTAL_CAP, baseValue + skill.pointsAllocated + (skill.bonus * DEFAULT_BONUS_VALUE));
 
