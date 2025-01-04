@@ -251,6 +251,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
     const changeProfession = (profession: IProfession) => {
         setSelectedSkillsIds([]);
         setProfession(profession);
+        setSkillPointsRemaining(DEFAULT_SKILL_POINTS);
         setRemainingSkillChoices(profession.chosenSkillCount);
         
         // Apply new profession skills
