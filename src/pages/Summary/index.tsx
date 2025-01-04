@@ -536,6 +536,8 @@ export const ButtonsContainer = styled.div.attrs<any>({
 })`
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 1rem;
 `;
 
 const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
@@ -554,10 +556,10 @@ const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
 );
 
 export function Summary() {
-    const { stats, derivedAttributes } = useStats();
-    const { skills, BonusSkillPackage, profession, calculateSkillValue } = useSkills();
-    const { bonds } = useBonds();
-    const { personalDetails } = usePersonalDetails();
+    const { stats, resetStats, derivedAttributes } = useStats();
+    const { skills, BonusSkillPackage, profession, resetProfession, calculateSkillValue, resetSkills } = useSkills();
+    const { bonds, resetBonds } = useBonds();
+    const { personalDetails, resetPersonalDetails } = usePersonalDetails();
 
     const handleExport = () => {
         const docName = `${personalDetails?.lastName || ''}-${personalDetails.firstName || ''}-${profession?.name || ''}.pdf`
@@ -578,6 +580,14 @@ export function Summary() {
         };
 
         html2pdf().set(opt).from(pdf).save();
+    }
+
+    const handleReset = () => {
+        resetStats();
+        resetSkills();
+        resetProfession();
+        resetPersonalDetails();
+        resetBonds();
     }
 
     useEffect(() => {
@@ -808,6 +818,7 @@ export function Summary() {
                     onClick={handleExport}>
                         Export as PDF <IoMdPrint />
                 </ExportButton>
+                <Button onClick={handleReset}>Reset everything</Button>
             </ButtonsContainer>
         </div>
     );
