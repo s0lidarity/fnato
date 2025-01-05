@@ -84,6 +84,7 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 function ChooseProfession() {
     const { profession, changeProfession, setBonusPointsRemaining } = useSkills();
+    const allProfessions = [...professions, ...additionalProfessions];
 
     const generateProfessionOptions = () => {
         return [
@@ -101,9 +102,9 @@ function ChooseProfession() {
         ];
     };
 
-    const handleProfessionSelect = async (professionName: string) => {
-        const newProfession = professions.find((p) => p.name === professionName);
-        await changeProfession(newProfession);
+    const handleProfessionSelect = (professionName: string) => {
+        const newProfession = allProfessions.find((p) => p.name === professionName);
+        changeProfession(newProfession);
         setBonusPointsRemaining(MAX_BONUS_POINTS);
         bondCountSignal.value = newProfession.bondCount;
     };
