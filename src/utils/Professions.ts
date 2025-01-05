@@ -250,7 +250,7 @@ export const SpecialOperator = new Profession({
 
 export const Soldier = new Profession({
     name: 'Soldier',
-    flavorText: '',
+    flavorText: 'You are a member of the U.S. Army, Marines, Navy, Air Force, or Coast Guard. You’ve been trained to fight, and you’ve been trained to survive. You’re a soldier, and you’re a survivor.',
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 50],
@@ -323,27 +323,6 @@ export const Criminal = new Profession({
     recommendedStats: ['strength', 'dexterity'],
     chosenSkillCount: 2,
 });
-
-// Firefighter
-// Your job oscillates between the tedium of maintaining your
-// gear, exhilaration when the alarm finally comes, and the
-// work of investigating a scene after the smoke has cleared. If
-// you’re involved with Delta Green, you clearly stumbled into
-// something worse than a house fire.
-// RECOMMENDED STATS: STR, DEX, CON
-// PROFESSIONAL SKILLS:
-// » Alertness 50%
-// » Athletics 60%
-// » Craft (Electrician) 40%
-// » Craft (Mechanic) 40%
-// » Demolitions 50%
-// » Drive 50%
-// » First Aid 50%
-// » Forensics 40%
-// » Heavy Machinery 50%
-// » Navigate 50%
-// » Search 40%
-// BONDS: 3
 
 export const Firefighter = new Profession({
     name: 'Firefighter',
@@ -582,8 +561,8 @@ export const ProgramManager = new Profession({
 });
 
 export const Marine = new Profession({
-    name: 'Soldier or Marine',
-    flavorText: 'Governments will always need boots on the ground and steady hands holding rifles. When war begins, civilization gets out of the way. With the social contract void, unnatural things creep in at the edges. There’s a reason Delta Green began in the military.',
+    name: 'Marine',
+    flavorText: "As a member of the United States Marine Corps, you are part of America's elite expeditionary force in readiness. First to fight, you've been trained to operate in any environment, from urban warfare to amphibious operations. Your intense training and esprit de corps set you apart. Whatever caught Delta Green's attention, it wasn't your first brush with hell.",
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 50],
