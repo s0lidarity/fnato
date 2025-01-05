@@ -1,7 +1,7 @@
 import { GroupBox,SelectNative, Separator } from 'react95';
 import styled from 'styled-components';
 
-import professions from '../../../../utils/Professions';
+import professions, { additionalProfessions } from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
 import ProfessionChoices from './ProfessionChoices';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -84,25 +84,28 @@ const KeyStatsLabel = styled.span.attrs<any>({
 
 function ChooseProfession() {
     const { profession, changeProfession, setBonusPointsRemaining } = useSkills();
+    const allProfessions = [...professions, ...additionalProfessions];
 
     const generateProfessionOptions = () => {
-        const options = [];
-        professions.forEach((profession) => {
-            options.push({ label: profession.name, value: profession.name });
-        });
-        return options;
+        return [
+            { label: '--- Standard Professions ---', value: '', disabled: true },
+            ...professions.map(profession => ({
+                label: profession.name,
+                value: profession.name
+            })),
+            { label: '──────────────', value: '', disabled: true },
+            { label: '--- Additional Professions ---', value: '', disabled: true },
+            ...additionalProfessions.map(profession => ({
+                label: profession.name,
+                value: profession.name
+            }))
+        ];
     };
 
-    const handleProfessionSelect = async (professionName: string) => {
-        const newProfession = professions.find((p) => p.name === professionName);
-        await changeProfession(newProfession);
-        // AJS starting point don't forget to clear the bonus skill package
-        // clearBonusSkillPackage();
-        // AJS starting point, reset the bonus points while clearing the bonus skill package
-        // this seems to be what was resetting state after applying a new profession
-        // resetAllBonusPoints();
+    const handleProfessionSelect = (professionName: string) => {
+        const newProfession = allProfessions.find((p) => p.name === professionName);
+        changeProfession(newProfession);
         setBonusPointsRemaining(MAX_BONUS_POINTS);
-        // AJS need to make bonus point package null again here
         bondCountSignal.value = newProfession.bondCount;
     };
 
