@@ -81,6 +81,7 @@ export class Profession implements IProfession {
 
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
+    flavorText: 'You study humanity. You’re concerned with the patterns that emerge over time, across land masses, cultures, and language groups. You might be a number-cruncher, a field worker trudging through the jungle, a consultant in a war zone, or a think-tank analyst sifting myth from history in studies of the Tcho-Tcho peoples.',
     professionalSkills: Profession.createSkillList([
             ['anthropology', 50],
             ['bureaucracy', 40],
@@ -105,6 +106,7 @@ export const Anthropologist = new Profession({
 
 export const Historian = new Profession({
     name: 'Historian',
+    flavorText: 'You study history. You’re concerned with the patterns that emerge over time, across land masses, cultures, and language groups. You might be a number-cruncher, a field worker trudging through the jungle, a consultant in a war zone, or a think-tank analyst sifting myth from history in studies of the Tcho-Tcho peoples.',
     professionalSkills: Profession.createSkillList([
         ['archeology', 50],
         ['bureaucracy', 40],
@@ -126,6 +128,7 @@ export const Historian = new Profession({
 
 export const Engineer = new Profession({
     name: 'Engineer',
+    flavorText: 'Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet.',
     professionalSkills: Profession.createSkillList([
         ['computer-science', 60],
         ['crafts', 40, 'Electrician'],
@@ -150,6 +153,7 @@ export const Engineer = new Profession({
 
 export const FederalAgent = new Profession({
     name: 'Federal Agent',
+    flavorText: 'Many Delta Green Agents are federal law enforcement officers, mostly from the FBI. Delta Green decided long ago that federal agents have the optimum balance of skills and mental stability needed to confront the unnatural.',
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['bureaucracy', 40],
@@ -177,6 +181,7 @@ export const FederalAgent = new Profession({
 
 export const Physician = new Profession({
     name: 'Physician',
+    flavorText: 'Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity.',
     professionalSkills: Profession.createSkillList([
         ['bureaucracy', 50], 
         ['first-aid', 60],
@@ -199,6 +204,7 @@ export const Physician = new Profession({
 
 export const Scientist = new Profession({
     name: 'Scientist',
+    flavorText: 'You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it’s easy to conclude that some hypotheses should not be tested.',
     professionalSkills: Profession.createSkillList([
         ['bureaucracy', 40],
         ['computer-science', 40],
@@ -221,6 +227,7 @@ export const Scientist = new Profession({
 
 export const SpecialOperator = new Profession({
     name: 'Special Operator',
+    flavorText: 'As part of a force like the U.S. Army Rangers, you volunteered for a more difficult path than other soldiers. You’ve spent years in the most grueling training on the planet, and now serve on the most dangerous missions around.',
     professionalSkills: Profession.createSkillList([
         ['alertness', 60],
         ['athletics', 60],
@@ -243,6 +250,7 @@ export const SpecialOperator = new Profession({
 
 export const Soldier = new Profession({
     name: 'Soldier',
+    flavorText: '',
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 50],
