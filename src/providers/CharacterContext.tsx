@@ -10,7 +10,6 @@ import {
 	DetailedDescription, 
 	IProfession, 
 	Skills, 
-	Stat, 
 	Statistics 
 } from '../types/characterTypes';
 import { calculateDerivedAttributes, createDefaultCharacter } from '../utils/CharacterGenerator';

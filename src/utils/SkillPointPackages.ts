@@ -306,7 +306,7 @@ export const PhotographerBSP = createBonusSkillPackage(
 );
 // PILOT OR SAILOR: Alertness, Craft (Mechanic), First Aid, Foreign Languages (choose one), Navigate, Pilot (choose one), Survival, Swim.
 export const PilotOrSailorBSP = createBonusSkillPackage(
-    "Pilot or Sailor",
+    "Pilot",
     [
         { skillName: "Alertness" },
         { skillName: "Craft", subType: "Mechanic" },
