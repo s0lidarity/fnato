@@ -79,6 +79,29 @@ export class Profession implements IProfession {
     };
 };
 
+export const Archaeologist = new Profession({
+    name: 'Archaeologist',
+    professionalSkills: Profession.createSkillList([
+        ['anthropology', 50],
+        ['bureaucracy', 40],
+        ['foreign-languages', 40, 'French'],
+        ['foreign-languages', 40, 'German'],
+        ['history', 60],
+        ['occult', 40],
+        ['persuade', 40]
+    ]),
+    choosableSkills: Profession.createSkillList([
+        ['archeology', 40],
+        ['HUMINT', 50],
+        ['navigate', 50],
+        ['search', 60],
+        ['survival', 50],
+    ]),
+    bondCount: 4,
+    recommendedStats: ['intelligence'],
+    chosenSkillCount: 2,
+});
+
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
     professionalSkills: Profession.createSkillList([
@@ -108,12 +131,14 @@ export const Historian = new Profession({
     professionalSkills: Profession.createSkillList([
         ['archeology', 50],
         ['bureaucracy', 40],
+        ['foreign-languages', 40, 'French'],
+        ['foreign-languages', 40, 'German'],
         ['history', 60],
         ['occult', 40],
         ['persuade', 40]
     ]),
     choosableSkills: Profession.createSkillList([
-        ['anthropology', 50],
+        ['anthropology', 40],
         ['HUMINT', 50],
         ['navigate', 50],
         ['search', 60],
@@ -241,37 +266,6 @@ export const SpecialOperator = new Profession({
     chosenSkillCount: 0,
 });
 
-export const Soldier = new Profession({
-    name: 'Soldier',
-    professionalSkills: Profession.createSkillList([
-        ['alertness', 50],
-        ['athletics', 50],
-        ['bureaucracy', 30],
-        ['drive', 40],
-        ['firearms', 40],
-        ['first-aid', 40],
-        ['military-science', 40, 'Land'],
-        ['navigate', 40],
-        ['persuade', 30],
-        ['unarmed-combat', 50],
-    ]),
-    choosableSkills: Profession.createSkillList([
-        ['artillery', 40],
-        ['computer-science', 40],
-        ['crafts', 40, 'Pottery'],
-        ['demolitions', 40],
-        ['foreign-languages', 40, 'French'],
-        ['heavy-machinery', 50],
-        ['heavy-weapons', 40],
-        ['search', 60],
-        ['SIGINT', 40], 
-        ['swim', 60],
-    ]),
-    bondCount: 4,
-    recommendedStats: ['strength', 'constitution'],
-    chosenSkillCount: 3,
-});
-
 // base professions, can break out from nested menu?
 const professions = [
     Anthropologist,
@@ -281,7 +275,6 @@ const professions = [
     Physician,
     Scientist,
     SpecialOperator,
-    Soldier,
 ];
 
 export const Criminal = new Profession({
@@ -315,27 +308,6 @@ export const Criminal = new Profession({
     recommendedStats: ['strength', 'dexterity'],
     chosenSkillCount: 2,
 });
-
-// Firefighter
-// Your job oscillates between the tedium of maintaining your
-// gear, exhilaration when the alarm finally comes, and the
-// work of investigating a scene after the smoke has cleared. If
-// you’re involved with Delta Green, you clearly stumbled into
-// something worse than a house fire.
-// RECOMMENDED STATS: STR, DEX, CON
-// PROFESSIONAL SKILLS:
-// » Alertness 50%
-// » Athletics 60%
-// » Craft (Electrician) 40%
-// » Craft (Mechanic) 40%
-// » Demolitions 50%
-// » Drive 50%
-// » First Aid 50%
-// » Forensics 40%
-// » Heavy Machinery 50%
-// » Navigate 50%
-// » Search 40%
-// BONDS: 3
 
 export const Firefighter = new Profession({
     name: 'Firefighter',
@@ -507,7 +479,7 @@ export const Pilot = new Profession({
         ['craft', 40, 'Electrician'],
         ['craft', 40, 'Mechanic'],
         ['navigate', 50],
-        ['pilot', 60],
+        ['pilot', 60, 'Aircraft'],
         ['science', 40, 'Meteorology'],
         ['swim', 40],
     ]),
@@ -515,7 +487,7 @@ export const Pilot = new Profession({
     recommendedStats: ['dexterity', 'intelligence'],
     choosableSkills: Profession.createSkillList([
         ['foreign-languages', 50, 'French'],
-        ['pilot', 50],
+        ['pilot', 50, 'Choose a vehicle'],
         ['heavy-weapons', 50],
         ['military-science', 50, 'Land'],
     ]),
@@ -606,6 +578,61 @@ export const Marine = new Profession({
     chosenSkillCount: 3,
 });
 
+export const Sailor = new Profession({
+    name: 'Sailor',
+    flavorText: `Whether aboard a naval vessel or merchant marine ship, you've spent your life on the waves. The sea holds many secrets, and those who spend enough time there learn that some things are better left undisturbed. Something you encountered in those vast waters caught Delta Green's attention—perhaps something that shouldn't have been floating, or a discovery in a depth where nothing should survive.`,
+    professionalSkills: Profession.createSkillList([
+        ['alertness', 60],
+        ['bureaucracy', 30],
+        ['craft', 40, 'Electrician'],
+        ['craft', 40, 'Mechanic'],
+        ['navigate', 50],
+        ['pilot', 60, 'Seacraft'],
+        ['science', 40, 'Meteorology'],
+        ['swim', 40],
+    ]),
+    bondCount: 3,
+    recommendedStats: ['dexterity', 'intelligence'],
+    choosableSkills: Profession.createSkillList([
+        ['foreign-languages', 50, 'French'],
+        ['pilot', 50, 'Choose a vehicle'],
+        ['heavy-weapons', 50],
+        ['military-science', 50, 'Land'],
+    ]),
+    chosenSkillCount: 2,
+});
+
+export const Soldier = new Profession({
+    name: 'Soldier',
+    professionalSkills: Profession.createSkillList([
+        ['alertness', 50],
+        ['athletics', 50],
+        ['bureaucracy', 30],
+        ['drive', 40],
+        ['firearms', 40],
+        ['first-aid', 40],
+        ['military-science', 40, 'Land'],
+        ['navigate', 40],
+        ['persuade', 30],
+        ['unarmed-combat', 50],
+    ]),
+    choosableSkills: Profession.createSkillList([
+        ['artillery', 40],
+        ['computer-science', 40],
+        ['crafts', 40, 'Pottery'],
+        ['demolitions', 40],
+        ['foreign-languages', 40, 'French'],
+        ['heavy-machinery', 50],
+        ['heavy-weapons', 40],
+        ['search', 60],
+        ['SIGINT', 40], 
+        ['swim', 60],
+    ]),
+    bondCount: 4,
+    recommendedStats: ['strength', 'constitution'],
+    chosenSkillCount: 3,
+});
+
 // additional professions
 export const additionalProfessions = [
     Criminal,
@@ -620,6 +647,8 @@ export const additionalProfessions = [
     Pilot,
     PoliceOfficer,
     ProgramManager,
+    Sailor,
+    Soldier,
 ];
 
 export default professions;
