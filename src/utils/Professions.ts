@@ -79,31 +79,9 @@ export class Profession implements IProfession {
     };
 };
 
-export const Archaeologist = new Profession({
-    name: 'Archaeologist',
-    professionalSkills: Profession.createSkillList([
-        ['anthropology', 50],
-        ['bureaucracy', 40],
-        ['foreign-languages', 40, 'French'],
-        ['foreign-languages', 40, 'German'],
-        ['history', 60],
-        ['occult', 40],
-        ['persuade', 40]
-    ]),
-    choosableSkills: Profession.createSkillList([
-        ['archeology', 40],
-        ['HUMINT', 50],
-        ['navigate', 50],
-        ['search', 60],
-        ['survival', 50],
-    ]),
-    bondCount: 4,
-    recommendedStats: ['intelligence'],
-    chosenSkillCount: 2,
-});
-
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
+    flavorText: `You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects.`,
     professionalSkills: Profession.createSkillList([
             ['anthropology', 50],
             ['bureaucracy', 40],
@@ -114,10 +92,10 @@ export const Anthropologist = new Profession({
             ['persuade', 40],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['anthropology', 50],
         ['archeology', 40],
         ['HUMINT', 50],
         ['navigate', 50],
+        ['ride', 50],
         ['search', 60],
         ['survival', 50],
     ]),
@@ -128,6 +106,7 @@ export const Anthropologist = new Profession({
 
 export const Historian = new Profession({
     name: 'Historian',
+    flavorText: `You piece together the truth from fragments of the past - documents, artifacts, and the whispered stories that never made it into textbooks. Your research has led you down paths that mainstream academia refuses to acknowledge, uncovering patterns in human history that suggest something vast and terrible lurking behind civilization's rise and fall. Some archives are sealed for good reason.`,
     professionalSkills: Profession.createSkillList([
         ['archeology', 50],
         ['bureaucracy', 40],
@@ -141,6 +120,7 @@ export const Historian = new Profession({
         ['anthropology', 40],
         ['HUMINT', 50],
         ['navigate', 50],
+        ['ride', 50],
         ['search', 60],
         ['survival', 50],
     ]),
@@ -148,9 +128,10 @@ export const Historian = new Profession({
     recommendedStats: ['intelligence'],
     chosenSkillCount: 2,
 });
-
+// AJS TODO: make the chooseable skills subtype '(choose something)'
 export const Engineer = new Profession({
     name: 'Engineer',
+    flavorText: `Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet.`,
     professionalSkills: Profession.createSkillList([
         ['computer-science', 60],
         ['crafts', 40, 'Electrician'],
@@ -163,18 +144,19 @@ export const Engineer = new Profession({
         ['accounting', 50],
         ['bureaucracy', 50],
         ['crafts', 40, 'Pottery'],
-        ['foreign-languages', 40, 'French'],
+        ['foreign-languages', 40, 'Choose a language'],
         ['heavy-machinery', 50],
         ['law', 40],
-        ['science', 40, 'Biology'],
+        ['science', 40, 'Choose a science'],
     ]),
     bondCount: 3,
     recommendedStats: ['intelligence'],
-    chosenSkillCount: 2,
+    chosenSkillCount: 4,
 });
 
 export const FederalAgent = new Profession({
     name: 'Federal Agent',
+    flavorText: `Many Delta Green Agents are federal law enforcement officers, mostly from the FBI. Delta Green decided long ago that federal agents have the optimum balance of skills and mental stability needed to confront the unnatural.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['bureaucracy', 40],
@@ -202,6 +184,7 @@ export const FederalAgent = new Profession({
 
 export const Physician = new Profession({
     name: 'Physician',
+    flavorText: `Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity.`,
     professionalSkills: Profession.createSkillList([
         ['bureaucracy', 50], 
         ['first-aid', 60],
@@ -224,6 +207,7 @@ export const Physician = new Profession({
 
 export const Scientist = new Profession({
     name: 'Scientist',
+    flavorText: `You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested.`,
     professionalSkills: Profession.createSkillList([
         ['bureaucracy', 40],
         ['computer-science', 40],
@@ -246,6 +230,7 @@ export const Scientist = new Profession({
 
 export const SpecialOperator = new Profession({
     name: 'Special Operator',
+    flavorText: `As part of a force like the U.S. Army Rangers, you volunteered for a more difficult path than other soldiers. You've spent years in the most grueling training on the planet, and now serve on the most dangerous missions around.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 60],
         ['athletics', 60],
@@ -311,7 +296,7 @@ export const Criminal = new Profession({
 
 export const Firefighter = new Profession({
     name: 'Firefighter',
-    flavorText: 'Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you’re involved with Delta Green, you clearly stumbled into something worse than a house fire.',
+    flavorText: `Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you're involved with Delta Green, you clearly stumbled into something worse than a house fire.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 60],
@@ -333,7 +318,7 @@ export const Firefighter = new Profession({
 
 export const ForeignServiceOfficer = new Profession({
     name: 'Foreign Service Officer',
-    flavorText: 'You travel to strange lands, meet interesting people, and try to get along with them. Odds are you work for the State Department, though USAID, the Commercial Service and the Foreign Agriculture Service also have FSOs. Either way, you’ve had every opportunity to learn exotic and deadly things; the kinds of things that qualify you for Delta Green clearance.',
+    flavorText: `You travel to strange lands, meet interesting people, and try to get along with them. Odds are you work for the State Department, though USAID, the Commercial Service and the Foreign Agriculture Service also have FSOs. Either way, you've had every opportunity to learn exotic and deadly things; the kinds of things that qualify you for Delta Green clearance.`,
     professionalSkills: Profession.createSkillList([
         ['accounting', 40],
         ['anthropology', 40],
@@ -375,7 +360,7 @@ export const IntelligenceAnalyst = new Profession({
 
 export const IntelligenceCaseOfficer = new Profession({
     name: 'Intelligence Case Officer',
-    flavorText: 'You recruit people to spy on their own countries for your agency, probably the CIA. Your job is to develop foreign intelligence sources (“assets”), communicate with them, and keep them under control, productive, and alive. It’s a hard business because you must view everyone as a potential threat, liar, or tool to further your agenda. If your name came to the attention of Delta Green, congratulations; you are now someone else’s asset.',
+    flavorText: `You recruit people to spy on their own countries for your agency, probably the CIA. Your job is to develop foreign intelligence sources (“assets”), communicate with them, and keep them under control, productive, and alive. It's a hard business because you must view everyone as a potential threat, liar, or tool to further your agenda. If your name came to the attention of Delta Green, congratulations; you are now someone else's asset.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['bureaucracy', 40],
@@ -420,7 +405,7 @@ export const Lawyer = new Profession({
 
 export const MediaSpecialist = new Profession({
     name: 'Media Specialist',
-    flavorText: 'You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you’ve uncovered the story of a lifetime.',
+    flavorText: `You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime.`,
     professionalSkills: Profession.createSkillList([
         ['art', 60, 'Creative Writing'],
         ['history', 40],
@@ -447,7 +432,7 @@ export const MediaSpecialist = new Profession({
 
 export const Nurse = new Profession({
     name: 'Nurse',
-    flavorText: 'Medical professionals are on the front line when awful things happen. Is that what brought you to the group’s attention?',
+    flavorText: `Medical professionals are on the front line when awful things happen. Is that what brought you to the group's attention?`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 40],
         ['bureaucracy', 40],
@@ -525,7 +510,7 @@ export const PoliceOfficer = new Profession({
 
 export const ProgramManager = new Profession({
     name: 'Program Manager',
-    flavorText: 'You run an organization. Someone has to secure funding, move resources, and make connections, and that’s you. You control a budget and are responsible for how your program is maintained and where the money goes. Organizations discover the most startling things in their pursuit of profit or the public good.',
+    flavorText: `You run an organization. Someone has to secure funding, move resources, and make connections, and that's you. You control a budget and are responsible for how your program is maintained and where the money goes. Organizations discover the most startling things in their pursuit of profit or the public good.`,
     professionalSkills: Profession.createSkillList([
         ['accounting', 60],
         ['bureaucracy', 60],
@@ -547,7 +532,7 @@ export const ProgramManager = new Profession({
 
 export const Marine = new Profession({
     name: 'Soldier or Marine',
-    flavorText: 'Governments will always need boots on the ground and steady hands holding rifles. When war begins, civilization gets out of the way. With the social contract void, unnatural things creep in at the edges. There’s a reason Delta Green began in the military.',
+    flavorText: `Governments will always need boots on the ground and steady hands holding rifles. When war begins, civilization gets out of the way. With the social contract void, unnatural things creep in at the edges. There's a reason Delta Green began in the military.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 50],

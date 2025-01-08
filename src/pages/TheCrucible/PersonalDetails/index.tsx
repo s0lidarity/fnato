@@ -49,6 +49,8 @@ const ButtonContainer = styled.div`
     margin-top: 0.5rem;
 `;
 
+
+// AJS start here: add tiny numbers indicating the character sheet page number that the field will be on
 function PersonalDetails() {
     const { personalDetails, resetPersonalDetails, setPersonalDetails } = usePersonalDetails();
     const [showDateOfBirth, setShowDateOfBirth] = useState(false);

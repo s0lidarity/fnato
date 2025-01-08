@@ -90,7 +90,7 @@ export const BlackBagBSP = createBonusSkillPackage(
 
 // BUREAUCRAT: Accounting, Bureaucracy, Computer Sci- ence, Criminology, HUMINT, Law, Persuade, and one other as a personal specialty.
 export const BeurocratBSP = createBonusSkillPackage(
-    "Beurocrat",
+    "Bureaucrat",
     [
         { skillName: "Accounting" },
         { skillName: "Bureaucracy" },
@@ -406,7 +406,7 @@ export const BonusSkillPackages = {
     AthleteBSP,
     AuthorBSP,
     BlackBagBSP,
-    BeurocratBSP,
+    BureaucratBSP,
     ClergyBSP,
     CombatVeteranBSP,
     ComputerEnthusiastBSP,
