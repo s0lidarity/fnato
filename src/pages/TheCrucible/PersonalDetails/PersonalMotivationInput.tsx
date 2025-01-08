@@ -15,6 +15,13 @@ const PersonalMotivationInputContainer = styled.div.attrs<any>({
     justify-content: space-between;
 `;
 
+const StyledLabel = styled.label.attrs<any>({
+    'data-testid:': 'personal-motivation-label',
+    'data-component': 'PersonalDetails/PersonalMotivationLabel',
+})`
+    width: 11rem;
+`;
+
 function PersonalMotivationInput({index}: {index: number}) {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
     const handleChange = (e: any) => {
@@ -25,11 +32,12 @@ function PersonalMotivationInput({index}: {index: number}) {
 
     return (
         <PersonalMotivationInputContainer>
-            <label htmlFor={`personal-motivation-${index}`}>Personal Motivation {index + 1}</label>
+            <StyledLabel htmlFor={`personal-motivation-${index}`}>Personal Motivation {index + 1}</StyledLabel>
             <TextInput
                 type="text"
                 value={personalDetails.personalMotivations[index]}
                 onChange={handleChange}
+                fullWidth
             />
         </PersonalMotivationInputContainer>
     )

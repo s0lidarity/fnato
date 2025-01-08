@@ -1,8 +1,3 @@
-// Optional Bonus Skill Point Packages
-// What did your Agent do before his or her current profession? 
-// If you like, grab a package to quickly choose the eight skills for your Agent’s bonus skill points 
-// these give a flat +20 to the selected bonus skills
-
 export type IBonusSkillChoice = {
     skillName: string;
     subType?: string;
@@ -24,11 +19,6 @@ export const createBonusSkillPackage = (
         personalSpecialties,
     };
 };
-
-
-// AJS we're going to need a way to apply the bonsus skills to skills from skillscontext
-// need to add a new skill when 'choose another' is applied
-// choose any 'gives bonus skill points to be added'
 
 // ARTIST, ACTOR, OR MUSICIAN: Alertness, Craft (choose one), Disguise, Persuade, Art (choose one), Art (choose another), Art (choose another), HUMINT.
 export const ArtistBSP = createBonusSkillPackage(
@@ -89,7 +79,7 @@ export const BlackBagBSP = createBonusSkillPackage(
 // BLUE-COLLAR WORKER: Alertness, Craft (choose one), Craft (choose another), Drive, First Aid, Heavy Ma- chinery, Navigate, Search.
 
 // BUREAUCRAT: Accounting, Bureaucracy, Computer Sci- ence, Criminology, HUMINT, Law, Persuade, and one other as a personal specialty.
-export const BeurocratBSP = createBonusSkillPackage(
+export const BureaucratBSP = createBonusSkillPackage(
     "Bureaucrat",
     [
         { skillName: "Accounting" },
