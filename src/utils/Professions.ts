@@ -531,8 +531,8 @@ export const ProgramManager = new Profession({
 });
 
 export const Marine = new Profession({
-    name: 'Soldier or Marine',
-    flavorText: `Governments will always need boots on the ground and steady hands holding rifles. When war begins, civilization gets out of the way. With the social contract void, unnatural things creep in at the edges. There's a reason Delta Green began in the military.`,
+    name: 'Marine',
+    flavorText: "As a member of the United States Marine Corps, you are part of America's elite expeditionary force in readiness. First to fight, you've been trained to operate in any environment, from urban warfare to amphibious operations. Your intense training and esprit de corps set you apart. Whatever caught Delta Green's attention, it wasn't your first brush with hell.",
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 50],

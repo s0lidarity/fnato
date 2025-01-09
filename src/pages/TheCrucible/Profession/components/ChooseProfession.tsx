@@ -15,6 +15,8 @@ const ChooseProfessionGroupBox = styled(GroupBox).attrs<any>({
 })`
     width: 95%;
     margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 1rem;
 `;
 
 const ChooseProfessionHeader = styled.div.attrs<any>({
@@ -22,8 +24,19 @@ const ChooseProfessionHeader = styled.div.attrs<any>({
     'data-component': 'ChooseProfession/ChooseProfessionHeader'
 })`
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+`;
+
+const TopSection = styled.div.attrs<any>({
+    'data-testid': 'top-section',
+    'data-component': 'ChooseProfession/TopSection'
+})`
+    display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
 `;
 
 const StyledSelectContainer = styled.div.attrs<any>({
@@ -35,8 +48,20 @@ const StyledSelectContainer = styled.div.attrs<any>({
     align-items: center;
     flex: 1;
     justify-content: center;
-    gap: 1rem;
+`;
+
+const FlavorTextContainer = styled.div.attrs<any>({
+    'data-testid': 'flavor-text-container',
+    'data-component': 'ChooseProfession/FlavorTextContainer'
+})`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    text-wrap: pretty;
+    justify-content: flex-start;
     margin-bottom: 1rem;
+    padding: 0 1rem;
 `;
 
 // using a SelectNative because the standard kept putting the dropdown arrow in ugly spots
@@ -45,6 +70,7 @@ const StyledSelect = styled(SelectNative).attrs<any>({
     'data-component': 'ChooseProfession/StyledSelect'
 })`
     min-width: fit-content;
+    margin-left: 0.5rem;
 `;
 
 const KeyStatSection = styled.div.attrs<any>({
@@ -68,7 +94,6 @@ const KeyStatContainer = styled.div.attrs<any>({
     justify-content: flex-start;
     flex: 0 1 auto;
     min-width: 200px;
-    margin-bottom: 1rem;
     padding: 0 1rem;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -112,37 +137,42 @@ function ChooseProfession() {
     return (
         <ChooseProfessionGroupBox>
             <ChooseProfessionHeader>
-                <StyledSelectContainer>
-                    <ReminderTooltip 
-                        labelText='Professional Background'
-                        reminderText='Apply preset skills and choose additional skills for your character.'
-                    />
-                    <StyledSelect 
-                        options={generateProfessionOptions()}
-                        value={profession?.name || ''}
-                        onChange={(e: any) => handleProfessionSelect(e.value)} 
-                    />
-                </StyledSelectContainer>
-                <KeyStatSection>
-                    <KeyStatContainer>
+                <TopSection>
+                    <StyledSelectContainer>
                         <ReminderTooltip 
-                            labelText='Key Stats'
-                            reminderText='Recommended best stats for your chosen profession.'
+                            labelText='Professional Background'
+                            reminderText='Apply preset skills and choose additional skills for your character.'
                         />
-                        <KeyStatsLabel>
-                            {profession?.recommendedStats.join(', ')}
-                        </KeyStatsLabel>
-                    </KeyStatContainer>
-                    <KeyStatContainer>
-                        <ReminderTooltip 
-                            labelText='Bonds'
-                            reminderText='Number of social connections available to your character.'
+                        <StyledSelect 
+                            options={generateProfessionOptions()}
+                            value={profession?.name || ''}
+                            onChange={(e: any) => handleProfessionSelect(e.value)} 
                         />
-                        <KeyStatsLabel>
-                            {profession?.bondCount || 0}
-                        </KeyStatsLabel>
-                    </KeyStatContainer>
-                </KeyStatSection>
+                    </StyledSelectContainer>
+                    <KeyStatSection>
+                        <KeyStatContainer>
+                            <ReminderTooltip 
+                                labelText='Key Stats'
+                                reminderText='Recommended best stats for your chosen profession.'
+                            />
+                            <KeyStatsLabel>
+                                {profession?.recommendedStats.join(', ')}
+                            </KeyStatsLabel>
+                        </KeyStatContainer>
+                        <KeyStatContainer>
+                            <ReminderTooltip 
+                                labelText='Bonds'
+                                reminderText='Number of social connections available to your character.'
+                            />
+                            <KeyStatsLabel>
+                                {profession?.bondCount || 0}
+                            </KeyStatsLabel>
+                        </KeyStatContainer>
+                    </KeyStatSection>
+                </TopSection>
+                <FlavorTextContainer>
+                    {profession?.flavorText && <div>{profession?.flavorText}</div>}
+                </FlavorTextContainer>
             </ChooseProfessionHeader>
             <Separator />
             <ProfessionChoices />
