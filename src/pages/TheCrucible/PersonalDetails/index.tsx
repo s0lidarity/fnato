@@ -25,6 +25,7 @@ const FormContainer = styled.div.attrs<any>({
     width: 95%;
     justify-items: center;
     justify-content: space-evenly;
+    justify-self: center;
 
     & > *:nth-last-child(-n+1) {
         grid-column: span 2;

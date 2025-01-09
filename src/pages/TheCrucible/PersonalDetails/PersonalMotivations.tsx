@@ -13,14 +13,18 @@ const PersonalMotivationsContainer = styled.div.attrs<any>({
 })`
     display: flex;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     min-width: fit-content;
-    margin-left: 1rem;
+    align-items: center;
+    gap: 1rem;
     
     & > div {
         width: 100%;
         height: 100%;
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 `;
 
@@ -28,12 +32,20 @@ const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
     'data-component': 'PersonalDetails/InputContainer'
 })`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 100%;
+    width: 95%;
+    justify-self: center;
     min-width: fit-content;
     margin-bottom: 1rem;
+    grid-column: span 2;
+`;
+
+const MotivationInputContainer = styled.div.attrs<any>({
+    'data-testid': 'motivation-input-container',
+    'data-component': 'PersonalDetails/MotivationInputContainer',
+})`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 `;
 
 const reminderTextA = `Personal Motivations represent what drives your Agent beyond their Bonds. 
@@ -54,7 +66,11 @@ const renderMotivations = (motivations: string[]) => {
             <PersonalMotivationInput key={motivations.length} index={motivations.length} />
         );
     }
-    return motivationInputs;
+    return(
+        <MotivationInputContainer>
+            {motivationInputs}
+        </MotivationInputContainer>
+    );
 }
 
 function PersonalMotivations() {
@@ -62,18 +78,20 @@ function PersonalMotivations() {
 
     return (
         <InputContainer>
-            <PersonalMotivationsContainer>
-                <label htmlFor="personalMotivations">
-                    <PageNumberTooltip pageNumber={3}>Personal Motivations</PageNumberTooltip>
-                </label>
-                    <Guidance title="Personal Motivations" buttonText="Personal Motivations">
-                        <p>{reminderTextA}</p>
-                        <p>{reminderTextB}</p>
-                    </Guidance>
-                    <GroupBox>
-                        {renderMotivations(personalDetails.personalMotivations)}
-                    </GroupBox>
-            </PersonalMotivationsContainer>
+            <label htmlFor="personalMotivations">
+                <PageNumberTooltip pageNumber={3}>Personal Motivations</PageNumberTooltip>
+            </label>
+            <GroupBox>
+                <PersonalMotivationsContainer>
+                        <Guidance title="Personal Motivations" buttonText="Personal Motivations">
+                            <p>{reminderTextA}</p>
+                            <p>{reminderTextB}</p>
+                        </Guidance>
+                        
+                            {renderMotivations(personalDetails.personalMotivations)}
+                        
+                </PersonalMotivationsContainer>
+            </GroupBox>
         </InputContainer>
     );
 }
