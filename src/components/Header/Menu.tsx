@@ -1,4 +1,3 @@
-import { useState } from 'preact/hooks';
 import { useLocation } from 'preact-iso';
 import { MenuList, MenuListItem } from "react95";
 import styled from 'styled-components';
@@ -36,6 +35,8 @@ const StyledMenuList = styled(MenuList)`
     list-style: none;
     padding: 0;
     margin: 0;
+    position: absolute;
+    left: 0;
     background: ${({ theme }) => theme.canvas};
     border: ${({ theme }) => theme.border};
     box-shadow: ${({ theme }) => theme.shadow};
@@ -55,14 +56,20 @@ const StyledMenuListItem = styled(MenuListItem)`
     }
 `;
 
-const StyledMenu = styled.div`
+const StyledMenu = styled.div.attrs<any>({
+    'data-testid': 'menu',
+    'data-component': 'Header/Menu',
+})`
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 10;
 `;
 
-const IconWrapper = styled.span`
+const IconWrapper = styled.span.attrs<any>({
+    'data-testid': 'icon-wrapper',
+    'data-component': 'Header/IconWrapper',
+})`
     margin-right: 0.5rem;
 `;
 
@@ -72,7 +79,6 @@ function Menu({open, setOpen}: {open: boolean, setOpen: (open: boolean) => void}
     return (
         <StyledMenu>
             <StyledMenuList 
-                style={{position: 'absolute', left: '0'}}
                 open={open}
                 onClick={() => setOpen(!open)}
             >

@@ -3,8 +3,12 @@ import { AppBar, Button, Toolbar } from 'react95';
 import styled from 'styled-components';
 import Menu from './Menu';
 import DownGreenTri from '../../assets/down-green-tri.png';
+import SettingsMenu from './SettingsMenu';
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div.attrs<any>({
+    'data-testid': 'header-wrapper',
+    'data-component': 'Header/HeaderWrapper',
+})`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,15 +16,24 @@ const HeaderWrapper = styled.div`
     margin-bottom: 3rem;
 `;
 
-const StyledAppBar = styled(AppBar)`
+const StyledAppBar = styled(AppBar).attrs<any>({
+    'data-testid': 'app-bar',
+    'data-component': 'Header/AppBar',
+})`
     z-index: 10;
 `;
 
-const StyledToolbar = styled(Toolbar)`
+const StyledToolbar = styled(Toolbar).attrs<any>({
+    'data-testid': 'toolbar',
+    'data-component': 'Header/Toolbar',
+})`
     justify-content: space-between;
 `;
 
-const ToolbarContent = styled.div`
+const ToolbarContent = styled.div.attrs<any>({
+    'data-testid': 'toolbar-content',
+    'data-component': 'Header/ToolbarContent',
+})`
     position: relative;
     display: flex;
     flex-direction: row;
@@ -29,16 +42,25 @@ const ToolbarContent = styled.div`
     width: 100%;
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled(Button).attrs<any>({
+    'data-testid': 'button',
+    'data-component': 'Header/Button',
+})`
     font-weight: bold;
 `;
 
-const TriangleIcon = styled.img`
+const TriangleIcon = styled.img.attrs<any>({
+    'data-testid': 'triangle-icon',
+    'data-component': 'Header/TriangleIcon',
+})`
     height: 20px;
     margin-right: 4px;
 `;
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled.h1.attrs<any>({
+    'data-testid': 'header-title',
+    'data-component': 'Header/HeaderTitle',
+})`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -47,6 +69,7 @@ const HeaderTitle = styled.h1`
 
 function Header() {
     const [open, setOpen] = useState(false);
+    const [settingsOpen, setSettingsOpen] = useState(false);
 
     return (
         <HeaderWrapper>
@@ -65,6 +88,10 @@ function Header() {
                         </StyledButton>
                         {open && ( <Menu open setOpen={setOpen} /> )}
                         <HeaderTitle>First Night at the Opera?</HeaderTitle>
+                        <StyledButton onClick={() => setSettingsOpen(!settingsOpen)}>
+                            {settingsOpen && (<SettingsMenu open={settingsOpen} setOpen={setSettingsOpen} /> )}
+                        </StyledButton>
+                        
                     </ToolbarContent>
                 </StyledToolbar>
             </StyledAppBar>
