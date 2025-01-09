@@ -21,6 +21,7 @@ const StyledLabel = styled.label.attrs<any>({
     margin-left: 0.5rem;
     display: flex;
     align-items: center;
+    cursor: help;
 `;
 
 interface ReminderTooltipProps {

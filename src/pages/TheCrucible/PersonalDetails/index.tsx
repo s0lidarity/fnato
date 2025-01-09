@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import { JSX } from 'preact';
 import { TextInput, Button } from 'react95';
@@ -13,18 +12,24 @@ import StyledCalendar from '../../../components/RetroDatePicker';
 import Dialogue from '../../../components/Dialogue/Dialogue';
 import SexPicker from './SexPicker';
 import { ButtonsContainer } from '../../Summary';
+import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
     'data-component': 'PersonalDetails/FormContainer'
 })`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
     column-gap: 0.5rem;
     width: 95%;
     justify-items: center;
     justify-content: space-evenly;
+    justify-self: center;
+
+    & > *:nth-last-child(-n+1) {
+        grid-column: span 2;
+    }
 `;
 
 const InputContainer = styled.div.attrs<any>({
@@ -49,6 +54,8 @@ const ButtonContainer = styled.div`
     margin-top: 0.5rem;
 `;
 
+
+// AJS start here: add tiny numbers indicating the character sheet page number that the field will be on
 function PersonalDetails() {
     const { personalDetails, resetPersonalDetails, setPersonalDetails } = usePersonalDetails();
     const [showDateOfBirth, setShowDateOfBirth] = useState(false);
@@ -67,7 +74,9 @@ function PersonalDetails() {
             <PersonalDetailsGuidance />
             <FormContainer>
                 <InputContainer>
-                    <label htmlFor="firstName">First Name:</label>
+                    <label htmlFor="firstName">
+                        <PageNumberTooltip pageNumber={1}>First Name:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="firstName"
                         name="firstName"
@@ -78,7 +87,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="lastName">Last Name:</label>
+                    <label htmlFor="lastName">
+                        <PageNumberTooltip pageNumber={1}>Last Name:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="lastName"
                         name="lastName"
@@ -89,7 +100,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="middleInitial">Middle Initial:</label>
+                    <label htmlFor="middleInitial">
+                        <PageNumberTooltip pageNumber={1}>Middle Initial:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="middleInitial"
                         name="middleInitial"
@@ -100,7 +113,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="alias">Alias:</label>
+                    <label htmlFor="alias">
+                        <PageNumberTooltip pageNumber={3}>Alias:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="alias"
                         name="alias"
@@ -111,7 +126,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="dateOfBirth">Date of Birth:</label>
+                    <label htmlFor="dateOfBirth">
+                        <PageNumberTooltip pageNumber={1}>Date of Birth:</PageNumberTooltip>
+                    </label>
                     <Button onClick={() => setShowDateOfBirth(true)}>
                         {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : 'Select Date of Birth'}
                     </Button>
@@ -135,14 +152,14 @@ function PersonalDetails() {
                     </Dialogue>
                 </InputContainer>
 
-                {/* AJS starting point, convert to radios for male, female, typed in manually */}
                 <InputContainer>
-                    <label htmlFor="sex">Sex:</label>
                     <SexPicker />
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="appearance">Appearance:</label>
+                    <label htmlFor="appearance">
+                        <PageNumberTooltip pageNumber={3}>Appearance:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="appearance"
                         name="appearance"
@@ -155,7 +172,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="employer">Employer:</label>
+                    <label htmlFor="employer">
+                        <PageNumberTooltip pageNumber={1}>Employer:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="employer"
                         name="employer"
@@ -166,7 +185,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="nationality">Nationality:</label>
+                    <label htmlFor="nationality">
+                        <PageNumberTooltip pageNumber={1}>Nationality:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="nationality"
                         name="nationality"
@@ -177,7 +198,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="education">Education:</label>
+                    <label htmlFor="education">
+                        <PageNumberTooltip pageNumber={1}>Education:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="education"
                         name="education"
@@ -188,7 +211,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="personality">Personality:</label>
+                    <label htmlFor="personality">
+                        <PageNumberTooltip pageNumber={3}>Personality:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="personality"
                         name="personality"
@@ -201,7 +226,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="beliefs">Beliefs:</label>
+                    <label htmlFor="beliefs">
+                        <PageNumberTooltip pageNumber={3}>Beliefs:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="beliefs"
                         name="beliefs"
@@ -214,7 +241,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="hobbies">Hobbies:</label>
+                    <label htmlFor="hobbies">
+                        <PageNumberTooltip pageNumber={3}>Hobbies:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="hobbies"
                         name="hobbies"
@@ -227,7 +256,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="obsessions">Obsessions:</label>
+                    <label htmlFor="obsessions">
+                        <PageNumberTooltip pageNumber={3}>Obsessions:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="obsessions"
                         name="obsessions"
@@ -240,7 +271,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="motivations">Motivations:</label>
+                    <label htmlFor="motivations">
+                        <PageNumberTooltip pageNumber={3}>Motivations:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="motivations"
                         name="motivations"
@@ -253,7 +286,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="admire">Something you admire:</label>
+                    <label htmlFor="admire">
+                        <PageNumberTooltip pageNumber={3}>Something you admire:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="admire"
                         name="admire"
@@ -266,7 +301,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="dislike">Something you dislike:</label>
+                    <label htmlFor="dislike">
+                        <PageNumberTooltip pageNumber={3}>Something you dislike:</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="dislike"
                         name="dislike"
@@ -279,7 +316,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="trustInDeltaGreen">Why does Delta Green trust this agent?</label>
+                    <label htmlFor="trustInDeltaGreen">
+                        <PageNumberTooltip pageNumber={3}>Why does Delta Green trust this agent?</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="trustInDeltaGreen"
                         name="trustInDeltaGreen"
@@ -292,7 +331,9 @@ function PersonalDetails() {
                 </InputContainer>
 
                 <InputContainer>
-                    <label htmlFor="deltaGreenAgreement">Why does this agent serve Delta Green?</label>
+                    <label htmlFor="deltaGreenAgreement">
+                        <PageNumberTooltip pageNumber={3}>Why does this agent serve Delta Green?</PageNumberTooltip>
+                    </label>
                     <TextInput
                         id="deltaGreenAgreement"
                         name="deltaGreenAgreement"

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { GroupBox, Button } from 'react95';
+import { Button } from 'react95';
 import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
+import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
 import { 
     EXTREME_VIOLENCE, 
     HARD_EXPERIENCE, 
@@ -10,22 +11,23 @@ import {
     THINGS_MAN_WAS_NOT_MEANT_TO_KNOW
 } from '../../../types/characterTypes';
 
+const InputContainer = styled.div.attrs<any>({
+    'data-testid': 'personal-details-input-container',
+    'data-component': 'PersonalDetails/InputContainer'
+})`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 95%;
+    min-width: fit-content;
+`;
+
 const DamagedVeteranTemplatesContainer = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-templates-container',
     'data-component': 'PersonalDetails/DamagedVeteranTemplatesContainer',
 })`
     display: flex;
-    flex-direction: column;
-`;
-
-const StyledGroupBox = styled(GroupBox).attrs<any>({
-    'data-testid': 'damaged-veteran-templates-group-box',
-    'data-component': 'PersonalDetails/DamagedVeteranTemplatesGroupBox',
-})`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
 `;
 
 const CheckboxContainer = styled.div.attrs<any>({
@@ -33,6 +35,14 @@ const CheckboxContainer = styled.div.attrs<any>({
     'data-component': 'PersonalDetails/DamagedVeteranTemplatesCheckboxContainer',
 })`
     padding: 1rem;
+`;
+
+const StyledButton = styled(Button).attrs<any>({
+    'data-testid': 'damaged-veteran-templates-button',
+    'data-component': 'PersonalDetails/DamagedVeteranTemplatesButton',
+})`
+    padding: 0.5rem;
+    margin-top: 1rem;
 `;
 
 function DamagedVeteranTemplates() {
@@ -46,17 +56,21 @@ function DamagedVeteranTemplates() {
     };
 
     return (
+        <InputContainer>
+        <label htmlFor="damagedVeteranTemplates">
+            <PageNumberTooltip pageNumber={1}>Damaged Veteran Templates</PageNumberTooltip>
+        </label>  
         <DamagedVeteranTemplatesContainer>
-            <StyledGroupBox label="Damaged Veteran Templates">
+            
                 <CheckboxContainer>
                     <DamagedVeteranCheckbox template={EXTREME_VIOLENCE} />
                     <DamagedVeteranCheckbox template={CAPTIVITY_OR_IMPRISONMENT} />
                     <DamagedVeteranCheckbox template={HARD_EXPERIENCE} />
                     <DamagedVeteranCheckbox template={THINGS_MAN_WAS_NOT_MEANT_TO_KNOW} />
                 </CheckboxContainer>
-                <Button onClick={handleClearTemplates}>Clear Templates</Button>
-            </StyledGroupBox>
+            <StyledButton onClick={handleClearTemplates}>Clear Templates</StyledButton>
         </DamagedVeteranTemplatesContainer>
+        </InputContainer>
     );
 }
 

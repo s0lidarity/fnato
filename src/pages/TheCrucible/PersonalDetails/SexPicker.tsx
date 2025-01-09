@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { JSX } from "react";
-import { GroupBox, Radio, TextInput } from "react95";
+import { Radio, TextInput } from "react95";
 
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
+import PageNumberTooltip from "../../../components/PageNumberTooltip/PageNumberTooltip";
 
 const RadioButtons = styled.div.attrs<any>({
     'data-component': 'PersonalDetails/RadioButtons',
@@ -10,7 +11,7 @@ const RadioButtons = styled.div.attrs<any>({
 })`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    align-items: flex-start;
     gap: 1rem;
 `;
 
@@ -19,6 +20,16 @@ const StyledTextInput = styled(TextInput).attrs<any>({
     'data-testid': 'personal-details-styled-text-input',
 })`
     margin-top: 0.5rem;
+`;
+
+const StyledLabel = styled.label.attrs<any>({
+    'data-component': 'PersonalDetails/StyledLabel',
+    'data-testid': 'personal-details-styled-label',
+})`
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    padding-top: 0.3rem;
 `;
 
 function SexPicker() {
@@ -40,8 +51,11 @@ function SexPicker() {
     };
 
     return (
-        <GroupBox>
+        <span>
             <RadioButtons>
+                <StyledLabel htmlFor="sex">
+                    <PageNumberTooltip pageNumber={1}>Sex:</PageNumberTooltip>
+                </StyledLabel>
                 <Radio 
                     value="Male"
                     checked={personalDetails.sex === 'Male'}
@@ -75,7 +89,7 @@ function SexPicker() {
                     placeholder="Please specify"
                 />
             )}
-        </GroupBox>
+        </span>
     );
 }
 

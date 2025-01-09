@@ -10,9 +10,24 @@ const PersonalMotivationInputContainer = styled.div.attrs<any>({
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
     gap: 1rem;
     padding: 0.5rem;
-    justify-content: space-between;
+`;
+
+const StyledLabel = styled.label.attrs<any>({
+    'data-testid:': 'personal-motivation-label',
+    'data-component': 'PersonalDetails/PersonalMotivationLabel',
+})`
+    min-width: fit-content;
+`;
+
+const StyledTextInput = styled(TextInput).attrs<any>({
+    'data-testid': 'personal-motivation-input',
+    'data-component': 'PersonalDetails/PersonalMotivationInput',
+})`
+    flex: 1;
+    min-width: 20rem;
 `;
 
 function PersonalMotivationInput({index}: {index: number}) {
@@ -25,11 +40,12 @@ function PersonalMotivationInput({index}: {index: number}) {
 
     return (
         <PersonalMotivationInputContainer>
-            <label htmlFor={`personal-motivation-${index}`}>Personal Motivation {index + 1}</label>
-            <TextInput
+            <StyledLabel htmlFor={`personal-motivation-${index}`}>Personal Motivation {index + 1}</StyledLabel>
+            <StyledTextInput
                 type="text"
                 value={personalDetails.personalMotivations[index]}
                 onChange={handleChange}
+                fullWidth
             />
         </PersonalMotivationInputContainer>
     )
