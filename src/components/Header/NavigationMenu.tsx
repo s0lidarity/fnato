@@ -1,6 +1,9 @@
 import { useLocation } from 'preact-iso';
-import { MenuList, MenuListItem } from "react95";
+import { useState } from 'preact/hooks';
+import { MenuList, MenuListItem, StyledButton } from "react95";
 import styled from 'styled-components';
+
+import DownGreenTri from '../../assets/down-green-tri.png';
 
 export interface MenuConfigItem {
     name: string;
@@ -56,6 +59,14 @@ const StyledMenuListItem = styled(MenuListItem)`
     }
 `;
 
+const TriangleIcon = styled.img.attrs<any>({
+    'data-testid': 'triangle-icon',
+    'data-component': 'Header/TriangleIcon',
+})`
+    height: 1.25rem;
+    margin-right: 0.25rem;
+`;
+
 const StyledMenu = styled.div.attrs<any>({
     'data-testid': 'menu',
     'data-component': 'Header/Menu',
@@ -73,27 +84,32 @@ const IconWrapper = styled.span.attrs<any>({
     margin-right: 0.5rem;
 `;
 
-function Menu({open, setOpen}: {open: boolean, setOpen: (open: boolean) => void}) {
+function NavigationMenu(){
+    const [open, setOpen] = useState(false);
     const { url } = useLocation();
 
     return (
-        <StyledMenu>
-            <StyledMenuList 
-                open={open}
-                onClick={() => setOpen(!open)}
-            >
-                { MenuConfig.map((item) => (
-                    <a href={item.url}>
-                        <StyledMenuListItem onClick={()=> setOpen(false)} className={url === item.url ? 'active' : ''}>
-                                <IconWrapper role='img' aria-label={item.img}>
-                                    {item.img}
-                                </IconWrapper>{item.name}
-                        </StyledMenuListItem>
-                    </a>
-                ))}
-            </StyledMenuList>
-        </StyledMenu>
+        <div>
+            <StyledButton onClick={() => setOpen(!open)}>
+                <TriangleIcon src={DownGreenTri} alt='green-triangle' /> Start
+            </StyledButton>
+            { open && (
+                <StyledMenu>
+                    <StyledMenuList open={open} onClick={() => setOpen(!open)}>
+                        { MenuConfig.map((item) => (
+                            <a href={item.url}>
+                                <StyledMenuListItem onClick={()=> setOpen(false)} className={url === item.url ? 'active' : ''}>
+                                        <IconWrapper role='img' aria-label={item.img}>
+                                            {item.img}
+                                        </IconWrapper>{item.name}
+                                </StyledMenuListItem>
+                            </a>
+                        ))}
+                    </StyledMenuList>
+                </StyledMenu>
+            )}
+        </div>
     );
 };
 
-export default Menu;
+export default NavigationMenu;

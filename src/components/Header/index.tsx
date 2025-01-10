@@ -1,8 +1,6 @@
-import { useState } from 'preact/hooks';
-import { AppBar, Button, Toolbar } from 'react95';
+import { AppBar, Toolbar } from 'react95';
 import styled from 'styled-components';
-import Menu from './Menu';
-import DownGreenTri from '../../assets/down-green-tri.png';
+import NavigationMenu from './NavigationMenu';
 import SettingsMenu from './SettingsMenu';
 
 const HeaderWrapper = styled.div.attrs<any>({
@@ -42,21 +40,6 @@ const ToolbarContent = styled.div.attrs<any>({
     width: 100%;
 `;
 
-const StyledButton = styled(Button).attrs<any>({
-    'data-testid': 'button',
-    'data-component': 'Header/Button',
-})`
-    font-weight: bold;
-`;
-
-const TriangleIcon = styled.img.attrs<any>({
-    'data-testid': 'triangle-icon',
-    'data-component': 'Header/TriangleIcon',
-})`
-    height: 1.25rem;
-    margin-right: 0.25rem;
-`;
-
 const HeaderTitle = styled.h1.attrs<any>({
     'data-testid': 'header-title',
     'data-component': 'Header/HeaderTitle',
@@ -68,25 +51,12 @@ const HeaderTitle = styled.h1.attrs<any>({
 `;
 
 function Header() {
-    const [open, setOpen] = useState(false);
-    const [settingsOpen, setSettingsOpen] = useState(false);
-
     return (
         <HeaderWrapper>
             <StyledAppBar>
                 <StyledToolbar>
                     <ToolbarContent>
-                        <StyledButton
-                            onClick={() => setOpen(!open)}
-                            active={open}
-                        >
-                            <TriangleIcon
-                                src={DownGreenTri}
-                                alt='green-triangle'
-                            />
-                            Start
-                        </StyledButton>
-                        {open && ( <Menu open setOpen={setOpen} /> )}
+                        <NavigationMenu />
                         <HeaderTitle>First Night at the Opera?</HeaderTitle>
                         <SettingsMenu />
                     </ToolbarContent>

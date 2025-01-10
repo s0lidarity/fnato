@@ -1,7 +1,10 @@
 import { MenuList, MenuListItem, Button } from "react95";
 import styled from 'styled-components'; 
-import { IoMdSettings } from "react-icons/io";
+import { IoMdSettings, IoMdColorFill } from "react-icons/io";
+
 import { useState } from "preact/hooks";
+import { MdLanguage } from "react-icons/md";
+import ThemeMenu from './ThemeMenu';
 
 const StyledButton = styled(Button).attrs<any>({
     'data-testid': 'settings-button',
@@ -21,6 +24,17 @@ const StyledMenuList = styled(MenuList).attrs<any>({
     z-index: 10;
 `;
 
+const StyledMenuListItem = styled(MenuListItem)`
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    &:hover {
+        cursor: pointer;
+        background: ${({ theme }) => theme.hoverBackground};
+    }
+`;
+
 const StyledSettingsIcon = styled(IoMdSettings)`
     margin-right: 0.25rem;
     height: 1.25rem;
@@ -28,6 +42,14 @@ const StyledSettingsIcon = styled(IoMdSettings)`
 
 function SettingsMenu(){
     const [open, setOpen] = useState(false);
+    const [showThemeMenu, setShowThemeMenu] = useState(false);
+
+    const handleThemeSelect = (theme: string) => {
+        // Implement theme switching logic here
+        console.log('Selected theme:', theme);
+        setOpen(false);
+        setShowThemeMenu(false);
+    };
 
     return (
         <div>
@@ -36,9 +58,16 @@ function SettingsMenu(){
             </StyledButton>
             {open && (
                 <StyledMenuList>
-                    <MenuListItem>
-                        
-                    </MenuListItem>
+                    <StyledMenuListItem 
+                        onMouseEnter={() => setShowThemeMenu(true)}
+                        onMouseLeave={() => setShowThemeMenu(false)}
+                    >
+                        <IoMdColorFill /> Select Theme
+                        {showThemeMenu && <ThemeMenu onThemeSelect={handleThemeSelect} />}
+                    </StyledMenuListItem>
+                    <StyledMenuListItem>
+                        <MdLanguage /> Regional Settings
+                    </StyledMenuListItem>
                 </StyledMenuList>
             )}
         </div>
