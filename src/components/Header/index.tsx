@@ -53,8 +53,8 @@ const TriangleIcon = styled.img.attrs<any>({
     'data-testid': 'triangle-icon',
     'data-component': 'Header/TriangleIcon',
 })`
-    height: 20px;
-    margin-right: 4px;
+    height: 1.25rem;
+    margin-right: 0.25rem;
 `;
 
 const HeaderTitle = styled.h1.attrs<any>({
@@ -88,10 +88,7 @@ function Header() {
                         </StyledButton>
                         {open && ( <Menu open setOpen={setOpen} /> )}
                         <HeaderTitle>First Night at the Opera?</HeaderTitle>
-                        <StyledButton onClick={() => setSettingsOpen(!settingsOpen)}>
-                            {settingsOpen && (<SettingsMenu open={settingsOpen} setOpen={setSettingsOpen} /> )}
-                        </StyledButton>
-                        
+                        <SettingsMenu />
                     </ToolbarContent>
                 </StyledToolbar>
             </StyledAppBar>

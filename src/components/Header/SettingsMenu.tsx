@@ -1,6 +1,15 @@
-import { MenuList, MenuListItem } from "react95";
+import { MenuList, MenuListItem, Button } from "react95";
 import styled from 'styled-components'; 
 import { IoMdSettings } from "react-icons/io";
+import { useState } from "preact/hooks";
+
+const StyledButton = styled(Button).attrs<any>({
+    'data-testid': 'settings-button',
+    'data-component': 'Header/SettingsButton',
+})`
+    align-items: center;
+    font-weight: bold;
+`;
 
 const StyledMenuList = styled(MenuList).attrs<any>({
     'data-testid': 'menu-list',
@@ -12,14 +21,27 @@ const StyledMenuList = styled(MenuList).attrs<any>({
     z-index: 10;
 `;
 
-function SettingsMenu({open, setOpen}: {open: boolean, setOpen: (open: boolean) => void}) {
+const StyledSettingsIcon = styled(IoMdSettings)`
+    margin-right: 0.25rem;
+    height: 1.25rem;
+`;
+
+function SettingsMenu(){
+    const [open, setOpen] = useState(false);
+
     return (
-        <StyledMenuList>
-            <MenuListItem>
-                <IoMdSettings />
-                Settings
-            </MenuListItem>
-        </StyledMenuList>
+        <div>
+            <StyledButton onClick={() => setOpen(!open)}>
+                <StyledSettingsIcon /> Settings
+            </StyledButton>
+            {open && (
+                <StyledMenuList>
+                    <MenuListItem>
+                        
+                    </MenuListItem>
+                </StyledMenuList>
+            )}
+        </div>
     );
 }
 
