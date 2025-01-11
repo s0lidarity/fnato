@@ -5,6 +5,7 @@ import { IoMdSettings, IoMdColorFill } from "react-icons/io";
 import { useState } from "preact/hooks";
 import { MdLanguage } from "react-icons/md";
 import ThemeMenu from './ThemeMenu';
+import LocalizationMenu from "./LocalizationMenu";
 
 const StyledButton = styled(Button).attrs<any>({
     'data-testid': 'settings-button',
@@ -49,13 +50,7 @@ const StyledSettingsIcon = styled(IoMdSettings).attrs<any>({
 function SettingsMenu(){
     const [open, setOpen] = useState(false);
     const [showThemeMenu, setShowThemeMenu] = useState(false);
-
-    const handleThemeSelect = (theme: string) => {
-        // Implement theme switching logic here
-        console.log('Selected theme:', theme);
-        setOpen(false);
-        setShowThemeMenu(false);
-    };
+    const [showLocalizationMenu, setShowLocalizationMenu] = useState(false);
 
     return (
         <div>
@@ -69,10 +64,14 @@ function SettingsMenu(){
                         onMouseLeave={() => setShowThemeMenu(false)}
                     >
                         <IoMdColorFill /> Select Theme
-                        {showThemeMenu && <ThemeMenu onThemeSelect={handleThemeSelect} />}
+                        {showThemeMenu && <ThemeMenu />}
                     </StyledMenuListItem>
-                    <StyledMenuListItem>
+                    <StyledMenuListItem 
+                        onMouseEnter={() => setShowLocalizationMenu(true)}
+                        onMouseLeave={() => setShowLocalizationMenu(false)}
+                    >
                         <MdLanguage /> Regional Settings
+                        {showLocalizationMenu && <LocalizationMenu />}
                     </StyledMenuListItem>
                 </StyledMenuList>
             )}

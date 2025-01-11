@@ -47,6 +47,17 @@ const StyledButton = styled(Button).attrs<any>({
     width: 100%;
 `;
 
+const ThemedButton = styled(StyledButton)`
+    background: ${({ $theme }) => $theme.material};
+    color: ${({ $theme }) => $theme.materialText};
+    border: 2px solid ${({ $theme }) => $theme.borderDark};
+    box-shadow: 1px 1px 0 1px ${({ $theme }) => $theme.borderLight};
+    
+    &:hover {
+        background: ${({ $theme }) => $theme.hoverBackground};
+    }
+`;
+
 interface ThemeMenuProps {
     onClose?: () => void; // Optional prop to close parent menu
 }
@@ -73,19 +84,19 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
 
     const renderButtons = () => {
         return themes.map((t) => (
-            <StyledMenuListItem key={theme.name}>
-                <StyledButton
-                    disabled={theme === t.theme}
-                    active={theme === theme}
+            <StyledMenuListItem key={t.name}>
+                <ThemedButton
+                    $theme={t.theme}  // Pass the theme as a transient prop
+                    disabled={theme.name === t.theme.name}
+                    active={theme.name === t.theme.name}
                     onClick={() => handleThemeSelect(t.theme)}
                 >
                     {t.name}
-                </StyledButton>
+                </ThemedButton>
             </StyledMenuListItem>
         ));
     };
-
-    // AJS start here, make these themes a collection an dmap over them
+    
     return (
         <StyledSubMenuList>
             {renderButtons()}
