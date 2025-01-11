@@ -1,6 +1,15 @@
 import { MenuList, MenuListItem } from "react95";
-import styled, { ThemeContext } from 'styled-components';
-import { useContext } from 'react';
+import styled from 'styled-components';
+import tokyoDark from 'react95/dist/themes/tokyoDark';
+import windows1 from 'react95/dist/themes/windows1';
+import polarized from 'react95/dist/themes/polarized';
+import highContrast from 'react95/dist/themes/highContrast';
+import hotDogStand from 'react95/dist/themes/hotDogStand';
+import ninjaTurtles from 'react95/dist/themes/ninjaTurtles';
+import matrix from 'react95/dist/themes/matrix';
+
+import { useTheme } from '../../providers/Providers';
+
 
 const StyledSubMenuList = styled(MenuList)`
     position: absolute;
@@ -34,32 +43,39 @@ interface ThemeMenuProps {
 // ajs start here, set theme properly
 
 function ThemeMenu({ onClose }: ThemeMenuProps) {
-    const { setTheme } = useContext(ThemeContext);
+    const { theme, setTheme } = useTheme();
 
-    const handleThemeSelect = (theme: string) => {
-        setTheme(theme);
+    const handleThemeSelect = (selectedTheme: typeof tokyoDark) => {
+        setTheme(selectedTheme);
         if (onClose) onClose();
     };
 
+    // AJS start here, make these themes a collection an dmap over them
     return (
         <StyledSubMenuList>
-            <StyledMenuListItem onClick={() => handleThemeSelect('tokyoDark')}>
+            <StyledMenuListItem 
+                onClick={() => handleThemeSelect(tokyoDark)}
+                style={{ fontWeight: theme === tokyoDark ? 'bold' : 'normal' }}
+            >
                 Tokyo Dark
             </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect('windows1')}>
+            <StyledMenuListItem onClick={() => handleThemeSelect(windows1)}>
                 Windows
             </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect('polarized')}>
+            <StyledMenuListItem onClick={() => handleThemeSelect(polarized)}>
                 Polarized
             </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect('highContrast')}>
+            <StyledMenuListItem onClick={() => handleThemeSelect(highContrast)}>
                 High Contrast
             </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect('hotDogStand')}>
+            <StyledMenuListItem onClick={() => handleThemeSelect(hotDogStand)}>
                 Hot Dog Stand
             </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect('ninjaTurtles')}>
+            <StyledMenuListItem onClick={() => handleThemeSelect(ninjaTurtles)}>
                 Ninja Turtles
+            </StyledMenuListItem>
+            <StyledMenuListItem onClick={() => handleThemeSelect(matrix)}>
+                Matrix
             </StyledMenuListItem>
         </StyledSubMenuList>
     );
