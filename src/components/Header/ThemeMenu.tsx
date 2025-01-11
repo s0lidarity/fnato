@@ -1,4 +1,4 @@
-import { MenuList, MenuListItem } from "react95";
+import { Button, MenuList, MenuListItem } from "react95";
 import styled from 'styled-components';
 import tokyoDark from 'react95/dist/themes/tokyoDark';
 import windows1 from 'react95/dist/themes/windows1';
@@ -11,7 +11,10 @@ import matrix from 'react95/dist/themes/matrix';
 import { useTheme } from '../../providers/Providers';
 
 
-const StyledSubMenuList = styled(MenuList)`
+const StyledSubMenuList = styled(MenuList).attrs<any>({
+    'data-testid': 'sub-menu-list',
+    'data-component': 'Header/SubMenuList',
+})`
     position: absolute;
     right: 100%;
     top: -6px;
@@ -23,11 +26,12 @@ const StyledSubMenuList = styled(MenuList)`
     box-shadow: 1px 1px 0 1px ${({ theme }) => theme.borderLight};
 `;
 
-const StyledMenuListItem = styled(MenuListItem)`
-    padding: 0.5rem 1rem;
+const StyledMenuListItem = styled(MenuListItem).attrs<any>({
+    'data-testid': 'menu-list-item',
+    'data-component': 'Header/MenuListItem',
+})`
     cursor: pointer;
     justify-content: flex-start;
-    gap: 0.5rem;
     width: 100%;
     display: flex;
     &:hover {
@@ -36,9 +40,26 @@ const StyledMenuListItem = styled(MenuListItem)`
     }
 `;
 
+const StyledButton = styled(Button).attrs<any>({
+    'data-testid': 'button',
+    'data-component': 'Header/Button',
+})`
+    width: 100%;
+`;
+
 interface ThemeMenuProps {
     onClose?: () => void; // Optional prop to close parent menu
 }
+
+const themes = [
+    { name: 'Tokyo Dark', theme: tokyoDark },
+    { name: 'Windows', theme: windows1 },
+    { name: 'Polarized', theme: polarized },
+    { name: 'High Contrast', theme: highContrast },
+    { name: 'Hot Dog Stand', theme: hotDogStand },
+    { name: 'Ninja Turtles', theme: ninjaTurtles },
+    { name: 'Matrix', theme: matrix },
+];
 
 // ajs start here, set theme properly
 
@@ -50,33 +71,24 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
         if (onClose) onClose();
     };
 
+    const renderButtons = () => {
+        return themes.map((t) => (
+            <StyledMenuListItem key={theme.name}>
+                <StyledButton
+                    disabled={theme === t.theme}
+                    active={theme === theme}
+                    onClick={() => handleThemeSelect(t.theme)}
+                >
+                    {t.name}
+                </StyledButton>
+            </StyledMenuListItem>
+        ));
+    };
+
     // AJS start here, make these themes a collection an dmap over them
     return (
         <StyledSubMenuList>
-            <StyledMenuListItem 
-                onClick={() => handleThemeSelect(tokyoDark)}
-                style={{ fontWeight: theme === tokyoDark ? 'bold' : 'normal' }}
-            >
-                Tokyo Dark
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(windows1)}>
-                Windows
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(polarized)}>
-                Polarized
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(highContrast)}>
-                High Contrast
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(hotDogStand)}>
-                Hot Dog Stand
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(ninjaTurtles)}>
-                Ninja Turtles
-            </StyledMenuListItem>
-            <StyledMenuListItem onClick={() => handleThemeSelect(matrix)}>
-                Matrix
-            </StyledMenuListItem>
+            {renderButtons()}
         </StyledSubMenuList>
     );
 }

@@ -24,7 +24,10 @@ const StyledMenuList = styled(MenuList).attrs<any>({
     z-index: 10;
 `;
 
-const StyledMenuListItem = styled(MenuListItem)`
+const StyledMenuListItem = styled(MenuListItem).attrs<any>({
+    'data-testid': 'menu-list-item',
+    'data-component': 'Header/MenuListItem',
+})`
     padding: 0.5rem 1rem;
     cursor: pointer;
     justify-content: flex-start;
@@ -35,7 +38,10 @@ const StyledMenuListItem = styled(MenuListItem)`
     }
 `;
 
-const StyledSettingsIcon = styled(IoMdSettings)`
+const StyledSettingsIcon = styled(IoMdSettings).attrs<any>({
+    'data-testid': 'settings-icon',
+    'data-component': 'Header/SettingsIcon',
+})`
     margin-right: 0.25rem;
     height: 1.25rem;
 `;
