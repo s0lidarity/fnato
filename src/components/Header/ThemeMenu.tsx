@@ -7,6 +7,15 @@ import highContrast from 'react95/dist/themes/highContrast';
 import hotDogStand from 'react95/dist/themes/hotDogStand';
 import ninjaTurtles from 'react95/dist/themes/ninjaTurtles';
 import matrix from 'react95/dist/themes/matrix';
+import solarizedDark from 'react95/dist/themes/solarizedDark';
+import modernDark from 'react95/dist/themes/modernDark';
+import azureOrange from 'react95/dist/themes/azureOrange';
+import powerShell from 'react95/dist/themes/powerShell';
+import marine from 'react95/dist/themes/marine';
+import solarizedLight from 'react95/dist/themes/solarizedLight';
+import peggysPastels from 'react95/dist/themes/peggysPastels';
+import darkTeal from 'react95/dist/themes/darkTeal';
+import counterStrike from 'react95/dist/themes/counterStrike';
 
 import { useTheme } from '../../providers/Providers';
 
@@ -70,6 +79,15 @@ const themes = [
     { name: 'Hot Dog Stand', theme: hotDogStand },
     { name: 'Ninja Turtles', theme: ninjaTurtles },
     { name: 'Matrix', theme: matrix },
+    { name: 'Solarized Dark', theme: solarizedDark },
+    { name: 'Modern Dark', theme: modernDark },
+    { name: 'Azure Orange', theme: azureOrange },
+    { name: 'PowerShell', theme: powerShell },
+    { name: 'Marine', theme: marine },
+    { name: 'Solarized Light', theme: solarizedLight },
+    { name: 'Peggy\'s Pastels', theme: peggysPastels },
+    { name: 'Dark Teal', theme: darkTeal },
+    { name: 'Counter Strike', theme: counterStrike },
 ];
 
 // ajs start here, set theme properly
@@ -83,7 +101,7 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
     };
 
     const renderButtons = () => {
-        return themes.map((t) => (
+        return themes.sort((a, b) => a.name.localeCompare(b.name)).map((t) => (
             <StyledMenuListItem key={t.name}>
                 <ThemedButton
                     $theme={t.theme}  // Pass the theme as a transient prop
@@ -96,7 +114,7 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
             </StyledMenuListItem>
         ));
     };
-    
+
     return (
         <StyledSubMenuList>
             {renderButtons()}
