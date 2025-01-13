@@ -3,7 +3,13 @@ import { styleReset } from 'react95';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 
-const GlobalStyles = createGlobalStyle`
+// Add prop type for the component
+interface GlobalStylesProps {
+	fontFamily?: 'ms_sans_serif' | 'system' | 'arial';
+}
+
+// Convert to prop-accepting component
+const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 	${styleReset}
 	@font-face {
 		font-family: 'ms_sans_serif';
@@ -17,8 +23,24 @@ const GlobalStyles = createGlobalStyle`
 		font-weight: bold;
 		font-style: normal
 	}
-	body, input, select, textarea {
-		font-family: 'ms_sans_serif';
+	body {
+		font-family: ${props => {
+			console.log('Current font:', props.fontFamily);
+			switch(props.fontFamily) {
+				case 'system':
+					return '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+				case 'arial':
+					return 'Arial, sans-serif';
+				case 'ms_sans_serif':
+				default:
+					return 'ms_sans_serif, sans-serif';
+			}
+		}};
+	}
+	
+	/* Apply the font to all form elements as well */
+	input, select, textarea, button {
+		font-family: inherit;
 	}
 	main {
 		display: flex;

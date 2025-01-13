@@ -1,11 +1,13 @@
 import { MenuList, MenuListItem, Button } from "react95";
 import styled from 'styled-components'; 
 import { IoMdSettings, IoMdColorFill } from "react-icons/io";
+import { BiFontFamily } from "react-icons/bi";
 
 import { useState } from "preact/hooks";
 import { MdLanguage } from "react-icons/md";
 import ThemeMenu from './ThemeMenu';
 import LocalizationMenu from "./LocalizationMenu";
+import FontMenu from "./FontMenu";
 
 const StyledButton = styled(Button).attrs<any>({
     'data-testid': 'settings-button',
@@ -51,7 +53,7 @@ function SettingsMenu(){
     const [open, setOpen] = useState(false);
     const [showThemeMenu, setShowThemeMenu] = useState(false);
     const [showLocalizationMenu, setShowLocalizationMenu] = useState(false);
-
+    const [showFontMenu, setShowFontMenu] = useState(false);
     return (
         <div>
             <StyledButton onClick={() => setOpen(!open)}>
@@ -72,6 +74,13 @@ function SettingsMenu(){
                     >
                         <MdLanguage /> Regional Settings
                         {showLocalizationMenu && <LocalizationMenu />}
+                    </StyledMenuListItem>
+                    <StyledMenuListItem 
+                        onMouseEnter={() => setShowFontMenu(true)}
+                        onMouseLeave={() => setShowFontMenu(false)}
+                    >
+                        <BiFontFamily /> Font Settings
+                        {showFontMenu && <FontMenu />}
                     </StyledMenuListItem>
                 </StyledMenuList>
             )}

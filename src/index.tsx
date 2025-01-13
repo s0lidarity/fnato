@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import TheCrucible from './pages/TheCrucible';
 import Header from './components/Header';
-import GlobalStyles from './GlobalStyles';
 import Footer from './components/Footer/Footer';
 
 import Providers from './providers/Providers';
@@ -29,7 +28,6 @@ export function App() {
 
 	return (
 		<div>
-			<GlobalStyles />
 			<Providers>
 				<Header />
 					{isMobile && showMobileBanner && (
