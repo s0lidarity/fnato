@@ -69,18 +69,18 @@ function SettingsMenu(){
                         {showThemeMenu && <ThemeMenu />}
                     </StyledMenuListItem>
                     <StyledMenuListItem 
-                        onMouseEnter={() => setShowLocalizationMenu(true)}
-                        onMouseLeave={() => setShowLocalizationMenu(false)}
-                    >
-                        <MdLanguage /> Regional Settings
-                        {showLocalizationMenu && <LocalizationMenu />}
-                    </StyledMenuListItem>
-                    <StyledMenuListItem 
                         onMouseEnter={() => setShowFontMenu(true)}
                         onMouseLeave={() => setShowFontMenu(false)}
                     >
                         <BiFontFamily /> Font Settings
                         {showFontMenu && <FontMenu />}
+                    </StyledMenuListItem>
+                    <StyledMenuListItem 
+                        onMouseEnter={() => setShowLocalizationMenu(true)}
+                        onMouseLeave={() => setShowLocalizationMenu(false)}
+                    >
+                        <MdLanguage /> Regional Settings
+                        {showLocalizationMenu && <LocalizationMenu />}
                     </StyledMenuListItem>
                 </StyledMenuList>
             )}

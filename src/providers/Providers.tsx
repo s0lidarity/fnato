@@ -11,15 +11,14 @@ import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';
 import GlobalStyles from '../GlobalStyles';
 
-// Define the theme type (you might want to import this from styled-components)
 type Theme = typeof tokyoDark;
 
-// Define the context type
+// AJS let's add more fonts? starting point
 interface ThemeContextType {
     theme: Theme;
     setTheme: (theme: Theme) => void;
-    fontFamily: 'ms_sans_serif' | 'system' | 'arial';
-    setFontFamily: (font: 'ms_sans_serif' | 'system' | 'arial') => void;
+    fontFamily: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval';
+    setFontFamily: (font: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval') => void;
 }
 
 // Update the context with proper typing
@@ -32,7 +31,7 @@ export const ThemeContext = createContext<ThemeContextType>({
 
 function Providers({ children }: { children: ComponentChildren }) {
     const [theme, setTheme] = useState(tokyoDark);
-    const [fontFamily, setFontFamily] = useState<'ms_sans_serif' | 'system' | 'arial'>('ms_sans_serif');
+    const [fontFamily, setFontFamily] = useState<'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval'>('ms_sans_serif');
     
     return (
         <LocationProvider>

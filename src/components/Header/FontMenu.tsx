@@ -1,7 +1,7 @@
 import { MenuList, MenuListItem } from "react95";
 import styled from 'styled-components';
 import { useContext } from 'preact/hooks';
-import { ThemeContext } from '../../providers/ThemeProvider';
+import { ThemeContext } from '../../providers/Providers';
 
 const StyledSubMenu = styled(MenuList).attrs<any>({
     'data-testid': 'sub-menu-list',
@@ -15,14 +15,16 @@ const StyledSubMenu = styled(MenuList).attrs<any>({
 const FontMenu = () => {
     const { fontFamily, setFontFamily } = useContext(ThemeContext);
     
+    // AJS let's add more fonts? starting points
     const fonts = [
         { label: 'MS Sans Serif', value: 'ms_sans_serif' },
         { label: 'System', value: 'system' },
         { label: 'Arial', value: 'arial' },
+        { label: 'DeFonte', value: 'defonte' },
+        { label: 'Upheaval', value: 'upheaval' },
     ];
 
     const handleFontChange = (value: string) => {
-        console.log('Font changed to:', value);
         setFontFamily(value as any);
     };
 
@@ -34,7 +36,7 @@ const FontMenu = () => {
                 onClick={() => handleFontChange(font.value as any)}
                 style={{ 
                     fontWeight: fontFamily === font.value ? 'bold' : 'normal',
-                    fontFamily: font.value
+                    fontFamily: font.value === 'defonte' ? 'defonte' : 'ms_sans_serif'
                 }}
             >
                 {font.label}
