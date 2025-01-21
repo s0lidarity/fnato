@@ -4,13 +4,19 @@ import { useState, useContext } from 'preact/hooks';
 import { ThemeProvider } from 'styled-components';
 import tokyoDark from 'react95/dist/themes/tokyoDark';
 import type { ComponentChildren } from 'preact';
+import { I18nProvider } from '@lingui/react';
+import { i18n } from "@lingui/core";
 
 import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';
+import { messages } from "../locales/en/messages";
 import GlobalStyles from '../GlobalStyles';
 
+
+i18n.load("en", messages);
+i18n.activate("en");
 type Theme = typeof tokyoDark;
 
 // AJS let's add more fonts? starting point
@@ -35,9 +41,10 @@ function Providers({ children }: { children: ComponentChildren }) {
     
     return (
         <LocationProvider>
-            <ThemeContext.Provider value={{ theme, setTheme, fontFamily, setFontFamily }}>
-                <ThemeProvider theme={theme}>
-                    <StatsProvider>
+            <I18nProvider i18n={i18n}>
+                <ThemeContext.Provider value={{ theme, setTheme, fontFamily, setFontFamily }}>
+                    <ThemeProvider theme={theme}>
+                        <StatsProvider>
                         <SkillsProvider>
                             <BondsProvider>
                                 <PersonalDetailsProvider>
@@ -47,8 +54,9 @@ function Providers({ children }: { children: ComponentChildren }) {
                             </BondsProvider>
                         </SkillsProvider>
                     </StatsProvider>
-                </ThemeProvider>
-            </ThemeContext.Provider>
+                    </ThemeProvider>
+                </ThemeContext.Provider>
+            </I18nProvider>
         </LocationProvider>
     );
 }

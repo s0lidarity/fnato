@@ -2,7 +2,7 @@ import { defineConfig } from '@lingui/cli';
 
 export default defineConfig({
     sourceLocale: 'en',
-    locales: ['en', 'hi'],
+    locales: ['en', 'fr', 'de'],
     catalogs: [
         {
         path: 'src/locales/{locale}/messages',
