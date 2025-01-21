@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 				case 'defonte':
 					return 'defonte';
 				case 'ms_sans_serif':
+					return 'ms_sans_serif';
 				case 'upheaval':
 					return 'upheaval';
 				default:
