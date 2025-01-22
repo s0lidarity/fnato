@@ -9,7 +9,8 @@
 		"test": "vitest",
 		"prepare": "husky install",
 		"extract": "lingui extract",
-		"compile": "lingui compile --typescript"
+		"compile": "lingui compile --typescript",
+		"lingui": "lingui extract --clean && lingui compile --typescript"
 	},
 	"dependencies": {
 		"@lingui/core": "^5.1.2",

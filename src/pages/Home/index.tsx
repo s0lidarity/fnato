@@ -42,11 +42,9 @@ export function Home() {
                     variant="outside"
                     shadow>
                     <TextWrapper>
-                        <Trans>
-                            <Title>
-                                Memento Mori.
-                            </Title>
-                        </Trans>
+                        <Title>
+                            Memento Mori.
+                        </Title>
                         <LogoContainer><Logo src={ALT_DG_LOGO} alt="Scienta Mors Est" /></LogoContainer>
                         <Blurb>
                             <Trans>

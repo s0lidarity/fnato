@@ -11,12 +11,15 @@ import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';
-import { messages } from "../locales/en/messages";
 import GlobalStyles from '../GlobalStyles';
 
 
-i18n.load("en", messages);
-i18n.activate("en");
+export async function dynamicActivate(locale: string) {
+    const { messages } = await import(`./locales/${locale}.po`);
+    i18n.load(locale, messages);
+    i18n.activate(locale);
+}
+
 type Theme = typeof tokyoDark;
 
 // AJS let's add more fonts? starting point

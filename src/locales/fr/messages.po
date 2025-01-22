@@ -6,23 +6,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: fr\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/pages/Home/index.tsx:45
-msgid "<0>Memento Mori.</0>"
-msgstr ""
+#~ msgid "<0>Memento Mori.</0>"
+#~ msgstr "<0>Memento Mori.</0>"
 
 #: src/pages/Home/index.tsx:60
+#~ msgid "Do you close your eyes to what you've seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
+#~ msgstr "Fermez-vous les yeux sur ce que vous avez vu pour vous rendormir ? Ou accompagnez-vous ce psychopathe épuisé pour accomplir l'impossible face à l'incroyable et repousser l'avenir pour un jour de plus ?"
+
+#: src/pages/Home/index.tsx:58
 msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
 msgstr ""
 
-#: src/pages/Home/index.tsx:67
+#: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
-msgstr ""
+msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
 
-#: src/pages/Home/index.tsx:52
+#: src/pages/Home/index.tsx:50
 msgid "We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take."
-msgstr ""
+msgstr "Nous menons une guerre contre l'inévitable. Et c'est une guerre que nous allons perdre. Mais nous gagnerons les batailles. Nous ferons travailler ces salauds pour ça. Nous les forcerons à prendre le terrain centimètre par centimètre. Et nous les ferons saigner pour chaque centimètre qu'ils prendront."
 
-#: src/pages/Home/index.tsx:74
+#: src/pages/Home/index.tsx:72
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
-msgstr ""
+msgstr "Ce qui se passe à l'opéra reste ici. De toute façon, personne en dehors de l'organisation ne vous croirait."
