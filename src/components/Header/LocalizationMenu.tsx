@@ -45,8 +45,8 @@ interface ThemeMenuProps {
 // ajs start here, bring in l10n from provider
 const localizations = [
     { name: 'English', emoji: '🇺🇸', locale: 'en' },
-    { name: 'French', emoji: '🇫🇷', locale: 'fr' },
-    { name: 'German', emoji: '🇩🇪', locale: 'de' },
+    { name: 'Français', emoji: '🇫🇷', locale: 'fr' },
+    { name: 'Deutsch', emoji: '🇩🇪', locale: 'de' },
 ];
 
 function LocalizationMenu({ onClose }: ThemeMenuProps) {

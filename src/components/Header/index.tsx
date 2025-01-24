@@ -2,6 +2,7 @@ import { AppBar, Toolbar } from 'react95';
 import styled from 'styled-components';
 import NavigationMenu from './NavigationMenu';
 import SettingsMenu from './SettingsMenu';
+import { Trans } from '@lingui/react/macro';
 
 const HeaderWrapper = styled.div.attrs<any>({
     'data-testid': 'header-wrapper',
@@ -57,7 +58,7 @@ function Header() {
                 <StyledToolbar>
                     <ToolbarContent>
                         <NavigationMenu />
-                        <HeaderTitle>First Night at the Opera?</HeaderTitle>
+                        <HeaderTitle><Trans>First Night at the Opera?</Trans></HeaderTitle>
                         <SettingsMenu />
                     </ToolbarContent>
                 </StyledToolbar>

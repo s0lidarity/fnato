@@ -13,12 +13,12 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/pages/Home/index.tsx:45
-#~ msgid "<0>Memento Mori.</0>"
-#~ msgstr ""
-
 #: src/pages/Home/index.tsx:58
 msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
+msgstr ""
+
+#: src/components/Header/index.tsx:61
+msgid "First Night at the Opera?"
 msgstr ""
 
 #: src/pages/Home/index.tsx:65
