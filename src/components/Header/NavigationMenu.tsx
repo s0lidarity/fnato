@@ -2,6 +2,7 @@ import { useLocation } from 'preact-iso';
 import { useState } from 'preact/hooks';
 import { MenuList, MenuListItem, StyledButton } from "react95";
 import styled from 'styled-components';
+import { Trans } from '@lingui/react/macro';
 
 import DownGreenTri from '../../assets/down-green-tri.png';
 
@@ -91,7 +92,7 @@ function NavigationMenu(){
     return (
         <div>
             <StyledButton onClick={() => setOpen(!open)}>
-                <TriangleIcon src={DownGreenTri} alt='green-triangle' /> Start
+                <TriangleIcon src={DownGreenTri} alt='green-triangle' /> <Trans>Start</Trans>
             </StyledButton>
             { open && (
                 <StyledMenu>
@@ -101,7 +102,8 @@ function NavigationMenu(){
                                 <StyledMenuListItem onClick={()=> setOpen(false)} className={url === item.url ? 'active' : ''}>
                                         <IconWrapper role='img' aria-label={item.img}>
                                             {item.img}
-                                        </IconWrapper>{item.name}
+                                        </IconWrapper>
+                                        <Trans>{item.name}</Trans>
                                 </StyledMenuListItem>
                             </a>
                         ))}

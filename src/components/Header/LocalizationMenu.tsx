@@ -42,7 +42,6 @@ interface ThemeMenuProps {
     onClose?: () => void; // Optional prop to close parent menu
 }
 
-// ajs start here, bring in l10n from provider
 const localizations = [
     { name: 'English', emoji: '🇺🇸', locale: 'en' },
     { name: 'Français', emoji: '🇫🇷', locale: 'fr' },
