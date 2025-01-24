@@ -1,6 +1,6 @@
 import { LocationProvider } from 'preact-iso';
 import { createContext } from 'preact';
-import { useState, useContext } from 'preact/hooks';
+import { useState, useContext, useEffect } from 'preact/hooks';
 import { ThemeProvider } from 'styled-components';
 import tokyoDark from 'react95/dist/themes/tokyoDark';
 import type { ComponentChildren } from 'preact';
@@ -15,9 +15,24 @@ import GlobalStyles from '../GlobalStyles';
 
 
 export async function dynamicActivate(locale: string) {
-    const { messages } = await import(`./locales/${locale}.po`);
-    i18n.load(locale, messages);
-    i18n.activate(locale);
+    try {
+        // Import both messages and locale data with correct path
+        const [{ messages }] = await Promise.all([
+            import(`../locales/${locale}/messages`),
+        ]);
+        
+        // Load the messages
+        i18n.load(locale, messages);
+        
+        // Activate the locale
+        i18n.activate(locale);
+        
+    } catch (error) {
+        console.error(`Failed to load locale '${locale}':`, error);
+        if (locale !== 'en') {
+            await dynamicActivate('en');
+        }
+    }
 }
 
 type Theme = typeof tokyoDark;
@@ -41,6 +56,13 @@ export const ThemeContext = createContext<ThemeContextType>({
 function Providers({ children }: { children: ComponentChildren }) {
     const [theme, setTheme] = useState(tokyoDark);
     const [fontFamily, setFontFamily] = useState<'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval'>('ms_sans_serif');
+    
+    // Add effect to initialize i18n
+    useEffect(() => {
+        // Get user's preferred language, fallback to 'en'
+        const userLocale = navigator.language.split('-')[0] || 'en';
+        dynamicActivate(userLocale);
+    }, []);
     
     return (
         <LocationProvider>

@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import { styleReset } from 'react95';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
-import defonte from '../public/assets/DeFonte_reduced_Normale.ttf';
-import Upheaval from '../public/assets/upheavtt.ttf';
+import defonte from './assets/fonts/DeFonte_reduced_Normale.ttf';
+import Upheaval from './assets/fonts/upheavtt.ttf';
 
 // Add prop type for the component
 interface GlobalStylesProps {

@@ -1,6 +1,6 @@
-import { useTranslation } from "preact-i18next";
 import { Button, MenuList, MenuListItem } from "react95";
 import styled from 'styled-components';
+import { useLingui } from '@lingui/react';
 
 const StyledSubMenuList = styled(MenuList).attrs<any>({
     'data-testid': 'sub-menu-list',
@@ -44,26 +44,32 @@ interface ThemeMenuProps {
 
 // ajs start here, bring in l10n from provider
 const localizations = [
-    { name: 'English', emoji: '🇺🇸' },
-    { name: 'French', emoji: '🇫🇷' },
-    { name: 'German', emoji: '🇩🇪' },
+    { name: 'English', emoji: '🇺🇸', locale: 'en' },
+    { name: 'French', emoji: '🇫🇷', locale: 'fr' },
+    { name: 'German', emoji: '🇩🇪', locale: 'de' },
 ];
 
 function LocalizationMenu({ onClose }: ThemeMenuProps) {
-    const { t } = useTranslation();
+    const { i18n } = useLingui();
 
-    const handleLocalizationSelect = (l: any) => {
-        console.log('localization selected', l.name);
-        if (onClose) onClose();
+    const handleLocalizationSelect = async (localization: typeof localizations[0]) => {
+        try {
+            const catalog = await import(`../../locales/${localization.locale}/messages.ts`);
+            i18n.load(localization.locale, catalog.messages);
+            i18n.activate(localization.locale);
+            if (onClose) onClose();
+        } catch (error) {
+            console.error(`Failed to load messages for locale ${localization.locale}:`, error);
+        }
     };
 
     const renderButtons = () => {
         return localizations.map((l) => (
             <StyledMenuListItem key={l.name}>
                 <StyledButton
-                    active={false}
+                    active={i18n.locale === l.locale}
                     disabled={false}
-                    onClick={() => handleLocalizationSelect(l.name)}
+                    onClick={() => handleLocalizationSelect(l)}
                 >
                     {l.emoji} {l.name}
                 </StyledButton>
