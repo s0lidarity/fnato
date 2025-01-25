@@ -2,6 +2,7 @@ import { MenuList, MenuListItem, Button } from "react95";
 import styled from 'styled-components'; 
 import { IoMdSettings, IoMdColorFill } from "react-icons/io";
 import { BiFontFamily } from "react-icons/bi";
+import { Trans } from '@lingui/react/macro';
 
 import { useState } from "preact/hooks";
 import { MdLanguage } from "react-icons/md";
@@ -65,21 +66,21 @@ function SettingsMenu(){
                         onMouseEnter={() => setShowThemeMenu(true)}
                         onMouseLeave={() => setShowThemeMenu(false)}
                     >
-                        <IoMdColorFill /> Select Theme
+                        <IoMdColorFill /> <Trans>Select Theme</Trans>
                         {showThemeMenu && <ThemeMenu />}
                     </StyledMenuListItem>
                     <StyledMenuListItem 
                         onMouseEnter={() => setShowFontMenu(true)}
                         onMouseLeave={() => setShowFontMenu(false)}
                     >
-                        <BiFontFamily /> Font Settings
+                        <BiFontFamily /> <Trans>Font Settings</Trans>
                         {showFontMenu && <FontMenu />}
                     </StyledMenuListItem>
                     <StyledMenuListItem 
                         onMouseEnter={() => setShowLocalizationMenu(true)}
                         onMouseLeave={() => setShowLocalizationMenu(false)}
                     >
-                        <MdLanguage /> Regional Settings
+                        <MdLanguage /> <Trans>Regional Settings</Trans>
                         {showLocalizationMenu && <LocalizationMenu />}
                     </StyledMenuListItem>
                 </StyledMenuList>

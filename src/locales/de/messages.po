@@ -13,6 +13,29 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. placeholder {0}: t.name
+#. placeholder {0}: item.name
+#: src/components/Header/ThemeMenu.tsx:114
+#: src/components/Header/NavigationMenu.tsx:106
+msgid "{0}"
+msgstr ""
+
+#: src/pages/About/index.tsx:145
+msgid "About the Author"
+msgstr ""
+
+#: src/pages/About/index.tsx:140
+msgid "About the Game"
+msgstr ""
+
+#: src/pages/About/index.tsx:75
+msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
+msgstr ""
+
+#: src/pages/About/index.tsx:115
+msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
+msgstr ""
+
 #: src/pages/Home/index.tsx:58
 msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
 msgstr ""
@@ -21,8 +44,40 @@ msgstr ""
 msgid "First Night at the Opera?"
 msgstr ""
 
+#: src/components/Header/SettingsMenu.tsx:76
+msgid "Font Settings"
+msgstr ""
+
+#: src/pages/About/index.tsx:101
+msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
+msgstr ""
+
+#: src/pages/About/index.tsx:87
+msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
+msgstr ""
+
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
+msgstr ""
+
+#: src/components/Header/SettingsMenu.tsx:83
+msgid "Regional Settings"
+msgstr ""
+
+#: src/components/Header/SettingsMenu.tsx:69
+msgid "Select Theme"
+msgstr ""
+
+#: src/components/Header/NavigationMenu.tsx:95
+msgid "Start"
+msgstr ""
+
+#: src/pages/About/index.tsx:54
+msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
+msgstr ""
+
+#: src/pages/About/index.tsx:128
+msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
 msgstr ""
 
 #: src/pages/Home/index.tsx:50

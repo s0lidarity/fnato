@@ -1,5 +1,6 @@
 import { Button, MenuList, MenuListItem } from "react95";
 import styled from 'styled-components';
+import { Trans } from "@lingui/react/macro";
 import tokyoDark from 'react95/dist/themes/tokyoDark';
 import windows1 from 'react95/dist/themes/windows1';
 import polarized from 'react95/dist/themes/polarized';
@@ -18,6 +19,7 @@ import darkTeal from 'react95/dist/themes/darkTeal';
 import counterStrike from 'react95/dist/themes/counterStrike';
 
 import { useTheme } from '../../providers/Providers';
+
 
 
 const StyledSubMenuList = styled(MenuList).attrs<any>({
@@ -109,7 +111,7 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
                     active={theme.name === t.theme.name}
                     onClick={() => handleThemeSelect(t.theme)}
                 >
-                    {t.name}
+                    <Trans>{t.name}</Trans>
                 </ThemedButton>
             </StyledMenuListItem>
         ));
