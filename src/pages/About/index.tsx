@@ -134,16 +134,19 @@ const dgConfig = [
 
 // AJS starting point, revisit these t blocks, they ain't working
 export function About() {
+
+    const aboutMessage = t`About the Game`;
+    const aboutAuthorMessage = t`About the Author`;
     return (
         <>
             <PageWrapper>
                 <GroupBoxContainer>
-                    <GroupBox label={t`About the Game`}>
+                    <GroupBox label={aboutMessage}>
                         <Accordion items={dgConfig} />
                     </GroupBox>
                 </GroupBoxContainer>
                 <GroupBoxContainer>
-                    <GroupBox label={t`About the Author`}>
+                    <GroupBox label={aboutAuthorMessage}>
                         <Accordion items={authorConfig} />
                     </GroupBox>
                 </GroupBoxContainer>

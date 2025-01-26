@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'preact/hooks';
 import { Tabs, Tab, TabBody, Window, WindowContent, WindowHeader } from 'react95';
 import { PiCookingPotFill } from "react-icons/pi";
-
+import { Trans } from '@lingui/react/macro';
 
 import Statistics from './Statistics/Statistics';
 import Profession from './Profession';
@@ -33,18 +33,18 @@ export function TheCrucible() {
         <PageWrapper>
             <StyledWindow>
                 <StyledHeader>
-                    <h1>The Crucible</h1>
+                    <h1><Trans>The Crucible</Trans></h1>
                     <PiCookingPotFill />
                 </StyledHeader>
                 <WindowContent>
                     {/* AJS TODO */}
                     {/* show an icon when tab is complete, maybe context for completion? */}
                     <Tabs value={activeTab} onChange={handleChange}>
-                        <Tab value={0}>Statistics</Tab>
-                        <Tab value={1}>Profession & Skills</Tab>
-                        <Tab value={2}>Bonds</Tab>
-                        <Tab value={3}>Personal Details</Tab>
-                        <Tab value={4}>Dossier</Tab>
+                        <Tab value={0}><Trans>Statistics</Trans></Tab>
+                        <Tab value={1}><Trans>Profession & Skills</Trans></Tab>
+                        <Tab value={2}><Trans>Bonds</Trans></Tab>
+                        <Tab value={3}><Trans>Personal Details</Trans></Tab>
+                        <Tab value={4}><Trans>Dossier</Trans></Tab>
                         
                     </Tabs>
                     <TabBody>

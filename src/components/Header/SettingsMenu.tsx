@@ -58,7 +58,7 @@ function SettingsMenu(){
     return (
         <div>
             <StyledButton onClick={() => setOpen(!open)}>
-                <StyledSettingsIcon /> Settings
+                <StyledSettingsIcon /> <Trans>Settings</Trans>
             </StyledButton>
             {open && (
                 <StyledMenuList>

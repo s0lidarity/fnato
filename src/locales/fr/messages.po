@@ -16,15 +16,15 @@ msgstr ""
 #. placeholder {0}: t.name
 #. placeholder {0}: item.name
 #: src/components/Header/ThemeMenu.tsx:114
-#: src/components/Header/NavigationMenu.tsx:106
+#: src/components/Header/NavigationMenu.tsx:107
 msgid "{0}"
 msgstr "{0}"
 
-#: src/pages/About/index.tsx:145
+#: src/pages/About/index.tsx:139
 msgid "About the Author"
 msgstr "À propos de l'auteur"
 
-#: src/pages/About/index.tsx:140
+#: src/pages/About/index.tsx:138
 msgid "About the Game"
 msgstr "À propos du jeu"
 
@@ -36,9 +36,21 @@ msgstr "Andrew Sobiesiak est un ingénieur logiciel qui joue aux JDR sur table e
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:82
+msgid "Base Statistics"
+msgstr ""
+
+#: src/pages/TheCrucible/index.tsx:45
+msgid "Bonds"
+msgstr ""
+
 #: src/pages/Home/index.tsx:58
-msgid "Do you close your eyes to what you've seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
-msgstr "Fermez-vous les yeux sur ce que vous avez vu pour vous rendormir ? Ou accompagnez-vous ce psychopathe épuisé pour accomplir l'impossible face à l'incroyable et repousser l'avenir pour un jour de plus ?"
+msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
+msgstr ""
+
+#: src/pages/TheCrucible/index.tsx:47
+msgid "Dossier"
+msgstr ""
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
@@ -60,6 +72,14 @@ msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu De
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
 
+#: src/pages/TheCrucible/index.tsx:46
+msgid "Personal Details"
+msgstr ""
+
+#: src/pages/TheCrucible/index.tsx:44
+msgid "Profession & Skills"
+msgstr ""
+
 #: src/components/Header/SettingsMenu.tsx:83
 msgid "Regional Settings"
 msgstr "Paramètres régionaux"
@@ -68,13 +88,25 @@ msgstr "Paramètres régionaux"
 msgid "Select Theme"
 msgstr "Sélectionner le thème"
 
+#: src/components/Header/SettingsMenu.tsx:61
+msgid "Settings"
+msgstr ""
+
 #: src/components/Header/NavigationMenu.tsx:95
 msgid "Start"
 msgstr "Commencer"
 
+#: src/pages/TheCrucible/index.tsx:43
+msgid "Statistics"
+msgstr ""
+
 #: src/pages/About/index.tsx:54
 msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 msgstr "Jetez un coup d'œil derrière le rideau. N'hésitez pas à :<0><1>signaler un <2>problème</2></1><3>laisser des <4>commentaires/demandes de fonctionnalités</4></3><5>ou ⭐️ Étoiler le projet pour booster l'ego de l'auteur.</5></0>"
+
+#: src/pages/TheCrucible/index.tsx:36
+msgid "The Crucible"
+msgstr ""
 
 #: src/pages/About/index.tsx:128
 msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."

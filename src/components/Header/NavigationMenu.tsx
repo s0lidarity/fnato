@@ -103,6 +103,7 @@ function NavigationMenu(){
                                         <IconWrapper role='img' aria-label={item.img}>
                                             {item.img}
                                         </IconWrapper>
+                                        {/* AJS TODO these are not translating */}
                                         <Trans>{item.name}</Trans>
                                 </StyledMenuListItem>
                             </a>
