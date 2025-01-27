@@ -6,6 +6,9 @@
 - TypeScript
 - styled-components
 - react95 (Windows 95 UI components)
+- @lingui/react/macro
+- @lingui/core
+- vite
 
 ## Key Architecture Patterns
 
@@ -117,6 +120,19 @@ src/
 - Include ARIA labels where appropriate
 - Ensure keyboard navigation works
 - Maintain proper heading hierarchy
+
+### Localization
+
+- Use @lingui/react/macro for translations
+- Create a new locale file in the src/locales directory
+
+```typescript
+import { Trans } from '@lingui/react/macro';
+
+function Component() {
+    return <Trans>Hello, world!</Trans>;
+}
+```
 
 ## Common Gotchas
 

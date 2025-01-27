@@ -1,6 +1,10 @@
-import { ProfessionConfigOptions } from '../../../types/componentTypes';
+
 import styled from 'styled-components';
 import { Button } from 'react95';
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
+
+import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import StandardSkillForm from './components/StandardSkillForm';
 import CustomSkillForm from './components/CustomSkillForm';
@@ -30,8 +34,8 @@ const ButtonsContainer = styled.div.attrs<any>({
 export function Profession() {
     const { config, changeConfig, resetProfession } = useSkills();
     const configOptions = [
-        { label: 'Standard Professions', value: ProfessionConfigOptions.StandardProfessions },
-        { label: 'Custom Professions', value: ProfessionConfigOptions.CustomProfessions },
+        { label: t`Standard Professions`, value: ProfessionConfigOptions.StandardProfessions },
+        { label: t`Custom Professions`, value: ProfessionConfigOptions.CustomProfessions },
     ];
 
     const renderSkillForm = (config: ProfessionConfigOptions) => {
@@ -59,7 +63,7 @@ export function Profession() {
                 {renderSkillForm(config)}
             </div>
             <ButtonsContainer>
-                <Button onClick={resetProfession}>Reset Profession</Button>
+                <Button onClick={resetProfession}><Trans>Reset Profession</Trans></Button>
             </ButtonsContainer>
         </div>
     )

@@ -1,0 +1,287 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-01-20 22:11-0800\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: fr\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:124
+msgid "--- Additional Professions ---"
+msgstr "--- Professions supplémentaires ---"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:118
+msgid "--- Standard Professions ---"
+msgstr "--- Professions standard ---"
+
+#. placeholder {0}: stats[stat as keyof Statistics].label
+#. placeholder {0}: stats[stat as keyof Statistics].reminderText
+#. placeholder {0}: statKey?.charAt(0).toUpperCase() + statKey?.slice(1)
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:10
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:110
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:111
+#: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
+#: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:176
+#: src/components/Header/ThemeMenu.tsx:114
+msgid "{0}"
+msgstr "{0}"
+
+#. placeholder {0}: skill.skillName
+#. placeholder {1}: skill.subType && ` (${skill.subType})`
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
+msgid "{0} {1}"
+msgstr ""
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
+msgid "{labelText}"
+msgstr ""
+
+#: src/components/Header/NavigationMenu.tsx:23
+msgid "About"
+msgstr "À propos"
+
+#: src/pages/About/index.tsx:138
+msgid "About the Author"
+msgstr "À propos de l'auteur"
+
+#: src/pages/About/index.tsx:137
+msgid "About the Game"
+msgstr "À propos du jeu"
+
+#: src/pages/About/index.tsx:75
+msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
+msgstr "Andrew Sobiesiak est un ingénieur logiciel qui joue aux JDR sur table en ligne chaque semaine depuis 2017.<0/> Il ferait un terrible agent de terrain mais est prêt à combattre la guerre cosmique sisyphéenne. Il vit à <1>Seattle, WA</1> avec sa <2>femme, 5 chats et un chien</2>"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
+msgid "Apply preset skills and choose additional skills for your character."
+msgstr "Appliquer les compétences prédéfinies et choisir des compétences supplémentaires pour votre personnage."
+
+#: src/pages/About/index.tsx:111
+#~ msgid "Arc Dream Publishing"
+#~ msgstr "Arc Dream Publishing"
+
+#: src/pages/About/index.tsx:115
+msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
+msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
+
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:82
+msgid "Base Statistics"
+msgstr "Statistiques de base"
+
+#: src/pages/TheCrucible/index.tsx:51
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:166
+msgid "Bonds"
+msgstr "Liens"
+
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
+msgid "Choose a bonus skill package"
+msgstr "Choisir un package de compétences bonus"
+
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:83
+msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
+msgstr "Choisir un package pour appliquer automatiquement les points bonus, ou sélectionner 'Aucun package' pour assigner manuellement vos points bonus"
+
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:114
+msgid "Clear"
+msgstr "Effacer"
+
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:127
+msgid "Clear Descriptors"
+msgstr "Effacer les descriptions"
+
+#: src/pages/TheCrucible/Profession/index.tsx:38
+msgid "Custom Professions"
+msgstr "Professions personnalisées"
+
+#: src/pages/About/index.tsx:72
+msgid "Declassified Record"
+msgstr "Dossier déclassifié"
+
+#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:37
+msgid "Derived Attributes"
+msgstr "Attributs dérivés"
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
+msgid "Dice"
+msgstr "Dés"
+
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
+msgid "Distinguishing Features"
+msgstr "Caractéristiques distinctives"
+
+#: src/pages/Home/index.tsx:58
+msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
+msgstr "Fermez les yeux sur ce que vous avez vu et retournez dormir ? Ou accompagniez-vous ce psychopathe épuisé pour accomplir l'impossible face à l'incroyable et repousser le futur un jour de plus ?"
+
+#: src/pages/TheCrucible/index.tsx:53
+msgid "Dossier"
+msgstr "Dossier"
+
+#: src/pages/About/index.tsx:124
+#~ msgid "DriveThruRPG"
+#~ msgstr ""
+
+#: src/components/Header/index.tsx:61
+msgid "First Night at the Opera?"
+msgstr "Première soirée à l'opéra ?"
+
+#: src/components/Header/SettingsMenu.tsx:76
+msgid "Font Settings"
+msgstr "Paramètres de police"
+
+#: src/components/Header/NavigationMenu.tsx:18
+msgid "Home"
+msgstr "Accueil"
+
+#: src/pages/About/index.tsx:101
+msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
+msgstr "Si la communauté du renseignement était une famille, Delta Green serait l'oncle dont personne ne parle.<0/>Delta Green est un Jeu de Rôle sur Table qui utilise un système D100. Les Gestionnaires dirigent des opérations pour leurs agents, d'autres joueurs, où une opération gouvernementale secrète œuvre pour protéger le monde des horreurs cosmiques inconnues."
+
+#: src/pages/About/index.tsx:87
+msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
+msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu Delta Green via des liens d'affiliation."
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
+msgid "Key Stats"
+msgstr "Statistiques clés"
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
+msgid "Manual Input"
+msgstr "Entrée manuelle"
+
+#: src/pages/Home/index.tsx:65
+msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
+msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
+
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:70
+msgid "No Package (Manual Bonus Points)"
+msgstr "Aucun package (Points bonus manuels)"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:167
+msgid "Number of social connections available to your character."
+msgstr "Nombre de liens sociaux disponibles pour votre personnage."
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+msgid "Options"
+msgstr "Options"
+
+#: src/pages/TheCrucible/index.tsx:52
+msgid "Personal Details"
+msgstr "Détails personnels"
+
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
+msgid "personal specialty (any)"
+msgstr "spécialité personnelle (n'importe quelle)"
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
+msgid "Point Buy"
+msgstr "Achat de points"
+
+#: src/pages/TheCrucible/index.tsx:50
+msgid "Profession & Skills"
+msgstr "Profession & Compétences"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:145
+msgid "Professional Background"
+msgstr "Profession"
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:158
+msgid "Recommended best stats for your chosen profession."
+msgstr "Statistiques recommandées pour votre profession choisie."
+
+#: src/components/Header/SettingsMenu.tsx:83
+msgid "Regional Settings"
+msgstr "Paramètres régionaux"
+
+#: src/pages/TheCrucible/Profession/index.tsx:66
+msgid "Reset Profession"
+msgstr "Réinitialiser la profession"
+
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:173
+msgid "Reset Stats"
+msgstr "Réinitialiser les statistiques"
+
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:174
+msgid "Roll 4d6, drop lowest Result"
+msgstr "Lancer 4d6, enlever le plus bas"
+
+#: src/components/Header/SettingsMenu.tsx:69
+msgid "Select Theme"
+msgstr "Sélectionner le thème"
+
+#: src/components/Header/SettingsMenu.tsx:61
+msgid "Settings"
+msgstr "Paramètres"
+
+#: src/pages/TheCrucible/Profession/index.tsx:37
+msgid "Standard Professions"
+msgstr "Professions standard"
+
+#: src/components/Header/NavigationMenu.tsx:96
+msgid "Start"
+msgstr "Commencer"
+
+#: src/pages/TheCrucible/index.tsx:49
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
+#: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
+msgid "Statistics Details"
+msgstr "Détails des statistiques"
+
+#: src/components/Header/NavigationMenu.tsx:33
+msgid "Summary"
+msgstr "Résumé"
+
+#: src/pages/About/index.tsx:54
+msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
+msgstr "Jetez un coup d'œil derrière le rideau. N'hésitez pas à :<0><1>signaler un <2>problème</2></1><3>laisser des <4>commentaires/demandes de fonctionnalités</4></3><5>ou ⭐️ Étoiler le projet pour booster l'ego de l'auteur.</5></0>"
+
+#: src/pages/TheCrucible/index.tsx:42
+#: src/components/Header/NavigationMenu.tsx:28
+msgid "The Crucible"
+msgstr "Le Creuset"
+
+#: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:48
+msgid "The title of your agent's day-job"
+msgstr "Le titre de votre métier de l'agent"
+
+#: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:48
+msgid "Title:"
+msgstr "Titre :"
+
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
+msgid "Use All Suggestions"
+msgstr "Utiliser toutes les suggestions"
+
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
+msgid "Use Suggested"
+msgstr "Utiliser les suggestions"
+
+#: src/pages/About/index.tsx:128
+msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
+msgstr "Visitez DriveThruRPG pour acheter les documents sources de Delta Green et en savoir plus."
+
+#: src/pages/Home/index.tsx:50
+msgid "We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take."
+msgstr "Nous menons une guerre contre l'inévitable. Et c'est une guerre que nous allons perdre. Mais nous gagnerons les batailles. Nous ferons travailler ces salauds pour ça. Nous les forcerons à prendre le terrain centimètre par centimètre. Et nous les ferons saigner pour chaque centimètre qu'ils prendront."
+
+#: src/pages/Home/index.tsx:72
+msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
+msgstr "Ce qui se passe à l'opéra reste ici. De toute façon, personne en dehors de l'organisation ne vous croirait."
+
+#: src/pages/About/index.tsx:97
+msgid "What is Delta Green?"
+msgstr "Qu'est-ce que Delta Green ?"

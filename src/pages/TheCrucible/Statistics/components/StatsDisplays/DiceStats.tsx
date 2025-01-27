@@ -2,6 +2,8 @@ import { useState } from 'preact/hooks';
 import { PiDiceOne, PiDiceTwo, PiDiceThree, PiDiceFour, PiDiceFive, PiDiceSix } from 'react-icons/pi';
 import { Button } from "react95";
 import styled from 'styled-components';
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
@@ -130,8 +132,8 @@ function DiceStats() {
                         <StatLabelValueContainer>
                             <StatLabel>
                                 <ReminderTooltip  
-                                    labelText={stats[stat as keyof Statistics].label}
-                                    reminderText={stats[stat as keyof Statistics].reminderText} />
+                                    labelText={t`${stats[stat as keyof Statistics].label}`}
+                                    reminderText={t`${stats[stat as keyof Statistics].reminderText}`} />
                             </StatLabel>
                             <StatValue>
                                 {stats[stat as keyof Statistics].score}
@@ -168,8 +170,8 @@ function DiceStats() {
         <div>
             {renderStats()}
             <ButtonContainer>
-                <Button onClick={handleReset}>Reset Stats</Button>
-                <Button onClick={handleRoll}>Roll 4d6, drop lowest Result</Button>
+                <Button onClick={handleReset}><Trans>Reset Stats</Trans></Button>
+                <Button onClick={handleRoll}><Trans>Roll 4d6, drop lowest Result</Trans></Button>
             </ButtonContainer>
         </div>
     )

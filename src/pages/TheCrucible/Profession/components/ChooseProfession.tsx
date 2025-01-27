@@ -1,5 +1,7 @@
 import { GroupBox,SelectNative, Separator } from 'react95';
 import styled from 'styled-components';
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 
 import professions, { additionalProfessions } from '../../../../utils/Professions';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -113,13 +115,13 @@ function ChooseProfession() {
 
     const generateProfessionOptions = () => {
         return [
-            { label: '--- Standard Professions ---', value: '', disabled: true },
+            { label: t`--- Standard Professions ---`, value: '', disabled: true },
             ...professions.map(profession => ({
                 label: profession.name,
                 value: profession.name
             })),
             { label: '──────────────', value: '', disabled: true },
-            { label: '--- Additional Professions ---', value: '', disabled: true },
+            { label: t`--- Additional Professions ---`, value: '', disabled: true },
             ...additionalProfessions.map(profession => ({
                 label: profession.name,
                 value: profession.name
@@ -140,8 +142,8 @@ function ChooseProfession() {
                 <TopSection>
                     <StyledSelectContainer>
                         <ReminderTooltip 
-                            labelText='Professional Background'
-                            reminderText='Apply preset skills and choose additional skills for your character.'
+                            labelText={t`Professional Background`}
+                            reminderText={t`Apply preset skills and choose additional skills for your character.`}
                         />
                         <StyledSelect 
                             options={generateProfessionOptions()}
@@ -152,8 +154,8 @@ function ChooseProfession() {
                     <KeyStatSection>
                         <KeyStatContainer>
                             <ReminderTooltip 
-                                labelText='Key Stats'
-                                reminderText='Recommended best stats for your chosen profession.'
+                                labelText={t`Key Stats`}
+                                reminderText={t`Recommended best stats for your chosen profession.`}
                             />
                             <KeyStatsLabel>
                                 {profession?.recommendedStats.join(', ')}
@@ -161,8 +163,8 @@ function ChooseProfession() {
                         </KeyStatContainer>
                         <KeyStatContainer>
                             <ReminderTooltip 
-                                labelText='Bonds'
-                                reminderText='Number of social connections available to your character.'
+                                labelText={t`Bonds`}
+                                reminderText={t`Number of social connections available to your character.`}
                             />
                             <KeyStatsLabel>
                                 {profession?.bondCount || 0}
@@ -171,7 +173,7 @@ function ChooseProfession() {
                     </KeyStatSection>
                 </TopSection>
                 <FlavorTextContainer>
-                    {profession?.flavorText && <div>{profession?.flavorText}</div>}
+                    {profession?.flavorText && <div><Trans>{profession?.flavorText}</Trans></div>}
                 </FlavorTextContainer>
             </ChooseProfessionHeader>
             <Separator />

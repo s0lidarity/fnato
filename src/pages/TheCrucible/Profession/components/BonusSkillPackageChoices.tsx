@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { GroupBox, SelectNative, Separator } from 'react95';
-import { useTranslation } from 'preact-i18next';
 import { useState, useEffect } from 'react';
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 
 import { IBonusSkillPackage } from '../../../../utils/SkillPointPackages';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -44,7 +45,6 @@ const SkillsListGroupBox = styled(GroupBox).attrs<any>({
 `;
 
 function BonusSkillPackageChoices(){
-    const { t } = useTranslation();
     const { applyBonusSkillPackage, BonusSkillPackage, clearBonusSkillPackage } = useSkills();
     const [pendingPackage, setPendingPackage] = useState<string | null>(null);
 
@@ -59,7 +59,6 @@ function BonusSkillPackageChoices(){
     }, [pendingPackage]);
 
     const handleBonusSkillPackageSelect = (packageName: string) => {
-        // AJS starting point, can duplicate keys in skills with overlapping subtypes
         clearBonusSkillPackage();
         if (!packageName) {
             return;
@@ -68,7 +67,7 @@ function BonusSkillPackageChoices(){
     };
 
     const options = [
-        { label: "No Package (Manual Bonus Points)", value: "" },
+        { label: t`No Package (Manual Bonus Points)`, value: "" },
         ...Object.values(BonusSkillPackages).map((bsp: IBonusSkillPackage) => ({
             label: bsp.name, 
             value: bsp.name 
@@ -80,8 +79,8 @@ function BonusSkillPackageChoices(){
             <StyledSeparator />
             <div>
                 <ReminderTooltip 
-                    labelText='Choose a bonus skill package'
-                    reminderText="Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
+                    labelText={t`Choose a bonus skill package`}
+                    reminderText={t`Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points`}
                 />
                 <StyledSelect 
                     options={options} 
@@ -93,12 +92,14 @@ function BonusSkillPackageChoices(){
                 <SkillsListGroupBox variant='flat' label='Bonus Points'>
                     {BonusSkillPackage.skills.map((skill, index) => (
                         <div key={`${skill.skillName}-${skill.subType}-${index}`}>
-                            {skill.skillName} {skill.subType && ` (${skill.subType})`}
+                            {/* AJS might need message ids for this */}
+                            {t`${skill.skillName} ${skill.subType && ` (${skill.subType})`}`}
                         </div>
                     ))}
                     {BonusSkillPackage.personalSpecialties > 0 && (
                         <div>
-                            +{BonusSkillPackage.personalSpecialties} personal {t('specialty', { count: BonusSkillPackage.personalSpecialties })} (any)
+                            {/* AJS plurals here? */}
+                            +{BonusSkillPackage.personalSpecialties} <Trans>personal specialty (any)</Trans>
                         </div>
                     )}
                 </SkillsListGroupBox>

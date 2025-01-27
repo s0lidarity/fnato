@@ -279,7 +279,7 @@ export const Criminal = new Profession({
         ['unarmed-combat', 50],
     ]),
     choosableSkills: Profession.createSkillList([
-        ['craft', 40, 'Locksmithing'],
+        ['crafts', 40, 'Locksmithing'],
         ['demolitions', 40],
         ['disguise', 50],
         ['foreign-languages', 40, 'French'],
@@ -300,8 +300,8 @@ export const Firefighter = new Profession({
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
         ['athletics', 60],
-        ['craft', 40, 'Electrician'],
-        ['craft', 40, 'Mechanic'],
+        ['crafts', 40, 'Electrician'],
+        ['crafts', 40, 'Mechanic'],
         ['demolitions', 50],
         ['drive', 50],
         ['first-aid', 50],
@@ -461,8 +461,8 @@ export const Pilot = new Profession({
     professionalSkills: Profession.createSkillList([
         ['alertness', 60],
         ['bureaucracy', 30],
-        ['craft', 40, 'Electrician'],
-        ['craft', 40, 'Mechanic'],
+        ['crafts', 40, 'Electrician'],
+        ['crafts', 40, 'Mechanic'],
         ['navigate', 50],
         ['pilot', 60, 'Aircraft'],
         ['science', 40, 'Meteorology'],
@@ -523,8 +523,8 @@ export const ProgramManager = new Profession({
     choosableSkills: Profession.createSkillList([
         ['anthropology', 30],
         ['art', 30, 'Creative Writing'],
-        ['craft', 30, 'Electrician'],
-        ['craft', 30, 'Mechanic'],
+        ['crafts', 30, 'Electrician'],
+        ['crafts', 30, 'Mechanic'],
         ['science', 30, 'Biology'],
     ]),
     chosenSkillCount: 1,
@@ -550,8 +550,8 @@ export const Marine = new Profession({
     choosableSkills: Profession.createSkillList([
         ['artillery', 40],
         ['computer-science', 40],
-        ['craft', 40, 'Electrician'],
-        ['craft', 40, 'Mechanic'],
+        ['crafts', 40, 'Electrician'],
+        ['crafts', 40, 'Mechanic'],
         ['demolitions', 40],
         ['foreign-languages', 40, 'French'],
         ['heavy-machinery', 50],
@@ -569,8 +569,8 @@ export const Sailor = new Profession({
     professionalSkills: Profession.createSkillList([
         ['alertness', 60],
         ['bureaucracy', 30],
-        ['craft', 40, 'Electrician'],
-        ['craft', 40, 'Mechanic'],
+        ['crafts', 40, 'Electrician'],
+        ['crafts', 40, 'Mechanic'],
         ['navigate', 50],
         ['pilot', 60, 'Seacraft'],
         ['science', 40, 'Meteorology'],

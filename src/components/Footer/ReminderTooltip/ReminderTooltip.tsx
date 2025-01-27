@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
 
-// AJS TODO: move this folder up one level
+// AJS TODO: move this folder out of Footer
 
 // AJS this is a shared style, put it somewhere we can share it
+// AJS need to verify styling across themes
 const StyledTooltipInnerText = styled.span.attrs<any>({
     'data-testid': 'reminder-tooltip-inner-text',
     'data-component': 'ReminderTooltip/StyledTooltipInnerText',

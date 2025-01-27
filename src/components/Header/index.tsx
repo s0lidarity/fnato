@@ -1,10 +1,13 @@
-import { useState } from 'preact/hooks';
-import { AppBar, Button, Toolbar } from 'react95';
+import { AppBar, Toolbar } from 'react95';
 import styled from 'styled-components';
-import Menu from './Menu';
-import DownGreenTri from '../../assets/down-green-tri.png';
+import NavigationMenu from './NavigationMenu';
+import SettingsMenu from './SettingsMenu';
+import { Trans } from '@lingui/react/macro';
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div.attrs<any>({
+    'data-testid': 'header-wrapper',
+    'data-component': 'Header/HeaderWrapper',
+})`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,15 +15,24 @@ const HeaderWrapper = styled.div`
     margin-bottom: 3rem;
 `;
 
-const StyledAppBar = styled(AppBar)`
+const StyledAppBar = styled(AppBar).attrs<any>({
+    'data-testid': 'app-bar',
+    'data-component': 'Header/AppBar',
+})`
     z-index: 10;
 `;
 
-const StyledToolbar = styled(Toolbar)`
+const StyledToolbar = styled(Toolbar).attrs<any>({
+    'data-testid': 'toolbar',
+    'data-component': 'Header/Toolbar',
+})`
     justify-content: space-between;
 `;
 
-const ToolbarContent = styled.div`
+const ToolbarContent = styled.div.attrs<any>({
+    'data-testid': 'toolbar-content',
+    'data-component': 'Header/ToolbarContent',
+})`
     position: relative;
     display: flex;
     flex-direction: row;
@@ -29,16 +41,10 @@ const ToolbarContent = styled.div`
     width: 100%;
 `;
 
-const StyledButton = styled(Button)`
-    font-weight: bold;
-`;
-
-const TriangleIcon = styled.img`
-    height: 20px;
-    margin-right: 4px;
-`;
-
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled.h1.attrs<any>({
+    'data-testid': 'header-title',
+    'data-component': 'Header/HeaderTitle',
+})`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -46,25 +52,14 @@ const HeaderTitle = styled.h1`
 `;
 
 function Header() {
-    const [open, setOpen] = useState(false);
-
     return (
         <HeaderWrapper>
             <StyledAppBar>
                 <StyledToolbar>
                     <ToolbarContent>
-                        <StyledButton
-                            onClick={() => setOpen(!open)}
-                            active={open}
-                        >
-                            <TriangleIcon
-                                src={DownGreenTri}
-                                alt='green-triangle'
-                            />
-                            Start
-                        </StyledButton>
-                        {open && ( <Menu open setOpen={setOpen} /> )}
-                        <HeaderTitle>First Night at the Opera?</HeaderTitle>
+                        <NavigationMenu />
+                        <HeaderTitle><Trans>First Night at the Opera?</Trans></HeaderTitle>
+                        <SettingsMenu />
                     </ToolbarContent>
                 </StyledToolbar>
             </StyledAppBar>

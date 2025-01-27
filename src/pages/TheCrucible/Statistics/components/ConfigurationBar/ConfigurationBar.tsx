@@ -1,5 +1,7 @@
 import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
+
 import { StatsConfigOptions, ConfigOptions } from '../../../../../types/componentTypes';
 
 type RenderRadioParams = {
@@ -45,10 +47,10 @@ function ConfigurationBar({ config, setConfig }) {
 
     return (
         <ConfigurationBarContainer>
-            <StyledGroupBox label="Options">
-                {renderRadio({ label: 'Manual Input', value: StatsConfigOptions.ManualInput })}
-                {renderRadio({ label: 'Point Buy', value: StatsConfigOptions.PointBuy })}
-                {renderRadio({ label: 'Dice', value: StatsConfigOptions.Dice })}
+            <StyledGroupBox label={t`Options`}>
+                {renderRadio({ label: t`Manual Input`, value: StatsConfigOptions.ManualInput })}
+                {renderRadio({ label: t`Point Buy`, value: StatsConfigOptions.PointBuy })}
+                {renderRadio({ label: t`Dice`, value: StatsConfigOptions.Dice })}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )

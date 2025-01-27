@@ -1,4 +1,4 @@
-
+import { Trans } from '@lingui/react/macro';
 import styled from 'styled-components';
 
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
@@ -79,7 +79,7 @@ function Statistics() {
                 </StyledGuidanceContainer>
                 <StatsContainer>
                     <StatInputContainer>
-                        <StyledHeading>Base Statistics</StyledHeading>
+                        <StyledHeading><Trans>Base Statistics</Trans></StyledHeading>
                         {renderStatInputs()}
                     </StatInputContainer>
                     <StatDescriptors />

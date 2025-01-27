@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+// AJS need to verify styling across themes
 const StyledQuestionmark = styled.span`
     display: flex;
     margin-left: 0.25rem;

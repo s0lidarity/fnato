@@ -2,8 +2,16 @@ import { createGlobalStyle } from 'styled-components';
 import { styleReset } from 'react95';
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
+import defonte from './assets/fonts/DeFonte_reduced_Normale.ttf';
+import Upheaval from './assets/fonts/upheavtt.ttf';
 
-const GlobalStyles = createGlobalStyle`
+// Add prop type for the component
+interface GlobalStylesProps {
+	fontFamily?: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval';
+}
+
+// Convert to prop-accepting component
+const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 	${styleReset}
 	@font-face {
 		font-family: 'ms_sans_serif';
@@ -17,8 +25,41 @@ const GlobalStyles = createGlobalStyle`
 		font-weight: bold;
 		font-style: normal
 	}
-	body, input, select, textarea {
-		font-family: 'ms_sans_serif';
+	@font-face {
+		font-family: 'defonte';
+		src: url(${defonte});
+		font-weight: normal;
+		font-style: normal
+	}
+	@font-face {
+		font-family: 'upheaval';
+		src: url(${Upheaval});
+		font-weight: normal;
+		font-style: normal
+	}
+	body, input, select, textarea, button {
+		font-family: ${props => {
+
+			switch(props.fontFamily) {
+				case 'system':
+					return '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+				case 'arial':
+					return 'Arial, sans-serif';
+				case 'defonte':
+					return 'defonte';
+				case 'ms_sans_serif':
+					return 'ms_sans_serif';
+				case 'upheaval':
+					return 'upheaval';
+				default:
+					return 'ms_sans_serif';
+			}
+		}};
+	}
+
+	/* Apply the font to all form elements as well */
+	input, select, textarea, button {
+		font-family: inherit;
 	}
 	main {
 		display: flex;
