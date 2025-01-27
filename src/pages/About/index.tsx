@@ -69,7 +69,7 @@ const authorConfig = [
     },
     {
         id: 'bio',
-        label: 'Declassified Record',
+        label: t`Declassified Record`,
         icon: <>📓</>,
         content: <Content>
             <Trans>
@@ -94,7 +94,7 @@ const authorConfig = [
 const dgConfig = [
     {
         id: 'learnMore',
-        label: 'What is Delta Green?',
+        label: t`What is Delta Green?`,
         href: "https://www.delta-green.com/what-is-delta-green/",
         icon: <>👽</>,
         content: <Content>
@@ -132,7 +132,6 @@ const dgConfig = [
     }
 ];
 
-// AJS starting point, revisit these t blocks, they ain't working
 export function About() {
 
     const aboutMessage = t`About the Game`;

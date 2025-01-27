@@ -8,7 +8,10 @@ import Dialogue from "../../../../components/Dialogue/Dialogue";
 
 // AJS starting point, unfinished feature
 
-const AddOptionalSkillContainer = styled.div`
+const AddOptionalSkillContainer = styled.div.attrs<any>({
+    'data-component': 'AddOptionalSkill/AddOptionalSkillContainer',
+    'data-testid': 'add-optional-skill-container',
+})`
     display: flex;
     flex-direction: row;
     align-items: center;

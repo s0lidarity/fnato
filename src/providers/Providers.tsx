@@ -18,7 +18,7 @@ export async function dynamicActivate(locale: string) {
     try {
         // Import both messages and locale data with correct path
         const [{ messages }] = await Promise.all([
-            import(`../locales/${locale}/messages`),
+            import(`../locales/${locale}/messages.po`),
         ]);
         
         // Load the messages

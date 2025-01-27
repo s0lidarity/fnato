@@ -12,11 +12,17 @@ import { PageWrapper } from '../../components/SharedStyles';
 import Dossier from './Dossier';
 import ArrowNavigators from './components/ArrowNavigators';
 
-const StyledWindow = styled(Window)`
+const StyledWindow = styled(Window).attrs<any>({
+    'data-component': 'TheCrucible/StyledWindow',
+    'data-testid': 'styled-window',
+})`
     width: 100%;
 `;
 
-const StyledHeader = styled(WindowHeader)`
+const StyledHeader = styled(WindowHeader).attrs<any>({
+    'data-component': 'TheCrucible/StyledHeader',
+    'data-testid': 'styled-header',
+})`
     display: flex;
     flex-direction: row;
     align-items: center;

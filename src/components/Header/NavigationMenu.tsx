@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { MenuList, MenuListItem, StyledButton } from "react95";
 import styled from 'styled-components';
 import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 
 import DownGreenTri from '../../assets/down-green-tri.png';
 
@@ -14,22 +15,22 @@ export interface MenuConfigItem {
 
 export const MenuConfig: MenuConfigItem[] = [
     {
-        name: 'Home',
+        name: t`Home`,
         url: '/',
         img: '🏠',
     },
     {
-        name: 'About',
+        name: t`About`,
         url: '/about',
         img: '📖',
     },
     {
-        name: 'The Crucible',
+        name: t`The Crucible`,
         url: '/crucible',
         img: '🫠',
     },
     {
-        name: 'Summary',
+        name: t`Summary`,
         url: '/summary',
         img: '📊',
     },
@@ -103,8 +104,7 @@ function NavigationMenu(){
                                         <IconWrapper role='img' aria-label={item.img}>
                                             {item.img}
                                         </IconWrapper>
-                                        {/* AJS TODO these are not translating */}
-                                        <Trans>{item.name}</Trans>
+                                        {item.name}
                                 </StyledMenuListItem>
                             </a>
                         ))}

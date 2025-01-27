@@ -1,17 +1,16 @@
-import { useState } from 'preact/hooks';
-import { Button, TextInput, Tooltip } from "react95";
+import { Button, TextInput } from "react95";
 import styled from "styled-components";
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 
 import { useStats } from "../../../../../providers/StatisticsContext";
 import { DISTINGUISHING_FEATURES } from "../../.../../../../../types/characterTypes";
 
 
-const StyledTooltipInnerText = styled.span`
-    padding: 0.5rem;
-    color: ${({ theme }) => theme.materialDark};
-`;
-
-const StyledStatDescriptorContainer = styled.div`
+const StyledStatDescriptorContainer = styled.div.attrs<any>({
+    'data-component': 'StatDescriptors/StyledStatDescriptorContainer',
+    'data-testid': 'styled-stat-descriptor-container',
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -20,25 +19,28 @@ const StyledStatDescriptorContainer = styled.div`
     padding: 0.25rem;
 `;
 
-const StyledLabel = styled.label`
-    width: 4rem;
-    display: flex;
-    align-items: center;
-`;
-
-const StyledInputContainer = styled.div`
+const StyledInputContainer = styled.div.attrs<any>({
+    'data-component': 'StatDescriptors/StyledInputContainer',
+    'data-testid': 'styled-input-container',
+})`
     display: flex;
     align-items: center;
     flex-grow: 1;
     margin-left: 0.5rem;
 `;
 
-const StyledTextInput = styled(TextInput)`
+const StyledTextInput = styled(TextInput).attrs<any>({
+    'data-component': 'StatDescriptors/StyledTextInput',
+    'data-testid': 'styled-text-input',
+})`
     flex-grow: 1;
     margin-right: 0.5rem;
 `;
 
-const StyledButtonContainer = styled.div`
+const StyledButtonContainer = styled.div.attrs<any>({
+    'data-component': 'StatDescriptors/StyledButtonContainer',
+    'data-testid': 'styled-button-container',
+})`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -46,7 +48,10 @@ const StyledButtonContainer = styled.div`
     margin-top: 1rem;
 `;
 
-const StyledHeading = styled.h2`
+const StyledHeading = styled.h2.attrs<any>({
+    'data-component': 'StatDescriptors/StyledHeading',
+    'data-testid': 'styled-heading',
+})`
     margin-bottom: 1rem;
     text-align: center;
 `;
@@ -102,12 +107,12 @@ function StatDescriptors() {
                         key={`${statKey}-input`}
                         type="text" 
                         id={`${statKey}-descriptor`} 
-                        placeholder={DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}
-                        value={stats[statKey].distinguishingFeature} 
+                        placeholder={t`${DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}`}
+                        value={t`${stats[statKey].distinguishingFeature}`} 
                         onChange={(e) => handleChange(e, statKey)}
                     />
-                    <Button onClick={(e) => handleClear(e, statKey)}>Clear</Button>
-                    <Button onClick={() => assignSuggested(statKey)}>Use Suggested</Button>
+                    <Button onClick={(e) => handleClear(e, statKey)}><Trans>Clear</Trans></Button>
+                    <Button onClick={() => assignSuggested(statKey)}><Trans>Use Suggested</Trans></Button>
                 </StyledInputContainer>
             </StyledStatDescriptorContainer>
         );
@@ -116,11 +121,11 @@ function StatDescriptors() {
     // needs a description and label for each stat
     return (
         <div>
-            <StyledHeading>Distinguishing Features</StyledHeading>
+            <StyledHeading><Trans>Distinguishing Features</Trans></StyledHeading>
             {Object.keys(stats).map(statKey => statDescriptor(statKey))}
             <StyledButtonContainer>
-                <Button onClick={handleClearAll}>Clear Descriptors</Button>
-                <Button onClick={assignAllSuggested}>Use All Suggestions</Button>
+                <Button onClick={handleClearAll}><Trans>Clear Descriptors</Trans></Button>
+                <Button onClick={assignAllSuggested}><Trans>Use All Suggestions</Trans></Button>
             </StyledButtonContainer>
         </div>
     );
