@@ -5,7 +5,6 @@ import tokyoDark from 'react95/dist/themes/tokyoDark';
 import windows1 from 'react95/dist/themes/windows1';
 import polarized from 'react95/dist/themes/polarized';
 import highContrast from 'react95/dist/themes/highContrast';
-import hotDogStand from 'react95/dist/themes/hotDogStand';
 import ninjaTurtles from 'react95/dist/themes/ninjaTurtles';
 import matrix from 'react95/dist/themes/matrix';
 import solarizedDark from 'react95/dist/themes/solarizedDark';
@@ -78,7 +77,6 @@ const themes = [
     { name: 'Windows', theme: windows1 },
     { name: 'Polarized', theme: polarized },
     { name: 'High Contrast', theme: highContrast },
-    { name: 'Hot Dog Stand', theme: hotDogStand },
     { name: 'Ninja Turtles', theme: ninjaTurtles },
     { name: 'Matrix', theme: matrix },
     { name: 'Solarized Dark', theme: solarizedDark },
