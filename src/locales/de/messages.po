@@ -33,7 +33,7 @@ msgstr ""
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:176
-#: src/components/Header/ThemeMenu.tsx:114
+#: src/components/Header/ThemeMenu.tsx:112
 msgid "{0}"
 msgstr ""
 
@@ -41,6 +41,10 @@ msgstr ""
 #. placeholder {1}: skill.subType && ` (${skill.subType})`
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
 msgid "{0} {1}"
+msgstr ""
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:58
+msgid "{label}"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
@@ -66,10 +70,6 @@ msgstr ""
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr ""
-
-#: src/pages/About/index.tsx:111
-#~ msgid "Arc Dream Publishing"
-#~ msgstr ""
 
 #: src/pages/About/index.tsx:115
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
@@ -108,12 +108,8 @@ msgstr ""
 msgid "Declassified Record"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:37
+#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
-msgstr ""
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
-msgid "Dice"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
@@ -127,10 +123,6 @@ msgstr ""
 #: src/pages/TheCrucible/index.tsx:53
 msgid "Dossier"
 msgstr ""
-
-#: src/pages/About/index.tsx:124
-#~ msgid "DriveThruRPG"
-#~ msgstr ""
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
@@ -156,10 +148,6 @@ msgstr ""
 msgid "Key Stats"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
-msgid "Manual Input"
-msgstr ""
-
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr ""
@@ -172,7 +160,7 @@ msgstr ""
 msgid "Number of social connections available to your character."
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:66
 msgid "Options"
 msgstr ""
 
@@ -182,10 +170,6 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
 msgid "personal specialty (any)"
-msgstr ""
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
-msgid "Point Buy"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:50
@@ -262,6 +246,10 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
+#: src/pages/About/index.tsx:129
+msgid "to purchase Delta Green source materials and learn more."
+msgstr ""
+
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
 msgid "Use All Suggestions"
 msgstr ""
@@ -271,7 +259,7 @@ msgid "Use Suggested"
 msgstr ""
 
 #: src/pages/About/index.tsx:128
-msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
+msgid "Visit"
 msgstr ""
 
 #: src/pages/Home/index.tsx:50

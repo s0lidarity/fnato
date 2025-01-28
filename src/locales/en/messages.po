@@ -33,7 +33,7 @@ msgstr "--- Standard Professions ---"
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:176
-#: src/components/Header/ThemeMenu.tsx:114
+#: src/components/Header/ThemeMenu.tsx:112
 msgid "{0}"
 msgstr "{0}"
 
@@ -42,6 +42,10 @@ msgstr "{0}"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
 msgid "{0} {1}"
 msgstr "{0} {1}"
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:58
+msgid "{label}"
+msgstr "{label}"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
 msgid "{labelText}"
@@ -66,10 +70,6 @@ msgstr "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online we
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Apply preset skills and choose additional skills for your character."
-
-#: src/pages/About/index.tsx:111
-#~ msgid "Arc Dream Publishing"
-#~ msgstr "Arc Dream Publishing"
 
 #: src/pages/About/index.tsx:115
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
@@ -108,13 +108,9 @@ msgstr "Custom Professions"
 msgid "Declassified Record"
 msgstr "Declassified Record"
 
-#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:37
+#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
-msgid "Dice"
-msgstr "Dice"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
 msgid "Distinguishing Features"
@@ -127,10 +123,6 @@ msgstr "Do you close your eyes to what you’ve seen and go back to sleep? Or do
 #: src/pages/TheCrucible/index.tsx:53
 msgid "Dossier"
 msgstr "Dossier"
-
-#: src/pages/About/index.tsx:124
-#~ msgid "DriveThruRPG"
-#~ msgstr "DriveThruRPG"
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
@@ -156,10 +148,6 @@ msgstr "If you want to support this work, you can buy some Delta Green content t
 msgid "Key Stats"
 msgstr "Key Stats"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
-msgid "Manual Input"
-msgstr "Manual Input"
-
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
@@ -172,7 +160,7 @@ msgstr "No Package (Manual Bonus Points)"
 msgid "Number of social connections available to your character."
 msgstr "Number of social connections available to your character."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:66
 msgid "Options"
 msgstr "Options"
 
@@ -183,10 +171,6 @@ msgstr "Personal Details"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
 msgid "personal specialty (any)"
 msgstr "personal specialty (any)"
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
-msgid "Point Buy"
-msgstr "Point Buy"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -262,6 +246,10 @@ msgstr "The title of your agent's day-job"
 msgid "Title:"
 msgstr "Title:"
 
+#: src/pages/About/index.tsx:129
+msgid "to purchase Delta Green source materials and learn more."
+msgstr "to purchase Delta Green source materials and learn more."
+
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
 msgid "Use All Suggestions"
 msgstr "Use All Suggestions"
@@ -271,8 +259,8 @@ msgid "Use Suggested"
 msgstr "Use Suggested"
 
 #: src/pages/About/index.tsx:128
-msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
-msgstr "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
+msgid "Visit"
+msgstr "Visit"
 
 #: src/pages/Home/index.tsx:50
 msgid "We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take."

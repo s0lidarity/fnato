@@ -33,7 +33,7 @@ msgstr "--- Professions standard ---"
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:176
-#: src/components/Header/ThemeMenu.tsx:114
+#: src/components/Header/ThemeMenu.tsx:112
 msgid "{0}"
 msgstr "{0}"
 
@@ -41,6 +41,10 @@ msgstr "{0}"
 #. placeholder {1}: skill.subType && ` (${skill.subType})`
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
 msgid "{0} {1}"
+msgstr ""
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:58
+msgid "{label}"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
@@ -66,10 +70,6 @@ msgstr "Andrew Sobiesiak est un ingénieur logiciel qui joue aux JDR sur table e
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Appliquer les compétences prédéfinies et choisir des compétences supplémentaires pour votre personnage."
-
-#: src/pages/About/index.tsx:111
-#~ msgid "Arc Dream Publishing"
-#~ msgstr "Arc Dream Publishing"
 
 #: src/pages/About/index.tsx:115
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
@@ -108,13 +108,9 @@ msgstr "Professions personnalisées"
 msgid "Declassified Record"
 msgstr "Dossier déclassifié"
 
-#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:37
+#: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
-msgid "Dice"
-msgstr "Dés"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
 msgid "Distinguishing Features"
@@ -127,10 +123,6 @@ msgstr "Fermez les yeux sur ce que vous avez vu et retournez dormir ? Ou accompa
 #: src/pages/TheCrucible/index.tsx:53
 msgid "Dossier"
 msgstr "Dossier"
-
-#: src/pages/About/index.tsx:124
-#~ msgid "DriveThruRPG"
-#~ msgstr ""
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
@@ -156,10 +148,6 @@ msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu De
 msgid "Key Stats"
 msgstr "Statistiques clés"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
-msgid "Manual Input"
-msgstr "Entrée manuelle"
-
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
@@ -172,7 +160,7 @@ msgstr "Aucun package (Points bonus manuels)"
 msgid "Number of social connections available to your character."
 msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:66
 msgid "Options"
 msgstr "Options"
 
@@ -183,10 +171,6 @@ msgstr "Détails personnels"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
-
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
-msgid "Point Buy"
-msgstr "Achat de points"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -262,6 +246,10 @@ msgstr "Le titre de votre métier de l'agent"
 msgid "Title:"
 msgstr "Titre :"
 
+#: src/pages/About/index.tsx:129
+msgid "to purchase Delta Green source materials and learn more."
+msgstr "pour acheter les documents sources de Delta Green et en savoir plus."
+
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
 msgid "Use All Suggestions"
 msgstr "Utiliser toutes les suggestions"
@@ -271,8 +259,8 @@ msgid "Use Suggested"
 msgstr "Utiliser les suggestions"
 
 #: src/pages/About/index.tsx:128
-msgid "Visit DriveThruRPG to purchase Delta Green source materials and learn more."
-msgstr "Visitez DriveThruRPG pour acheter les documents sources de Delta Green et en savoir plus."
+msgid "Visit"
+msgstr "Visitez"
 
 #: src/pages/Home/index.tsx:50
 msgid "We're fighting a war against the inevitable. And it's a war we're going to lose. But we're going to win the battles. We're going to make the bastards work for it. We're going to make them take ground inch by inch. And we're going to make them bleed for every inch they take."

@@ -9,13 +9,19 @@ type RenderRadioParams = {
     value: ConfigOptions;
 }
 
-const ConfigurationBarContainer = styled.div`
+const ConfigurationBarContainer = styled.div.attrs<any>({
+    'data-testid': 'configuration-bar-container',
+    'data-component': 'ConfigurationBar/ConfigurationBarContainer',
+})`
     display: flex;
     justify-content: space-between;
     padding: 1rem;
 `;
 
-const StyledGroupBox = styled(GroupBox)`
+const StyledGroupBox = styled(GroupBox).attrs<any>({
+    'data-testid': 'group-box',
+    'data-component': 'ConfigurationBar/GroupBox',
+})`
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -23,7 +29,10 @@ const StyledGroupBox = styled(GroupBox)`
     padding: 1rem;
 `;
 
-const StyledRadio = styled(Radio)`
+const StyledRadio = styled(Radio).attrs<any>({
+    'data-testid': 'radio',
+    'data-component': 'ConfigurationBar/Radio',
+})`
     margin: 0.5rem;
     vertical-align: middle;
 `
@@ -33,24 +42,29 @@ function ConfigurationBar({ config, setConfig }) {
         setConfig(e.target.value);
     };
 
+    const configOptions = [
+        { label: 'Manual Input', value: StatsConfigOptions.ManualInput },
+        { label: 'Point Buy', value: StatsConfigOptions.PointBuy },
+        { label: 'Dice', value: StatsConfigOptions.Dice },
+    ];
+
     const renderRadio = ({label, value}: RenderRadioParams) => {
         return (
-            <StyledRadio
-                checked={config === value}
-                onChange={toggleCheck}
-                name="Config"
-                label={label}
-                value={value}
-            />
+                <StyledRadio
+                    key={label}
+                    checked={config === value}
+                    onChange={toggleCheck}
+                    name="Config"
+                    label={t`${label}`}
+                    value={value}
+                />
         );
     };
 
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label={t`Options`}>
-                {renderRadio({ label: t`Manual Input`, value: StatsConfigOptions.ManualInput })}
-                {renderRadio({ label: t`Point Buy`, value: StatsConfigOptions.PointBuy })}
-                {renderRadio({ label: t`Dice`, value: StatsConfigOptions.Dice })}
+                {configOptions.map(({ label, value }) => renderRadio({ label, value }))}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )

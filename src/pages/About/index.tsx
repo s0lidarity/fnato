@@ -125,8 +125,8 @@ const dgConfig = [
         href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook",
         icon: <>🚗</>,
         content: <Content>
-            <Trans>
-                Visit DriveThruRPG to purchase Delta Green source materials and learn more.
+            <Trans> 
+                Visit</Trans> DriveThruRPG <Trans>to purchase Delta Green source materials and learn more.
             </Trans>
         </Content>,
     }
