@@ -1,4 +1,5 @@
 import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 import styled from 'styled-components';
 
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';
@@ -41,9 +42,9 @@ const StyledHeading = styled.h2`
 `;
 
 const STATS_CONFIG_OPTIONS = [
-    { label: 'Manual Input', value: StatsConfigOptions.ManualInput },
-    { label: 'Point Buy', value: StatsConfigOptions.PointBuy },
-    { label: 'Dice', value: StatsConfigOptions.Dice },
+    { label: t`Manual Input`, value: StatsConfigOptions.ManualInput },
+    { label: t`Point Buy`, value: StatsConfigOptions.PointBuy },
+    { label: t`Dice`, value: StatsConfigOptions.Dice },
 ];
 
 function Statistics() {

@@ -2,11 +2,17 @@ import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
 
-import { StatsConfigOptions, ConfigOptions } from '../../../../../types/componentTypes';
+import { ConfigOptions } from '../../../../../types/componentTypes';
 
 type RenderRadioParams = {
     label: string;
     value: ConfigOptions;
+}
+
+type ConfigurationBarProps = {
+    config: ConfigOptions;
+    setConfig: (config: ConfigOptions) => void;
+    options: { label: string; value: ConfigOptions }[];
 }
 
 const ConfigurationBarContainer = styled.div.attrs<any>({
@@ -37,16 +43,13 @@ const StyledRadio = styled(Radio).attrs<any>({
     vertical-align: middle;
 `
 
-function ConfigurationBar({ config, setConfig }) {
+function ConfigurationBar({ config, setConfig, options }: ConfigurationBarProps) {
+
     const toggleCheck = (e) => {
         setConfig(e.target.value);
     };
 
-    const configOptions = [
-        { label: 'Manual Input', value: StatsConfigOptions.ManualInput },
-        { label: 'Point Buy', value: StatsConfigOptions.PointBuy },
-        { label: 'Dice', value: StatsConfigOptions.Dice },
-    ];
+
 
     const renderRadio = ({label, value}: RenderRadioParams) => {
         return (
@@ -55,7 +58,7 @@ function ConfigurationBar({ config, setConfig }) {
                     checked={config === value}
                     onChange={toggleCheck}
                     name="Config"
-                    label={t`${label}`}
+                    label={label}
                     value={value}
                 />
         );
@@ -64,7 +67,7 @@ function ConfigurationBar({ config, setConfig }) {
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label={t`Options`}>
-                {configOptions.map(({ label, value }) => renderRadio({ label, value }))}
+                {options.map(({ label, value }) => renderRadio({ label, value }))}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )

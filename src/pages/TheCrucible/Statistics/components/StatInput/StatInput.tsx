@@ -7,7 +7,7 @@ import StatInputContainer  from '../../styles/StatInputContainer';
 
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
-	const labelText = (t`${statKey?.charAt(0).toUpperCase() + statKey?.slice(1)}`) || "";
+	const labelText = (`${statKey?.charAt(0).toUpperCase() + statKey?.slice(1)}`) || "";
 	
 	return (
 		<StatInputContainer>

@@ -23,11 +23,10 @@ msgstr "--- Standard Professions ---"
 
 #. placeholder {0}: stats[stat as keyof Statistics].label
 #. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: statKey?.charAt(0).toUpperCase() + statKey?.slice(1)
+#. placeholder {0}: stats[statKey].reminderText
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:10
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:17
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:110
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:111
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -43,11 +42,11 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr "{0} {1}"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:58
-msgid "{label}"
-msgstr "{label}"
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:59
+#~ msgid "{label}"
+#~ msgstr "{label}"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
 msgid "{labelText}"
 msgstr "{labelText}"
 
@@ -75,7 +74,7 @@ msgstr "Apply preset skills and choose additional skills for your character."
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:82
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:83
 msgid "Base Statistics"
 msgstr "Base Statistics"
 
@@ -111,6 +110,10 @@ msgstr "Declassified Record"
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
+
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:47
+msgid "Dice"
+msgstr "Dice"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
 msgid "Distinguishing Features"
@@ -148,6 +151,10 @@ msgstr "If you want to support this work, you can buy some Delta Green content t
 msgid "Key Stats"
 msgstr "Key Stats"
 
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:45
+msgid "Manual Input"
+msgstr "Manual Input"
+
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
@@ -160,7 +167,7 @@ msgstr "No Package (Manual Bonus Points)"
 msgid "Number of social connections available to your character."
 msgstr "Number of social connections available to your character."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:66
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:69
 msgid "Options"
 msgstr "Options"
 
@@ -171,6 +178,10 @@ msgstr "Personal Details"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
 msgid "personal specialty (any)"
 msgstr "personal specialty (any)"
+
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:46
+msgid "Point Buy"
+msgstr "Point Buy"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -191,6 +202,10 @@ msgstr "Regional Settings"
 #: src/pages/TheCrucible/Profession/index.tsx:66
 msgid "Reset Profession"
 msgstr "Reset Profession"
+
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/ManualInputStats.tsx:83
+msgid "Reset Statistics"
+msgstr "Reset Statistics"
 
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:173
 msgid "Reset Stats"

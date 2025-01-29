@@ -26,8 +26,8 @@ const StyledLabel = styled.label.attrs<any>({
 `;
 
 interface ReminderTooltipProps {
-    labelText: string;
-    reminderText: string;
+    labelText: string | React.ReactNode;
+    reminderText: string | React.ReactNode;
 }
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {

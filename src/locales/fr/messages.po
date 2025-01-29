@@ -23,11 +23,10 @@ msgstr "--- Professions standard ---"
 
 #. placeholder {0}: stats[stat as keyof Statistics].label
 #. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: statKey?.charAt(0).toUpperCase() + statKey?.slice(1)
+#. placeholder {0}: stats[statKey].reminderText
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:10
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:17
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:110
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:111
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -43,13 +42,33 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:58
-msgid "{label}"
-msgstr ""
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:59
+#~ msgid "{label}"
+#~ msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
-msgid "{labelText}"
-msgstr ""
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "Strength"
+msgstr "force"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "constitution"
+msgstr "constitution"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "dexterity"
+msgstr "dexterité"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "intelligence"
+msgstr "intelligence"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "power"
+msgstr "puissance"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+msgid "charisma"
+msgstr "charisme"
 
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
@@ -75,7 +94,7 @@ msgstr "Appliquer les compétences prédéfinies et choisir des compétences sup
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:82
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:83
 msgid "Base Statistics"
 msgstr "Statistiques de base"
 
@@ -111,6 +130,10 @@ msgstr "Dossier déclassifié"
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
+
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:47
+msgid "Dice"
+msgstr "Dés"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:124
 msgid "Distinguishing Features"
@@ -148,6 +171,10 @@ msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu De
 msgid "Key Stats"
 msgstr "Statistiques clés"
 
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:45
+msgid "Manual Input"
+msgstr "Saisie manuelle"
+
 #: src/pages/Home/index.tsx:65
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
@@ -160,7 +187,7 @@ msgstr "Aucun package (Points bonus manuels)"
 msgid "Number of social connections available to your character."
 msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:66
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:69
 msgid "Options"
 msgstr "Options"
 
@@ -171,6 +198,10 @@ msgstr "Détails personnels"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
+
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:46
+msgid "Point Buy"
+msgstr "Achat par points"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -191,6 +222,10 @@ msgstr "Paramètres régionaux"
 #: src/pages/TheCrucible/Profession/index.tsx:66
 msgid "Reset Profession"
 msgstr "Réinitialiser la profession"
+
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/ManualInputStats.tsx:83
+msgid "Reset Statistics"
+msgstr "Réinitialiser les statistiques"
 
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:173
 msgid "Reset Stats"
