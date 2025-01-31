@@ -23,10 +23,9 @@ msgstr ""
 
 #. placeholder {0}: stats[stat as keyof Statistics].label
 #. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: stats[statKey].reminderText
+#. placeholder {0}: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:17
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:110
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:111
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -42,12 +41,16 @@ msgstr ""
 msgid "{0} {1}"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:59
-#~ msgid "{label}"
-#~ msgstr ""
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
+msgid "{label}"
+msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
 msgid "{labelText}"
+msgstr ""
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:42
+msgid "{reminderText}"
 msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:23
@@ -74,7 +77,7 @@ msgstr ""
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:83
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:77
 msgid "Base Statistics"
 msgstr ""
 
@@ -111,7 +114,7 @@ msgstr ""
 msgid "Derived Attributes"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:47
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Dice"
 msgstr ""
 
@@ -151,7 +154,7 @@ msgstr ""
 msgid "Key Stats"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:45
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:47
 msgid "Manual Input"
 msgstr ""
 
@@ -167,7 +170,7 @@ msgstr ""
 msgid "Number of social connections available to your character."
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:69
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:74
 msgid "Options"
 msgstr ""
 
@@ -179,7 +182,7 @@ msgstr ""
 msgid "personal specialty (any)"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:46
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
 msgid "Point Buy"
 msgstr ""
 

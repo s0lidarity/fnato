@@ -8,7 +8,7 @@ import DiceStats from './components/StatsDisplays/DiceStats';
 import ManualInputStats from './components/StatsDisplays/ManualInputStats';
 import RAReminder from './components/RAReminder/RAReminder';
 import StatDescriptors from './components/StatDescriptors/StatDescriptors';
-import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
+import ConfigurationBar from "./components/ConfigurationBar/ConfigurationBar";
 import { StatsConfigOptions } from '../../../types/componentTypes';
 
 const StatsContainer = styled.div`
@@ -41,12 +41,6 @@ const StyledHeading = styled.h2`
     text-align: center;
 `;
 
-const STATS_CONFIG_OPTIONS = [
-    { label: t`Manual Input`, value: StatsConfigOptions.ManualInput },
-    { label: t`Point Buy`, value: StatsConfigOptions.PointBuy },
-    { label: t`Dice`, value: StatsConfigOptions.Dice },
-];
-
 function Statistics() {
     const { config, resetStats, setConfig } = useStats();
 
@@ -73,7 +67,6 @@ function Statistics() {
                 <ConfigurationBar 
                     config={config} 
                     setConfig={handleConfigChange}
-                    options={STATS_CONFIG_OPTIONS}
                     />
                 <StyledGuidanceContainer>
                     { config !== StatsConfigOptions.Dice && (<RAReminder />) }

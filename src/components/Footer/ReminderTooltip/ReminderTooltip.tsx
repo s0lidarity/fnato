@@ -1,5 +1,6 @@
 import { Tooltip } from 'react95';
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
 
@@ -26,24 +27,26 @@ const StyledLabel = styled.label.attrs<any>({
 `;
 
 interface ReminderTooltipProps {
-    labelText: string | React.ReactNode;
-    reminderText: string | React.ReactNode;
+    labelText: string;
+    reminderText: string;
 }
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
+    console.log("Label Text as param in remindertooltip:", labelText);
+    console.log("reminder Text as param in remindertooltip:", reminderText);
     return (
         <Tooltip
             // jsx in the text param works fine, error seems wrong
             // @ts-ignore
             text={
                 <StyledTooltipInnerText>
-                    {reminderText}
+                    {t`${reminderText}`}
                 </StyledTooltipInnerText>
             }
             enterDelay={100}
             leaveDelay={500}
         >
-            <StyledLabel>{labelText}<TooltipIndicator /></StyledLabel>
+            <StyledLabel>{t`${labelText}`}<TooltipIndicator /></StyledLabel>
         </Tooltip>
     );
 };

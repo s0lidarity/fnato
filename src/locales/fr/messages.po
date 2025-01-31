@@ -23,10 +23,9 @@ msgstr "--- Professions standard ---"
 
 #. placeholder {0}: stats[stat as keyof Statistics].label
 #. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: stats[statKey].reminderText
+#. placeholder {0}: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:17
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:110
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:111
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -42,33 +41,41 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:59
-#~ msgid "{label}"
-#~ msgstr ""
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
+msgid "{label}"
+msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "{labelText}"
+msgstr ""
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
 msgid "Strength"
-msgstr "force"
+msgstr "Force"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
-msgid "constitution"
-msgstr "constitution"
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "Dexterity"
+msgstr "Dextérité"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
-msgid "dexterity"
-msgstr "dexterité"
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "Constitution"
+msgstr "Constitution"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
-msgid "intelligence"
-msgstr "intelligence"
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "Intelligence"
+msgstr "Intelligence"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
-msgid "power"
-msgstr "puissance"
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "Power"
+msgstr "Pouvoir"
 
-#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
-msgid "charisma"
-msgstr "charisme"
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+msgid "Charisma"
+msgstr "Charisme"
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:42
+msgid "{reminderText}"
+msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
@@ -94,7 +101,7 @@ msgstr "Appliquer les compétences prédéfinies et choisir des compétences sup
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:83
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:77
 msgid "Base Statistics"
 msgstr "Statistiques de base"
 
@@ -131,7 +138,7 @@ msgstr "Dossier déclassifié"
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:47
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Dice"
 msgstr "Dés"
 
@@ -141,7 +148,7 @@ msgstr "Caractéristiques distinctives"
 
 #: src/pages/Home/index.tsx:58
 msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
-msgstr "Fermez les yeux sur ce que vous avez vu et retournez dormir ? Ou accompagniez-vous ce psychopathe épuisé pour accomplir l'impossible face à l'incroyable et repousser le futur un jour de plus ?"
+msgstr "Voulez-vous fermer les yeux à ce que vous avez vu et retourner dormir ? Ou venez avec ce burnout psychique et accomplissez l'impossible contre l'incroyable et maintenir le futur en retrait pour un autre jour ?"
 
 #: src/pages/TheCrucible/index.tsx:53
 msgid "Dossier"
@@ -171,7 +178,7 @@ msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu De
 msgid "Key Stats"
 msgstr "Statistiques clés"
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:45
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:47
 msgid "Manual Input"
 msgstr "Saisie manuelle"
 
@@ -187,7 +194,7 @@ msgstr "Aucun package (Points bonus manuels)"
 msgid "Number of social connections available to your character."
 msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:69
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:74
 msgid "Options"
 msgstr "Options"
 
@@ -199,7 +206,7 @@ msgstr "Détails personnels"
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:46
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
 msgid "Point Buy"
 msgstr "Achat par points"
 

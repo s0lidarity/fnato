@@ -2,7 +2,7 @@ import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
 
-import { ConfigOptions } from '../../../../../types/componentTypes';
+import { ConfigOptions, StatsConfigOptions } from '../../../../../types/componentTypes';
 
 type RenderRadioParams = {
     label: string;
@@ -12,7 +12,6 @@ type RenderRadioParams = {
 type ConfigurationBarProps = {
     config: ConfigOptions;
     setConfig: (config: ConfigOptions) => void;
-    options: { label: string; value: ConfigOptions }[];
 }
 
 const ConfigurationBarContainer = styled.div.attrs<any>({
@@ -43,31 +42,35 @@ const StyledRadio = styled(Radio).attrs<any>({
     vertical-align: middle;
 `
 
-function ConfigurationBar({ config, setConfig, options }: ConfigurationBarProps) {
+const STATS_CONFIG_OPTIONS = [
+    { label: t`Manual Input`, value: StatsConfigOptions.ManualInput },
+    { label: t`Point Buy`, value: StatsConfigOptions.PointBuy },
+    { label: t`Dice`, value: StatsConfigOptions.Dice },
+];
+
+function ConfigurationBar({ config, setConfig }: ConfigurationBarProps) {
 
     const toggleCheck = (e) => {
         setConfig(e.target.value);
     };
 
-
-
-    const renderRadio = ({label, value}: RenderRadioParams) => {
+    const renderRadio = ({ label, value }: RenderRadioParams) => {
         return (
-                <StyledRadio
-                    key={label}
-                    checked={config === value}
-                    onChange={toggleCheck}
-                    name="Config"
-                    label={label}
-                    value={value}
-                />
+            <StyledRadio
+                key={label}
+                checked={config === value}
+                onChange={toggleCheck}
+                name="Config"
+                label={label}
+                value={value}
+            />  
         );
     };
 
     return (
         <ConfigurationBarContainer>
             <StyledGroupBox label={t`Options`}>
-                {options.map(({ label, value }) => renderRadio({ label, value }))}
+                {STATS_CONFIG_OPTIONS.map(({ label, value }) => renderRadio({ label: t`${label}`, value }))}
             </StyledGroupBox>
         </ConfigurationBarContainer>
     )

@@ -3,7 +3,7 @@ import { t } from '@lingui/core/macro';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
-import StatInputContainer  from '../../styles/StatInputContainer';
+import StatInputContainer from '../../styles/StatInputContainer';
 
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
@@ -12,7 +12,7 @@ function StatInput({ statKey, handleChange }) {
 	return (
 		<StatInputContainer>
 			<ReminderTooltip 
-				labelText={t`${labelText}`} 
+				labelText={t`${labelText}`}
 				reminderText={t`${stats[statKey].reminderText}`} 
 			/>
 			<NumberInput
@@ -25,6 +25,5 @@ function StatInput({ statKey, handleChange }) {
 		</StatInputContainer>
 	);
 };
-
 
 export default StatInput;
