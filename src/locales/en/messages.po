@@ -41,15 +41,15 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr "{0} {1}"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
-msgid "{label}"
-msgstr "{label}"
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:73
+#~ msgid "{label}"
+#~ msgstr "{label}"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:38
 msgid "{labelText}"
 msgstr "{labelText}"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:42
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:39
 msgid "{reminderText}"
 msgstr "{reminderText}"
 
@@ -77,7 +77,7 @@ msgstr "Apply preset skills and choose additional skills for your character."
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:77
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:75
 msgid "Base Statistics"
 msgstr "Base Statistics"
 
@@ -114,7 +114,7 @@ msgstr "Declassified Record"
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
 msgid "Dice"
 msgstr "Dice"
 
@@ -154,7 +154,7 @@ msgstr "If you want to support this work, you can buy some Delta Green content t
 msgid "Key Stats"
 msgstr "Key Stats"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:47
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
 msgid "Manual Input"
 msgstr "Manual Input"
 
@@ -182,7 +182,7 @@ msgstr "Personal Details"
 msgid "personal specialty (any)"
 msgstr "personal specialty (any)"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Point Buy"
 msgstr "Point Buy"
 

@@ -1,9 +1,9 @@
 import { Tooltip } from 'react95';
 import styled from 'styled-components';
-import { t } from '@lingui/core/macro';
+import { Trans } from '@lingui/react';
+import { msg } from '@lingui/core/macro';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
-
 // AJS TODO: move this folder out of Footer
 
 // AJS this is a shared style, put it somewhere we can share it
@@ -27,26 +27,32 @@ const StyledLabel = styled.label.attrs<any>({
 `;
 
 interface ReminderTooltipProps {
-    labelText: string;
-    reminderText: string;
+    labelText: any;
+    reminderText: any;
 }
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
-    console.log("Label Text as param in remindertooltip:", labelText);
-    console.log("reminder Text as param in remindertooltip:", reminderText);
+    console.log("rtt labelText", labelText);
+    console.log("rtt reminderText", reminderText);
+
+    const ltMsg = msg`${labelText}`;
+    const rtMsg = msg`${reminderText}`;
+    console.log("rtt ltMsg", ltMsg);
+    console.log("rtt rtMsg", rtMsg);
+    
     return (
         <Tooltip
             // jsx in the text param works fine, error seems wrong
             // @ts-ignore
             text={
                 <StyledTooltipInnerText>
-                    {t`${reminderText}`}
+                    <Trans id={rtMsg.id} />
                 </StyledTooltipInnerText>
             }
             enterDelay={100}
             leaveDelay={500}
         >
-            <StyledLabel>{t`${labelText}`}<TooltipIndicator /></StyledLabel>
+            <StyledLabel>{<Trans id={ltMsg.id} values={ltMsg.values} />}<TooltipIndicator /></StyledLabel>
         </Tooltip>
     );
 };

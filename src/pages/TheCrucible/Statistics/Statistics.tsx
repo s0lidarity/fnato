@@ -1,5 +1,4 @@
 import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import styled from 'styled-components';
 
 import DerivedAttributes from './components/DerivedAttributes/DerivedAttributes';

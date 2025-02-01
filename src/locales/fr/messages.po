@@ -41,41 +41,17 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
-msgid "{label}"
-msgstr ""
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:73
+#~ msgid "{label}"
+#~ msgstr ""
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:38
 msgid "{labelText}"
-msgstr ""
+msgstr "{0}"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Strength"
-msgstr "Force"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Dexterity"
-msgstr "Dextérité"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Constitution"
-msgstr "Constitution"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Intelligence"
-msgstr "Intelligence"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Power"
-msgstr "Pouvoir"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-msgid "Charisma"
-msgstr "Charisme"
-
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:42
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:39
 msgid "{reminderText}"
-msgstr ""
+msgstr "{0}"
 
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
@@ -101,7 +77,7 @@ msgstr "Appliquer les compétences prédéfinies et choisir des compétences sup
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:77
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:75
 msgid "Base Statistics"
 msgstr "Statistiques de base"
 
@@ -109,6 +85,10 @@ msgstr "Statistiques de base"
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:166
 msgid "Bonds"
 msgstr "Liens"
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Charisma"
+#~ msgstr "Charisme"
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
 msgid "Choose a bonus skill package"
@@ -126,6 +106,10 @@ msgstr "Effacer"
 msgid "Clear Descriptors"
 msgstr "Effacer les descriptions"
 
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Constitution"
+#~ msgstr "Constitution"
+
 #: src/pages/TheCrucible/Profession/index.tsx:38
 msgid "Custom Professions"
 msgstr "Professions personnalisées"
@@ -138,7 +122,11 @@ msgstr "Dossier déclassifié"
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Dexterity"
+#~ msgstr "Dextérité"
+
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
 msgid "Dice"
 msgstr "Dés"
 
@@ -174,11 +162,15 @@ msgstr "Si la communauté du renseignement était une famille, Delta Green serai
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu Delta Green via des liens d'affiliation."
 
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Intelligence"
+#~ msgstr "Intelligence"
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
 msgid "Key Stats"
 msgstr "Statistiques clés"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:47
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
 msgid "Manual Input"
 msgstr "Saisie manuelle"
 
@@ -206,9 +198,13 @@ msgstr "Détails personnels"
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Point Buy"
 msgstr "Achat par points"
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Power"
+#~ msgstr "Pouvoir"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -266,6 +262,10 @@ msgstr "Statistiques"
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
 msgid "Statistics Details"
 msgstr "Détails des statistiques"
+
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#~ msgid "Strength"
+#~ msgstr "Force"
 
 #: src/components/Header/NavigationMenu.tsx:33
 msgid "Summary"

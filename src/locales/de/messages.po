@@ -41,15 +41,15 @@ msgstr ""
 msgid "{0} {1}"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
-msgid "{label}"
-msgstr ""
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:73
+#~ msgid "{label}"
+#~ msgstr ""
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:38
 msgid "{labelText}"
 msgstr ""
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:42
+#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:39
 msgid "{reminderText}"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/Statistics.tsx:77
+#: src/pages/TheCrucible/Statistics/Statistics.tsx:75
 msgid "Base Statistics"
 msgstr ""
 
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Derived Attributes"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
 msgid "Dice"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Key Stats"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:47
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
 msgid "Manual Input"
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "personal specialty (any)"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Point Buy"
 msgstr ""
 
