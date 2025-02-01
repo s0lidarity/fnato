@@ -1,13 +1,14 @@
 import { Radio, GroupBox } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
-import { msg } from '@lingui/core/macro'
 import { Trans } from '@lingui/react';
+import { MessageDescriptor } from '@lingui/core';
+import { msg } from '@lingui/core/macro';
 
 import { ConfigOptions, StatsConfigOptions } from '../../../../../types/componentTypes';
 
 type RenderRadioParams = {
-    label: any;
+    label: MessageDescriptor;
     value: ConfigOptions;
 }
 

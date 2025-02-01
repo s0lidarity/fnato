@@ -13,6 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. The tooltip reminder text for a character statistic
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#~ msgid "stat.reminder"
+#~ msgstr "{reminder}"
+
+#. The label for a character statistic
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:10
+#~ msgid "stat.label"
+#~ msgstr "{stat}"
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:124
 msgid "--- Additional Professions ---"
 msgstr "--- Additional Professions ---"
@@ -35,23 +47,41 @@ msgstr "--- Standard Professions ---"
 msgid "{0}"
 msgstr "{0}"
 
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:18
+#~ msgctxt "stat-reminder"
+#~ msgid "{0}"
+#~ msgstr "{0}"
+
 #. placeholder {0}: skill.skillName
 #. placeholder {1}: skill.subType && ` (${skill.subType})`
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
 msgid "{0} {1}"
 msgstr "{0} {1}"
 
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
+#~ msgid "{capitalizedStat}"
+#~ msgstr "{capitalizedStat}"
+
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:73
 #~ msgid "{label}"
 #~ msgstr "{label}"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:38
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:12
 msgid "{labelText}"
 msgstr "{labelText}"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:39
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
 msgid "{reminderText}"
 msgstr "{reminderText}"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
+#~ msgctxt "stat-label"
+#~ msgid "{statKey}"
+#~ msgstr "{statKey}"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
+#~ msgid "{statKey}"
+#~ msgstr "{statKey}"
 
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
@@ -114,7 +144,7 @@ msgstr "Declassified Record"
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Dice"
 msgstr "Dice"
 
@@ -154,7 +184,7 @@ msgstr "If you want to support this work, you can buy some Delta Green content t
 msgid "Key Stats"
 msgstr "Key Stats"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
 msgstr "Manual Input"
 
@@ -170,7 +200,7 @@ msgstr "No Package (Manual Bonus Points)"
 msgid "Number of social connections available to your character."
 msgstr "Number of social connections available to your character."
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:74
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
 msgid "Options"
 msgstr "Options"
 
@@ -182,7 +212,7 @@ msgstr "Personal Details"
 msgid "personal specialty (any)"
 msgstr "personal specialty (any)"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
 msgid "Point Buy"
 msgstr "Point Buy"
 

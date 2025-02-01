@@ -13,6 +13,18 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#. The tooltip reminder text for a character statistic
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:16
+#~ msgid "stat.reminder"
+#~ msgstr ""
+
+#. The label for a character statistic
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:10
+#~ msgid "stat.label"
+#~ msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:124
 msgid "--- Additional Professions ---"
 msgstr ""
@@ -35,23 +47,41 @@ msgstr ""
 msgid "{0}"
 msgstr ""
 
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:18
+#~ msgctxt "stat-reminder"
+#~ msgid "{0}"
+#~ msgstr ""
+
 #. placeholder {0}: skill.skillName
 #. placeholder {1}: skill.subType && ` (${skill.subType})`
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
 msgid "{0} {1}"
 msgstr ""
 
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
+#~ msgid "{capitalizedStat}"
+#~ msgstr ""
+
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:73
 #~ msgid "{label}"
 #~ msgstr ""
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:38
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:12
 msgid "{labelText}"
 msgstr ""
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:39
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
 msgid "{reminderText}"
 msgstr ""
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
+#~ msgctxt "stat-label"
+#~ msgid "{statKey}"
+#~ msgstr ""
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
+#~ msgid "{statKey}"
+#~ msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
@@ -114,7 +144,7 @@ msgstr ""
 msgid "Derived Attributes"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Dice"
 msgstr ""
 
@@ -154,7 +184,7 @@ msgstr ""
 msgid "Key Stats"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:48
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
 msgstr ""
 
@@ -170,7 +200,7 @@ msgstr ""
 msgid "Number of social connections available to your character."
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:74
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
 msgid "Options"
 msgstr ""
 
@@ -182,7 +212,7 @@ msgstr ""
 msgid "personal specialty (any)"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
 msgid "Point Buy"
 msgstr ""
 
