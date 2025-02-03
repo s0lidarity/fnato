@@ -7,10 +7,9 @@ import StatInputContainer from '../../styles/StatInputContainer';
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
 	const labelText = (statKey?.charAt(0).toUpperCase() + statKey?.slice(1)) || "";
-	const reminderText = stats[statKey].reminderText || "";
 
-	const ltMsg = msg`${labelText}`;
-	const rtMsg = msg`${reminderText}`;
+	const ltMsg = msg`Label`;
+	const rtMsg = stats[statKey].reminderMsg;
 	
 	return (
 		<StatInputContainer>

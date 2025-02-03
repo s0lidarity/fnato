@@ -5,7 +5,8 @@ import {
     Skills, 
     Statistics, 
     Stat,
-    DEFAULT_SKILLS
+    DEFAULT_SKILLS,
+    STAT_REMINDER_MSGS
 } from '../types/characterTypes';
 
 export const buildStat = (name: string): Stat => {
@@ -15,6 +16,7 @@ export const buildStat = (name: string): Stat => {
         x5: 50,
         distinguishingFeature: '',
         reminderText: STAT_REMINDERS[name as keyof typeof STAT_REMINDERS],
+        reminderMsg: STAT_REMINDER_MSGS[name as keyof typeof STAT_REMINDER_MSGS],
     };
 }
 

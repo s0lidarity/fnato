@@ -25,6 +25,36 @@ msgstr ""
 #~ msgid "stat.label"
 #~ msgstr "{stat}"
 
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:278
+#~ msgid "stat.intelligence.reminder"
+#~ msgstr "Cunning, logic, and intuition"
+
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:270
+#~ msgid "stat.constitution.reminder"
+#~ msgstr "Health and hardiness"
+
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:286
+#~ msgid "stat.charisma.reminder"
+#~ msgstr "Personal and physical appeal"
+
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:266
+#~ msgid "stat.strength.reminder"
+#~ msgstr "Raw physical power"
+
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:274
+#~ msgid "stat.dexterity.reminder"
+#~ msgstr "Speed and physical agility"
+
+#. js-lingui-explicit-id
+#: src/types/characterTypes.ts:282
+#~ msgid "stat.power.reminder"
+#~ msgstr "Will, spirit, and mental stability"
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:124
 msgid "--- Additional Professions ---"
 msgstr "--- Additional Professions ---"
@@ -67,12 +97,12 @@ msgstr "{0} {1}"
 #~ msgstr "{label}"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:12
-msgid "{labelText}"
-msgstr "{labelText}"
+#~ msgid "{labelText}"
+#~ msgstr "{labelText}"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
-msgid "{reminderText}"
-msgstr "{reminderText}"
+#~ msgid "{reminderText}"
+#~ msgstr "{reminderText}"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
 #~ msgctxt "stat-label"
@@ -132,6 +162,10 @@ msgstr "Clear"
 msgid "Clear Descriptors"
 msgstr "Clear Descriptors"
 
+#: src/types/characterTypes.ts:275
+msgid "Cunning, logic, and intuition"
+msgstr "Cunning, logic, and intuition"
+
 #: src/pages/TheCrucible/Profession/index.tsx:38
 msgid "Custom Professions"
 msgstr "Custom Professions"
@@ -168,6 +202,10 @@ msgstr "First Night at the Opera?"
 msgid "Font Settings"
 msgstr "Font Settings"
 
+#: src/types/characterTypes.ts:269
+msgid "Health and hardiness"
+msgstr "Health and hardiness"
+
 #: src/components/Header/NavigationMenu.tsx:18
 msgid "Home"
 msgstr "Home"
@@ -183,6 +221,10 @@ msgstr "If you want to support this work, you can buy some Delta Green content t
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
 msgid "Key Stats"
 msgstr "Key Stats"
+
+#: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:11
+msgid "Label"
+msgstr "Label"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
@@ -204,6 +246,10 @@ msgstr "Number of social connections available to your character."
 msgid "Options"
 msgstr "Options"
 
+#: src/types/characterTypes.ts:281
+msgid "Personal and physical appeal"
+msgstr "Personal and physical appeal"
+
 #: src/pages/TheCrucible/index.tsx:52
 msgid "Personal Details"
 msgstr "Personal Details"
@@ -223,6 +269,10 @@ msgstr "Profession & Skills"
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:145
 msgid "Professional Background"
 msgstr "Professional Background"
+
+#: src/types/characterTypes.ts:266
+msgid "Raw physical power"
+msgstr "Raw physical power"
 
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:158
 msgid "Recommended best stats for your chosen profession."
@@ -255,6 +305,10 @@ msgstr "Select Theme"
 #: src/components/Header/SettingsMenu.tsx:61
 msgid "Settings"
 msgstr "Settings"
+
+#: src/types/characterTypes.ts:272
+msgid "Speed and physical agility"
+msgstr "Speed and physical agility"
 
 #: src/pages/TheCrucible/Profession/index.tsx:37
 msgid "Standard Professions"
@@ -321,3 +375,7 @@ msgstr "What happens at the opera stays here. Not that anyone outside of the org
 #: src/pages/About/index.tsx:97
 msgid "What is Delta Green?"
 msgstr "What is Delta Green?"
+
+#: src/types/characterTypes.ts:278
+msgid "Will, spirit, and mental stability"
+msgstr "Will, spirit, and mental stability"
