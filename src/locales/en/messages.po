@@ -146,6 +146,10 @@ msgstr "Base Statistics"
 msgid "Bonds"
 msgstr "Bonds"
 
+#: src/types/characterTypes.ts:280
+msgid "Charisma"
+msgstr "Charisma"
+
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
 msgid "Choose a bonus skill package"
 msgstr "Choose a bonus skill package"
@@ -162,7 +166,11 @@ msgstr "Clear"
 msgid "Clear Descriptors"
 msgstr "Clear Descriptors"
 
-#: src/types/characterTypes.ts:275
+#: src/types/characterTypes.ts:268
+msgid "Constitution"
+msgstr "Constitution"
+
+#: src/types/characterTypes.ts:296
 msgid "Cunning, logic, and intuition"
 msgstr "Cunning, logic, and intuition"
 
@@ -177,6 +185,10 @@ msgstr "Declassified Record"
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
+
+#: src/types/characterTypes.ts:271
+msgid "Dexterity"
+msgstr "Dexterity"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Dice"
@@ -202,7 +214,7 @@ msgstr "First Night at the Opera?"
 msgid "Font Settings"
 msgstr "Font Settings"
 
-#: src/types/characterTypes.ts:269
+#: src/types/characterTypes.ts:290
 msgid "Health and hardiness"
 msgstr "Health and hardiness"
 
@@ -218,13 +230,17 @@ msgstr "If the intelligence community was a family, Delta Green would be the unc
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "If you want to support this work, you can buy some Delta Green content through affiliate links."
 
+#: src/types/characterTypes.ts:274
+msgid "Intelligence"
+msgstr "Intelligence"
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
 msgid "Key Stats"
 msgstr "Key Stats"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:11
-msgid "Label"
-msgstr "Label"
+#~ msgid "Label"
+#~ msgstr "Label"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
@@ -246,7 +262,7 @@ msgstr "Number of social connections available to your character."
 msgid "Options"
 msgstr "Options"
 
-#: src/types/characterTypes.ts:281
+#: src/types/characterTypes.ts:302
 msgid "Personal and physical appeal"
 msgstr "Personal and physical appeal"
 
@@ -262,6 +278,10 @@ msgstr "personal specialty (any)"
 msgid "Point Buy"
 msgstr "Point Buy"
 
+#: src/types/characterTypes.ts:277
+msgid "Power"
+msgstr "Power"
+
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
 msgstr "Profession & Skills"
@@ -270,7 +290,7 @@ msgstr "Profession & Skills"
 msgid "Professional Background"
 msgstr "Professional Background"
 
-#: src/types/characterTypes.ts:266
+#: src/types/characterTypes.ts:287
 msgid "Raw physical power"
 msgstr "Raw physical power"
 
@@ -306,7 +326,7 @@ msgstr "Select Theme"
 msgid "Settings"
 msgstr "Settings"
 
-#: src/types/characterTypes.ts:272
+#: src/types/characterTypes.ts:293
 msgid "Speed and physical agility"
 msgstr "Speed and physical agility"
 
@@ -326,6 +346,10 @@ msgstr "Statistics"
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
 msgid "Statistics Details"
 msgstr "Statistics Details"
+
+#: src/types/characterTypes.ts:265
+msgid "Strength"
+msgstr "Strength"
 
 #: src/components/Header/NavigationMenu.tsx:33
 msgid "Summary"
@@ -376,6 +400,6 @@ msgstr "What happens at the opera stays here. Not that anyone outside of the org
 msgid "What is Delta Green?"
 msgstr "What is Delta Green?"
 
-#: src/types/characterTypes.ts:278
+#: src/types/characterTypes.ts:299
 msgid "Will, spirit, and mental stability"
 msgstr "Will, spirit, and mental stability"

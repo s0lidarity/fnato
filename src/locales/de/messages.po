@@ -146,6 +146,10 @@ msgstr ""
 msgid "Bonds"
 msgstr ""
 
+#: src/types/characterTypes.ts:280
+msgid "Charisma"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
 msgid "Choose a bonus skill package"
 msgstr ""
@@ -162,7 +166,11 @@ msgstr ""
 msgid "Clear Descriptors"
 msgstr ""
 
-#: src/types/characterTypes.ts:275
+#: src/types/characterTypes.ts:268
+msgid "Constitution"
+msgstr ""
+
+#: src/types/characterTypes.ts:296
 msgid "Cunning, logic, and intuition"
 msgstr ""
 
@@ -176,6 +184,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
+msgstr ""
+
+#: src/types/characterTypes.ts:271
+msgid "Dexterity"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
@@ -202,7 +214,7 @@ msgstr ""
 msgid "Font Settings"
 msgstr ""
 
-#: src/types/characterTypes.ts:269
+#: src/types/characterTypes.ts:290
 msgid "Health and hardiness"
 msgstr ""
 
@@ -218,13 +230,17 @@ msgstr ""
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr ""
 
+#: src/types/characterTypes.ts:274
+msgid "Intelligence"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
 msgid "Key Stats"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:11
-msgid "Label"
-msgstr ""
+#~ msgid "Label"
+#~ msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
@@ -246,7 +262,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: src/types/characterTypes.ts:281
+#: src/types/characterTypes.ts:302
 msgid "Personal and physical appeal"
 msgstr ""
 
@@ -262,6 +278,10 @@ msgstr ""
 msgid "Point Buy"
 msgstr ""
 
+#: src/types/characterTypes.ts:277
+msgid "Power"
+msgstr ""
+
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
 msgstr ""
@@ -270,7 +290,7 @@ msgstr ""
 msgid "Professional Background"
 msgstr ""
 
-#: src/types/characterTypes.ts:266
+#: src/types/characterTypes.ts:287
 msgid "Raw physical power"
 msgstr ""
 
@@ -306,7 +326,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/types/characterTypes.ts:272
+#: src/types/characterTypes.ts:293
 msgid "Speed and physical agility"
 msgstr ""
 
@@ -325,6 +345,10 @@ msgstr ""
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:19
 msgid "Statistics Details"
+msgstr ""
+
+#: src/types/characterTypes.ts:265
+msgid "Strength"
 msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:33
@@ -376,6 +400,6 @@ msgstr ""
 msgid "What is Delta Green?"
 msgstr ""
 
-#: src/types/characterTypes.ts:278
+#: src/types/characterTypes.ts:299
 msgid "Will, spirit, and mental stability"
 msgstr ""

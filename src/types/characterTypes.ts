@@ -261,6 +261,27 @@ export const STAT_REMINDERS: { [key in keyof Statistics]: string } = {
     charisma: "Personal and physical appeal",
 };
 
+export const STAT_LABEL_MSGS: { [key in keyof Statistics]: MessageDescriptor } = {
+    strength: msg({
+        message: 'Strength'
+    }),
+    constitution: msg({
+        message: 'Constitution'
+    }),
+    dexterity: msg({
+        message: 'Dexterity'
+    }),
+    intelligence: msg({
+        message: 'Intelligence'
+    }),
+    power: msg({
+        message: 'Power'
+    }),
+    charisma: msg({
+        message: 'Charisma'
+    }),
+}
+
 // New constant with message descriptors
 export const STAT_REMINDER_MSGS: { [key in keyof Statistics]: MessageDescriptor } = {
     strength: msg({

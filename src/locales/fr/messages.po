@@ -150,6 +150,10 @@ msgstr "Liens"
 #~ msgid "charisma"
 #~ msgstr "Charisme"
 
+#: src/types/characterTypes.ts:280
+msgid "Charisma"
+msgstr "Charisme"
+
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
 msgid "Choose a bonus skill package"
 msgstr "Choisir un package de compétences bonus"
@@ -166,11 +170,11 @@ msgstr "Effacer"
 msgid "Clear Descriptors"
 msgstr "Effacer les descriptions"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-#~ msgid "Constitution"
-#~ msgstr "Constitution"
+#: src/types/characterTypes.ts:268
+msgid "Constitution"
+msgstr "Constitution"
 
-#: src/types/characterTypes.ts:275
+#: src/types/characterTypes.ts:296
 msgid "Cunning, logic, and intuition"
 msgstr "Courage, logique, et intuition"
 
@@ -186,9 +190,9 @@ msgstr "Dossier déclassifié"
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-#~ msgid "Dexterity"
-#~ msgstr "Dextérité"
+#: src/types/characterTypes.ts:271
+msgid "Dexterity"
+msgstr "Dextérité"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Dice"
@@ -214,7 +218,7 @@ msgstr "Première soirée à l'opéra ?"
 msgid "Font Settings"
 msgstr "Paramètres de police"
 
-#: src/types/characterTypes.ts:269
+#: src/types/characterTypes.ts:290
 msgid "Health and hardiness"
 msgstr "Santé et robustesse"
 
@@ -230,17 +234,17 @@ msgstr "Si la communauté du renseignement était une famille, Delta Green serai
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu Delta Green via des liens d'affiliation."
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-#~ msgid "Intelligence"
-#~ msgstr "Intelligence"
+#: src/types/characterTypes.ts:274
+msgid "Intelligence"
+msgstr "Intelligence"
 
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
 msgid "Key Stats"
 msgstr "Statistiques clés"
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:11
-msgid "Label"
-msgstr "Étiquette"
+#~ msgid "Label"
+#~ msgstr "Étiquette"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
 msgid "Manual Input"
@@ -262,7 +266,7 @@ msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 msgid "Options"
 msgstr "Options"
 
-#: src/types/characterTypes.ts:281
+#: src/types/characterTypes.ts:302
 msgid "Personal and physical appeal"
 msgstr "Appel personnel et physique"
 
@@ -278,9 +282,9 @@ msgstr "spécialité personnelle (n'importe quelle)"
 msgid "Point Buy"
 msgstr "Achat par points"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:48
-#~ msgid "Power"
-#~ msgstr "Pouvoir"
+#: src/types/characterTypes.ts:277
+msgid "Power"
+msgstr "Pouvoir"
 
 #: src/pages/TheCrucible/index.tsx:50
 msgid "Profession & Skills"
@@ -290,7 +294,7 @@ msgstr "Profession & Compétences"
 msgid "Professional Background"
 msgstr "Profession"
 
-#: src/types/characterTypes.ts:266
+#: src/types/characterTypes.ts:287
 msgid "Raw physical power"
 msgstr "Puissance physique brute"
 
@@ -326,7 +330,7 @@ msgstr "Sélectionner le thème"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/types/characterTypes.ts:272
+#: src/types/characterTypes.ts:293
 msgid "Speed and physical agility"
 msgstr "Vitesse et agilité physique"
 
@@ -347,9 +351,9 @@ msgstr "Statistiques"
 msgid "Statistics Details"
 msgstr "Détails des statistiques"
 
-#: src/components/Footer/ReminderTooltip/ReminderTooltip.tsx:46
-#~ msgid "Strength"
-#~ msgstr "Force"
+#: src/types/characterTypes.ts:265
+msgid "Strength"
+msgstr "Force"
 
 #: src/components/Header/NavigationMenu.tsx:33
 msgid "Summary"
@@ -400,6 +404,6 @@ msgstr "Ce qui se passe à l'opéra reste ici. De toute façon, personne en deho
 msgid "What is Delta Green?"
 msgstr "Qu'est-ce que Delta Green ?"
 
-#: src/types/characterTypes.ts:278
+#: src/types/characterTypes.ts:299
 msgid "Will, spirit, and mental stability"
 msgstr "Volonté, esprit et stabilité mentale"

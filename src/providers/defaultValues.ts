@@ -6,12 +6,14 @@ import {
     Statistics, 
     Stat,
     DEFAULT_SKILLS,
-    STAT_REMINDER_MSGS
+    STAT_REMINDER_MSGS,
+    STAT_LABEL_MSGS
 } from '../types/characterTypes';
 
 export const buildStat = (name: string): Stat => {
     return {
         label: name.charAt(0).toUpperCase() + name.slice(1),
+        labelMsg: STAT_LABEL_MSGS[name as keyof typeof STAT_LABEL_MSGS],
         score: 10,
         x5: 50,
         distinguishingFeature: '',

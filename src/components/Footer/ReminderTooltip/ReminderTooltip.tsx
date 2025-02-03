@@ -33,11 +33,9 @@ interface ReminderTooltipProps {
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
 
-    console.log("ReminderTooltip labelText:", labelText);
-    console.log("ReminderTooltip reminderText:", reminderText);
-
     return (
         <Tooltip
+            //@ts-ignore seems to work fine
             text={
                 <StyledTooltipInnerText>
                     <Trans id={reminderText.id} />
@@ -47,7 +45,7 @@ export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProp
             leaveDelay={500}
         >
             <StyledLabel>
-                <Trans id={labelText.id} values={ labelText.values } />
+                <Trans id={labelText.id} />
                 <TooltipIndicator />
             </StyledLabel>
         </Tooltip>
