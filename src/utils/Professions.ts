@@ -56,7 +56,9 @@ export class Profession implements IProfession {
             value: value,
             bonus: 0,
             label: defaultSkill?.label || name.charAt(0).toUpperCase() + name.slice(1),
+            labelMsg: defaultSkill?.labelMsg,
             reminderText: defaultSkill?.reminderText,
+            reminderMsg: defaultSkill?.reminderMsg,
             subType: subType,
         };
         return newSkill;

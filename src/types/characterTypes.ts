@@ -185,8 +185,11 @@ export interface Skill {
     value: number;
     bonus: number;
     label?: string;
+    labelMsg?: MessageDescriptor;
     reminderText?: string;
+    reminderMsg?: MessageDescriptor;
     subType?: string;
+    subTypeMsg?: MessageDescriptor;
     isDefault?: boolean;
     pointsAllocated?: number;
 }
@@ -387,7 +390,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Accounting",
+        labelMsg: msg({
+            message: "Accounting"
+        }),
         reminderText: "Business Math",
+        reminderMsg: msg({
+            message: "Business Math"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -397,7 +406,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Alertness",
+        labelMsg: msg({
+            message: "Alertness"
+        }),
         reminderText: "Noticing things",
+        reminderMsg: msg({
+            message: "Noticing things"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -407,7 +422,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Anthropology",
+        labelMsg: msg({
+            message: "Anthropology"
+        }),
         reminderText: "Study of humans and their cultures",
+        reminderMsg: msg({
+            message: "Study of humans and their cultures"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -417,7 +438,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Archeology",
+        labelMsg: msg({
+            message: "Archeology"
+        }),
         reminderText: "Jurassic Park",
+        reminderMsg: msg({
+            message: "Jurassic Park"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -427,7 +454,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Art",
+        labelMsg: msg({
+            message: "Art"
+        }),
         reminderText: "Creative pursuits",
+        reminderMsg: msg({
+            message: "Creative pursuits"
+        }),
         isDefault: true,
         pointsAllocated: 0,
         subType: "Painting",
@@ -438,7 +471,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Artillery",
+        labelMsg: msg({
+            message: "Artillery"
+        }),
         reminderText: "Making things explode from far away",
+        reminderMsg: msg({
+            message: "Making things explode from far away"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -448,7 +487,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 30,
         bonus: 0,
         label: "Athletics",
+        labelMsg: msg({
+            message: "Athletics"
+        }),
         reminderText: "Jumping, ducking, running, climbing, etc",
+        reminderMsg: msg({
+            message: "Jumping, ducking, running, climbing, etc"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -458,7 +503,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Bureaucracy",
+        labelMsg: msg({
+            message: "Bureaucracy"
+        }),
         reminderText: "Greasing the wheels of government",
+        reminderMsg: msg({
+            message: "Greasing the wheels of government"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -468,7 +519,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Computer Science",
+        labelMsg: msg({
+            message: "Computer Science"
+        }),
         reminderText: "010111100001",
+        reminderMsg: msg({
+            message: "010111100001"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -478,8 +535,17 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Craft",
+        labelMsg: msg({
+            message: "Craft"
+        }),
         reminderText: "Inner Adam Savage",
+        reminderMsg: msg({
+            message: "Inner Adam Savage"
+        }),
         subType: "Macrame",
+        subTypeMsg: msg({
+            message: "Macrame"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -489,7 +555,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Criminology",
+        labelMsg: msg({
+            message: "Criminology"
+        }),
         reminderText: "Muddying the waters of a crime-scene",
+        reminderMsg: msg({
+            message: "Muddying the waters of a crime-scene"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -499,7 +571,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Demolitions",
+        labelMsg: msg({
+            message: "Demolitions"
+        }),
         reminderText: "Controlled explosions",
+        reminderMsg: msg({
+            message: "Controlled explosions"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -509,7 +587,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Disguise",
+        labelMsg: msg({
+            message: "Disguise"
+        }),
         reminderText: "Gene Parmesan, he's the best",
+        reminderMsg: msg({
+            message: "Gene Parmesan, he's the best"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -519,7 +603,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 30,
         bonus: 0,
         label: "Dodge",
+        labelMsg: msg({
+            message: "Dodge"
+        }),
         reminderText: "Avoiding getting hit",
+        reminderMsg: msg({
+            message: "Avoiding getting hit"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -529,7 +619,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Drive",
+        labelMsg: msg({
+            message: "Drive"
+        }),
         reminderText: "Opearting a motor-vehicle",
+        reminderMsg: msg({
+            message: "Opearting a motor-vehicle"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -539,7 +635,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Firearms",
+        labelMsg: msg({
+            message: "Firearms"
+        }),
         reminderText: "pew-pew",
+        reminderMsg: msg({
+            message: "pew-pew"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -549,7 +651,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "First Aid",
+        labelMsg: msg({
+            message: "First Aid"
+        }),
         reminderText: "Minor urgent medical care",
+        reminderMsg: msg({
+            message: "Minor urgent medical care"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -559,7 +667,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Forensics",
+        labelMsg: msg({
+            message: "Forensics"
+        }),
         reminderText: "CSI",
+        reminderMsg: msg({
+            message: "CSI"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -570,7 +684,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         bonus: 0,
         subType: "French",
         label: "Foreign Languages",
+        labelMsg: msg({
+            message: "Foreign Languages"
+        }),
         reminderText: "Parles-vous Français?",
+        reminderMsg: msg({
+            message: "Parles-vous Français?"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -580,7 +700,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Heavy Machinery",
+        labelMsg: msg({
+            message: "Heavy Machinery"
+        }),
         reminderText: "Forklifts, cranes, excavators, etc",
+        reminderMsg: msg({
+            message: "Forklifts, cranes, excavators, etc"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -590,7 +716,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Heavy Weapons",
+        labelMsg: msg({
+            message: "Heavy Weapons"
+        }),
         reminderText: "LMGs I think",
+        reminderMsg: msg({
+            message: "LMGs I think"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -600,7 +732,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "History",
+        labelMsg: msg({
+            message: "History"
+        }),
         reminderText: "If you haven't studied it you're doomed to repeat it",
+        reminderMsg: msg({
+            message: "If you haven't studied it you're doomed to repeat it"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -610,7 +748,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "HUMINT",
+        labelMsg: msg({
+            message: "HUMINT"
+        }),
         reminderText: "Understanding human behavior",
+        reminderMsg: msg({
+            message: "Understanding human behavior"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -620,7 +764,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Law",
-        reminderText: "Lawyering",
+        labelMsg: msg({
+            message: "Law"
+        }),
+        reminderText: "Understanding and arguing the law",
+        reminderMsg: msg({
+            message: "Understanding and arguing the law"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -630,7 +780,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Medicine",
+        labelMsg: msg({
+            message: "Medicine"
+        }),
         reminderText: "Medical practice",
+        reminderMsg: msg({
+            message: "Medical practice"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -640,7 +796,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 30,
         bonus: 0,
         label: "Melee Weapons",
+        labelMsg: msg({
+            message: "Melee Weapons"
+        }),
         reminderText: "Knives, hatchets, swords, etc",
+        reminderMsg: msg({
+            message: "Knives, hatchets, swords, etc"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -650,7 +812,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Military Science",
+        labelMsg: msg({
+            message: "Military Science"
+        }),
         reminderText: "Military tactics",
+        reminderMsg: msg({
+            message: "Military tactics"
+        }),
         subType: "Land",
         isDefault: true,
         pointsAllocated: 0,
@@ -661,7 +829,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Navigate",
+        labelMsg: msg({
+            message: "Navigate"
+        }),
         reminderText: "Finding the path",
+        reminderMsg: msg({
+            message: "Finding the path"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -671,7 +845,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Occult",
+        labelMsg: msg({
+            message: "Occult"
+        }),
         reminderText: "Cult shit",
+        reminderMsg: msg({
+            message: "Cult shit"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -681,7 +861,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Persuade",
+        labelMsg: msg({
+            message: "Persuade"
+        }),
         reminderText: "Convincing people",
+        reminderMsg: msg({
+            message: "Convincing people"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -691,7 +877,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Pharmacy",
+        labelMsg: msg({
+            message: "Pharmacy"
+        }),
         reminderText: "Do you like drugs?",
+        reminderMsg: msg({
+            message: "Do you like drugs?"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -701,7 +893,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Pilot",
+        labelMsg: msg({
+            message: "Pilot"
+        }),
         reminderText: "Operating flying vehicles",
+        reminderMsg: msg({
+            message: "Operating flying vehicles"
+        }),
         subType: "Aircraft",
         isDefault: true,
         pointsAllocated: 0,
@@ -712,7 +910,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Psychotherapy",
+        labelMsg: msg({
+            message: "Psychotherapy"
+        }),
         reminderText: "Analysing thought",
+        reminderMsg: msg({
+            message: "Analysing thought"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -722,7 +926,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Ride",
+        labelMsg: msg({
+            message: "Ride"
+        }),
         reminderText: "Horses and such",
+        reminderMsg: msg({
+            message: "Horses and such"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -732,7 +942,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Science",
+        labelMsg: msg({
+            message: "Science"
+        }),
         reminderText: "Physics, Chemistry, Biology, etc",
+        reminderMsg: msg({
+            message: "Physics, Chemistry, Biology, etc"
+        }),
         subType: "Theoretical Physics",
         isDefault: true,
         pointsAllocated: 0,
@@ -743,7 +959,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Search",
+        labelMsg: msg({
+            message: "Search"
+        }),
         reminderText: "Finding things",
+        reminderMsg: msg({
+            message: "Finding things"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -753,7 +975,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "SIGINT",
+        labelMsg: msg({
+            message: "SIGINT"
+        }),
         reminderText: "Signal intelligence, breaking codes",
+        reminderMsg: msg({
+            message: "Signal intelligence, breaking codes"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -763,7 +991,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Stealth",
+        labelMsg: msg({
+            message: "Stealth"
+        }),
         reminderText: "Sneaking around",
+        reminderMsg: msg({
+            message: "Sneaking around"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -773,7 +1007,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Surgery",
+        labelMsg: msg({
+            message: "Surgery"
+        }),
         reminderText: "Removing a bullet, stitching a wound",
+        reminderMsg: msg({
+            message: "Removing a bullet, stitching a wound"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -783,7 +1023,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 10,
         bonus: 0,
         label: "Survival",
+        labelMsg: msg({
+            message: "Survival"
+        }),
         reminderText: "Camping, tracking, improvising in nature",
+        reminderMsg: msg({
+            message: "Camping, tracking, improvising in nature"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -793,7 +1039,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 20,
         bonus: 0,
         label: "Swim",
+        labelMsg: msg({
+            message: "Swim"
+        }),
         reminderText: "Moving oneself through water",
+        reminderMsg: msg({
+            message: "Moving oneself through water"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -803,7 +1055,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 40,
         bonus: 0,
         label: "Unarmed Combat",
+        labelMsg: msg({
+            message: "Unarmed Combat"
+        }),
         reminderText: "Punch, kick, grapple, bite, etc",
+        reminderMsg: msg({
+            message: "Punch, kick, grapple, bite, etc"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -813,7 +1071,13 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         label: "Unnatural",
+        labelMsg: msg({
+            message: "Unnatural"
+        }),
         reminderText: "It's a jeep thing, you wouldn't understand",
+        reminderMsg: msg({
+            message: "It's a jeep thing, you wouldn't understand"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },

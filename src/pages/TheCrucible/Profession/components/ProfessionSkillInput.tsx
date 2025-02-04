@@ -2,6 +2,7 @@ import { Button, NumberInput, Separator, TextInput } from 'react95';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
+import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -143,14 +144,12 @@ function ProfessionSkillInput({
         adjustBonus(skill.id, value);
     };
 
-    const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
-
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={skillLabel}
-                    reminderText={skill.reminderText} 
+                    labelText={skill.labelMsg}
+                    reminderText={skill.reminderMsg} 
                 />
                 <span>
                     {/* this span needs to become its own component, it's getting too big */}
@@ -188,7 +187,7 @@ function ProfessionSkillInput({
             </StyledValueContainer>
             <Separator orientation="vertical" />
             <StyledBonusContainer>
-                <StyledLabel>Bonus</StyledLabel>
+                <StyledLabel>{t`Bonus`}</StyledLabel>
                 <StyledNumberInput
                     min={0}
                     max={Math.min(8, (bonusPointsRemaining || 0) + (skill.bonus || 0))}

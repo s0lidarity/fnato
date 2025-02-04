@@ -17,6 +17,7 @@ export const buildStat = (name: string): Stat => {
         score: 10,
         x5: 50,
         distinguishingFeature: '',
+        // AJS: TODO clean up reminderText usage
         reminderText: STAT_REMINDERS[name as keyof typeof STAT_REMINDERS],
         reminderMsg: STAT_REMINDER_MSGS[name as keyof typeof STAT_REMINDER_MSGS],
     };

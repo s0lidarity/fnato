@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import { Skills } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -62,7 +63,7 @@ const renderSkillInputs = (skills: Skills) => {
 };
 
 function StandardSkillForm() {
-    const { bonusPointsRemaining, skills, resetAllBonusPoints, profession } = useSkills();
+    const { bonusPointsRemaining, skills, resetAllBonusPoints } = useSkills();
     const [showNoPointsWarning, setShowNoPointsWarning] = useState(false);
 
     const handleResetBonusPoints = () => {
@@ -86,11 +87,11 @@ function StandardSkillForm() {
                 <PointsCounter 
                     value={bonusPointsRemaining} 
                     showNoPointsWarning={showNoPointsWarning}
-                    label="Bonus Points Remaining"/>
+                    label={t`Bonus Points Remaining`}/>
                 <Button 
                     disabled={bonusPointsRemaining === MAX_BONUS_POINTS}
                     onClick={handleResetBonusPoints}>
-                    Reset Bonus Points
+                    {t`Reset Bonus Points`}
                 </Button>
             </PointsCounterContainer>
         </div>

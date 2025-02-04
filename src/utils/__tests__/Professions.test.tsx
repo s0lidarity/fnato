@@ -18,7 +18,9 @@ describe('Profession Class', () => {
                 value: 50,
                 bonus: 0,
                 label: defaultSkill.label,
+                labelMsg: defaultSkill.labelMsg,
                 reminderText: defaultSkill.reminderText,
+                reminderMsg: defaultSkill.reminderMsg,
                 subType: undefined
             });
         });
