@@ -56,114 +56,288 @@ export interface DetailedDescription {
     personalMotivations?: string[];
 }
 
-export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: number]: string} } = {
+export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: number]: MessageDescriptor} } = {
     strength: {
-        3: "Feeble",
-        4: "Frail",
-        5: "Weak",
-        6: "Soft",
-        7: "Sedentary",
-        8: "Couch Potato",
-        9: "Active Couch Potato",
-        10: "Could take the stairs",
-        11: "Active",
-        12: "Weekend Warrior",
-        13: "Fit",
-        14: "Muscular",
-        15: "Athletic",
-        16: "Jacked",
-        17: "Huge",
-        18: "Swole",
+        3: msg({
+            message: "Feeble"
+        }),
+        4: msg({
+            message: "Frail"
+        }),
+        5: msg({
+            message: "Weak"
+        }),
+        6: msg({
+            message: "Soft"
+        }),
+        8: msg({
+            message: "Couch Potato"
+        }),
+        9: msg({
+            message: "Active Couch Potato"
+        }),
+        10: msg({
+            message: "Could take the stairs"
+        }),
+        11: msg({
+            message: "Active"
+        }),
+        12: msg({
+            message: "Weekend Warrior"
+        }),
+        13: msg({
+            message: "Fit"
+        }),
+        14: msg({
+            message: "Muscular"
+        }),
+        15: msg({
+            message: "Athletic"
+        }),
+        16: msg({
+            message: "Jacked"
+        }),
+        17: msg({
+            message: "Huge"
+        }),
+        18: msg({
+            message: "Swole"
+        }),
     },
     constitution: {
-        3: "Infirmed",
-        4: "Fragile",
-        5: "Delicate",
-        6: "Unhealthy",
-        7: "Susceptible",
-        8: "Fatigued",
-        9: "Mediocre",
-        10: "Fair",
-        11: "Healthy",
-        12: "Hearty",
-        13: "Sturdy",
-        14: "Vigorous",
-        15: "Robust",
-        16: "Fortified",
-        17: "Formidable",
-        18: "Nigh Immortal",
+        3: msg({
+            message: "Infirmed"
+        }),
+        4: msg({
+            message: "Fragile"
+        }),
+        5: msg({
+            message: "Delicate"
+        }),
+        6: msg({
+            message: "Unhealthy"
+        }),
+        7: msg({
+            message: "Susceptible"
+        }),
+        8: msg({
+            message: "Fatigued"
+        }),
+        9: msg({
+            message: "Mediocre"
+        }),
+        10: msg({
+            message: "Fair"
+        }),
+        11: msg({
+            message: "Healthy"
+        }),
+        12: msg({
+            message: "Hearty"
+        }),
+        13: msg({
+            message: "Sturdy"
+        }),
+        14: msg({
+            message: "Vigorous"
+        }),
+        15: msg({
+            message: "Robust"
+        }),
+        16: msg({
+            message: "Fortified"
+        }),
+        17: msg({
+            message: "Formidable"
+        }),
+        18: msg({
+            message: "Nigh Immortal"
+        }),
     },
     dexterity: {
-        3: "Clumsy",
-        4: "Awkward",
-        5: "Uncoordinated",
-        6: "All Thumbs",
-        7: "Fumbling",
-        8: "Graceless",
-        9: "Stiff",
-        10: "Handy",
-        11: "Nimble",
-        12: "Agile",
-        13: "Adroit",
-        14: "Deft",
-        15: "Uncanny",
-        16: "Cat-like",
-        17: "Greased Lightning",
-        18: "Surgically Precise",
+        3: msg({
+            message: "Clumsy"
+        }),
+        4: msg({
+            message: "Awkward"
+        }),
+        5: msg({
+            message: "Uncoordinated"
+        }),
+        6: msg({
+            message: "All Thumbs"
+        }),
+        7: msg({
+            message: "Fumbling"
+        }),
+        8: msg({
+            message: "Graceless"
+        }),
+        9: msg({
+            message: "Stiff"
+        }),
+        10: msg({
+            message: "Handy"
+        }),
+        11: msg({
+            message: "Nimble"
+        }),
+        12: msg({
+            message: "Agile"
+        }),
+        13: msg({
+            message: "Adroit"
+        }),
+        14: msg({
+            message: "Deft"
+        }),
+        15: msg({
+            message: "Uncanny"
+        }),
+        16: msg({
+            message: "Cat-like"
+        }),
+        17: msg({
+            message: "Greased Lightning"
+        }),
+        18: msg({
+            message: "Surgically Precise"
+        }),
     },
     intelligence:  {
-        3: "Dim",
-        4: "Pays for Mensa",
-        5: "Thick-skulled",
-        6: "Dull",
-        7: "Incurious",
-        8: "Simple-minded",
-        9: "Does their 'own research'",
-        10: "Reads occasionally",
-        11: "Bright",
-        12: "Whip-smart",
-        13: "Razor-sharp",
-        14: "Genius",
-        15: "Brilliant",
-        16: "Polymath",
-        17: "Oracular",
-        18: "Sagely",
+        3: msg({
+            message: "Dim"
+        }),
+        4: msg({
+            message: "Pays for Mensa"
+        }),
+        5: msg({
+            message: "Thick-skulled"
+        }),
+        6: msg({
+            message: "Dull"
+        }),
+        7: msg({
+            message: "Incurious"
+        }),
+        10: msg({
+            message: "Reads occasionally"
+        }),
+        11: msg({
+            message: "Bright"
+        }),
+        12: msg({
+            message: "Whip-smart"
+        }),
+        13: msg({
+            message: "Razor-sharp"
+        }),
+        14: msg({
+            message: "Genius"
+        }),
+        15: msg({
+            message: "Brilliant"
+        }),
+        16: msg({
+            message: "Polymath"
+        }),
+        17: msg({
+            message: "Oracular"
+        }),
+        18: msg({
+            message: "Sagely"
+        }),
     },
     power:  {
-        3: "Weak-willed",
-        4: "Irrational",
-        5: "Impulsive",
-        6: "Wishy-washy",
-        7: "Indecisive",
-        8: "Pliable",
-        9: "Flexible in principle",
-        10: "Firm",
-        11: "Determined",
-        12: "Resolute",
-        13: "Stubborn",
-        14: "Perserverant",
-        15: "Tenacious",
-        16: "Resilient",
-        17: "Indomitable",
-        18: "Unyielding",
+        3: msg({
+            message: "Weak-willed"
+        }),
+        4: msg({
+            message: "Irrational"
+        }),
+        5: msg({
+            message: "Impulsive"
+        }),
+        8: msg({
+            message: "Pliable"
+        }),
+        9: msg({
+            message: "Flexible in principle"
+        }),
+        10: msg({
+            message: "Firm"
+        }),
+        11: msg({
+            message: "Determined"
+        }),
+        12: msg({
+            message: "Resolute"
+        }),
+        13: msg({
+            message: "Stubborn"
+        }),
+        14: msg({
+            message: "Perserverant"
+        }),
+        15: msg({
+            message: "Tenacious"
+        }),
+        16: msg({
+            message: "Resilient"
+        }),
+        17: msg({
+            message: "Indomitable"
+        }),
+        18: msg({
+            message: "Unyielding"
+        }),
     },
     charisma:  {
-        3: "Repulsive",
-        4: "Insipid",
-        5: "Bland",
-        6: "Unremarkable",
-        7: "Uninspiring",
-        8: "Forgettable",
-        9: "Plain",
-        10: "Affable",
-        11: "Pleasant",
-        12: "Engaging",
-        13: "Alluring",
-        14: "Captivating",
-        15: "Compelling",
-        16: "Mesmerizing",
-        17: "Magnetic",
-        18: "Radiant",
+        3: msg({
+            message: "Repulsive"
+        }),
+        4: msg({
+            message: "Insipid"
+        }),
+        5: msg({
+            message: "Bland"
+        }),
+        6: msg({
+            message: "Unremarkable"
+        }),
+        7: msg({
+            message: "Uninspiring"
+        }),
+        8: msg({
+            message: "Forgettable"
+        }),
+        10: msg({
+            message: "Affable"
+        }),
+        11: msg({
+            message: "Pleasant"
+        }),
+        12: msg({
+            message: "Engaging"
+        }),
+        13: msg({
+            message: "Alluring"
+        }),
+        14: msg({
+            message: "Captivating"
+        }),
+        15: msg({
+            message: "Compelling"
+        }),
+        16: msg({
+            message: "Mesmerizing"
+        }),
+        17: msg({
+            message: "Magnetic"
+        }),
+        18: msg({
+            message: "Radiant"
+        }),
     },
 };
 
@@ -194,50 +368,115 @@ export interface Skill {
     pointsAllocated?: number;
 }
 
-export const SKILL_REMINDERS: { [key: string]: string } = {
-    Accounting: "Business Math",
-    Alertness: "Noticing things",
-    Anthropology: "Study of humans and their cultures",
-    Archeology: "Jurassic Park",
-    Art: "Painting",
-    Artillery: "Making things explode from far away",
-    Athletics: "Jumping, ducking, running, climbing, etc",
-    Bureaucracy: "Greasing the wheels of government",
-    ComputerScience: "010111100001",
-    Crafts: "Inner Adam Savage",
-    Criminology: "Muddying the waters of a crime-scene",
-    Demolitions: "Controlled explosions",
-    Disguise: "Gene Parmesan, he's the best",
-    Dodge: "Avoiding getting hit",
-    Drive: "Opearting a motor-vehicle",
-    Firearms: "pew-pew",
-    FirstAid: "Minor urgent medical care",
-    Forensics: "CSI",
-    ForeignLanguages: "Parles-vous Français?",
-    HeavyMachinery: "Forklifts, cranes, excavators, etc",
-    HeavyWeapons: "LMGs I think",
-    History: "If you haven't studied it you're doomed to repeat it",
-    HUMINT: "Understanding human behavior",
-    Law: "Lawyering",
-    Medicine: "Medical practice",
-    MeleeWeapons: "Knives, hatchets, swords, etc",
-    MilitaryScience: "Military tactics",
-    Navigate: "Finding the path",
-    Occult: "Cult shit",
-    Persuade: "Convincing people",
-    Pharmacy: "Do you like drugs?",
-    Pilot: "Operating flying vehicles",
-    Psychotherapy: "Analysing thought",
-    Ride: "Horses and such",
-    Science: "Phsyics, Chemistry, Biology, etc",
-    Search: "Finding things",
-    SIGINT: "Signal intelligence, breaking codes",
-    Stealth: "Sneaking around",
-    Surgery: "Removing a bullet, stitching a wound",
-    Survival: "Camping, tracking, improvising in nature",
-    Swim: "Moving oneself through water",
-    UnarmedCombat: "Punch, kick, grapple, bite, etc",
-    Unnatural: "It's a jeep thing, you wouldn't understand",
+export const SKILL_REMINDERS: { [key: string]: MessageDescriptor } = {
+    Accounting: msg({
+        message: "Business Math"
+    }),
+    Alertness: msg({
+        message: "Noticing things"
+    }),
+    Anthropology: msg({
+        message: "Study of humans and their cultures"
+    }),
+    Archeology: msg({
+        message: "Jurassic Park"
+    }),
+    Art: msg({
+        message: "Painting"
+    }),
+    Artillery: msg({
+        message: "Making things explode from far away"
+    }),
+    Athletics: msg({
+        message: "Jumping, ducking, running, climbing, etc"
+    }),
+    Bureaucracy: msg({
+        message: "Greasing the wheels of government"
+    }),
+    ComputerScience: msg({
+        message: "010111100001"
+    }),
+    Crafts: msg({
+        message: "Inner Adam Savage"
+    }),
+    Disguise: msg({
+        message: "Gene Parmesan, he's the best"
+    }),
+    Dodge: msg({
+        message: "Avoiding getting hit"
+    }),
+    Drive: msg({
+        message: "Opearting a motor-vehicle"
+    }),
+    Firearms: msg({
+        message: "pew-pew"
+    }),
+    FirstAid: msg({
+        message: "Minor urgent medical care"
+    }),
+    Forensics: msg({
+        message: "CSI"
+    }),
+    ForeignLanguages: msg({
+        message: "Parles-vous Français?"
+    }),
+    HeavyMachinery: msg({
+        message: "Forklifts, cranes, excavators, etc"
+    }),
+    HeavyWeapons: msg({
+        message: "LMGs I think"
+    }),
+    History: msg({
+        message: "If you haven't studied it you're doomed to repeat it"
+    }),
+    Medicine: msg({
+        message: "Medical practice"
+    }),
+    MeleeWeapons: msg({
+        message: "Knives, hatchets, swords, etc"
+    }),
+    MilitaryScience: msg({
+        message: "Military tactics"
+    }),
+    Navigate: msg({
+        message: "Finding the path"
+    }),
+    Occult: msg({
+        message: "Cult shit"
+    }),
+    Persuade: msg({
+        message: "Convincing people"
+    }),
+    Pharmacy: msg({
+        message: "Do you like drugs?"
+    }),
+    Pilot: msg({
+        message: "Operating flying vehicles"
+    }),
+    Psychotherapy: msg({
+        message: "Analysing thought"
+    }),
+    Ride: msg({
+        message: "Horses and such"
+    }),
+    Science: msg({
+        message: "Phsyics, Chemistry, Biology, etc"
+    }),
+    Search: msg({
+        message: "Finding things"
+    }),
+    SIGINT: msg({
+        message: "Signal intelligence, breaking codes"
+    }),
+    Survival: msg({
+        message: "Camping, tracking, improvising in nature"
+    }),
+    Swim: msg({
+        message: "Moving oneself through water"
+    }),
+    UnarmedCombat: msg({
+        message: "Punch, kick, grapple, bite, etc"
+    }),
 };
 
 export type Skills = Skill[];
@@ -383,6 +622,7 @@ export const THINGS_MAN_WAS_NOT_MEANT_TO_KNOW: DamagedVeteranAdjustment = {
 
 export type StatisticKeys = keyof Statistics;
 
+// AJS TODO: clear out the non msg strings
 export const DEFAULT_SKILLS: Skill[] = [
     {
         id: 'accounting',

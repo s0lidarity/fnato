@@ -1,6 +1,7 @@
 import { Button, TextInput } from "react95";
 import styled from "styled-components";
 import { Trans } from '@lingui/react/macro';
+import { Trans as Trans2 } from '@lingui/react';
 import { t } from '@lingui/core/macro';
 
 import { useStats } from "../../../../../providers/StatisticsContext";
@@ -100,6 +101,9 @@ function StatDescriptors() {
     // StatKey should be an enum
 
     const statDescriptor = (statKey: string) => {
+        const placeholder = DISTINGUISHING_FEATURES[statKey][stats[statKey].score];
+        console.log(statKey, ' placeholder: ',placeholder);
+        
         return (
             <StyledStatDescriptorContainer key={`${statKey}-container`}>
                 <StyledInputContainer>
@@ -107,8 +111,8 @@ function StatDescriptors() {
                         key={`${statKey}-input`}
                         type="text" 
                         id={`${statKey}-descriptor`} 
-                        placeholder={t`${DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}`}
-                        value={t`${stats[statKey].distinguishingFeature}`} 
+                        placeholder={<Trans2 id={placeholder} />}
+                        value={stats[statKey].distinguishingFeature} 
                         onChange={(e) => handleChange(e, statKey)}
                     />
                     <Button onClick={(e) => handleClear(e, statKey)}><Trans>Clear</Trans></Button>
