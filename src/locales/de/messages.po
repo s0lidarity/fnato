@@ -112,7 +112,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/types/characterTypes.ts:396
-#: src/types/characterTypes.ts:766
+#: src/types/characterTypes.ts:769
 msgid "010111100001"
 msgstr ""
 
@@ -152,6 +152,10 @@ msgstr ""
 msgid "Agile"
 msgstr ""
 
+#: src/types/characterTypes.ts:1153
+msgid "Aircraft"
+msgstr ""
+
 #: src/types/characterTypes.ts:649
 msgid "Alertness"
 msgstr ""
@@ -165,7 +169,7 @@ msgid "Alluring"
 msgstr ""
 
 #: src/types/characterTypes.ts:456
-#: src/types/characterTypes.ts:1157
+#: src/types/characterTypes.ts:1169
 msgid "Analysing thought"
 msgstr ""
 
@@ -193,7 +197,7 @@ msgstr ""
 msgid "Art"
 msgstr ""
 
-#: src/types/characterTypes.ts:714
+#: src/types/characterTypes.ts:717
 msgid "Artillery"
 msgstr ""
 
@@ -201,12 +205,12 @@ msgstr ""
 msgid "Athletic"
 msgstr ""
 
-#: src/types/characterTypes.ts:730
+#: src/types/characterTypes.ts:733
 msgid "Athletics"
 msgstr ""
 
 #: src/types/characterTypes.ts:405
-#: src/types/characterTypes.ts:850
+#: src/types/characterTypes.ts:853
 msgid "Avoiding getting hit"
 msgstr ""
 
@@ -227,7 +231,7 @@ msgstr ""
 msgid "Bonds"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:190
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:193
 msgid "Bonus"
 msgstr ""
 
@@ -243,7 +247,7 @@ msgstr ""
 msgid "Brilliant"
 msgstr ""
 
-#: src/types/characterTypes.ts:746
+#: src/types/characterTypes.ts:749
 msgid "Bureaucracy"
 msgstr ""
 
@@ -253,7 +257,7 @@ msgid "Business Math"
 msgstr ""
 
 #: src/types/characterTypes.ts:471
-#: src/types/characterTypes.ts:1270
+#: src/types/characterTypes.ts:1285
 msgid "Camping, tracking, improvising in nature"
 msgstr ""
 
@@ -277,11 +281,11 @@ msgstr ""
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:117
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
 msgid "Clear"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:130
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
 msgid "Clear Descriptors"
 msgstr ""
 
@@ -293,7 +297,7 @@ msgstr ""
 msgid "Compelling"
 msgstr ""
 
-#: src/types/characterTypes.ts:762
+#: src/types/characterTypes.ts:765
 msgid "Computer Science"
 msgstr ""
 
@@ -301,12 +305,12 @@ msgstr ""
 msgid "Constitution"
 msgstr ""
 
-#: src/types/characterTypes.ts:818
+#: src/types/characterTypes.ts:821
 msgid "Controlled explosions"
 msgstr ""
 
 #: src/types/characterTypes.ts:447
-#: src/types/characterTypes.ts:1108
+#: src/types/characterTypes.ts:1117
 msgid "Convincing people"
 msgstr ""
 
@@ -318,7 +322,7 @@ msgstr ""
 msgid "Could take the stairs"
 msgstr ""
 
-#: src/types/characterTypes.ts:778
+#: src/types/characterTypes.ts:781
 msgid "Craft"
 msgstr ""
 
@@ -326,17 +330,17 @@ msgstr ""
 msgid "Creative pursuits"
 msgstr ""
 
-#: src/types/characterTypes.ts:798
+#: src/types/characterTypes.ts:801
 msgid "Criminology"
 msgstr ""
 
 #: src/types/characterTypes.ts:417
-#: src/types/characterTypes.ts:914
+#: src/types/characterTypes.ts:917
 msgid "CSI"
 msgstr ""
 
 #: src/types/characterTypes.ts:444
-#: src/types/characterTypes.ts:1092
+#: src/types/characterTypes.ts:1101
 msgid "Cult shit"
 msgstr ""
 
@@ -360,7 +364,7 @@ msgstr ""
 msgid "Delicate"
 msgstr ""
 
-#: src/types/characterTypes.ts:814
+#: src/types/characterTypes.ts:817
 msgid "Demolitions"
 msgstr ""
 
@@ -384,11 +388,11 @@ msgstr ""
 msgid "Dim"
 msgstr ""
 
-#: src/types/characterTypes.ts:830
+#: src/types/characterTypes.ts:833
 msgid "Disguise"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:127
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:125
 msgid "Distinguishing Features"
 msgstr ""
 
@@ -397,11 +401,11 @@ msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do 
 msgstr ""
 
 #: src/types/characterTypes.ts:450
-#: src/types/characterTypes.ts:1124
+#: src/types/characterTypes.ts:1133
 msgid "Do you like drugs?"
 msgstr ""
 
-#: src/types/characterTypes.ts:846
+#: src/types/characterTypes.ts:849
 msgid "Dodge"
 msgstr ""
 
@@ -409,7 +413,7 @@ msgstr ""
 msgid "Dossier"
 msgstr ""
 
-#: src/types/characterTypes.ts:862
+#: src/types/characterTypes.ts:865
 msgid "Drive"
 msgstr ""
 
@@ -419,6 +423,10 @@ msgstr ""
 
 #: src/types/characterTypes.ts:320
 msgid "Engaging"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:168
+msgid "Enter a Subtype"
 msgstr ""
 
 #: src/types/characterTypes.ts:129
@@ -434,16 +442,16 @@ msgid "Feeble"
 msgstr ""
 
 #: src/types/characterTypes.ts:441
-#: src/types/characterTypes.ts:1076
+#: src/types/characterTypes.ts:1085
 msgid "Finding the path"
 msgstr ""
 
 #: src/types/characterTypes.ts:465
-#: src/types/characterTypes.ts:1206
+#: src/types/characterTypes.ts:1221
 msgid "Finding things"
 msgstr ""
 
-#: src/types/characterTypes.ts:878
+#: src/types/characterTypes.ts:881
 msgid "Firearms"
 msgstr ""
 
@@ -451,7 +459,7 @@ msgstr ""
 msgid "Firm"
 msgstr ""
 
-#: src/types/characterTypes.ts:894
+#: src/types/characterTypes.ts:897
 msgid "First Aid"
 msgstr ""
 
@@ -471,11 +479,11 @@ msgstr ""
 msgid "Font Settings"
 msgstr ""
 
-#: src/types/characterTypes.ts:927
+#: src/types/characterTypes.ts:933
 msgid "Foreign Languages"
 msgstr ""
 
-#: src/types/characterTypes.ts:910
+#: src/types/characterTypes.ts:913
 msgid "Forensics"
 msgstr ""
 
@@ -484,7 +492,7 @@ msgid "Forgettable"
 msgstr ""
 
 #: src/types/characterTypes.ts:423
-#: src/types/characterTypes.ts:947
+#: src/types/characterTypes.ts:953
 msgid "Forklifts, cranes, excavators, etc"
 msgstr ""
 
@@ -504,12 +512,16 @@ msgstr ""
 msgid "Frail"
 msgstr ""
 
+#: src/types/characterTypes.ts:929
+msgid "French"
+msgstr ""
+
 #: src/types/characterTypes.ts:170
 msgid "Fumbling"
 msgstr ""
 
 #: src/types/characterTypes.ts:402
-#: src/types/characterTypes.ts:834
+#: src/types/characterTypes.ts:837
 msgid "Gene Parmesan, he's the best"
 msgstr ""
 
@@ -526,7 +538,7 @@ msgid "Greased Lightning"
 msgstr ""
 
 #: src/types/characterTypes.ts:393
-#: src/types/characterTypes.ts:750
+#: src/types/characterTypes.ts:753
 msgid "Greasing the wheels of government"
 msgstr ""
 
@@ -546,15 +558,15 @@ msgstr ""
 msgid "Hearty"
 msgstr ""
 
-#: src/types/characterTypes.ts:943
+#: src/types/characterTypes.ts:949
 msgid "Heavy Machinery"
 msgstr ""
 
-#: src/types/characterTypes.ts:959
+#: src/types/characterTypes.ts:965
 msgid "Heavy Weapons"
 msgstr ""
 
-#: src/types/characterTypes.ts:975
+#: src/types/characterTypes.ts:981
 msgid "History"
 msgstr ""
 
@@ -563,7 +575,7 @@ msgid "Home"
 msgstr ""
 
 #: src/types/characterTypes.ts:459
-#: src/types/characterTypes.ts:1173
+#: src/types/characterTypes.ts:1185
 msgid "Horses and such"
 msgstr ""
 
@@ -571,7 +583,7 @@ msgstr ""
 msgid "Huge"
 msgstr ""
 
-#: src/types/characterTypes.ts:991
+#: src/types/characterTypes.ts:997
 msgid "HUMINT"
 msgstr ""
 
@@ -580,7 +592,7 @@ msgid "If the intelligence community was a family, Delta Green would be the uncl
 msgstr ""
 
 #: src/types/characterTypes.ts:429
-#: src/types/characterTypes.ts:979
+#: src/types/characterTypes.ts:985
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr ""
 
@@ -605,7 +617,7 @@ msgid "Infirmed"
 msgstr ""
 
 #: src/types/characterTypes.ts:399
-#: src/types/characterTypes.ts:782
+#: src/types/characterTypes.ts:785
 msgid "Inner Adam Savage"
 msgstr ""
 
@@ -621,7 +633,7 @@ msgstr ""
 msgid "Irrational"
 msgstr ""
 
-#: src/types/characterTypes.ts:1318
+#: src/types/characterTypes.ts:1333
 msgid "It's a jeep thing, you wouldn't understand"
 msgstr ""
 
@@ -630,7 +642,7 @@ msgid "Jacked"
 msgstr ""
 
 #: src/types/characterTypes.ts:390
-#: src/types/characterTypes.ts:734
+#: src/types/characterTypes.ts:737
 msgid "Jumping, ducking, running, climbing, etc"
 msgstr ""
 
@@ -644,7 +656,7 @@ msgid "Key Stats"
 msgstr ""
 
 #: src/types/characterTypes.ts:435
-#: src/types/characterTypes.ts:1043
+#: src/types/characterTypes.ts:1049
 msgid "Knives, hatchets, swords, etc"
 msgstr ""
 
@@ -652,16 +664,20 @@ msgstr ""
 #~ msgid "Label"
 #~ msgstr ""
 
-#: src/types/characterTypes.ts:1007
+#: src/types/characterTypes.ts:1069
+msgid "Land"
+msgstr ""
+
+#: src/types/characterTypes.ts:1013
 msgid "Law"
 msgstr ""
 
 #: src/types/characterTypes.ts:426
-#: src/types/characterTypes.ts:963
+#: src/types/characterTypes.ts:969
 msgid "LMGs I think"
 msgstr ""
 
-#: src/types/characterTypes.ts:786
+#: src/types/characterTypes.ts:789
 msgid "Macrame"
 msgstr ""
 
@@ -670,7 +686,7 @@ msgid "Magnetic"
 msgstr ""
 
 #: src/types/characterTypes.ts:387
-#: src/types/characterTypes.ts:718
+#: src/types/characterTypes.ts:721
 msgid "Making things explode from far away"
 msgstr ""
 
@@ -679,11 +695,11 @@ msgid "Manual Input"
 msgstr ""
 
 #: src/types/characterTypes.ts:432
-#: src/types/characterTypes.ts:1027
+#: src/types/characterTypes.ts:1033
 msgid "Medical practice"
 msgstr ""
 
-#: src/types/characterTypes.ts:1023
+#: src/types/characterTypes.ts:1029
 msgid "Medicine"
 msgstr ""
 
@@ -695,7 +711,7 @@ msgstr ""
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr ""
 
-#: src/types/characterTypes.ts:1039
+#: src/types/characterTypes.ts:1045
 msgid "Melee Weapons"
 msgstr ""
 
@@ -703,26 +719,26 @@ msgstr ""
 msgid "Mesmerizing"
 msgstr ""
 
-#: src/types/characterTypes.ts:1055
+#: src/types/characterTypes.ts:1061
 msgid "Military Science"
 msgstr ""
 
 #: src/types/characterTypes.ts:438
-#: src/types/characterTypes.ts:1059
+#: src/types/characterTypes.ts:1065
 msgid "Military tactics"
 msgstr ""
 
 #: src/types/characterTypes.ts:414
-#: src/types/characterTypes.ts:898
+#: src/types/characterTypes.ts:901
 msgid "Minor urgent medical care"
 msgstr ""
 
 #: src/types/characterTypes.ts:474
-#: src/types/characterTypes.ts:1286
+#: src/types/characterTypes.ts:1301
 msgid "Moving oneself through water"
 msgstr ""
 
-#: src/types/characterTypes.ts:802
+#: src/types/characterTypes.ts:805
 msgid "Muddying the waters of a crime-scene"
 msgstr ""
 
@@ -730,7 +746,7 @@ msgstr ""
 msgid "Muscular"
 msgstr ""
 
-#: src/types/characterTypes.ts:1072
+#: src/types/characterTypes.ts:1081
 msgid "Navigate"
 msgstr ""
 
@@ -755,17 +771,17 @@ msgstr ""
 msgid "Number of social connections available to your character."
 msgstr ""
 
-#: src/types/characterTypes.ts:1088
+#: src/types/characterTypes.ts:1097
 msgid "Occult"
 msgstr ""
 
 #: src/types/characterTypes.ts:408
-#: src/types/characterTypes.ts:866
+#: src/types/characterTypes.ts:869
 msgid "Opearting a motor-vehicle"
 msgstr ""
 
 #: src/types/characterTypes.ts:453
-#: src/types/characterTypes.ts:1140
+#: src/types/characterTypes.ts:1149
 msgid "Operating flying vehicles"
 msgstr ""
 
@@ -778,11 +794,12 @@ msgid "Oracular"
 msgstr ""
 
 #: src/types/characterTypes.ts:384
+#: src/types/characterTypes.ts:707
 msgid "Painting"
 msgstr ""
 
 #: src/types/characterTypes.ts:420
-#: src/types/characterTypes.ts:931
+#: src/types/characterTypes.ts:937
 msgid "Parles-vous Français?"
 msgstr ""
 
@@ -806,16 +823,16 @@ msgstr ""
 msgid "personal specialty (any)"
 msgstr ""
 
-#: src/types/characterTypes.ts:1104
+#: src/types/characterTypes.ts:1113
 msgid "Persuade"
 msgstr ""
 
 #: src/types/characterTypes.ts:411
-#: src/types/characterTypes.ts:882
+#: src/types/characterTypes.ts:885
 msgid "pew-pew"
 msgstr ""
 
-#: src/types/characterTypes.ts:1120
+#: src/types/characterTypes.ts:1129
 msgid "Pharmacy"
 msgstr ""
 
@@ -823,11 +840,11 @@ msgstr ""
 msgid "Phsyics, Chemistry, Biology, etc"
 msgstr ""
 
-#: src/types/characterTypes.ts:1189
+#: src/types/characterTypes.ts:1201
 msgid "Physics, Chemistry, Biology, etc"
 msgstr ""
 
-#: src/types/characterTypes.ts:1136
+#: src/types/characterTypes.ts:1145
 msgid "Pilot"
 msgstr ""
 
@@ -859,12 +876,12 @@ msgstr ""
 msgid "Professional Background"
 msgstr ""
 
-#: src/types/characterTypes.ts:1153
+#: src/types/characterTypes.ts:1165
 msgid "Psychotherapy"
 msgstr ""
 
 #: src/types/characterTypes.ts:477
-#: src/types/characterTypes.ts:1302
+#: src/types/characterTypes.ts:1317
 msgid "Punch, kick, grapple, bite, etc"
 msgstr ""
 
@@ -892,7 +909,7 @@ msgstr ""
 msgid "Regional Settings"
 msgstr ""
 
-#: src/types/characterTypes.ts:1254
+#: src/types/characterTypes.ts:1269
 msgid "Removing a bullet, stitching a wound"
 msgstr ""
 
@@ -924,7 +941,7 @@ msgstr ""
 msgid "Resolute"
 msgstr ""
 
-#: src/types/characterTypes.ts:1169
+#: src/types/characterTypes.ts:1181
 msgid "Ride"
 msgstr ""
 
@@ -940,11 +957,11 @@ msgstr ""
 msgid "Sagely"
 msgstr ""
 
-#: src/types/characterTypes.ts:1185
+#: src/types/characterTypes.ts:1197
 msgid "Science"
 msgstr ""
 
-#: src/types/characterTypes.ts:1202
+#: src/types/characterTypes.ts:1217
 msgid "Search"
 msgstr ""
 
@@ -956,16 +973,16 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/types/characterTypes.ts:1218
+#: src/types/characterTypes.ts:1233
 msgid "SIGINT"
 msgstr ""
 
 #: src/types/characterTypes.ts:468
-#: src/types/characterTypes.ts:1222
+#: src/types/characterTypes.ts:1237
 msgid "Signal intelligence, breaking codes"
 msgstr ""
 
-#: src/types/characterTypes.ts:1238
+#: src/types/characterTypes.ts:1253
 msgid "Sneaking around"
 msgstr ""
 
@@ -994,7 +1011,7 @@ msgstr ""
 msgid "Statistics Details"
 msgstr ""
 
-#: src/types/characterTypes.ts:1234
+#: src/types/characterTypes.ts:1249
 msgid "Stealth"
 msgstr ""
 
@@ -1023,7 +1040,7 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: src/types/characterTypes.ts:1250
+#: src/types/characterTypes.ts:1265
 msgid "Surgery"
 msgstr ""
 
@@ -1031,7 +1048,7 @@ msgstr ""
 msgid "Surgically Precise"
 msgstr ""
 
-#: src/types/characterTypes.ts:1266
+#: src/types/characterTypes.ts:1281
 msgid "Survival"
 msgstr ""
 
@@ -1039,7 +1056,7 @@ msgstr ""
 msgid "Susceptible"
 msgstr ""
 
-#: src/types/characterTypes.ts:1282
+#: src/types/characterTypes.ts:1297
 msgid "Swim"
 msgstr ""
 
@@ -1064,6 +1081,10 @@ msgstr ""
 msgid "The title of your agent's day-job"
 msgstr ""
 
+#: src/types/characterTypes.ts:1205
+msgid "Theoretical Physics"
+msgstr ""
+
 #: src/types/characterTypes.ts:214
 msgid "Thick-skulled"
 msgstr ""
@@ -1076,7 +1097,7 @@ msgstr ""
 msgid "to purchase Delta Green source materials and learn more."
 msgstr ""
 
-#: src/types/characterTypes.ts:1298
+#: src/types/characterTypes.ts:1313
 msgid "Unarmed Combat"
 msgstr ""
 
@@ -1088,11 +1109,11 @@ msgstr ""
 msgid "Uncoordinated"
 msgstr ""
 
-#: src/types/characterTypes.ts:1011
+#: src/types/characterTypes.ts:1017
 msgid "Understanding and arguing the law"
 msgstr ""
 
-#: src/types/characterTypes.ts:995
+#: src/types/characterTypes.ts:1001
 msgid "Understanding human behavior"
 msgstr ""
 
@@ -1104,7 +1125,7 @@ msgstr ""
 msgid "Uninspiring"
 msgstr ""
 
-#: src/types/characterTypes.ts:1314
+#: src/types/characterTypes.ts:1329
 msgid "Unnatural"
 msgstr ""
 
@@ -1116,11 +1137,11 @@ msgstr ""
 msgid "Unyielding"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:131
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Use All Suggestions"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:118
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
 msgid "Use Suggested"
 msgstr ""
 

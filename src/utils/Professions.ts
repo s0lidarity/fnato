@@ -4,6 +4,8 @@ import {
     Skill, 
     StatisticKeys 
 } from "../types/characterTypes";
+import { msg } from "@lingui/core/macro";
+import { MessageDescriptor } from "@lingui/core";
 
 // Export the createSkillId function
 export const createSkillId = (name: string, subType?: string): string => {
@@ -14,6 +16,7 @@ export const createSkillId = (name: string, subType?: string): string => {
 export class Profession implements IProfession {
     name: string;
     flavorText?: string;
+    flavorTextMsg?: MessageDescriptor;
     affiliation?: string;
     bondCount: number;
     chosenSkillCount: number;
@@ -24,6 +27,7 @@ export class Profession implements IProfession {
     constructor(config: {
         name: string;
         flavorText?: string;
+        flavorTextMsg?: MessageDescriptor;
         affiliation?: string;
         bondCount: number;
         chosenSkillCount: number;
@@ -33,6 +37,7 @@ export class Profession implements IProfession {
     }) {
         this.name = config.name;
         this.flavorText = config.flavorText;
+        this.flavorTextMsg = config.flavorTextMsg;
         this.affiliation = config.affiliation || "";
         this.bondCount = config.bondCount;
         this.chosenSkillCount = config.chosenSkillCount;
@@ -84,6 +89,9 @@ export class Profession implements IProfession {
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
     flavorText: `You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects.`,
+    flavorTextMsg: msg({
+        message: `You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects.`,
+    }),
     professionalSkills: Profession.createSkillList([
             ['anthropology', 50],
             ['bureaucracy', 40],

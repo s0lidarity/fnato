@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { GroupBox } from 'react95';
+import { Trans } from '@lingui/react';
+import { t } from '@lingui/core/macro';
 
 import ChooseSkills from './ChooseSkills';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -50,7 +52,7 @@ function ProfessionChoices() {
 
         renderedOutput = profession?.professionalSkills.map((skill) => {
             return <div>
-                {skill.label} {skill.subType ? ` (${skill.subType})` : ''} starts at {skill.value}
+                <Trans id={skill.labelMsg.id} /> {skill.subType ? <Trans id={skill.subTypeMsg.id}/> : ''} {t`starts at`} {skill.value}
             </div>;
         });
 

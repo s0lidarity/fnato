@@ -3,11 +3,13 @@ import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 import { t } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
+
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'skill-input-container',
@@ -129,7 +131,9 @@ function ProfessionSkillInput({
         bonusPointsRemaining 
     } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
-    const [ localSubType, setLocalSubType ] = useState(skill.subType || '');
+    const initialSubType = i18n._(skill.subTypeMsg);
+    console.log('initialSubType', initialSubType);
+    const [ localSubType, setLocalSubType ] = useState(initialSubType || "");
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
@@ -152,7 +156,7 @@ function ProfessionSkillInput({
                     reminderText={skill.reminderMsg} 
                 />
                 <span>
-                    {/* this span needs to become its own component, it's getting too big */}
+                    {/* AJS TODO this span needs to become its own component, it's getting too big */}
                 {
                     skill.subType && (
                         <StyledSubtypeButton onClick={() => setShowModal(true)}>
@@ -162,7 +166,7 @@ function ProfessionSkillInput({
                 }
                 {
                     <Dialogue
-                        title="Enter a Subtype"
+                        title={t`Enter a Subtype`}
                         show={showModal}
                         setShow={setShowModal}
                     >

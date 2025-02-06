@@ -704,6 +704,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         isDefault: true,
         pointsAllocated: 0,
         subType: "Painting",
+        subTypeMsg: msg({
+            message: "Painting"
+        }),
     },
     {
         id: 'artillery',
@@ -923,6 +926,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         value: 0,
         bonus: 0,
         subType: "French",
+        subTypeMsg: msg({
+            message: "French"
+        }),
         label: "Foreign Languages",
         labelMsg: msg({
             message: "Foreign Languages"
@@ -1060,6 +1066,9 @@ export const DEFAULT_SKILLS: Skill[] = [
             message: "Military tactics"
         }),
         subType: "Land",
+        subTypeMsg: msg({
+            message: "Land"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -1141,6 +1150,9 @@ export const DEFAULT_SKILLS: Skill[] = [
             message: "Operating flying vehicles"
         }),
         subType: "Aircraft",
+        subTypeMsg: msg({
+            message: "Aircraft"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -1190,6 +1202,9 @@ export const DEFAULT_SKILLS: Skill[] = [
             message: "Physics, Chemistry, Biology, etc"
         }),
         subType: "Theoretical Physics",
+        subTypeMsg: msg({
+            message: "Theoretical Physics"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },

@@ -136,6 +136,7 @@ function ChooseProfession() {
         bondCountSignal.value = newProfession.bondCount;
     };
 
+    // AJS Starting point, overload the labelText and rminderText or set this up to use msgs
     return (
         <ChooseProfessionGroupBox>
             <ChooseProfessionHeader>
