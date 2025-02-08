@@ -70,7 +70,6 @@ msgstr ""
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:176
 #: src/components/Header/ThemeMenu.tsx:112
 msgid "{0}"
 msgstr ""
@@ -116,6 +115,14 @@ msgstr ""
 msgid "010111100001"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:35
+msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:51
+msgid "A lifetime’s pursuit or multiple doctorates."
+msgstr ""
+
 #: src/components/Header/NavigationMenu.tsx:23
 msgid "About"
 msgstr ""
@@ -152,6 +159,10 @@ msgstr ""
 msgid "Agile"
 msgstr ""
 
+#: src/utils/Professions.ts:510
+msgid "Air or sea, commercial or military, your duty is to keep your passengers alive and craft intact. This can lead to hard choices when your passengers put the vehicle in danger. Or are you a drone operator, flying a Predator from a thousand miles away? Either way, what op brought you to the attention of Delta Green?"
+msgstr ""
+
 #: src/types/characterTypes.ts:1153
 msgid "Aircraft"
 msgstr ""
@@ -181,7 +192,7 @@ msgstr ""
 msgid "Anthropology"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:147
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr ""
 
@@ -199,6 +210,14 @@ msgstr ""
 
 #: src/types/characterTypes.ts:717
 msgid "Artillery"
+msgstr ""
+
+#: src/utils/Professions.ts:594
+msgid "As a member of the United States Marine Corps, you are part of America's elite expeditionary force in readiness. First to fight, you've been trained to operate in any environment, from urban warfare to amphibious operations. Your intense training and esprit de corps set you apart. Whatever caught Delta Green's attention, it wasn't your first brush with hell."
+msgstr ""
+
+#: src/utils/Professions.ts:259
+msgid "As part of a force like the U.S. Army Rangers, you volunteered for a more difficult path than other soldiers. You've spent years in the most grueling training on the planet, and now serve on the most dangerous missions around."
 msgstr ""
 
 #: src/types/characterTypes.ts:94
@@ -227,11 +246,11 @@ msgid "Bland"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:51
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:166
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:167
 msgid "Bonds"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:193
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:194
 msgid "Bonus"
 msgstr ""
 
@@ -293,12 +312,24 @@ msgstr ""
 msgid "Clumsy"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:43
+msgid "College major or years of experience; with 50% in a foreign language you have native fluency."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:39
+msgid "College minor or basic training."
+msgstr ""
+
 #: src/types/characterTypes.ts:329
 msgid "Compelling"
 msgstr ""
 
 #: src/types/characterTypes.ts:765
 msgid "Computer Science"
+msgstr ""
+
+#: src/utils/Professions.ts:148
+msgid "Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet."
 msgstr ""
 
 #: src/types/characterTypes.ts:510
@@ -352,6 +383,14 @@ msgstr ""
 msgid "Custom Professions"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:31
+msgid "Dabbler."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:47
+msgid "Decades of experience, or a graduate or doctoral degree."
+msgstr ""
+
 #: src/pages/About/index.tsx:72
 msgid "Declassified Record"
 msgstr ""
@@ -370,6 +409,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:38
 msgid "Derived Attributes"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:80
+msgid "Description"
 msgstr ""
 
 #: src/types/characterTypes.ts:270
@@ -405,6 +448,10 @@ msgstr ""
 msgid "Do you like drugs?"
 msgstr ""
 
+#: src/utils/Professions.ts:207
+msgid "Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity."
+msgstr ""
+
 #: src/types/characterTypes.ts:849
 msgid "Dodge"
 msgstr ""
@@ -425,7 +472,7 @@ msgstr ""
 msgid "Engaging"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:168
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:169
 msgid "Enter a Subtype"
 msgstr ""
 
@@ -604,6 +651,10 @@ msgstr ""
 msgid "Impulsive"
 msgstr ""
 
+#: src/utils/Professions.ts:380
+msgid "In the FBI, NSA and CIA, there are those who gather information and those who decide what it means. You take information from disparate sources—newspapers, websites, informants, ELINT, and the assets developed by Case Officers—and figure out what it means. In short, your job is the piecing together of unrelated knowledge, a dangerous endeavor in the world of Delta Green."
+msgstr ""
+
 #: src/types/characterTypes.ts:220
 msgid "Incurious"
 msgstr ""
@@ -651,7 +702,7 @@ msgstr ""
 msgid "Jurassic Park"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:157
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:158
 msgid "Key Stats"
 msgstr ""
 
@@ -694,9 +745,17 @@ msgstr ""
 msgid "Manual Input"
 msgstr ""
 
+#: src/utils/Professions.ts:176
+msgid "Many Delta Green Agents are federal law enforcement officers, mostly from the FBI. Delta Green decided long ago that federal agents have the optimum balance of skills and mental stability needed to confront the unnatural."
+msgstr ""
+
 #: src/types/characterTypes.ts:432
 #: src/types/characterTypes.ts:1033
 msgid "Medical practice"
+msgstr ""
+
+#: src/utils/Professions.ts:482
+msgid "Medical professionals are on the front line when awful things happen. Is that what brought you to the group's attention?"
 msgstr ""
 
 #: src/types/characterTypes.ts:1029
@@ -767,7 +826,7 @@ msgstr ""
 msgid "Noticing things"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:167
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:168
 msgid "Number of social connections available to your character."
 msgstr ""
 
@@ -872,7 +931,12 @@ msgstr ""
 msgid "Profession & Skills"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:145
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
+msgid "Profession Details"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:146
 msgid "Professional Background"
 msgstr ""
 
@@ -901,7 +965,7 @@ msgstr ""
 msgid "Reads occasionally"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:158
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:159
 msgid "Recommended best stats for your chosen profession."
 msgstr ""
 
@@ -982,8 +1046,25 @@ msgstr ""
 msgid "Signal intelligence, breaking codes"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:79
+msgid "Skill Rating"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:65
+msgid ""
+"Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
+"    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
+"    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
+"    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
+"    with experience gained during gameplay."
+msgstr ""
+
 #: src/types/characterTypes.ts:1253
 msgid "Sneaking around"
+msgstr ""
+
+#: src/utils/Professions.ts:296
+msgid "So much is illegal that there are broad economies of crime. This profile fits a hardened militant or a traditional “black collar” criminal: pimp, burglar, extortionist, or thug. If you want a white-collar criminal, choose Computer Scientist or Business Executive and make very risky decisions."
 msgstr ""
 
 #: src/types/characterTypes.ts:70
@@ -1000,6 +1081,10 @@ msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:96
 msgid "Start"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
+msgid "starts at"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:49
@@ -1177,10 +1262,54 @@ msgstr ""
 msgid "What is Delta Green?"
 msgstr ""
 
+#: src/utils/Professions.ts:630
+msgid "Whether aboard a naval vessel or merchant marine ship, you've spent your life on the waves. The sea holds many secrets, and those who spend enough time there learn that some things are better left undisturbed. Something you encountered in those vast waters caught Delta Green's attention—perhaps something that shouldn't have been floating, or a discovery in a depth where nothing should survive."
+msgstr ""
+
 #: src/types/characterTypes.ts:229
 msgid "Whip-smart"
 msgstr ""
 
 #: src/types/characterTypes.ts:541
 msgid "Will, spirit, and mental stability"
+msgstr ""
+
+#: src/utils/Professions.ts:233
+msgid "You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested."
+msgstr ""
+
+#: src/utils/Professions.ts:452
+msgid "You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime."
+msgstr ""
+
+#: src/utils/Professions.ts:120
+msgid "You piece together the truth from fragments of the past - documents, artifacts, and the whispered stories that never made it into textbooks. Your research has led you down paths that mainstream academia refuses to acknowledge, uncovering patterns in human history that suggest something vast and terrible lurking behind civilization's rise and fall. Some archives are sealed for good reason."
+msgstr ""
+
+#: src/utils/Professions.ts:569
+msgid "You run an organization. Someone has to secure funding, move resources, and make connections, and that's you. You control a budget and are responsible for how your program is maintained and where the money goes. Organizations discover the most startling things in their pursuit of profit or the public good."
+msgstr ""
+
+#: src/utils/Professions.ts:537
+msgid "You serve and protect. Police officers walk the beat in uniform. Deputy sheriffs answer to an elected law enforcer and have jurisdiction over an entire county. Detectives come in after the fact and put the pieces together."
+msgstr ""
+
+#: src/utils/Professions.ts:92
+msgid "You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects."
+msgstr ""
+
+#: src/utils/Professions.ts:356
+msgid "You travel to strange lands, meet interesting people, and try to get along with them. Odds are you work for the State Department, though USAID, the Commercial Service and the Foreign Agriculture Service also have FSOs. Either way, you've had every opportunity to learn exotic and deadly things; the kinds of things that qualify you for Delta Green clearance."
+msgstr ""
+
+#: src/utils/Professions.ts:657
+msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
+msgstr ""
+
+#: src/utils/Professions.ts:331
+msgid "Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you're involved with Delta Green, you clearly stumbled into something worse than a house fire."
+msgstr ""
+
+#: src/utils/Professions.ts:428
+msgid "Your tools are a computer and smartphone. You might be moving millions of dollars, or bits of data, or both. Or you might be a prosecutor, a defense attorney, or judge."
 msgstr ""

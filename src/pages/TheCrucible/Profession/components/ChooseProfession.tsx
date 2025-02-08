@@ -1,6 +1,6 @@
 import { GroupBox,SelectNative, Separator } from 'react95';
 import styled from 'styled-components';
-import { Trans } from '@lingui/react/macro';
+import { Trans } from '@lingui/react';
 import { t } from '@lingui/core/macro';
 
 import professions, { additionalProfessions } from '../../../../utils/Professions';
@@ -174,7 +174,7 @@ function ChooseProfession() {
                     </KeyStatSection>
                 </TopSection>
                 <FlavorTextContainer>
-                    {profession?.flavorText && <div><Trans>{profession?.flavorText}</Trans></div>}
+                    {profession?.flavorTextMsg && <div><Trans id={profession?.flavorTextMsg} /></div>}
                 </FlavorTextContainer>
             </ChooseProfessionHeader>
             <Separator />
