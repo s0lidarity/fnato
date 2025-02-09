@@ -344,6 +344,7 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
 export interface IProfession {
     name: string;
     flavorText?: string;
+    flavorTextMsg?: MessageDescriptor;
     affiliation?: string;
     professionalSkills: Skill[];
     bondCount: number;
