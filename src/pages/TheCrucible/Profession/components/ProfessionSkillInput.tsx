@@ -132,7 +132,6 @@ function ProfessionSkillInput({
     } = useSkills();
     const [ showModal, setShowModal ] = useState(false);
     const initialSubType = i18n._(skill.subTypeMsg);
-    console.log('initialSubType', initialSubType);
     const [ localSubType, setLocalSubType ] = useState(initialSubType || "");
 
     const handleSubtypeChange = (e: any) => {

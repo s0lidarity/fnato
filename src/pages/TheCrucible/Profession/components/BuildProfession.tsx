@@ -1,6 +1,6 @@
 import { TextInput } from 'react95';
 import styled from 'styled-components';
-import { t } from '@lingui/core/macro';
+import { t, msg } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import { IProfession } from '../../../../types/characterTypes';
@@ -45,7 +45,11 @@ function BuildProfession() {
         <FormWrapper>
             <form>
                 <TitleContainer>
-                    <ReminderTooltip labelText={t`Title:`} reminderText={t`The title of your agent's day-job`} />
+                    <ReminderTooltip labelText={msg({
+                        message: 'Title:'
+                    })} reminderText={msg({
+                        message: 'The title of your agent\'s day-job'
+                    })} />
                     <TextInput value={profession?.name || '' } onChange={(e) => handleChange(e.target.value)} />
                 </TitleContainer>
             </form>

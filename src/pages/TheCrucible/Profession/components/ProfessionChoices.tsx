@@ -51,13 +51,14 @@ function ProfessionChoices() {
         let renderedOutput = null;
 
         renderedOutput = profession?.professionalSkills.map((skill) => {
+            console.log('skill in renderedOutput professionChoices', skill);
             return <div>
                 <Trans id={skill.labelMsg.id} /> {skill.subType ? <Trans id={skill.subTypeMsg.id}/> : ''} {t`starts at`} {skill.value}
             </div>;
         });
 
         return( 
-            <StyledGroupBox variant='flat' label='Preset Professional Skills'>
+            <StyledGroupBox variant='flat' label={t`Preset Professional Skills`}>
                 {renderedOutput} 
             </StyledGroupBox>
         );

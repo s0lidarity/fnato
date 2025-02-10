@@ -65,6 +65,7 @@ export class Profession implements IProfession {
             reminderText: defaultSkill?.reminderText,
             reminderMsg: defaultSkill?.reminderMsg,
             subType: subType,
+            subTypeMsg: defaultSkill?.subTypeMsg,
         };
         return newSkill;
     };
