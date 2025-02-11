@@ -15,6 +15,7 @@ export const createSkillId = (name: string, subType?: string): string => {
 
 export class Profession implements IProfession {
     name: string;
+    labelMsg?: MessageDescriptor;
     flavorText?: string;
     flavorTextMsg?: MessageDescriptor;
     affiliation?: string;
@@ -26,6 +27,7 @@ export class Profession implements IProfession {
 
     constructor(config: {
         name: string;
+        labelMsg?: MessageDescriptor;
         flavorText?: string;
         flavorTextMsg?: MessageDescriptor;
         affiliation?: string;
@@ -36,6 +38,7 @@ export class Profession implements IProfession {
         recommendedStats: StatisticKeys[];
     }) {
         this.name = config.name;
+        this.labelMsg = config.labelMsg;
         this.flavorText = config.flavorText;
         this.flavorTextMsg = config.flavorTextMsg;
         this.affiliation = config.affiliation || "";
@@ -89,6 +92,9 @@ export class Profession implements IProfession {
 
 export const Anthropologist = new Profession({
     name: 'Anthropologist',
+    labelMsg: msg({
+        message: 'Anthropologist'
+    }),
     flavorText: `You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects.`,
     flavorTextMsg: msg({
         message: `You study humanity in all its forms - from isolated tribes to urban subcultures. Your work takes you to remote corners of the world where ancient practices persist and forbidden knowledge lingers. Whether you're conducting field interviews in war-torn regions or analyzing cultural artifacts that defy explanation, you've learned that some traditions exist for darker reasons than anyone suspects.`,
@@ -117,6 +123,9 @@ export const Anthropologist = new Profession({
 
 export const Historian = new Profession({
     name: 'Historian',
+    labelMsg: msg({
+        message: 'Historian'
+    }),
     flavorText: `You piece together the truth from fragments of the past - documents, artifacts, and the whispered stories that never made it into textbooks. Your research has led you down paths that mainstream academia refuses to acknowledge, uncovering patterns in human history that suggest something vast and terrible lurking behind civilization's rise and fall. Some archives are sealed for good reason.`,
     flavorTextMsg: msg({
         message: `You piece together the truth from fragments of the past - documents, artifacts, and the whispered stories that never made it into textbooks. Your research has led you down paths that mainstream academia refuses to acknowledge, uncovering patterns in human history that suggest something vast and terrible lurking behind civilization's rise and fall. Some archives are sealed for good reason.`,
@@ -145,6 +154,9 @@ export const Historian = new Profession({
 // AJS TODO: make the chooseable skills subtype '(choose something)'
 export const Engineer = new Profession({
     name: 'Engineer',
+    labelMsg: msg({
+        message: 'Engineer'
+    }),
     flavorText: `Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet.`,
     flavorTextMsg: msg({
         message: `Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet.`,
@@ -173,6 +185,9 @@ export const Engineer = new Profession({
 
 export const FederalAgent = new Profession({
     name: 'Federal Agent',
+    labelMsg: msg({
+        message: 'Federal Agent'
+    }),
     flavorText: `Many Delta Green Agents are federal law enforcement officers, mostly from the FBI. Delta Green decided long ago that federal agents have the optimum balance of skills and mental stability needed to confront the unnatural.`,
     flavorTextMsg: msg({
         message: `Many Delta Green Agents are federal law enforcement officers, mostly from the FBI. Delta Green decided long ago that federal agents have the optimum balance of skills and mental stability needed to confront the unnatural.`,
@@ -204,6 +219,9 @@ export const FederalAgent = new Profession({
 
 export const Physician = new Profession({
     name: 'Physician',
+    labelMsg: msg({
+        message: 'Physician'
+    }),
     flavorText: `Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity.`,
     flavorTextMsg: msg({
         message: `Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity.`,
@@ -230,6 +248,9 @@ export const Physician = new Profession({
 
 export const Scientist = new Profession({
     name: 'Scientist',
+    labelMsg: msg({
+        message: 'Scientist'
+    }),
     flavorText: `You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested.`,
     flavorTextMsg: msg({
         message: `You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested.`,
@@ -256,6 +277,9 @@ export const Scientist = new Profession({
 
 export const SpecialOperator = new Profession({
     name: 'Special Operator',
+    labelMsg: msg({
+        message: 'Special Operator'
+    }),
     flavorText: `As part of a force like the U.S. Army Rangers, you volunteered for a more difficult path than other soldiers. You've spent years in the most grueling training on the planet, and now serve on the most dangerous missions around.`,
     flavorTextMsg: msg({
         message: `As part of a force like the U.S. Army Rangers, you volunteered for a more difficult path than other soldiers. You've spent years in the most grueling training on the planet, and now serve on the most dangerous missions around.`,
@@ -293,6 +317,9 @@ const professions = [
 
 export const Criminal = new Profession({
     name: 'Criminal',
+    labelMsg: msg({
+        message: 'Criminal'
+    }),
     flavorText: 'So much is illegal that there are broad economies of crime. This profile fits a hardened militant or a traditional “black collar” criminal: pimp, burglar, extortionist, or thug. If you want a white-collar criminal, choose Computer Scientist or Business Executive and make very risky decisions.',
     flavorTextMsg: msg({
         message: 'So much is illegal that there are broad economies of crime. This profile fits a hardened militant or a traditional “black collar” criminal: pimp, burglar, extortionist, or thug. If you want a white-collar criminal, choose Computer Scientist or Business Executive and make very risky decisions.',
@@ -328,6 +355,9 @@ export const Criminal = new Profession({
 
 export const Firefighter = new Profession({
     name: 'Firefighter',
+    labelMsg: msg({
+        message: 'Firefighter'
+    }),
     flavorText: `Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you're involved with Delta Green, you clearly stumbled into something worse than a house fire.`,
     flavorTextMsg: msg({
         message: `Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you're involved with Delta Green, you clearly stumbled into something worse than a house fire.`,
@@ -353,6 +383,9 @@ export const Firefighter = new Profession({
 
 export const ForeignServiceOfficer = new Profession({
     name: 'Foreign Service Officer',
+    labelMsg: msg({
+        message: 'Foreign Service Officer'
+    }),
     flavorText: `You travel to strange lands, meet interesting people, and try to get along with them. Odds are you work for the State Department, though USAID, the Commercial Service and the Foreign Agriculture Service also have FSOs. Either way, you've had every opportunity to learn exotic and deadly things; the kinds of things that qualify you for Delta Green clearance.`,
     flavorTextMsg: msg({
         message: `You travel to strange lands, meet interesting people, and try to get along with them. Odds are you work for the State Department, though USAID, the Commercial Service and the Foreign Agriculture Service also have FSOs. Either way, you've had every opportunity to learn exotic and deadly things; the kinds of things that qualify you for Delta Green clearance.`,
@@ -377,6 +410,9 @@ export const ForeignServiceOfficer = new Profession({
 
 export const IntelligenceAnalyst = new Profession({
     name: 'Intelligence Analyst',
+    labelMsg: msg({
+        message: 'Intelligence Analyst'
+    }),
     flavorText: 'In the FBI, NSA and CIA, there are those who gather information and those who decide what it means. You take information from disparate sources—newspapers, websites, informants, ELINT, and the assets developed by Case Officers—and figure out what it means. In short, your job is the piecing together of unrelated knowledge, a dangerous endeavor in the world of Delta Green.',
     flavorTextMsg: msg({
         message: 'In the FBI, NSA and CIA, there are those who gather information and those who decide what it means. You take information from disparate sources—newspapers, websites, informants, ELINT, and the assets developed by Case Officers—and figure out what it means. In short, your job is the piecing together of unrelated knowledge, a dangerous endeavor in the world of Delta Green.',
@@ -401,6 +437,9 @@ export const IntelligenceAnalyst = new Profession({
 
 export const IntelligenceCaseOfficer = new Profession({
     name: 'Intelligence Case Officer',
+    labelMsg: msg({
+        message: 'Intelligence Case Officer'
+    }),
     flavorText: `You recruit people to spy on their own countries for your agency, probably the CIA. Your job is to develop foreign intelligence sources (“assets”), communicate with them, and keep them under control, productive, and alive. It's a hard business because you must view everyone as a potential threat, liar, or tool to further your agenda. If your name came to the attention of Delta Green, congratulations; you are now someone else's asset.`,
     professionalSkills: Profession.createSkillList([
         ['alertness', 50],
@@ -425,6 +464,9 @@ export const IntelligenceCaseOfficer = new Profession({
 
 export const Lawyer = new Profession({
     name: 'Lawyer',
+    labelMsg: msg({
+        message: 'Lawyer'
+    }),
     flavorText: 'Your tools are a computer and smartphone. You might be moving millions of dollars, or bits of data, or both. Or you might be a prosecutor, a defense attorney, or judge.',
     flavorTextMsg: msg({
         message: 'Your tools are a computer and smartphone. You might be moving millions of dollars, or bits of data, or both. Or you might be a prosecutor, a defense attorney, or judge.',
@@ -449,6 +491,9 @@ export const Lawyer = new Profession({
 
 export const MediaSpecialist = new Profession({
     name: 'Media Specialist',
+    labelMsg: msg({
+        message: 'Media Specialist'
+    }),
     flavorText: `You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime.`,
     flavorTextMsg: msg({
         message: `You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime.`,
@@ -479,6 +524,9 @@ export const MediaSpecialist = new Profession({
 
 export const Nurse = new Profession({
     name: 'Nurse',
+    labelMsg: msg({
+        message: 'Nurse'
+    }),
     flavorText: `Medical professionals are on the front line when awful things happen. Is that what brought you to the group's attention?`,
     flavorTextMsg: msg({
         message: `Medical professionals are on the front line when awful things happen. Is that what brought you to the group's attention?`,
@@ -507,6 +555,9 @@ export const Nurse = new Profession({
 
 export const Pilot = new Profession({
     name: 'Pilot',
+    labelMsg: msg({
+        message: 'Pilot'
+    }),
     flavorText: 'Air or sea, commercial or military, your duty is to keep your passengers alive and craft intact. This can lead to hard choices when your passengers put the vehicle in danger. Or are you a drone operator, flying a Predator from a thousand miles away? Either way, what op brought you to the attention of Delta Green?',
     flavorTextMsg: msg({
         message: 'Air or sea, commercial or military, your duty is to keep your passengers alive and craft intact. This can lead to hard choices when your passengers put the vehicle in danger. Or are you a drone operator, flying a Predator from a thousand miles away? Either way, what op brought you to the attention of Delta Green?',
@@ -534,6 +585,9 @@ export const Pilot = new Profession({
 
 export const PoliceOfficer = new Profession({
     name: 'Police Officer',
+    labelMsg: msg({
+        message: 'Police Officer'
+    }),
     flavorText: 'You serve and protect. Police officers walk the beat in uniform. Deputy sheriffs answer to an elected law enforcer and have jurisdiction over an entire county. Detectives come in after the fact and put the pieces together.',
     flavorTextMsg: msg({
         message: 'You serve and protect. Police officers walk the beat in uniform. Deputy sheriffs answer to an elected law enforcer and have jurisdiction over an entire county. Detectives come in after the fact and put the pieces together.',
@@ -566,6 +620,9 @@ export const PoliceOfficer = new Profession({
 
 export const ProgramManager = new Profession({
     name: 'Program Manager',
+    labelMsg: msg({
+        message: 'Program Manager'
+    }),
     flavorText: `You run an organization. Someone has to secure funding, move resources, and make connections, and that's you. You control a budget and are responsible for how your program is maintained and where the money goes. Organizations discover the most startling things in their pursuit of profit or the public good.`,
     flavorTextMsg: msg({
         message: `You run an organization. Someone has to secure funding, move resources, and make connections, and that's you. You control a budget and are responsible for how your program is maintained and where the money goes. Organizations discover the most startling things in their pursuit of profit or the public good.`,
@@ -591,6 +648,9 @@ export const ProgramManager = new Profession({
 
 export const Marine = new Profession({
     name: 'Marine',
+    labelMsg: msg({
+        message: 'Marine'
+    }),
     flavorText: "As a member of the United States Marine Corps, you are part of America's elite expeditionary force in readiness. First to fight, you've been trained to operate in any environment, from urban warfare to amphibious operations. Your intense training and esprit de corps set you apart. Whatever caught Delta Green's attention, it wasn't your first brush with hell.",
     flavorTextMsg: msg({
         message: "As a member of the United States Marine Corps, you are part of America's elite expeditionary force in readiness. First to fight, you've been trained to operate in any environment, from urban warfare to amphibious operations. Your intense training and esprit de corps set you apart. Whatever caught Delta Green's attention, it wasn't your first brush with hell.",
@@ -627,6 +687,9 @@ export const Marine = new Profession({
 
 export const Sailor = new Profession({
     name: 'Sailor',
+    labelMsg: msg({
+        message: 'Sailor'
+    }),
     flavorText: `Whether aboard a naval vessel or merchant marine ship, you've spent your life on the waves. The sea holds many secrets, and those who spend enough time there learn that some things are better left undisturbed. Something you encountered in those vast waters caught Delta Green's attention—perhaps something that shouldn't have been floating, or a discovery in a depth where nothing should survive.`,
     flavorTextMsg: msg({
         message: `Whether aboard a naval vessel or merchant marine ship, you've spent your life on the waves. The sea holds many secrets, and those who spend enough time there learn that some things are better left undisturbed. Something you encountered in those vast waters caught Delta Green's attention—perhaps something that shouldn't have been floating, or a discovery in a depth where nothing should survive.`,
@@ -654,6 +717,9 @@ export const Sailor = new Profession({
 
 export const Soldier = new Profession({
     name: 'Soldier',
+    labelMsg: msg({
+        message: 'Soldier'
+    }),
     flavorText: `You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch.`,
     flavorTextMsg: msg({
         message: `You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch.`,

@@ -117,13 +117,13 @@ function ChooseProfession() {
         return [
             { label: t`--- Standard Professions ---`, value: '', disabled: true },
             ...professions.map(profession => ({
-                label: profession.name,
+                label: <Trans id={profession.labelMsg?.id} />,
                 value: profession.name
             })),
             { label: '──────────────', value: '', disabled: true },
             { label: t`--- Additional Professions ---`, value: '', disabled: true },
             ...additionalProfessions.map(profession => ({
-                label: profession.name,
+                label: <Trans id={profession.labelMsg?.id} />,
                 value: profession.name
             }))
         ];

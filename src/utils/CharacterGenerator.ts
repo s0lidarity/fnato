@@ -1,3 +1,5 @@
+import { msg } from '@lingui/core/macro';
+
 import { RollResult } from './../types/diceTypes';
 import {
 	Bond,
@@ -82,18 +84,30 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 		hitPoints: {
 			maxValue: Math.ceil((stats.strength.score + stats.constitution.score) / 2),
 			currentValue: Math.ceil((stats.strength.score + stats.constitution.score) / 2),
+			labelMsg: msg({
+				message: 'Hit Points'
+			})
 		},
 		willPower: {
 			maxValue: stats.power.score,
 			currentValue: stats.power.score,
+			labelMsg: msg({
+				message: 'Will Power'
+			})
 		},
 		sanity: {
 			maxValue: referenceSanity,
 			currentValue: referenceSanity,
+			labelMsg: msg({
+				message: 'Sanity'
+			})
 		},
 		breakingPoint: {
 			maxValue: referenceSanity - stats.power.score,
 			currentValue: referenceSanity - stats.power.score,
+			labelMsg: msg({
+				message: 'Breaking Point'
+			})
 		},
 	};
 }

@@ -21,6 +21,7 @@ export interface Character {
 export interface DerivedAttribute {
     currentValue: number;
     maxValue: number;
+    labelMsg?: MessageDescriptor;
 }
 
 export interface DerivedAttributes {
@@ -343,6 +344,7 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
 
 export interface IProfession {
     name: string;
+    labelMsg?: MessageDescriptor;
     flavorText?: string;
     flavorTextMsg?: MessageDescriptor;
     affiliation?: string;

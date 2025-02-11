@@ -51,12 +51,12 @@ function ProfessionChoices() {
         let renderedOutput = null;
 
         renderedOutput = profession?.professionalSkills.map((skill) => {
-            console.log('skill in renderedOutput professionChoices', skill);
             return <div>
                 <Trans id={skill.labelMsg.id} /> {skill.subType ? <Trans id={skill.subTypeMsg.id}/> : ''} {t`starts at`} {skill.value}
             </div>;
         });
 
+        // AJS start here, the label is not translating
         return( 
             <StyledGroupBox variant='flat' label={t`Preset Professional Skills`}>
                 {renderedOutput} 
