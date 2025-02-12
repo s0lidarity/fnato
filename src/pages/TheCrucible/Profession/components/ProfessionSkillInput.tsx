@@ -147,11 +147,14 @@ function ProfessionSkillInput({
         adjustBonus(skill.id, value);
     };
 
+    // AJS start here we don't need fullLabelMsg, just use the i18n._(skill.labelMsg) to construct the label, if subType does not match default then use subtype instead of subTypeMsg
+    const labelText = skill.fullLabelMsg || `${i18n._(skill.labelMsg)} ${skill.subType ? `(${skill.subType})` : ''}`;
+    
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={skill.labelMsg}
+                    labelText={labelText}
                     reminderText={skill.reminderMsg} 
                 />
                 <span>

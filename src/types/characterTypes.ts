@@ -367,6 +367,7 @@ export interface Skill {
     reminderMsg?: MessageDescriptor;
     subType?: string;
     subTypeMsg?: MessageDescriptor;
+    fullLabelMsg?: MessageDescriptor;
     isDefault?: boolean;
     pointsAllocated?: number;
 }
@@ -710,6 +711,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         subTypeMsg: msg({
             message: "Painting"
         }),
+        fullLabelMsg: msg({
+            message: "Art (Painting)"
+        }),
     },
     {
         id: 'artillery',
@@ -791,6 +795,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         subType: "Macrame",
         subTypeMsg: msg({
             message: "Macrame"
+        }),
+        fullLabelMsg: msg({
+            message: "Craft (Macrame)"
         }),
         isDefault: true,
         pointsAllocated: 0,
@@ -940,6 +947,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         reminderMsg: msg({
             message: "Parles-vous Français?"
         }),
+        fullLabelMsg: msg({
+            message: "Foreign Languages (French)"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -1072,6 +1082,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         subTypeMsg: msg({
             message: "Land"
         }),
+        fullLabelMsg: msg({
+            message: "Military Science (Land)"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -1156,6 +1169,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         subTypeMsg: msg({
             message: "Aircraft"
         }),
+        fullLabelMsg: msg({
+            message: "Pilot (Aircraft)"
+        }),
         isDefault: true,
         pointsAllocated: 0,
     },
@@ -1207,6 +1223,9 @@ export const DEFAULT_SKILLS: Skill[] = [
         subType: "Theoretical Physics",
         subTypeMsg: msg({
             message: "Theoretical Physics"
+        }),
+        fullLabelMsg: msg({
+            message: "Science (Theoretical Physics)"
         }),
         isDefault: true,
         pointsAllocated: 0,

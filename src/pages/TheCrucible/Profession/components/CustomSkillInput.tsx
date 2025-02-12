@@ -2,6 +2,7 @@ import { NumberInput, TextInput } from 'react95';
 import { useState, useCallback, useMemo, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
+import { i18n } from '@lingui/core';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -184,14 +185,14 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         adjustBonus(skill.id, value);
     };
 
-    const skillLabel = `${skill.label} ${skill.subType ? `(${skill.subType})` : ''}`;
+    const labelText = skill.fullLabelMsg || `${i18n._(skill.labelMsg)} ${skill.subType ? `(${skill.subType})` : ''}`;
 
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={skillLabel}
-                    reminderText={skill.reminderText} 
+                    labelText={labelText}
+                    reminderText={skill.reminderMsg} 
                 />
                 <SubtypeEditor skill={skill} />
             </StyledSkillName>
