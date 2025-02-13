@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { Button, TextInput } from 'react95';
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -59,6 +60,7 @@ interface SubtypeEditorProps {
 function SubtypeEditor({ skill }: SubtypeEditorProps) {
     const { setSkillById } = useSkills();
     const [showModal, setShowModal] = useState(false);
+    // AJS start here, show translated subtype if we're on default subtype
     const [localSubType, setLocalSubType] = useState(skill.subType || '');
 
     const handleSubtypeChange = (e: any) => {
@@ -78,7 +80,7 @@ function SubtypeEditor({ skill }: SubtypeEditorProps) {
                 <IoPencilOutline />
             </StyledSubtypeButton>
             <Dialogue
-                title="Enter a Subtype"
+                title={t`Enter a Subtype`}
                 show={showModal}
                 setShow={setShowModal}
             >

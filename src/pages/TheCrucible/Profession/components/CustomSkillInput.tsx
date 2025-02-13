@@ -3,6 +3,7 @@ import { useState, useCallback, useMemo, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import { i18n } from '@lingui/core';
+import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -185,25 +186,39 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         adjustBonus(skill.id, value);
     };
 
-    const labelText = skill.fullLabelMsg || `${i18n._(skill.labelMsg)} ${skill.subType ? `(${skill.subType})` : ''}`;
+    // AJS start here, reuse this function from a shared spot
+    const generateLabelText = () => {
+        const label = i18n._(skill.labelMsg);
+        if (skill.subType && skill.subTypeMsg) {
+            if(skill.subTypeMsg){
+                if(skill.subType === i18n._(skill.subTypeMsg)){
+                    return `${label} (${skill.subType})`;
+                }
+                else{
+                    return `${label} (${skill.subType})`;
+                }
+            }
+        }
+        return label;
+    };
 
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={labelText}
+                    labelText={generateLabelText()}
                     reminderText={skill.reminderMsg} 
                 />
                 <SubtypeEditor skill={skill} />
             </StyledSkillName>
             
             <ValueSection>
-                <StyledLabel>Starts at:</StyledLabel>
+                <StyledLabel>{t`Starts at:`}</StyledLabel>
                 <StyledBaseValue>{baseValue}</StyledBaseValue>
             </ValueSection>
             
             <ValueSection>
-                <StyledLabel>Points</StyledLabel>
+                <StyledLabel>{t`Points`}</StyledLabel>
                 <StyledValueInput
                     min={0}
                     max={maxValue - baseValue}
@@ -214,7 +229,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
             </ValueSection>
             
             <ValueSection>
-                <StyledLabel>Bonus</StyledLabel>
+                <StyledLabel>{t`Bonus`}</StyledLabel>
                 <StyledBonusInput
                     min={0}
                     max={8}
@@ -225,7 +240,7 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
             </ValueSection>
             
             <ValueSection>
-                <StyledLabel>Total</StyledLabel>
+                <StyledLabel>{t`Total`}</StyledLabel>
                 <div>{totalValue.toString().padStart(2, '0')}</div>
             </ValueSection>
         </SkillInputContainer>

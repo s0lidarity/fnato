@@ -80,6 +80,11 @@ msgstr "Actif"
 msgid "Active Couch Potato"
 msgstr "Actif couch potato"
 
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:109
+msgid "custom-skill-form.bonus-points-reminder"
+msgstr "Ajoute {DEFAULT_BONUS_VALUE} à la compétence totale pour chaque point bonus alloué (limité à {DEFAULT_TOTAL_CAP})"
+
 #: src/types/characterTypes.ts:189
 msgid "Adroit"
 msgstr "Adroit"
@@ -187,15 +192,26 @@ msgid "Bland"
 msgstr "Plat"
 
 #: src/pages/TheCrucible/index.tsx:51
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:155
 msgid "Bonds"
 msgstr "Liens"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:195
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:127
+msgid "Bonds represent meaningful relationships your agent has with non-player characters."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:210
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:232
 msgid "Bonus"
 msgstr "Bonus"
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:141
+msgid "Bonus Points"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:164
 msgid "Bonus Points Remaining"
 msgstr "Points bonus restants"
 
@@ -442,7 +458,8 @@ msgstr "Captivant"
 msgid "Engineer"
 msgstr "Ingénieur"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:170
+#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:83
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:185
 msgid "Enter a Subtype"
 msgstr "Entrez un sous-type"
 
@@ -950,6 +967,10 @@ msgstr "Flexible"
 msgid "Point Buy"
 msgstr "Achat par points"
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:221
+msgid "Points"
+msgstr ""
+
 #: src/utils/Professions.ts:588
 msgid "Police Officer"
 msgstr "Officier de police"
@@ -1025,12 +1046,17 @@ msgid "Repulsive"
 msgstr "Repoussant"
 
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:169
 msgid "Reset Bonus Points"
 msgstr "Réinitialiser les points bonus"
 
 #: src/pages/TheCrucible/Profession/index.tsx:66
 msgid "Reset Profession"
 msgstr "Réinitialiser la profession"
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:160
+msgid "Reset Skill Points"
+msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/ManualInputStats.tsx:83
 msgid "Reset Statistics"
@@ -1109,6 +1135,14 @@ msgstr "Renseignement de signal, cassage de codes"
 msgid "Skill Choices Remaining"
 msgstr "Choix de compétences restants"
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:137
+msgid "Skill Points"
+msgstr "Points de compétence"
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:158
+msgid "Skill Points Remaining"
+msgstr "Points de compétence restants"
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:79
 msgid "Skill Rating"
 msgstr "Note de compétence"
@@ -1157,6 +1191,10 @@ msgstr "Commencer"
 #: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
 msgid "starts at"
 msgstr "commence à"
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:216
+msgid "Starts at:"
+msgstr "Commence à:"
 
 #: src/pages/TheCrucible/index.tsx:49
 msgid "Statistics"
@@ -1252,6 +1290,10 @@ msgstr "Titre :"
 #: src/pages/About/index.tsx:129
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "pour acheter les documents sources de Delta Green et en savoir plus."
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:243
+msgid "Total"
+msgstr "Total"
 
 #: src/types/characterTypes.ts:1335
 msgid "Unarmed Combat"

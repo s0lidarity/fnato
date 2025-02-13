@@ -152,6 +152,11 @@ msgstr ""
 msgid "Active Couch Potato"
 msgstr ""
 
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:109
+msgid "custom-skill-form.bonus-points-reminder"
+msgstr ""
+
 #: src/types/characterTypes.ts:189
 msgid "Adroit"
 msgstr ""
@@ -259,15 +264,26 @@ msgid "Bland"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:51
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:155
 msgid "Bonds"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:195
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:127
+msgid "Bonds represent meaningful relationships your agent has with non-player characters."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:210
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:232
 msgid "Bonus"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:141
+msgid "Bonus Points"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:164
 msgid "Bonus Points Remaining"
 msgstr ""
 
@@ -510,7 +526,8 @@ msgstr ""
 msgid "Engineer"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:170
+#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:83
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:185
 msgid "Enter a Subtype"
 msgstr ""
 
@@ -1018,6 +1035,10 @@ msgstr ""
 msgid "Point Buy"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:221
+msgid "Points"
+msgstr ""
+
 #: src/utils/Professions.ts:588
 msgid "Police Officer"
 msgstr ""
@@ -1093,11 +1114,16 @@ msgid "Repulsive"
 msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:169
 msgid "Reset Bonus Points"
 msgstr ""
 
 #: src/pages/TheCrucible/Profession/index.tsx:66
 msgid "Reset Profession"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:160
+msgid "Reset Skill Points"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/ManualInputStats.tsx:83
@@ -1177,6 +1203,14 @@ msgstr ""
 msgid "Skill Choices Remaining"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:137
+msgid "Skill Points"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:158
+msgid "Skill Points Remaining"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:79
 msgid "Skill Rating"
 msgstr ""
@@ -1224,6 +1258,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
 msgid "starts at"
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:216
+msgid "Starts at:"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:49
@@ -1319,6 +1357,10 @@ msgstr ""
 
 #: src/pages/About/index.tsx:129
 msgid "to purchase Delta Green source materials and learn more."
+msgstr ""
+
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:243
+msgid "Total"
 msgstr ""
 
 #: src/types/characterTypes.ts:1335

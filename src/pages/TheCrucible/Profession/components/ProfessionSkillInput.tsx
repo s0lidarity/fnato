@@ -147,14 +147,27 @@ function ProfessionSkillInput({
         adjustBonus(skill.id, value);
     };
 
-    // AJS start here we don't need fullLabelMsg, just use the i18n._(skill.labelMsg) to construct the label, if subType does not match default then use subtype instead of subTypeMsg
-    const labelText = skill.fullLabelMsg || `${i18n._(skill.labelMsg)} ${skill.subType ? `(${skill.subType})` : ''}`;
+    // AJS start here make this a shared function somewhere
+    const generateLabelText = () => {
+        const label = i18n._(skill.labelMsg);
+        if (skill.subType && skill.subTypeMsg) {
+            if(skill.subTypeMsg){
+                if(skill.subType === i18n._(skill.subTypeMsg)){
+                    return `${label} (${skill.subType})`;
+                }
+                else{
+                    return `${label} (${skill.subType})`;
+                }
+            }
+        }
+        return label;
+    };
     
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={labelText}
+                    labelText={generateLabelText()}
                     reminderText={skill.reminderMsg} 
                 />
                 <span>
@@ -166,6 +179,7 @@ function ProfessionSkillInput({
                         </StyledSubtypeButton>
                     )
                 }
+                {/* AJS start here, replace with SubtypeEditor component */}
                 {
                     <Dialogue
                         title={t`Enter a Subtype`}
