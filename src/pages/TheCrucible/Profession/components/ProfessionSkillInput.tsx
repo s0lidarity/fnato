@@ -7,9 +7,9 @@ import { i18n } from '@lingui/core';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
-import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
 import { generateSkillLabel } from './skillLabel';
+import SubtypeEditor from './SubtypeEditor';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'skill-input-container',
@@ -154,37 +154,7 @@ function ProfessionSkillInput({
                     labelText={generateSkillLabel(skill)}
                     reminderText={skill.reminderMsg} 
                 />
-                <span>
-                    {/* AJS TODO this span needs to become its own component, it's getting too big */}
-                {
-                    skill.subType && (
-                        <StyledSubtypeButton onClick={() => setShowModal(true)}>
-                            <IoPencilOutline />
-                        </StyledSubtypeButton>
-                    )
-                }
-                {/* AJS start here, replace with SubtypeEditor component */}
-                {
-                    <Dialogue
-                        title={t`Enter a Subtype`}
-                        show={showModal}
-                        setShow={setShowModal}
-                    >
-                        <StyledDialogueContent>
-                            <StyledSubtypeInput
-                                key={`${skill.name}-subtype`}
-                                type="text"
-                                id={`${skill.name}-subtype`}
-                                value={localSubType}
-                                onChange={(e: any) => handleSubtypeChange(e)}
-                            />
-                            <StyledAcceptButton onClick={applySubtype}>
-                                <IoCheckmarkSharp />
-                            </StyledAcceptButton>
-                        </StyledDialogueContent>
-                    </Dialogue>
-                }
-                </span>
+                <SubtypeEditor skill={skill} />
             </StyledSkillName>
             <StyledValueContainer>
                 {calculateSkillValue(skill.id)}
