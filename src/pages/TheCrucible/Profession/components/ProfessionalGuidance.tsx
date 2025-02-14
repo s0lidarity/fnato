@@ -1,6 +1,8 @@
 import { Table, TableBody, TableDataCell, TableHead, TableHeadCell, TableRow, Window, } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
+import { Trans } from '@lingui/react/macro';
+import { i18n } from '@lingui/core';
 
 import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
 import Guidance from '../../../../components/Guidance/Guidance';
@@ -61,12 +63,18 @@ function ProfessionalGuidance() {
         )
     }
 
-    const skillCapText = 
-    t`Skills can reach ${DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit 
-    ${DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed 
-    ${DEFAULT_TOTAL_CAP}%, the skill will cap at ${DEFAULT_TOTAL_CAP}% and any 
-    excess points will be lost. Skill values can improve beyond ${DEFAULT_TOTAL_CAP}%
-    with experience gained during gameplay.`;
+    const skillCapText = i18n._({
+        id: 'professional-guidance.skill-cap-text',
+        message:`Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit 
+        {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed 
+        {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any 
+        excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%
+        with experience gained during gameplay.`,
+        values: {
+            DEFAULT_MAX_SKILL_VALUE,
+            DEFAULT_TOTAL_CAP
+        }
+    })
 
 
     return (
@@ -85,7 +93,7 @@ function ProfessionalGuidance() {
                     </TableBody>
                 </Table>
                 <SkillCapTextContainer>
-                    {skillCapText}
+                    {<Trans>{skillCapText}</Trans>}
                 </SkillCapTextContainer>
                 </Window>
             </Guidance>

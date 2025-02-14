@@ -101,6 +101,10 @@ msgstr "{0} {1}"
 #~ msgid "{reminderText}"
 #~ msgstr "{reminderText}"
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:96
+msgid "{skillCapText}"
+msgstr "{skillCapText}"
+
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
 #~ msgctxt "stat-label"
 #~ msgid "{statKey}"
@@ -120,11 +124,11 @@ msgstr "`${0} has no flexible skills to choose from.`"
 msgid "010111100001"
 msgstr "010111100001"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:35
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:37
 msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
 msgstr "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:51
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:53
 msgid "A lifetime’s pursuit or multiple doctorates."
 msgstr "A lifetime’s pursuit or multiple doctorates."
 
@@ -155,7 +159,7 @@ msgstr "Active Couch Potato"
 #. js-lingui-explicit-id
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:109
 msgid "custom-skill-form.bonus-points-reminder"
-msgstr "custom-skill-form.bonus-points-reminder"
+msgstr "Adds {DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at {DEFAULT_TOTAL_CAP})"
 
 #: src/types/characterTypes.ts:189
 msgid "Adroit"
@@ -273,8 +277,8 @@ msgstr "Bonds"
 msgid "Bonds represent meaningful relationships your agent has with non-player characters."
 msgstr "Bonds represent meaningful relationships your agent has with non-player characters."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:210
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:232
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
 msgid "Bonus"
 msgstr "Bonus"
 
@@ -354,11 +358,11 @@ msgstr "Clear Selected Skills"
 msgid "Clumsy"
 msgstr "Clumsy"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:43
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:45
 msgid "College major or years of experience; with 50% in a foreign language you have native fluency."
 msgstr "College major or years of experience; with 50% in a foreign language you have native fluency."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:39
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:41
 msgid "College minor or basic training."
 msgstr "College minor or basic training."
 
@@ -433,11 +437,11 @@ msgstr "Cunning, logic, and intuition"
 msgid "Custom Professions"
 msgstr "Custom Professions"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:31
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:33
 msgid "Dabbler."
 msgstr "Dabbler."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:47
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:49
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Decades of experience, or a graduate or doctoral degree."
 
@@ -461,7 +465,7 @@ msgstr "Demolitions"
 msgid "Derived Attributes"
 msgstr "Derived Attributes"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:80
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:88
 msgid "Description"
 msgstr "Description"
 
@@ -526,8 +530,7 @@ msgstr "Engaging"
 msgid "Engineer"
 msgstr "Engineer"
 
-#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:83
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:185
+#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:87
 msgid "Enter a Subtype"
 msgstr "Enter a Subtype"
 
@@ -1035,7 +1038,7 @@ msgstr "Pliable"
 msgid "Point Buy"
 msgstr "Point Buy"
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:221
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:204
 msgid "Points"
 msgstr "Points"
 
@@ -1059,8 +1062,8 @@ msgstr "Preset Professional Skills"
 msgid "Profession & Skills"
 msgstr "Profession & Skills"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:82
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:82
 msgid "Profession Details"
 msgstr "Profession Details"
 
@@ -1211,23 +1214,14 @@ msgstr "Skill Points"
 msgid "Skill Points Remaining"
 msgstr "Skill Points Remaining"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:79
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:87
 msgid "Skill Rating"
 msgstr "Skill Rating"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:65
-msgid ""
-"Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
-"    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
-"    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
-"    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
-"    with experience gained during gameplay."
-msgstr ""
-"Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
-"    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
-"    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
-"    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
-"    with experience gained during gameplay."
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:66
+msgid "professional-guidance.skill-cap-text"
+msgstr "Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and anyexcess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%"
 
 #: src/types/characterTypes.ts:1275
 msgid "Sneaking around"
@@ -1265,7 +1259,7 @@ msgstr "Start"
 msgid "starts at"
 msgstr "starts at"
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:216
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:199
 msgid "Starts at:"
 msgstr "Starts at:"
 
@@ -1364,7 +1358,7 @@ msgstr "Title:"
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "to purchase Delta Green source materials and learn more."
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:243
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:226
 msgid "Total"
 msgstr "Total"
 

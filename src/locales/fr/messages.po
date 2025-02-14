@@ -38,6 +38,10 @@ msgstr "{0}"
 msgid "{0} {1}"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:96
+msgid "{skillCapText}"
+msgstr ""
+
 #. placeholder {0}: profession?.name
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:111
 msgid "`${0} has no flexible skills to choose from.`"
@@ -48,11 +52,11 @@ msgstr ""
 msgid "010111100001"
 msgstr "010111100001"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:35
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:37
 msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
 msgstr "Un amateur dévoué; avec une langue étrangère, vous pouvez avoir des conversations rudimentaires."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:51
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:53
 msgid "A lifetime’s pursuit or multiple doctorates."
 msgstr "Une poursuite de toute une vie ou plusieurs doctorats."
 
@@ -199,16 +203,16 @@ msgstr "Liens"
 
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:127
 msgid "Bonds represent meaningful relationships your agent has with non-player characters."
-msgstr ""
+msgstr "Les liens représentent des relations significatives que votre agent a avec les personnages non joueurs."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:210
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:232
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
 msgid "Bonus"
 msgstr "Bonus"
 
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:141
 msgid "Bonus Points"
-msgstr ""
+msgstr "Points bonus"
 
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:164
@@ -286,11 +290,11 @@ msgstr "Effacer les compétences sélectionnées"
 msgid "Clumsy"
 msgstr "Maladroit"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:43
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:45
 msgid "College major or years of experience; with 50% in a foreign language you have native fluency."
 msgstr "Diplôme principal ou années d'expérience; avec 50% en langue étrangère, vous avez la fluence native."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:39
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:41
 msgid "College minor or basic training."
 msgstr "Diplôme mineur ou entraînement de base."
 
@@ -365,11 +369,11 @@ msgstr "Courage, logique, et intuition"
 msgid "Custom Professions"
 msgstr "Professions personnalisées"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:31
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:33
 msgid "Dabbler."
 msgstr "Quelqu'un qui essaie de tout faire."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:47
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:49
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Des décennies d'expérience, ou un diplôme de master ou de doctorat."
 
@@ -393,7 +397,7 @@ msgstr "Démolition"
 msgid "Derived Attributes"
 msgstr "Attributs dérivés"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:80
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:88
 msgid "Description"
 msgstr "Description"
 
@@ -458,8 +462,7 @@ msgstr "Captivant"
 msgid "Engineer"
 msgstr "Ingénieur"
 
-#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:83
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:185
+#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:87
 msgid "Enter a Subtype"
 msgstr "Entrez un sous-type"
 
@@ -967,9 +970,9 @@ msgstr "Flexible"
 msgid "Point Buy"
 msgstr "Achat par points"
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:221
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:204
 msgid "Points"
-msgstr ""
+msgstr "Points"
 
 #: src/utils/Professions.ts:588
 msgid "Police Officer"
@@ -991,8 +994,8 @@ msgstr "Compétences professionnelles prédéfinies"
 msgid "Profession & Skills"
 msgstr "Profession & Compétences"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:74
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:82
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:82
 msgid "Profession Details"
 msgstr "Détails de la profession"
 
@@ -1056,7 +1059,7 @@ msgstr "Réinitialiser la profession"
 
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:160
 msgid "Reset Skill Points"
-msgstr ""
+msgstr "Réinitialiser les points de compétence"
 
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/ManualInputStats.tsx:83
 msgid "Reset Statistics"
@@ -1143,18 +1146,23 @@ msgstr "Points de compétence"
 msgid "Skill Points Remaining"
 msgstr "Points de compétence restants"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:79
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:87
 msgid "Skill Rating"
 msgstr "Note de compétence"
 
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:66
+msgid "professional-guidance.skill-cap-text"
+msgstr "Les compétences peuvent atteindre {DEFAULT_MAX_SKILL_VALUE}% avec l'allocation de points, et atteindre {DEFAULT_TOTAL_CAP}% avec les points bonus. Si vos points bonus dépassaient {DEFAULT_TOTAL_CAP}%, la compétence atteindrait {DEFAULT_TOTAL_CAP}% et tous les points en excès seraient perdus. Les valeurs des compétences peuvent augmenter au-delà de {DEFAULT_TOTAL_CAP}% avec l'expérience acquise pendant le jeu."
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:65
-msgid ""
-"Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
-"    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
-"    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
-"    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
-"    with experience gained during gameplay."
-msgstr ""
+#~ msgid ""
+#~ "Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
+#~ "    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
+#~ "    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
+#~ "    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
+#~ "    with experience gained during gameplay."
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:1275
 msgid "Sneaking around"
@@ -1192,7 +1200,7 @@ msgstr "Commencer"
 msgid "starts at"
 msgstr "commence à"
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:216
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:199
 msgid "Starts at:"
 msgstr "Commence à:"
 
@@ -1291,7 +1299,7 @@ msgstr "Titre :"
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "pour acheter les documents sources de Delta Green et en savoir plus."
 
-#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:243
+#: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:226
 msgid "Total"
 msgstr "Total"
 

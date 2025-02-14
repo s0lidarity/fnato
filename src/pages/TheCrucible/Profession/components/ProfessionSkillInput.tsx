@@ -1,7 +1,6 @@
 import { Button, NumberInput, Separator, TextInput } from 'react95';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
 
