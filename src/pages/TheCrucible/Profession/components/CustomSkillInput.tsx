@@ -2,7 +2,6 @@ import { NumberInput, TextInput } from 'react95';
 import { useState, useCallback, useMemo, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
-import { i18n } from '@lingui/core';
 import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -11,7 +10,7 @@ import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { DEFAULT_MAX_SKILL_VALUE, DEFAULT_BONUS_VALUE, DEFAULT_TOTAL_CAP } from '../../../../constants/gameRules';
-
+import { generateSkillLabel } from './skillLabel';
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'custom-skill-input-container',
     'data-component': 'CustomSkillInput/SkillInputContainer'
@@ -186,27 +185,11 @@ function CustomSkillInput({ skill, maxValue = DEFAULT_MAX_SKILL_VALUE }: CustomS
         adjustBonus(skill.id, value);
     };
 
-    // AJS start here, reuse this function from a shared spot
-    const generateLabelText = () => {
-        const label = i18n._(skill.labelMsg);
-        if (skill.subType && skill.subTypeMsg) {
-            if(skill.subTypeMsg){
-                if(skill.subType === i18n._(skill.subTypeMsg)){
-                    return `${label} (${skill.subType})`;
-                }
-                else{
-                    return `${label} (${skill.subType})`;
-                }
-            }
-        }
-        return label;
-    };
-
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={generateLabelText()}
+                    labelText={generateSkillLabel(skill)}
                     reminderText={skill.reminderMsg} 
                 />
                 <SubtypeEditor skill={skill} />

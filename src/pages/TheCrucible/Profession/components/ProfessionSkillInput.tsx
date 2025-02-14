@@ -9,7 +9,7 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
-
+import { generateSkillLabel } from './skillLabel';
 
 const SkillInputContainer = styled.div.attrs<any>({
     'data-testid': 'skill-input-container',
@@ -146,28 +146,12 @@ function ProfessionSkillInput({
     const handleBonusChange = (value: number) => {
         adjustBonus(skill.id, value);
     };
-
-    // AJS start here make this a shared function somewhere
-    const generateLabelText = () => {
-        const label = i18n._(skill.labelMsg);
-        if (skill.subType && skill.subTypeMsg) {
-            if(skill.subTypeMsg){
-                if(skill.subType === i18n._(skill.subTypeMsg)){
-                    return `${label} (${skill.subType})`;
-                }
-                else{
-                    return `${label} (${skill.subType})`;
-                }
-            }
-        }
-        return label;
-    };
     
     return (
         <SkillInputContainer>
             <StyledSkillName>
                 <ReminderTooltip 
-                    labelText={generateLabelText()}
+                    labelText={generateSkillLabel(skill)}
                     reminderText={skill.reminderMsg} 
                 />
                 <span>
