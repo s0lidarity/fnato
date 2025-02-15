@@ -63,9 +63,15 @@ msgstr ""
 msgid "--- Standard Professions ---"
 msgstr ""
 
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
+msgid "(Choose type below)"
+msgstr ""
+
+#. placeholder {0}: skill.skillName
+#. placeholder {0}: skill.subType
 #. placeholder {0}: stats[stat as keyof Statistics].label
-#. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: ra.label
+#: src/utils/SkillPointPackages.ts:23
+#: src/utils/SkillPointPackages.ts:24
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -79,11 +85,9 @@ msgstr ""
 #~ msgid "{0}"
 #~ msgstr ""
 
-#. placeholder {0}: skill.skillName
-#. placeholder {1}: skill.subType && ` (${skill.subType})`
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
-msgid "{0} {1}"
-msgstr ""
+#~ msgid "{0} {1}"
+#~ msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:15
 #~ msgid "{capitalizedStat}"
@@ -96,6 +100,11 @@ msgstr ""
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:12
 #~ msgid "{labelText}"
 #~ msgstr ""
+
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:113
+msgid "choose-skills.no-choices"
+msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatInput/StatInput.tsx:13
 #~ msgid "{reminderText}"
@@ -114,10 +123,9 @@ msgstr ""
 #~ msgid "{statKey}"
 #~ msgstr ""
 
-#. placeholder {0}: profession?.name
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:111
-msgid "`${0} has no flexible skills to choose from.`"
-msgstr ""
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:112
+#~ msgid "`${0} has no flexible skills to choose from.`"
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:400
 #: src/types/characterTypes.ts:776
@@ -330,15 +338,15 @@ msgid "Charisma"
 msgstr ""
 
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:154
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:160
 msgid "Choose {0} Additional Skills"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:88
 msgid "Choose a bonus skill package"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:83
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:89
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr ""
 
@@ -350,7 +358,7 @@ msgstr ""
 msgid "Clear Descriptors"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:159
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:165
 msgid "Clear Selected Skills"
 msgstr ""
 
@@ -923,7 +931,7 @@ msgstr ""
 msgid "Nimble"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:70
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:71
 msgid "No Package (Manual Bonus Points)"
 msgstr ""
 
@@ -988,7 +996,7 @@ msgstr ""
 msgid "Personal Details"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
 msgid "personal specialty (any)"
 msgstr ""
 
@@ -1054,7 +1062,7 @@ msgstr ""
 msgid "Power"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:61
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:60
 msgid "Preset Professional Skills"
 msgstr ""
 
@@ -1202,7 +1210,7 @@ msgstr ""
 msgid "Signal intelligence, breaking codes"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:171
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:177
 msgid "Skill Choices Remaining"
 msgstr ""
 

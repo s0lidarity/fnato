@@ -9,6 +9,8 @@ import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { createSkillId } from '../../../../utils/Professions';
+import { generateSkillLabel } from './skillLabel';
+import { i18n } from '@lingui/core';
 
 const StyledGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-skills-group',
@@ -107,11 +109,15 @@ function ChooseSkills() {
     };
 
     const noChoices = () => {
-        return (profession ? 
-            (<div>{<Trans>`${profession?.name} has no flexible skills to choose from.`</Trans>}</div>)
-            : null 
-        );
-    } 
+        const professionName = profession?.name;
+        return i18n._({
+            id: 'choose-skills.no-choices',
+            message:`{professionName} has no flexible skills to choose from.`,
+            values: {
+                professionName,
+            }
+        });
+    }  
 
     const chooseSkillsCheckboxes = () => {
         return profession.choosableSkills.map((skill) => (
@@ -122,7 +128,7 @@ function ChooseSkills() {
                         checked={selectedSkillsIds.includes(skill.id)} 
                         onChange={() => toggleSkill(skill.id)}
                     />
-                    {<Trans2 id={skill.labelMsg?.id} />} { skill.subType ? <Trans2 id={skill.subTypeMsg.id} /> : ''} [${skill.value}]
+                    {generateSkillLabel(skill)} [${skill.value}]
                 </StyledSkillContainer>
         ));
     };

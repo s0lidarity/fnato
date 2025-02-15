@@ -1,6 +1,6 @@
 import { TextInput } from 'react95';
 import styled from 'styled-components';
-import { t, msg } from '@lingui/core/macro';
+import { msg } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import { IProfession } from '../../../../types/characterTypes';

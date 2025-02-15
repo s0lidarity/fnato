@@ -21,9 +21,15 @@ msgstr "--- Professions supplémentaires ---"
 msgid "--- Standard Professions ---"
 msgstr "--- Professions standard ---"
 
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
+msgid "(Choose type below)"
+msgstr "(Choisir un type ci-dessous)"
+
+#. placeholder {0}: skill.skillName
+#. placeholder {0}: skill.subType
 #. placeholder {0}: stats[stat as keyof Statistics].label
-#. placeholder {0}: stats[stat as keyof Statistics].reminderText
-#. placeholder {0}: ra.label
+#: src/utils/SkillPointPackages.ts:23
+#: src/utils/SkillPointPackages.ts:24
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:135
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
@@ -32,20 +38,18 @@ msgstr "--- Professions standard ---"
 msgid "{0}"
 msgstr "{0}"
 
-#. placeholder {0}: skill.skillName
-#. placeholder {1}: skill.subType && ` (${skill.subType})`
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:96
-msgid "{0} {1}"
-msgstr ""
+#. js-lingui-explicit-id
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:113
+msgid "choose-skills.no-choices"
+msgstr "{professionName} n'a pas de compétences flexibles à choisir."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:96
 msgid "{skillCapText}"
 msgstr ""
 
-#. placeholder {0}: profession?.name
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:111
-msgid "`${0} has no flexible skills to choose from.`"
-msgstr ""
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:112
+#~ msgid "`${0} has no flexible skills to choose from.`"
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:400
 #: src/types/characterTypes.ts:776
@@ -262,15 +266,15 @@ msgid "Charisma"
 msgstr "Charisme"
 
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:154
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:160
 msgid "Choose {0} Additional Skills"
 msgstr "Choisir {0} compétences supplémentaires"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:82
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:88
 msgid "Choose a bonus skill package"
 msgstr "Choisir un package de compétences bonus"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:83
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:89
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr "Choisir un package pour appliquer automatiquement les points bonus, ou sélectionner 'Aucun package' pour assigner manuellement vos points bonus"
 
@@ -282,7 +286,7 @@ msgstr "Effacer"
 msgid "Clear Descriptors"
 msgstr "Effacer les descriptions"
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:159
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:165
 msgid "Clear Selected Skills"
 msgstr "Effacer les compétences sélectionnées"
 
@@ -855,7 +859,7 @@ msgstr "Presque immortel"
 msgid "Nimble"
 msgstr "Agile"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:70
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:71
 msgid "No Package (Manual Bonus Points)"
 msgstr "Aucun package (Points bonus manuels)"
 
@@ -920,7 +924,7 @@ msgstr "Appel personnel et physique"
 msgid "Personal Details"
 msgstr "Détails personnels"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:102
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
 
@@ -986,7 +990,7 @@ msgstr "Polymathie"
 msgid "Power"
 msgstr "Pouvoir"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:61
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:60
 msgid "Preset Professional Skills"
 msgstr "Compétences professionnelles prédéfinies"
 
@@ -1134,7 +1138,7 @@ msgstr "Renseignement de signal"
 msgid "Signal intelligence, breaking codes"
 msgstr "Renseignement de signal, cassage de codes"
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:171
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:177
 msgid "Skill Choices Remaining"
 msgstr "Choix de compétences restants"
 
@@ -1154,15 +1158,6 @@ msgstr "Note de compétence"
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:66
 msgid "professional-guidance.skill-cap-text"
 msgstr "Les compétences peuvent atteindre {DEFAULT_MAX_SKILL_VALUE}% avec l'allocation de points, et atteindre {DEFAULT_TOTAL_CAP}% avec les points bonus. Si vos points bonus dépassaient {DEFAULT_TOTAL_CAP}%, la compétence atteindrait {DEFAULT_TOTAL_CAP}% et tous les points en excès seraient perdus. Les valeurs des compétences peuvent augmenter au-delà de {DEFAULT_TOTAL_CAP}% avec l'expérience acquise pendant le jeu."
-
-#: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:65
-#~ msgid ""
-#~ "Skills can reach {DEFAULT_MAX_SKILL_VALUE}% with point allocation, and hit \n"
-#~ "    {DEFAULT_TOTAL_CAP}% with bonus points. If your bonus points would exceed \n"
-#~ "    {DEFAULT_TOTAL_CAP}%, the skill will cap at {DEFAULT_TOTAL_CAP}% and any \n"
-#~ "    excess points will be lost. Skill values can improve beyond {DEFAULT_TOTAL_CAP}%\n"
-#~ "    with experience gained during gameplay."
-#~ msgstr ""
 
 #: src/types/characterTypes.ts:1275
 msgid "Sneaking around"

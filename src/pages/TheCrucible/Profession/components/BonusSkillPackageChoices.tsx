@@ -3,8 +3,9 @@ import { GroupBox, SelectNative, Separator } from 'react95';
 import { useState, useEffect } from 'react';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
-import { IBonusSkillPackage } from '../../../../utils/SkillPointPackages';
+import { IBonusSkillChoice, IBonusSkillPackage } from '../../../../utils/SkillPointPackages';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { BonusSkillPackages } from '../../../../utils/SkillPointPackages';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
@@ -74,6 +75,11 @@ function BonusSkillPackageChoices(){
         }))
     ];
     
+    const makeSkillLabel = (skill: IBonusSkillChoice) => {
+        return `${i18n._(skill.skillLabelMsg)} ${skill.subType && `(${i18n._(skill.subTypeLabelMsg)})`}`;
+    }
+
+
     return (
         <BonusSkillPackageChoicesContainer>
             <StyledSeparator />
@@ -92,8 +98,7 @@ function BonusSkillPackageChoices(){
                 <SkillsListGroupBox variant='flat' label='Bonus Points'>
                     {BonusSkillPackage.skills.map((skill, index) => (
                         <div key={`${skill.skillName}-${skill.subType}-${index}`}>
-                            {/* AJS might need message ids for this */}
-                            {t`${skill.skillName} ${skill.subType && ` (${skill.subType})`}`}
+                            {makeSkillLabel(skill)}
                         </div>
                     ))}
                     {BonusSkillPackage.personalSpecialties > 0 && (
