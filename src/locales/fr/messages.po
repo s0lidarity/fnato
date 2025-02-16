@@ -47,10 +47,6 @@ msgstr "{professionName} n'a pas de compétences flexibles à choisir."
 msgid "{skillCapText}"
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:112
-#~ msgid "`${0} has no flexible skills to choose from.`"
-#~ msgstr ""
-
 #: src/types/characterTypes.ts:400
 #: src/types/characterTypes.ts:776
 msgid "010111100001"
@@ -64,7 +60,8 @@ msgstr "Un amateur dévoué; avec une langue étrangère, vous pouvez avoir des 
 msgid "A lifetime’s pursuit or multiple doctorates."
 msgstr "Une poursuite de toute une vie ou plusieurs doctorats."
 
-#: src/components/Header/NavigationMenu.tsx:23
+#: src/components/Header/NavigationMenu.tsx:28
+#: src/components/Header/NavigationMenu.tsx:29
 msgid "About"
 msgstr "À propos"
 
@@ -199,15 +196,41 @@ msgstr "Statistiques de base"
 msgid "Bland"
 msgstr "Plat"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
+msgid "Bond Type"
+msgstr "Type de lien"
+
 #: src/pages/TheCrucible/index.tsx:51
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:155
 msgid "Bonds"
 msgstr "Liens"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+msgid "Bonds Details"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:127
 msgid "Bonds represent meaningful relationships your agent has with non-player characters."
 msgstr "Les liens représentent des relations significatives que votre agent a avec les personnages non joueurs."
+
+#. placeholder {0}: stats.charisma.score
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:48
+msgid ""
+"Bonds represent your Agent's relationships with other people.\n"
+"                    Each bond starts with a score equal to your Agent's Charisma ({0}).\n"
+"                    The score of a bond can improve if it is nurtured between operations. A bond can never have a score higher than your Agent's Charisma.\n"
+"                    Any time your Agent's Charisma drops, each bond score drops by the same amount.\n"
+"                    Bonds can be defined as a single person or a group of people. For example, an agent might have bonds with their spouse, their business partner, and their bowling league.\n"
+"                    A Bond must be a real person or small group of people who are alive and can be interacted with."
+msgstr ""
+"Les liens représentent les relations de votre agent avec les autres personnages.\n"
+"                    Chaque lien commence avec un score égal à la Charisme de votre agent ({0}).\n"
+"                    Le score d'un lien peut s'améliorer si elle est nourrie entre les opérations. Un lien ne peut jamais avoir un score supérieur à la Charisme de votre agent.\n"
+"                    Chaque fois que le Charisme de votre agent diminue, le score de chaque lien diminue de la même quantité.\n"
+"                    Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et son ligue de bowling.\n"
+"                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
@@ -470,6 +493,10 @@ msgstr "Ingénieur"
 msgid "Enter a Subtype"
 msgstr "Entrez un sous-type"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:61
+msgid "Example"
+msgstr "Exemple"
+
 #: src/types/characterTypes.ts:130
 msgid "Fair"
 msgstr "Juste"
@@ -635,7 +662,8 @@ msgstr "Histoire"
 msgid "Hit Points"
 msgstr "Points de vie"
 
-#: src/components/Header/NavigationMenu.tsx:18
+#: src/components/Header/NavigationMenu.tsx:20
+#: src/components/Header/NavigationMenu.tsx:21
 msgid "Home"
 msgstr "Accueil"
 
@@ -1187,7 +1215,7 @@ msgstr "Vitesse et agilité physique"
 msgid "Standard Professions"
 msgstr "Professions standard"
 
-#: src/components/Header/NavigationMenu.tsx:96
+#: src/components/Header/NavigationMenu.tsx:110
 msgid "Start"
 msgstr "Commencer"
 
@@ -1233,7 +1261,8 @@ msgstr "Étude des humains et de leurs cultures"
 msgid "Sturdy"
 msgstr "Robuste"
 
-#: src/components/Header/NavigationMenu.tsx:33
+#: src/components/Header/NavigationMenu.tsx:44
+#: src/components/Header/NavigationMenu.tsx:45
 msgid "Summary"
 msgstr "Résumé"
 
@@ -1270,7 +1299,8 @@ msgid "Tenacious"
 msgstr "Persévérant"
 
 #: src/pages/TheCrucible/index.tsx:42
-#: src/components/Header/NavigationMenu.tsx:28
+#: src/components/Header/NavigationMenu.tsx:36
+#: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
 msgstr "Le Creuset"
 

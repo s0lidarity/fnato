@@ -140,7 +140,8 @@ msgstr "A dedicated hobbyist; with a foreign language you can have rudimentary c
 msgid "A lifetime’s pursuit or multiple doctorates."
 msgstr "A lifetime’s pursuit or multiple doctorates."
 
-#: src/components/Header/NavigationMenu.tsx:23
+#: src/components/Header/NavigationMenu.tsx:28
+#: src/components/Header/NavigationMenu.tsx:29
 msgid "About"
 msgstr "About"
 
@@ -275,15 +276,41 @@ msgstr "Base Statistics"
 msgid "Bland"
 msgstr "Bland"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
+msgid "Bond Type"
+msgstr "Bond Type"
+
 #: src/pages/TheCrucible/index.tsx:51
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:155
 msgid "Bonds"
 msgstr "Bonds"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+msgid "Bonds Details"
+msgstr "Bonds Details"
+
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:127
 msgid "Bonds represent meaningful relationships your agent has with non-player characters."
 msgstr "Bonds represent meaningful relationships your agent has with non-player characters."
+
+#. placeholder {0}: stats.charisma.score
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:48
+msgid ""
+"Bonds represent your Agent's relationships with other people.\n"
+"                    Each bond starts with a score equal to your Agent's Charisma ({0}).\n"
+"                    The score of a bond can improve if it is nurtured between operations. A bond can never have a score higher than your Agent's Charisma.\n"
+"                    Any time your Agent's Charisma drops, each bond score drops by the same amount.\n"
+"                    Bonds can be defined as a single person or a group of people. For example, an agent might have bonds with their spouse, their business partner, and their bowling league.\n"
+"                    A Bond must be a real person or small group of people who are alive and can be interacted with."
+msgstr ""
+"Bonds represent your Agent's relationships with other people.\n"
+"                    Each bond starts with a score equal to your Agent's Charisma ({0}).\n"
+"                    The score of a bond can improve if it is nurtured between operations. A bond can never have a score higher than your Agent's Charisma.\n"
+"                    Any time your Agent's Charisma drops, each bond score drops by the same amount.\n"
+"                    Bonds can be defined as a single person or a group of people. For example, an agent might have bonds with their spouse, their business partner, and their bowling league.\n"
+"                    A Bond must be a real person or small group of people who are alive and can be interacted with."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
@@ -542,6 +569,10 @@ msgstr "Engineer"
 msgid "Enter a Subtype"
 msgstr "Enter a Subtype"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:61
+msgid "Example"
+msgstr "Example"
+
 #: src/types/characterTypes.ts:130
 msgid "Fair"
 msgstr "Fair"
@@ -707,7 +738,8 @@ msgstr "History"
 msgid "Hit Points"
 msgstr "Hit Points"
 
-#: src/components/Header/NavigationMenu.tsx:18
+#: src/components/Header/NavigationMenu.tsx:20
+#: src/components/Header/NavigationMenu.tsx:21
 msgid "Home"
 msgstr "Home"
 
@@ -1259,7 +1291,7 @@ msgstr "Speed and physical agility"
 msgid "Standard Professions"
 msgstr "Standard Professions"
 
-#: src/components/Header/NavigationMenu.tsx:96
+#: src/components/Header/NavigationMenu.tsx:110
 msgid "Start"
 msgstr "Start"
 
@@ -1305,7 +1337,8 @@ msgstr "Study of humans and their cultures"
 msgid "Sturdy"
 msgstr "Sturdy"
 
-#: src/components/Header/NavigationMenu.tsx:33
+#: src/components/Header/NavigationMenu.tsx:44
+#: src/components/Header/NavigationMenu.tsx:45
 msgid "Summary"
 msgstr "Summary"
 
@@ -1342,7 +1375,8 @@ msgid "Tenacious"
 msgstr "Tenacious"
 
 #: src/pages/TheCrucible/index.tsx:42
-#: src/components/Header/NavigationMenu.tsx:28
+#: src/components/Header/NavigationMenu.tsx:36
+#: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
 msgstr "The Crucible"
 
