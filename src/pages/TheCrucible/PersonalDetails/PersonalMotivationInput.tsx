@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { TextInput } from 'react95';
-
+import { t } from '@lingui/core/macro';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 
 const PersonalMotivationInputContainer = styled.div.attrs<any>({
@@ -40,7 +40,7 @@ function PersonalMotivationInput({index}: {index: number}) {
 
     return (
         <PersonalMotivationInputContainer>
-            <StyledLabel htmlFor={`personal-motivation-${index}`}>Personal Motivation {index + 1}</StyledLabel>
+            <StyledLabel htmlFor={`personal-motivation-${index}`}>{t`Personal Motivation ${index + 1}`}</StyledLabel>
             <StyledTextInput
                 type="text"
                 value={personalDetails.personalMotivations[index]}

@@ -1,5 +1,6 @@
 import { Checkbox } from "react95";
 import styled from "styled-components";
+import { t } from '@lingui/core/macro';
 
 import ReminderTooltip from "../../../components/Footer/ReminderTooltip/ReminderTooltip";
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
@@ -13,6 +14,8 @@ const CheckboxContainer = styled.div`
 const StyledReminderTooltip = styled(ReminderTooltip)`
     margin-left: 0rem;
 `;
+
+// AJS TODO; finish this component
 
 function DamagedVeteranCheckbox({ template }: {template: DamagedVeteranAdjustment}) {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();

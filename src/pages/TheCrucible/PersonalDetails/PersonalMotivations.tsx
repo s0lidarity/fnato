@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GroupBox } from 'react95';
+import { t } from '@lingui/core/macro';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import PersonalMotivationInput from './PersonalMotivationInput';
@@ -48,11 +49,11 @@ const MotivationInputContainer = styled.div.attrs<any>({
     gap: 1rem;
 `;
 
-const reminderTextA = `Personal Motivations represent what drives your Agent beyond their Bonds. 
+const reminderTextA = t`Personal Motivations represent what drives your Agent beyond their Bonds. 
 These can be faith, patriotism, hobbies, or even the love of a pet. While 
 powerful, these motivations aren't as strong as Bonds to other humans.`;
 
-const reminderTextB = `Your Agent can have up to five Personal Motivations. Add them during character 
+const reminderTextB = t`Your Agent can have up to five Personal Motivations. Add them during character 
 creation or as your story develops. Each time your Agent experiences a Breaking 
 Point, remove one motivation to represent their growing trauma.`;
 
@@ -79,11 +80,11 @@ function PersonalMotivations() {
     return (
         <InputContainer>
             <label htmlFor="personalMotivations">
-                <PageNumberTooltip pageNumber={3}>Personal Motivations</PageNumberTooltip>
+                <PageNumberTooltip pageNumber={3}>{t`Personal Motivations`}</PageNumberTooltip>
             </label>
             <GroupBox>
                 <PersonalMotivationsContainer>
-                        <Guidance title="Personal Motivations" buttonText="Personal Motivations">
+                        <Guidance title={t`Personal Motivations`} buttonText={t`Personal Motivations`}>
                             <p>{reminderTextA}</p>
                             <p>{reminderTextB}</p>
                         </Guidance>

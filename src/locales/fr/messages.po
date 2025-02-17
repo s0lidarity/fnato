@@ -114,6 +114,10 @@ msgstr "Aéronef"
 msgid "Alertness"
 msgstr "Alerte"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:118
+msgid "Alias"
+msgstr "Pseudonyme"
+
 #: src/types/characterTypes.ts:168
 msgid "All Thumbs"
 msgstr "Tous les doigts"
@@ -138,6 +142,10 @@ msgstr "Anthropologue"
 #: src/types/characterTypes.ts:669
 msgid "Anthropology"
 msgstr "Anthropologie"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:162
+msgid "Appearance"
+msgstr "Apparence"
 
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:143
 msgid "Apply preset skills and choose additional skills for your character."
@@ -191,6 +199,10 @@ msgstr "Maladroite"
 #: src/pages/TheCrucible/Statistics/Statistics.tsx:75
 msgid "Base Statistics"
 msgstr "Statistiques de base"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:231
+msgid "Beliefs"
+msgstr "Croyances"
 
 #: src/types/characterTypes.ts:303
 msgid "Bland"
@@ -421,6 +433,11 @@ msgstr "Professions personnalisées"
 msgid "Dabbler."
 msgstr "Quelqu'un qui essaie de tout faire."
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:131
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:137
+msgid "Date of Birth"
+msgstr "Date de naissance"
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:49
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Des décennies d'expérience, ou un diplôme de master ou de doctorat."
@@ -502,6 +519,14 @@ msgstr "Conduire"
 msgid "Dull"
 msgstr "Dénué de toute énergie"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:203
+msgid "Education"
+msgstr "Éducation"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:177
+msgid "Employer"
+msgstr "Employeur"
+
 #: src/types/characterTypes.ts:321
 msgid "Engaging"
 msgstr "Captivant"
@@ -559,6 +584,10 @@ msgstr "Ferme"
 #: src/types/characterTypes.ts:907
 msgid "First Aid"
 msgstr "Premiers soins"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:79
+msgid "First Name"
+msgstr "Prénom"
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
@@ -689,6 +718,10 @@ msgstr "Histoire"
 msgid "Hit Points"
 msgstr "Points de vie"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:246
+msgid "Hobbies"
+msgstr "Loisirs"
+
 #: src/components/Header/NavigationMenu.tsx:20
 #: src/components/Header/NavigationMenu.tsx:21
 msgid "Home"
@@ -806,6 +839,10 @@ msgstr "Couteaux, haches, épées, etc"
 msgid "Land"
 msgstr "Terre"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:92
+msgid "Last Name"
+msgstr "Nom de famille"
+
 #: src/types/characterTypes.ts:1026
 msgid "Law"
 msgstr "Loi"
@@ -877,6 +914,10 @@ msgstr "Armes de combat"
 msgid "Mesmerizing"
 msgstr "Mesmérisant"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:105
+msgid "Middle Initial"
+msgstr "Initiale du milieu"
+
 #: src/types/characterTypes.ts:1074
 msgid "Military Science"
 msgstr "Science militaire"
@@ -895,6 +936,10 @@ msgstr "Tactiques militaires"
 msgid "Minor urgent medical care"
 msgstr "Soins médicaux urgents mineurs"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:276
+msgid "Motivations"
+msgstr "Motivations"
+
 #: src/types/characterTypes.ts:478
 #: src/types/characterTypes.ts:1323
 msgid "Moving oneself through water"
@@ -907,6 +952,10 @@ msgstr "Mélanger les eaux d'un crime"
 #: src/types/characterTypes.ts:92
 msgid "Muscular"
 msgstr "Musclé"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:190
+msgid "Nationality"
+msgstr "Nationalité"
 
 #: src/types/characterTypes.ts:1097
 msgid "Navigate"
@@ -940,6 +989,10 @@ msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 #: src/utils/Professions.ts:527
 msgid "Nurse"
 msgstr "Infirmière"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:261
+msgid "Obsessions"
+msgstr "Obsessions"
 
 #: src/types/characterTypes.ts:1113
 msgid "Occult"
@@ -986,12 +1039,38 @@ msgid "Personal and physical appeal"
 msgstr "Appel personnel et physique"
 
 #: src/pages/TheCrucible/index.tsx:52
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
 msgid "Personal Details"
 msgstr "Détails personnels"
+
+#. placeholder {0}: index + 1
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivationInput.tsx:43
+msgid "Personal Motivation {0}"
+msgstr "Motivation personnelle {0}"
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:83
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
+msgid "Personal Motivations"
+msgstr "Motivations personnelles"
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:52
+msgid ""
+"Personal Motivations represent what drives your Agent beyond their Bonds. \n"
+"These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
+"powerful, these motivations aren't as strong as Bonds to other humans."
+msgstr "Les motivations personnelles représentent ce qui motive votre Agent au-delà de leurs liens. \n"
+"Cela peut être la foi, le patriotisme, les loisirs, ou même l'amour d'un animal de compagnie. \n"
+"Bien que puissantes, ces motivations ne sont pas aussi fortes que les liens avec d'autres humains."
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:216
+msgid "Personality"
+msgstr "Personnalité"
 
 #: src/types/characterTypes.ts:1129
 msgid "Persuade"
@@ -1117,10 +1196,18 @@ msgstr "Enlever une balle, coudre une blessure"
 msgid "Repulsive"
 msgstr "Repoussant"
 
+#: src/pages/TheCrucible/Bonds/index.tsx:39
+msgid "Reset Bonds"
+msgstr "Réinitialiser les liens"
+
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:169
 msgid "Reset Bonus Points"
 msgstr "Réinitialiser les points bonus"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:352
+msgid "Reset Personal Details"
+msgstr "Réinitialiser les détails personnels"
 
 #: src/pages/TheCrucible/Profession/index.tsx:66
 msgid "Reset Profession"
@@ -1186,6 +1273,10 @@ msgstr "Scientifique"
 msgid "Search"
 msgstr "Rechercher"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:134
+msgid "Select Date of Birth"
+msgstr "Sélectionner la date de naissance"
+
 #: src/components/Header/SettingsMenu.tsx:69
 msgid "Select Theme"
 msgstr "Sélectionner le thème"
@@ -1239,6 +1330,14 @@ msgstr "Mou"
 #: src/utils/Professions.ts:720
 msgid "Soldier"
 msgstr "Soldat"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:291
+msgid "Something you admire"
+msgstr "Quelque chose que vous admirez"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:306
+msgid "Something you dislike"
+msgstr "Quelque chose que vous détestez"
 
 #: src/utils/Professions.ts:280
 msgid "Special Operator"
@@ -1421,6 +1520,10 @@ msgstr "Utiliser toutes les suggestions"
 msgid "Use Suggested"
 msgstr "Utiliser les suggestions"
 
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:21
+msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character."
+msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles sont toutes facultatives mais peuvent vous aider à vous mettre dans les pieds de votre personnage."
+
 #: src/types/characterTypes.ts:142
 msgid "Vigorous"
 msgstr "Vigorant"
@@ -1461,6 +1564,14 @@ msgstr "Que vous soyez à bord d'un navire de guerre ou d'un navire marchand, vo
 msgid "Whip-smart"
 msgstr "Fougueux"
 
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:321
+msgid "Why does Delta Green trust this agent?"
+msgstr "Pourquoi Delta Green fait-il confiance à cet agent ?"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:336
+msgid "Why does this agent serve Delta Green?"
+msgstr "Pourquoi cet agent sert-il Delta Green ?"
+
 #: src/utils/CharacterGenerator.ts:94
 msgid "Will Power"
 msgstr "Volonté"
@@ -1500,6 +1611,13 @@ msgstr "Vous voyagez dans des terres étranges, rencontrez des personnes intére
 #: src/utils/Professions.ts:724
 msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 msgstr "Vous êtes un membre de l'Armée des États-Unis, de la Marine ou de l'Air Force. Vous avez été formé à la lutte et à la survie. Vous avez vu des choses qui font que le citoyen moyen crie."
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
+msgid ""
+"Your Agent can have up to five Personal Motivations. Add them during character \n"
+"creation or as your story develops. Each time your Agent experiences a Breaking \n"
+"Point, remove one motivation to represent their growing trauma."
+msgstr "Votre Agent peut avoir jusqu'à cinq motivations personnelles. Ajoutez-les lors de la création du personnage ou au fur et à mesure que votre histoire se développe. Chaque fois que votre Agent subit un point de rupture, retirez une motivation pour représenter leur traumatisme en croissance."
 
 #: src/utils/Professions.ts:362
 msgid "Your job oscillates between the tedium of maintaining your gear, exhilaration when the alarm finally comes, and the work of investigating a scene after the smoke has cleared. If you're involved with Delta Green, you clearly stumbled into something worse than a house fire."
