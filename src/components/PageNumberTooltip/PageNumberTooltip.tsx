@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Tooltip } from 'react95';
+import { Trans } from '@lingui/macro';
 
 const SuperscriptNumber = styled.sup.attrs<any>({
     'data-testid': 'page-number-tooltip-superscript-number',
@@ -42,7 +43,7 @@ function PageNumberTooltip({ pageNumber, children }: PageNumberTooltipProps) {
                 // @ts-ignore
                 text={
                     <StyledTooltipInnerText>
-                        Found on page {pageNumber}
+                        <Trans>Found on page {pageNumber}</Trans>
                     </StyledTooltipInnerText>
                 }
                 enterDelay={100}

@@ -1,6 +1,6 @@
 import { Checkbox } from "react95";
 import styled from "styled-components";
-import { t } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
 import ReminderTooltip from "../../../components/Footer/ReminderTooltip/ReminderTooltip";
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
@@ -36,12 +36,12 @@ function DamagedVeteranCheckbox({ template }: {template: DamagedVeteranAdjustmen
             <Checkbox
                 checked={personalDetails?.damagedVeteranTemplates?.includes(template.id)}
                 value={template.id}
-                label={template.label}
+                label={template.labelMsg ? i18n._(template.labelMsg) : template.label}
                 onChange={() => toggleTemplate(template.id)}
             />
             <StyledReminderTooltip
                 labelText=""
-                reminderText={template.description || "No description available"}
+                reminderText={template.descriptionMsg ? i18n._(template.descriptionMsg) : template.description || "No description available"}
             />
         </CheckboxContainer>
     );

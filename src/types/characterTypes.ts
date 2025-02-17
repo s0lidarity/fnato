@@ -563,7 +563,9 @@ export interface Statistics {
 export interface DamagedVeteranAdjustment {
     id: string;
     label: string;
+    labelMsg?: MessageDescriptor;
     description: string;
+    descriptionMsg?: MessageDescriptor;
     statAdjustment: { [statName in string]: number };
     skillAdjustment: { [skillName: string]: number };
 }
@@ -572,7 +574,13 @@ export interface DamagedVeteranAdjustment {
 export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
     id: "extreme-violence",
     label: "Extreme Violence",
+    labelMsg: msg({
+        message: "Extreme Violence",
+    }),
     description: "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's CHA and each Bond. Your Agent is adapted to violence (see page 73).",
+    descriptionMsg: msg({
+        message: "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's CHA and each Bond. Your Agent is adapted to violence (see page 73).",
+    }),
     statAdjustment: {
         charisma: -3,
         power: -3,
@@ -586,7 +594,13 @@ export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
 export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
     id: "captivity-or-imprisonment",
     label: "Captivity or Imprisonment",
+    labelMsg: msg({
+        message: "Captivity or Imprisonment",
+    }),
     description: "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's POW. Your Agent is adapted to helplessness (see page 73).",
+    descriptionMsg: msg({
+        message: "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's POW. Your Agent is adapted to helplessness (see page 73).",
+    }),
     statAdjustment: {
         power: -3,
     },
@@ -600,7 +614,13 @@ export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
 export const HARD_EXPERIENCE: DamagedVeteranAdjustment = {
     id: "hard-experience",
     label: "Hard Experience",
+    labelMsg: msg({
+        message: "Hard Experience",
+    }),
     description: "Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond.",
+    descriptionMsg: msg({
+        message: "Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond.",
+    }),
     statAdjustment: {
         sanity: -5,
     },
@@ -615,7 +635,13 @@ export const HARD_EXPERIENCE: DamagedVeteranAdjustment = {
 export const THINGS_MAN_WAS_NOT_MEANT_TO_KNOW: DamagedVeteranAdjustment = {
     id: "things-man-was-not-meant-to-know",
     label: "Things Man Was Not Meant to Know",
+    labelMsg: msg({
+        message: "Things Man Was Not Meant to Know",
+    }),
     description: "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW.",
+    descriptionMsg: msg({
+        message: "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW.",
+    }),
     statAdjustment: {
         sanity: -5,
     },
