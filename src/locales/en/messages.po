@@ -132,6 +132,58 @@ msgstr "{skillCapText}"
 msgid "010111100001"
 msgstr "010111100001"
 
+#: src/pages/Summary/index.tsx:634
+msgid "1. Last Name, First Name, Middle Initial"
+msgstr "1. Last Name, First Name, Middle Initial"
+
+#: src/pages/Summary/index.tsx:724
+msgid "10. Physical Description"
+msgstr "10. Physical Description"
+
+#: src/pages/Summary/index.tsx:740
+msgid "11. Bonds"
+msgstr "11. Bonds"
+
+#: src/pages/Summary/index.tsx:767
+msgid "12. Motivations and Mental Disorders"
+msgstr "12. Motivations and Mental Disorders"
+
+#: src/pages/Summary/index.tsx:773
+msgid "13. Incidents of San Loss Without Going Insane"
+msgstr "13. Incidents of San Loss Without Going Insane"
+
+#: src/pages/Summary/index.tsx:638
+msgid "2. Profession (Rank if Applicable)"
+msgstr "2. Profession (Rank if Applicable)"
+
+#: src/pages/Summary/index.tsx:644
+msgid "3. Employer"
+msgstr "3. Employer"
+
+#: src/pages/Summary/index.tsx:648
+msgid "4. Nationality"
+msgstr "4. Nationality"
+
+#: src/pages/Summary/index.tsx:654
+msgid "5. Sex"
+msgstr "5. Sex"
+
+#: src/pages/Summary/index.tsx:658
+msgid "6. Age and D.O.B."
+msgstr "6. Age and D.O.B."
+
+#: src/pages/Summary/index.tsx:664
+msgid "7. Education and Occupational History"
+msgstr "7. Education and Occupational History"
+
+#: src/pages/Summary/index.tsx:681
+msgid "8. Statistics"
+msgstr "8. Statistics"
+
+#: src/pages/Summary/index.tsx:697
+msgid "9. Derived Attributes"
+msgstr "9. Derived Attributes"
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:37
 msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
 msgstr "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
@@ -164,6 +216,11 @@ msgstr "Active"
 #: src/types/characterTypes.ts:77
 msgid "Active Couch Potato"
 msgstr "Active Couch Potato"
+
+#: src/pages/Summary/index.tsx:781
+#: src/pages/Summary/index.tsx:789
+msgid "adapted"
+msgstr "adapted"
 
 #: src/types/characterTypes.ts:621
 msgid "Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond."
@@ -239,6 +296,10 @@ msgstr "Anthropology"
 msgid "Appearance"
 msgstr "Appearance"
 
+#: src/pages/Summary/index.tsx:799
+msgid "Applicable Skill Sets"
+msgstr "Applicable Skill Sets"
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:143
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Apply preset skills and choose additional skills for your character."
@@ -300,6 +361,10 @@ msgstr "Beliefs"
 msgid "Bland"
 msgstr "Bland"
 
+#: src/pages/Summary/index.tsx:753
+msgid "Bond description"
+msgstr "Bond description"
+
 #: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
 msgid "Bond Detail"
 msgstr "Bond Detail"
@@ -360,6 +425,7 @@ msgid "Bonus Points Remaining"
 msgstr "Bonus Points Remaining"
 
 #: src/utils/CharacterGenerator.ts:108
+#: src/pages/Summary/index.tsx:718
 msgid "Breaking Point"
 msgstr "Breaking Point"
 
@@ -401,6 +467,14 @@ msgstr "Cat-like"
 msgid "Charisma"
 msgstr "Charisma"
 
+#: src/pages/Summary/index.tsx:764
+msgid "Check a Bond’s box when projecting sanity damage"
+msgstr "Check a Bond’s box when projecting sanity damage"
+
+#: src/pages/Summary/index.tsx:811
+msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
+msgstr "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
+
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:160
 msgid "Choose {0} Additional Skills"
@@ -429,6 +503,10 @@ msgstr "Clear Descriptors"
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:165
 msgid "Clear Selected Skills"
 msgstr "Clear Selected Skills"
+
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:74
+msgid "Clear Templates"
+msgstr "Clear Templates"
 
 #: src/types/characterTypes.ts:159
 msgid "Clumsy"
@@ -517,6 +595,10 @@ msgstr "Cult shit"
 msgid "Cunning, logic, and intuition"
 msgstr "Cunning, logic, and intuition"
 
+#: src/pages/Summary/index.tsx:699
+msgid "Current"
+msgstr "Current"
+
 #: src/pages/TheCrucible/Profession/index.tsx:38
 msgid "Custom Professions"
 msgstr "Custom Professions"
@@ -525,7 +607,7 @@ msgstr "Custom Professions"
 msgid "Dabbler."
 msgstr "Dabbler."
 
-#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:62
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:64
 msgid "Damaged Veteran Templates"
 msgstr "Damaged Veteran Templates"
 
@@ -583,6 +665,7 @@ msgid "Disguise"
 msgstr "Disguise"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:125
+#: src/pages/Summary/index.tsx:684
 msgid "Distinguishing Features"
 msgstr "Distinguishing Features"
 
@@ -638,6 +721,10 @@ msgstr "Enter a Subtype"
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
 msgid "Example"
 msgstr "Example"
+
+#: src/pages/Summary/index.tsx:820
+msgid "Export as PDF"
+msgstr "Export as PDF"
 
 #: src/types/characterTypes.ts:577
 msgid "Extreme Violence"
@@ -814,6 +901,10 @@ msgstr "Heavy Machinery"
 msgid "Heavy Weapons"
 msgstr "Heavy Weapons"
 
+#: src/pages/Summary/index.tsx:783
+msgid "Helplessness"
+msgstr "Helplessness"
+
 #: src/utils/Professions.ts:126
 msgid "Historian"
 msgstr "Historian"
@@ -823,6 +914,7 @@ msgid "History"
 msgstr "History"
 
 #: src/utils/CharacterGenerator.ts:87
+#: src/pages/Summary/index.tsx:703
 msgid "Hit Points"
 msgstr "Hit Points"
 
@@ -959,6 +1051,10 @@ msgstr "Law"
 msgid "Lawyer"
 msgstr "Lawyer"
 
+#: src/pages/Summary/index.tsx:769
+msgid "List character motivations and any mental disorders..."
+msgstr "List character motivations and any mental disorders..."
+
 #: src/types/characterTypes.ts:430
 #: src/types/characterTypes.ts:1008
 msgid "LMGs I think"
@@ -988,6 +1084,10 @@ msgstr "Many Delta Green Agents are federal law enforcement officers, mostly fro
 #: src/utils/Professions.ts:651
 msgid "Marine"
 msgstr "Marine"
+
+#: src/pages/Summary/index.tsx:700
+msgid "Max"
+msgstr "Max"
 
 #: src/utils/Professions.ts:494
 msgid "Media Specialist"
@@ -1146,6 +1246,10 @@ msgstr "Perserverant"
 msgid "Personal and physical appeal"
 msgstr "Personal and physical appeal"
 
+#: src/pages/Summary/index.tsx:629
+msgid "Personal Data"
+msgstr "Personal Data"
+
 #: src/pages/TheCrucible/index.tsx:52
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
@@ -1264,6 +1368,10 @@ msgstr "Professional Background"
 msgid "Program Manager"
 msgstr "Program Manager"
 
+#: src/pages/Summary/index.tsx:735
+msgid "Psychological Data"
+msgstr "Psychological Data"
+
 #: src/types/characterTypes.ts:1210
 msgid "Psychotherapy"
 msgstr "Psychotherapy"
@@ -1314,6 +1422,10 @@ msgstr "Reset Bonds"
 msgid "Reset Bonus Points"
 msgstr "Reset Bonus Points"
 
+#: src/pages/Summary/index.tsx:822
+msgid "Reset everything"
+msgstr "Reset everything"
+
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:352
 msgid "Reset Personal Details"
 msgstr "Reset Personal Details"
@@ -1363,6 +1475,7 @@ msgid "Sailor"
 msgstr "Sailor"
 
 #: src/utils/CharacterGenerator.ts:101
+#: src/pages/Summary/index.tsx:713
 msgid "Sanity"
 msgstr "Sanity"
 
@@ -1377,6 +1490,11 @@ msgstr "Science (Theoretical Physics)"
 #: src/utils/Professions.ts:251
 msgid "Scientist"
 msgstr "Scientist"
+
+#: src/pages/Summary/index.tsx:682
+#: src/pages/Summary/index.tsx:741
+msgid "Score"
+msgstr "Score"
 
 #: src/types/characterTypes.ts:1265
 msgid "Search"
@@ -1475,6 +1593,10 @@ msgstr "starts at"
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:199
 msgid "Starts at:"
 msgstr "Starts at:"
+
+#: src/pages/Summary/index.tsx:677
+msgid "Statistical Data"
+msgstr "Statistical Data"
 
 #: src/pages/TheCrucible/index.tsx:49
 msgid "Statistics"
@@ -1641,6 +1763,10 @@ msgstr "Use these prompts to flesh out your character. They are all optional but
 msgid "Vigorous"
 msgstr "Vigorous"
 
+#: src/pages/Summary/index.tsx:775
+msgid "Violence"
+msgstr "Violence"
+
 #: src/pages/About/index.tsx:128
 msgid "Visit"
 msgstr "Visit"
@@ -1692,6 +1818,14 @@ msgstr "Will Power"
 #: src/types/characterTypes.ts:545
 msgid "Will, spirit, and mental stability"
 msgstr "Will, spirit, and mental stability"
+
+#: src/pages/Summary/index.tsx:708
+msgid "Willpower"
+msgstr "Willpower"
+
+#: src/pages/Summary/index.tsx:683
+msgid "x5"
+msgstr "x5"
 
 #: src/utils/Professions.ts:255
 msgid "You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested."

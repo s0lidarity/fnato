@@ -2,6 +2,7 @@ import html2pdf from 'html2pdf.js';
 import styled from 'styled-components';
 import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
+import { t } from '@lingui/core/macro';
 
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
@@ -625,42 +626,42 @@ export function Summary() {
             <CharacterSheet>
                 <PersonalDataSection>
                     <VerticalHeader>
-                        <VerticalHeaderText>Personal Data</VerticalHeaderText>
+                        <VerticalHeaderText>{t`Personal Data`}</VerticalHeaderText>
                     </VerticalHeader>
                     <PersonalDataGrid>
                         <FormRow>
                             <FormField>
-                                <label>1. Last Name, First Name, Middle Initial</label>
+                                <label>{t`1. Last Name, First Name, Middle Initial`}</label>
                                 <input type="text" value={nameDisplay} />
                             </FormField>
                             <FormField>
-                                <label>2. Profession (Rank if Applicable)</label>
+                                <label>{t`2. Profession (Rank if Applicable)`}</label>
                                 <input type="text" value={professionDisplay || ''} />
                             </FormField>
                         </FormRow>
                         <FormRow>
                             <FormField>
-                                <label>3. Employer</label>
+                                <label>{t`3. Employer`}</label>
                                 <input type="text" value={personalDetails.employer} />
                             </FormField>
                             <FormField>
-                                <label>4. Nationality</label>
+                                <label>{t`4. Nationality`}</label>
                                 <input type="text" value={personalDetails.nationality} />
                             </FormField>
                         </FormRow>
                         <FormRow>
                             <FormField>
-                                <label>5. Sex</label>
+                                <label>{t`5. Sex`}</label>
                                 <input type="text" value={personalDetails.sex} />
                             </FormField>
                             <FormField>
-                                <label>6. Age and D.O.B.</label>
+                                <label>{t`6. Age and D.O.B.`}</label>
                                 <input type="text" value={personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : ''} />
                             </FormField>
                         </FormRow>
                         <SingleFieldRow>
                             <FormField>
-                                <label>7. Education and Occupational History</label>
+                                <label>{t`7. Education and Occupational History`}</label>
                                 <MMDTextArea 
                                     value={personalDetails.education}
                                     rows={3}
@@ -673,14 +674,14 @@ export function Summary() {
                 <DataSectionsContainer>
                     <StatisticalDataSection>
                         <VerticalHeader>
-                            <VerticalHeaderText>Statistical Data</VerticalHeaderText>
+                            <VerticalHeaderText>{t`Statistical Data`}</VerticalHeaderText>
                         </VerticalHeader>
                         <StatsGrid>
                             <StatsHeaderRow>
-                                <span>8. Statistics</span>
-                                <span>Score</span>
-                                <span>x5</span>
-                                <StatHeaderLongSpan>Distinguishing Features</StatHeaderLongSpan>
+                                <span>{t`8. Statistics`}</span>
+                                <span>{t`Score`}</span>
+                                <span>{t`x5`}</span>
+                                <StatHeaderLongSpan>{t`Distinguishing Features`}</StatHeaderLongSpan>
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
                                 <StatRow key={stat}>
@@ -693,34 +694,34 @@ export function Summary() {
 
                             <DerivedStatsSection>
                                 <DerivedStatRow>
-                                    <label>9. Derived Attributes</label>
+                                    <label>{t`9. Derived Attributes`}</label>
                                     {/* // AJS todo, ffs put this in tye styled component */}
-                                    <label style={{ fontSize: '0.8em' }}>Current</label>
-                                    <label style={{ fontSize: '0.8em' }}>Max</label>
+                                    <label style={{ fontSize: '0.8em' }}>{t`Current`}</label>
+                                    <label style={{ fontSize: '0.8em' }}>{t`Max`}</label>
                                 </DerivedStatRow>
                                 <DerivedStatRow>
-                                    <label>Hit Points</label>
+                                    <label>{t`Hit Points`}</label>
                                     <input type="number" value={derivedAttributes?.hitPoints?.currentValue || 0} />
                                     <input type="number" value={derivedAttributes?.hitPoints?.maxValue || 0} />
                                 </DerivedStatRow>
                                 <DerivedStatRow>
-                                    <label>Willpower</label>
+                                    <label>{t`Willpower`}</label>
                                     <input type="number" value={derivedAttributes?.willPower?.currentValue || 0} />
                                     <input type="number" value={derivedAttributes?.willPower?.maxValue || 0} />
                                 </DerivedStatRow>
                                 <DerivedStatRow>
-                                    <label>Sanity</label>
+                                    <label>{t`Sanity`}</label>
                                     <input type="number" value={derivedAttributes?.sanity?.currentValue || 0} />
                                     <input type="number" value={derivedAttributes?.sanity?.maxValue || 0} />
                                 </DerivedStatRow>
                                 <DerivedStatRow>
-                                    <label>Breaking Point</label>
+                                    <label>{t`Breaking Point`}</label>
                                     <input type="number" value={derivedAttributes?.breakingPoint?.currentValue || 0} />
                                     <input type="number" value={derivedAttributes?.breakingPoint?.maxValue || 0} />
                                 </DerivedStatRow>
                             </DerivedStatsSection>
                             <PhysicalDescriptionSection>
-                                <label>10. Physical Description</label>
+                                <label>{t`10. Physical Description`}</label>
                                 <MMDTextArea 
                                     value={personalDetails.appearance || ""}
                                     rows={3}
@@ -731,13 +732,13 @@ export function Summary() {
 
                     <PsychSection>
                         <VerticalHeader>
-                            <VerticalHeaderText>Psychological Data</VerticalHeaderText>
+                            <VerticalHeaderText>{t`Psychological Data`}</VerticalHeaderText>
                         </VerticalHeader>
                         <div>
                             <BondsSection>
                                 <BondsHeaderRow>
-                                    <span>11. Bonds</span>
-                                    <span>Score</span>
+                                    <span>{t`11. Bonds`}</span>
+                                    <span>{t`Score`}</span>
                                 </BondsHeaderRow>
                                 {bonds.map((bond, index) => (
                                     <BondRow key={index}>
@@ -749,7 +750,7 @@ export function Summary() {
                                         <input 
                                             type="text" 
                                             value={bond.name}
-                                            placeholder="Bond description"
+                                            placeholder={t`Bond description`}
                                         />
                                         <input 
                                             type="number" 
@@ -760,32 +761,32 @@ export function Summary() {
                                     // AJS starting point, add reminder text about purpose of checbox
                                 ))}
                                 <label>
-                                    Check a Bond’s box when projecting sanity damage
+                                    {t`Check a Bond’s box when projecting sanity damage`}
                                 </label>
                             </BondsSection>
-                            <h3>12. Motivations and Mental Disorders</h3>
+                            <h3>{t`12. Motivations and Mental Disorders`}</h3>
                             <MMDTextArea 
-                                placeholder="List character motivations and any mental disorders..."
+                                placeholder={t`List character motivations and any mental disorders...`}
                                 value={""}
                             />
                             <SanityTracker>
-                                <h3>13. Incidents of San Loss Without Going Insane</h3>
+                                <h3>{t`13. Incidents of San Loss Without Going Insane`}</h3>
                                 <div className="incidents">
-                                    <span>Violence</span>
+                                    <span>{t`Violence`}</span>
                                     <div className="checkboxes">
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                     </div>
-                                    <span className="adapted">adapted</span>
+                                    <span className="adapted">{t`adapted`}</span>
                                     
-                                    <span>Helplessness</span>
+                                    <span>{t`Helplessness`}</span>
                                     <div className="checkboxes">
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                         <input type="checkbox" />
                                     </div>
-                                    <span className="adapted">adapted</span>
+                                    <span className="adapted">{t`adapted`}</span>
                                 </div>
                             </SanityTracker>
                         </div>
@@ -795,7 +796,7 @@ export function Summary() {
                 <DataSectionsContainer>
                     <SkillsSection>
                         <VerticalHeader>
-                            <VerticalHeaderText>Applicable Skill Sets</VerticalHeaderText>
+                            <VerticalHeaderText>{t`Applicable Skill Sets`}</VerticalHeaderText>
                         </VerticalHeader>
                         <div>
                             <SkillsGrid skillCount={skills.length}>
@@ -807,7 +808,7 @@ export function Summary() {
                                 ))}
                             </SkillsGrid>
                             <SkillsLabel>
-                                Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check.
+                                {t`Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check.`}
                             </SkillsLabel>
                         </div>
                     </SkillsSection>
@@ -816,9 +817,9 @@ export function Summary() {
             <ButtonsContainer>
                 <ExportButton 
                     onClick={handleExport}>
-                        Export as PDF <IoMdPrint />
+                        {t`Export as PDF`} <IoMdPrint />
                 </ExportButton>
-                <Button onClick={handleReset}>Reset everything</Button>
+                <Button onClick={handleReset}>{t`Reset everything`}</Button>
             </ButtonsContainer>
         </div>
     );

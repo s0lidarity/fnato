@@ -132,6 +132,58 @@ msgstr ""
 msgid "010111100001"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:634
+msgid "1. Last Name, First Name, Middle Initial"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:724
+msgid "10. Physical Description"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:740
+msgid "11. Bonds"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:767
+msgid "12. Motivations and Mental Disorders"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:773
+msgid "13. Incidents of San Loss Without Going Insane"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:638
+msgid "2. Profession (Rank if Applicable)"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:644
+msgid "3. Employer"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:648
+msgid "4. Nationality"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:654
+msgid "5. Sex"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:658
+msgid "6. Age and D.O.B."
+msgstr ""
+
+#: src/pages/Summary/index.tsx:664
+msgid "7. Education and Occupational History"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:681
+msgid "8. Statistics"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:697
+msgid "9. Derived Attributes"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:37
 msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
 msgstr ""
@@ -163,6 +215,11 @@ msgstr ""
 
 #: src/types/characterTypes.ts:77
 msgid "Active Couch Potato"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:781
+#: src/pages/Summary/index.tsx:789
+msgid "adapted"
 msgstr ""
 
 #: src/types/characterTypes.ts:621
@@ -239,6 +296,10 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:799
+msgid "Applicable Skill Sets"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:143
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr ""
@@ -300,6 +361,10 @@ msgstr ""
 msgid "Bland"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:753
+msgid "Bond description"
+msgstr ""
+
 #: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
 msgid "Bond Detail"
 msgstr ""
@@ -354,6 +419,7 @@ msgid "Bonus Points Remaining"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:108
+#: src/pages/Summary/index.tsx:718
 msgid "Breaking Point"
 msgstr ""
 
@@ -395,6 +461,14 @@ msgstr ""
 msgid "Charisma"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:764
+msgid "Check a Bond’s box when projecting sanity damage"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:811
+msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
+msgstr ""
+
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:160
 msgid "Choose {0} Additional Skills"
@@ -422,6 +496,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:165
 msgid "Clear Selected Skills"
+msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:74
+msgid "Clear Templates"
 msgstr ""
 
 #: src/types/characterTypes.ts:159
@@ -511,6 +589,10 @@ msgstr ""
 msgid "Cunning, logic, and intuition"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:699
+msgid "Current"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/index.tsx:38
 msgid "Custom Professions"
 msgstr ""
@@ -519,7 +601,7 @@ msgstr ""
 msgid "Dabbler."
 msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:62
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:64
 msgid "Damaged Veteran Templates"
 msgstr ""
 
@@ -577,6 +659,7 @@ msgid "Disguise"
 msgstr ""
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:125
+#: src/pages/Summary/index.tsx:684
 msgid "Distinguishing Features"
 msgstr ""
 
@@ -631,6 +714,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
 msgid "Example"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:820
+msgid "Export as PDF"
 msgstr ""
 
 #: src/types/characterTypes.ts:577
@@ -808,6 +895,10 @@ msgstr ""
 msgid "Heavy Weapons"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:783
+msgid "Helplessness"
+msgstr ""
+
 #: src/utils/Professions.ts:126
 msgid "Historian"
 msgstr ""
@@ -817,6 +908,7 @@ msgid "History"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:87
+#: src/pages/Summary/index.tsx:703
 msgid "Hit Points"
 msgstr ""
 
@@ -953,6 +1045,10 @@ msgstr ""
 msgid "Lawyer"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:769
+msgid "List character motivations and any mental disorders..."
+msgstr ""
+
 #: src/types/characterTypes.ts:430
 #: src/types/characterTypes.ts:1008
 msgid "LMGs I think"
@@ -981,6 +1077,10 @@ msgstr ""
 
 #: src/utils/Professions.ts:651
 msgid "Marine"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:700
+msgid "Max"
 msgstr ""
 
 #: src/utils/Professions.ts:494
@@ -1140,6 +1240,10 @@ msgstr ""
 msgid "Personal and physical appeal"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:629
+msgid "Personal Data"
+msgstr ""
+
 #: src/pages/TheCrucible/index.tsx:52
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
@@ -1255,6 +1359,10 @@ msgstr ""
 msgid "Program Manager"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:735
+msgid "Psychological Data"
+msgstr ""
+
 #: src/types/characterTypes.ts:1210
 msgid "Psychotherapy"
 msgstr ""
@@ -1303,6 +1411,10 @@ msgstr ""
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:169
 msgid "Reset Bonus Points"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:822
+msgid "Reset everything"
 msgstr ""
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:352
@@ -1354,6 +1466,7 @@ msgid "Sailor"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:101
+#: src/pages/Summary/index.tsx:713
 msgid "Sanity"
 msgstr ""
 
@@ -1367,6 +1480,11 @@ msgstr ""
 
 #: src/utils/Professions.ts:251
 msgid "Scientist"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:682
+#: src/pages/Summary/index.tsx:741
+msgid "Score"
 msgstr ""
 
 #: src/types/characterTypes.ts:1265
@@ -1474,6 +1592,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:199
 msgid "Starts at:"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:677
+msgid "Statistical Data"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:49
@@ -1641,6 +1763,10 @@ msgstr ""
 msgid "Vigorous"
 msgstr ""
 
+#: src/pages/Summary/index.tsx:775
+msgid "Violence"
+msgstr ""
+
 #: src/pages/About/index.tsx:128
 msgid "Visit"
 msgstr ""
@@ -1691,6 +1817,14 @@ msgstr ""
 
 #: src/types/characterTypes.ts:545
 msgid "Will, spirit, and mental stability"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:708
+msgid "Willpower"
+msgstr ""
+
+#: src/pages/Summary/index.tsx:683
+msgid "x5"
 msgstr ""
 
 #: src/utils/Professions.ts:255

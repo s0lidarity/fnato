@@ -1,8 +1,9 @@
 // src/components/Accordion.tsx
-import { h, JSX } from 'preact';
+import { JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Anchor } from 'react95';
+import { i18n } from '@lingui/core';
 
 export type AccordionConfigItem = {
     id: string;
@@ -65,6 +66,7 @@ function Accordion({ items }: { items: AccordionConfig }) {
                 <ItemContainer onClick={() => isExpandable && handleClick(index)}>
                     <span style={{ marginRight: '0.5rem' }}>
                         <IconWrapper>{item.icon}</IconWrapper>
+                        {/* AJS Start here, conditionally render the labelMsg if it exists */}
                         {item.href ? (<Anchor href={item.href}> {item.label}</Anchor>) : (item.label)}
                     </span>
                     {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
