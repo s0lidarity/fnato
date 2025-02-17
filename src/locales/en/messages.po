@@ -276,7 +276,16 @@ msgstr "Base Statistics"
 msgid "Bland"
 msgstr "Bland"
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
+msgid "Bond Detail"
+msgstr "Bond Detail"
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:111
+msgid "Bond Name"
+msgstr "Bond Name"
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:115
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:59
 msgid "Bond Type"
 msgstr "Bond Type"
 
@@ -286,8 +295,8 @@ msgstr "Bond Type"
 msgid "Bonds"
 msgstr "Bonds"
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:45
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:45
 msgid "Bonds Details"
 msgstr "Bonds Details"
 
@@ -296,7 +305,7 @@ msgid "Bonds represent meaningful relationships your agent has with non-player c
 msgstr "Bonds represent meaningful relationships your agent has with non-player characters."
 
 #. placeholder {0}: stats.charisma.score
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:48
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:47
 msgid ""
 "Bonds represent your Agent's relationships with other people.\n"
 "                    Each bond starts with a score equal to your Agent's Charisma ({0}).\n"
@@ -377,6 +386,10 @@ msgstr "Choose a bonus skill package"
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
+msgid "Church or support group"
+msgstr "Church or support group"
+
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
 msgid "Clear"
 msgstr "Clear"
@@ -392,6 +405,10 @@ msgstr "Clear Selected Skills"
 #: src/types/characterTypes.ts:159
 msgid "Clumsy"
 msgstr "Clumsy"
+
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
+msgid "Colleagues in an intense job"
+msgstr "Colleagues in an intense job"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:45
 msgid "College major or years of experience; with 50% in a foreign language you have native fluency."
@@ -433,6 +450,10 @@ msgstr "Couch Potato"
 #: src/types/characterTypes.ts:80
 msgid "Could take the stairs"
 msgstr "Could take the stairs"
+
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
+msgid "Coworker or partner"
+msgstr "Coworker or partner"
 
 #: src/types/characterTypes.ts:788
 msgid "Craft"
@@ -569,7 +590,7 @@ msgstr "Engineer"
 msgid "Enter a Subtype"
 msgstr "Enter a Subtype"
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:61
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
 msgid "Example"
 msgstr "Example"
 
@@ -702,6 +723,12 @@ msgstr "Greased Lightning"
 msgid "Greasing the wheels of government"
 msgstr "Greasing the wheels of government"
 
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:128
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
+msgid "Group"
+msgstr "Group"
+
 #: src/types/characterTypes.ts:180
 msgid "Handy"
 msgstr "Handy"
@@ -780,6 +807,12 @@ msgstr "In the FBI, NSA and CIA, there are those who gather information and thos
 #: src/types/characterTypes.ts:221
 msgid "Incurious"
 msgstr "Incurious"
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:121
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:28
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
+msgid "Individual"
+msgstr "Individual"
 
 #: src/types/characterTypes.ts:289
 msgid "Indomitable"
@@ -966,6 +999,10 @@ msgstr "Nimble"
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:71
 msgid "No Package (Manual Bonus Points)"
 msgstr "No Package (Manual Bonus Points)"
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
+msgid "Note additional details about the bond"
+msgstr "Note additional details about the bond"
 
 #: src/types/characterTypes.ts:379
 #: src/types/characterTypes.ts:657
@@ -1287,6 +1324,10 @@ msgstr "Special Operator"
 msgid "Speed and physical agility"
 msgstr "Speed and physical agility"
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:28
+msgid "Spouse or ex-spouse"
+msgstr "Spouse or ex-spouse"
+
 #: src/pages/TheCrucible/Profession/index.tsx:37
 msgid "Standard Professions"
 msgstr "Standard Professions"
@@ -1379,6 +1420,10 @@ msgstr "Tenacious"
 #: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
 msgstr "The Crucible"
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:111
+msgid "The name of the individual or group your agent is bonded to."
+msgstr "The name of the individual or group your agent is bonded to."
 
 #: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:50
 msgid "The title of your agent's day-job"

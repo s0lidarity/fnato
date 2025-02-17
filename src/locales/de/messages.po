@@ -276,7 +276,16 @@ msgstr ""
 msgid "Bland"
 msgstr ""
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
+msgid "Bond Detail"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:111
+msgid "Bond Name"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:115
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:59
 msgid "Bond Type"
 msgstr ""
 
@@ -286,8 +295,8 @@ msgstr ""
 msgid "Bonds"
 msgstr ""
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:46
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:45
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:45
 msgid "Bonds Details"
 msgstr ""
 
@@ -296,7 +305,7 @@ msgid "Bonds represent meaningful relationships your agent has with non-player c
 msgstr ""
 
 #. placeholder {0}: stats.charisma.score
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:48
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:47
 msgid ""
 "Bonds represent your Agent's relationships with other people.\n"
 "                    Each bond starts with a score equal to your Agent's Charisma ({0}).\n"
@@ -371,6 +380,10 @@ msgstr ""
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr ""
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
+msgid "Church or support group"
+msgstr ""
+
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
 msgid "Clear"
 msgstr ""
@@ -385,6 +398,10 @@ msgstr ""
 
 #: src/types/characterTypes.ts:159
 msgid "Clumsy"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
+msgid "Colleagues in an intense job"
 msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:45
@@ -426,6 +443,10 @@ msgstr ""
 
 #: src/types/characterTypes.ts:80
 msgid "Could take the stairs"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
+msgid "Coworker or partner"
 msgstr ""
 
 #: src/types/characterTypes.ts:788
@@ -563,7 +584,7 @@ msgstr ""
 msgid "Enter a Subtype"
 msgstr ""
 
-#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:61
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
 msgid "Example"
 msgstr ""
 
@@ -696,6 +717,12 @@ msgstr ""
 msgid "Greasing the wheels of government"
 msgstr ""
 
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:128
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
+msgid "Group"
+msgstr ""
+
 #: src/types/characterTypes.ts:180
 msgid "Handy"
 msgstr ""
@@ -773,6 +800,12 @@ msgstr ""
 
 #: src/types/characterTypes.ts:221
 msgid "Incurious"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:121
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:28
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
+msgid "Individual"
 msgstr ""
 
 #: src/types/characterTypes.ts:289
@@ -959,6 +992,10 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:71
 msgid "No Package (Manual Bonus Points)"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
+msgid "Note additional details about the bond"
 msgstr ""
 
 #: src/types/characterTypes.ts:379
@@ -1290,6 +1327,10 @@ msgstr ""
 msgid "Speed and physical agility"
 msgstr ""
 
+#: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:28
+msgid "Spouse or ex-spouse"
+msgstr ""
+
 #: src/pages/TheCrucible/Profession/index.tsx:37
 msgid "Standard Professions"
 msgstr ""
@@ -1381,6 +1422,10 @@ msgstr ""
 #: src/components/Header/NavigationMenu.tsx:36
 #: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
+msgstr ""
+
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:111
+msgid "The name of the individual or group your agent is bonded to."
 msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:50

@@ -1,5 +1,6 @@
 import { GroupBox, Radio, TextInput } from 'react95'
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import { useBonds } from '../../../../providers/BondsContext';
@@ -107,30 +108,30 @@ function BondInput({ index }: { index: number }) {
         <BondInputContainer>
             <TopRowContainer>
                 <BondNameContainer>
-                    <ReminderTooltip labelText="Bond Name" reminderText="The name of the individual or group your agent is bonded to." />
+                    <ReminderTooltip labelText={t`Bond Name`} reminderText={t`The name of the individual or group your agent is bonded to.`} />
                     <BondNameTextInput value={bonds[index]?.name || ''} onChange={(e) => handleBondNameChange(e)} />
                 </BondNameContainer>
                 <BondTypeContainer>
-                    <GroupBox label="Bond Type">
+                    <GroupBox label={t`Bond Type`}>
                         <Radio
                             checked={bonds[index]?.type === 'individual'}
                             onChange={(e) => handleBondTypeChange(e)}
                             name="Bond Type"
                             value="individual" 
-                            label="Individual" 
+                            label={t`Individual`} 
                         />
                         <Radio
                             checked={bonds[index]?.type === 'group'}
                             onChange={(e) => handleBondTypeChange(e)}
                             name="Bond Type"
                             value="group" 
-                            label="Group" 
+                            label={t`Group`} 
                         />
                     </GroupBox>
                 </BondTypeContainer>
             </TopRowContainer>
             <BondDetailContainer>
-                <ReminderTooltip labelText="Bond Detail" reminderText="Note additional details about the bond" />
+                <ReminderTooltip labelText={t`Bond Detail`} reminderText={t`Note additional details about the bond`} />
                 <StyledTextInput 
                     value={bonds[index]?.detail || ''} 
                     onChange={(e) => handleBondDetailChange(e)}

@@ -24,12 +24,11 @@ const BondPrimer = styled.p.attrs<any>({
 function BondGuidance() {
     const { stats } = useStats();
 
-    // AJS start here, make these msgs instead of strings
     const bondExamples = [
-        { bondType: 'Individual', example: 'Spouse or ex-spouse' },
-        { bondType: 'Individual', example: 'Coworker or partner' },
-        { bondType: 'Group', example: 'Colleagues in an intense job' },
-        { bondType: 'Group', example: 'Church or support group' },
+        { bondType: t`Individual`, example: t`Spouse or ex-spouse` },
+        { bondType: t`Individual`, example: t`Coworker or partner` },
+        { bondType: t`Group`, example: t`Colleagues in an intense job` },
+        { bondType: t`Group`, example: t`Church or support group` },
     ]
 
     const renderBondExampleRows = (bondExamples: { bondType: string, example: string }[]) => {
