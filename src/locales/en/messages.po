@@ -197,11 +197,11 @@ msgstr "A lifetime’s pursuit or multiple doctorates."
 msgid "About"
 msgstr "About"
 
-#: src/pages/About/index.tsx:138
+#: src/pages/About/index.tsx:147
 msgid "About the Author"
 msgstr "About the Author"
 
-#: src/pages/About/index.tsx:137
+#: src/pages/About/index.tsx:146
 msgid "About the Game"
 msgstr "About the Game"
 
@@ -280,7 +280,7 @@ msgstr "Alluring"
 msgid "Analysing thought"
 msgstr "Analysing thought"
 
-#: src/pages/About/index.tsx:75
+#: src/pages/About/index.tsx:78
 msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 msgstr "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 
@@ -304,7 +304,7 @@ msgstr "Applicable Skill Sets"
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Apply preset skills and choose additional skills for your character."
 
-#: src/pages/About/index.tsx:115
+#: src/pages/About/index.tsx:124
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 
@@ -620,7 +620,7 @@ msgstr "Date of Birth"
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Decades of experience, or a graduate or doctoral degree."
 
-#: src/pages/About/index.tsx:72
+#: src/pages/About/index.tsx:73
 msgid "Declassified Record"
 msgstr "Declassified Record"
 
@@ -940,7 +940,7 @@ msgstr "Huge"
 msgid "HUMINT"
 msgstr "HUMINT"
 
-#: src/pages/About/index.tsx:101
+#: src/pages/About/index.tsx:110
 msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 msgstr "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 
@@ -949,7 +949,7 @@ msgstr "If the intelligence community was a family, Delta Green would be the unc
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr "If you haven't studied it you're doomed to repeat it"
 
-#: src/pages/About/index.tsx:87
+#: src/pages/About/index.tsx:93
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "If you want to support this work, you can buy some Delta Green content through affiliate links."
 
@@ -1637,6 +1637,10 @@ msgstr "Sturdy"
 msgid "Summary"
 msgstr "Summary"
 
+#: src/pages/About/index.tsx:88
+msgid "Support"
+msgstr "Support"
+
 #: src/types/characterTypes.ts:1313
 msgid "Surgery"
 msgstr "Surgery"
@@ -1699,7 +1703,7 @@ msgstr "Things Man Was Not Meant to Know"
 msgid "Title:"
 msgstr "Title:"
 
-#: src/pages/About/index.tsx:129
+#: src/pages/About/index.tsx:138
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "to purchase Delta Green source materials and learn more."
 
@@ -1767,7 +1771,7 @@ msgstr "Vigorous"
 msgid "Violence"
 msgstr "Violence"
 
-#: src/pages/About/index.tsx:128
+#: src/pages/About/index.tsx:137
 msgid "Visit"
 msgstr "Visit"
 
@@ -1791,7 +1795,7 @@ msgstr "Weekend Warrior"
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 msgstr "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 
-#: src/pages/About/index.tsx:97
+#: src/pages/About/index.tsx:104
 msgid "What is Delta Green?"
 msgstr "What is Delta Green?"
 

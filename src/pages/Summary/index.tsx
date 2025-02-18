@@ -3,12 +3,14 @@ import styled from 'styled-components';
 import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
 import { t } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
 import { Button } from 'react95';
+import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
 
 
 const CharacterSheet = styled.div.attrs<any>({
@@ -685,7 +687,7 @@ export function Summary() {
                             </StatsHeaderRow>
                             {Object.entries(stats).map(([stat, value]) => (
                                 <StatRow key={stat}>
-                                    <label>{stat}</label>
+                                    <label>{i18n._(stats[stat].labelMsg)}</label>
                                     <input type="number" value={value.score} />
                                     <input type="text" className="multiplier" value={value.x5} />
                                     <input type="text" className="feature" value={value.distinguishingFeature} />
@@ -803,7 +805,7 @@ export function Summary() {
                                 {skills.map((skill) => (
                                     <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
                                         <input type="checkbox" checked={false} />
-                                        <span>{`${skill.name}${skill.subType ? ` (${skill.subType})` : ''}`} ({calculateSkillValue(skill.id)}%)</span>
+                                        <span>{generateSkillLabel(skill)} ({calculateSkillValue(skill.id)}%)</span>
                                     </SkillItem>
                                 ))}
                             </SkillsGrid>
