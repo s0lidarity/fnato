@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Button } from 'react95';   
+import { Trans } from '@lingui/react/macro';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import StatInput from '../StatInput/StatInput';
@@ -79,7 +80,7 @@ function ManualInputStats( { config }: ManualInputStatsProps)  {
         <div>
             {renderStatInputs()}
             <ButtonContainer>
-                <Button onClick={resetStats}>Reset Statistics</Button>
+                <Button onClick={resetStats}><Trans>Reset Statistics</Trans></Button>
                 {config === StatsConfigOptions.PointBuy 
                 && <PointsCounter value={points} showNoPointsWarning={showNoPointsWarning} />}
             </ButtonContainer>

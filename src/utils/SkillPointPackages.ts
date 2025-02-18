@@ -1,6 +1,11 @@
+import { msg } from '@lingui/core/macro';
+import { MessageDescriptor } from '@lingui/core';
+
 export type IBonusSkillChoice = {
     skillName: string;
+    skillLabelMsg?: MessageDescriptor;
     subType?: string;
+    subTypeLabelMsg?: MessageDescriptor;
 }
 export type IBonusSkillPackage = {
     name: string;
@@ -13,9 +18,15 @@ export const createBonusSkillPackage = (
     skills: IBonusSkillChoice[], 
     personalSpecialties: number = 0
 ): IBonusSkillPackage => {
+    const skillsWithMessages = skills.map(skill => ({
+        ...skill,
+        skillLabelMsg: msg`${skill.skillName}`,
+        ...(skill.subType && { subTypeLabelMsg: msg`${skill.subType}` })
+    }));
+
     return {
         name,
-        skills,
+        skills: skillsWithMessages,
         personalSpecialties,
     };
 };
@@ -62,7 +73,7 @@ export const AuthorBSP = createBonusSkillPackage(
         { skillName: "HUMINT" },
     ],
 );
-// “BLACK BAG” TRAINING: Alertness, Athletics, Craft (Ele- trician), Craft (Locksmithing), Criminology, Disguise, Search, Stealth.
+// "BLACK BAG" TRAINING: Alertness, Athletics, Craft (Ele- trician), Craft (Locksmithing), Criminology, Disguise, Search, Stealth.
 export const BlackBagBSP = createBonusSkillPackage(
     "Black Bag",
     [

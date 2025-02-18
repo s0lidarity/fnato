@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NumberInput, Button } from 'react95';
+import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import BuildProfession from './BuildProfession';
@@ -18,6 +19,7 @@ import {
 } from '../../../../constants/gameRules';
 import { bondCountSignal } from '../../../../signals/bondSignal';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
+import { i18n } from '@lingui/core';
 
 const FormWrapper = styled.div.attrs<any>({
     'data-testid': 'custom-skill-form-wrapper',
@@ -104,6 +106,15 @@ function CustomSkillForm() {
         resetSkills();
     };
 
+    const BonusPointsReminderText = i18n._({
+        id: 'custom-skill-form.bonus-points-reminder',
+        message:`Adds {DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at {DEFAULT_TOTAL_CAP})`,
+        values: {
+            DEFAULT_BONUS_VALUE,
+            DEFAULT_TOTAL_CAP
+        }
+    })
+
     return (
         <FormWrapper>
             <HeaderContainer>
@@ -112,8 +123,8 @@ function CustomSkillForm() {
                 </div>
                 <div>
                     <ReminderTooltip
-                        labelText={'Bonds'}
-                        reminderText={'Bonds represent meaningful relationships your agent has with non-player characters.'}
+                        labelText={t`Bonds`}
+                        reminderText={t`Bonds represent meaningful relationships your agent has with non-player characters.`}
                     />
                 </div>
                 <div>
@@ -123,10 +134,13 @@ function CustomSkillForm() {
                     />
                 </div>
                 <div>
-                    <PointsCounter value={skillPointsRemaining} label={'Skill Points'} minDigits={3} />
+                    <PointsCounter value={skillPointsRemaining} label={t`Skill Points`} minDigits={3} />
                 </div>
                 <BonusPointsContainer>
-                    <ReminderTooltip labelText='Bonus Points' reminderText={`Adds ${DEFAULT_BONUS_VALUE} to the skill total for each bonus point allocated (capped at ${DEFAULT_TOTAL_CAP})`} />
+                    <ReminderTooltip 
+                        labelText={t`Bonus Points`} 
+                        reminderText={BonusPointsReminderText}
+                    />
                     <PointsCounter value={bonusPointsRemaining} label='' minDigits={1} />
                 </BonusPointsContainer>
             </HeaderContainer>
@@ -141,18 +155,18 @@ function CustomSkillForm() {
             </SkillFormContainer>
             <AllPointsContainer>
                 <PointsContainer>
-                    <PointsCounter value={skillPointsRemaining} label={'Skill Points Remaining'} minDigits={3} />
+                    <PointsCounter value={skillPointsRemaining} label={t`Skill Points Remaining`} minDigits={3} />
                     <Button onClick={handleResetSkillPoints}>
-                        Reset Skill Points
+                        {t`Reset Skill Points`}
                     </Button>
                 </PointsContainer>
                 <PointsContainer>
-                    <PointsCounter value={bonusPointsRemaining} label={'Bonus Points Remaining'} minDigits={1} />
+                    <PointsCounter value={bonusPointsRemaining} label={t`Bonus Points Remaining`} minDigits={1} />
                     <Button 
                         disabled={bonusPointsRemaining === DEFAULT_SKILL_POINTS}
                         onClick={resetAllBonusPoints}
                     >
-                        Reset Bonus Points
+                        {t`Reset Bonus Points`}
                     </Button>
                 </PointsContainer>
             </AllPointsContainer>

@@ -3,12 +3,14 @@ import { useState } from 'preact/hooks';
 import { MenuList, MenuListItem, StyledButton } from "react95";
 import styled from 'styled-components';
 import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
+import { msg, t } from '@lingui/core/macro';
+import { MessageDescriptor, i18n } from '@lingui/core';
 
 import DownGreenTri from '../../assets/down-green-tri.png';
 
 export interface MenuConfigItem {
     name: string;
+    labelMsg?: MessageDescriptor;
     url: string;
     img: string;
 }
@@ -16,21 +18,33 @@ export interface MenuConfigItem {
 export const MenuConfig: MenuConfigItem[] = [
     {
         name: t`Home`,
+        labelMsg: msg({
+            message: 'Home'
+        }),
         url: '/',
         img: '🏠',
     },
     {
         name: t`About`,
+        labelMsg: msg({
+            message: 'About'
+        }),
         url: '/about',
         img: '📖',
     },
     {
         name: t`The Crucible`,
+        labelMsg: msg({
+            message: 'The Crucible'
+        }),
         url: '/crucible',
         img: '🫠',
     },
     {
         name: t`Summary`,
+        labelMsg: msg({
+            message: 'Summary'
+        }),
         url: '/summary',
         img: '📊',
     },
@@ -104,7 +118,7 @@ function NavigationMenu(){
                                         <IconWrapper role='img' aria-label={item.img}>
                                             {item.img}
                                         </IconWrapper>
-                                        {item.name}
+                                        {item.labelMsg ? i18n._(item.labelMsg) : item.name}
                                 </StyledMenuListItem>
                             </a>
                         ))}

@@ -1,19 +1,16 @@
 import { NumberInput } from 'react95';
-import { t } from '@lingui/core/macro';
-
 import { useStats } from '../../../../../providers/StatisticsContext';
 import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
-import StatInputContainer  from '../../styles/StatInputContainer';
+import StatInputContainer from '../../styles/StatInputContainer';
 
 function StatInput({ statKey, handleChange }) {
 	const { stats } = useStats();
-	const labelText = (t`${statKey?.charAt(0).toUpperCase() + statKey?.slice(1)}`) || "";
-	
+
 	return (
 		<StatInputContainer>
 			<ReminderTooltip 
-				labelText={t`${labelText}`} 
-				reminderText={t`${stats[statKey].reminderText}`} 
+				labelText={stats[statKey].labelMsg}
+				reminderText={stats[statKey].reminderMsg} 
 			/>
 			<NumberInput
 				min={3}
@@ -25,6 +22,5 @@ function StatInput({ statKey, handleChange }) {
 		</StatInputContainer>
 	);
 };
-
 
 export default StatInput;

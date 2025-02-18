@@ -1,8 +1,11 @@
 import { useState } from 'preact/hooks';
 import { Button, TextInput } from 'react95';
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
+import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
@@ -59,7 +62,10 @@ interface SubtypeEditorProps {
 function SubtypeEditor({ skill }: SubtypeEditorProps) {
     const { setSkillById } = useSkills();
     const [showModal, setShowModal] = useState(false);
-    const [localSubType, setLocalSubType] = useState(skill.subType || '');
+    const [localSubType, setLocalSubType] = useState(() => {
+        const defaultSkill = DEFAULT_SKILLS.find(s => s.id === skill.id);
+        return defaultSkill?.subType === skill.subType ? i18n._(skill.subTypeMsg) : skill.subType || '';
+    });
 
     const handleSubtypeChange = (e: any) => {
         setLocalSubType(e?.target?.value);
@@ -78,7 +84,7 @@ function SubtypeEditor({ skill }: SubtypeEditorProps) {
                 <IoPencilOutline />
             </StyledSubtypeButton>
             <Dialogue
-                title="Enter a Subtype"
+                title={t`Enter a Subtype`}
                 show={showModal}
                 setShow={setShowModal}
             >

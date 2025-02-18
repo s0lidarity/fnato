@@ -1,6 +1,7 @@
 import { Table, TableBody, TableDataCell, TableRow, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 import { Trans } from '@lingui/react/macro';
+import { Trans as Trans2 } from '@lingui/react';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 
@@ -26,7 +27,7 @@ const DerivedAttributes = () => {
         return (
             <TableRow>
                 {/* AJS TODO: add a label to this object and use it instead of the key */}
-                <TableDataCell>{key}</TableDataCell>
+                <TableDataCell>{<Trans2 id={derivedAttributes[key].labelMsg?.id} />}</TableDataCell>
                 <TableDataCell>{derivedAttributes[key].maxValue}</TableDataCell>
             </TableRow>
         )

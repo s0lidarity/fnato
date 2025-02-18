@@ -1,7 +1,7 @@
 import { Button, TextInput } from "react95";
 import styled from "styled-components";
 import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
+import { useLingui } from '@lingui/react';
 
 import { useStats } from "../../../../../providers/StatisticsContext";
 import { DISTINGUISHING_FEATURES } from "../../.../../../../../types/characterTypes";
@@ -59,7 +59,7 @@ const StyledHeading = styled.h2.attrs<any>({
 
 function StatDescriptors() {
     const { stats, setStats } = useStats();
-
+    const { i18n } = useLingui();
     const handleChange = (e, statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };
@@ -97,9 +97,10 @@ function StatDescriptors() {
         setStats(tempStats);
     };
 
-    // StatKey should be an enum
-
     const statDescriptor = (statKey: string) => {
+        const placeholderDescriptor = DISTINGUISHING_FEATURES[statKey][stats[statKey].score];
+        const placeholder = i18n._(placeholderDescriptor);
+        
         return (
             <StyledStatDescriptorContainer key={`${statKey}-container`}>
                 <StyledInputContainer>
@@ -107,8 +108,8 @@ function StatDescriptors() {
                         key={`${statKey}-input`}
                         type="text" 
                         id={`${statKey}-descriptor`} 
-                        placeholder={t`${DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}`}
-                        value={t`${stats[statKey].distinguishingFeature}`} 
+                        placeholder={placeholder}
+                        value={stats[statKey].distinguishingFeature} 
                         onChange={(e) => handleChange(e, statKey)}
                     />
                     <Button onClick={(e) => handleClear(e, statKey)}><Trans>Clear</Trans></Button>

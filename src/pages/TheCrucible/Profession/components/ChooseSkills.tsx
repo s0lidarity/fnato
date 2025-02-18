@@ -1,11 +1,16 @@
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Checkbox, GroupBox, Button } from 'react95';
+import { Trans } from '@lingui/react/macro';
+import { Trans as Trans2 } from '@lingui/react';
+import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { createSkillId } from '../../../../utils/Professions';
+import { generateSkillLabel } from './skillLabel';
+import { i18n } from '@lingui/core';
 
 const StyledGroupBox = styled(GroupBox).attrs<any>({
     'data-testid': 'choose-skills-group',
@@ -104,11 +109,15 @@ function ChooseSkills() {
     };
 
     const noChoices = () => {
-        return (profession ? 
-            (<div>{`${profession?.name} has no flexible skills to choose from.`}</div>)
-            : null 
-        );
-    } 
+        const professionName = profession?.name;
+        return i18n._({
+            id: 'choose-skills.no-choices',
+            message:`{professionName} has no flexible skills to choose from.`,
+            values: {
+                professionName,
+            }
+        });
+    }  
 
     const chooseSkillsCheckboxes = () => {
         return profession.choosableSkills.map((skill) => (
@@ -119,7 +128,7 @@ function ChooseSkills() {
                         checked={selectedSkillsIds.includes(skill.id)} 
                         onChange={() => toggleSkill(skill.id)}
                     />
-                    {`${skill.name} ${skill.subType ? `(${skill.subType})` : ''} [${skill.value}]`}
+                    {generateSkillLabel(skill)} [${skill.value}]
                 </StyledSkillContainer>
         ));
     };
@@ -148,12 +157,12 @@ function ChooseSkills() {
     return (
         <StyledGroupBox variant='flat'>
             <HeaderContainer>
-                <div>{`Choose ${remainingSkillChoices > 0 ? remainingSkillChoices : ''} Additional Skills`}</div>
+                <div>{<Trans>Choose {remainingSkillChoices > 0 ? remainingSkillChoices : ''} Additional Skills</Trans>}</div>
                 <Button 
                     onClick={handleClearSelectedSkills}
                     disabled={selectedSkillsIds.length === 0}
                 >
-                    Clear Selected Skills
+                    <Trans>Clear Selected Skills</Trans>
                 </Button>
             </HeaderContainer>
             { !profession || profession?.choosableSkills?.length === 0 
@@ -165,7 +174,7 @@ function ChooseSkills() {
                     value={remainingSkillChoices}
                     showNoPointsWarning={showNoChoicesWarning}
                     minDigits={1}
-                    label='Skill Choices Remaining'
+                    label={t`Skill Choices Remaining`}
                 />
             </div>
         </StyledGroupBox>

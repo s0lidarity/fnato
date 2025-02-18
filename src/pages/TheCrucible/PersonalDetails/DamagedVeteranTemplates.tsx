@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Button } from 'react95';
 import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
+import { t } from '@lingui/core/macro';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
@@ -43,6 +44,8 @@ const StyledButton = styled(Button).attrs<any>({
 })`
     padding: 0.5rem;
     margin-top: 1rem;
+    width: fit-content;
+    height: fit-content;
 `;
 
 function DamagedVeteranTemplates() {
@@ -58,7 +61,7 @@ function DamagedVeteranTemplates() {
     return (
         <InputContainer>
         <label htmlFor="damagedVeteranTemplates">
-            <PageNumberTooltip pageNumber={1}>Damaged Veteran Templates</PageNumberTooltip>
+            <PageNumberTooltip pageNumber={1}>{t`Damaged Veteran Templates`}</PageNumberTooltip>
         </label>  
         <DamagedVeteranTemplatesContainer>
             
@@ -68,7 +71,7 @@ function DamagedVeteranTemplates() {
                     <DamagedVeteranCheckbox template={HARD_EXPERIENCE} />
                     <DamagedVeteranCheckbox template={THINGS_MAN_WAS_NOT_MEANT_TO_KNOW} />
                 </CheckboxContainer>
-            <StyledButton onClick={handleClearTemplates}>Clear Templates</StyledButton>
+            <StyledButton onClick={handleClearTemplates}>{t`Clear Templates`}</StyledButton>
         </DamagedVeteranTemplatesContainer>
         </InputContainer>
     );

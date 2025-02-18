@@ -1,8 +1,9 @@
 import { Tooltip } from 'react95';
 import styled from 'styled-components';
+import { Trans } from '@lingui/react';
+import { MessageDescriptor } from '@lingui/core';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
-
 // AJS TODO: move this folder out of Footer
 
 // AJS this is a shared style, put it somewhere we can share it
@@ -26,26 +27,40 @@ const StyledLabel = styled.label.attrs<any>({
 `;
 
 interface ReminderTooltipProps {
-    labelText: string;
-    reminderText: string;
+    labelText: MessageDescriptor | string;
+    reminderText: MessageDescriptor | string;
 }
 
 export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
+    const isMessageDescriptor = (value: MessageDescriptor | string): value is MessageDescriptor => {
+        return typeof value === 'object' && 'id' in value;
+    };
+
     return (
         <Tooltip
-            // jsx in the text param works fine, error seems wrong
-            // @ts-ignore
+            //@ts-ignore seems to work fine
             text={
                 <StyledTooltipInnerText>
-                    {reminderText}
+                    {isMessageDescriptor(reminderText) ? (
+                        <Trans id={reminderText.id} />
+                    ) : (
+                        reminderText
+                    )}
                 </StyledTooltipInnerText>
             }
             enterDelay={100}
             leaveDelay={500}
         >
-            <StyledLabel>{labelText}<TooltipIndicator /></StyledLabel>
+            <StyledLabel>
+                {isMessageDescriptor(labelText) ? (
+                    <Trans id={labelText.id} />
+                ) : (
+                    labelText
+                )}
+                <TooltipIndicator />
+            </StyledLabel>
         </Tooltip>
     );
-};
+}
 
 export default ReminderTooltip;

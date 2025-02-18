@@ -1,5 +1,6 @@
 import { Button } from 'react95';
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import { bondCountSignal } from '../../../signals/bondSignal';
 import BondGuidance from './components/BondGuidance';
@@ -35,7 +36,7 @@ export function Bonds() {
             </div>
 
             <ButtonsContainer>
-                <Button onClick={resetBonds}>Reset Bonds</Button>
+                <Button onClick={resetBonds}>{t`Reset Bonds`}</Button>
             </ButtonsContainer>
         </div>
     )

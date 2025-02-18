@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Anchor, GroupBox } from 'react95';
 import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
+import { t, msg } from '@lingui/core/macro';
 
 import Accordion from '../../components/Accordion/Accordion';
 import { PageWrapper } from '../../components/SharedStyles';
@@ -69,7 +69,10 @@ const authorConfig = [
     },
     {
         id: 'bio',
-        label: t`Declassified Record`,
+        label: 'Declassified Record',
+        labelMsg: msg({
+            message: 'Declassified Record',
+        }),
         icon: <>📓</>,
         content: <Content>
             <Trans>
@@ -82,6 +85,9 @@ const authorConfig = [
     {
         id: 'coffee',
         label: 'Support',
+        labelMsg: msg({
+            message: 'Support',
+        }),
         icon: <>☕</>,
         content: <Content>
             <Trans>
@@ -94,7 +100,10 @@ const authorConfig = [
 const dgConfig = [
     {
         id: 'learnMore',
-        label: t`What is Delta Green?`,
+        label: 'What is Delta Green?',
+        labelMsg: msg({
+            message: 'What is Delta Green?',
+        }),
         href: "https://www.delta-green.com/what-is-delta-green/",
         icon: <>👽</>,
         content: <Content>
@@ -125,8 +134,8 @@ const dgConfig = [
         href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook",
         icon: <>🚗</>,
         content: <Content>
-            <Trans>
-                Visit DriveThruRPG to purchase Delta Green source materials and learn more.
+            <Trans> 
+                Visit</Trans> DriveThruRPG <Trans>to purchase Delta Green source materials and learn more.
             </Trans>
         </Content>,
     }

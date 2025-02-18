@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { t } from '@lingui/core/macro';
 
 import Guidance from '../../../components/Guidance/Guidance';
 
@@ -17,12 +18,12 @@ const ContentContainer = styled.div.attrs<any>({
     text-wrap: pretty;
 `;
 
-const content = `Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`
+const content = t`Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`;
 
 function PersonalDetailsGuidance() {
     return (
         <PersonalDetailsGuidanceContainer>
-            <Guidance title="Personal Details" buttonText="Personal Details">
+            <Guidance title={t`Personal Details`} buttonText={t`Personal Details`}>
                 <ContentContainer>{content}</ContentContainer>
             </Guidance>
         </PersonalDetailsGuidanceContainer>

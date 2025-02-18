@@ -1,12 +1,14 @@
 // src/components/Accordion.tsx
-import { h, JSX } from 'preact';
+import { JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { Anchor } from 'react95';
+import { i18n, MessageDescriptor } from '@lingui/core';
 
 export type AccordionConfigItem = {
     id: string;
     label: string;
+    labelMsg?: MessageDescriptor;
     icon: JSX.Element;
     href?: string;
     content?: JSX.Element;
@@ -58,6 +60,13 @@ function Accordion({ items }: { items: AccordionConfig }) {
         });
     };
 
+    const getItemLabel = (item: AccordionConfigItem) => {
+        if(item.labelMsg) {
+            return i18n._(item.labelMsg.id)
+        }
+        return item.label;
+    };
+
     const renderedItems = items.map((item, index) => {
         const isExpandable = !!item.content;
         return (
@@ -65,7 +74,7 @@ function Accordion({ items }: { items: AccordionConfig }) {
                 <ItemContainer onClick={() => isExpandable && handleClick(index)}>
                     <span style={{ marginRight: '0.5rem' }}>
                         <IconWrapper>{item.icon}</IconWrapper>
-                        {item.href ? (<Anchor href={item.href}> {item.label}</Anchor>) : (item.label)}
+                        {item.href ? (<Anchor href={item.href}> {getItemLabel(item)}</Anchor>) : (getItemLabel(item))}
                     </span>
                     {isExpandable && <div>{expandedIndex === index ? '-' : '+'}</div>}
                 </ItemContainer>
