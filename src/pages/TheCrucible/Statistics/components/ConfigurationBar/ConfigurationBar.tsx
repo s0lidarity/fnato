@@ -24,6 +24,8 @@ const ConfigurationBarContainer = styled.div.attrs<any>({
     display: flex;
     justify-content: space-between;
     padding: 1rem;
+    width: fit-content;
+    justify-self: center;
 `;
 
 const StyledGroupBox = styled(GroupBox).attrs<any>({

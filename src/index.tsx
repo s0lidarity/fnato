@@ -11,6 +11,10 @@ import Footer from './components/Footer/Footer';
 import Providers from './providers/Providers';
 import Summary from './pages/Summary';
 import MobileBanner from './components/MobileBanner/MobileBanner';
+import { initSentry } from './utils/sentry'
+
+// Initialize Sentry in production
+initSentry();
 
 export function App() {
 	const [showMobileBanner, setShowMobileBanner] = useState(true);

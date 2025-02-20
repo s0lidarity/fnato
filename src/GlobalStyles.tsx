@@ -37,9 +37,42 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 		font-weight: normal;
 		font-style: normal
 	}
+
+	/* Windows 95 cursor styles */
+	* {
+		cursor: default;
+	}
+
+	a, button, [role="button"], 
+	input[type="submit"], 
+	input[type="button"], 
+	input[type="reset"],
+	select {
+		cursor: pointer;
+	}
+
+	input[type="text"],
+	input[type="number"],
+	input[type="password"],
+	textarea {
+		cursor: text;
+	}
+
+	.resizable {
+		cursor: se-resize;
+	}
+
+	.loading {
+		cursor: wait;
+	}
+
+	.help {
+		cursor: help;
+	}
+
+	/* Font styles */
 	body, input, select, textarea, button {
 		font-family: ${props => {
-
 			switch(props.fontFamily) {
 				case 'system':
 					return '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';

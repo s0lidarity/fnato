@@ -30,6 +30,11 @@ const Content = styled.div.attrs<any>({
     li {
         padding-left: 1rem;
     }
+    a {
+        cursor: pointer;
+    }
+    user-select: text;
+    cursor: text;
 `;
 
 const Spoiler = styled.span.attrs<any>({

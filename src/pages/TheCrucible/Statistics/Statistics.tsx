@@ -32,7 +32,7 @@ const StyledGuidanceContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 1rem;
+    margin-bottom: 0.5rem;
 `;
 
 const StyledHeading = styled.h2`
