@@ -30,6 +30,11 @@ const Content = styled.div.attrs<any>({
     li {
         padding-left: 1rem;
     }
+    a {
+        cursor: pointer;
+    }
+    user-select: text;
+    cursor: text;
 `;
 
 const Spoiler = styled.span.attrs<any>({
@@ -131,7 +136,7 @@ const dgConfig = [
     {
         id: 'drivethru',
         label: 'DriveThruRPG',
-        href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook",
+        href: "https://www.drivethrurpg.com/en/product/181674/delta-green-agent-s-handbook&affiliate_id=1343326",
         icon: <>🚗</>,
         content: <Content>
             <Trans> 

@@ -69,16 +69,16 @@ function Providers({ children }: { children: ComponentChildren }) {
             <I18nProvider i18n={i18n}>
                 <ThemeContext.Provider value={{ theme, setTheme, fontFamily, setFontFamily }}>
                     <ThemeProvider theme={theme}>
+                        <GlobalStyles fontFamily={fontFamily} />
                         <StatsProvider>
-                        <SkillsProvider>
-                            <BondsProvider>
-                                <PersonalDetailsProvider>
-                                    <GlobalStyles fontFamily={fontFamily} />
-                                    {children}
-                                </PersonalDetailsProvider>
-                            </BondsProvider>
-                        </SkillsProvider>
-                    </StatsProvider>
+                            <SkillsProvider>
+                                <BondsProvider>
+                                    <PersonalDetailsProvider>
+                                        {children}
+                                    </PersonalDetailsProvider>
+                                </BondsProvider>
+                            </SkillsProvider>
+                        </StatsProvider>
                     </ThemeProvider>
                 </ThemeContext.Provider>
             </I18nProvider>
