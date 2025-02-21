@@ -18,6 +18,7 @@ const StyledBannerLink = styled.a.attrs<any>({
 })`
     display: block;
     max-width: 100%;
+    cursor: pointer;
 `;
 
 const StyledBannerImage = styled.img.attrs<any>({
@@ -26,6 +27,7 @@ const StyledBannerImage = styled.img.attrs<any>({
 })`
     max-width: 100%;
     height: auto;
+    cursor: pointer;
 `;
 
 function DriveThruBanner() {
