@@ -1,17 +1,15 @@
 import { describe, test, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/preact';
 
-import Menu, { MenuConfig } from '../NavigationMenu'; 
+import NavigationMenu from '../NavigationMenu'; 
 import MockProvider from '../../../../test/test-utils/MockProvider';
-
+import { MenuConfig } from '../MenuConfig';
 describe('Menu Component', () => {
     beforeEach(() => {
-        render(
-            <div>
-                <MockProvider>
-                        <Menu open={false} setOpen={() => {}} />
-                </MockProvider>
-            </div>
+        render(    
+            <MockProvider>
+                <NavigationMenu />
+            </MockProvider>
         );
     });
 

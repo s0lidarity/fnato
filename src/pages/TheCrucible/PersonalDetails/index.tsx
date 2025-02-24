@@ -273,7 +273,7 @@ function PersonalDetails() {
 
                 <InputContainer>
                     <label htmlFor="motivations">
-                        <PageNumberTooltip pageNumber={3}>{t`Motivations`}</PageNumberTooltip>
+                        <PageNumberTooltip pageNumber={1}>{t`Motivations`}</PageNumberTooltip>
                     </label>
                     <TextInput
                         id="motivations"

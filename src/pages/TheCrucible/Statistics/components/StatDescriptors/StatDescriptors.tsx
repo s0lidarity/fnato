@@ -78,7 +78,8 @@ function StatDescriptors() {
 
     // need to limit this to the relevant statkey
     const assignSuggested = (statKey) => {
-        setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}})
+        const suggestedFeature = i18n._(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
+        setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: suggestedFeature}})
     };
 
     const assignAllSuggested = () => {

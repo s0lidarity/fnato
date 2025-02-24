@@ -77,6 +77,7 @@ msgstr ""
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
 #: src/components/Header/ThemeMenu.tsx:112
+#: src/components/Header/NavigationMenu.tsx:113
 msgid "{0}"
 msgstr ""
 
@@ -132,55 +133,55 @@ msgstr ""
 msgid "010111100001"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:634
+#: src/pages/Summary/index.tsx:637
 msgid "1. Last Name, First Name, Middle Initial"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:724
+#: src/pages/Summary/index.tsx:727
 msgid "10. Physical Description"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:740
+#: src/pages/Summary/index.tsx:743
 msgid "11. Bonds"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:767
+#: src/pages/Summary/index.tsx:770
 msgid "12. Motivations and Mental Disorders"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:773
+#: src/pages/Summary/index.tsx:776
 msgid "13. Incidents of San Loss Without Going Insane"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:638
+#: src/pages/Summary/index.tsx:641
 msgid "2. Profession (Rank if Applicable)"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:644
+#: src/pages/Summary/index.tsx:647
 msgid "3. Employer"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:648
+#: src/pages/Summary/index.tsx:651
 msgid "4. Nationality"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:654
+#: src/pages/Summary/index.tsx:657
 msgid "5. Sex"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:658
+#: src/pages/Summary/index.tsx:661
 msgid "6. Age and D.O.B."
 msgstr ""
 
-#: src/pages/Summary/index.tsx:664
+#: src/pages/Summary/index.tsx:667
 msgid "7. Education and Occupational History"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:681
+#: src/pages/Summary/index.tsx:684
 msgid "8. Statistics"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:697
+#: src/pages/Summary/index.tsx:700
 msgid "9. Derived Attributes"
 msgstr ""
 
@@ -194,14 +195,14 @@ msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:28
 #: src/components/Header/NavigationMenu.tsx:29
-msgid "About"
-msgstr ""
+#~ msgid "About"
+#~ msgstr ""
 
-#: src/pages/About/index.tsx:147
+#: src/pages/About/index.tsx:152
 msgid "About the Author"
 msgstr ""
 
-#: src/pages/About/index.tsx:146
+#: src/pages/About/index.tsx:151
 msgid "About the Game"
 msgstr ""
 
@@ -217,8 +218,8 @@ msgstr ""
 msgid "Active Couch Potato"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:781
-#: src/pages/Summary/index.tsx:789
+#: src/pages/Summary/index.tsx:784
+#: src/pages/Summary/index.tsx:792
 msgid "adapted"
 msgstr ""
 
@@ -280,7 +281,7 @@ msgstr ""
 msgid "Analysing thought"
 msgstr ""
 
-#: src/pages/About/index.tsx:78
+#: src/pages/About/index.tsx:83
 msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 msgstr ""
 
@@ -296,7 +297,7 @@ msgstr ""
 msgid "Appearance"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:799
+#: src/pages/Summary/index.tsx:802
 msgid "Applicable Skill Sets"
 msgstr ""
 
@@ -304,7 +305,7 @@ msgstr ""
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr ""
 
-#: src/pages/About/index.tsx:124
+#: src/pages/About/index.tsx:129
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr ""
 
@@ -361,7 +362,7 @@ msgstr ""
 msgid "Bland"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:753
+#: src/pages/Summary/index.tsx:756
 msgid "Bond description"
 msgstr ""
 
@@ -404,7 +405,7 @@ msgid ""
 "                    A Bond must be a real person or small group of people who are alive and can be interacted with."
 msgstr ""
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:103
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
 msgid "Bonus"
 msgstr ""
@@ -419,7 +420,7 @@ msgid "Bonus Points Remaining"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:108
-#: src/pages/Summary/index.tsx:718
+#: src/pages/Summary/index.tsx:721
 msgid "Breaking Point"
 msgstr ""
 
@@ -461,11 +462,11 @@ msgstr ""
 msgid "Charisma"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:764
+#: src/pages/Summary/index.tsx:767
 msgid "Check a Bond’s box when projecting sanity damage"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:811
+#: src/pages/Summary/index.tsx:814
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr ""
 
@@ -486,11 +487,11 @@ msgstr ""
 msgid "Church or support group"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
 msgid "Clear"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Clear Descriptors"
 msgstr ""
 
@@ -589,7 +590,7 @@ msgstr ""
 msgid "Cunning, logic, and intuition"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:699
+#: src/pages/Summary/index.tsx:702
 msgid "Current"
 msgstr ""
 
@@ -614,7 +615,7 @@ msgstr ""
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr ""
 
-#: src/pages/About/index.tsx:73
+#: src/pages/About/index.tsx:78
 msgid "Declassified Record"
 msgstr ""
 
@@ -646,7 +647,7 @@ msgstr ""
 msgid "Dexterity"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
 msgid "Dice"
 msgstr ""
 
@@ -658,8 +659,8 @@ msgstr ""
 msgid "Disguise"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:125
-#: src/pages/Summary/index.tsx:684
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
+#: src/pages/Summary/index.tsx:687
 msgid "Distinguishing Features"
 msgstr ""
 
@@ -716,7 +717,7 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:820
+#: src/pages/Summary/index.tsx:823
 msgid "Export as PDF"
 msgstr ""
 
@@ -895,7 +896,7 @@ msgstr ""
 msgid "Heavy Weapons"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:783
+#: src/pages/Summary/index.tsx:786
 msgid "Helplessness"
 msgstr ""
 
@@ -908,7 +909,7 @@ msgid "History"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:87
-#: src/pages/Summary/index.tsx:703
+#: src/pages/Summary/index.tsx:706
 msgid "Hit Points"
 msgstr ""
 
@@ -918,8 +919,8 @@ msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:20
 #: src/components/Header/NavigationMenu.tsx:21
-msgid "Home"
-msgstr ""
+#~ msgid "Home"
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:463
 #: src/types/characterTypes.ts:1230
@@ -934,7 +935,7 @@ msgstr ""
 msgid "HUMINT"
 msgstr ""
 
-#: src/pages/About/index.tsx:110
+#: src/pages/About/index.tsx:115
 msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 msgstr ""
 
@@ -943,7 +944,7 @@ msgstr ""
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr ""
 
-#: src/pages/About/index.tsx:93
+#: src/pages/About/index.tsx:98
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr ""
 
@@ -1045,7 +1046,7 @@ msgstr ""
 msgid "Lawyer"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:769
+#: src/pages/Summary/index.tsx:772
 msgid "List character motivations and any mental disorders..."
 msgstr ""
 
@@ -1067,7 +1068,7 @@ msgstr ""
 msgid "Making things explode from far away"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Manual Input"
 msgstr ""
 
@@ -1079,7 +1080,7 @@ msgstr ""
 msgid "Marine"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:700
+#: src/pages/Summary/index.tsx:703
 msgid "Max"
 msgstr ""
 
@@ -1210,7 +1211,7 @@ msgstr ""
 msgid "Operating flying vehicles"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:77
 msgid "Options"
 msgstr ""
 
@@ -1240,13 +1241,13 @@ msgstr ""
 msgid "Personal and physical appeal"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:629
+#: src/pages/Summary/index.tsx:632
 msgid "Personal Data"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:52
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
 msgid "Personal Details"
 msgstr ""
 
@@ -1255,18 +1256,25 @@ msgstr ""
 msgid "Personal Motivation {0}"
 msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:83
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:85
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
 msgid "Personal Motivations"
 msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:52
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:74
 msgid ""
 "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
-"These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
-"powerful, these motivations aren't as strong as Bonds to other humans."
+"    These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
+"    powerful, these motivations aren't as strong as Bonds to other humans."
 msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:52
+#~ msgid ""
+#~ "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
+#~ "These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
+#~ "powerful, these motivations aren't as strong as Bonds to other humans."
+#~ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
 msgid "personal specialty (any)"
@@ -1318,7 +1326,7 @@ msgstr ""
 msgid "Pliable"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
 msgid "Point Buy"
 msgstr ""
 
@@ -1359,7 +1367,7 @@ msgstr ""
 msgid "Program Manager"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:735
+#: src/pages/Summary/index.tsx:738
 msgid "Psychological Data"
 msgstr ""
 
@@ -1413,7 +1421,7 @@ msgstr ""
 msgid "Reset Bonus Points"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:822
+#: src/pages/Summary/index.tsx:825
 msgid "Reset everything"
 msgstr ""
 
@@ -1466,7 +1474,7 @@ msgid "Sailor"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:101
-#: src/pages/Summary/index.tsx:713
+#: src/pages/Summary/index.tsx:716
 msgid "Sanity"
 msgstr ""
 
@@ -1482,8 +1490,8 @@ msgstr ""
 msgid "Scientist"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:682
-#: src/pages/Summary/index.tsx:741
+#: src/pages/Summary/index.tsx:685
+#: src/pages/Summary/index.tsx:744
 msgid "Score"
 msgstr ""
 
@@ -1582,7 +1590,7 @@ msgstr ""
 msgid "Standard Professions"
 msgstr ""
 
-#: src/components/Header/NavigationMenu.tsx:110
+#: src/components/Header/NavigationMenu.tsx:102
 msgid "Start"
 msgstr ""
 
@@ -1594,7 +1602,7 @@ msgstr ""
 msgid "Starts at:"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:677
+#: src/pages/Summary/index.tsx:680
 msgid "Statistical Data"
 msgstr ""
 
@@ -1634,10 +1642,10 @@ msgstr ""
 
 #: src/components/Header/NavigationMenu.tsx:44
 #: src/components/Header/NavigationMenu.tsx:45
-msgid "Summary"
-msgstr ""
+#~ msgid "Summary"
+#~ msgstr ""
 
-#: src/pages/About/index.tsx:88
+#: src/pages/About/index.tsx:93
 msgid "Support"
 msgstr ""
 
@@ -1665,7 +1673,7 @@ msgstr ""
 msgid "Swole"
 msgstr ""
 
-#: src/pages/About/index.tsx:54
+#: src/pages/About/index.tsx:59
 msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 msgstr ""
 
@@ -1674,8 +1682,6 @@ msgid "Tenacious"
 msgstr ""
 
 #: src/pages/TheCrucible/index.tsx:42
-#: src/components/Header/NavigationMenu.tsx:36
-#: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
 msgstr ""
 
@@ -1703,7 +1709,7 @@ msgstr ""
 msgid "Title:"
 msgstr ""
 
-#: src/pages/About/index.tsx:138
+#: src/pages/About/index.tsx:143
 msgid "to purchase Delta Green source materials and learn more."
 msgstr ""
 
@@ -1751,15 +1757,15 @@ msgstr ""
 msgid "Unyielding"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:130
 msgid "Use All Suggestions"
 msgstr ""
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:117
 msgid "Use Suggested"
 msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:21
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:24
 msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character."
 msgstr ""
 
@@ -1767,11 +1773,11 @@ msgstr ""
 msgid "Vigorous"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:775
+#: src/pages/Summary/index.tsx:778
 msgid "Violence"
 msgstr ""
 
-#: src/pages/About/index.tsx:137
+#: src/pages/About/index.tsx:142
 msgid "Visit"
 msgstr ""
 
@@ -1795,7 +1801,7 @@ msgstr ""
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 msgstr ""
 
-#: src/pages/About/index.tsx:104
+#: src/pages/About/index.tsx:109
 msgid "What is Delta Green?"
 msgstr ""
 
@@ -1823,11 +1829,11 @@ msgstr ""
 msgid "Will, spirit, and mental stability"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:708
+#: src/pages/Summary/index.tsx:711
 msgid "Willpower"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:683
+#: src/pages/Summary/index.tsx:686
 msgid "x5"
 msgstr ""
 
@@ -1863,12 +1869,19 @@ msgstr ""
 msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:78
 msgid ""
 "Your Agent can have up to five Personal Motivations. Add them during character \n"
-"creation or as your story develops. Each time your Agent experiences a Breaking \n"
-"Point, remove one motivation to represent their growing trauma."
+"    creation or as your story develops. Each time your Agent experiences a Breaking \n"
+"    Point, remove one motivation to represent their growing trauma."
 msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
+#~ msgid ""
+#~ "Your Agent can have up to five Personal Motivations. Add them during character \n"
+#~ "creation or as your story develops. Each time your Agent experiences a Breaking \n"
+#~ "Point, remove one motivation to represent their growing trauma."
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:642
 msgid "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW."

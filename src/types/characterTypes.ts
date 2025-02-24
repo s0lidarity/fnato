@@ -610,7 +610,7 @@ export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
 }
 // Hard Experience
 // Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond.
-// AJS: we need a way to represent the cap at 90% and that it is 5 skills of the user's choice
+// AJS start here: we need a way to represent the cap at 90% and that it is 5 skills of the user's choice
 export const HARD_EXPERIENCE: DamagedVeteranAdjustment = {
     id: "hard-experience",
     label: "Hard Experience",

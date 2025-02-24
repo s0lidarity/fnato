@@ -15,7 +15,7 @@ const StyledReminderTooltip = styled(ReminderTooltip)`
     margin-left: 0rem;
 `;
 
-// AJS TODO; finish this component
+// AJS TODO: let users choose appropriate skills for damaged veteran templates
 
 function DamagedVeteranCheckbox({ template }: {template: DamagedVeteranAdjustment}) {
     const { personalDetails, setPersonalDetails } = usePersonalDetails();

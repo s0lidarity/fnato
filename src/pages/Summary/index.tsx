@@ -512,6 +512,7 @@ const MMDTextArea = styled(TextArea).attrs<any>({
     min-height: 3rem;
     border: 0.0625rem solid black;
     resize: vertical;
+    height: fit-content;
 `;
 
 const ExportButton = styled(Button).attrs<any>({
@@ -769,7 +770,7 @@ export function Summary() {
                             <h3>{t`12. Motivations and Mental Disorders`}</h3>
                             <MMDTextArea 
                                 placeholder={t`List character motivations and any mental disorders...`}
-                                value={""}
+                                value={`${personalDetails.motivations}\n${personalDetails.personalMotivations.join(', ')}`}
                             />
                             <SanityTracker>
                                 <h3>{t`13. Incidents of San Loss Without Going Insane`}</h3>

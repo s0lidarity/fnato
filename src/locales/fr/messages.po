@@ -35,6 +35,7 @@ msgstr "(Choisir un type ci-dessous)"
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
 #: src/components/Header/ThemeMenu.tsx:112
+#: src/components/Header/NavigationMenu.tsx:113
 msgid "{0}"
 msgstr "{0}"
 
@@ -52,55 +53,55 @@ msgstr ""
 msgid "010111100001"
 msgstr "010111100001"
 
-#: src/pages/Summary/index.tsx:634
+#: src/pages/Summary/index.tsx:637
 msgid "1. Last Name, First Name, Middle Initial"
 msgstr "1. Nom, Prénom, Initiale du milieu"
 
-#: src/pages/Summary/index.tsx:724
+#: src/pages/Summary/index.tsx:727
 msgid "10. Physical Description"
 msgstr "10. Description physique"
 
-#: src/pages/Summary/index.tsx:740
+#: src/pages/Summary/index.tsx:743
 msgid "11. Bonds"
 msgstr "11. Liens"
 
-#: src/pages/Summary/index.tsx:767
+#: src/pages/Summary/index.tsx:770
 msgid "12. Motivations and Mental Disorders"
 msgstr "12. Motivations et troubles mentaux"
 
-#: src/pages/Summary/index.tsx:773
+#: src/pages/Summary/index.tsx:776
 msgid "13. Incidents of San Loss Without Going Insane"
 msgstr "13. Incidents de perte de SAN sans devenir fou"
 
-#: src/pages/Summary/index.tsx:638
+#: src/pages/Summary/index.tsx:641
 msgid "2. Profession (Rank if Applicable)"
 msgstr "2. Profession (Grade si applicable)"
 
-#: src/pages/Summary/index.tsx:644
+#: src/pages/Summary/index.tsx:647
 msgid "3. Employer"
 msgstr "3. Employeur"
 
-#: src/pages/Summary/index.tsx:648
+#: src/pages/Summary/index.tsx:651
 msgid "4. Nationality"
 msgstr "4. Nationalité"
 
-#: src/pages/Summary/index.tsx:654
+#: src/pages/Summary/index.tsx:657
 msgid "5. Sex"
 msgstr "5. Sexe"
 
-#: src/pages/Summary/index.tsx:658
+#: src/pages/Summary/index.tsx:661
 msgid "6. Age and D.O.B."
 msgstr "6. Âge et date de naissance"
 
-#: src/pages/Summary/index.tsx:664
+#: src/pages/Summary/index.tsx:667
 msgid "7. Education and Occupational History"
 msgstr "7. Formation et histoire professionnelle"
 
-#: src/pages/Summary/index.tsx:681
+#: src/pages/Summary/index.tsx:684
 msgid "8. Statistics"
 msgstr "8. Statistiques"
 
-#: src/pages/Summary/index.tsx:697
+#: src/pages/Summary/index.tsx:700
 msgid "9. Derived Attributes"
 msgstr "9. Attributs dérivés"
 
@@ -114,14 +115,14 @@ msgstr "Une poursuite de toute une vie ou plusieurs doctorats."
 
 #: src/components/Header/NavigationMenu.tsx:28
 #: src/components/Header/NavigationMenu.tsx:29
-msgid "About"
-msgstr "À propos"
+#~ msgid "About"
+#~ msgstr "À propos"
 
-#: src/pages/About/index.tsx:147
+#: src/pages/About/index.tsx:152
 msgid "About the Author"
 msgstr "À propos de l'auteur"
 
-#: src/pages/About/index.tsx:146
+#: src/pages/About/index.tsx:151
 msgid "About the Game"
 msgstr "À propos du jeu"
 
@@ -137,8 +138,8 @@ msgstr "Actif"
 msgid "Active Couch Potato"
 msgstr "Actif couch potato"
 
-#: src/pages/Summary/index.tsx:781
-#: src/pages/Summary/index.tsx:789
+#: src/pages/Summary/index.tsx:784
+#: src/pages/Summary/index.tsx:792
 msgid "adapted"
 msgstr "adapté"
 
@@ -200,7 +201,7 @@ msgstr "Attirant"
 msgid "Analysing thought"
 msgstr "Analyse du raisonnement"
 
-#: src/pages/About/index.tsx:78
+#: src/pages/About/index.tsx:83
 msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 msgstr "Andrew Sobiesiak est un ingénieur logiciel qui joue aux JDR sur table en ligne chaque semaine depuis 2017.<0/> Il ferait un terrible agent de terrain mais est prêt à combattre la guerre cosmique sisyphéenne. Il vit à <1>Seattle, WA</1> avec sa <2>femme, 5 chats et un chien</2>"
 
@@ -216,7 +217,7 @@ msgstr "Anthropologie"
 msgid "Appearance"
 msgstr "Apparence"
 
-#: src/pages/Summary/index.tsx:799
+#: src/pages/Summary/index.tsx:802
 msgid "Applicable Skill Sets"
 msgstr "Compétences applicables"
 
@@ -224,7 +225,7 @@ msgstr "Compétences applicables"
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Appliquer les compétences prédéfinies et choisir des compétences supplémentaires pour votre personnage."
 
-#: src/pages/About/index.tsx:124
+#: src/pages/About/index.tsx:129
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
@@ -281,7 +282,7 @@ msgstr "Croyances"
 msgid "Bland"
 msgstr "Plat"
 
-#: src/pages/Summary/index.tsx:753
+#: src/pages/Summary/index.tsx:756
 msgid "Bond description"
 msgstr "Description du lien"
 
@@ -330,7 +331,7 @@ msgstr ""
 "                    Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et son ligue de bowling.\n"
 "                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec."
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:163
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:103
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
 msgid "Bonus"
 msgstr "Bonus"
@@ -345,7 +346,7 @@ msgid "Bonus Points Remaining"
 msgstr "Points bonus restants"
 
 #: src/utils/CharacterGenerator.ts:108
-#: src/pages/Summary/index.tsx:718
+#: src/pages/Summary/index.tsx:721
 msgid "Breaking Point"
 msgstr "Point de rupture"
 
@@ -391,11 +392,11 @@ msgstr "Chat-like"
 msgid "Charisma"
 msgstr "Charisme"
 
-#: src/pages/Summary/index.tsx:764
+#: src/pages/Summary/index.tsx:767
 msgid "Check a Bond’s box when projecting sanity damage"
 msgstr "Cocher la case d'un lien lorsque vous projettez des dégâts de SAN"
 
-#: src/pages/Summary/index.tsx:811
+#: src/pages/Summary/index.tsx:814
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr "Cocher une compétence lorsque vous ratez un test de compétence. Après une session, ajoutez 1d4 à chaque compétence cochée et effacez le test."
 
@@ -416,11 +417,11 @@ msgstr "Choisir un package pour appliquer automatiquement les points bonus, ou s
 msgid "Church or support group"
 msgstr "Église ou groupe de soutien"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:115
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
 msgid "Clear"
 msgstr "Effacer"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:128
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Clear Descriptors"
 msgstr "Effacer les descriptions"
 
@@ -519,7 +520,7 @@ msgstr "Crédulité"
 msgid "Cunning, logic, and intuition"
 msgstr "Courage, logique, et intuition"
 
-#: src/pages/Summary/index.tsx:699
+#: src/pages/Summary/index.tsx:702
 msgid "Current"
 msgstr "Actuel"
 
@@ -544,7 +545,7 @@ msgstr "Date de naissance"
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Des décennies d'expérience, ou un diplôme de master ou de doctorat."
 
-#: src/pages/About/index.tsx:73
+#: src/pages/About/index.tsx:78
 msgid "Declassified Record"
 msgstr "Dossier déclassifié"
 
@@ -576,7 +577,7 @@ msgstr "Déterminé"
 msgid "Dexterity"
 msgstr "Dextérité"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
 msgid "Dice"
 msgstr "Dés"
 
@@ -588,8 +589,8 @@ msgstr "Fainéant"
 msgid "Disguise"
 msgstr "Disguise"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:125
-#: src/pages/Summary/index.tsx:684
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
+#: src/pages/Summary/index.tsx:687
 msgid "Distinguishing Features"
 msgstr "Caractéristiques distinctives"
 
@@ -646,7 +647,7 @@ msgstr "Entrez un sous-type"
 msgid "Example"
 msgstr "Exemple"
 
-#: src/pages/Summary/index.tsx:820
+#: src/pages/Summary/index.tsx:823
 msgid "Export as PDF"
 msgstr "Exporter en PDF"
 
@@ -825,7 +826,7 @@ msgstr "Machines lourdes"
 msgid "Heavy Weapons"
 msgstr "Armes lourdes"
 
-#: src/pages/Summary/index.tsx:783
+#: src/pages/Summary/index.tsx:786
 msgid "Helplessness"
 msgstr "Inutilité"
 
@@ -838,7 +839,7 @@ msgid "History"
 msgstr "Histoire"
 
 #: src/utils/CharacterGenerator.ts:87
-#: src/pages/Summary/index.tsx:703
+#: src/pages/Summary/index.tsx:706
 msgid "Hit Points"
 msgstr "Points de vie"
 
@@ -848,8 +849,8 @@ msgstr "Loisirs"
 
 #: src/components/Header/NavigationMenu.tsx:20
 #: src/components/Header/NavigationMenu.tsx:21
-msgid "Home"
-msgstr "Accueil"
+#~ msgid "Home"
+#~ msgstr "Accueil"
 
 #: src/types/characterTypes.ts:463
 #: src/types/characterTypes.ts:1230
@@ -864,7 +865,7 @@ msgstr "Gigantesque"
 msgid "HUMINT"
 msgstr "Renseignement humain"
 
-#: src/pages/About/index.tsx:110
+#: src/pages/About/index.tsx:115
 msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 msgstr "Si la communauté du renseignement était une famille, Delta Green serait l'oncle dont personne ne parle.<0/>Delta Green est un Jeu de Rôle sur Table qui utilise un système D100. Les Gestionnaires dirigent des opérations pour leurs agents, d'autres joueurs, où une opération gouvernementale secrète œuvre pour protéger le monde des horreurs cosmiques inconnues."
 
@@ -873,7 +874,7 @@ msgstr "Si la communauté du renseignement était une famille, Delta Green serai
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr "Si vous ne l'avez pas étudié, vous êtes condamné à le répéter"
 
-#: src/pages/About/index.tsx:93
+#: src/pages/About/index.tsx:98
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu Delta Green via des liens d'affiliation."
 
@@ -975,7 +976,7 @@ msgstr "Loi"
 msgid "Lawyer"
 msgstr "Avocat"
 
-#: src/pages/Summary/index.tsx:769
+#: src/pages/Summary/index.tsx:772
 msgid "List character motivations and any mental disorders..."
 msgstr "Listez les motivations de votre personnage et ses troubles mentaux..."
 
@@ -997,7 +998,7 @@ msgstr "Magnétique"
 msgid "Making things explode from far away"
 msgstr "Faire exploser des choses à distance"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:49
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:51
 msgid "Manual Input"
 msgstr "Saisie manuelle"
 
@@ -1009,7 +1010,7 @@ msgstr "De nombreux agents de Delta Green sont des officiers de la police fédé
 msgid "Marine"
 msgstr "Marine"
 
-#: src/pages/Summary/index.tsx:700
+#: src/pages/Summary/index.tsx:703
 msgid "Max"
 msgstr "Maximum"
 
@@ -1140,7 +1141,7 @@ msgstr "Conduire une voiture"
 msgid "Operating flying vehicles"
 msgstr "Conduire un véhicule aérien"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:75
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:77
 msgid "Options"
 msgstr "Options"
 
@@ -1170,13 +1171,13 @@ msgstr "Persévérant"
 msgid "Personal and physical appeal"
 msgstr "Appel personnel et physique"
 
-#: src/pages/Summary/index.tsx:629
+#: src/pages/Summary/index.tsx:632
 msgid "Personal Data"
 msgstr "Données personnelles"
 
 #: src/pages/TheCrucible/index.tsx:52
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:26
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
 msgid "Personal Details"
 msgstr "Détails personnels"
 
@@ -1185,21 +1186,28 @@ msgstr "Détails personnels"
 msgid "Personal Motivation {0}"
 msgstr "Motivation personnelle {0}"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:83
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:87
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:85
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
 msgid "Personal Motivations"
 msgstr "Motivations personnelles"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:52
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:74
 msgid ""
 "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
-"These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
-"powerful, these motivations aren't as strong as Bonds to other humans."
+"    These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
+"    powerful, these motivations aren't as strong as Bonds to other humans."
 msgstr ""
-"Les motivations personnelles représentent ce qui motive votre Agent au-delà de leurs liens. \n"
-"Cela peut être la foi, le patriotisme, les loisirs, ou même l'amour d'un animal de compagnie. \n"
-"Bien que puissantes, ces motivations ne sont pas aussi fortes que les liens avec d'autres humains."
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:52
+#~ msgid ""
+#~ "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
+#~ "These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
+#~ "powerful, these motivations aren't as strong as Bonds to other humans."
+#~ msgstr ""
+#~ "Les motivations personnelles représentent ce qui motive votre Agent au-delà de leurs liens. \n"
+#~ "Cela peut être la foi, le patriotisme, les loisirs, ou même l'amour d'un animal de compagnie. \n"
+#~ "Bien que puissantes, ces motivations ne sont pas aussi fortes que les liens avec d'autres humains."
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
 msgid "personal specialty (any)"
@@ -1251,7 +1259,7 @@ msgstr "Accueillant"
 msgid "Pliable"
 msgstr "Flexible"
 
-#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:50
+#: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:52
 msgid "Point Buy"
 msgstr "Achat par points"
 
@@ -1292,7 +1300,7 @@ msgstr "Profession"
 msgid "Program Manager"
 msgstr "Directeur de programme"
 
-#: src/pages/Summary/index.tsx:735
+#: src/pages/Summary/index.tsx:738
 msgid "Psychological Data"
 msgstr "Données psychologiques"
 
@@ -1346,7 +1354,7 @@ msgstr "Réinitialiser les liens"
 msgid "Reset Bonus Points"
 msgstr "Réinitialiser les points bonus"
 
-#: src/pages/Summary/index.tsx:822
+#: src/pages/Summary/index.tsx:825
 msgid "Reset everything"
 msgstr "Réinitialiser tout"
 
@@ -1399,7 +1407,7 @@ msgid "Sailor"
 msgstr "Marin"
 
 #: src/utils/CharacterGenerator.ts:101
-#: src/pages/Summary/index.tsx:713
+#: src/pages/Summary/index.tsx:716
 msgid "Sanity"
 msgstr "Sanité"
 
@@ -1415,8 +1423,8 @@ msgstr "Science (Physique théorique)"
 msgid "Scientist"
 msgstr "Scientifique"
 
-#: src/pages/Summary/index.tsx:682
-#: src/pages/Summary/index.tsx:741
+#: src/pages/Summary/index.tsx:685
+#: src/pages/Summary/index.tsx:744
 msgid "Score"
 msgstr "Note"
 
@@ -1506,7 +1514,7 @@ msgstr "Époux ou ex-époux"
 msgid "Standard Professions"
 msgstr "Professions standard"
 
-#: src/components/Header/NavigationMenu.tsx:110
+#: src/components/Header/NavigationMenu.tsx:102
 msgid "Start"
 msgstr "Commencer"
 
@@ -1518,7 +1526,7 @@ msgstr "commence à"
 msgid "Starts at:"
 msgstr "Commence à:"
 
-#: src/pages/Summary/index.tsx:677
+#: src/pages/Summary/index.tsx:680
 msgid "Statistical Data"
 msgstr "Données statistiques"
 
@@ -1558,10 +1566,10 @@ msgstr "Robuste"
 
 #: src/components/Header/NavigationMenu.tsx:44
 #: src/components/Header/NavigationMenu.tsx:45
-msgid "Summary"
-msgstr "Résumé"
+#~ msgid "Summary"
+#~ msgstr "Résumé"
 
-#: src/pages/About/index.tsx:88
+#: src/pages/About/index.tsx:93
 msgid "Support"
 msgstr "Support"
 
@@ -1589,7 +1597,7 @@ msgstr "Nager"
 msgid "Swole"
 msgstr "Swole"
 
-#: src/pages/About/index.tsx:54
+#: src/pages/About/index.tsx:59
 msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 msgstr "Jetez un coup d'œil derrière le rideau. N'hésitez pas à :<0><1>signaler un <2>problème</2></1><3>laisser des <4>commentaires/demandes de fonctionnalités</4></3><5>ou ⭐️ Étoiler le projet pour booster l'ego de l'auteur.</5></0>"
 
@@ -1598,8 +1606,6 @@ msgid "Tenacious"
 msgstr "Persévérant"
 
 #: src/pages/TheCrucible/index.tsx:42
-#: src/components/Header/NavigationMenu.tsx:36
-#: src/components/Header/NavigationMenu.tsx:37
 msgid "The Crucible"
 msgstr "Le Creuset"
 
@@ -1627,7 +1633,7 @@ msgstr "Les choses que l'homme n'était pas destiné à savoir"
 msgid "Title:"
 msgstr "Titre :"
 
-#: src/pages/About/index.tsx:138
+#: src/pages/About/index.tsx:143
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "pour acheter les documents sources de Delta Green et en savoir plus."
 
@@ -1675,15 +1681,15 @@ msgstr "Oubliable"
 msgid "Unyielding"
 msgstr "Indomptable"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:130
 msgid "Use All Suggestions"
 msgstr "Utiliser toutes les suggestions"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:117
 msgid "Use Suggested"
 msgstr "Utiliser les suggestions"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:21
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:24
 msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character."
 msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles sont toutes facultatives mais peuvent vous aider à vous mettre dans les pieds de votre personnage."
 
@@ -1691,11 +1697,11 @@ msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles son
 msgid "Vigorous"
 msgstr "Vigorant"
 
-#: src/pages/Summary/index.tsx:775
+#: src/pages/Summary/index.tsx:778
 msgid "Violence"
 msgstr "Violence"
 
-#: src/pages/About/index.tsx:137
+#: src/pages/About/index.tsx:142
 msgid "Visit"
 msgstr "Visitez"
 
@@ -1719,7 +1725,7 @@ msgstr "Guerrier de fin de semaine"
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 msgstr "Ce qui se passe à l'opéra reste ici. De toute façon, personne en dehors de l'organisation ne vous croirait."
 
-#: src/pages/About/index.tsx:104
+#: src/pages/About/index.tsx:109
 msgid "What is Delta Green?"
 msgstr "Qu'est-ce que Delta Green ?"
 
@@ -1747,11 +1753,11 @@ msgstr "Volonté"
 msgid "Will, spirit, and mental stability"
 msgstr "Volonté, esprit et stabilité mentale"
 
-#: src/pages/Summary/index.tsx:708
+#: src/pages/Summary/index.tsx:711
 msgid "Willpower"
 msgstr "Volonté"
 
-#: src/pages/Summary/index.tsx:683
+#: src/pages/Summary/index.tsx:686
 msgid "x5"
 msgstr "x5"
 
@@ -1787,12 +1793,19 @@ msgstr "Vous voyagez dans des terres étranges, rencontrez des personnes intére
 msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 msgstr "Vous êtes un membre de l'Armée des États-Unis, de la Marine ou de l'Air Force. Vous avez été formé à la lutte et à la survie. Vous avez vu des choses qui font que le citoyen moyen crie."
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:78
 msgid ""
 "Your Agent can have up to five Personal Motivations. Add them during character \n"
-"creation or as your story develops. Each time your Agent experiences a Breaking \n"
-"Point, remove one motivation to represent their growing trauma."
-msgstr "Votre Agent peut avoir jusqu'à cinq motivations personnelles. Ajoutez-les lors de la création du personnage ou au fur et à mesure que votre histoire se développe. Chaque fois que votre Agent subit un point de rupture, retirez une motivation pour représenter leur traumatisme en croissance."
+"    creation or as your story develops. Each time your Agent experiences a Breaking \n"
+"    Point, remove one motivation to represent their growing trauma."
+msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
+#~ msgid ""
+#~ "Your Agent can have up to five Personal Motivations. Add them during character \n"
+#~ "creation or as your story develops. Each time your Agent experiences a Breaking \n"
+#~ "Point, remove one motivation to represent their growing trauma."
+#~ msgstr "Votre Agent peut avoir jusqu'à cinq motivations personnelles. Ajoutez-les lors de la création du personnage ou au fur et à mesure que votre histoire se développe. Chaque fois que votre Agent subit un point de rupture, retirez une motivation pour représenter leur traumatisme en croissance."
 
 #: src/types/characterTypes.ts:642
 msgid "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW."

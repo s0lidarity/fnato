@@ -18,9 +18,11 @@ const ContentContainer = styled.div.attrs<any>({
     text-wrap: pretty;
 `;
 
-const content = t`Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`;
+
 
 function PersonalDetailsGuidance() {
+    const content = t`Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`;
+
     return (
         <PersonalDetailsGuidanceContainer>
             <Guidance title={t`Personal Details`} buttonText={t`Personal Details`}>
