@@ -1494,8 +1494,8 @@ export const character = {
     ],
     id: "1234567890",
     prompts: {
-        // How old is your Agent? What does he or she look like? What’s his or her nationality?
-        // What’s your Agent’s name? What are your Agent’s job and personal life like?
+        // How old is your Agent? What does he or she look like? What's his or her nationality?
+        // What's your Agent's name? What are your Agent's job and personal life like?
         // Why does Delta Green trust your Agent to help with its deadly and secretive mission?
         // And why, despite all the terrifying dangers, does your Agent answer the call?
     },
