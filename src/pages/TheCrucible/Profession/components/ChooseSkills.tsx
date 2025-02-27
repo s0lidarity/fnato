@@ -128,7 +128,7 @@ function ChooseSkills() {
                         checked={selectedSkillsIds.includes(skill.id)} 
                         onChange={() => toggleSkill(skill.id)}
                     />
-                    {generateSkillLabel(skill)} [${skill.value}]
+                    {generateSkillLabel(skill)} [{skill.value}]
                 </StyledSkillContainer>
         ));
     };

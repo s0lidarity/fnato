@@ -194,7 +194,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         
         professionSkills.forEach(profSkill => {
             if (profSkill.subType) {
-                // For subtyped skills, we need to create a new skill entry
+                // For subtyped skills, we need to create a new skill entry or update existing one
                 const baseSkill = defaultSkills.find(s => 
                     s.name.toLowerCase() === profSkill.name.toLowerCase()
                 );
@@ -204,31 +204,50 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                     return;
                 }
 
-                const skillId = createSkillId(profSkill.name, profSkill.subType);
+                const skillId = profSkill.id || createSkillId(profSkill.name, profSkill.subType);
                 
-                // Remove any existing skill with the same ID
-                const existingIndex = updatedSkills.findIndex(s => s.id === skillId);
+                // Check if this subtyped skill already exists
+                const existingIndex = updatedSkills.findIndex(s => 
+                    (s.id === skillId) || 
+                    (s.name === profSkill.name && s.subType === profSkill.subType)
+                );
+                
                 if (existingIndex !== -1) {
-                    updatedSkills.splice(existingIndex, 1);
+                    // Update existing subtyped skill
+                    updatedSkills[existingIndex] = {
+                        ...updatedSkills[existingIndex],
+                        value: profSkill.value,
+                        bonus: 0
+                    };
+                } else {
+                    // Add the new subtyped skill
+                    updatedSkills.push({
+                        ...baseSkill,
+                        id: skillId,
+                        subType: profSkill.subType,
+                        value: profSkill.value,
+                        bonus: 0
+                    });
                 }
-
-                // Add the new subtyped skill
-                updatedSkills.push({
-                    ...baseSkill,
-                    id: skillId,
-                    subType: profSkill.subType,
-                    value: profSkill.value,
-                    bonus: 0
-                });
             } else {
                 // For regular skills, update the existing entry
-                const existingIndex = updatedSkills.findIndex(s => s.id === profSkill.id);
+                const existingIndex = updatedSkills.findIndex(s => 
+                    s.id === profSkill.id || 
+                    (s.name === profSkill.name && !s.subType)
+                );
+                
                 if (existingIndex !== -1) {
                     updatedSkills[existingIndex] = {
                         ...updatedSkills[existingIndex],
                         value: profSkill.value,
                         bonus: 0
                     };
+                } else {
+                    // If somehow the skill doesn't exist in default skills, add it
+                    updatedSkills.push({
+                        ...profSkill,
+                        bonus: 0
+                    });
                 }
             }
         });
