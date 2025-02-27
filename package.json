@@ -35,6 +35,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^19.5.0",
 		"@commitlint/config-conventional": "^19.5.0",
+		"@lingui/babel-plugin-extract-messages": "^5.2.0",
 		"@lingui/babel-plugin-lingui-macro": "^5.1.2",
 		"@lingui/cli": "^5.1.2",
 		"@lingui/vite-plugin": "^5.1.2",
