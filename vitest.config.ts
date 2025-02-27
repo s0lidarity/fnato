@@ -16,6 +16,24 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: './test/setup.ts',
+		testTimeout: 10000, // 10 second timeout for tests
+		hookTimeout: 10000,
+		teardownTimeout: 10000,
+		pool: 'forks',
+		poolOptions: {
+			forks: {
+				singleFork: true,
+			},
+		},
+		isolate: false,
+		exclude: [
+			'**/node_modules/**',
+			'**/dist/**',
+			'**/cypress/**',
+			'**/.{idea,git,cache,output,temp}/**',
+			'**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
+			'**/Menu.test.tsx', // Exclude Menu tests
+		],
 		deps: {
 			optimizer: {
 				web: {

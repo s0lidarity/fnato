@@ -1,6 +1,5 @@
 import { ComponentChildren } from 'preact';
 import { ThemeProvider } from 'styled-components';
-import { LocationProvider } from 'preact-iso';
 import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react';
 
@@ -10,7 +9,12 @@ const mockTheme = {
     canvas: '#222222',
     material: '#333333',
     primaryText: '#ffffff',
-  // Add other properties as needed
+    hoverBackground: '#444444',
+    focusSecondary: '#555555',
+    progress: '#ffffff',
+    border: '1px solid #666666',
+    shadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+    // Add other properties as needed
 };
 
 interface MockProviderProps {
@@ -21,11 +25,9 @@ function MockProvider ({ children }: MockProviderProps) {
     return (
         <div>
             <ThemeProvider theme={mockTheme}>
-                <LocationProvider>
-                    <I18nProvider i18n={i18n}>
-                        {children}
-                    </I18nProvider>
-                </LocationProvider>
+                <I18nProvider i18n={i18n}>
+                    {children}
+                </I18nProvider>
             </ThemeProvider>
         </div>
     );
