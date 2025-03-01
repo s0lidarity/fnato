@@ -71,6 +71,9 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
         6: msg({
             message: "Soft"
         }),
+        7: msg({
+            message: "Sedentary"
+        }),
         8: msg({
             message: "Couch Potato"
         }),
@@ -221,6 +224,12 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
         7: msg({
             message: "Incurious"
         }),
+        8: msg({
+            message: "Simple-minded"
+        }),
+        9: msg({
+            message: "Does their 'own research'"
+        }),
         10: msg({
             message: "Reads occasionally"
         }),
@@ -258,6 +267,12 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
         }),
         5: msg({
             message: "Impulsive"
+        }),
+        6: msg({
+            message: "Wishy-washy"
+        }),
+        7: msg({
+            message: "Indecisive"
         }),
         8: msg({
             message: "Pliable"
@@ -311,6 +326,9 @@ export const DISTINGUISHING_FEATURES: { [key in keyof Statistics]: {[score: numb
         }),
         8: msg({
             message: "Forgettable"
+        }),
+        9: msg({
+            message: "Plain"
         }),
         10: msg({
             message: "Affable"

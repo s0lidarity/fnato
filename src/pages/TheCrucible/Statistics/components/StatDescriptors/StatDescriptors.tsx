@@ -87,7 +87,7 @@ function StatDescriptors() {
         Object.keys(tempStats).forEach(key => {
             const statKey = key as keyof typeof DISTINGUISHING_FEATURES;
             const score = tempStats[statKey].score;
-            const suggestedFeature = DISTINGUISHING_FEATURES[statKey][score];
+            const suggestedFeature = i18n._(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
 
             if(suggestedFeature){
                 tempStats[statKey].distinguishingFeature = suggestedFeature;
