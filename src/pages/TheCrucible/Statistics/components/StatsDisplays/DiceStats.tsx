@@ -84,6 +84,7 @@ function DiceStats() {
         charisma: []
     });
 
+    // AJS: start here, object Object rendering in distinguishing features after roll
     function rollStats(stats: Statistics): { updatedStats: Statistics, newRollSets: Record<keyof Statistics, number[]> } {
         const updatedStats = { ...stats };
         const newRollSets: Record<keyof Statistics, number[]> = {
