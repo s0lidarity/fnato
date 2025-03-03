@@ -60,6 +60,9 @@ const StyledHeading = styled.h2.attrs<any>({
 function StatDescriptors() {
     const { stats, setStats } = useStats();
     const { i18n } = useLingui();
+
+    // AJS Start here: the summary is always showing the translated/default distinguishing feature msg
+    // need to be able to use the user inputted one
     const handleChange = (e, statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };
@@ -76,7 +79,6 @@ function StatDescriptors() {
         setStats(tempStats);
     };
 
-    // need to limit this to the relevant statkey
     const assignSuggested = (statKey) => {
         const suggestedFeature = i18n._(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: suggestedFeature}})
