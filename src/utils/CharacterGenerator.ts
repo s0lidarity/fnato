@@ -1,4 +1,5 @@
 import { msg } from '@lingui/core/macro';
+import { i18n } from '@lingui/core';
 
 import { RollResult } from './../types/diceTypes';
 import {
@@ -11,6 +12,7 @@ import {
 	Stat,
 	Statistics,
 	STAT_REMINDERS,
+	STAT_LABEL_MSGS,
 } from '../types/characterTypes';
 import { generateDefaultSkills } from '../providers/defaultValues';
 
@@ -144,9 +146,11 @@ export function generateStat(name: string, scoreValue: number): Stat {
 	};
 	return {
 		label: name.charAt(0).toUpperCase() + name.slice(1),
+		labelMsg: STAT_LABEL_MSGS[name],
 		score: scoreValue,
 		x5: scoreValue * 5,
-		distinguishingFeature: DISTINGUISHING_FEATURES[name][scoreValue],
+		distinguishingFeature: i18n._(DISTINGUISHING_FEATURES[name][scoreValue]),
+		distinguishingFeatureMsg: DISTINGUISHING_FEATURES[name][scoreValue],
 		reminderText: STAT_REMINDERS[name],
 	}
 }

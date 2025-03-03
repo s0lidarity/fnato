@@ -11,6 +11,7 @@ import {
 import { VerticalHeader } from '../styles/CharacterSheet.styles';
 import { MMDTextArea } from '../styles/PersonalData.styles';
 import { DerivedAttributes, DetailedDescription, Stat } from '../../../types/characterTypes';
+import { i18n } from '@lingui/core';
 
 interface StatisticalDataSectionProps {
     stats: Stat[];
@@ -38,7 +39,7 @@ export const StatisticalDataSection = ({
                         <label>{stat}</label>
                         <input type="number" value={value.score} readOnly />
                         <input type="text" className="multiplier" value={value.x5} readOnly />
-                        <input type="text" className="feature" value={value.distinguishingFeature} readOnly />
+                        <input type="text" className="feature" value={i18n._(value.distinguishingFeatureMsg)} readOnly />
                     </StatRow>
                 ))}
 

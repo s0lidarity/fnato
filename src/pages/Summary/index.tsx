@@ -691,7 +691,7 @@ export function Summary() {
                                     <label>{i18n._(stats[stat].labelMsg)}</label>
                                     <input type="number" value={value.score} />
                                     <input type="text" className="multiplier" value={value.x5} />
-                                    <input type="text" className="feature" value={value.distinguishingFeature} />
+                                    <input type="text" className="feature" value={i18n._(value.distinguishingFeatureMsg)} />
                                 </StatRow>
                             ))}
 
