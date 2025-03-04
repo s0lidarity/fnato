@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { IoMdArrowForward, IoMdArrowBack } from "react-icons/io";
-import { Button, ProgressBar } from "react95";
+import ProgressBarWrapper from "../../../components/ProgressBarWrapper";
+import ButtonWrapper from "../../../components/ButtonWrapper";
+import { Button } from "react95";
 
 const ArrowNavigatorContainer = styled.div.attrs<any>({
     'data-component': 'TheCrucible/ArrowNavigatorContainer',
@@ -13,7 +15,7 @@ const ArrowNavigatorContainer = styled.div.attrs<any>({
     padding: 0 0.5rem;
 `;
 
-const StyledProgressBar = styled(ProgressBar).attrs<any>({
+const StyledProgressBar = styled(ProgressBarWrapper).attrs<any>({
     'data-component': 'TheCrucible/StyledProgressBar',
     'data-testid': 'styled-progress-bar',
 })`
@@ -42,17 +44,17 @@ function ArrowNavigators({ activeTab, maxTab, setActiveTab }: ArrowNavigatorsPro
 
     return (
         <ArrowNavigatorContainer>
-            <Button onClick={() => handlePrevious(activeTab)}>
+            <ButtonWrapper onClick={() => handlePrevious(activeTab)}>
                 <IoMdArrowBack />
-            </Button>
+            </ButtonWrapper>
             {/* AJS TODO stop using magic number and calculate by maxTabs */}
             <StyledProgressBar 
                 value={(activeTab * 20) + 20} 
                 variant="tile"
             />
-            <Button onClick={() => handleNext(activeTab)}>
+            <ButtonWrapper onClick={() => handleNext(activeTab)}>
                 <IoMdArrowForward />
-            </Button>
+            </ButtonWrapper>
         </ArrowNavigatorContainer>
     );
 }

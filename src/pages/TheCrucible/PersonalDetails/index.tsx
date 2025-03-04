@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { JSX } from 'preact';
-import { TextInput, Button } from 'react95';
+import { Button } from 'react95';
 import { useState } from 'preact/hooks';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 import { t } from '@lingui/core/macro';
@@ -14,6 +14,8 @@ import Dialogue from '../../../components/Dialogue/Dialogue';
 import SexPicker from './SexPicker';
 import { ButtonsContainer } from '../../Summary';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
+import { TextInputWrapper } from '../../../components/wrappers';
+import { ButtonWrapper } from '../../../components/wrappers';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -78,7 +80,7 @@ function PersonalDetails() {
                     <label htmlFor="firstName">
                         <PageNumberTooltip pageNumber={1}>{t`First Name`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="firstName"
                         name="firstName"
                         value={personalDetails.firstName}
@@ -91,7 +93,7 @@ function PersonalDetails() {
                     <label htmlFor="lastName">
                         <PageNumberTooltip pageNumber={1}>{t`Last Name`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="lastName"
                         name="lastName"
                         value={personalDetails.lastName}
@@ -104,7 +106,7 @@ function PersonalDetails() {
                     <label htmlFor="middleInitial">
                         <PageNumberTooltip pageNumber={1}>{t`Middle Initial`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="middleInitial"
                         name="middleInitial"
                         value={personalDetails.middleInitial || ''}
@@ -117,7 +119,7 @@ function PersonalDetails() {
                     <label htmlFor="alias">
                         <PageNumberTooltip pageNumber={3}>{t`Alias`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="alias"
                         name="alias"
                         value={personalDetails.alias || ''}
@@ -130,9 +132,9 @@ function PersonalDetails() {
                     <label htmlFor="dateOfBirth">
                         <PageNumberTooltip pageNumber={1}>{t`Date of Birth`}</PageNumberTooltip>
                     </label>
-                    <Button onClick={() => setShowDateOfBirth(true)}>
+                    <ButtonWrapper onClick={() => setShowDateOfBirth(true)}>
                         {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
-                    </Button>
+                    </ButtonWrapper>
                     <Dialogue
                         title={t`Date of Birth`}
                         show={showDateOfBirth}
@@ -148,7 +150,7 @@ function PersonalDetails() {
                             }}
                         />
                         <ButtonContainer>
-                            <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
+                            <ButtonWrapper onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></ButtonWrapper>
                         </ButtonContainer>
                     </Dialogue>
                 </InputContainer>
@@ -161,7 +163,7 @@ function PersonalDetails() {
                     <label htmlFor="appearance">
                         <PageNumberTooltip pageNumber={3}>{t`Appearance`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="appearance"
                         name="appearance"
                         value={personalDetails.appearance}
@@ -176,7 +178,7 @@ function PersonalDetails() {
                     <label htmlFor="employer">
                         <PageNumberTooltip pageNumber={1}>{t`Employer`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="employer"
                         name="employer"
                         value={personalDetails.employer || ''}
@@ -189,7 +191,7 @@ function PersonalDetails() {
                     <label htmlFor="nationality">
                         <PageNumberTooltip pageNumber={1}>{t`Nationality`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="nationality"
                         name="nationality"
                         value={personalDetails.nationality || ''}
@@ -202,7 +204,7 @@ function PersonalDetails() {
                     <label htmlFor="education">
                         <PageNumberTooltip pageNumber={1}>{t`Education`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="education"
                         name="education"
                         value={personalDetails.education || ''}
@@ -215,7 +217,7 @@ function PersonalDetails() {
                     <label htmlFor="personality">
                         <PageNumberTooltip pageNumber={3}>{t`Personality`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="personality"
                         name="personality"
                         value={personalDetails.personality || ''}
@@ -230,7 +232,7 @@ function PersonalDetails() {
                     <label htmlFor="beliefs">
                         <PageNumberTooltip pageNumber={3}>{t`Beliefs`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="beliefs"
                         name="beliefs"
                         value={personalDetails.beliefs || ''}
@@ -245,7 +247,7 @@ function PersonalDetails() {
                     <label htmlFor="hobbies">
                         <PageNumberTooltip pageNumber={3}>{t`Hobbies`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="hobbies"
                         name="hobbies"
                         value={personalDetails.hobbies || ''}
@@ -260,7 +262,7 @@ function PersonalDetails() {
                     <label htmlFor="obsessions">
                         <PageNumberTooltip pageNumber={3}>{t`Obsessions`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="obsessions"
                         name="obsessions"
                         value={personalDetails.obsessions || ''}
@@ -275,7 +277,7 @@ function PersonalDetails() {
                     <label htmlFor="motivations">
                         <PageNumberTooltip pageNumber={1}>{t`Motivations`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="motivations"
                         name="motivations"
                         value={personalDetails.motivations || ''}
@@ -290,7 +292,7 @@ function PersonalDetails() {
                     <label htmlFor="admire">
                         <PageNumberTooltip pageNumber={3}>{t`Something you admire`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="admire"
                         name="admire"
                         value={personalDetails.admire || ''}
@@ -305,7 +307,7 @@ function PersonalDetails() {
                     <label htmlFor="dislike">
                         <PageNumberTooltip pageNumber={3}>{t`Something you dislike`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="dislike"
                         name="dislike"
                         value={personalDetails.dislike || ''}
@@ -320,7 +322,7 @@ function PersonalDetails() {
                     <label htmlFor="trustInDeltaGreen">
                         <PageNumberTooltip pageNumber={3}>{t`Why does Delta Green trust this agent?`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="trustInDeltaGreen"
                         name="trustInDeltaGreen"
                         value={personalDetails.trustInDeltaGreen || ''}
@@ -335,7 +337,7 @@ function PersonalDetails() {
                     <label htmlFor="deltaGreenAgreement">
                         <PageNumberTooltip pageNumber={3}>{t`Why does this agent serve Delta Green?`}</PageNumberTooltip>
                     </label>
-                    <TextInput
+                    <TextInputWrapper
                         id="deltaGreenAgreement"
                         name="deltaGreenAgreement"
                         value={personalDetails.deltaGreenAgreement || ''}
@@ -349,7 +351,7 @@ function PersonalDetails() {
                 <PersonalMotivations />
             </FormContainer>
             <ButtonsContainer>
-                <Button onClick={resetPersonalDetails}>{t`Reset Personal Details`}</Button>
+                <ButtonWrapper onClick={resetPersonalDetails}>{t`Reset Personal Details`}</ButtonWrapper>
             </ButtonsContainer>
         </div>
     );

@@ -61,8 +61,6 @@ function StatDescriptors() {
     const { stats, setStats } = useStats();
     const { i18n } = useLingui();
 
-    // AJS Start here: the summary is always showing the translated/default distinguishing feature msg
-    // need to be able to use the user inputted one
     const handleChange = (e, statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };

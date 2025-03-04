@@ -240,7 +240,7 @@ const SkillsGrid = styled.div.attrs<any>({
 })`
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
+    grid-template-rows: ${props => `repeat(${Math.ceil(props.$skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
     gap: 0.125rem;
     font-size: 0.8rem;
@@ -764,7 +764,7 @@ export function Summary() {
                                     // AJS starting point, add reminder text about purpose of checbox
                                 ))}
                                 <label>
-                                    {t`Check a Bond’s box when projecting sanity damage`}
+                                    {t`Check a Bond's box when projecting sanity damage`}
                                 </label>
                             </BondsSection>
                             <h3>{t`12. Motivations and Mental Disorders`}</h3>
@@ -802,7 +802,7 @@ export function Summary() {
                             <VerticalHeaderText>{t`Applicable Skill Sets`}</VerticalHeaderText>
                         </VerticalHeader>
                         <div>
-                            <SkillsGrid skillCount={skills.length}>
+                            <SkillsGrid $skillCount={skills.length}>
                                 {skills.map((skill) => (
                                     <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
                                         <input type="checkbox" checked={false} />

@@ -35,7 +35,7 @@ export const SkillsGrid = styled.div.attrs<any>({
 })`
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
+    grid-template-rows: ${props => `repeat(${Math.ceil(props.$skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
     gap: 0.125rem;
     font-size: 0.8rem;

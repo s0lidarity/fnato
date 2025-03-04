@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { TextInput } from 'react95';
 import { t } from '@lingui/core/macro';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
+import TextInputWrapper from '../../../components/TextInputWrapper';
 
 const PersonalMotivationInputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-motivation-input-container',
@@ -22,7 +22,7 @@ const StyledLabel = styled.label.attrs<any>({
     min-width: fit-content;
 `;
 
-const StyledTextInput = styled(TextInput).attrs<any>({
+const StyledTextInput = styled(TextInputWrapper).attrs<any>({
     'data-testid': 'personal-motivation-input',
     'data-component': 'PersonalDetails/PersonalMotivationInput',
 })`
