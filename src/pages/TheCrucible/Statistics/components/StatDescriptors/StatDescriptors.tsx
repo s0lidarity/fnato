@@ -1,8 +1,8 @@
-import { Button, TextInput } from "react95";
 import styled from "styled-components";
 import { Trans } from '@lingui/react/macro';
 import { useLingui } from '@lingui/react';
 
+import { ButtonWrapper as Button, TextInputWrapper as TextInput } from "../../../../../components/wrappers";
 import { useStats } from "../../../../../providers/StatisticsContext";
 import { DISTINGUISHING_FEATURES } from "../../.../../../../../types/characterTypes";
 

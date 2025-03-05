@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { JSX } from "react";
 import { Radio } from "react95";
-import TextInputWrapper from "../../../components/TextInputWrapper";
+import { TextInputWrapper as TextInput } from "../../../components/wrappers";
 
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
 import PageNumberTooltip from "../../../components/PageNumberTooltip/PageNumberTooltip";
@@ -16,7 +16,7 @@ const RadioButtons = styled.div.attrs<any>({
     gap: 1rem;
 `;
 
-const StyledTextInput = styled(TextInputWrapper).attrs<any>({
+const StyledTextInput = styled(TextInput).attrs<any>({
     'data-component': 'PersonalDetails/StyledTextInput',
     'data-testid': 'personal-details-styled-text-input',
 })`

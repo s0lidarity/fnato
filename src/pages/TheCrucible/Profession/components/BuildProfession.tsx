@@ -1,7 +1,7 @@
-import { TextInput } from 'react95';
 import styled from 'styled-components';
 import { msg } from '@lingui/core/macro';
 
+import { TextInputWrapper as TextInput } from '../../../../components/wrappers';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { IProfession } from '../../../../types/characterTypes';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';

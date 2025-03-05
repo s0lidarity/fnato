@@ -1,6 +1,8 @@
-import { Window, WindowContent, WindowHeader, Button } from 'react95';
+import { Window, WindowContent, WindowHeader } from 'react95';
 import { IoCloseSharp } from "react-icons/io5";
 import styled from 'styled-components';
+
+import { ButtonWrapper as Button } from '../wrappers';
 
 // AJS this is a modal, not a dialogue. Should be renamed
 type DialogueProps = {

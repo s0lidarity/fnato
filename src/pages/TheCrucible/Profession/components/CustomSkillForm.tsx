@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { NumberInput, Button } from 'react95';
+import { NumberInput } from 'react95';
 import { t } from '@lingui/core/macro';
 
+import { ButtonWrapper as Button } from '../../../../components/wrappers';
 import { useSkills } from '../../../../providers/SkillsContext';
 import BuildProfession from './BuildProfession';
 import CustomSkillInput from './CustomSkillInput';

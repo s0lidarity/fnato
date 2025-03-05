@@ -1,9 +1,9 @@
 import { useState } from 'preact/hooks';
-import { Button, TextInput } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
 
+import { TextInputWrapper as TextInput, ButtonWrapper as Button } from '../../../../components/wrappers';
 import { IoPencilOutline, IoCheckmarkSharp } from "react-icons/io5";
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';

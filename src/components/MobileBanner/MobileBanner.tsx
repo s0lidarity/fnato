@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Button, Window, WindowContent, WindowHeader } from 'react95';
+import { Window, WindowContent, WindowHeader } from 'react95';
 import { IoCloseSharp } from 'react-icons/io5';
 
+import { ButtonWrapper as Button } from '../wrappers';
 interface MobileBannerProps {
 	onDismiss: () => void;
 }

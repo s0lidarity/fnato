@@ -9,7 +9,7 @@ import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
-import { Button } from 'react95';
+import { ButtonWrapper as Button } from '../../components/wrappers';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
 
 

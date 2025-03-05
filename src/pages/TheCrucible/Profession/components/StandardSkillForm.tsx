@@ -7,7 +7,7 @@ import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 import { useEffect, useState } from 'preact/hooks';
 import ChooseProfession from './ChooseProfession';
-import { Button } from 'react95';
+import { ButtonWrapper as Button } from '../../../../components/wrappers';
 import { MAX_BONUS_POINTS } from '../../../../constants/gameRules';
 
 const SkillFormContainer = styled.div.attrs<any>({

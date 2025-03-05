@@ -1,10 +1,10 @@
 import { useState } from 'preact/hooks';
 import styled from 'styled-components';
-import { Checkbox, GroupBox, Button } from 'react95';
+import { Checkbox } from 'react95';
 import { Trans } from '@lingui/react/macro';
-import { Trans as Trans2 } from '@lingui/react';
 import { t } from '@lingui/core/macro';
 
+import { ButtonWrapper as Button, GroupBoxWrapper as GroupBox } from '../../../../components/wrappers';
 import { useSkills } from '../../../../providers/SkillsContext';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter';
 import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
