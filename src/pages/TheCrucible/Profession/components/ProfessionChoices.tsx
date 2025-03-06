@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { GroupBox } from 'react95';
 import { Trans } from '@lingui/react';
 import { t } from '@lingui/core/macro';
+import { GroupBox } from 'react95';
 
 import ChooseSkills from './ChooseSkills';
 import { useSkills } from '../../../../providers/SkillsContext';
-
 
 const PCContainer = styled.div.attrs<any>({
     'data-testid': 'profession-choices--container',

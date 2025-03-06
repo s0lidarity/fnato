@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { GroupBox } from 'react95';
 import { t } from '@lingui/core/macro';
+import { GroupBox } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import PersonalMotivationInput from './PersonalMotivationInput';
 import { MAX_PERSONAL_MOTIVATIONS } from '../../../constants/gameRules';
 import Guidance from '../../../components/Guidance/Guidance';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
-
 const PersonalMotivationsContainer = styled.div.attrs<any>({
     'data-testid': 'personal-motivations-container',
     'data-component': 'PersonalDetails/PersonalMotivationsContainer',

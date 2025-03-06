@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { JSX } from "react";
-import { Radio } from "react95";
-import { TextInputWrapper as TextInput } from "../../../components/wrappers";
+import { Radio, TextInput } from "react95";
 
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
 import PageNumberTooltip from "../../../components/PageNumberTooltip/PageNumberTooltip";

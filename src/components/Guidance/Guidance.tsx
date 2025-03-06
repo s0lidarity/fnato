@@ -1,11 +1,9 @@
 import { ComponentChildren } from 'preact';
 import { useState } from 'preact/hooks';
-import { Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { FaWindowMaximize } from "react-icons/fa6";
-
-import { ButtonWrapper as Button } from '../wrappers';
 
 // AJS: TOOD Make the width stay consistent instead of shrinking when minimized
 const GuidanceContainer = styled.div`

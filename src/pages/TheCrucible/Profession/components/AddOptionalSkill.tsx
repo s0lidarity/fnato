@@ -1,8 +1,8 @@
 import { useState } from "preact/hooks";
 import styled from "styled-components";
 import { IoAddSharp } from "react-icons/io5";
+import { TextInput, Button } from "react95";
 
-import { TextInputWrapper as TextInput, ButtonWrapper as Button } from "../../../../components/wrappers";
 import { useSkills } from "../../../../providers/SkillsContext";
 import Dialogue from "../../../../components/Dialogue/Dialogue";
 

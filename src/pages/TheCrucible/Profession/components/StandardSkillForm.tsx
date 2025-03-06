@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
+import { Button } from 'react95';
 
 import { Skills } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -7,7 +8,6 @@ import ProfessionSkillInput from './ProfessionSkillInput';
 import PointsCounter from '../../../../components/PointsCounter/PointsCounter'
 import { useEffect, useState } from 'preact/hooks';
 import ChooseProfession from './ChooseProfession';
-import { ButtonWrapper as Button } from '../../../../components/wrappers';
 import { MAX_BONUS_POINTS } from '../../../../constants/gameRules';
 
 const SkillFormContainer = styled.div.attrs<any>({

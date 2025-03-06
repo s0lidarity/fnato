@@ -1,11 +1,10 @@
-import { NumberInput } from 'react95';
+import { NumberInput, TextInput } from 'react95';
 import { useState, useCallback, useMemo, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
 import debounce from 'lodash/debounce';
 import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';
-import { TextInputWrapper as TextInput } from '../../../../components/wrappers';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import { Skill } from '../../../../types/characterTypes';
 import SubtypeEditor from './SubtypeEditor';

@@ -1,8 +1,7 @@
-import { GroupBox, Radio } from 'react95'
+import { GroupBox, Radio, TextInput } from 'react95'
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
 
-import { TextInputWrapper as TextInput } from '../../../../components/wrappers';
 import ReminderTooltip from '../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import { useBonds } from '../../../../providers/BondsContext';
 

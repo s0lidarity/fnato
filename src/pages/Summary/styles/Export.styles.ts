@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-import { ButtonWrapper as Button } from '../../../components/wrappers';
+import { Button } from 'react95';
 
 export const ExportButton = styled(Button).attrs<any>({
     'data-component': 'Summary/ExportButton',

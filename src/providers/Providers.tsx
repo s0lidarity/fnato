@@ -12,6 +12,7 @@ import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';
 import GlobalStyles from '../GlobalStyles';
+import StyledComponentsProvider from './StyledComponentsProvider';
 
 
 export async function dynamicActivate(locale: string) {
@@ -68,18 +69,20 @@ function Providers({ children }: { children: ComponentChildren }) {
         <LocationProvider>
             <I18nProvider i18n={i18n}>
                 <ThemeContext.Provider value={{ theme, setTheme, fontFamily, setFontFamily }}>
-                    <ThemeProvider theme={theme}>
-                        <GlobalStyles fontFamily={fontFamily} />
-                        <StatsProvider>
-                            <SkillsProvider>
-                                <BondsProvider>
-                                    <PersonalDetailsProvider>
-                                        {children}
-                                    </PersonalDetailsProvider>
-                                </BondsProvider>
-                            </SkillsProvider>
-                        </StatsProvider>
-                    </ThemeProvider>
+                    <StyledComponentsProvider>
+                        <ThemeProvider theme={theme}>
+                            <GlobalStyles fontFamily={fontFamily} />
+                            <StatsProvider>
+                                <SkillsProvider>
+                                    <BondsProvider>
+                                        <PersonalDetailsProvider>
+                                            {children}
+                                        </PersonalDetailsProvider>
+                                    </BondsProvider>
+                                </SkillsProvider>
+                            </StatsProvider>
+                        </ThemeProvider>
+                    </StyledComponentsProvider>
                 </ThemeContext.Provider>
             </I18nProvider>
         </LocationProvider>

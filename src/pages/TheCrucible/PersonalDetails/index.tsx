@@ -3,6 +3,7 @@ import { JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 import { t } from '@lingui/core/macro';
+import { Button, TextInput } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
@@ -13,8 +14,6 @@ import Dialogue from '../../../components/Dialogue/Dialogue';
 import SexPicker from './SexPicker';
 import { ButtonsContainer } from '../../Summary';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
-import { TextInputWrapper as TextInput, ButtonWrapper as Button } from '../../../components/wrappers';
-import { ButtonWrapper } from '../../../components/wrappers';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -131,9 +130,9 @@ function PersonalDetails() {
                     <label htmlFor="dateOfBirth">
                         <PageNumberTooltip pageNumber={1}>{t`Date of Birth`}</PageNumberTooltip>
                     </label>
-                    <ButtonWrapper onClick={() => setShowDateOfBirth(true)}>
+                    <Button onClick={() => setShowDateOfBirth(true)}>
                         {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
-                    </ButtonWrapper>
+                    </Button>
                     <Dialogue
                         title={t`Date of Birth`}
                         show={showDateOfBirth}
@@ -149,7 +148,7 @@ function PersonalDetails() {
                             }}
                         />
                         <ButtonContainer>
-                            <ButtonWrapper onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></ButtonWrapper>
+                            <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
                         </ButtonContainer>
                     </Dialogue>
                 </InputContainer>
@@ -350,7 +349,7 @@ function PersonalDetails() {
                 <PersonalMotivations />
             </FormContainer>
             <ButtonsContainer>
-                <ButtonWrapper onClick={resetPersonalDetails}>{t`Reset Personal Details`}</ButtonWrapper>
+                <Button onClick={resetPersonalDetails}>{t`Reset Personal Details`}</Button>
             </ButtonsContainer>
         </div>
     );

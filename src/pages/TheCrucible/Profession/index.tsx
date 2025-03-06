@@ -2,8 +2,8 @@
 import styled from 'styled-components';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
+import { Button } from 'react95';
 
-import { ButtonWrapper as Button } from '../../../components/wrappers';
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';
 import StandardSkillForm from './components/StandardSkillForm';

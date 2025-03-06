@@ -4,12 +4,12 @@ import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
+import { Button } from 'react95';
 
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
-import { ButtonWrapper as Button } from '../../components/wrappers';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
 
 
