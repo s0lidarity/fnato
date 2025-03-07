@@ -388,6 +388,7 @@ export interface Skill {
     fullLabelMsg?: MessageDescriptor;
     isDefault?: boolean;
     pointsAllocated?: number;
+    damagedVeteranSkillAdjustment?: number;
 }
 
 export const SKILL_REMINDERS: { [key: string]: MessageDescriptor } = {
@@ -514,6 +515,7 @@ export interface Stat {
     distinguishingFeatureMsg?: MessageDescriptor;
     reminderText?: string;
     reminderMsg?: MessageDescriptor;
+    damagedVeteranStatAdjustment?: number;
 }
 
 export const STAT_REMINDERS: { [key in keyof Statistics]: string } = {

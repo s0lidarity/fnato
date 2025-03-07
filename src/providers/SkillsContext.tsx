@@ -116,6 +116,11 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 break;
         }
 
+        // Apply damaged veteran adjustment if present
+        if (skill.damagedVeteranSkillAdjustment) {
+            total += skill.damagedVeteranSkillAdjustment;
+        }
+
         return Math.min(DEFAULT_TOTAL_CAP, total);
     };
 

@@ -10,7 +10,9 @@ import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
+import { useDamagedVeteran } from '../../providers/DamagedVeteranContext';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
+import DamagedVeteran from '../../components/DamagedVeteran';
 
 
 const CharacterSheet = styled.div.attrs<any>({
@@ -635,6 +637,7 @@ export function Summary() {
     const { skills, BonusSkillPackage, profession, resetProfession, calculateSkillValue, resetSkills } = useSkills();
     const { bonds, resetBonds } = useBonds();
     const { personalDetails, resetPersonalDetails } = usePersonalDetails();
+    const { activeAdjustments, clearAdjustments } = useDamagedVeteran();
 
     const handleExport = () => {
         const docName = `${personalDetails?.lastName || ''}-${personalDetails.firstName || ''}-${profession?.name || ''}.pdf`
@@ -663,6 +666,7 @@ export function Summary() {
         resetProfession();
         resetPersonalDetails();
         resetBonds();
+        clearAdjustments();
     }
 
     useEffect(() => {
@@ -697,6 +701,14 @@ export function Summary() {
     
     return (
         <div>
+            <DamagedVeteran />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '1rem' }}>
+                <Button onClick={handleReset}>{t`Reset`}</Button>
+                <Button onClick={handleExport} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <IoMdPrint size={16} />
+                    {t`Export PDF`}
+                </Button>
+            </div>
             <CharacterSheet>
                 <PersonalDataSection>
                     <VerticalHeader>
