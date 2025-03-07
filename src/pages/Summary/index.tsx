@@ -4,12 +4,12 @@ import { IoMdPrint } from "react-icons/io";
 import { useEffect } from 'preact/hooks';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
+import { Button } from 'react95';
 
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
 import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
-import { Button } from 'react95';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
 
 
@@ -240,7 +240,7 @@ const SkillsGrid = styled.div.attrs<any>({
 })`
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: ${props => `repeat(${Math.ceil(props.skillCount / 3)}, auto)`};
+    grid-template-rows: ${props => `repeat(${Math.ceil(props.$skillCount / 3)}, auto)`};
     grid-template-columns: repeat(3, 1fr);
     gap: 0.125rem;
     font-size: 0.8rem;
@@ -512,6 +512,7 @@ const MMDTextArea = styled(TextArea).attrs<any>({
     min-height: 3rem;
     border: 0.0625rem solid black;
     resize: vertical;
+    height: fit-content;
 `;
 
 const ExportButton = styled(Button).attrs<any>({
@@ -763,13 +764,13 @@ export function Summary() {
                                     // AJS starting point, add reminder text about purpose of checbox
                                 ))}
                                 <label>
-                                    {t`Check a Bond’s box when projecting sanity damage`}
+                                    {t`Check a Bond's box when projecting sanity damage`}
                                 </label>
                             </BondsSection>
                             <h3>{t`12. Motivations and Mental Disorders`}</h3>
                             <MMDTextArea 
                                 placeholder={t`List character motivations and any mental disorders...`}
-                                value={""}
+                                value={`${personalDetails.motivations}\n${personalDetails.personalMotivations.join(', ')}`}
                             />
                             <SanityTracker>
                                 <h3>{t`13. Incidents of San Loss Without Going Insane`}</h3>
@@ -801,7 +802,7 @@ export function Summary() {
                             <VerticalHeaderText>{t`Applicable Skill Sets`}</VerticalHeaderText>
                         </VerticalHeader>
                         <div>
-                            <SkillsGrid skillCount={skills.length}>
+                            <SkillsGrid $skillCount={skills.length}>
                                 {skills.map((skill) => (
                                     <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
                                         <input type="checkbox" checked={false} />

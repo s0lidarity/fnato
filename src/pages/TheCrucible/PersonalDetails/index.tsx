@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { JSX } from 'preact';
-import { TextInput, Button } from 'react95';
 import { useState } from 'preact/hooks';
 import { IoCheckmarkSharp } from 'react-icons/io5';
 import { t } from '@lingui/core/macro';
+import { Button, TextInput } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
@@ -273,7 +273,7 @@ function PersonalDetails() {
 
                 <InputContainer>
                     <label htmlFor="motivations">
-                        <PageNumberTooltip pageNumber={3}>{t`Motivations`}</PageNumberTooltip>
+                        <PageNumberTooltip pageNumber={1}>{t`Motivations`}</PageNumberTooltip>
                     </label>
                     <TextInput
                         id="motivations"

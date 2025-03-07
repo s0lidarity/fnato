@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { GroupBox } from 'react95';
 import { t } from '@lingui/core/macro';
+import { GroupBox } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import PersonalMotivationInput from './PersonalMotivationInput';
 import { MAX_PERSONAL_MOTIVATIONS } from '../../../constants/gameRules';
 import Guidance from '../../../components/Guidance/Guidance';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
-
 const PersonalMotivationsContainer = styled.div.attrs<any>({
     'data-testid': 'personal-motivations-container',
     'data-component': 'PersonalDetails/PersonalMotivationsContainer',
@@ -49,13 +48,7 @@ const MotivationInputContainer = styled.div.attrs<any>({
     gap: 1rem;
 `;
 
-const reminderTextA = t`Personal Motivations represent what drives your Agent beyond their Bonds. 
-These can be faith, patriotism, hobbies, or even the love of a pet. While 
-powerful, these motivations aren't as strong as Bonds to other humans.`;
 
-const reminderTextB = t`Your Agent can have up to five Personal Motivations. Add them during character 
-creation or as your story develops. Each time your Agent experiences a Breaking 
-Point, remove one motivation to represent their growing trauma.`;
 
 const renderMotivations = (motivations: string[]) => {
     const motivationInputs = [];
@@ -77,10 +70,18 @@ const renderMotivations = (motivations: string[]) => {
 function PersonalMotivations() {
     const { personalDetails } = usePersonalDetails();
 
+    const reminderTextA = t`Personal Motivations represent what drives your Agent beyond their Bonds. 
+    These can be faith, patriotism, hobbies, or even the love of a pet. While 
+    powerful, these motivations aren't as strong as Bonds to other humans.`;
+
+    const reminderTextB = t`Your Agent can have up to five Personal Motivations. Add them during character 
+    creation or as your story develops. Each time your Agent experiences a Breaking 
+    Point, remove one motivation to represent their growing trauma.`;
+
     return (
         <InputContainer>
             <label htmlFor="personalMotivations">
-                <PageNumberTooltip pageNumber={3}>{t`Personal Motivations`}</PageNumberTooltip>
+                <PageNumberTooltip pageNumber={1}>{t`Personal Motivations`}</PageNumberTooltip>
             </label>
             <GroupBox>
                 <PersonalMotivationsContainer>

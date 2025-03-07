@@ -1,4 +1,4 @@
-import { Window, WindowContent, WindowHeader, Button } from 'react95';
+import { Button, Window, WindowContent, WindowHeader } from 'react95';
 import { IoCloseSharp } from "react-icons/io5";
 import styled from 'styled-components';
 

@@ -19,8 +19,6 @@ import counterStrike from 'react95/dist/themes/counterStrike';
 
 import { useTheme } from '../../providers/Providers';
 
-
-
 const StyledSubMenuList = styled(MenuList).attrs<any>({
     'data-testid': 'sub-menu-list',
     'data-component': 'Header/SubMenuList',
@@ -102,7 +100,7 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
 
     const renderButtons = () => {
         return themes.sort((a, b) => a.name.localeCompare(b.name)).map((t) => (
-            <StyledMenuListItem key={t.name}>
+            <MenuListItem key={t.name}>
                 <ThemedButton
                     $theme={t.theme}  // Pass the theme as a transient prop
                     disabled={theme.name === t.theme.name}
@@ -111,7 +109,7 @@ function ThemeMenu({ onClose }: ThemeMenuProps) {
                 >
                     <Trans>{t.name}</Trans>
                 </ThemedButton>
-            </StyledMenuListItem>
+            </MenuListItem>
         ));
     };
 

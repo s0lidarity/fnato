@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { TextInput } from 'react95';
 import { t } from '@lingui/core/macro';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
+import { TextInput } from 'react95';
 
 const PersonalMotivationInputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-motivation-input-container',

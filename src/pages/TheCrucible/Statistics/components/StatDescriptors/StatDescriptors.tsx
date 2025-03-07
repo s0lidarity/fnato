@@ -1,7 +1,7 @@
-import { Button, TextInput } from "react95";
 import styled from "styled-components";
 import { Trans } from '@lingui/react/macro';
 import { useLingui } from '@lingui/react';
+import { Button, TextInput } from "react95";
 
 import { useStats } from "../../../../../providers/StatisticsContext";
 import { DISTINGUISHING_FEATURES } from "../../.../../../../../types/characterTypes";
@@ -60,6 +60,7 @@ const StyledHeading = styled.h2.attrs<any>({
 function StatDescriptors() {
     const { stats, setStats } = useStats();
     const { i18n } = useLingui();
+
     const handleChange = (e, statKey) => {
         setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: e.target.value}})
     };
@@ -76,9 +77,9 @@ function StatDescriptors() {
         setStats(tempStats);
     };
 
-    // need to limit this to the relevant statkey
     const assignSuggested = (statKey) => {
-        setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: DISTINGUISHING_FEATURES[statKey][stats[statKey].score]}})
+        const suggestedFeature = i18n._(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
+        setStats({...stats, [statKey]: {...stats[statKey], distinguishingFeature: suggestedFeature}})
     };
 
     const assignAllSuggested = () => {
@@ -86,7 +87,7 @@ function StatDescriptors() {
         Object.keys(tempStats).forEach(key => {
             const statKey = key as keyof typeof DISTINGUISHING_FEATURES;
             const score = tempStats[statKey].score;
-            const suggestedFeature = DISTINGUISHING_FEATURES[statKey][score];
+            const suggestedFeature = i18n._(DISTINGUISHING_FEATURES[statKey][stats[statKey].score]);
 
             if(suggestedFeature){
                 tempStats[statKey].distinguishingFeature = suggestedFeature;

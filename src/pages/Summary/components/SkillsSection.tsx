@@ -20,7 +20,7 @@ export const SkillsSection = ({
         <StyledSkillsSection>
             <VerticalHeader>Applicable Skill Sets</VerticalHeader>
             <div>
-                <SkillsGrid skillCount={skills.length}>
+                <SkillsGrid $skillCount={skills.length}>
                     {skills.map((skill) => (
                         <SkillItem key={`${skill.id}-${skill.name}-${skill.subType}`}>
                             <input 

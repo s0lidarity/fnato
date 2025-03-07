@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Button } from 'react95';
 import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
 import { t } from '@lingui/core/macro';
+import { Button } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';

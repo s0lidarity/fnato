@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NumberInput, Button } from 'react95';
+import { Button, NumberInput } from 'react95';
 import { t } from '@lingui/core/macro';
 
 import { useSkills } from '../../../../providers/SkillsContext';

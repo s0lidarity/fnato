@@ -1,8 +1,8 @@
 
 import styled from 'styled-components';
-import { Button } from 'react95';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
+import { Button } from 'react95';
 
 import { ProfessionConfigOptions } from '../../../types/componentTypes';
 import ConfigurationBar from '../../../components/ConfigurationBar/ConfigurationBar';

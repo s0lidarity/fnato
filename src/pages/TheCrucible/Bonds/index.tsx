@@ -1,6 +1,6 @@
-import { Button } from 'react95';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
+import { Button } from 'react95';
 
 import { bondCountSignal } from '../../../signals/bondSignal';
 import BondGuidance from './components/BondGuidance';

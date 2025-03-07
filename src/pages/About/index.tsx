@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Anchor, GroupBox } from 'react95';
+import { Anchor } from 'react95';
 import { Trans } from '@lingui/react/macro';
 import { t, msg } from '@lingui/core/macro';
+import { GroupBox } from 'react95';
 
 import Accordion from '../../components/Accordion/Accordion';
 import { PageWrapper } from '../../components/SharedStyles';
