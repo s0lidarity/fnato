@@ -29,6 +29,7 @@ type SkillsContextType = {
     changeConfig: (newConfig: ProfessionConfigOptions) => void;
     changeProfession: (profession: IProfession) => void;
     clearBonusSkillPackage: () => void;
+    getSkillById: (id: string) => Skill | undefined;
     resetAllBonusPoints: () => void;
     resetProfession: () => void;
     resetSkills: () => void;
@@ -39,7 +40,7 @@ type SkillsContextType = {
     setSkills: (skills: Skills | ((prev: Skills) => Skills)) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
-    getSkillById: (id: string) => Skill | undefined;
+    updateSkillAdjustment: (skillId: string, adjustment: number) => void;
 }
 
 const SkillsContext = createContext<SkillsContextType | undefined>(undefined);
@@ -318,9 +319,24 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return skills.find(s => s.id === id);
     };
 
+    const updateSkillAdjustment = (skillId: string, adjustment: number) => {
+        setSkills(prevSkills => {
+            return prevSkills.map(skill => {
+                if (skill.id === skillId) {
+                    return {
+                        ...skill,
+                        damagedVeteranSkillAdjustment: (skill.damagedVeteranSkillAdjustment || 0) + adjustment
+                    };
+                }
+                return skill;
+            });
+        });
+    };
+
     return (
-        <SkillsContext.Provider 
-            value={{ 
+        <SkillsContext.Provider
+            value={{
+                // State values
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 config,
@@ -329,13 +345,16 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 selectedSkillsIds,
                 skills,
                 skillPointsRemaining,
+
+                // Functions
                 adjustBonus,
                 applyBonusSkillPackage,
                 applyProfessionSkills,
                 calculateSkillValue,
-                changeProfession,
                 changeConfig,
+                changeProfession,
                 clearBonusSkillPackage,
+                getSkillById,
                 resetAllBonusPoints,
                 resetProfession,
                 resetSkills,
@@ -346,7 +365,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 setSkills,
                 setSkillById,
                 setSkillPointsRemaining,
-                getSkillById,
+                updateSkillAdjustment,
             }}>
             {children}
         </SkillsContext.Provider>

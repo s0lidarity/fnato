@@ -1,25 +1,23 @@
 import { createContext } from 'preact';
-import { useContext, useState, useEffect } from 'preact/hooks';
-import { DamagedVeteranAdjustment } from '../types/characterTypes';
-import { useSkills } from './SkillsContext';
+import { useContext, useState } from 'preact/hooks';
+import { DamagedVeteranAdjustment, EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW } from '../types/characterTypes';
 import { useStats } from './StatisticsContext';
+import { useSkills } from './SkillsContext';
+import { useBonds } from './BondsContext';
 
 type DamagedVeteranContextType = {
-    // State values
-    activeAdjustments: DamagedVeteranAdjustment[];
-    isEnabled: boolean;
+    // State values (alphabetically ordered)
+    activeTemplates: string[];
+    selectedSkills: { [templateId: string]: string[] };
 
-    // Functions
-    addAdjustment: (adjustment: DamagedVeteranAdjustment) => void;
-    applyAdjustments: () => void;
-    clearAdjustments: () => void;
-    getActiveAdjustmentById: (id: string) => DamagedVeteranAdjustment | undefined;
-    removeAdjustment: (adjustmentId: string) => void;
-    setIsEnabled: (isEnabled: boolean) => void;
-    toggleAdjustment: (adjustment: DamagedVeteranAdjustment) => void;
+    // Functions (alphabetically ordered)
+    activateTemplate: (templateId: string) => void;
+    deactivateTemplate: (templateId: string) => void;
+    getTemplateById: (templateId: string) => DamagedVeteranAdjustment | undefined;
+    selectSkillsForTemplate: (templateId: string, skills: string[]) => void;
 };
 
-const DamagedVeteranContext = createContext<DamagedVeteranContextType | undefined>(undefined);
+export const DamagedVeteranContext = createContext<DamagedVeteranContextType | undefined>(undefined);
 
 export const useDamagedVeteran = () => {
     const context = useContext(DamagedVeteranContext);
@@ -29,134 +27,132 @@ export const useDamagedVeteran = () => {
     return context;
 };
 
-export const DamagedVeteranProvider = ({ children }: { children: React.ReactNode }) => {
-    const [activeAdjustments, setActiveAdjustments] = useState<DamagedVeteranAdjustment[]>([]);
-    const [isEnabled, setIsEnabled] = useState(false);
-    
-    const { skills, setSkills } = useSkills();
-    const { stats, setStats } = useStats();
+export const DamagedVeteranProvider = ({ children }: { children: preact.ComponentChildren }) => {
+    // Dependencies
+    const { stats, updateStatAdjustment } = useStats();
+    const { updateSkillAdjustment } = useSkills();
+    const { updateBondAdjustments } = useBonds();
 
-    // Apply adjustments whenever activeAdjustments or isEnabled changes
-    useEffect(() => {
-        if (isEnabled) {
-            applyAdjustments();
-        } else {
-            // Reset any adjustments if disabled
-            resetAdjustments();
-        }
-    }, [isEnabled, activeAdjustments]);
+    // State
+    const [activeTemplates, setActiveTemplates] = useState<string[]>([]);
+    const [selectedSkills, setSelectedSkills] = useState<{ [templateId: string]: string[] }>({});
 
-    const addAdjustment = (adjustment: DamagedVeteranAdjustment) => {
-        // Check if adjustment already exists
-        if (!activeAdjustments.some(adj => adj.id === adjustment.id)) {
-            setActiveAdjustments([...activeAdjustments, adjustment]);
-        }
+    // Template Management
+    const getTemplateById = (templateId: string): DamagedVeteranAdjustment | undefined => {
+        const templates: { [key: string]: DamagedVeteranAdjustment } = {
+            'extreme-violence': EXTREME_VIOLENCE,
+            'captivity-or-imprisonment': CAPTIVITY_OR_IMPRISONMENT,
+            'hard-experience': HARD_EXPERIENCE,
+            'things-man-was-not-meant-to-know': THINGS_MAN_WAS_NOT_MEANT_TO_KNOW,
+        };
+        return templates[templateId];
     };
 
-    const removeAdjustment = (adjustmentId: string) => {
-        setActiveAdjustments(activeAdjustments.filter(adj => adj.id !== adjustmentId));
-    };
-
-    const toggleAdjustment = (adjustment: DamagedVeteranAdjustment) => {
-        const exists = activeAdjustments.some(adj => adj.id === adjustment.id);
-        if (exists) {
-            removeAdjustment(adjustment.id);
-        } else {
-            addAdjustment(adjustment);
-        }
-    };
-
-    const getActiveAdjustmentById = (id: string): DamagedVeteranAdjustment | undefined => {
-        return activeAdjustments.find(adj => adj.id === id);
-    };
-
-    const clearAdjustments = () => {
-        setActiveAdjustments([]);
-    };
-
-    // Apply all active adjustments to skills and stats
-    const applyAdjustments = () => {
-        if (!isEnabled || activeAdjustments.length === 0) {
-            return;
-        }
-
-        // Apply skill adjustments
-        const updatedSkills = [...skills];
-        
-        // Reset any previous damaged veteran adjustments
-        updatedSkills.forEach(skill => {
-            skill.damagedVeteranSkillAdjustment = 0;
-        });
-
-        // Apply new adjustments
-        activeAdjustments.forEach(adjustment => {
-            Object.entries(adjustment.skillAdjustment).forEach(([skillName, value]) => {
-                const skillIndex = updatedSkills.findIndex(s => 
-                    s.name.toLowerCase() === skillName.toLowerCase()
-                );
-                
-                if (skillIndex !== -1) {
-                    const currentAdjustment = updatedSkills[skillIndex].damagedVeteranSkillAdjustment || 0;
-                    updatedSkills[skillIndex].damagedVeteranSkillAdjustment = currentAdjustment + value;
-                }
-            });
-        });
-
-        setSkills(updatedSkills);
+    const activateTemplate = (templateId: string) => {
+        const template = getTemplateById(templateId);
+        if (!template) return;
 
         // Apply stat adjustments
-        const updatedStats = { ...stats };
-        
-        // Reset any previous damaged veteran adjustments
-        Object.keys(updatedStats).forEach(statKey => {
-            updatedStats[statKey].damagedVeteranStatAdjustment = 0;
-        });
-
-        // Apply new adjustments
-        activeAdjustments.forEach(adjustment => {
-            Object.entries(adjustment.statAdjustment).forEach(([statName, value]) => {
-                if (updatedStats[statName]) {
-                    const currentAdjustment = updatedStats[statName].damagedVeteranStatAdjustment || 0;
-                    updatedStats[statName].damagedVeteranStatAdjustment = currentAdjustment + value;
+        Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
+            if (typeof adjustment === 'number') {
+                updateStatAdjustment(statName, adjustment);
+            } else {
+                // For dynamic adjustments (e.g., 'power' for sanity reduction)
+                const sourceStatName = adjustment;
+                const sourceStat = stats[sourceStatName];
+                if (sourceStat) {
+                    updateStatAdjustment(statName, -sourceStat.score); // Negative because it's a reduction
                 }
-            });
+            }
         });
 
-        setStats(updatedStats);
+        // Apply skill adjustments
+        Object.entries(template.skillAdjustment).forEach(([skillName, adjustment]) => {
+            updateSkillAdjustment(skillName, adjustment);
+        });
+
+        // Apply bond adjustments if any
+        if (template.bondAdjustment) {
+            updateBondAdjustments(template.bondAdjustment);
+        }
+
+        setActiveTemplates(prev => [...prev, templateId]);
     };
 
-    // Reset all adjustments
-    const resetAdjustments = () => {
-        // Reset skill adjustments
-        const updatedSkills = [...skills];
-        updatedSkills.forEach(skill => {
-            skill.damagedVeteranSkillAdjustment = 0;
-        });
-        setSkills(updatedSkills);
+    const deactivateTemplate = (templateId: string) => {
+        const template = getTemplateById(templateId);
+        if (!template) return;
 
-        // Reset stat adjustments
-        const updatedStats = { ...stats };
-        Object.keys(updatedStats).forEach(statKey => {
-            updatedStats[statKey].damagedVeteranStatAdjustment = 0;
+        // Remove stat adjustments
+        Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
+            if (typeof adjustment === 'number') {
+                updateStatAdjustment(statName, -adjustment); // Reverse the adjustment
+            } else {
+                // For dynamic adjustments (e.g., 'power' for sanity reduction)
+                const sourceStatName = adjustment;
+                const sourceStat = stats[sourceStatName];
+                if (sourceStat) {
+                    updateStatAdjustment(statName, sourceStat.score); // Positive because we're reversing
+                }
+            }
         });
-        setStats(updatedStats);
+
+        // Remove skill adjustments
+        Object.entries(template.skillAdjustment).forEach(([skillName, adjustment]) => {
+            updateSkillAdjustment(skillName, -adjustment);
+        });
+
+        // Remove bond adjustments if any
+        if (template.bondAdjustment) {
+            updateBondAdjustments({
+                remove: -template.bondAdjustment.remove,
+                adjustScore: -template.bondAdjustment.adjustScore
+            });
+        }
+
+        setActiveTemplates(prev => prev.filter(id => id !== templateId));
+        
+        // Clean up selected skills
+        const { [templateId]: _, ...rest } = selectedSkills;
+        setSelectedSkills(rest);
+    };
+
+    const selectSkillsForTemplate = (templateId: string, skills: string[]) => {
+        const template = getTemplateById(templateId);
+        if (!template || !template.skillSelectionRules) return;
+
+        // Validate skill count
+        if (skills.length !== template.skillSelectionRules.count) return;
+
+        // Remove previous skill selections if any
+        const previousSkills = selectedSkills[templateId] || [];
+        previousSkills.forEach(skillName => {
+            updateSkillAdjustment(skillName, -template.skillSelectionRules!.bonus);
+        });
+
+        // Apply new skill selections
+        skills.forEach(skillName => {
+            updateSkillAdjustment(skillName, template.skillSelectionRules!.bonus);
+        });
+
+        setSelectedSkills(prev => ({
+            ...prev,
+            [templateId]: skills
+        }));
     };
 
     return (
         <DamagedVeteranContext.Provider
             value={{
-                // State values
-                activeAdjustments,
-                isEnabled,
+                // State
+                activeTemplates,
+                selectedSkills,
 
                 // Functions
-                addAdjustment,
-                applyAdjustments,
-                clearAdjustments,
-                getActiveAdjustmentById,
-                removeAdjustment,
-                setIsEnabled,
-                toggleAdjustment,
+                activateTemplate,
+                deactivateTemplate,
+                getTemplateById,
+                selectSkillsForTemplate,
             }}
         >
             {children}
