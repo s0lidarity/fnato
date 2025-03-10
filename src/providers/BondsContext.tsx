@@ -4,10 +4,14 @@ import { useStats } from './StatisticsContext';
 import { Bond } from '../types/characterTypes';
 
 type BondsContextType = {
+    // State values (alphabetically ordered)
     bonds: Bond[];
+
+    // Functions (alphabetically ordered)
     resetBonds: () => void;
     setBonds: (bonds: Bond[]) => void;
     setBondByIndex: (index: number, bond: Partial<Bond>) => void;
+    updateBondAdjustments: (adjustments: { remove?: number; adjustScore?: number }) => void;
 };
 
 const BondsContext = createContext<BondsContextType | undefined>(undefined);
@@ -49,13 +53,33 @@ export const BondsProvider = ({ children }: { children: React.ReactNode }) => {
         setBonds([]);
     };
 
+    const updateBondAdjustments = (adjustments: { remove?: number; adjustScore?: number }) => {
+        if (adjustments.remove) {
+            // Remove bonds from the end
+            const removeCount = Math.min(adjustments.remove, bonds.length);
+            setBonds(prevBonds => prevBonds.slice(0, prevBonds.length - removeCount));
+        }
+
+        if (adjustments.adjustScore) {
+            // Adjust all bond scores
+            setBonds(prevBonds => prevBonds.map(bond => ({
+                ...bond,
+                score: bond.score + adjustments.adjustScore!
+            })));
+        }
+    };
+
     return (
         <BondsContext.Provider 
             value={{ 
-                bonds, 
+                // State
+                bonds,
+
+                // Functions
+                resetBonds,
                 setBonds,
                 setBondByIndex,
-                resetBonds,
+                updateBondAdjustments,
             }}>
                 {children}
         </BondsContext.Provider>
