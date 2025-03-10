@@ -55,15 +55,15 @@ msgstr ""
 #~ msgid "stat.power.reminder"
 #~ msgstr "Will, spirit, and mental stability"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:124
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:145
 msgid "--- Additional Professions ---"
 msgstr "--- Additional Professions ---"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:118
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:138
 msgid "--- Standard Professions ---"
 msgstr "--- Standard Professions ---"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:54
 msgid "(Choose type below)"
 msgstr "(Choose type below)"
 
@@ -76,7 +76,7 @@ msgstr "(Choose type below)"
 #: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:137
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
-#: src/components/Header/ThemeMenu.tsx:112
+#: src/components/Header/ThemeMenu.tsx:110
 msgid "{0}"
 msgstr "{0}"
 
@@ -102,7 +102,7 @@ msgstr "{0}"
 #~ msgstr "{labelText}"
 
 #. js-lingui-explicit-id
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:113
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:112
 msgid "choose-skills.no-choices"
 msgstr "{professionName} has no flexible skills to choose from."
 
@@ -196,11 +196,11 @@ msgstr "A lifetime’s pursuit or multiple doctorates."
 msgid "About"
 msgstr "About"
 
-#: src/pages/About/index.tsx:152
+#: src/pages/About/index.tsx:153
 msgid "About the Author"
 msgstr "About the Author"
 
-#: src/pages/About/index.tsx:151
+#: src/pages/About/index.tsx:152
 msgid "About the Game"
 msgstr "About the Game"
 
@@ -279,7 +279,7 @@ msgstr "Alluring"
 msgid "Analysing thought"
 msgstr "Analysing thought"
 
-#: src/pages/About/index.tsx:83
+#: src/pages/About/index.tsx:84
 msgid "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 msgstr "Andrew Sobiesiak is a Software Engineer that has played TTRPGs online weekly since 2017.<0/> He would make a terrible field agent but is prepared to fight the sisyphean cosmic war. He Lives in <1>Seattle, WA</1> with his <2>wife, 5 cats, and a dog</2>"
 
@@ -299,11 +299,11 @@ msgstr "Appearance"
 msgid "Applicable Skill Sets"
 msgstr "Applicable Skill Sets"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:143
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:166
 msgid "Apply preset skills and choose additional skills for your character."
 msgstr "Apply preset skills and choose additional skills for your character."
 
-#: src/pages/About/index.tsx:129
+#: src/pages/About/index.tsx:130
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 
@@ -379,7 +379,7 @@ msgstr "Bond Type"
 
 #: src/pages/TheCrucible/index.tsx:51
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:155
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:178
 msgid "Bonds"
 msgstr "Bonds"
 
@@ -423,7 +423,7 @@ msgstr "Bonus Points"
 msgid "Bonus Points Remaining"
 msgstr "Bonus Points Remaining"
 
-#: src/utils/CharacterGenerator.ts:108
+#: src/utils/CharacterGenerator.ts:110
 #: src/pages/Summary/index.tsx:721
 msgid "Breaking Point"
 msgstr "Breaking Point"
@@ -467,15 +467,19 @@ msgid "Charisma"
 msgstr "Charisma"
 
 #: src/pages/Summary/index.tsx:767
-msgid "Check a Bond’s box when projecting sanity damage"
-msgstr "Check a Bond’s box when projecting sanity damage"
+msgid "Check a Bond's box when projecting sanity damage"
+msgstr "Check a Bond's box when projecting sanity damage"
+
+#: src/pages/Summary/index.tsx:767
+#~ msgid "Check a Bond’s box when projecting sanity damage"
+#~ msgstr "Check a Bond’s box when projecting sanity damage"
 
 #: src/pages/Summary/index.tsx:814
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:160
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:159
 msgid "Choose {0} Additional Skills"
 msgstr "Choose {0} Additional Skills"
 
@@ -499,7 +503,7 @@ msgstr "Clear"
 msgid "Clear Descriptors"
 msgstr "Clear Descriptors"
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:165
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:164
 msgid "Clear Selected Skills"
 msgstr "Clear Selected Skills"
 
@@ -619,7 +623,7 @@ msgstr "Date of Birth"
 msgid "Decades of experience, or a graduate or doctoral degree."
 msgstr "Decades of experience, or a graduate or doctoral degree."
 
-#: src/pages/About/index.tsx:78
+#: src/pages/About/index.tsx:79
 msgid "Declassified Record"
 msgstr "Declassified Record"
 
@@ -916,7 +920,7 @@ msgstr "Historian"
 msgid "History"
 msgstr "History"
 
-#: src/utils/CharacterGenerator.ts:87
+#: src/utils/CharacterGenerator.ts:89
 #: src/pages/Summary/index.tsx:706
 msgid "Hit Points"
 msgstr "Hit Points"
@@ -942,7 +946,7 @@ msgstr "Huge"
 msgid "HUMINT"
 msgstr "HUMINT"
 
-#: src/pages/About/index.tsx:115
+#: src/pages/About/index.tsx:116
 msgid "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 msgstr "If the intelligence community was a family, Delta Green would be the uncle nobody talks about.<0/>Delta Green is a Table Top Role Playing Game that uses a D100 system. Handlers run operations for their agents, other players, where a grey government operation works to protect the world from unkown cosmic horrors."
 
@@ -951,7 +955,7 @@ msgstr "If the intelligence community was a family, Delta Green would be the unc
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr "If you haven't studied it you're doomed to repeat it"
 
-#: src/pages/About/index.tsx:98
+#: src/pages/About/index.tsx:99
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "If you want to support this work, you can buy some Delta Green content through affiliate links."
 
@@ -1028,7 +1032,7 @@ msgstr "Jumping, ducking, running, climbing, etc"
 msgid "Jurassic Park"
 msgstr "Jurassic Park"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:147
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:170
 msgid "Key Stats"
 msgstr "Key Stats"
 
@@ -1196,7 +1200,7 @@ msgstr "Note additional details about the bond"
 msgid "Noticing things"
 msgstr "Noticing things"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:159
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:182
 msgid "Number of social connections available to your character."
 msgstr "Number of social connections available to your character."
 
@@ -1267,13 +1271,13 @@ msgstr "Personal Details"
 msgid "Personal Motivation {0}"
 msgstr "Personal Motivation {0}"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:85
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:89
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:84
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:88
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:88
 msgid "Personal Motivations"
 msgstr "Personal Motivations"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:74
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:73
 msgid ""
 "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
 "    These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
@@ -1367,7 +1371,7 @@ msgstr "Polymath"
 msgid "Power"
 msgstr "Power"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:60
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:59
 msgid "Preset Professional Skills"
 msgstr "Preset Professional Skills"
 
@@ -1380,7 +1384,7 @@ msgstr "Profession & Skills"
 msgid "Profession Details"
 msgstr "Profession Details"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:139
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:162
 msgid "Professional Background"
 msgstr "Professional Background"
 
@@ -1417,7 +1421,7 @@ msgstr "Razor-sharp"
 msgid "Reads occasionally"
 msgstr "Reads occasionally"
 
-#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:151
+#: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:174
 msgid "Recommended best stats for your chosen profession."
 msgstr "Recommended best stats for your chosen profession."
 
@@ -1494,7 +1498,7 @@ msgstr "Sagely"
 msgid "Sailor"
 msgstr "Sailor"
 
-#: src/utils/CharacterGenerator.ts:101
+#: src/utils/CharacterGenerator.ts:103
 #: src/pages/Summary/index.tsx:716
 msgid "Sanity"
 msgstr "Sanity"
@@ -1549,7 +1553,7 @@ msgstr "Signal intelligence, breaking codes"
 msgid "Simple-minded"
 msgstr "Simple-minded"
 
-#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:177
+#: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:176
 msgid "Skill Choices Remaining"
 msgstr "Skill Choices Remaining"
 
@@ -1614,7 +1618,7 @@ msgstr "Standard Professions"
 msgid "Start"
 msgstr "Start"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:55
+#: src/pages/TheCrucible/Profession/components/ProfessionChoices.tsx:54
 msgid "starts at"
 msgstr "starts at"
 
@@ -1664,7 +1668,7 @@ msgstr "Sturdy"
 msgid "Summary"
 msgstr "Summary"
 
-#: src/pages/About/index.tsx:93
+#: src/pages/About/index.tsx:94
 msgid "Support"
 msgstr "Support"
 
@@ -1692,7 +1696,7 @@ msgstr "Swim"
 msgid "Swole"
 msgstr "Swole"
 
-#: src/pages/About/index.tsx:59
+#: src/pages/About/index.tsx:60
 msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 msgstr "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 
@@ -1729,7 +1733,7 @@ msgstr "Things Man Was Not Meant to Know"
 msgid "Title:"
 msgstr "Title:"
 
-#: src/pages/About/index.tsx:143
+#: src/pages/About/index.tsx:144
 msgid "to purchase Delta Green source materials and learn more."
 msgstr "to purchase Delta Green source materials and learn more."
 
@@ -1797,7 +1801,7 @@ msgstr "Vigorous"
 msgid "Violence"
 msgstr "Violence"
 
-#: src/pages/About/index.tsx:142
+#: src/pages/About/index.tsx:143
 msgid "Visit"
 msgstr "Visit"
 
@@ -1821,7 +1825,7 @@ msgstr "Weekend Warrior"
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 msgstr "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 
-#: src/pages/About/index.tsx:109
+#: src/pages/About/index.tsx:110
 msgid "What is Delta Green?"
 msgstr "What is Delta Green?"
 
@@ -1841,7 +1845,7 @@ msgstr "Why does Delta Green trust this agent?"
 msgid "Why does this agent serve Delta Green?"
 msgstr "Why does this agent serve Delta Green?"
 
-#: src/utils/CharacterGenerator.ts:94
+#: src/utils/CharacterGenerator.ts:96
 msgid "Will Power"
 msgstr "Will Power"
 
@@ -1893,7 +1897,7 @@ msgstr "You travel to strange lands, meet interesting people, and try to get alo
 msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 msgstr "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:78
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:77
 msgid ""
 "Your Agent can have up to five Personal Motivations. Add them during character \n"
 "    creation or as your story develops. Each time your Agent experiences a Breaking \n"
