@@ -1,6 +1,7 @@
 import { GroupBox, SelectNative, Separator } from 'react95';
 import styled from 'styled-components';
 import { Trans } from '@lingui/react';
+import { i18n } from '@lingui/core';
 import { t, msg } from '@lingui/core/macro';
 
 import professions, { additionalProfessions } from '../../../../utils/Professions';
@@ -66,13 +67,31 @@ const FlavorTextContainer = styled.div.attrs<any>({
     padding: 0 1rem;
 `;
 
-// using a SelectNative because the standard kept putting the dropdown arrow in ugly spots
-const StyledSelect = styled(SelectNative).attrs<any>({
+const StyledNativeSelect = styled.select.attrs<any>({
     'data-testid': 'select',
     'data-component': 'ChooseProfession/StyledSelect'
 })`
     min-width: fit-content;
     margin-left: 0.5rem;
+    padding: 0.25rem;
+    background-color: ${({ theme }) => theme.canvas};
+    color: ${({ theme }) => theme.materialText};
+    border: 0.125rem inset ${({ theme }) => theme.borderDark};
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 0.9rem;
+    
+    &:focus {
+        outline: 0.125rem dotted ${({ theme }) => theme.focusSecondary};
+    }
+    
+    option {
+        background-color: ${({ theme }) => theme.canvas};
+        color: ${({ theme }) => theme.materialText};
+    }
+    
+    option:disabled {
+        color: ${({ theme }) => theme.materialTextDisabled};
+    }
 `;
 
 const KeyStatSection = styled.div.attrs<any>({
@@ -114,19 +133,23 @@ function ChooseProfession() {
     const allProfessions = [...professions, ...additionalProfessions];
 
     const generateProfessionOptions = () => {
-        return [
-            { label: t`--- Standard Professions ---`, value: '', disabled: true },
-            ...professions.map(profession => ({
-                label: <Trans id={profession.labelMsg?.id} />,
-                value: profession.name
-            })),
-            { label: '──────────────', value: '', disabled: true },
-            { label: t`--- Additional Professions ---`, value: '', disabled: true },
-            ...additionalProfessions.map(profession => ({
-                label: <Trans id={profession.labelMsg?.id} />,
-                value: profession.name
-            }))
-        ];
+        return (
+            <>
+                <option value="" disabled>{t`--- Standard Professions ---`}</option>
+                {professions.map(prof => (
+                    <option key={prof.name} value={prof.name}>
+                        {i18n._(prof.labelMsg)}
+                    </option>
+                ))}
+                <option value="" disabled>──────────────</option>
+                <option value="" disabled>{t`--- Additional Professions ---`}</option>
+                {additionalProfessions.map(prof => (
+                    <option key={prof.name} value={prof.name}>
+                        {i18n._(prof.labelMsg)}
+                    </option>
+                ))}
+            </>
+        );
     };
 
     const handleProfessionSelect = (professionName: string) => {
@@ -169,11 +192,12 @@ function ChooseProfession() {
                             labelText={pbLabelTextMsg}
                             reminderText={pbReminderTextMsg}
                         />
-                        <StyledSelect 
-                            options={generateProfessionOptions()}
+                        <StyledNativeSelect
                             value={profession?.name || ''}
-                            onChange={(e: any) => handleProfessionSelect(e.value)} 
-                        />
+                            onChange={(e) => handleProfessionSelect(e.target.value)}
+                        >
+                            {generateProfessionOptions()}
+                        </StyledNativeSelect>
                     </StyledSelectContainer>
                     <KeyStatSection>
                         <KeyStatContainer>
