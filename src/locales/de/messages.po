@@ -166,85 +166,85 @@ msgstr "4. Nationalität"
 
 #: src/pages/Summary/index.tsx:657
 msgid "5. Sex"
-msgstr ""
+msgstr "5. Sex"
 
 #: src/pages/Summary/index.tsx:661
 msgid "6. Age and D.O.B."
-msgstr ""
+msgstr "6. Alter und Geburtsdatum"
 
 #: src/pages/Summary/index.tsx:667
 msgid "7. Education and Occupational History"
-msgstr ""
+msgstr "7. Ausbildung und beruflicher Werdegang"
 
 #: src/pages/Summary/index.tsx:684
 msgid "8. Statistics"
-msgstr ""
+msgstr "8. Statistiken"
 
 #: src/pages/Summary/index.tsx:700
 msgid "9. Derived Attributes"
-msgstr ""
+msgstr "9. Abgeleitete Attribute"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:37
 msgid "A dedicated hobbyist; with a foreign language you can have rudimentary conversations."
-msgstr ""
+msgstr "Ein engagierter Hobbyist; mit einer Fremdsprache können Sie rudimentäre Gespräche führen."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:53
-msgid "A lifetime’s pursuit or multiple doctorates."
-msgstr ""
+msgid "A lifetime's pursuit or multiple doctorates."
+msgstr "Eine lebenslange Aufgabe oder mehrere Doktortitel."
 
 #: src/components/Header/MenuConfig.ts:22
 msgid "About"
-msgstr ""
+msgstr "Um"
 
 #: src/pages/About/index.tsx:153
 msgid "About the Author"
-msgstr ""
+msgstr "Über den Autor"
 
 #: src/pages/About/index.tsx:152
 msgid "About the Game"
-msgstr ""
+msgstr "Über das Spiel"
 
 #: src/types/characterTypes.ts:681
 msgid "Accounting"
-msgstr ""
+msgstr "Buchhaltung"
 
 #: src/types/characterTypes.ts:86
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: src/types/characterTypes.ts:80
 msgid "Active Couch Potato"
-msgstr ""
+msgstr "Aktiver Stubenhocker"
 
 #: src/pages/Summary/index.tsx:784
 #: src/pages/Summary/index.tsx:792
 msgid "adapted"
-msgstr ""
+msgstr "angepasst"
 
 #: src/types/characterTypes.ts:639
 msgid "Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond."
-msgstr ""
+msgstr "Füge +10 % zum Okkultismus deines Agenten und +10 % zu fünf beliebigen Fertigkeiten außer dem Unnatürlichen hinzu. Dies kann keine Fertigkeit über 90 % bringen. Reduziere den SAN deines Agenten um 5. Entferne eine Bindung."
 
 #: src/types/characterTypes.ts:599
 msgid "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's CHA and each Bond. Your Agent is adapted to violence (see page 73)."
-msgstr ""
+msgstr "Füge +10 % zur okkulten Fertigkeit deines Agenten hinzu. Reduziere SAN um 5. Subtrahiere 3 vom CHA deines Agenten und jeder Bindung. Dein Agent ist an Gewalt angepasst (siehe Seite 73)."
 
 #: src/types/characterTypes.ts:619
 msgid "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's POW. Your Agent is adapted to helplessness (see page 73)."
-msgstr ""
+msgstr "Füge +10 % zur okkulten Fertigkeit deines Agenten hinzu. Reduziere SAN um 5. Subtrahiere 3 von POW deines Agenten. Dein Agent ist an Hilflosigkeit angepasst (siehe Seite 73)."
 
 #. js-lingui-explicit-id
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:109
 msgid "custom-skill-form.bonus-points-reminder"
-msgstr ""
+msgstr "Fügt für jeden zugewiesenen Bonuspunkt (maximal {DEFAULT_TOTAL_CAP}) {DEFAULT_BONUS_VALUE} zur Gesamtpunktzahl der Fertigkeit hinzu."
 
 #: src/types/characterTypes.ts:192
 msgid "Adroit"
-msgstr ""
+msgstr "Geschickt"
 
 #: src/types/characterTypes.ts:333
 msgid "Affable"
-msgstr ""
+msgstr "Freundlich"
 
 #: src/types/characterTypes.ts:189
 msgid "Agile"
@@ -256,7 +256,7 @@ msgstr ""
 
 #: src/types/characterTypes.ts:1213
 msgid "Aircraft"
-msgstr ""
+msgstr "Agil"
 
 #: src/types/characterTypes.ts:697
 msgid "Alertness"
@@ -479,225 +479,225 @@ msgstr ""
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:88
 msgid "Choose a bonus skill package"
-msgstr ""
+msgstr "Wähle ein Bonus-Fertigkeitspaket"
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:89
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
-msgstr ""
+msgstr "Wähle ein Paket, um Bonuspunkte automatisch anzuwenden, oder wähle 'Kein Paket', um deine Bonuspunkte manuell zuzuweisen"
 
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
 msgid "Church or support group"
-msgstr ""
+msgstr "Kirche oder Selbsthilfegruppe"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
 msgid "Clear"
-msgstr ""
+msgstr "Löschen"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Clear Descriptors"
-msgstr ""
+msgstr "Beschreibungen löschen"
 
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:164
 msgid "Clear Selected Skills"
-msgstr ""
+msgstr "Ausgewählte Fertigkeiten löschen"
 
 #: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:74
 msgid "Clear Templates"
-msgstr ""
+msgstr "Vorlagen löschen"
 
 #: src/types/characterTypes.ts:162
 msgid "Clumsy"
-msgstr ""
+msgstr "Unbeholfen"
 
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
 msgid "Colleagues in an intense job"
-msgstr ""
+msgstr "Kollegen in einem intensiven Job"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:45
 msgid "College major or years of experience; with 50% in a foreign language you have native fluency."
-msgstr ""
+msgstr "Hauptfach oder jahrelange Erfahrung; mit 50% in einer Fremdsprache sprichst du fließend."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:41
 msgid "College minor or basic training."
-msgstr ""
+msgstr "Nebenfach oder Grundausbildung."
 
 #: src/types/characterTypes.ts:348
 msgid "Compelling"
-msgstr ""
+msgstr "Überzeugend"
 
 #: src/types/characterTypes.ts:816
 msgid "Computer Science"
-msgstr ""
+msgstr "Informatik"
 
 #: src/utils/Professions.ts:161
 msgid "Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet."
-msgstr ""
+msgstr "Computer und Maschinen sind das Rückgrat der modernen Industrie. Du bist ein Handwerker mit Daten oder Maschinen, möglicherweise für die Regierung und definitiv für Profit. Wie auch immer du deine Fähigkeiten einsetzt, die Überschneidung zwischen Informationstechnologie und dem Bewusstsein für das Unnatürliche könnte dies zum gefährlichsten Job auf dem Planeten machen."
 
 #: src/types/characterTypes.ts:532
 msgid "Constitution"
-msgstr ""
+msgstr "Konstitution"
 
 #: src/types/characterTypes.ts:875
 msgid "Controlled explosions"
-msgstr ""
+msgstr "Kontrollierte Explosionen"
 
 #: src/types/characterTypes.ts:469
 #: src/types/characterTypes.ts:1177
 msgid "Convincing people"
-msgstr ""
+msgstr "Menschen überzeugen"
 
 #: src/types/characterTypes.ts:77
 msgid "Couch Potato"
-msgstr ""
+msgstr "Stubenhocker"
 
 #: src/types/characterTypes.ts:83
 msgid "Could take the stairs"
-msgstr ""
+msgstr "Könnte die Treppe nehmen"
 
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
 msgid "Coworker or partner"
-msgstr ""
+msgstr "Mitarbeiter oder Partner"
 
 #: src/types/characterTypes.ts:832
 msgid "Craft"
-msgstr ""
+msgstr "Handwerk"
 
 #: src/types/characterTypes.ts:843
 msgid "Craft (Macrame)"
-msgstr ""
+msgstr "Handwerk (Makramee)"
 
 #: src/types/characterTypes.ts:749
 msgid "Creative pursuits"
-msgstr ""
+msgstr "Kreative Tätigkeiten"
 
 #: src/utils/Professions.ts:320
 msgid "Criminal"
-msgstr ""
+msgstr "Krimineller"
 
 #: src/types/characterTypes.ts:855
 msgid "Criminology"
-msgstr ""
+msgstr "Kriminologie"
 
 #: src/types/characterTypes.ts:439
 #: src/types/characterTypes.ts:971
 msgid "CSI"
-msgstr ""
+msgstr "CSI"
 
 #: src/types/characterTypes.ts:466
 #: src/types/characterTypes.ts:1161
 msgid "Cult shit"
-msgstr ""
+msgstr "Kultzeug"
 
 #: src/types/characterTypes.ts:560
 msgid "Cunning, logic, and intuition"
-msgstr ""
+msgstr "Schlauheit, Logik und Intuition"
 
 #: src/pages/Summary/index.tsx:702
 msgid "Current"
-msgstr ""
+msgstr "Aktuell"
 
 #: src/pages/TheCrucible/Profession/index.tsx:38
 msgid "Custom Professions"
-msgstr ""
+msgstr "Benutzerdefinierte Berufe"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:33
 msgid "Dabbler."
-msgstr ""
+msgstr "Dilettant."
 
 #: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:64
 msgid "Damaged Veteran Templates"
-msgstr ""
+msgstr "Vorlagen für beschädigte Veteranen"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:131
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:137
 msgid "Date of Birth"
-msgstr ""
+msgstr "Geburtsdatum"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:49
 msgid "Decades of experience, or a graduate or doctoral degree."
-msgstr ""
+msgstr "Jahrzehntelange Erfahrung oder ein Hochschul- oder Doktortitel."
 
 #: src/pages/About/index.tsx:79
 msgid "Declassified Record"
-msgstr ""
+msgstr "Freigegebene Akte"
 
 #: src/types/characterTypes.ts:195
 msgid "Deft"
-msgstr ""
+msgstr "Gewandt"
 
 #: src/types/characterTypes.ts:118
 msgid "Delicate"
-msgstr ""
+msgstr "Empfindlich"
 
 #: src/types/characterTypes.ts:871
 msgid "Demolitions"
-msgstr ""
+msgstr "Sprengstoff"
 
 #: src/pages/TheCrucible/Statistics/components/DerivedAttributes/DerivedAttributes.tsx:39
 msgid "Derived Attributes"
-msgstr ""
+msgstr "Abgeleitete Attribute"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:88
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: src/types/characterTypes.ts:286
 msgid "Determined"
-msgstr ""
+msgstr "Entschlossen"
 
 #: src/types/characterTypes.ts:535
 msgid "Dexterity"
-msgstr ""
+msgstr "Geschicklichkeit"
 
 #: src/pages/TheCrucible/Statistics/components/ConfigurationBar/ConfigurationBar.tsx:53
 msgid "Dice"
-msgstr ""
+msgstr "Würfel"
 
 #: src/types/characterTypes.ts:212
 msgid "Dim"
-msgstr ""
+msgstr "Schwach"
 
 #: src/types/characterTypes.ts:887
 msgid "Disguise"
-msgstr ""
+msgstr "Verkleidung"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
 #: src/pages/Summary/index.tsx:687
 msgid "Distinguishing Features"
-msgstr ""
+msgstr "Besondere Merkmale"
 
 #: src/pages/Home/index.tsx:58
 msgid "Do you close your eyes to what you've seen and go back to sleep? Or do you come with this psycho burnout and do the impossible against the unbelievable and keep the future at bay for another day?"
-msgstr ""
+msgstr "Schließt du deine Augen vor dem, was du gesehen hast, und gehst wieder schlafen? Oder kommst du mit diesem Psycho-Burnout und tust das Unmögliche gegen das Unglaubliche und hältst die Zukunft für einen weiteren Tag in Schach?"
 
 #: src/types/characterTypes.ts:472
 #: src/types/characterTypes.ts:1193
 msgid "Do you like drugs?"
-msgstr ""
+msgstr "Magst du Drogen?"
 
 #: src/utils/Professions.ts:226
 msgid "Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity."
-msgstr ""
+msgstr "Ärzte sind oft die ersten, die Anzeichen eines unnatürlichen Eindringens entdecken, und die wertvollsten Ermittler seiner katastrophalen Auswirkungen auf die Menschheit."
 
 #: src/types/characterTypes.ts:903
 msgid "Dodge"
-msgstr ""
+msgstr "Ausweichen"
 
 #: src/types/characterTypes.ts:230
 msgid "Does their 'own research'"
-msgstr ""
+msgstr "Macht eigene 'Recherchen'"
 
 #: src/pages/TheCrucible/index.tsx:53
 msgid "Dossier"
-msgstr ""
+msgstr "Dossier"
 
 #: src/types/characterTypes.ts:919
 msgid "Drive"
-msgstr ""
+msgstr "Fahren"
 
 #: src/types/characterTypes.ts:221
 msgid "Dull"
-msgstr ""
+msgstr "Stumpf"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:203
 msgid "Education"
@@ -1900,13 +1900,6 @@ msgid ""
 "    creation or as your story develops. Each time your Agent experiences a Breaking \n"
 "    Point, remove one motivation to represent their growing trauma."
 msgstr ""
-
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:56
-#~ msgid ""
-#~ "Your Agent can have up to five Personal Motivations. Add them during character \n"
-#~ "creation or as your story develops. Each time your Agent experiences a Breaking \n"
-#~ "Point, remove one motivation to represent their growing trauma."
-#~ msgstr ""
 
 #: src/types/characterTypes.ts:660
 msgid "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW."
