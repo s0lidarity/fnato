@@ -414,25 +414,25 @@ msgstr "Bonus"
 
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:141
 msgid "Bonus Points"
-msgstr ""
+msgstr "Bonuspunkte"
 
 #: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:164
 msgid "Bonus Points Remaining"
-msgstr ""
+msgstr "Verbleibende Bonuspunkte"
 
 #: src/utils/CharacterGenerator.ts:115
 #: src/pages/Summary/index.tsx:733
 msgid "Breaking Point"
-msgstr ""
+msgstr "Bruchpunkt"
 
 #: src/types/characterTypes.ts:236
 msgid "Bright"
-msgstr ""
+msgstr "Hell"
 
 #: src/types/characterTypes.ts:248
 msgid "Brilliant"
-msgstr ""
+msgstr "Genial"
 
 #: src/types/characterTypes.ts:836
 msgid "Bureaucracy"
