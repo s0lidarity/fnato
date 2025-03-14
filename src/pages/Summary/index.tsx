@@ -195,6 +195,7 @@ const StatRow = styled.div.attrs<any>({
         background: black;
         border: 0.0625rem solid black;
         text-align: center;
+        color: white;
     }
 
     input[type="number"] {
@@ -454,6 +455,7 @@ const StatHeaderLongSpan = styled.span.attrs<any>({
 })`
     font-size: 0.7rem;
     white-space: nowrap;
+    color: white;
 `;
 
 const BondsHeaderRow = styled(HeaderRow)`
@@ -501,6 +503,7 @@ const DerivedStatRow = styled.div.attrs<any>({
         border: 0.0625rem solid black;
         font-size: 0.8rem;
         text-align: center;
+        color: white;
     }
 `;
 
