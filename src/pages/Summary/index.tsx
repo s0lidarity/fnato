@@ -17,8 +17,9 @@ const CharacterSheet = styled.div.attrs<any>({
     'data-component': 'Summary/CharacterSheet',
     'data-testid': 'character-sheet',
 })`
-    border: 0.125rem solid black;
+    border: 0.125rem solid ${({ theme }) => theme.borderDark};
     background: white;
+    color: black;
     padding: 0.3125rem;
     width: 210mm;
     height: 296mm;
@@ -135,6 +136,7 @@ const FormField = styled.div.attrs<any>({
         margin-top: 0.25rem;
         text-transform: uppercase;
         white-space: nowrap;
+        color: black;
     }
 
     input {
@@ -142,6 +144,8 @@ const FormField = styled.div.attrs<any>({
         padding: 0.125rem;
         border: 0.0625rem solid black;
         font-size: 0.8rem;
+        background: white;
+        color: black;
     }
 `;
 
@@ -186,6 +190,7 @@ const StatRow = styled.div.attrs<any>({
         text-transform: uppercase;
         font-size: 0.8em;
         white-space: nowrap;
+        color: black;
     }
 
     input {
@@ -204,6 +209,11 @@ const StatRow = styled.div.attrs<any>({
 
     input[type="text"].multiplier {
         width: 1.5rem;
+    }
+
+    input[type="text"].feature {
+        background: #ffffff;
+        color: #000000;
     }
 `;
 
@@ -264,10 +274,16 @@ const SkillItem = styled.div.attrs<any>({
     border: 0.0625rem solid black;
     gap: 0.375rem;
     padding: 0.125rem;
+    background: white;
+    color: black;
     
     input[type="checkbox"] {
         width: 0.8rem;
         height: 0.8rem;
+        background-color: white;
+        &:checked {
+            background-color: black;
+        }
     }
 
     span {
@@ -311,6 +327,8 @@ const TextArea = styled.textarea.attrs<any>({
     padding: 0.25rem;
     border: 0.0625rem solid black;
     resize: vertical;
+    background: white;
+    color: black;
 `;
 
 const SanityTracker = styled.div.attrs<any>({
@@ -455,7 +473,7 @@ const StatHeaderLongSpan = styled.span.attrs<any>({
 })`
     font-size: 0.7rem;
     white-space: nowrap;
-    color: white;
+    color: black;
 `;
 
 const BondsHeaderRow = styled(HeaderRow)`
@@ -494,6 +512,7 @@ const DerivedStatRow = styled.div.attrs<any>({
         font-size: 0.8rem;
         white-space: nowrap;
         padding-right: 0.25rem;
+        color: black;
     }
 
     input {
@@ -503,6 +522,7 @@ const DerivedStatRow = styled.div.attrs<any>({
         border: 0.0625rem solid black;
         font-size: 0.8rem;
         text-align: center;
+        background: black;
         color: white;
     }
 `;
@@ -525,16 +545,8 @@ const ExportButton = styled(Button).attrs<any>({
     position: relative;
     margin: 1.25rem;
     padding: 0.75rem 1.5rem;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
     cursor: pointer;
     font-weight: bold;
-
-    &:hover {
-        opacity: 0.9;
-    }
 `;
 
 export const ButtonsContainer = styled.div.attrs<any>({
@@ -552,7 +564,7 @@ const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
         <text 
             x="50%"
             y="50%"
-            fill="white" 
+            fill="white"
             fontSize="0.875rem"
             textAnchor="middle"
             dominantBaseline="middle"
@@ -561,6 +573,62 @@ const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
         </text>
     </svg>
 );
+
+// Add this styled component for custom checkboxes optimized for printing
+const StyledCheckbox = styled.input.attrs<any>(props => ({
+  type: 'checkbox',
+  'data-testid': 'styled-checkbox',
+  'data-component': 'Summary/StyledCheckbox',
+}))`
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 0.0625rem solid black;
+  border-radius: 0.125rem;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  
+  /* Light background for printability */
+  background-color: #f5f5f5;
+  
+  &:checked {
+    /* Use a light background with a visible checkmark for printing */
+    background-color: #e0e0e0;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0.25rem;
+      top: 0.125rem;
+      width: 0.25rem;
+      height: 0.5rem;
+      border: solid black;
+      border-width: 0 0.125rem 0.125rem 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Print-specific styles */
+  @media print {
+    background-color: white;
+    border: 0.0625rem solid black;
+    
+    &:checked {
+      background-color: #e0e0e0;
+      
+      &:after {
+        border-color: black;
+      }
+    }
+  }
+`;
 
 export function Summary() {
     const { stats, resetStats, derivedAttributes } = useStats();
@@ -701,7 +769,6 @@ export function Summary() {
                             <DerivedStatsSection>
                                 <DerivedStatRow>
                                     <label>{t`9. Derived Attributes`}</label>
-                                    {/* // AJS todo, ffs put this in tye styled component */}
                                     <label style={{ fontSize: '0.8em' }}>{t`Current`}</label>
                                     <label style={{ fontSize: '0.8em' }}>{t`Max`}</label>
                                 </DerivedStatRow>
@@ -764,7 +831,6 @@ export function Summary() {
                                             aria-label={`Bond ${index + 1} score`}
                                         />
                                     </BondRow>
-                                    // AJS starting point, add reminder text about purpose of checbox
                                 ))}
                                 <label>
                                     {t`Check a Bond's box when projecting sanity damage`}
