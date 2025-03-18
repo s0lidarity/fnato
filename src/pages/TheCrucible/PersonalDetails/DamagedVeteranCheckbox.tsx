@@ -50,6 +50,7 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
         });
     };
 
+    // AJS TODO: reminderText for tooltips is empty, fix it
     return (
         <CheckboxContainer>
             <DamagedVeteranModal
