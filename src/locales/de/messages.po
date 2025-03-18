@@ -132,55 +132,55 @@ msgstr ""
 msgid "010111100001"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:649
+#: src/pages/Summary/index.tsx:720
 msgid "1. Last Name, First Name, Middle Initial"
 msgstr "1. Nachname, Vorname, zweiter Vorname"
 
-#: src/pages/Summary/index.tsx:739
+#: src/pages/Summary/index.tsx:809
 msgid "10. Physical Description"
 msgstr "10. Physische Beschreibung"
 
-#: src/pages/Summary/index.tsx:755
+#: src/pages/Summary/index.tsx:825
 msgid "11. Bonds"
 msgstr "11. Anleihen"
 
-#: src/pages/Summary/index.tsx:782
+#: src/pages/Summary/index.tsx:851
 msgid "12. Motivations and Mental Disorders"
 msgstr "12. Motivationen und psychische Störungen"
 
-#: src/pages/Summary/index.tsx:788
+#: src/pages/Summary/index.tsx:857
 msgid "13. Incidents of San Loss Without Going Insane"
 msgstr "13. Vorfälle von San-Verlust, ohne verrückt zu werden"
 
-#: src/pages/Summary/index.tsx:653
+#: src/pages/Summary/index.tsx:724
 msgid "2. Profession (Rank if Applicable)"
 msgstr "2. Beruf (ggf. Rang)"
 
-#: src/pages/Summary/index.tsx:659
+#: src/pages/Summary/index.tsx:730
 msgid "3. Employer"
 msgstr "3. Arbeitgeber"
 
-#: src/pages/Summary/index.tsx:663
+#: src/pages/Summary/index.tsx:734
 msgid "4. Nationality"
 msgstr "4. Nationalität"
 
-#: src/pages/Summary/index.tsx:669
+#: src/pages/Summary/index.tsx:740
 msgid "5. Sex"
 msgstr "5. Sex"
 
-#: src/pages/Summary/index.tsx:673
+#: src/pages/Summary/index.tsx:744
 msgid "6. Age and D.O.B."
 msgstr "6. Alter und Geburtsdatum"
 
-#: src/pages/Summary/index.tsx:679
+#: src/pages/Summary/index.tsx:750
 msgid "7. Education and Occupational History"
 msgstr "7. Ausbildung und beruflicher Werdegang"
 
-#: src/pages/Summary/index.tsx:696
+#: src/pages/Summary/index.tsx:767
 msgid "8. Statistics"
 msgstr "8. Statistiken"
 
-#: src/pages/Summary/index.tsx:712
+#: src/pages/Summary/index.tsx:783
 msgid "9. Derived Attributes"
 msgstr "9. Abgeleitete Attribute"
 
@@ -220,8 +220,8 @@ msgstr "Aktiv"
 msgid "Active Couch Potato"
 msgstr "Aktiver Stubenhocker"
 
-#: src/pages/Summary/index.tsx:796
-#: src/pages/Summary/index.tsx:804
+#: src/pages/Summary/index.tsx:865
+#: src/pages/Summary/index.tsx:873
 msgid "adapted"
 msgstr "angepasst"
 
@@ -299,7 +299,7 @@ msgstr "Anthropologie"
 msgid "Appearance"
 msgstr "Aussehen"
 
-#: src/pages/Summary/index.tsx:814
+#: src/pages/Summary/index.tsx:883
 msgid "Applicable Skill Sets"
 msgstr "Anwendbare Fähigkeiten"
 
@@ -364,7 +364,7 @@ msgstr "Überzeugungen"
 msgid "Bland"
 msgstr "Fade"
 
-#: src/pages/Summary/index.tsx:768
+#: src/pages/Summary/index.tsx:838
 msgid "Bond description"
 msgstr "Anleihebeschreibung"
 
@@ -422,7 +422,7 @@ msgid "Bonus Points Remaining"
 msgstr "Verbleibende Bonuspunkte"
 
 #: src/utils/CharacterGenerator.ts:115
-#: src/pages/Summary/index.tsx:733
+#: src/pages/Summary/index.tsx:803
 msgid "Breaking Point"
 msgstr "Bruchpunkt"
 
@@ -464,11 +464,11 @@ msgstr ""
 msgid "Charisma"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:779
+#: src/pages/Summary/index.tsx:848
 msgid "Check a Bond's box when projecting sanity damage"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:826
+#: src/pages/Summary/index.tsx:895
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr ""
 
@@ -592,7 +592,7 @@ msgstr "Kultzeug"
 msgid "Cunning, logic, and intuition"
 msgstr "Schlauheit, Logik und Intuition"
 
-#: src/pages/Summary/index.tsx:714
+#: src/pages/Summary/index.tsx:784
 msgid "Current"
 msgstr "Aktuell"
 
@@ -662,7 +662,7 @@ msgid "Disguise"
 msgstr "Verkleidung"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
-#: src/pages/Summary/index.tsx:699
+#: src/pages/Summary/index.tsx:770
 msgid "Distinguishing Features"
 msgstr "Besondere Merkmale"
 
@@ -727,11 +727,11 @@ msgstr ""
 msgid "Example"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:835
+#: src/pages/Summary/index.tsx:904
 msgid "Export as PDF"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:638
+#: src/pages/Summary/index.tsx:709
 msgid "Export PDF"
 msgstr ""
 
@@ -910,7 +910,7 @@ msgstr ""
 msgid "Heavy Weapons"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:798
+#: src/pages/Summary/index.tsx:867
 msgid "Helplessness"
 msgstr ""
 
@@ -923,7 +923,7 @@ msgid "History"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:94
-#: src/pages/Summary/index.tsx:718
+#: src/pages/Summary/index.tsx:788
 msgid "Hit Points"
 msgstr ""
 
@@ -1063,7 +1063,7 @@ msgstr ""
 msgid "Lawyer"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:784
+#: src/pages/Summary/index.tsx:853
 msgid "List character motivations and any mental disorders..."
 msgstr ""
 
@@ -1097,7 +1097,7 @@ msgstr ""
 msgid "Marine"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:715
+#: src/pages/Summary/index.tsx:785
 msgid "Max"
 msgstr ""
 
@@ -1258,7 +1258,7 @@ msgstr ""
 msgid "Personal and physical appeal"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:644
+#: src/pages/Summary/index.tsx:715
 msgid "Personal Data"
 msgstr ""
 
@@ -1388,7 +1388,7 @@ msgstr ""
 msgid "Program Manager"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:750
+#: src/pages/Summary/index.tsx:820
 msgid "Psychological Data"
 msgstr ""
 
@@ -1433,7 +1433,7 @@ msgstr ""
 msgid "Repulsive"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:635
+#: src/pages/Summary/index.tsx:706
 msgid "Reset"
 msgstr ""
 
@@ -1446,7 +1446,7 @@ msgstr ""
 msgid "Reset Bonus Points"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:837
+#: src/pages/Summary/index.tsx:906
 msgid "Reset everything"
 msgstr ""
 
@@ -1499,7 +1499,7 @@ msgid "Sailor"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:108
-#: src/pages/Summary/index.tsx:728
+#: src/pages/Summary/index.tsx:798
 msgid "Sanity"
 msgstr ""
 
@@ -1515,8 +1515,8 @@ msgstr ""
 msgid "Scientist"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:697
-#: src/pages/Summary/index.tsx:756
+#: src/pages/Summary/index.tsx:768
+#: src/pages/Summary/index.tsx:826
 msgid "Score"
 msgstr ""
 
@@ -1639,7 +1639,7 @@ msgstr ""
 msgid "Starts at:"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:692
+#: src/pages/Summary/index.tsx:763
 msgid "Statistical Data"
 msgstr ""
 
@@ -1810,7 +1810,7 @@ msgstr ""
 msgid "Vigorous"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:790
+#: src/pages/Summary/index.tsx:859
 msgid "Violence"
 msgstr ""
 
@@ -1866,7 +1866,7 @@ msgstr ""
 msgid "Will, spirit, and mental stability"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:723
+#: src/pages/Summary/index.tsx:793
 msgid "Willpower"
 msgstr ""
 
@@ -1874,7 +1874,7 @@ msgstr ""
 msgid "Wishy-washy"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:698
+#: src/pages/Summary/index.tsx:769
 msgid "x5"
 msgstr ""
 

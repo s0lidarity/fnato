@@ -12,8 +12,6 @@ import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
 import { useDamagedVeteran } from '../../providers/DamagedVeteranContext';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
-import DamagedVeteran from '../../components/DamagedVeteran';
-
 
 const CharacterSheet = styled.div.attrs<any>({
     'data-component': 'Summary/CharacterSheet',
@@ -578,58 +576,59 @@ const VerticalHeaderText = ({ children }: { children: React.ReactNode }) => (
 
 // Add this styled component for custom checkboxes optimized for printing
 const StyledCheckbox = styled.input.attrs<any>(props => ({
-  type: 'checkbox',
-  'data-testid': 'styled-checkbox',
-  'data-component': 'Summary/StyledCheckbox',
+    type: 'checkbox',
+    'data-testid': 'styled-checkbox',
+    'data-component': 'Summary/StyledCheckbox',
 }))`
-  appearance: none;
-  -webkit-appearance: none;
-  width: 0.9rem;
-  height: 0.9rem;
-  border: 0.0625rem solid black;
-  border-radius: 0.125rem;
-  margin: 0;
-  cursor: pointer;
-  position: relative;
-  
+    appearance: none;
+    -webkit-appearance: none;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 0.0625rem solid black;
+    border-radius: 0.125rem;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+
   /* Light background for printability */
-  background-color: #f5f5f5;
-  
-  &:checked {
+    background-color: #f5f5f5;
+
+    &:checked {
     /* Use a light background with a visible checkmark for printing */
     background-color: #e0e0e0;
     
     &:after {
-      content: '';
-      position: absolute;
-      left: 0.25rem;
-      top: 0.125rem;
-      width: 0.25rem;
-      height: 0.5rem;
-      border: solid black;
-      border-width: 0 0.125rem 0.125rem 0;
-      transform: rotate(45deg);
+        content: '';
+        position: absolute;
+        left: 0.25rem;
+        top: 0.125rem;
+        width: 0.25rem;
+        height: 0.5rem;
+        border: solid black;
+        border-width: 0 0.125rem 0.125rem 0;
+        transform: rotate(45deg);
+        }
     }
-  }
-  
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.2);
-  }
-  
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.2);
+    }
+
   /* Print-specific styles */
-  @media print {
-    background-color: white;
-    border: 0.0625rem solid black;
+    @media print {
+        background-color: white;
+        border: 0.0625rem solid black;
     
-    &:checked {
-      background-color: #e0e0e0;
-      
-      &:after {
-        border-color: black;
-      }
+        &:checked {
+            background-color: #e0e0e0;
+        }
+
+            &:after {
+            border-color: black;
+        }
     }
-  }
+}
 `;
 
 export function Summary() {
@@ -637,7 +636,6 @@ export function Summary() {
     const { skills, BonusSkillPackage, profession, resetProfession, calculateSkillValue, resetSkills } = useSkills();
     const { bonds, resetBonds } = useBonds();
     const { personalDetails, resetPersonalDetails } = usePersonalDetails();
-    const { activeAdjustments, clearAdjustments } = useDamagedVeteran();
 
     const handleExport = () => {
         const docName = `${personalDetails?.lastName || ''}-${personalDetails.firstName || ''}-${profession?.name || ''}.pdf`
@@ -666,7 +664,6 @@ export function Summary() {
         resetProfession();
         resetPersonalDetails();
         resetBonds();
-        clearAdjustments();
     }
 
     useEffect(() => {
@@ -701,14 +698,6 @@ export function Summary() {
     
     return (
         <div>
-            <DamagedVeteran />
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.5rem', marginBottom: '1rem' }}>
-                <Button onClick={handleReset}>{t`Reset`}</Button>
-                <Button onClick={handleExport} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <IoMdPrint size={16} />
-                    {t`Export PDF`}
-                </Button>
-            </div>
             <CharacterSheet>
                 <PersonalDataSection>
                     <VerticalHeader>
