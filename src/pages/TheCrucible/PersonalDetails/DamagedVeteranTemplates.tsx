@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
 import { t } from '@lingui/core/macro';
 import { Button } from 'react95';
 
@@ -11,6 +10,7 @@ import {
     CAPTIVITY_OR_IMPRISONMENT,
     THINGS_MAN_WAS_NOT_MEANT_TO_KNOW
 } from '../../../types/characterTypes';
+import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
 
 const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
