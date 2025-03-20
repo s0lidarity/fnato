@@ -52,55 +52,55 @@ msgstr ""
 msgid "010111100001"
 msgstr "010111100001"
 
-#: src/pages/Summary/index.tsx:637
+#: src/pages/Summary/index.tsx:708
 msgid "1. Last Name, First Name, Middle Initial"
 msgstr "1. Nom, Prénom, Initiale du milieu"
 
-#: src/pages/Summary/index.tsx:727
+#: src/pages/Summary/index.tsx:797
 msgid "10. Physical Description"
 msgstr "10. Description physique"
 
-#: src/pages/Summary/index.tsx:743
+#: src/pages/Summary/index.tsx:813
 msgid "11. Bonds"
 msgstr "11. Liens"
 
-#: src/pages/Summary/index.tsx:770
+#: src/pages/Summary/index.tsx:839
 msgid "12. Motivations and Mental Disorders"
 msgstr "12. Motivations et troubles mentaux"
 
-#: src/pages/Summary/index.tsx:776
+#: src/pages/Summary/index.tsx:845
 msgid "13. Incidents of San Loss Without Going Insane"
 msgstr "13. Incidents de perte de SAN sans devenir fou"
 
-#: src/pages/Summary/index.tsx:641
+#: src/pages/Summary/index.tsx:712
 msgid "2. Profession (Rank if Applicable)"
 msgstr "2. Profession (Grade si applicable)"
 
-#: src/pages/Summary/index.tsx:647
+#: src/pages/Summary/index.tsx:718
 msgid "3. Employer"
 msgstr "3. Employeur"
 
-#: src/pages/Summary/index.tsx:651
+#: src/pages/Summary/index.tsx:722
 msgid "4. Nationality"
 msgstr "4. Nationalité"
 
-#: src/pages/Summary/index.tsx:657
+#: src/pages/Summary/index.tsx:728
 msgid "5. Sex"
 msgstr "5. Sexe"
 
-#: src/pages/Summary/index.tsx:661
+#: src/pages/Summary/index.tsx:732
 msgid "6. Age and D.O.B."
 msgstr "6. Âge et date de naissance"
 
-#: src/pages/Summary/index.tsx:667
+#: src/pages/Summary/index.tsx:738
 msgid "7. Education and Occupational History"
 msgstr "7. Formation et histoire professionnelle"
 
-#: src/pages/Summary/index.tsx:684
+#: src/pages/Summary/index.tsx:755
 msgid "8. Statistics"
 msgstr "8. Statistiques"
 
-#: src/pages/Summary/index.tsx:700
+#: src/pages/Summary/index.tsx:771
 msgid "9. Derived Attributes"
 msgstr "9. Attributs dérivés"
 
@@ -136,8 +136,8 @@ msgstr "Actif"
 msgid "Active Couch Potato"
 msgstr "Actif couch potato"
 
-#: src/pages/Summary/index.tsx:784
-#: src/pages/Summary/index.tsx:792
+#: src/pages/Summary/index.tsx:853
+#: src/pages/Summary/index.tsx:861
 msgid "adapted"
 msgstr "adapté"
 
@@ -215,7 +215,7 @@ msgstr "Anthropologie"
 msgid "Appearance"
 msgstr "Apparence"
 
-#: src/pages/Summary/index.tsx:802
+#: src/pages/Summary/index.tsx:871
 msgid "Applicable Skill Sets"
 msgstr "Compétences applicables"
 
@@ -280,7 +280,7 @@ msgstr "Croyances"
 msgid "Bland"
 msgstr "Plat"
 
-#: src/pages/Summary/index.tsx:756
+#: src/pages/Summary/index.tsx:826
 msgid "Bond description"
 msgstr "Description du lien"
 
@@ -344,7 +344,7 @@ msgid "Bonus Points Remaining"
 msgstr "Points bonus restants"
 
 #: src/utils/CharacterGenerator.ts:110
-#: src/pages/Summary/index.tsx:721
+#: src/pages/Summary/index.tsx:791
 msgid "Breaking Point"
 msgstr "Point de rupture"
 
@@ -390,7 +390,7 @@ msgstr "Chat-like"
 msgid "Charisma"
 msgstr "Charisme"
 
-#: src/pages/Summary/index.tsx:767
+#: src/pages/Summary/index.tsx:836
 msgid "Check a Bond's box when projecting sanity damage"
 msgstr ""
 
@@ -398,7 +398,7 @@ msgstr ""
 #~ msgid "Check a Bond’s box when projecting sanity damage"
 #~ msgstr "Cocher la case d'un lien lorsque vous projettez des dégâts de SAN"
 
-#: src/pages/Summary/index.tsx:814
+#: src/pages/Summary/index.tsx:883
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr "Cocher une compétence lorsque vous ratez un test de compétence. Après une session, ajoutez 1d4 à chaque compétence cochée et effacez le test."
 
@@ -522,7 +522,7 @@ msgstr "Crédulité"
 msgid "Cunning, logic, and intuition"
 msgstr "Courage, logique, et intuition"
 
-#: src/pages/Summary/index.tsx:702
+#: src/pages/Summary/index.tsx:772
 msgid "Current"
 msgstr "Actuel"
 
@@ -592,7 +592,7 @@ msgid "Disguise"
 msgstr "Disguise"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
-#: src/pages/Summary/index.tsx:687
+#: src/pages/Summary/index.tsx:758
 msgid "Distinguishing Features"
 msgstr "Caractéristiques distinctives"
 
@@ -653,7 +653,7 @@ msgstr "Entrez un sous-type"
 msgid "Example"
 msgstr "Exemple"
 
-#: src/pages/Summary/index.tsx:823
+#: src/pages/Summary/index.tsx:892
 msgid "Export as PDF"
 msgstr "Exporter en PDF"
 
@@ -832,7 +832,7 @@ msgstr "Machines lourdes"
 msgid "Heavy Weapons"
 msgstr "Armes lourdes"
 
-#: src/pages/Summary/index.tsx:786
+#: src/pages/Summary/index.tsx:855
 msgid "Helplessness"
 msgstr "Inutilité"
 
@@ -845,7 +845,7 @@ msgid "History"
 msgstr "Histoire"
 
 #: src/utils/CharacterGenerator.ts:89
-#: src/pages/Summary/index.tsx:706
+#: src/pages/Summary/index.tsx:776
 msgid "Hit Points"
 msgstr "Points de vie"
 
@@ -985,7 +985,7 @@ msgstr "Loi"
 msgid "Lawyer"
 msgstr "Avocat"
 
-#: src/pages/Summary/index.tsx:772
+#: src/pages/Summary/index.tsx:841
 msgid "List character motivations and any mental disorders..."
 msgstr "Listez les motivations de votre personnage et ses troubles mentaux..."
 
@@ -1019,7 +1019,7 @@ msgstr "De nombreux agents de Delta Green sont des officiers de la police fédé
 msgid "Marine"
 msgstr "Marine"
 
-#: src/pages/Summary/index.tsx:703
+#: src/pages/Summary/index.tsx:773
 msgid "Max"
 msgstr "Maximum"
 
@@ -1180,7 +1180,7 @@ msgstr "Persévérant"
 msgid "Personal and physical appeal"
 msgstr "Appel personnel et physique"
 
-#: src/pages/Summary/index.tsx:632
+#: src/pages/Summary/index.tsx:703
 msgid "Personal Data"
 msgstr "Données personnelles"
 
@@ -1306,7 +1306,7 @@ msgstr "Profession"
 msgid "Program Manager"
 msgstr "Directeur de programme"
 
-#: src/pages/Summary/index.tsx:738
+#: src/pages/Summary/index.tsx:808
 msgid "Psychological Data"
 msgstr "Données psychologiques"
 
@@ -1360,7 +1360,7 @@ msgstr "Réinitialiser les liens"
 msgid "Reset Bonus Points"
 msgstr "Réinitialiser les points bonus"
 
-#: src/pages/Summary/index.tsx:825
+#: src/pages/Summary/index.tsx:894
 msgid "Reset everything"
 msgstr "Réinitialiser tout"
 
@@ -1413,7 +1413,7 @@ msgid "Sailor"
 msgstr "Marin"
 
 #: src/utils/CharacterGenerator.ts:103
-#: src/pages/Summary/index.tsx:716
+#: src/pages/Summary/index.tsx:786
 msgid "Sanity"
 msgstr "Sanité"
 
@@ -1429,8 +1429,8 @@ msgstr "Science (Physique théorique)"
 msgid "Scientist"
 msgstr "Scientifique"
 
-#: src/pages/Summary/index.tsx:685
-#: src/pages/Summary/index.tsx:744
+#: src/pages/Summary/index.tsx:756
+#: src/pages/Summary/index.tsx:814
 msgid "Score"
 msgstr "Note"
 
@@ -1540,7 +1540,7 @@ msgstr "commence à"
 msgid "Starts at:"
 msgstr "Commence à:"
 
-#: src/pages/Summary/index.tsx:680
+#: src/pages/Summary/index.tsx:751
 msgid "Statistical Data"
 msgstr "Données statistiques"
 
@@ -1711,7 +1711,7 @@ msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles son
 msgid "Vigorous"
 msgstr "Vigorant"
 
-#: src/pages/Summary/index.tsx:778
+#: src/pages/Summary/index.tsx:847
 msgid "Violence"
 msgstr "Violence"
 
@@ -1767,7 +1767,7 @@ msgstr "Volonté"
 msgid "Will, spirit, and mental stability"
 msgstr "Volonté, esprit et stabilité mentale"
 
-#: src/pages/Summary/index.tsx:711
+#: src/pages/Summary/index.tsx:781
 msgid "Willpower"
 msgstr "Volonté"
 
@@ -1775,7 +1775,7 @@ msgstr "Volonté"
 msgid "Wishy-washy"
 msgstr "Falot"
 
-#: src/pages/Summary/index.tsx:686
+#: src/pages/Summary/index.tsx:757
 msgid "x5"
 msgstr "x5"
 

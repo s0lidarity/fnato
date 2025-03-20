@@ -43,9 +43,11 @@ interface ThemeMenuProps {
 }
 
 const localizations = [
+    { name: 'Cantonese', emoji: '🇭🇰', locale: 'yue' },
+    { name: 'Deutsch', emoji: '🇩🇪', locale: 'de' },
     { name: 'English', emoji: '🇺🇸', locale: 'en' },
     { name: 'Français', emoji: '🇫🇷', locale: 'fr' },
-    { name: 'Deutsch', emoji: '🇩🇪', locale: 'de' },
+    { name: 'Mandarin', emoji: '🇨🇳', locale: 'cmn-Hans' },
 ];
 
 function LocalizationMenu({ onClose }: ThemeMenuProps) {
