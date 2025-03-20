@@ -1,12 +1,32 @@
-import { Checkbox } from "react95";
+import { Button, Checkbox } from "react95";
 import { Trans } from "@lingui/react/macro";
 import { i18n } from "@lingui/core";
 import { useState } from "preact/hooks";
+import styled from "styled-components";
+import { IoMdSave } from "react-icons/io";
 
 import Dialogue from "../../../components/Dialogue/Dialogue";
 import { useSkills } from "../../../providers/SkillsContext";
 import { Skill } from "../../../types/characterTypes";
 import { MAX_DV_SKILLS } from "../../../constants/gameRules";
+
+const StyledCheckboxContainer = styled.div.attrs<any>({
+    'data-testid': 'dv-checkbox-container',
+    'data-component': 'DamagedVeteranModal/CheckboxContainer'
+})`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+`;
+
+const StyledButtonContainer = styled.div.attrs<any>({
+    'data-testid': 'dv-button-container',
+    'data-component': 'DamagedVeteranModal/ButtonContainer'
+})`
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+`;
 
 export default function DamagedVeteranModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
 
@@ -39,11 +59,18 @@ export default function DamagedVeteranModal({ show, setShow }: { show: boolean, 
             show={show}
             setShow={setShow}
         >
-            {/* AJS render checkboxes for user to select up to 4 skills for the dv bonus */}
             <Trans>Select up to 4 skills for the damaged veteran bonus</Trans>
-            <div>
+            <StyledCheckboxContainer>
                 {skills.map(renderSkillCheckbox)}
-            </div>
+            </StyledCheckboxContainer>
+            <Button onClick={() => {
+                setShow(false);
+            }}>
+                <Trans>Save Hardened Skills</Trans>
+                <StyledButtonContainer>
+                <IoMdSave />
+                </StyledButtonContainer>
+            </Button>
         </Dialogue>
     );
 }   
