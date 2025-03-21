@@ -1,22 +1,30 @@
 import { Button, Checkbox } from "react95";
 import { Trans } from "@lingui/react/macro";
 import { i18n } from "@lingui/core";
-import { useState } from "preact/hooks";
 import styled from "styled-components";
 import { IoMdSave } from "react-icons/io";
 
 import Dialogue from "../../../components/Dialogue/Dialogue";
 import { useSkills } from "../../../providers/SkillsContext";
 import { Skill } from "../../../types/characterTypes";
-import { MAX_DV_SKILLS } from "../../../constants/gameRules";
+import { MAX_DV_SKILLS, DV_BONUS } from "../../../constants/gameRules";
+import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
 
 const StyledCheckboxContainer = styled.div.attrs<any>({
     'data-testid': 'dv-checkbox-container',
     'data-component': 'DamagedVeteranModal/CheckboxContainer'
 })`
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
+
+    @media (min-width: 480px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 `;
 
 const StyledButtonContainer = styled.div.attrs<any>({
@@ -31,14 +39,15 @@ const StyledButtonContainer = styled.div.attrs<any>({
 export default function DamagedVeteranModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
 
     const { skills } = useSkills();
-    const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
+    const { selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
 
     const handleToggle = (skill: Skill) => {
+        // might need to apply DV bonus to skills here
         console.log("toggled", skill);
-        if (selectedSkills.includes(skill)) {
-            setSelectedSkills(selectedSkills.filter(s => s !== skill));
-        } else if (selectedSkills.length < MAX_DV_SKILLS) {
-            setSelectedSkills([...selectedSkills, skill]);
+        if (selectedDVSkills.includes(skill.id)) {
+            selectSkillsForTemplate(skill.id, selectedDVSkills.filter(s => s !== skill.id));
+        } else if (selectedDVSkills.length < MAX_DV_SKILLS) {
+            selectSkillsForTemplate(skill.id, [...selectedDVSkills, skill.id]);
         }
     };
 
@@ -47,7 +56,7 @@ export default function DamagedVeteranModal({ show, setShow }: { show: boolean, 
             <Checkbox
                 key={skill.id}
                 label={i18n._(skill.labelMsg)}
-                checked={selectedSkills.includes(skill)}
+                checked={selectedDVSkills.includes(skill.id)}
                 onChange={() => handleToggle(skill)}
             />
         )

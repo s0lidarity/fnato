@@ -8,7 +8,7 @@ import { useBonds } from './BondsContext';
 type DamagedVeteranContextType = {
     // State values (alphabetically ordered)
     activeTemplates: string[];
-    selectedSkills: { [templateId: string]: string[] };
+    selectedDVSkills: string[];
 
     // Functions (alphabetically ordered)
     activateTemplate: (templateId: string) => void;
@@ -35,7 +35,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
 
     // State
     const [activeTemplates, setActiveTemplates] = useState<string[]>([]);
-    const [selectedSkills, setSelectedSkills] = useState<{ [templateId: string]: string[] }>({});
+    const [selectedDVSkills, setSelectedDVSkills] = useState<string[]>([]);
 
     // Template Management
     const getTemplateById = (templateId: string): DamagedVeteranAdjustment | undefined => {
@@ -113,8 +113,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         setActiveTemplates(prev => prev.filter(id => id !== templateId));
         
         // Clean up selected skills
-        const { [templateId]: _, ...rest } = selectedSkills;
-        setSelectedSkills(rest);
+        setSelectedDVSkills(selectedDVSkills.filter(id => id !== templateId));
     };
 
     const selectSkillsForTemplate = (templateId: string, skills: string[]) => {
@@ -125,7 +124,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         if (skills.length !== template.skillSelectionRules.count) return;
 
         // Remove previous skill selections if any
-        const previousSkills = selectedSkills[templateId] || [];
+        const previousSkills = selectedDVSkills || [];
         previousSkills.forEach(skillName => {
             updateSkillAdjustment(skillName, -template.skillSelectionRules!.bonus);
         });
@@ -135,10 +134,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
             updateSkillAdjustment(skillName, template.skillSelectionRules!.bonus);
         });
 
-        setSelectedSkills(prev => ({
-            ...prev,
-            [templateId]: skills
-        }));
+        setSelectedDVSkills(prev => [...prev, ...skills]);
     };
 
     return (
@@ -146,7 +142,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
             value={{
                 // State
                 activeTemplates,
-                selectedSkills,
+                selectedDVSkills,
 
                 // Functions
                 activateTemplate,

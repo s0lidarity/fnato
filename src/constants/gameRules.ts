@@ -10,3 +10,4 @@ export const DEFAULT_TOTAL_CAP = 80;
 export const MAX_BONUS_POINTS = 8;
 export const MAX_PERSONAL_MOTIVATIONS = 5;
 export const MAX_DV_SKILLS = 4;
+export const DV_BONUS = 10;
