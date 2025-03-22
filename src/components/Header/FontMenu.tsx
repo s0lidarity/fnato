@@ -36,7 +36,7 @@ const FontMenu = () => {
                 onClick={() => handleFontChange(font.value as any)}
                 style={{ 
                     fontWeight: fontFamily === font.value ? 'bold' : 'normal',
-                    fontFamily: font.value === 'defonte' ? 'defonte' : 'ms_sans_serif'
+                    fontFamily: font.value
                 }}
             >
                 {font.label}
