@@ -4,10 +4,12 @@ import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 import defonte from './assets/fonts/DeFonte_reduced_Normale.ttf';
 import Upheaval from './assets/fonts/upheavtt.ttf';
+import OpenDyslexic from './assets/fonts/OpenDyslexic-Regular.woff';
+import OpenDyslexicW2 from './assets/fonts/OpenDyslexic-Regular.woff2';
 
 // Add prop type for the component
 interface GlobalStylesProps {
-	fontFamily?: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval';
+	fontFamily?: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval' | 'OpenDyslexic';
 }
 
 // Convert to prop-accepting component
@@ -34,6 +36,13 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 	@font-face {
 		font-family: 'upheaval';
 		src: url(${Upheaval});
+		font-weight: normal;
+		font-style: normal
+	}
+	@font-face {
+		font-family: 'OpenDyslexic';
+		src: 	url(${OpenDyslexicW2}) format('woff2'),
+				url(${OpenDyslexic}) format('woff');
 		font-weight: normal;
 		font-style: normal
 	}
@@ -84,6 +93,8 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 					return 'ms_sans_serif';
 				case 'upheaval':
 					return 'upheaval';
+				case 'OpenDyslexic':
+					return 'OpenDyslexic';
 				default:
 					return 'ms_sans_serif';
 			}
