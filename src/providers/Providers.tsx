@@ -42,8 +42,8 @@ type Theme = typeof tokyoDark;
 interface ThemeContextType {
     theme: Theme;
     setTheme: (theme: Theme) => void;
-    fontFamily: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval';
-    setFontFamily: (font: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval') => void;
+    fontFamily: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval' | 'OpenDyslexic';
+    setFontFamily: (font: 'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval' | 'OpenDyslexic') => void;
 }
 
 // Update the context with proper typing
@@ -56,7 +56,7 @@ export const ThemeContext = createContext<ThemeContextType>({
 
 function Providers({ children }: { children: ComponentChildren }) {
     const [theme, setTheme] = useState(tokyoDark);
-    const [fontFamily, setFontFamily] = useState<'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval'>('ms_sans_serif');
+    const [fontFamily, setFontFamily] = useState<'ms_sans_serif' | 'system' | 'arial' | 'defonte' | 'upheaval' | 'OpenDyslexic'>('ms_sans_serif');
     
     // Add effect to initialize i18n
     useEffect(() => {

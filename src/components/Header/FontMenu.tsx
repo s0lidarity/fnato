@@ -15,13 +15,13 @@ const StyledSubMenu = styled(MenuList).attrs<any>({
 const FontMenu = () => {
     const { fontFamily, setFontFamily } = useContext(ThemeContext);
     
-    // AJS let's add more fonts? starting points
     const fonts = [
         { label: 'MS Sans Serif', value: 'ms_sans_serif' },
         { label: 'System', value: 'system' },
         { label: 'Arial', value: 'arial' },
         { label: 'DeFonte', value: 'defonte' },
         { label: 'Upheaval', value: 'upheaval' },
+        { label: 'OpenDyslexic', value: 'OpenDyslexic' },
     ];
 
     const handleFontChange = (value: string) => {
