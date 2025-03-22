@@ -40,10 +40,12 @@ export default function DamagedVeteranModal({ show, setShow }: { show: boolean, 
 
     const { skills } = useSkills();
     const { selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
+    const { updateSkillAdjustment } = useSkills();
 
     const handleToggle = (skill: Skill) => {
         // might need to apply DV bonus to skills here
         console.log("toggled", skill);
+        console.log("selectedDVSkills", selectedDVSkills);
         if (selectedDVSkills.includes(skill.id)) {
             selectSkillsForTemplate(skill.id, selectedDVSkills.filter(s => s !== skill.id));
         } else if (selectedDVSkills.length < MAX_DV_SKILLS) {

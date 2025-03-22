@@ -117,6 +117,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
     };
 
     const selectSkillsForTemplate = (templateId: string, skills: string[]) => {
+        // AJS start here, skills not updating
         const template = getTemplateById(templateId);
         if (!template || !template.skillSelectionRules) return;
 
