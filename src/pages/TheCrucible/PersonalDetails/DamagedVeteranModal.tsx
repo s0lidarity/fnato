@@ -7,7 +7,7 @@ import { IoMdSave } from "react-icons/io";
 import Dialogue from "../../../components/Dialogue/Dialogue";
 import { useSkills } from "../../../providers/SkillsContext";
 import { Skill } from "../../../types/characterTypes";
-import { MAX_DV_SKILLS, DV_BONUS } from "../../../constants/gameRules";
+import { MAX_HARDENED_VETERAN_SKILLS } from "../../../constants/gameRules";
 import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
 
 const StyledCheckboxContainer = styled.div.attrs<any>({
@@ -40,25 +40,30 @@ export default function DamagedVeteranModal({ show, setShow }: { show: boolean, 
 
     const { skills } = useSkills();
     const { selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
-    const { updateSkillAdjustment } = useSkills();
 
     const handleToggle = (skill: Skill) => {
-        // might need to apply DV bonus to skills here
+        if(skill.id === "occult") {
+            console.error("Occult skill should not be selectable in the hardened veteran modal");
+            return;
+        }
+
+
         console.log("toggled", skill);
         console.log("selectedDVSkills", selectedDVSkills);
-        if (selectedDVSkills.includes(skill.id)) {
-            selectSkillsForTemplate(skill.id, selectedDVSkills.filter(s => s !== skill.id));
-        } else if (selectedDVSkills.length < MAX_DV_SKILLS) {
-            selectSkillsForTemplate(skill.id, [...selectedDVSkills, skill.id]);
-        }
+        selectSkillsForTemplate(skill.id, selectedDVSkills);
     };
 
     const renderSkillCheckbox = (skill: Skill) => {
+        // Users cannot increase Unnatural skill via the hardened veteran template
+        if(skill.id === "unnatural") return null;
+
+        // occult is already selected by default and cannot be deselected with the hardened veteran template
         return (
             <Checkbox
                 key={skill.id}
                 label={i18n._(skill.labelMsg)}
-                checked={selectedDVSkills.includes(skill.id)}
+                checked={selectedDVSkills.includes(skill.id) || skill.id === "occult"}
+                disabled={skill.id === "occult"}
                 onChange={() => handleToggle(skill)}
             />
         )

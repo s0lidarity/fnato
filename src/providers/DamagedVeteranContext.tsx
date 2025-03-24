@@ -4,6 +4,7 @@ import { DamagedVeteranAdjustment, EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, 
 import { useStats } from './StatisticsContext';
 import { useSkills } from './SkillsContext';
 import { useBonds } from './BondsContext';
+import { DV_BONUS, MAX_HARDENED_VETERAN_SKILLS } from '../constants/gameRules';
 
 type DamagedVeteranContextType = {
     // State values (alphabetically ordered)
@@ -116,26 +117,28 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         setSelectedDVSkills(selectedDVSkills.filter(id => id !== templateId));
     };
 
-    const selectSkillsForTemplate = (templateId: string, skills: string[]) => {
+    const selectSkillsForTemplate = (skillId: string, skills: string[]) => {
         // AJS start here, skills not updating
-        const template = getTemplateById(templateId);
-        if (!template || !template.skillSelectionRules) return;
+        if (!skillId || !skills){
+            console.error("No Skill ID or Skills provided to selectSkillsForTemplate:", skillId, skills);
+            return;
+        }
 
-        // Validate skill count
-        if (skills.length !== template.skillSelectionRules.count) return;
+        console.log("skills", skills);
 
-        // Remove previous skill selections if any
-        const previousSkills = selectedDVSkills || [];
-        previousSkills.forEach(skillName => {
-            updateSkillAdjustment(skillName, -template.skillSelectionRules!.bonus);
-        });
+        const previousSkills = skills || [];
 
+        if(previousSkills.includes(skillId)) {
+            // Remove previous skill selections if any
+            console.log("removing dv bonus from", skillId);
+            setSelectedDVSkills(prev => prev.filter(id => id !== skillId));
+            updateSkillAdjustment(skillId, -DV_BONUS);
+        } else if (skills.length < MAX_HARDENED_VETERAN_SKILLS) {
         // Apply new skill selections
-        skills.forEach(skillName => {
-            updateSkillAdjustment(skillName, template.skillSelectionRules!.bonus);
-        });
-
-        setSelectedDVSkills(prev => [...prev, ...skills]);
+            console.log("applying dv bonus to", skillId);
+            setSelectedDVSkills(prev => [...prev, skillId]);
+            updateSkillAdjustment(skillId, DV_BONUS);
+        }
     };
 
     return (
