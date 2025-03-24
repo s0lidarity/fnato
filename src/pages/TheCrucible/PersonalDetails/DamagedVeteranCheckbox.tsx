@@ -32,13 +32,14 @@ interface DamagedVeteranCheckboxProps {
 function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
     // State values
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
-    const [showModal, setShowModal] = useState(false);
+    const [showHVModal, setShowHVModal] = useState(false);
+    // AJS Starting point: choose a bond to remove when appropriate might need to stack the modals
     
     // Functions
     const toggleTemplate = (templateId: string) => {
+        // AJS Starting point: clear the HV skills when deselected, and only show the modal if it was not previously selected
         if(templateId === HARD_EXPERIENCE.id) {
-            setShowModal(true);
-            return;
+            setShowHVModal(true);
         }
         const updatedTemplates = personalDetails.damagedVeteranTemplates.includes(templateId)
             ? personalDetails.damagedVeteranTemplates.filter(id => id !== templateId)
@@ -54,8 +55,8 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
     return (
         <CheckboxContainer>
             <DamagedVeteranModal
-                show={showModal}
-                setShow={setShowModal}
+                show={showHVModal}
+                setShow={setShowHVModal}
             />
             <Checkbox
                 checked={personalDetails?.damagedVeteranTemplates?.includes(template.id)}

@@ -7,7 +7,6 @@ import { IoMdSave } from "react-icons/io";
 import Dialogue from "../../../components/Dialogue/Dialogue";
 import { useSkills } from "../../../providers/SkillsContext";
 import { Skill } from "../../../types/characterTypes";
-import { MAX_HARDENED_VETERAN_SKILLS } from "../../../constants/gameRules";
 import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
 
 const StyledCheckboxContainer = styled.div.attrs<any>({
@@ -36,6 +35,7 @@ const StyledButtonContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
+// AJS starting point: rename to Hardened Veteran Modal
 export default function DamagedVeteranModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
 
     const { skills } = useSkills();

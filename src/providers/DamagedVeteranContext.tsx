@@ -118,7 +118,6 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
     };
 
     const selectSkillsForTemplate = (skillId: string, skills: string[]) => {
-        // AJS start here, skills not updating
         if (!skillId || !skills){
             console.error("No Skill ID or Skills provided to selectSkillsForTemplate:", skillId, skills);
             return;
@@ -126,9 +125,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
 
         console.log("skills", skills);
 
-        const previousSkills = skills || [];
-
-        if(previousSkills.includes(skillId)) {
+        if(skills.includes(skillId)) {
             // Remove previous skill selections if any
             console.log("removing dv bonus from", skillId);
             setSelectedDVSkills(prev => prev.filter(id => id !== skillId));
