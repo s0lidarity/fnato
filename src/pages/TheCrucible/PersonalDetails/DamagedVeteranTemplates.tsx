@@ -11,6 +11,7 @@ import {
     THINGS_MAN_WAS_NOT_MEANT_TO_KNOW
 } from '../../../types/characterTypes';
 import DamagedVeteranCheckbox from './DamagedVeteranCheckbox';
+import { useDamagedVeteran } from '../../../providers/DamagedVeteranContext';
 
 const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
@@ -49,13 +50,14 @@ const StyledButton = styled(Button).attrs<any>({
 `;
 
 function DamagedVeteranTemplates() {
-    const { personalDetails, setPersonalDetails } = usePersonalDetails();
-
+    const { personalDetails } = usePersonalDetails();
+    const { deactivateTemplate } = useDamagedVeteran();
+    
     const handleClearTemplates = () => {
-        setPersonalDetails({
-            ...personalDetails,
-            damagedVeteranTemplates: []
-        });
+        // AJS starting point, clear template needs to be a context function and have it called for each template
+        for (const template of personalDetails.damagedVeteranTemplates) {
+            deactivateTemplate(template);
+        }
     };
 
     return (

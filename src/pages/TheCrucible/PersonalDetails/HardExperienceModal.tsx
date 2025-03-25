@@ -11,7 +11,7 @@ import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
 
 const StyledCheckboxContainer = styled.div.attrs<any>({
     'data-testid': 'dv-checkbox-container',
-    'data-component': 'DamagedVeteranModal/CheckboxContainer'
+    'data-component': 'HardExperienceModal/CheckboxContainer'
 })`
     display: grid;
     grid-template-columns: 1fr;
@@ -28,22 +28,22 @@ const StyledCheckboxContainer = styled.div.attrs<any>({
 
 const StyledButtonContainer = styled.div.attrs<any>({
     'data-testid': 'dv-button-container',
-    'data-component': 'DamagedVeteranModal/ButtonContainer'
+    'data-component': 'HardExperienceModal/ButtonContainer'
 })`
     display: flex;
     justify-content: flex-end;
     align-items: center;
 `;
 
-// AJS starting point: rename to Hardened Veteran Modal
-export default function DamagedVeteranModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
+// AJS starting point: rename to Hard Experience Modal
+export default function HardExperienceModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
 
     const { skills } = useSkills();
-    const { selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
+    const { selectedHardExperienceSkills: selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
 
     const handleToggle = (skill: Skill) => {
         if(skill.id === "occult") {
-            console.error("Occult skill should not be selectable in the hardened veteran modal");
+            console.error("Occult skill should not be selectable in the Hard Experience modal");
             return;
         }
 

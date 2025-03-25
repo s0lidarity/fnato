@@ -6,7 +6,7 @@ import { useState } from "preact/hooks";
 import ReminderTooltip from "../../../components/Footer/ReminderTooltip/ReminderTooltip";
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
 import { DamagedVeteranAdjustment, HARD_EXPERIENCE } from "../../../types/characterTypes";
-import DamagedVeteranModal from "./DamagedVeteranModal";
+import HardExperienceModal from "./HardExperienceModal";
 
 const CheckboxContainer = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-checkbox-container',
@@ -37,8 +37,7 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
     
     // Functions
     const toggleTemplate = (templateId: string) => {
-        // AJS Starting point: clear the HV skills when deselected, and only show the modal if it was not previously selected
-        if(templateId === HARD_EXPERIENCE.id) {
+        if(templateId === HARD_EXPERIENCE.id && !personalDetails.damagedVeteranTemplates.includes(HARD_EXPERIENCE.id)) {
             setShowHVModal(true);
         }
         const updatedTemplates = personalDetails.damagedVeteranTemplates.includes(templateId)
@@ -54,7 +53,7 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
     // AJS TODO: reminderText for tooltips is empty, fix it
     return (
         <CheckboxContainer>
-            <DamagedVeteranModal
+            <HardExperienceModal
                 show={showHVModal}
                 setShow={setShowHVModal}
             />

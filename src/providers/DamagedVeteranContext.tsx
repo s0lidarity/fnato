@@ -9,7 +9,7 @@ import { DV_BONUS, MAX_HARDENED_VETERAN_SKILLS } from '../constants/gameRules';
 type DamagedVeteranContextType = {
     // State values (alphabetically ordered)
     activeTemplates: string[];
-    selectedDVSkills: string[];
+    selectedHardExperienceSkills: string[];
 
     // Functions (alphabetically ordered)
     activateTemplate: (templateId: string) => void;
@@ -36,7 +36,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
 
     // State
     const [activeTemplates, setActiveTemplates] = useState<string[]>([]);
-    const [selectedDVSkills, setSelectedDVSkills] = useState<string[]>([]);
+    const [selectedHardExperienceSkills, setSelectedHardExperienceSkills] = useState<string[]>([]);
 
     // Template Management
     const getTemplateById = (templateId: string): DamagedVeteranAdjustment | undefined => {
@@ -114,7 +114,7 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         setActiveTemplates(prev => prev.filter(id => id !== templateId));
         
         // Clean up selected skills
-        setSelectedDVSkills(selectedDVSkills.filter(id => id !== templateId));
+        setSelectedHardExperienceSkills(selectedHardExperienceSkills.filter(id => id !== templateId));
     };
 
     const selectSkillsForTemplate = (skillId: string, skills: string[]) => {
@@ -128,22 +128,30 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         if(skills.includes(skillId)) {
             // Remove previous skill selections if any
             console.log("removing dv bonus from", skillId);
-            setSelectedDVSkills(prev => prev.filter(id => id !== skillId));
+            setSelectedHardExperienceSkills(prev => prev.filter(id => id !== skillId));
             updateSkillAdjustment(skillId, -DV_BONUS);
         } else if (skills.length < MAX_HARDENED_VETERAN_SKILLS) {
         // Apply new skill selections
             console.log("applying dv bonus to", skillId);
-            setSelectedDVSkills(prev => [...prev, skillId]);
+            setSelectedHardExperienceSkills(prev => [...prev, skillId]);
             updateSkillAdjustment(skillId, DV_BONUS);
         }
     };
+
+    const clearTemplate = (templateId: string) => {
+        const template = getTemplateById(templateId);
+        if (!template) return;
+
+        // Remove stat adjustments
+        
+    }
 
     return (
         <DamagedVeteranContext.Provider
             value={{
                 // State
                 activeTemplates,
-                selectedDVSkills,
+                selectedHardExperienceSkills: selectedHardExperienceSkills,
 
                 // Functions
                 activateTemplate,
