@@ -8,6 +8,7 @@ import Dialogue from "../../../components/Dialogue/Dialogue";
 import { useSkills } from "../../../providers/SkillsContext";
 import { Skill } from "../../../types/characterTypes";
 import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
+import { MAX_HARDENED_VETERAN_SKILLS } from "../../../constants/gameRules";
 
 const StyledCheckboxContainer = styled.div.attrs<any>({
     'data-testid': 'dv-checkbox-container',
@@ -22,7 +23,7 @@ const StyledCheckboxContainer = styled.div.attrs<any>({
     }
 
     @media (min-width: 768px) {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 `;
 
@@ -31,8 +32,17 @@ const StyledButtonContainer = styled.div.attrs<any>({
     'data-component': 'HardExperienceModal/ButtonContainer'
 })`
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    gap: 1rem;
+`;
+
+const StyledClearButton = styled(Button).attrs<any>({
+    'data-testid': 'dv-clear-button',
+    'data-component': 'HardExperienceModal/ClearButton'
+})`
+    gap: 0.5rem;
 `;
 
 // AJS starting point: rename to Hard Experience Modal
@@ -71,22 +81,22 @@ export default function HardExperienceModal({ show, setShow }: { show: boolean, 
 
     return (
         <Dialogue
-            title="Damaged Veteran"
+            title={t`Hard Experience Skill Selection`}
             show={show}
             setShow={setShow}
         >
-            <Trans>Select up to 4 skills for the damaged veteran bonus</Trans>
+            <Trans>Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus</Trans>
             <StyledCheckboxContainer>
                 {skills.map(renderSkillCheckbox)}
             </StyledCheckboxContainer>
-            <Button onClick={() => {
-                setShow(false);
-            }}>
-                <Trans>Save Hardened Skills</Trans>
-                <StyledButtonContainer>
-                <IoMdSave />
-                </StyledButtonContainer>
-            </Button>
+            <StyledButtonContainer>
+                <StyledClearButton onClick={() => {
+                    setShow(false);
+                }}>
+                    <Trans>Save Hardened Skills</Trans>
+                    <IoMdSave />  
+                </StyledClearButton>
+            </StyledButtonContainer>
         </Dialogue>
     );
 }   
