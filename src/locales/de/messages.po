@@ -436,46 +436,46 @@ msgstr "Genial"
 
 #: src/types/characterTypes.ts:836
 msgid "Bureaucracy"
-msgstr ""
+msgstr "Bürokratie"
 
 #: src/types/characterTypes.ts:395
 #: src/types/characterTypes.ts:721
 msgid "Business Math"
-msgstr ""
+msgstr "Wirtschaftsmathematik"
 
 #: src/types/characterTypes.ts:494
 #: src/types/characterTypes.ts:1387
 msgid "Camping, tracking, improvising in nature"
-msgstr ""
+msgstr "Camping, Wandern, Improvisieren in der Natur"
 
 #: src/types/characterTypes.ts:345
 msgid "Captivating"
-msgstr ""
+msgstr "Fesselnd"
 
 #: src/types/characterTypes.ts:636
 msgid "Captivity or Imprisonment"
-msgstr ""
+msgstr "Gefangenschaft oder Gefängnis"
 
 #: src/types/characterTypes.ts:201
 msgid "Cat-like"
-msgstr ""
+msgstr "Katzenartig"
 
 #: src/types/characterTypes.ts:546
 msgid "Charisma"
-msgstr ""
+msgstr "Charisma"
 
 #: src/pages/Summary/index.tsx:848
 msgid "Check a Bond's box when projecting sanity damage"
-msgstr ""
+msgstr "Aktivieren Sie das Kontrollkästchen einer Anleihe, wenn Sie einen Schaden an der geistigen Gesundheit projizieren"
 
 #: src/pages/Summary/index.tsx:895
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
-msgstr ""
+msgstr "Überprüfen Sie eine Fertigkeit, wenn Sie einen Fertigkeitstest nicht bestehen. Nach einer Sitzung addieren Sie 1W4 zu jeder überprüften Fertigkeit und löschen den Test."
 
 #. placeholder {0}: remainingSkillChoices > 0 ? remainingSkillChoices : ''
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:159
 msgid "Choose {0} Additional Skills"
-msgstr ""
+msgstr "Wählen Sie {0} Zusätzliche Fähigkeiten"
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:88
 msgid "Choose a bonus skill package"

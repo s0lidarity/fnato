@@ -1,5 +1,6 @@
 import { Button, Checkbox } from "react95";
 import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 import { i18n } from "@lingui/core";
 import styled from "styled-components";
 import { IoMdSave } from "react-icons/io";
