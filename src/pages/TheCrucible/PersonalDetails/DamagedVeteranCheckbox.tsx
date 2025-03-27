@@ -16,12 +16,18 @@ const CheckboxContainer = styled.div.attrs<any>({
     align-items: center;
 `;
 
-const StyledReminderTooltip = styled(ReminderTooltip).attrs<any>({
-    'data-testid': 'damaged-veteran-reminder-tooltip',
-    'data-component': 'DamagedVeteranCheckbox/ReminderTooltip'
-})`
-    margin-left: 0rem;
-`;
+// Wrapper component with styling
+function StyledReminderTooltip(props) {
+    const wrapperStyle = {
+        marginLeft: '0rem'
+    };
+    
+    return (
+        <div style={wrapperStyle} data-testid="damaged-veteran-reminder-tooltip" data-component="DamagedVeteranCheckbox/ReminderTooltip">
+            <ReminderTooltip {...props} />
+        </div>
+    );
+}
 
 // AJS TODO: let users choose appropriate skills for damaged veteran templates
 
@@ -50,7 +56,12 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
         });
     };
 
-    // AJS TODO: reminderText for tooltips is empty, fix it
+    // Prepare the tooltip props
+    const tooltipProps = {
+        labelText: "",
+        reminderText: template.descriptionMsg || template.description
+    };
+    
     return (
         <CheckboxContainer>
             <HardExperienceModal
@@ -63,10 +74,7 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
                 label={template.labelMsg ? i18n._(template.labelMsg) : template.label}
                 onChange={() => toggleTemplate(template.id)}
             />
-            <StyledReminderTooltip
-                labelText=""
-                reminderText={template.descriptionMsg ? i18n._(template.descriptionMsg) : template.description || "No description available"}
-            />
+            <StyledReminderTooltip {...tooltipProps} />
         </CheckboxContainer>
     );
 }
