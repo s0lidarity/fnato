@@ -132,55 +132,55 @@ msgstr ""
 msgid "010111100001"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:720
+#: src/pages/Summary/index.tsx:709
 msgid "1. Last Name, First Name, Middle Initial"
 msgstr "1. Nachname, Vorname, zweiter Vorname"
 
-#: src/pages/Summary/index.tsx:809
+#: src/pages/Summary/index.tsx:798
 msgid "10. Physical Description"
 msgstr "10. Physische Beschreibung"
 
-#: src/pages/Summary/index.tsx:825
+#: src/pages/Summary/index.tsx:814
 msgid "11. Bonds"
 msgstr "11. Anleihen"
 
-#: src/pages/Summary/index.tsx:851
+#: src/pages/Summary/index.tsx:840
 msgid "12. Motivations and Mental Disorders"
 msgstr "12. Motivationen und psychische Störungen"
 
-#: src/pages/Summary/index.tsx:857
+#: src/pages/Summary/index.tsx:846
 msgid "13. Incidents of San Loss Without Going Insane"
 msgstr "13. Vorfälle von San-Verlust, ohne verrückt zu werden"
 
-#: src/pages/Summary/index.tsx:724
+#: src/pages/Summary/index.tsx:713
 msgid "2. Profession (Rank if Applicable)"
 msgstr "2. Beruf (ggf. Rang)"
 
-#: src/pages/Summary/index.tsx:730
+#: src/pages/Summary/index.tsx:719
 msgid "3. Employer"
 msgstr "3. Arbeitgeber"
 
-#: src/pages/Summary/index.tsx:734
+#: src/pages/Summary/index.tsx:723
 msgid "4. Nationality"
 msgstr "4. Nationalität"
 
-#: src/pages/Summary/index.tsx:740
+#: src/pages/Summary/index.tsx:729
 msgid "5. Sex"
 msgstr "5. Sex"
 
-#: src/pages/Summary/index.tsx:744
+#: src/pages/Summary/index.tsx:733
 msgid "6. Age and D.O.B."
 msgstr "6. Alter und Geburtsdatum"
 
-#: src/pages/Summary/index.tsx:750
+#: src/pages/Summary/index.tsx:739
 msgid "7. Education and Occupational History"
 msgstr "7. Ausbildung und beruflicher Werdegang"
 
-#: src/pages/Summary/index.tsx:767
+#: src/pages/Summary/index.tsx:756
 msgid "8. Statistics"
 msgstr "8. Statistiken"
 
-#: src/pages/Summary/index.tsx:783
+#: src/pages/Summary/index.tsx:772
 msgid "9. Derived Attributes"
 msgstr "9. Abgeleitete Attribute"
 
@@ -220,8 +220,8 @@ msgstr "Aktiv"
 msgid "Active Couch Potato"
 msgstr "Aktiver Stubenhocker"
 
-#: src/pages/Summary/index.tsx:865
-#: src/pages/Summary/index.tsx:873
+#: src/pages/Summary/index.tsx:854
+#: src/pages/Summary/index.tsx:862
 msgid "adapted"
 msgstr "angepasst"
 
@@ -299,7 +299,7 @@ msgstr "Anthropologie"
 msgid "Appearance"
 msgstr "Aussehen"
 
-#: src/pages/Summary/index.tsx:883
+#: src/pages/Summary/index.tsx:872
 msgid "Applicable Skill Sets"
 msgstr "Anwendbare Fähigkeiten"
 
@@ -364,7 +364,7 @@ msgstr "Überzeugungen"
 msgid "Bland"
 msgstr "Fade"
 
-#: src/pages/Summary/index.tsx:838
+#: src/pages/Summary/index.tsx:827
 msgid "Bond description"
 msgstr "Anleihebeschreibung"
 
@@ -422,7 +422,7 @@ msgid "Bonus Points Remaining"
 msgstr "Verbleibende Bonuspunkte"
 
 #: src/utils/CharacterGenerator.ts:115
-#: src/pages/Summary/index.tsx:803
+#: src/pages/Summary/index.tsx:792
 msgid "Breaking Point"
 msgstr "Bruchpunkt"
 
@@ -464,11 +464,11 @@ msgstr "Katzenartig"
 msgid "Charisma"
 msgstr "Charisma"
 
-#: src/pages/Summary/index.tsx:848
+#: src/pages/Summary/index.tsx:837
 msgid "Check a Bond's box when projecting sanity damage"
 msgstr "Aktivieren Sie das Kontrollkästchen einer Anleihe, wenn Sie einen Schaden an der geistigen Gesundheit projizieren"
 
-#: src/pages/Summary/index.tsx:895
+#: src/pages/Summary/index.tsx:884
 msgid "Check a skill when you fail a skill check. After a session, add 1d4 to each checked skill and erase the check."
 msgstr "Überprüfen Sie eine Fertigkeit, wenn Sie einen Fertigkeitstest nicht bestehen. Nach einer Sitzung addieren Sie 1W4 zu jeder überprüften Fertigkeit und löschen den Test."
 
@@ -501,7 +501,7 @@ msgstr "Beschreibungen löschen"
 msgid "Clear Selected Skills"
 msgstr "Ausgewählte Fertigkeiten löschen"
 
-#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:74
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:76
 msgid "Clear Templates"
 msgstr "Vorlagen löschen"
 
@@ -592,7 +592,7 @@ msgstr "Kultzeug"
 msgid "Cunning, logic, and intuition"
 msgstr "Schlauheit, Logik und Intuition"
 
-#: src/pages/Summary/index.tsx:784
+#: src/pages/Summary/index.tsx:773
 msgid "Current"
 msgstr "Aktuell"
 
@@ -604,7 +604,7 @@ msgstr "Benutzerdefinierte Berufe"
 msgid "Dabbler."
 msgstr "Dilettant."
 
-#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:64
+#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:66
 msgid "Damaged Veteran Templates"
 msgstr "Vorlagen für beschädigte Veteranen"
 
@@ -662,7 +662,7 @@ msgid "Disguise"
 msgstr "Verkleidung"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
-#: src/pages/Summary/index.tsx:770
+#: src/pages/Summary/index.tsx:759
 msgid "Distinguishing Features"
 msgstr "Besondere Merkmale"
 
@@ -705,97 +705,97 @@ msgstr "Stumpf"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:203
 msgid "Education"
-msgstr ""
+msgstr "Ausbildung"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:177
 msgid "Employer"
-msgstr ""
+msgstr "Arbeitgeber"
 
 #: src/types/characterTypes.ts:339
 msgid "Engaging"
-msgstr ""
+msgstr "Ansprechend"
 
 #: src/utils/Professions.ts:157
 msgid "Engineer"
-msgstr ""
+msgstr "Ingenieur"
 
 #: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:87
 msgid "Enter a Subtype"
-msgstr ""
+msgstr "Geben Sie einen Subtyp ein"
 
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:60
 msgid "Example"
-msgstr ""
+msgstr "Beispiel"
 
-#: src/pages/Summary/index.tsx:904
+#: src/pages/Summary/index.tsx:893
 msgid "Export as PDF"
-msgstr ""
+msgstr "Als PDF exportieren"
 
 #: src/pages/Summary/index.tsx:709
-msgid "Export PDF"
-msgstr ""
+#~ msgid "Export PDF"
+#~ msgstr "PDF exportieren"
 
 #: src/types/characterTypes.ts:615
 msgid "Extreme Violence"
-msgstr ""
+msgstr "Extreme Gewalt"
 
 #: src/types/characterTypes.ts:133
 msgid "Fair"
-msgstr ""
+msgstr "Gerecht"
 
 #: src/types/characterTypes.ts:127
 msgid "Fatigued"
-msgstr ""
+msgstr "Ermüdet"
 
 #: src/utils/Professions.ts:188
 msgid "Federal Agent"
-msgstr ""
+msgstr "Bundesagent"
 
 #: src/types/characterTypes.ts:62
 msgid "Feeble"
-msgstr ""
+msgstr "Schwach"
 
 #: src/types/characterTypes.ts:464
 #: src/types/characterTypes.ts:1181
 msgid "Finding the path"
-msgstr ""
+msgstr "Den Weg finden"
 
 #: src/types/characterTypes.ts:488
 #: src/types/characterTypes.ts:1323
 msgid "Finding things"
-msgstr ""
+msgstr "Dinge finden"
 
 #: src/types/characterTypes.ts:971
 msgid "Firearms"
-msgstr ""
+msgstr "Schusswaffen"
 
 #: src/utils/Professions.ts:358
 msgid "Firefighter"
-msgstr ""
+msgstr "Feuerwehrmann"
 
 #: src/types/characterTypes.ts:283
 msgid "Firm"
-msgstr ""
+msgstr "Firma"
 
 #: src/types/characterTypes.ts:987
 msgid "First Aid"
-msgstr ""
+msgstr "Erste Hilfe"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:79
 msgid "First Name"
-msgstr ""
+msgstr "Vorname"
 
 #: src/components/Header/index.tsx:61
 msgid "First Night at the Opera?"
-msgstr ""
+msgstr "Premiere in der Oper?"
 
 #: src/types/characterTypes.ts:92
 msgid "Fit"
-msgstr ""
+msgstr "Fit"
 
 #: src/types/characterTypes.ts:280
 msgid "Flexible in principle"
-msgstr ""
+msgstr "Grundsätzlich flexibel"
 
 #: src/components/Header/SettingsMenu.tsx:76
 msgid "Font Settings"
@@ -890,6 +890,10 @@ msgstr ""
 msgid "Hard Experience"
 msgstr ""
 
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:85
+msgid "Hard Experience Skill Selection"
+msgstr ""
+
 #: src/types/characterTypes.ts:556
 msgid "Health and hardiness"
 msgstr ""
@@ -910,7 +914,7 @@ msgstr ""
 msgid "Heavy Weapons"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:867
+#: src/pages/Summary/index.tsx:856
 msgid "Helplessness"
 msgstr ""
 
@@ -923,7 +927,7 @@ msgid "History"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:94
-#: src/pages/Summary/index.tsx:788
+#: src/pages/Summary/index.tsx:777
 msgid "Hit Points"
 msgstr ""
 
@@ -1063,7 +1067,7 @@ msgstr ""
 msgid "Lawyer"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:853
+#: src/pages/Summary/index.tsx:842
 msgid "List character motivations and any mental disorders..."
 msgstr ""
 
@@ -1097,7 +1101,7 @@ msgstr ""
 msgid "Marine"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:785
+#: src/pages/Summary/index.tsx:774
 msgid "Max"
 msgstr ""
 
@@ -1258,7 +1262,7 @@ msgstr ""
 msgid "Personal and physical appeal"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:715
+#: src/pages/Summary/index.tsx:704
 msgid "Personal Data"
 msgstr ""
 
@@ -1388,7 +1392,7 @@ msgstr ""
 msgid "Program Manager"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:820
+#: src/pages/Summary/index.tsx:809
 msgid "Psychological Data"
 msgstr ""
 
@@ -1434,8 +1438,8 @@ msgid "Repulsive"
 msgstr ""
 
 #: src/pages/Summary/index.tsx:706
-msgid "Reset"
-msgstr ""
+#~ msgid "Reset"
+#~ msgstr ""
 
 #: src/pages/TheCrucible/Bonds/index.tsx:39
 msgid "Reset Bonds"
@@ -1446,7 +1450,7 @@ msgstr ""
 msgid "Reset Bonus Points"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:906
+#: src/pages/Summary/index.tsx:895
 msgid "Reset everything"
 msgstr ""
 
@@ -1499,8 +1503,12 @@ msgid "Sailor"
 msgstr ""
 
 #: src/utils/CharacterGenerator.ts:108
-#: src/pages/Summary/index.tsx:798
+#: src/pages/Summary/index.tsx:787
 msgid "Sanity"
+msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:97
+msgid "Save Hardened Skills"
 msgstr ""
 
 #: src/types/characterTypes.ts:1296
@@ -1515,8 +1523,8 @@ msgstr ""
 msgid "Scientist"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:768
-#: src/pages/Summary/index.tsx:826
+#: src/pages/Summary/index.tsx:757
+#: src/pages/Summary/index.tsx:815
 msgid "Score"
 msgstr ""
 
@@ -1534,6 +1542,10 @@ msgstr ""
 
 #: src/components/Header/SettingsMenu.tsx:69
 msgid "Select Theme"
+msgstr ""
+
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:89
+msgid "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
 msgstr ""
 
 #: src/components/Header/SettingsMenu.tsx:61
@@ -1639,7 +1651,7 @@ msgstr ""
 msgid "Starts at:"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:763
+#: src/pages/Summary/index.tsx:752
 msgid "Statistical Data"
 msgstr ""
 
@@ -1810,7 +1822,7 @@ msgstr ""
 msgid "Vigorous"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:859
+#: src/pages/Summary/index.tsx:848
 msgid "Violence"
 msgstr ""
 
@@ -1866,7 +1878,7 @@ msgstr ""
 msgid "Will, spirit, and mental stability"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:793
+#: src/pages/Summary/index.tsx:782
 msgid "Willpower"
 msgstr ""
 
@@ -1874,7 +1886,7 @@ msgstr ""
 msgid "Wishy-washy"
 msgstr ""
 
-#: src/pages/Summary/index.tsx:769
+#: src/pages/Summary/index.tsx:758
 msgid "x5"
 msgstr ""
 

@@ -46,7 +46,6 @@ const StyledClearButton = styled(Button).attrs<any>({
     gap: 0.5rem;
 `;
 
-// AJS starting point: rename to Hard Experience Modal
 export default function HardExperienceModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
 
     const { skills } = useSkills();
