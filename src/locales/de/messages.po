@@ -799,132 +799,132 @@ msgstr "Grundsätzlich flexibel"
 
 #: src/components/Header/SettingsMenu.tsx:76
 msgid "Font Settings"
-msgstr ""
+msgstr "Schriftarteinstellungen"
 
 #: src/types/characterTypes.ts:1023
 msgid "Foreign Languages"
-msgstr ""
+msgstr "Fremdsprachen"
 
 #: src/types/characterTypes.ts:1030
 msgid "Foreign Languages (French)"
-msgstr ""
+msgstr "Fremdsprachen (Französisch)"
 
 #: src/utils/Professions.ts:386
 msgid "Foreign Service Officer"
-msgstr ""
+msgstr "Beamter des Auswärtigen Dienstes"
 
 #: src/types/characterTypes.ts:1003
 msgid "Forensics"
-msgstr ""
+msgstr "Forensik"
 
 #: src/types/characterTypes.ts:327
 msgid "Forgettable"
-msgstr ""
+msgstr "Vergesslich"
 
 #: src/types/characterTypes.ts:446
 #: src/types/characterTypes.ts:1046
 msgid "Forklifts, cranes, excavators, etc"
-msgstr ""
+msgstr "Gabelstapler, Kräne, Bagger usw."
 
 #: src/types/characterTypes.ts:154
 msgid "Formidable"
-msgstr ""
+msgstr "Gewaltig"
 
 #: src/types/characterTypes.ts:151
 msgid "Fortified"
-msgstr ""
+msgstr "Befestigt"
 
 #: src/components/PageNumberTooltip/PageNumberTooltip.tsx:46
 msgid "Found on page {pageNumber}"
-msgstr ""
+msgstr "Gefunden auf Seite {pageNumber}"
 
 #: src/types/characterTypes.ts:115
 msgid "Fragile"
-msgstr ""
+msgstr "Zerbrechlich"
 
 #: src/types/characterTypes.ts:65
 msgid "Frail"
-msgstr ""
+msgstr "Gebrechlich"
 
 #: src/types/characterTypes.ts:1019
 msgid "French"
-msgstr ""
+msgstr "Französisch"
 
 #: src/types/characterTypes.ts:174
 msgid "Fumbling"
-msgstr ""
+msgstr "Fummelei"
 
 #: src/types/characterTypes.ts:425
 #: src/types/characterTypes.ts:927
 msgid "Gene Parmesan, he's the best"
-msgstr ""
+msgstr "Gene Parmesan, er ist der Beste"
 
 #: src/types/characterTypes.ts:245
 msgid "Genius"
-msgstr ""
+msgstr "Genius"
 
 #: src/types/characterTypes.ts:177
 msgid "Graceless"
-msgstr ""
+msgstr "Gnadenlos"
 
 #: src/types/characterTypes.ts:204
 msgid "Greased Lightning"
-msgstr ""
+msgstr "Geölter Blitz"
 
 #: src/types/characterTypes.ts:416
 #: src/types/characterTypes.ts:840
 msgid "Greasing the wheels of government"
-msgstr ""
+msgstr "Schmierung der Regierungsmaschinerie"
 
 #: src/pages/TheCrucible/Bonds/components/BondInput.tsx:128
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 #: src/types/characterTypes.ts:183
 msgid "Handy"
-msgstr ""
+msgstr "Praktisch"
 
 #: src/types/characterTypes.ts:657
 msgid "Hard Experience"
-msgstr ""
+msgstr "Harte Erfahrung"
 
 #: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:85
 msgid "Hard Experience Skill Selection"
-msgstr ""
+msgstr "Auswahl der Fähigkeiten aufgrund harter Erfahrung"
 
 #: src/types/characterTypes.ts:556
 msgid "Health and hardiness"
-msgstr ""
+msgstr "Gesundheit und Widerstandsfähigkeit"
 
 #: src/types/characterTypes.ts:136
 msgid "Healthy"
-msgstr ""
+msgstr "Gesund"
 
 #: src/types/characterTypes.ts:139
 msgid "Hearty"
-msgstr ""
+msgstr "Herzhaft"
 
 #: src/types/characterTypes.ts:1042
 msgid "Heavy Machinery"
-msgstr ""
+msgstr "Schwere Maschinen"
 
 #: src/types/characterTypes.ts:1058
 msgid "Heavy Weapons"
-msgstr ""
+msgstr "Schwere Waffen"
 
 #: src/pages/Summary/index.tsx:856
 msgid "Helplessness"
-msgstr ""
+msgstr "Hilflosigkeit"
 
 #: src/utils/Professions.ts:126
 msgid "Historian"
-msgstr ""
+msgstr "Historiker"
 
 #: src/types/characterTypes.ts:1074
 msgid "History"
-msgstr ""
+msgstr "Geschichte"
 
 #: src/utils/CharacterGenerator.ts:94
 #: src/pages/Summary/index.tsx:777

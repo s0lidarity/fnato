@@ -54,7 +54,7 @@ function DamagedVeteranTemplates() {
     const { deactivateTemplate } = useDamagedVeteran();
     
     const handleClearTemplates = () => {
-        // AJS starting point, clear template needs to be a context function and have it called for each template
+        // AJS starting point, they aint deactivating 
         for (const template of personalDetails.damagedVeteranTemplates) {
             deactivateTemplate(template);
         }
