@@ -4,7 +4,7 @@ import { createContext } from 'preact';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE, DEFAULT_CAP_INCLUDING_DAMAGED_VETERAN_BONUS } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
 import { bondCountSignal } from '../signals/bondSignal';
@@ -117,12 +117,22 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 break;
         }
 
-        // Apply damaged veteran adjustment if present
-        if (skill.damagedVeteranSkillAdjustment) {
-            total += skill.damagedVeteranSkillAdjustment;
+        // apply default cap
+        total = Math.min(DEFAULT_TOTAL_CAP, total);
+        console.log('skill pre dv bonus: ', skill, ' - total: ', total);
+
+        // apply dv bonus if present
+        if(skill.damagedVeteranSkillAdjustment){
+            total = total + skill.damagedVeteranSkillAdjustment;
+        } else {
+            return total;
         }
 
-        return Math.min(DEFAULT_TOTAL_CAP, total);
+        console.log('skill: ', skill, ' - total: ', total);
+
+        // then apply dv cap
+        return Math.min(DEFAULT_CAP_INCLUDING_DAMAGED_VETERAN_BONUS, total);
+
     };
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
