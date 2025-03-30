@@ -816,7 +816,7 @@ msgstr "Pratique"
 msgid "Hard Experience"
 msgstr "Expérience difficile"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:85
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:84
 msgid "Hard Experience Skill Selection"
 msgstr ""
 
@@ -1429,7 +1429,7 @@ msgstr "Marin"
 msgid "Sanity"
 msgstr "Sanité"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:97
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:96
 msgid "Save Hardened Skills"
 msgstr ""
 
@@ -1466,7 +1466,7 @@ msgstr "Sélectionner la date de naissance"
 msgid "Select Theme"
 msgstr "Sélectionner le thème"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:89
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:88
 msgid "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
 msgstr ""
 
