@@ -10,6 +10,7 @@ import PersonalDetails from './PersonalDetails';
 import Bonds from './Bonds';
 import { PageWrapper } from '../../components/SharedStyles';
 import Dossier from './Dossier';
+import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import ArrowNavigators from './components/ArrowNavigators';
 
 const StyledWindow = styled(Window).attrs<any>({
@@ -50,6 +51,7 @@ export function TheCrucible() {
                         <Tab value={1}><Trans>Profession & Skills</Trans></Tab>
                         <Tab value={2}><Trans>Bonds</Trans></Tab>
                         <Tab value={3}><Trans>Personal Details</Trans></Tab>
+                        <Tab value={4}><Trans>Damaged Veteran Templates</Trans></Tab>
                         <Tab value={4}><Trans>Dossier</Trans></Tab>
                         
                     </Tabs>
@@ -58,12 +60,13 @@ export function TheCrucible() {
                         {activeTab === 1 && <Profession />}
                         {activeTab === 2 && <Bonds />}
                         {activeTab === 3 && <PersonalDetails />}
-                        {activeTab === 4 && <Dossier />}
-                        
+                        {activeTab === 4 && <DamagedVeteranTemplates />}
+                        {activeTab === 5 && <Dossier />}
+
                     </TabBody>
                 </WindowContent>
                 {/* AJS TODO clean up the magic number, let's put the tabs in an array and use the length */}
-                <ArrowNavigators activeTab={activeTab} setActiveTab={setActiveTab} maxTab={4} />
+                <ArrowNavigators activeTab={activeTab} setActiveTab={setActiveTab} maxTab={5} />
             </StyledWindow>
         </PageWrapper>
     )
