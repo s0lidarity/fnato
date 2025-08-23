@@ -1,36 +1,10 @@
 import { h } from 'preact';
 import styled from 'styled-components';
-import { Window, WindowContent, WindowHeader } from 'react95';
 import { Trans } from '@lingui/react/macro';
 import { IoInformationCircle, IoWarning } from 'react-icons/io5';
+import { t } from '@lingui/core/macro';
 
-const GuidanceContainer = styled.div.attrs<any>({
-    'data-testid': 'damaged-veteran-guidance-container',
-    'data-component': 'DamagedVeteranGuidance/Container'
-})`
-    margin-bottom: 1rem;
-`;
-
-const GuidanceWindow = styled(Window).attrs<any>({
-    'data-testid': 'damaged-veteran-guidance-window',
-    'data-component': 'DamagedVeteranGuidance/Window'
-})``;
-
-const GuidanceHeader = styled(WindowHeader).attrs<any>({
-    'data-testid': 'damaged-veteran-guidance-header',
-    'data-component': 'DamagedVeteranGuidance/Header'
-})`
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-`;
-
-const GuidanceContent = styled(WindowContent).attrs<any>({
-    'data-testid': 'damaged-veteran-guidance-content',
-    'data-component': 'DamagedVeteranGuidance/Content'
-})`
-    padding: 1rem;
-`;
+import Guidance from '../../../../components/Guidance/Guidance';
 
 const GuidanceSection = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-guidance-section',
@@ -67,6 +41,23 @@ const SectionText = styled.p.attrs<any>({
     }
 `;
 
+const WarningHeader = styled(SectionText).attrs<any>({
+    'data-testid': 'damaged-veteran-guidance-warning-header',
+    'data-component': 'DamagedVeteranGuidance/WarningHeader'
+})`
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+`;
+
+const WarningText = styled(SectionText).attrs<any>({
+    'data-testid': 'damaged-veteran-guidance-warning-text',
+    'data-component': 'DamagedVeteranGuidance/WarningText'
+})`
+    margin: 0.5rem 0 0 0;
+`;
+
 const WarningBox = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-guidance-warning',
     'data-component': 'DamagedVeteranGuidance/Warning'
@@ -96,83 +87,78 @@ const TemplateListItem = styled.li.attrs<any>({
 
 function DamagedVeteranGuidance() {
     return (
-        <GuidanceContainer>
-            <GuidanceWindow>
-                <GuidanceHeader>
-                    <IoInformationCircle size={16} />
-                    <span><Trans>About Damaged Veteran Templates</Trans></span>
-                </GuidanceHeader>
-                <GuidanceContent>
-                    <GuidanceSection>
-                        <SectionTitle>
-                            <IoInformationCircle size={14} />
-                            <Trans>What Are Damaged Veteran Templates?</Trans>
-                        </SectionTitle>
-                        <SectionText>
-                            <Trans>
-                                Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. 
-                                These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped 
-                                your character's abilities and worldview.
-                            </Trans>
-                        </SectionText>
-                    </GuidanceSection>
+        <Guidance 
+            title={t`Damaged Veteran Templates`}
+            buttonText={t`Damaged Veteran Templates Details`}
+        >
+            <GuidanceSection>
+                <SectionTitle>
+                    <IoInformationCircle size={14} />
+                    <Trans>What Are Damaged Veteran Templates?</Trans>
+                </SectionTitle>
+                <SectionText>
+                    <Trans>
+                        Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. 
+                        These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped 
+                        your character's abilities and worldview.
+                    </Trans>
+                </SectionText>
+            </GuidanceSection>
 
-                    <GuidanceSection>
-                        <SectionTitle>
-                            <IoInformationCircle size={14} />
-                            <Trans>How They Work</Trans>
-                        </SectionTitle>
-                        <SectionText>
-                            <Trans>
-                                Each template provides specific bonuses to skills and penalties to certain statistics. 
-                                These changes reflect how the trauma has affected your character's mental and physical state, 
-                                while also granting them hard-won experience in certain areas.
-                            </Trans>
-                        </SectionText>
-                        <SectionText>
-                            <Trans>
-                                You can apply multiple templates to represent a character with complex trauma history, 
-                                but be aware that the cumulative effects can significantly impact your character's capabilities.
-                            </Trans>
-                        </SectionText>
-                    </GuidanceSection>
+            <GuidanceSection>
+                <SectionTitle>
+                    <IoInformationCircle size={14} />
+                    <Trans>How They Work</Trans>
+                </SectionTitle>
+                <SectionText>
+                    <Trans>
+                        Each template provides specific bonuses to skills and penalties to certain statistics. 
+                        These changes reflect how the trauma has affected your character's mental and physical state, 
+                        while also granting them hard-won experience in certain areas.
+                    </Trans>
+                </SectionText>
+                <SectionText>
+                    <Trans>
+                        You can apply multiple templates to represent a character with complex trauma history, 
+                        but be aware that the cumulative effects can significantly impact your character's capabilities.
+                    </Trans>
+                </SectionText>
+            </GuidanceSection>
 
-                    <GuidanceSection>
-                        <SectionTitle>
-                            <IoInformationCircle size={14} />
-                            <Trans>Available Templates</Trans>
-                        </SectionTitle>
-                        <TemplateList>
-                            <TemplateListItem>
-                                <strong><Trans>Extreme Violence:</Trans></strong> <Trans>For characters who have witnessed or participated in horrific violence.</Trans>
-                            </TemplateListItem>
-                            <TemplateListItem>
-                                <strong><Trans>Captivity or Imprisonment:</Trans></strong> <Trans>For characters who have been held against their will.</Trans>
-                            </TemplateListItem>
-                            <TemplateListItem>
-                                <strong><Trans>Hard Experience:</Trans></strong> <Trans>For characters who have endured prolonged hardship and danger.</Trans>
-                            </TemplateListItem>
-                            <TemplateListItem>
-                                <strong><Trans>Things Man Was Not Meant to Know:</Trans></strong> <Trans>For characters who have encountered the unnatural and survived.</Trans>
-                            </TemplateListItem>
-                        </TemplateList>
-                    </GuidanceSection>
+            <GuidanceSection>
+                <SectionTitle>
+                    <IoInformationCircle size={14} />
+                    <Trans>Available Templates</Trans>
+                </SectionTitle>
+                <TemplateList>
+                    <TemplateListItem>
+                        <strong><Trans>Extreme Violence:</Trans></strong> <Trans>For characters who have witnessed or participated in horrific violence.</Trans>
+                    </TemplateListItem>
+                    <TemplateListItem>
+                        <strong><Trans>Captivity or Imprisonment:</Trans></strong> <Trans>For characters who have been held against their will.</Trans>
+                    </TemplateListItem>
+                    <TemplateListItem>
+                        <strong><Trans>Hard Experience:</Trans></strong> <Trans>For characters who have endured prolonged hardship and danger.</Trans>
+                    </TemplateListItem>
+                    <TemplateListItem>
+                        <strong><Trans>Things Man Was Not Meant to Know:</Trans></strong> <Trans>For characters who have encountered the unnatural and survived.</Trans>
+                    </TemplateListItem>
+                </TemplateList>
+            </GuidanceSection>
 
-                    <WarningBox>
-                        <SectionText style={{ margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <IoWarning size={16} />
-                            <strong><Trans>Important:</Trans></strong>
-                        </SectionText>
-                        <SectionText style={{ margin: '0.5rem 0 0 0' }}>
-                            <Trans>
-                                Damaged Veteran Templates are permanent character choices that cannot be easily undone. 
-                                Consider the narrative implications of each template and how it fits with your character's backstory.
-                            </Trans>
-                        </SectionText>
-                    </WarningBox>
-                </GuidanceContent>
-            </GuidanceWindow>
-        </GuidanceContainer>
+            <WarningBox>
+                <WarningHeader>
+                    <IoWarning size={16} />
+                    <strong><Trans>Important:</Trans></strong>
+                </WarningHeader>
+                <WarningText>
+                    <Trans>
+                        Damaged Veteran Templates are permanent character choices that cannot be easily undone. 
+                        Consider the narrative implications of each template and how it fits with your character's backstory.
+                    </Trans>
+                </WarningText>
+            </WarningBox>
+        </Guidance>
     );
 }
 

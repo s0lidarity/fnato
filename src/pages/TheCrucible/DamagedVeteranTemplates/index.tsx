@@ -137,32 +137,7 @@ const ControlsContainer = styled.div.attrs<any>({
     margin-top: 1rem;
 `;
 
-const ActiveTemplatesSummary = styled.div.attrs<any>({
-    'data-testid': 'damaged-veteran-templates-summary',
-    'data-component': 'DamagedVeteranTemplates/Summary'
-})`
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
-    border-radius: 4px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-`;
 
-const SummaryTitle = styled.h3.attrs<any>({
-    'data-testid': 'damaged-veteran-templates-summary-title',
-    'data-component': 'DamagedVeteranTemplates/SummaryTitle'
-})`
-    margin: 0 0 0.5rem 0;
-    color: #00ff00;
-`;
-
-const SummaryList = styled.ul.attrs<any>({
-    'data-testid': 'damaged-veteran-templates-summary-list',
-    'data-component': 'DamagedVeteranTemplates/SummaryList'
-})`
-    margin: 0;
-    padding-left: 1.5rem;
-`;
 
 const WarningText = styled.p.attrs<any>({
     'data-testid': 'damaged-veteran-templates-warning',
@@ -258,7 +233,6 @@ function DamagedVeteranTemplates() {
     const renderTemplateCard = (template: DamagedVeteranAdjustment) => {
         const isActive = personalDetails.damagedVeteranTemplates.includes(template.id);
         const isHardExperience = template.id === HARD_EXPERIENCE.id;
-        const hasSkillSelection = isHardExperience && selectedHardExperienceSkills.length > 0;
 
         return (
             <TemplateCard key={template.id} isActive={isActive}>
@@ -267,7 +241,6 @@ function DamagedVeteranTemplates() {
                     <Checkbox
                         checked={isActive}
                         onChange={() => handleTemplateToggle(template)}
-                        disabled={isHardExperience && !hasSkillSelection}
                     />
                 </TemplateHeader>
                 <TemplateContent>
@@ -306,7 +279,7 @@ function DamagedVeteranTemplates() {
                         </WarningText>
                     )}
 
-                    {isActive && isHardExperience && hasSkillSelection && (
+                    {isActive && isHardExperience && selectedHardExperienceSkills.length > 0 && (
                         <div>
                             <strong><Trans>Selected Skills:</Trans></strong>
                             <div style={{ marginTop: '0.5rem' }}>
@@ -336,43 +309,11 @@ function DamagedVeteranTemplates() {
         );
     };
 
-    const renderActiveTemplatesSummary = () => {
-        if (personalDetails.damagedVeteranTemplates.length === 0) return null;
 
-        const activeTemplateObjects = templates.filter(t => 
-            personalDetails.damagedVeteranTemplates.includes(t.id)
-        );
-
-        return (
-            <ActiveTemplatesSummary>
-                <SummaryTitle><Trans>Active Templates ({activeTemplateObjects.length})</Trans></SummaryTitle>
-                <SummaryList>
-                    {activeTemplateObjects.map(template => (
-                        <li key={template.id}>{template.label}</li>
-                    ))}
-                </SummaryList>
-                {selectedHardExperienceSkills.length > 0 && (
-                    <div style={{ marginTop: '0.5rem' }}>
-                        <strong><Trans>Hard Experience Skills:</Trans></strong>
-                        <span style={{ marginLeft: '0.5rem' }}>
-                            {selectedHardExperienceSkills.length}/{MAX_HARDENED_VETERAN_SKILLS}
-                        </span>
-                    </div>
-                )}
-            </ActiveTemplatesSummary>
-        );
-    };
 
     return (
         <PageContainer>
-            <Header>
-                <h1><Trans>Damaged Veteran Templates</Trans></h1>
-                <p><Trans>Choose templates that reflect your character's traumatic experiences and their lasting effects.</Trans></p>
-            </Header>
-
             <DamagedVeteranGuidance />
-
-            {renderActiveTemplatesSummary()}
 
             <TemplatesGrid>
                 {templates.map(renderTemplateCard)}

@@ -67,6 +67,11 @@ msgstr "--- Standard Professions ---"
 msgid "(Choose type below)"
 msgstr "(Choose type below)"
 
+#. placeholder {0}: template.skillSelectionRules!.maxValue
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:286
+msgid "(max {0}%)"
+msgstr "(max {0}%)"
+
 #. placeholder {0}: skill.skillName
 #. placeholder {0}: skill.subType
 #. placeholder {0}: stats[stat as keyof Statistics].label
@@ -216,6 +221,11 @@ msgstr "Active"
 msgid "Active Couch Potato"
 msgstr "Active Couch Potato"
 
+#. placeholder {0}: activeTemplateObjects.length
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:348
+msgid "Active Templates ({0})"
+msgstr "Active Templates ({0})"
+
 #: src/pages/Summary/index.tsx:854
 #: src/pages/Summary/index.tsx:862
 msgid "adapted"
@@ -339,6 +349,10 @@ msgstr "Athletic"
 msgid "Athletics"
 msgstr "Athletics"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:114
+msgid "Available Templates"
+msgstr "Available Templates"
+
 #: src/types/characterTypes.ts:428
 #: src/types/characterTypes.ts:943
 msgid "Avoiding getting hit"
@@ -360,6 +374,10 @@ msgstr "Beliefs"
 msgid "Bland"
 msgstr "Bland"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:297
+msgid "Bond Changes"
+msgstr "Bond Changes"
+
 #: src/pages/Summary/index.tsx:827
 msgid "Bond description"
 msgstr "Bond description"
@@ -377,7 +395,7 @@ msgstr "Bond Name"
 msgid "Bond Type"
 msgstr "Bond Type"
 
-#: src/pages/TheCrucible/index.tsx:51
+#: src/pages/TheCrucible/index.tsx:52
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:178
 msgid "Bonds"
@@ -408,6 +426,10 @@ msgstr ""
 "                    Any time your Agent's Charisma drops, each bond score drops by the same amount.\n"
 "                    Bonds can be defined as a single person or a group of people. For example, an agent might have bonds with their spouse, their business partner, and their bowling league.\n"
 "                    A Bond must be a real person or small group of people who are alive and can be interacted with."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:294
+msgid "Bonds:"
+msgstr "Bonds:"
 
 #: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:103
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
@@ -450,6 +472,10 @@ msgstr "Business Math"
 msgid "Camping, tracking, improvising in nature"
 msgstr "Camping, tracking, improvising in nature"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:286
+msgid "Cancel"
+msgstr "Cancel"
+
 #: src/types/characterTypes.ts:345
 msgid "Captivating"
 msgstr "Captivating"
@@ -457,6 +483,10 @@ msgstr "Captivating"
 #: src/types/characterTypes.ts:636
 msgid "Captivity or Imprisonment"
 msgstr "Captivity or Imprisonment"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
+msgid "Captivity or Imprisonment:"
+msgstr "Captivity or Imprisonment:"
 
 #: src/types/characterTypes.ts:201
 msgid "Cat-like"
@@ -483,11 +513,11 @@ msgstr "Check a skill when you fail a skill check. After a session, add 1d4 to e
 msgid "Choose {0} Additional Skills"
 msgstr "Choose {0} Additional Skills"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:88
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:115
 msgid "Choose a bonus skill package"
 msgstr "Choose a bonus skill package"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:89
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:116
 msgid "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 msgstr "Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points"
 
@@ -498,6 +528,10 @@ msgstr "Church or support group"
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:116
 msgid "Clear"
 msgstr "Clear"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:378
+msgid "Clear All Templates"
+msgstr "Clear All Templates"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Clear Descriptors"
@@ -538,6 +572,10 @@ msgstr "Computer Science"
 #: src/utils/Professions.ts:161
 msgid "Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet."
 msgstr "Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:293
+msgid "Confirm Selection"
+msgstr "Confirm Selection"
 
 #: src/types/characterTypes.ts:534
 msgid "Constitution"
@@ -610,9 +648,23 @@ msgstr "Custom Professions"
 msgid "Dabbler."
 msgstr "Dabbler."
 
+#: src/pages/TheCrucible/index.tsx:54
 #: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:66
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:74
 msgid "Damaged Veteran Templates"
 msgstr "Damaged Veteran Templates"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
+msgid "Damaged Veteran Templates are permanent character choices that cannot be easily undone. Consider the narrative implications of each template and how it fits with your character's backstory."
+msgstr "Damaged Veteran Templates are permanent character choices that cannot be easily undone. Consider the narrative implications of each template and how it fits with your character's backstory."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:75
+msgid "Damaged Veteran Templates Details"
+msgstr "Damaged Veteran Templates Details"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:83
+msgid "Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped your character's abilities and worldview."
+msgstr "Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped your character's abilities and worldview."
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:131
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:137
@@ -693,7 +745,7 @@ msgstr "Dodge"
 msgid "Does their 'own research'"
 msgstr "Does their 'own research'"
 
-#: src/pages/TheCrucible/index.tsx:53
+#: src/pages/TheCrucible/index.tsx:55
 msgid "Dossier"
 msgstr "Dossier"
 
@@ -705,9 +757,17 @@ msgstr "Drive"
 msgid "Dull"
 msgstr "Dull"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:97
+msgid "Each template provides specific bonuses to skills and penalties to certain statistics. These changes reflect how the trauma has affected your character's mental and physical state, while also granting them hard-won experience in certain areas."
+msgstr "Each template provides specific bonuses to skills and penalties to certain statistics. These changes reflect how the trauma has affected your character's mental and physical state, while also granting them hard-won experience in certain areas."
+
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:203
 msgid "Education"
 msgstr "Education"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:277
+msgid "Effects:"
+msgstr "Effects:"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:177
 msgid "Employer"
@@ -740,6 +800,10 @@ msgstr "Export as PDF"
 #: src/types/characterTypes.ts:615
 msgid "Extreme Violence"
 msgstr "Extreme Violence"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:118
+msgid "Extreme Violence:"
+msgstr "Extreme Violence:"
 
 #: src/types/characterTypes.ts:133
 msgid "Fair"
@@ -802,6 +866,22 @@ msgstr "Flexible in principle"
 #: src/components/Header/SettingsMenu.tsx:76
 msgid "Font Settings"
 msgstr "Font Settings"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
+msgid "For characters who have been held against their will."
+msgstr "For characters who have been held against their will."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:127
+msgid "For characters who have encountered the unnatural and survived."
+msgstr "For characters who have encountered the unnatural and survived."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:124
+msgid "For characters who have endured prolonged hardship and danger."
+msgstr "For characters who have endured prolonged hardship and danger."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:118
+msgid "For characters who have witnessed or participated in horrific violence."
+msgstr "For characters who have witnessed or participated in horrific violence."
 
 #: src/types/characterTypes.ts:1023
 msgid "Foreign Languages"
@@ -892,9 +972,21 @@ msgstr "Handy"
 msgid "Hard Experience"
 msgstr "Hard Experience"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:229
+msgid "Hard Experience - Skill Selection"
+msgstr "Hard Experience - Skill Selection"
+
 #: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:84
 msgid "Hard Experience Skill Selection"
 msgstr "Hard Experience Skill Selection"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:356
+msgid "Hard Experience Skills:"
+msgstr "Hard Experience Skills:"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:124
+msgid "Hard Experience:"
+msgstr "Hard Experience:"
 
 #: src/types/characterTypes.ts:556
 msgid "Health and hardiness"
@@ -946,6 +1038,10 @@ msgstr "Home"
 msgid "Horses and such"
 msgstr "Horses and such"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:94
+msgid "How They Work"
+msgstr "How They Work"
+
 #: src/types/characterTypes.ts:104
 msgid "Huge"
 msgstr "Huge"
@@ -966,6 +1062,10 @@ msgstr "If you haven't studied it you're doomed to repeat it"
 #: src/pages/About/index.tsx:99
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "If you want to support this work, you can buy some Delta Green content through affiliate links."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
+msgid "Important:"
+msgstr "Important:"
 
 #: src/types/characterTypes.ts:268
 msgid "Impulsive"
@@ -1195,13 +1295,17 @@ msgstr "Nigh Immortal"
 msgid "Nimble"
 msgstr "Nimble"
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:71
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:95
 msgid "No Package (Manual Bonus Points)"
 msgstr "No Package (Manual Bonus Points)"
 
 #: src/pages/TheCrucible/Bonds/components/BondInput.tsx:134
 msgid "Note additional details about the bond"
 msgstr "Note additional details about the bond"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:305
+msgid "Note: This template requires selecting {MAX_HARDENED_VETERAN_SKILLS} additional skills."
+msgstr "Note: This template requires selecting {MAX_HARDENED_VETERAN_SKILLS} additional skills."
 
 #: src/types/characterTypes.ts:398
 #: src/types/characterTypes.ts:737
@@ -1268,7 +1372,7 @@ msgstr "Personal and physical appeal"
 msgid "Personal Data"
 msgstr "Personal Data"
 
-#: src/pages/TheCrucible/index.tsx:52
+#: src/pages/TheCrucible/index.tsx:53
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:28
 msgid "Personal Details"
@@ -1305,7 +1409,7 @@ msgstr ""
 #~ "These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
 #~ "powerful, these motivations aren't as strong as Bonds to other humans."
 
-#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:107
+#: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:135
 msgid "personal specialty (any)"
 msgstr "personal specialty (any)"
 
@@ -1383,7 +1487,7 @@ msgstr "Power"
 msgid "Preset Professional Skills"
 msgstr "Preset Professional Skills"
 
-#: src/pages/TheCrucible/index.tsx:50
+#: src/pages/TheCrucible/index.tsx:51
 msgid "Profession & Skills"
 msgstr "Profession & Skills"
 
@@ -1544,9 +1648,19 @@ msgstr "Search"
 msgid "Sedentary"
 msgstr "Sedentary"
 
+#. placeholder {0}: template.skillSelectionRules!.count
+#. placeholder {1}: template.skillSelectionRules!.bonus
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:282
+msgid "Select {0} skills for +{1}% bonus"
+msgstr "Select {0} skills for +{1}% bonus"
+
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:134
 msgid "Select Date of Birth"
 msgstr "Select Date of Birth"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:236
+msgid "Select exactly {MAX_HARDENED_VETERAN_SKILLS} skills to receive a +{DV_BONUS}% bonus. The Occult skill automatically receives this bonus and cannot be deselected."
+msgstr "Select exactly {MAX_HARDENED_VETERAN_SKILLS} skills to receive a +{DV_BONUS}% bonus. The Occult skill automatically receives this bonus and cannot be deselected."
 
 #: src/components/Header/SettingsMenu.tsx:69
 msgid "Select Theme"
@@ -1555,6 +1669,14 @@ msgstr "Select Theme"
 #: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:88
 msgid "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
 msgstr "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:311
+msgid "Selected Skills:"
+msgstr "Selected Skills:"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:245
+msgid "Selected:"
+msgstr "Selected:"
 
 #: src/components/Header/SettingsMenu.tsx:61
 msgid "Settings"
@@ -1573,6 +1695,10 @@ msgstr "Signal intelligence, breaking codes"
 msgid "Simple-minded"
 msgstr "Simple-minded"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:264
+msgid "Skill Bonuses"
+msgstr "Skill Bonuses"
+
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:176
 msgid "Skill Choices Remaining"
 msgstr "Skill Choices Remaining"
@@ -1588,6 +1714,14 @@ msgstr "Skill Points Remaining"
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:87
 msgid "Skill Rating"
 msgstr "Skill Rating"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:278
+msgid "Skill Selection Rules"
+msgstr "Skill Selection Rules"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:287
+msgid "Skill Selection:"
+msgstr "Skill Selection:"
 
 #. js-lingui-explicit-id
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:66
@@ -1646,11 +1780,15 @@ msgstr "starts at"
 msgid "Starts at:"
 msgstr "Starts at:"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:250
+msgid "Stat Changes"
+msgstr "Stat Changes"
+
 #: src/pages/Summary/index.tsx:752
 msgid "Statistical Data"
 msgstr "Statistical Data"
 
-#: src/pages/TheCrucible/index.tsx:49
+#: src/pages/TheCrucible/index.tsx:50
 msgid "Statistics"
 msgstr "Statistics"
 
@@ -1720,11 +1858,16 @@ msgstr "Swole"
 msgid "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 msgstr "Take a peek behind the curtain. Feel free to:<0><1>report an <2>issue </2></1><3>leave <4>feedback/feature requests</4></3><5>or ⭐️ Star the project to give the author ego a boost.</5></0>"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:228
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:243
+msgid "Template Effects Preview"
+msgstr "Template Effects Preview"
+
 #: src/types/characterTypes.ts:298
 msgid "Tenacious"
 msgstr "Tenacious"
 
-#: src/pages/TheCrucible/index.tsx:42
+#: src/pages/TheCrucible/index.tsx:43
 #: src/components/Header/MenuConfig.ts:30
 msgid "The Crucible"
 msgstr "The Crucible"
@@ -1748,6 +1891,14 @@ msgstr "Thick-skulled"
 #: src/types/characterTypes.ts:687
 msgid "Things Man Was Not Meant to Know"
 msgstr "Things Man Was Not Meant to Know"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:127
+msgid "Things Man Was Not Meant to Know:"
+msgstr "Things Man Was Not Meant to Know:"
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:231
+msgid "This template has no direct effects on character stats or skills."
+msgstr "This template has no direct effects on character stats or skills."
 
 #: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:48
 msgid "Title:"
@@ -1841,6 +1992,10 @@ msgstr "Weak-willed"
 msgid "Weekend Warrior"
 msgstr "Weekend Warrior"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:80
+msgid "What Are Damaged Veteran Templates?"
+msgstr "What Are Damaged Veteran Templates?"
+
 #: src/pages/Home/index.tsx:72
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
 msgstr "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
@@ -1885,9 +2040,17 @@ msgstr "Wishy-washy"
 msgid "x5"
 msgstr "x5"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:104
+msgid "You can apply multiple templates to represent a character with complex trauma history, but be aware that the cumulative effects can significantly impact your character's capabilities."
+msgstr "You can apply multiple templates to represent a character with complex trauma history, but be aware that the cumulative effects can significantly impact your character's capabilities."
+
 #: src/utils/Professions.ts:255
 msgid "You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested."
 msgstr "You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested."
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:254
+msgid "You have selected too many skills. Please deselect some to continue."
+msgstr "You have selected too many skills. Please deselect some to continue."
 
 #: src/utils/Professions.ts:498
 msgid "You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime."

@@ -126,12 +126,12 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
 
         console.log("skills", skills);
 
-        if(skills.includes(skillId)) {
+        if(selectedHardExperienceSkills.includes(skillId)) {
             // Remove previous skill selections if any
             console.log("removing dv bonus from", skillId);
             setSelectedHardExperienceSkills(prev => prev.filter(id => id !== skillId));
             updateSkillAdjustment(skillId, -DV_BONUS);
-        } else if (skills.length < MAX_HARDENED_VETERAN_SKILLS) {
+        } else if (selectedHardExperienceSkills.length < MAX_HARDENED_VETERAN_SKILLS) {
         // Apply new skill selections
             console.log("applying dv bonus to", skillId);
             setSelectedHardExperienceSkills(prev => [...prev, skillId]);
