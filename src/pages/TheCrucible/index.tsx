@@ -52,7 +52,7 @@ export function TheCrucible() {
                         <Tab value={2}><Trans>Bonds</Trans></Tab>
                         <Tab value={3}><Trans>Personal Details</Trans></Tab>
                         <Tab value={4}><Trans>Damaged Veteran Templates</Trans></Tab>
-                        <Tab value={4}><Trans>Dossier</Trans></Tab>
+                        <Tab value={5}><Trans>Dossier</Trans></Tab>
                         
                     </Tabs>
                     <TabBody>
