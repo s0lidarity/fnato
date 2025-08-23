@@ -1,4 +1,4 @@
-import { GroupBox, SelectNative, Separator } from 'react95';
+import { GroupBox, Separator } from 'react95';
 import styled from 'styled-components';
 import { Trans } from '@lingui/react';
 import { i18n } from '@lingui/core';

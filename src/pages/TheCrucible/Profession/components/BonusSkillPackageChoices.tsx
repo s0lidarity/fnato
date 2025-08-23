@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { GroupBox, SelectNative, Separator } from 'react95';
-import { useState, useEffect } from 'react';
+import { GroupBox, Separator } from 'react95';
+import { useState, useEffect } from 'preact/hooks';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
@@ -25,12 +25,34 @@ const StyledSeparator = styled(Separator).attrs<any>({
     margin: 0.5rem 0;
 `;
 
-const StyledSelect = styled(SelectNative).attrs<any>({
+const StyledSelect = styled.select.attrs<any>({
     'data-testid': 'bonus-skill-package-choices-select',
     'data-component': 'BonusSkillPackageChoices/StyledSelect'
 })`
     margin: 0.5rem;
     width: fit-content;
+    position: relative;
+    z-index: 100;
+    min-width: fit-content;
+    padding: 0.25rem;
+    background-color: ${({ theme }) => theme.canvas};
+    color: ${({ theme }) => theme.materialText};
+    border: 0.125rem inset ${({ theme }) => theme.borderDark};
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 0.9rem;
+    
+    &:focus {
+        outline: 0.125rem dotted ${({ theme }) => theme.focusSecondary};
+    }
+    
+    option {
+        background-color: ${({ theme }) => theme.canvas};
+        color: ${({ theme }) => theme.materialText};
+    }
+    
+    option:disabled {
+        color: ${({ theme }) => theme.materialTextDisabled};
+    }
 `;
 
 const SkillsListGroupBox = styled(GroupBox).attrs<any>({
@@ -67,18 +89,23 @@ function BonusSkillPackageChoices(){
         setPendingPackage(packageName);
     };
 
-    const options = [
-        { label: t`No Package (Manual Bonus Points)`, value: "" },
-        ...Object.values(BonusSkillPackages).map((bsp: IBonusSkillPackage) => ({
-            label: bsp.name, 
-            value: bsp.name 
-        }))
-    ];
-    
-    const makeSkillLabel = (skill: IBonusSkillChoice) => {
-        return `${i18n._(skill.skillLabelMsg)} ${skill.subType && `(${i18n._(skill.subTypeLabelMsg)})`}`;
-    }
+    const generateOptions = () => {
+        return (
+            <>
+                <option value="">{t`No Package (Manual Bonus Points)`}</option>
+                {Object.values(BonusSkillPackages).map((bsp: IBonusSkillPackage) => (
+                    <option key={bsp.name} value={bsp.name}>
+                        {bsp.name}
+                    </option>
+                ))}
+            </>
+        );
+    };
 
+    const makeSkillLabel = (skill: IBonusSkillChoice) => {
+        const skillSubtypeText = `${skill.subType ? `(${i18n._(skill.subTypeLabelMsg)})` : ''}`;
+        return `${i18n._(skill.skillLabelMsg)} ${skillSubtypeText}`;
+    }
 
     return (
         <BonusSkillPackageChoicesContainer>
@@ -89,10 +116,11 @@ function BonusSkillPackageChoices(){
                     reminderText={t`Choose a package to automatically apply bonus points, or select 'No Package' to manually assign your bonus points`}
                 />
                 <StyledSelect 
-                    options={options} 
                     value={BonusSkillPackage?.name || ""}
-                    onChange={(e: any) => handleBonusSkillPackageSelect(e.value)}
-                />
+                    onChange={(e: any) => handleBonusSkillPackageSelect(e.target.value)}
+                >
+                    {generateOptions()}
+                </StyledSelect>
             </div>
             {BonusSkillPackage && (
                 <SkillsListGroupBox variant='flat' label='Bonus Points'>
