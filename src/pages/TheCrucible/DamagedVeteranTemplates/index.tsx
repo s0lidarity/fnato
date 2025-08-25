@@ -60,8 +60,8 @@ const TemplateCard = styled(Window).attrs<any>({
     'data-component': 'DamagedVeteranTemplates/TemplateCard'
 })<{ isActive: boolean }>`
     ${props => props.isActive && `
-        border: 2px solid #00ff00;
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        border: 2px solid ${props.theme.materialText};
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     `}
 `;
 
@@ -143,10 +143,23 @@ const WarningText = styled.p.attrs<any>({
     'data-testid': 'damaged-veteran-templates-warning',
     'data-component': 'DamagedVeteranTemplates/Warning'
 })`
-    color: #ffaa00;
+    color: ${props => props.theme.warningText};
     font-style: italic;
     margin: 0.5rem 0;
     font-size: 0.9rem;
+`;
+
+const SkillBadge = styled.span.attrs<any>({
+    'data-testid': 'damaged-veteran-template-skill-badge',
+    'data-component': 'DamagedVeteranTemplates/SkillBadge'
+})`
+    display: inline-block;
+    background: #00ff00;
+    color: #000;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
 `;
 
 function DamagedVeteranTemplates() {
@@ -286,17 +299,9 @@ function DamagedVeteranTemplates() {
                                 {selectedHardExperienceSkills.map(skillId => {
                                     const skill = skills.find(s => s.id === skillId);
                                     return skill ? (
-                                        <span key={skillId} style={{ 
-                                            display: 'inline-block', 
-                                            background: '#00ff00', 
-                                            color: '#000', 
-                                            padding: '0.2rem 0.5rem', 
-                                            margin: '0.2rem', 
-                                            borderRadius: '4px',
-                                            fontSize: '0.8rem'
-                                        }}>
+                                        <SkillBadge key={skillId}>
                                             {skill.label} +{DV_BONUS}%
-                                        </span>
+                                        </SkillBadge>
                                     ) : null;
                                 })}
                             </div>

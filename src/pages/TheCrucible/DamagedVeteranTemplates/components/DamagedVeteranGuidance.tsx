@@ -62,7 +62,7 @@ const WarningBox = styled.div.attrs<any>({
     'data-testid': 'damaged-veteran-guidance-warning',
     'data-component': 'DamagedVeteranGuidance/Warning'
 })`
-    background: rgba(255, 170, 0, 0.1);
+    background: #ffaa0020;
     border: 1px solid #ffaa00;
     border-radius: 4px;
     padding: 0.75rem;

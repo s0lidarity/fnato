@@ -86,7 +86,7 @@ const SkillItem = styled.div.attrs<any>({
     transition: all 0.2s ease;
 
     &:hover {
-        background: rgba(0, 255, 0, 0.1);
+        background: #00ff0020;
         border-color: #00ff00;
     }
 `;
@@ -151,7 +151,7 @@ const WarningText = styled.p.attrs<any>({
     'data-testid': 'hard-experience-skill-selector-warning',
     'data-component': 'HardExperienceSkillSelector/Warning'
 })`
-    color: #ffaa00;
+    color: ${props => props.theme.warningText};
     font-style: italic;
     margin: 0.5rem 0;
     font-size: 0.9rem;

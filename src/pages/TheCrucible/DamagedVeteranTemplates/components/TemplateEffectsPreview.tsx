@@ -172,12 +172,12 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
         const skill = skills.find(s => s.id === skillName);
         if (!skill) return null;
 
-        const currentValue = skill.score + adjustment;
+        const currentValue = skill.value + adjustment;
 
         return (
             <EffectItem key={skillName}>
                 <span>{skill.label}:</span>
-                <span>{skill.score}%</span>
+                <span>{skill.value}%</span>
                 <SkillValue>
                     <IoTrendingUp size={12} />
                     +{adjustment}%
