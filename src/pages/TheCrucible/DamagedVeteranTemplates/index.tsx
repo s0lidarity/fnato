@@ -4,7 +4,15 @@ import styled from 'styled-components';
 import { Button, Checkbox, Window, WindowContent, WindowHeader } from 'react95';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
-import { IoInformationCircle, IoClose, IoCheckmark } from 'react-icons/io5';
+import { 
+    IoInformationCircle, 
+    IoClose, 
+    IoCheckmark,
+    IoBodyOutline,
+    IoBulbOutline,
+    IoPeopleOutline,
+    IoHeartOutline
+} from 'react-icons/io5';
 
 import { useDamagedVeteran } from '../../../providers/DamagedVeteranContext';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
@@ -172,6 +180,24 @@ function DamagedVeteranTemplates() {
 
     const templates = [EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW];
 
+    const getStatIcon = (statName: string) => {
+        switch (statName.toLowerCase()) {
+            case 'strength':
+            case 'constitution':
+            case 'dexterity':
+                return <IoBodyOutline />;
+            case 'intelligence':
+            case 'power':
+                return <IoBulbOutline />;
+            case 'charisma':
+                return <IoPeopleOutline />;
+            case 'sanity':
+                return <IoHeartOutline />;
+            default:
+                return <IoInformationCircle />;
+        }
+    };
+
     const handleTemplateToggle = (template: DamagedVeteranAdjustment) => {
         const isActive = personalDetails.damagedVeteranTemplates.includes(template.id);
         
@@ -223,7 +249,7 @@ function DamagedVeteranTemplates() {
 
         return (
             <EffectItem key={statName}>
-                <IoInformationCircle size={14} />
+                {getStatIcon(statName)}
                 <span>{stat.label}:</span>
                 <StatEffect isPositive={effectValue > 0}>{effectText}</StatEffect>
             </EffectItem>

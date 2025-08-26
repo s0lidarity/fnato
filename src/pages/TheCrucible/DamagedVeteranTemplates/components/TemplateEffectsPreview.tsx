@@ -2,7 +2,15 @@ import { h } from 'preact';
 import styled from 'styled-components';
 import { Window, WindowContent, WindowHeader } from 'react95';
 import { Trans } from '@lingui/react/macro';
-import { IoInformationCircle, IoTrendingUp, IoTrendingDown } from 'react-icons/io5';
+import { 
+    IoInformationCircle, 
+    IoTrendingUp, 
+    IoTrendingDown,
+    IoBodyOutline,
+    IoBulbOutline,
+    IoPeopleOutline,
+    IoHeartOutline
+} from 'react-icons/io5';
 
 import { useStats } from '../../../../providers/StatisticsContext';
 import { useSkills } from '../../../../providers/SkillsContext';
@@ -30,6 +38,14 @@ const PreviewHeader = styled(WindowHeader).attrs<any>({
     display: flex;
     align-items: center;
     gap: 0.5rem;
+`;
+
+const HeaderIcon = styled(IoInformationCircle).attrs<any>({
+    'data-testid': 'template-effects-preview-header-icon',
+    'data-component': 'TemplateEffectsPreview/HeaderIcon'
+})`
+    width: 1rem;
+    height: 1rem;
 `;
 
 const PreviewContent = styled(WindowContent).attrs<any>({
@@ -61,6 +77,14 @@ const SectionTitle = styled.h4.attrs<any>({
     font-size: 0.9rem;
 `;
 
+const SectionIcon = styled(IoInformationCircle).attrs<any>({
+    'data-testid': 'template-effects-preview-section-icon',
+    'data-component': 'TemplateEffectsPreview/SectionIcon'
+})`
+    width: 0.875rem;
+    height: 0.875rem;
+`;
+
 const EffectsList = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-effects-list',
     'data-component': 'TemplateEffectsPreview/EffectsList'
@@ -81,6 +105,15 @@ const EffectItem = styled.div.attrs<any>({
     background: rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     font-size: 0.85rem;
+`;
+
+const EffectIcon = styled(IoInformationCircle).attrs<any>({
+    'data-testid': 'template-effects-preview-effect-icon',
+    'data-component': 'TemplateEffectsPreview/EffectIcon'
+})`
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
 `;
 
 const StatValue = styled.span.attrs<any>({
@@ -116,6 +149,24 @@ const BondValue = styled.span.attrs<any>({
     gap: 0.25rem;
 `;
 
+const TrendIcon = styled(IoTrendingUp).attrs<any>({
+    'data-testid': 'template-effects-preview-trend-up-icon',
+    'data-component': 'TemplateEffectsPreview/TrendUpIcon'
+})`
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+`;
+
+const TrendDownIcon = styled(IoTrendingDown).attrs<any>({
+    'data-testid': 'template-effects-preview-trend-down-icon',
+    'data-component': 'TemplateEffectsPreview/TrendDownIcon'
+})`
+    width: 0.75rem;
+    height: 0.75rem;
+    flex-shrink: 0;
+`;
+
 const NoEffects = styled.p.attrs<any>({
     'data-testid': 'template-effects-preview-no-effects',
     'data-component': 'TemplateEffectsPreview/NoEffects'
@@ -134,6 +185,24 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     const { stats } = useStats();
     const { skills } = useSkills();
     const { bonds } = useBonds();
+
+    const getStatIcon = (statName: string) => {
+        switch (statName.toLowerCase()) {
+            case 'strength':
+            case 'constitution':
+            case 'dexterity':
+                return <IoBodyOutline />;
+            case 'intelligence':
+            case 'power':
+                return <IoBulbOutline />;
+            case 'charisma':
+                return <IoPeopleOutline />;
+            case 'sanity':
+                return <IoHeartOutline />;
+            default:
+                return <IoInformationCircle />;
+        }
+    };
 
     const renderStatEffect = (statName: string, adjustment: number | string) => {
         const stat = stats[statName];
@@ -157,10 +226,11 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         return (
             <EffectItem key={statName}>
+                {getStatIcon(statName)}
                 <span>{stat.label}:</span>
                 <span>{stat.score}</span>
                 <StatValue isPositive={effectValue > 0}>
-                    {effectValue > 0 ? <IoTrendingUp size={12} /> : <IoTrendingDown size={12} />}
+                    {effectValue > 0 ? <TrendIcon /> : <TrendDownIcon />}
                     {effectText}
                 </StatValue>
                 <span>= {currentValue}</span>
@@ -179,7 +249,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                 <span>{skill.label}:</span>
                 <span>{skill.value}%</span>
                 <SkillValue>
-                    <IoTrendingUp size={12} />
+                    <TrendIcon />
                     +{adjustment}%
                 </SkillValue>
                 <span>= {currentValue}%</span>
@@ -195,17 +265,17 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         return (
             <EffectItem>
-                <span>Bonds:</span>
+                <span><Trans>Bonds:</Trans></span>
                 <span>{currentBonds}</span>
                 {remove && (
                     <BondValue isPositive={false}>
-                        <IoTrendingDown size={12} />
+                        <TrendDownIcon />
                         -{remove}
                     </BondValue>
                 )}
                 {adjustScore && (
                     <BondValue isPositive={adjustScore > 0}>
-                        {adjustScore > 0 ? <IoTrendingUp size={12} /> : <IoTrendingDown size={12} />}
+                        {adjustScore > 0 ? <TrendIcon /> : <TrendDownIcon />}
                         {adjustScore > 0 ? '+' : ''}{adjustScore}
                     </BondValue>
                 )}
@@ -224,8 +294,8 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
             <PreviewContainer>
                 <PreviewWindow>
                     <PreviewHeader>
-                        <IoInformationCircle size={16} />
-                        <span><Trans>Template Effects Preview</Trans></span>
+                        <HeaderIcon />
+                        <span><Trans>Preview</Trans></span>
                     </PreviewHeader>
                     <PreviewContent>
                         <NoEffects><Trans>This template has no direct effects on character stats or skills.</Trans></NoEffects>
@@ -236,17 +306,17 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     }
 
     return (
-        <PreviewContainer>
-            <PreviewWindow>
-                <PreviewHeader>
-                    <IoInformationCircle size={16} />
-                    <span><Trans>Template Effects Preview</Trans></span>
-                </PreviewHeader>
+                    <PreviewContainer>
+                <PreviewWindow>
+                    <PreviewHeader>
+                        <HeaderIcon />
+                        <span><Trans>Preview</Trans></span>
+                    </PreviewHeader>
                 <PreviewContent>
                     {hasStatEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <IoTrendingDown size={14} />
+                                <SectionIcon />
                                 <Trans>Stat Changes</Trans>
                             </SectionTitle>
                             <EffectsList>
@@ -260,7 +330,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <IoTrendingUp size={14} />
+                                <SectionIcon />
                                 <Trans>Skill Bonuses</Trans>
                             </SectionTitle>
                             <EffectsList>
@@ -274,7 +344,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillSelection && (
                         <EffectsSection>
                             <SectionTitle>
-                                <IoInformationCircle size={14} />
+                                <SectionIcon />
                                 <Trans>Skill Selection Rules</Trans>
                             </SectionTitle>
                             <EffectItem>
@@ -293,7 +363,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasBondEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <IoTrendingDown size={14} />
+                                <SectionIcon />
                                 <Trans>Bond Changes</Trans>
                             </SectionTitle>
                             <EffectsList>
