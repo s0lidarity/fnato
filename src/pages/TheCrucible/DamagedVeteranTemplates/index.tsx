@@ -284,35 +284,7 @@ function DamagedVeteranTemplates() {
                 </TemplateHeader>
                 <TemplateContent>
                     <TemplateDescription>{template.description}</TemplateDescription>
-                    
-                    <EffectsList>
-                        <strong><Trans>Effects:</Trans></strong>
-                        {Object.entries(template.statAdjustment).map(([statName, adjustment]) => 
-                            renderStatEffect(statName, adjustment)
-                        )}
-                        {Object.entries(template.skillAdjustment).map(([skillName, adjustment]) => 
-                            renderSkillEffect(skillName, adjustment)
-                        )}
-                        {template.skillSelectionRules && (
-                            <EffectItem>
-                                <IoInformationCircle size={14} />
-                                <span><Trans>Skill Selection:</Trans></span>
-                                <span>{template.skillSelectionRules.count} skills +{template.skillSelectionRules.bonus}%</span>
-                            </EffectItem>
-                        )}
-                        {template.bondAdjustment && (
-                            <EffectItem>
-                                <IoInformationCircle size={14} />
-                                <span><Trans>Bonds:</Trans></span>
-                                <StatEffect isPositive={false}>
-                                    {template.bondAdjustment.remove ? `-${template.bondAdjustment.remove}` : ''}
-                                    {template.bondAdjustment.adjustScore ? ` ${template.bondAdjustment.adjustScore > 0 ? '+' : ''}${template.bondAdjustment.adjustScore}` : ''}
-                                </StatEffect>
-                            </EffectItem>
-                        )}
-                    </EffectsList>
-
-                    {isHardExperience && (
+                    {isHardExperience && selectedHardExperienceSkills.length < 1 && (
                         <WarningText>
                             <Trans>Note: This template requires selecting {MAX_HARDENED_VETERAN_SKILLS} additional skills.</Trans>
                         </WarningText>

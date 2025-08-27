@@ -26,7 +26,7 @@ msgid "(Choose type below)"
 msgstr "(Choisir un type ci-dessous)"
 
 #. placeholder {0}: template.skillSelectionRules!.maxValue
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:286
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:357
 msgid "(max {0}%)"
 msgstr ""
 
@@ -141,10 +141,9 @@ msgstr "Actif"
 msgid "Active Couch Potato"
 msgstr "Actif couch potato"
 
-#. placeholder {0}: activeTemplateObjects.length
 #: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:348
-msgid "Active Templates ({0})"
-msgstr ""
+#~ msgid "Active Templates ({0})"
+#~ msgstr ""
 
 #: src/pages/Summary/index.tsx:854
 #: src/pages/Summary/index.tsx:862
@@ -269,7 +268,7 @@ msgstr "Athlétique"
 msgid "Athletics"
 msgstr "Athlétisme"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:114
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:131
 msgid "Available Templates"
 msgstr ""
 
@@ -294,7 +293,7 @@ msgstr "Croyances"
 msgid "Bland"
 msgstr "Plat"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:297
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:368
 msgid "Bond Changes"
 msgstr ""
 
@@ -347,7 +346,7 @@ msgstr ""
 "                    Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et son ligue de bowling.\n"
 "                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec."
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:294
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:268
 msgid "Bonds:"
 msgstr ""
 
@@ -404,7 +403,7 @@ msgstr "Captivant"
 msgid "Captivity or Imprisonment"
 msgstr "Captivité ou emprisonnement"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
 msgid "Captivity or Imprisonment:"
 msgstr ""
 
@@ -453,7 +452,7 @@ msgstr "Église ou groupe de soutien"
 msgid "Clear"
 msgstr "Effacer"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:378
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:327
 msgid "Clear All Templates"
 msgstr ""
 
@@ -574,19 +573,19 @@ msgstr "Quelqu'un qui essaie de tout faire."
 
 #: src/pages/TheCrucible/index.tsx:54
 #: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:66
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:74
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:91
 msgid "Damaged Veteran Templates"
 msgstr "Modèles de vétéran blessé"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:155
 msgid "Damaged Veteran Templates are permanent character choices that cannot be easily undone. Consider the narrative implications of each template and how it fits with your character's backstory."
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:75
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:92
 msgid "Damaged Veteran Templates Details"
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:83
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:100
 msgid "Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped your character's abilities and worldview."
 msgstr ""
 
@@ -681,7 +680,7 @@ msgstr "Conduire"
 msgid "Dull"
 msgstr "Dénué de toute énergie"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:97
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:114
 msgid "Each template provides specific bonuses to skills and penalties to certain statistics. These changes reflect how the trauma has affected your character's mental and physical state, while also granting them hard-won experience in certain areas."
 msgstr ""
 
@@ -689,9 +688,9 @@ msgstr ""
 msgid "Education"
 msgstr "Éducation"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:277
-msgid "Effects:"
-msgstr ""
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:290
+#~ msgid "Effects:"
+#~ msgstr ""
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:177
 msgid "Employer"
@@ -725,7 +724,7 @@ msgstr "Exporter en PDF"
 msgid "Extreme Violence"
 msgstr "Violence extrême"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:118
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
 msgid "Extreme Violence:"
 msgstr ""
 
@@ -791,19 +790,19 @@ msgstr "Flexible dans le principe"
 msgid "Font Settings"
 msgstr "Paramètres de police"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
 msgid "For characters who have been held against their will."
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:127
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:144
 msgid "For characters who have encountered the unnatural and survived."
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:124
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:141
 msgid "For characters who have endured prolonged hardship and danger."
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:118
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
 msgid "For characters who have witnessed or participated in horrific violence."
 msgstr ""
 
@@ -905,10 +904,10 @@ msgid "Hard Experience Skill Selection"
 msgstr ""
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:356
-msgid "Hard Experience Skills:"
-msgstr ""
+#~ msgid "Hard Experience Skills:"
+#~ msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:124
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:141
 msgid "Hard Experience:"
 msgstr ""
 
@@ -962,7 +961,7 @@ msgstr "Accueil"
 msgid "Horses and such"
 msgstr "Chevaux et autres"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:94
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:111
 msgid "How They Work"
 msgstr ""
 
@@ -987,7 +986,7 @@ msgstr "Si vous ne l'avez pas étudié, vous êtes condamné à le répéter"
 msgid "If you want to support this work, you can buy some Delta Green content through affiliate links."
 msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu Delta Green via des liens d'affiliation."
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:152
 msgid "Important:"
 msgstr ""
 
@@ -1227,7 +1226,7 @@ msgstr "Aucun package (Points bonus manuels)"
 msgid "Note additional details about the bond"
 msgstr "Notez les détails supplémentaires sur le lien"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:305
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:289
 msgid "Note: This template requires selecting {MAX_HARDENED_VETERAN_SKILLS} additional skills."
 msgstr ""
 
@@ -1401,6 +1400,15 @@ msgstr "Pouvoir"
 msgid "Preset Professional Skills"
 msgstr "Compétences professionnelles prédéfinies"
 
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:298
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:313
+msgid "Preview"
+msgstr ""
+
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:340
+#~ msgid "Preview Effects"
+#~ msgstr ""
+
 #: src/pages/TheCrucible/index.tsx:51
 msgid "Profession & Skills"
 msgstr "Profession & Compétences"
@@ -1564,7 +1572,7 @@ msgstr "Sédentaire"
 
 #. placeholder {0}: template.skillSelectionRules!.count
 #. placeholder {1}: template.skillSelectionRules!.bonus
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:282
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:353
 msgid "Select {0} skills for +{1}% bonus"
 msgstr ""
 
@@ -1584,7 +1592,7 @@ msgstr "Sélectionner le thème"
 msgid "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:311
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:295
 msgid "Selected Skills:"
 msgstr ""
 
@@ -1609,7 +1617,7 @@ msgstr "Renseignement de signal, cassage de codes"
 msgid "Simple-minded"
 msgstr "Simplet"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:264
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:335
 msgid "Skill Bonuses"
 msgstr ""
 
@@ -1629,13 +1637,13 @@ msgstr "Points de compétence restants"
 msgid "Skill Rating"
 msgstr "Note de compétence"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:278
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:349
 msgid "Skill Selection Rules"
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:287
-msgid "Skill Selection:"
-msgstr ""
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:300
+#~ msgid "Skill Selection:"
+#~ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:66
@@ -1694,7 +1702,7 @@ msgstr "commence à"
 msgid "Starts at:"
 msgstr "Commence à:"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:250
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:321
 msgid "Stat Changes"
 msgstr ""
 
@@ -1774,8 +1782,8 @@ msgstr "Jetez un coup d'œil derrière le rideau. N'hésitez pas à :<0><1>signa
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:228
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:243
-msgid "Template Effects Preview"
-msgstr ""
+#~ msgid "Template Effects Preview"
+#~ msgstr ""
 
 #: src/types/characterTypes.ts:298
 msgid "Tenacious"
@@ -1806,11 +1814,11 @@ msgstr "Épais"
 msgid "Things Man Was Not Meant to Know"
 msgstr "Les choses que l'homme n'était pas destiné à savoir"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:127
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:144
 msgid "Things Man Was Not Meant to Know:"
 msgstr ""
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:231
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:301
 msgid "This template has no direct effects on character stats or skills."
 msgstr ""
 
@@ -1906,7 +1914,7 @@ msgstr "Faible-volontaire"
 msgid "Weekend Warrior"
 msgstr "Guerrier de fin de semaine"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:80
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:97
 msgid "What Are Damaged Veteran Templates?"
 msgstr ""
 
@@ -1954,7 +1962,7 @@ msgstr "Falot"
 msgid "x5"
 msgstr "x5"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:104
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
 msgid "You can apply multiple templates to represent a character with complex trauma history, but be aware that the cumulative effects can significantly impact your character's capabilities."
 msgstr ""
 

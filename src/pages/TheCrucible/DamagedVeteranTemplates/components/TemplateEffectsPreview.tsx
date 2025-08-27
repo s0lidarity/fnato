@@ -313,6 +313,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                         <span><Trans>Preview</Trans></span>
                     </PreviewHeader>
                 <PreviewContent>
+                    {/* AJS: TODO revisit this, some temlates without stat changes still show this block */}
                     {hasStatEffects && (
                         <EffectsSection>
                             <SectionTitle>
