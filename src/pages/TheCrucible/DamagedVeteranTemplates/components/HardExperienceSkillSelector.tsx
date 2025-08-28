@@ -1,10 +1,9 @@
 import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import styled from 'styled-components';
-import { Button, Checkbox, Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Checkbox, ScrollView, Window, WindowContent, WindowHeader } from 'react95';
 import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
-import { IoCheckmark, IoClose, IoInformationCircle } from 'react-icons/io5';
+import { IoClose, IoInformationCircle } from 'react-icons/io5';
 
 import { useSkills } from '../../../../providers/SkillsContext';
 import { useDamagedVeteran } from '../../../../providers/DamagedVeteranContext';
@@ -31,7 +30,7 @@ const ModalWindow = styled(Window).attrs<any>({
     'data-testid': 'hard-experience-skill-selector-window',
     'data-component': 'HardExperienceSkillSelector/Window'
 })`
-    max-width: 800px;
+    max-width: 50rem;
     max-height: 80vh;
     overflow: hidden;
 `;
@@ -50,8 +49,6 @@ const ModalContent = styled(WindowContent).attrs<any>({
     'data-component': 'HardExperienceSkillSelector/Content'
 })`
     padding: 1rem;
-    max-height: 60vh;
-    overflow-y: auto;
 `;
 
 const Description = styled.p.attrs<any>({
@@ -61,6 +58,7 @@ const Description = styled.p.attrs<any>({
     margin: 0 0 1rem 0;
     font-size: 0.9rem;
     line-height: 1.4;
+    color: ${props => props.theme.materialText};
 `;
 
 const SkillsGrid = styled.div.attrs<any>({
@@ -68,7 +66,7 @@ const SkillsGrid = styled.div.attrs<any>({
     'data-component': 'HardExperienceSkillSelector/Grid'
 })`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
     gap: 0.5rem;
     margin: 1rem 0;
 `;
@@ -82,12 +80,13 @@ const SkillItem = styled.div.attrs<any>({
     gap: 0.5rem;
     padding: 0.5rem;
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     transition: all 0.2s ease;
+    background: ${props => props.theme.material};
 
     &:hover {
-        background: #00ff0020;
-        border-color: #00ff00;
+        background: ${props => props.theme.materialHover};
+        border-color: ${props => props.theme.materialText};
     }
 `;
 
@@ -95,10 +94,10 @@ const SelectedSkillBadge = styled.span.attrs<any>({
     'data-testid': 'hard-experience-skill-selector-badge',
     'data-component': 'HardExperienceSkillSelector/Badge'
 })`
-    background: #00ff00;
-    color: #000;
+    background: ${props => props.theme.materialText};
+    color: ${props => props.theme.material};
     padding: 0.2rem 0.5rem;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-size: 0.8rem;
     font-weight: bold;
     margin-left: auto;
@@ -113,7 +112,7 @@ const ControlsContainer = styled.div.attrs<any>({
     align-items: center;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid ${props => props.theme.materialText};
 `;
 
 const SelectionInfo = styled.div.attrs<any>({
@@ -124,17 +123,19 @@ const SelectionInfo = styled.div.attrs<any>({
     align-items: center;
     gap: 0.5rem;
     font-size: 0.9rem;
+    color: ${props => props.theme.materialText};
 `;
 
 const ProgressBar = styled.div.attrs<any>({
     'data-testid': 'hard-experience-skill-selector-progress',
     'data-component': 'HardExperienceSkillSelector/Progress'
 })`
-    width: 100px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    width: 6.25rem;
+    height: 0.5rem;
+    background: ${props => props.theme.material};
+    border-radius: 0.25rem;
     overflow: hidden;
+    border: 1px solid ${props => props.theme.materialText};
 `;
 
 const ProgressFill = styled.div.attrs<any>({
@@ -142,7 +143,7 @@ const ProgressFill = styled.div.attrs<any>({
     'data-component': 'HardExperienceSkillSelector/ProgressFill'
 })<{ progress: number }>`
     height: 100%;
-    background: #00ff00;
+    background: ${props => props.theme.materialText};
     width: ${props => props.progress}%;
     transition: width 0.3s ease;
 `;
@@ -156,6 +157,8 @@ const WarningText = styled.p.attrs<any>({
     margin: 0.5rem 0;
     font-size: 0.9rem;
 `;
+
+
 
 interface HardExperienceSkillSelectorProps {
     show: boolean;
@@ -231,55 +234,57 @@ function HardExperienceSkillSelector({ show, onClose, onConfirm }: HardExperienc
                         <IoClose />
                     </Button>
                 </ModalHeader>
-                <ModalContent>
-                    <Description>
-                        <Trans>
-                            Select exactly {MAX_HARDENED_VETERAN_SKILLS} skills to receive a +{DV_BONUS}% bonus. 
-                            The Occult skill automatically receives this bonus and cannot be deselected.
-                        </Trans>
-                    </Description>
+                                <ModalContent>
+                    <ScrollView style={{ width: '100%', height: '40vh' }}>
+                        <Description>
+                            <Trans>
+                                Select exactly {MAX_HARDENED_VETERAN_SKILLS} skills to receive a +{DV_BONUS}% bonus. 
+                                The Occult skill automatically receives this bonus and cannot be deselected.
+                            </Trans>
+                        </Description>
 
-                    <SelectionInfo>
-                        <IoInformationCircle size={16} />
-                        <span>
-                            <Trans>Selected:</Trans> {localSelectedSkills.length}/{MAX_HARDENED_VETERAN_SKILLS}
-                        </span>
-                        <ProgressBar>
-                            <ProgressFill progress={progress} />
-                        </ProgressBar>
-                    </SelectionInfo>
+                        <SelectionInfo>
+                            <IoInformationCircle size={16} />
+                            <span>
+                                <Trans>Selected:</Trans> {localSelectedSkills.length}/{MAX_HARDENED_VETERAN_SKILLS}
+                            </span>
+                            <ProgressBar>
+                                <ProgressFill progress={progress} />
+                            </ProgressBar>
+                        </SelectionInfo>
 
-                    {localSelectedSkills.length > MAX_HARDENED_VETERAN_SKILLS && (
-                        <WarningText>
-                            <Trans>You have selected too many skills. Please deselect some to continue.</Trans>
-                        </WarningText>
-                    )}
+                        {localSelectedSkills.length > MAX_HARDENED_VETERAN_SKILLS && (
+                            <WarningText>
+                                <Trans>You have selected too many skills. Please deselect some to continue.</Trans>
+                            </WarningText>
+                        )}
 
-                    <SkillsGrid>
-                        {/* Always show Occult as selected and disabled */}
-                        <SkillItem>
-                            <Checkbox
-                                checked={true}
-                                disabled={true}
-                                label="Occult"
-                            />
-                            <SelectedSkillBadge>+{DV_BONUS}%</SelectedSkillBadge>
-                        </SkillItem>
-
-                        {/* Show selectable skills */}
-                        {selectableSkills.map(skill => (
-                            <SkillItem key={skill.id}>
+                        <SkillsGrid>
+                            {/* Always show Occult as selected and disabled */}
+                            <SkillItem>
                                 <Checkbox
-                                    checked={localSelectedSkills.includes(skill.id)}
-                                    onChange={() => handleSkillToggle(skill)}
-                                    label={skill.label}
+                                    checked={true}
+                                    disabled={true}
+                                    label="Occult"
                                 />
-                                {localSelectedSkills.includes(skill.id) && (
-                                    <SelectedSkillBadge>+{DV_BONUS}%</SelectedSkillBadge>
-                                )}
+                                <SelectedSkillBadge>+{DV_BONUS}%</SelectedSkillBadge>
                             </SkillItem>
-                        ))}
-                    </SkillsGrid>
+
+                            {/* Show selectable skills */}
+                            {selectableSkills.map(skill => (
+                                <SkillItem key={skill.id}>
+                                    <Checkbox
+                                        checked={localSelectedSkills.includes(skill.id)}
+                                        onChange={() => handleSkillToggle(skill)}
+                                        label={skill.label}
+                                    />
+                                    {localSelectedSkills.includes(skill.id) && (
+                                        <SelectedSkillBadge>+{DV_BONUS}%</SelectedSkillBadge>
+                                    )}
+                                </SkillItem>
+                            ))}
+                        </SkillsGrid>
+                    </ScrollView>
 
                     <ControlsContainer>
                         <Button onClick={handleCancel}>
