@@ -622,6 +622,7 @@ export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
     statAdjustment: {
         charisma: -3,
         power: -3,
+        sanity: -5,
     },
     skillAdjustment: {
         occult: 10,
@@ -642,6 +643,7 @@ export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
     }),
     statAdjustment: {
         power: -3,
+        sanity: -5,
     },
     skillAdjustment: {
         occult: 10,

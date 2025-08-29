@@ -52,10 +52,13 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
     // AJS Starting point, adjustments are not being applied correctly
     const activateTemplate = (templateId: string) => {
         const template = getTemplateById(templateId);
+        console.log("activateTemplate", templateId, template);
         if (!template) return;
 
+        console.log("Applying stat adjustments:", template.statAdjustment);
         // Apply stat adjustments
         Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
+            console.log("Applying stat adjustment:", statName, adjustment);
             if (typeof adjustment === 'number') {
                 updateStatAdjustment(statName, adjustment);
             } else {
@@ -68,17 +71,30 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
             }
         });
 
+        console.log("Applying skill adjustments:", template.skillAdjustment);
         // Apply skill adjustments
         Object.entries(template.skillAdjustment).forEach(([skillName, adjustment]) => {
+            console.log("Applying skill adjustment:", skillName, adjustment);
             updateSkillAdjustment(skillName, adjustment);
         });
 
         // Apply bond adjustments if any
         if (template.bondAdjustment) {
+            console.log("Applying bond adjustments:", template.bondAdjustment);
             updateBondAdjustments(template.bondAdjustment);
         }
 
-        setActiveTemplates(prev => [...prev, templateId]);
+        console.log("Setting active templates, current:", activeTemplates, "adding:", templateId);
+        setActiveTemplates(prev => {
+            // Prevent duplicates
+            if (prev.includes(templateId)) {
+                console.log("Template already active, not adding duplicate");
+                return prev;
+            }
+            const newActiveTemplates = [...prev, templateId];
+            console.log("New active templates:", newActiveTemplates);
+            return newActiveTemplates;
+        });
     };
 
     const deactivateTemplate = (templateId: string) => {
@@ -114,8 +130,14 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
 
         setActiveTemplates(prev => prev.filter(id => id !== templateId));
         
-        // Clean up selected skills
-        setSelectedHardExperienceSkills(selectedHardExperienceSkills.filter(id => id !== templateId));
+        // Clean up selected skills for Hard Experience template
+        if (templateId === 'hard-experience') {
+            // Remove all selected skills and their bonuses
+            selectedHardExperienceSkills.forEach(skillId => {
+                updateSkillAdjustment(skillId, -DV_BONUS);
+            });
+            setSelectedHardExperienceSkills([]);
+        }
     };
 
     const selectSkillsForTemplate = (skillId: string, skills: string[]) => {

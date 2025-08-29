@@ -178,6 +178,17 @@ function DamagedVeteranTemplates() {
     const { bonds } = useBonds();
     const [showHardExperienceModal, setShowHardExperienceModal] = useState(false);
 
+    // Sync personalDetails.damagedVeteranTemplates with activeTemplates
+    useEffect(() => {
+        if (JSON.stringify(personalDetails.damagedVeteranTemplates.sort()) !== JSON.stringify(activeTemplates.sort())) {
+            console.log('Syncing personalDetails with activeTemplates:', activeTemplates);
+            setPersonalDetails({
+                ...personalDetails,
+                damagedVeteranTemplates: [...activeTemplates]
+            });
+        }
+    }, [activeTemplates, personalDetails, setPersonalDetails]);
+
     const templates = [EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW];
 
     const getStatIcon = (statName: string) => {
@@ -199,9 +210,12 @@ function DamagedVeteranTemplates() {
     };
 
     const handleTemplateToggle = (template: DamagedVeteranAdjustment) => {
-        const isActive = personalDetails.damagedVeteranTemplates.includes(template.id);
+        console.log('handleTemplateToggle', template, personalDetails.damagedVeteranTemplates);
+        const isActive = activeTemplates.includes(template.id);
+        console.log('isActive:', isActive);
         
         if (isActive) {
+            console.log('Deactivating template:', template.id);
             deactivateTemplate(template.id);
             setPersonalDetails({
                 ...personalDetails,
@@ -209,19 +223,23 @@ function DamagedVeteranTemplates() {
             });
         } else {
             if (template.id === HARD_EXPERIENCE.id) {
+                console.log('Opening Hard Experience modal');
                 setShowHardExperienceModal(true);
             } else {
+                console.log('Activating template:', template.id);
                 activateTemplate(template.id);
+                const newTemplates = [...personalDetails.damagedVeteranTemplates, template.id];
+                console.log('Setting personal details templates to:', newTemplates);
                 setPersonalDetails({
                     ...personalDetails,
-                    damagedVeteranTemplates: [...personalDetails.damagedVeteranTemplates, template.id]
+                    damagedVeteranTemplates: newTemplates
                 });
             }
         }
     };
 
     const handleClearAllTemplates = () => {
-        personalDetails.damagedVeteranTemplates.forEach(templateId => {
+        activeTemplates.forEach(templateId => {
             deactivateTemplate(templateId);
         });
         setPersonalDetails({
@@ -230,47 +248,8 @@ function DamagedVeteranTemplates() {
         });
     };
 
-    const renderStatEffect = (statName: string, adjustment: number | string) => {
-        const stat = stats[statName];
-        if (!stat) return null;
-
-        let effectValue: number;
-        let effectText: string;
-
-        if (typeof adjustment === 'number') {
-            effectValue = adjustment;
-            effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-        } else {
-            // Dynamic adjustment based on another stat
-            const sourceStat = stats[adjustment];
-            effectValue = sourceStat ? -sourceStat.score : 0;
-            effectText = `-${sourceStat?.score || 0} (based on ${adjustment})`;
-        }
-
-        return (
-            <EffectItem key={statName}>
-                {getStatIcon(statName)}
-                <span>{stat.label}:</span>
-                <StatEffect isPositive={effectValue > 0}>{effectText}</StatEffect>
-            </EffectItem>
-        );
-    };
-
-    const renderSkillEffect = (skillName: string, adjustment: number) => {
-        const skill = skills.find(s => s.id === skillName);
-        if (!skill) return null;
-
-        return (
-            <EffectItem key={skillName}>
-                <IoCheckmark size={14} />
-                <span>{skill.label}:</span>
-                <SkillEffect>+{adjustment}%</SkillEffect>
-            </EffectItem>
-        );
-    };
-
     const renderTemplateCard = (template: DamagedVeteranAdjustment) => {
-        const isActive = personalDetails.damagedVeteranTemplates.includes(template.id);
+        const isActive = activeTemplates.includes(template.id);
         const isHardExperience = template.id === HARD_EXPERIENCE.id;
 
         return (
@@ -323,7 +302,7 @@ function DamagedVeteranTemplates() {
             </TemplatesGrid>
 
             <ControlsContainer>
-                <Button onClick={handleClearAllTemplates} disabled={personalDetails.damagedVeteranTemplates.length === 0}>
+                <Button onClick={handleClearAllTemplates} disabled={activeTemplates.length === 0}>
                     <Trans>Clear All Templates</Trans>
                 </Button>
             </ControlsContainer>

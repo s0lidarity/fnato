@@ -5,6 +5,7 @@ import { useState } from "preact/hooks";
 
 import ReminderTooltip from "../../../components/Footer/ReminderTooltip/ReminderTooltip";
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
+import { useDamagedVeteran } from "../../../providers/DamagedVeteranContext";
 import { DamagedVeteranAdjustment, HARD_EXPERIENCE } from "../../../types/characterTypes";
 import HardExperienceModal from "./HardExperienceModal";
 
@@ -38,22 +39,33 @@ interface DamagedVeteranCheckboxProps {
 function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
     // State values
     const { personalDetails, setPersonalDetails } = usePersonalDetails();
+    const { activateTemplate, deactivateTemplate } = useDamagedVeteran();
     const [showHVModal, setShowHVModal] = useState(false);
-    // AJS Starting point: choose a bond to remove when appropriate might need to stack the modals
     
     // Functions
     const toggleTemplate = (templateId: string) => {
-        if(templateId === HARD_EXPERIENCE.id && !personalDetails.damagedVeteranTemplates.includes(HARD_EXPERIENCE.id)) {
+        const isCurrentlyActive = personalDetails.damagedVeteranTemplates.includes(templateId);
+        
+        if (templateId === HARD_EXPERIENCE.id && !isCurrentlyActive) {
             setShowHVModal(true);
+            return; // Don't activate yet, wait for modal confirmation
         }
-        const updatedTemplates = personalDetails.damagedVeteranTemplates.includes(templateId)
-            ? personalDetails.damagedVeteranTemplates.filter(id => id !== templateId)
-            : [...personalDetails.damagedVeteranTemplates, templateId];
-            
-        setPersonalDetails({
-            ...personalDetails,
-            damagedVeteranTemplates: updatedTemplates
-        });
+        
+        if (isCurrentlyActive) {
+            // Deactivate template
+            deactivateTemplate(templateId);
+            setPersonalDetails({
+                ...personalDetails,
+                damagedVeteranTemplates: personalDetails.damagedVeteranTemplates.filter(id => id !== templateId)
+            });
+        } else {
+            // Activate template
+            activateTemplate(templateId);
+            setPersonalDetails({
+                ...personalDetails,
+                damagedVeteranTemplates: [...personalDetails.damagedVeteranTemplates, templateId]
+            });
+        }
     };
 
     // Prepare the tooltip props
@@ -67,6 +79,15 @@ function DamagedVeteranCheckbox({ template }: DamagedVeteranCheckboxProps) {
             <HardExperienceModal
                 show={showHVModal}
                 setShow={setShowHVModal}
+                onConfirm={() => {
+                    // Activate the template after skill selection
+                    activateTemplate(HARD_EXPERIENCE.id);
+                    setPersonalDetails({
+                        ...personalDetails,
+                        damagedVeteranTemplates: [...personalDetails.damagedVeteranTemplates, HARD_EXPERIENCE.id]
+                    });
+                    setShowHVModal(false);
+                }}
             />
             <Checkbox
                 checked={personalDetails?.damagedVeteranTemplates?.includes(template.id)}

@@ -46,7 +46,15 @@ const StyledClearButton = styled(Button).attrs<any>({
     gap: 0.5rem;
 `;
 
-export default function HardExperienceModal({ show, setShow }: { show: boolean, setShow: (show: boolean) => void }) {
+export default function HardExperienceModal({ 
+    show, 
+    setShow, 
+    onConfirm 
+}: { 
+    show: boolean, 
+    setShow: (show: boolean) => void,
+    onConfirm?: () => void
+}) {
 
     const { skills } = useSkills();
     const { selectedHardExperienceSkills: selectedDVSkills, selectSkillsForTemplate } = useDamagedVeteran();
@@ -91,7 +99,11 @@ export default function HardExperienceModal({ show, setShow }: { show: boolean, 
             </StyledCheckboxContainer>
             <StyledButtonContainer>
                 <StyledClearButton onClick={() => {
-                    setShow(false);
+                    if (onConfirm) {
+                        onConfirm();
+                    } else {
+                        setShow(false);
+                    }
                 }}>
                     <Trans>Save Hardened Skills</Trans>
                     <IoMdSave />  

@@ -9,13 +9,13 @@ import {
     IoBodyOutline,
     IoBulbOutline,
     IoPeopleOutline,
-    IoHeartOutline
+    IoGlassesSharp
 } from 'react-icons/io5';
 
 import { useStats } from '../../../../providers/StatisticsContext';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { useBonds } from '../../../../providers/BondsContext';
-import { DamagedVeteranAdjustment } from '../../../../types/characterTypes';
+import { DamagedVeteranAdjustment, DerivedAttributes } from '../../../../types/characterTypes';
 
 const PreviewContainer = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-container',
@@ -182,7 +182,7 @@ interface TemplateEffectsPreviewProps {
 }
 
 function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
-    const { stats } = useStats();
+    const { stats, derivedAttributes } = useStats();
     const { skills } = useSkills();
     const { bonds } = useBonds();
 
@@ -198,37 +198,61 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
             case 'charisma':
                 return <IoPeopleOutline />;
             case 'sanity':
-                return <IoHeartOutline />;
+                return <IoGlassesSharp />;
             default:
                 return <IoInformationCircle />;
         }
     };
 
     const renderStatEffect = (statName: string, adjustment: number | string) => {
+        // Check if it's a base stat or derived attribute
         const stat = stats[statName];
-        if (!stat) return null;
+        const derivedAttr = derivedAttributes[statName as keyof DerivedAttributes];
+        
+        if (!stat && !derivedAttr) return null;
 
         let effectValue: number;
         let effectText: string;
         let currentValue: number;
+        let label: string;
 
-        if (typeof adjustment === 'number') {
-            effectValue = adjustment;
-            effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-            currentValue = stat.score + adjustment;
+        if (stat) {
+            // Base stat
+            if (typeof adjustment === 'number') {
+                effectValue = adjustment;
+                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
+                currentValue = stat.score + adjustment;
+            } else {
+                // Dynamic adjustment based on another stat
+                const sourceStat = stats[adjustment];
+                effectValue = sourceStat ? -sourceStat.score : 0;
+                effectText = `-${sourceStat?.score || 0}`;
+                currentValue = stat.score + effectValue;
+            }
+            label = stat.label;
+        } else if (derivedAttr) {
+            // Derived attribute
+            if (typeof adjustment === 'number') {
+                effectValue = adjustment;
+                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
+                currentValue = derivedAttr.currentValue + adjustment;
+            } else {
+                // Dynamic adjustment based on another stat
+                const sourceStat = stats[adjustment];
+                effectValue = sourceStat ? -sourceStat.score : 0;
+                effectText = `-${sourceStat?.score || 0}`;
+                currentValue = derivedAttr.currentValue + effectValue;
+            }
+            label = statName.charAt(0).toUpperCase() + statName.slice(1); // Capitalize the stat name
         } else {
-            // Dynamic adjustment based on another stat
-            const sourceStat = stats[adjustment];
-            effectValue = sourceStat ? -sourceStat.score : 0;
-            effectText = `-${sourceStat?.score || 0}`;
-            currentValue = stat.score + effectValue;
+            return null;
         }
 
         return (
             <EffectItem key={statName}>
                 {getStatIcon(statName)}
-                <span>{stat.label}:</span>
-                <span>{stat.score}</span>
+                <span>{label}:</span>
+                <span>{stat ? stat.score : derivedAttr?.currentValue}</span>
                 <StatValue isPositive={effectValue > 0}>
                     {effectValue > 0 ? <TrendIcon /> : <TrendDownIcon />}
                     {effectText}

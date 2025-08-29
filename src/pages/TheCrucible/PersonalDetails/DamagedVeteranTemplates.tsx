@@ -50,14 +50,20 @@ const StyledButton = styled(Button).attrs<any>({
 `;
 
 function DamagedVeteranTemplates() {
-    const { personalDetails } = usePersonalDetails();
+    const { personalDetails, setPersonalDetails } = usePersonalDetails();
     const { deactivateTemplate } = useDamagedVeteran();
     
     const handleClearTemplates = () => {
-        // AJS starting point, they aint deactivating 
+        // Deactivate all templates
         for (const template of personalDetails.damagedVeteranTemplates) {
             deactivateTemplate(template);
         }
+        
+        // Clear the personal details
+        setPersonalDetails({
+            ...personalDetails,
+            damagedVeteranTemplates: []
+        });
     };
 
     return (
