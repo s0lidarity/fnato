@@ -1,17 +1,8 @@
 import styled from 'styled-components';
 import { Tooltip } from 'react95';
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
+import { h } from 'preact';
 
-const SuperscriptNumber = styled.sup.attrs<any>({
-    'data-testid': 'page-number-tooltip-superscript-number',
-    'data-component': 'PageNumberTooltip/SuperscriptNumber',
-})`
-    margin-left: 0.2rem;
-    font-size: 0.7em;
-    color: ${({ theme }) => theme.materialText};
-    cursor: help;
-    vertical-align: super;
-`;
 
 const StyledTooltipInnerText = styled.span.attrs<any>({
     'data-testid': 'page-number-tooltip-inner-text',
@@ -25,19 +16,16 @@ const StyledLabel = styled.span.attrs<any>({
     'data-testid': 'page-number-tooltip-label',
     'data-component': 'PageNumberTooltip/StyledLabel',
 })`
-    display: flex;
-    align-items: center;
+    display: inline;
 `;
 
 interface PageNumberTooltipProps {
     pageNumber: number;
-    children: React.ReactNode;
 }
 
-function PageNumberTooltip({ pageNumber, children }: PageNumberTooltipProps) {
+function PageNumberTooltip({ pageNumber }: PageNumberTooltipProps) {
     return (
         <StyledLabel>
-            {children}
             <Tooltip
                 // jsx in the text param works fine, error seems wrong
                 // @ts-ignore
@@ -49,7 +37,7 @@ function PageNumberTooltip({ pageNumber, children }: PageNumberTooltipProps) {
                 enterDelay={100}
                 leaveDelay={500}
             >
-                <SuperscriptNumber>{pageNumber}</SuperscriptNumber>
+                <sup>{pageNumber}</sup>
             </Tooltip>
         </StyledLabel>
     );
