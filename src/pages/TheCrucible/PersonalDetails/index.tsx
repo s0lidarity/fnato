@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { JSX } from 'preact';
-import { useState } from 'preact/hooks';
-import { IoCheckmarkSharp } from 'react-icons/io5';
 import { t } from '@lingui/core/macro';
 import { Button } from 'react95';
 
@@ -99,6 +97,7 @@ function PersonalDetails() {
                 <PersonalDetailsInput
                     label={t`Appearance`}
                     htmlFor="appearance"
+                    rows={3}
                     pageNumber={3}
                     value={personalDetails.appearance || ''}
                     onChange={handleChange}
@@ -132,6 +131,7 @@ function PersonalDetails() {
                     label={t`Personality`}
                     htmlFor="personality"
                     pageNumber={1}
+                    rows={3}
                     value={personalDetails.personality || ''}
                     onChange={handleChange}
                 />
@@ -140,6 +140,7 @@ function PersonalDetails() {
                     label={t`Beliefs`}
                     htmlFor="beliefs"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.beliefs || ''}
                     onChange={handleChange}
                 />
@@ -148,6 +149,7 @@ function PersonalDetails() {
                     label={t`Hobbies`}
                     htmlFor="hobbies"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.hobbies || ''}
                     onChange={handleChange}
                 />
@@ -156,6 +158,7 @@ function PersonalDetails() {
                     label={t`Obsessions`}
                     htmlFor="obsessions"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.obsessions || ''}
                     onChange={handleChange}
                 />
@@ -165,6 +168,7 @@ function PersonalDetails() {
                     label={t`Motivations`}
                     htmlFor="motivations"
                     pageNumber={1}
+                    rows={3}
                     value={personalDetails.motivations || ''}
                     onChange={handleChange}
                 />
@@ -173,6 +177,7 @@ function PersonalDetails() {
                     label={t`Admire`}
                     htmlFor="admire"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.admire || ''}
                     onChange={handleChange}
                 />
@@ -181,6 +186,7 @@ function PersonalDetails() {
                     label={t`Dislike`}
                     htmlFor="dislike"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.dislike || ''}
                     onChange={handleChange}
                 />
@@ -189,6 +195,7 @@ function PersonalDetails() {
                     label={t`Trust in Delta Green`}
                     htmlFor="trustInDeltaGreen"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.trustInDeltaGreen || ''}
                     onChange={handleChange}
                 />
@@ -197,6 +204,7 @@ function PersonalDetails() {
                     label={t`Why does Delta Green trust this agent?`}
                     htmlFor="deltaGreenAgreement"
                     pageNumber={3}
+                    rows={3}
                     value={personalDetails.deltaGreenAgreement || ''}
                     onChange={handleChange}
                 />

@@ -39,7 +39,7 @@ interface PersonalDetailsInputProps {
     value: string | number | null | undefined;
     onChange: (e: JSX.TargetedEvent<HTMLInputElement>) => void;
 }
-
+// AJS:TODO styling looks bad still and number of lines are not translating into the input
 function PersonalDetailsInput({ label, htmlFor, pageNumber, rows, value, onChange }: PersonalDetailsInputProps) {
     return (
         <InputContainer>
