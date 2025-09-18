@@ -9,12 +9,10 @@ import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
 import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
-import StyledCalendar from '../../../components/RetroDatePicker';
-import Dialogue from '../../../components/Dialogue/Dialogue';
 import SexPicker from './SexPicker';
 import { ButtonsContainer } from '../../Summary';
-import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
 import PersonalDetailsInput from './PersonalDetailsInput';
+import DateOfBirthPicker from './DateOfBirthPicker';
 
 const FormContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-form-container',
@@ -42,17 +40,10 @@ const InputContainer = styled.div.attrs<any>({
     flex-direction: column;
 `;
 
-const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 0.5rem;
-`;
-
 
 // AJS start here: add tiny numbers indicating the character sheet page number that the field will be on
 function PersonalDetails() {
     const { personalDetails, resetPersonalDetails, setPersonalDetails } = usePersonalDetails();
-    const [showDateOfBirth, setShowDateOfBirth] = useState(false);
 
     // AJS todo apply this JSX event to change event handlers where e: any is applied
     const handleChange = (e: JSX.TargetedEvent<HTMLInputElement | HTMLTextAreaElement, Event>) => {
@@ -98,34 +89,8 @@ function PersonalDetails() {
                     value={personalDetails.alias}
                     onChange={handleChange}
                 />
-                {/* AJS:TODO make this a component */}
-                <InputContainer>
-                    <label htmlFor="dateOfBirth" tabIndex={-1}>
-                        {t`Date of Birth`}
-                    </label>
-                    <PageNumberTooltip pageNumber={1} />
-                    <Button onClick={() => setShowDateOfBirth(true)}>
-                        {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
-                    </Button>
-                    <Dialogue
-                        title={t`Date of Birth`}
-                        show={showDateOfBirth}
-                        setShow={setShowDateOfBirth}
-                    >
-                        <StyledCalendar
-                            value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
-                            onChange={(date) => {
-                                setPersonalDetails({
-                                    ...personalDetails,
-                                    dateOfBirth: date ? (date as Date) : null,
-                                });
-                            }}
-                        />
-                        <ButtonContainer>
-                            <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
-                        </ButtonContainer>
-                    </Dialogue>
-                </InputContainer>
+
+                <DateOfBirthPicker />
 
                 <InputContainer>
                     <SexPicker />

@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { JSX } from 'preact';
+import { useState } from 'preact/hooks';
 import { Button } from 'react95';
 import { t } from '@lingui/core/macro';
+import { IoCheckmarkSharp } from 'react-icons/io5';
 
 import Dialogue from '../../../components/Dialogue/Dialogue';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
-import StyledCalendar from '../../../components/RetroDatePicker';
+import StyledCalendar from '../../../components/DatePicker';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 
 const InputContainer = styled.div.attrs<any>({
@@ -14,6 +16,12 @@ const InputContainer = styled.div.attrs<any>({
 })`
     display: flex;
     flex-direction: column;
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
 `;
 
 
