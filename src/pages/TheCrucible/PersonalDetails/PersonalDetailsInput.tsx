@@ -6,10 +6,14 @@ import { TextInput } from 'react95';
 
 const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
-    'data-component': 'PersonalDetails/InputContainer',
+    'data-component': 'PersonalDetails/InputContainer'
 })`
     display: flex;
     flex-direction: column;
+    flex: 1;
+    width: 95%;
+    min-width: fit-content;
+    margin-bottom: 1rem;
 `;
 
 const LabelContainer = styled.div.attrs<any>({
@@ -37,10 +41,12 @@ interface PersonalDetailsInputProps {
     pageNumber: number;
     rows?: number;
     value: string | number | null | undefined;
-    onChange: (e: JSX.TargetedEvent<HTMLInputElement>) => void;
+    onChange: (e: JSX.TargetedEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 // AJS:TODO styling looks bad still and number of lines are not translating into the input
 function PersonalDetailsInput({ label, htmlFor, pageNumber, rows, value, onChange }: PersonalDetailsInputProps) {
+    const isMultiline = rows > 1;
+    
     return (
         <InputContainer>
         <LabelContainer>
@@ -49,14 +55,25 @@ function PersonalDetailsInput({ label, htmlFor, pageNumber, rows, value, onChang
             </Label>
             <PageNumberTooltip pageNumber={pageNumber} />
         </LabelContainer>
-        <TextInput
-            id={htmlFor}
-            name={htmlFor}
-            value={value}
-            rows={rows || 1}
-            onChange={onChange}
-            fullWidth
-        />
+        {isMultiline ? (
+            <TextInput
+                id={htmlFor}
+                name={htmlFor}
+                value={value}
+                multiline
+                rows={rows}
+                onChange={onChange}
+                fullWidth
+            />
+        ) : (
+            <TextInput
+                id={htmlFor}
+                name={htmlFor}
+                value={value}
+                onChange={onChange}
+                fullWidth
+            />
+        )}
         </InputContainer>
     );
 };

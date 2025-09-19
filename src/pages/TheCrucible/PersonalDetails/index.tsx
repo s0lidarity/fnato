@@ -30,12 +30,17 @@ const FormContainer = styled.div.attrs<any>({
     }
 `;
 
+// AJS:TODO centralize this style
 const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
     'data-component': 'PersonalDetails/InputContainer'
 })`
     display: flex;
     flex-direction: column;
+    flex: 1;
+    width: 95%;
+    min-width: fit-content;
+    margin-bottom: 1rem;
 `;
 
 
@@ -208,7 +213,7 @@ function PersonalDetails() {
                     value={personalDetails.deltaGreenAgreement || ''}
                     onChange={handleChange}
                 />
-                <DamagedVeteranTemplates />
+
                 <PersonalMotivations />
             </FormContainer>
             <ButtonsContainer>

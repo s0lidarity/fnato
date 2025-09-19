@@ -15,7 +15,16 @@ const InputContainer = styled.div.attrs<any>({
     'data-component': 'PersonalDetails/DateOfBirthInputContainer',
 })`
     display: flex;
+    width: 95%;
     flex-direction: column;
+`;
+
+const StyledLabelContainer = styled.div.attrs<any>({
+    'data-testid': 'date-of-birth-label-container',
+    'data-component': 'PersonalDetails/DateOfBirthLabelContainer',
+}) `
+    display: flex;
+    justify-content: space-between;
 `;
 
 const ButtonContainer = styled.div`
@@ -31,32 +40,34 @@ function DateOfBirthPicker() {
 
     return (
         <InputContainer>
+                <StyledLabelContainer>
                     <label htmlFor="dateOfBirth" tabIndex={-1}>
                         {t`Date of Birth`}
                     </label>
                     <PageNumberTooltip pageNumber={1} />
-                    <Button onClick={() => setShowDateOfBirth(true)}>
-                        {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
-                    </Button>
-                    <Dialogue
-                        title={t`Date of Birth`}
-                        show={showDateOfBirth}
-                        setShow={setShowDateOfBirth}
-                    >
-                        <StyledCalendar
-                            value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
-                            onChange={(date) => {
-                                setPersonalDetails({
-                                    ...personalDetails,
-                                    dateOfBirth: date ? (date as Date) : null,
-                                });
-                            }}
-                        />
-                        <ButtonContainer>
-                            <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
-                        </ButtonContainer>
-                    </Dialogue>
-                </InputContainer>
+                </StyledLabelContainer>
+                <Button onClick={() => setShowDateOfBirth(true)}>
+                    {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
+                </Button>
+                <Dialogue
+                    title={t`Date of Birth`}
+                    show={showDateOfBirth}
+                    setShow={setShowDateOfBirth}
+                >
+                    <StyledCalendar
+                        value={personalDetails.dateOfBirth ? new Date(personalDetails.dateOfBirth) : null}
+                        onChange={(date) => {
+                            setPersonalDetails({
+                                ...personalDetails,
+                                dateOfBirth: date ? (date as Date) : null,
+                            });
+                        }}
+                    />
+                    <ButtonContainer>
+                        <Button onClick={() => setShowDateOfBirth(false)}><IoCheckmarkSharp /></Button>
+                    </ButtonContainer>
+                </Dialogue>
+            </InputContainer>
     );
 };
 
