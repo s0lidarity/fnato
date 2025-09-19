@@ -65,7 +65,7 @@ function PersonalDetails() {
                     label={t`First Name`}
                     htmlFor="firstName"
                     pageNumber={1}
-                    value={personalDetails.lastName}
+                    value={personalDetails.firstName}
                     onChange={handleChange}
                 />
 
