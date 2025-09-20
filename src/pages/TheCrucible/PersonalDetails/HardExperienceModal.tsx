@@ -65,9 +65,6 @@ export default function HardExperienceModal({
             return;
         }
 
-
-        console.log("toggled", skill);
-        console.log("selectedDVSkills", selectedDVSkills);
         selectSkillsForTemplate(skill.id, selectedDVSkills);
     };
 

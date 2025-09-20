@@ -119,7 +119,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
 
         // apply default cap
         total = Math.min(DEFAULT_TOTAL_CAP, total);
-        console.log('skill pre dv bonus: ', skill, ' - total: ', total);
 
         // apply dv bonus if present
         if(skill.damagedVeteranSkillAdjustment){
@@ -127,8 +126,6 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
             return total;
         }
-
-        console.log('skill: ', skill, ' - total: ', total);
 
         // then apply dv cap
         return Math.min(DEFAULT_CAP_INCLUDING_DAMAGED_VETERAN_BONUS, total);

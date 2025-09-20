@@ -181,7 +181,6 @@ function DamagedVeteranTemplates() {
     // Sync personalDetails.damagedVeteranTemplates with activeTemplates
     useEffect(() => {
         if (JSON.stringify(personalDetails.damagedVeteranTemplates.sort()) !== JSON.stringify(activeTemplates.sort())) {
-            console.log('Syncing personalDetails with activeTemplates:', activeTemplates);
             setPersonalDetails({
                 ...personalDetails,
                 damagedVeteranTemplates: [...activeTemplates]
@@ -210,12 +209,9 @@ function DamagedVeteranTemplates() {
     };
 
     const handleTemplateToggle = (template: DamagedVeteranAdjustment) => {
-        console.log('handleTemplateToggle', template, personalDetails.damagedVeteranTemplates);
         const isActive = activeTemplates.includes(template.id);
-        console.log('isActive:', isActive);
         
         if (isActive) {
-            console.log('Deactivating template:', template.id);
             deactivateTemplate(template.id);
             setPersonalDetails({
                 ...personalDetails,
@@ -223,13 +219,10 @@ function DamagedVeteranTemplates() {
             });
         } else {
             if (template.id === HARD_EXPERIENCE.id) {
-                console.log('Opening Hard Experience modal');
                 setShowHardExperienceModal(true);
             } else {
-                console.log('Activating template:', template.id);
                 activateTemplate(template.id);
                 const newTemplates = [...personalDetails.damagedVeteranTemplates, template.id];
-                console.log('Setting personal details templates to:', newTemplates);
                 setPersonalDetails({
                     ...personalDetails,
                     damagedVeteranTemplates: newTemplates
