@@ -5,7 +5,6 @@ import { Button } from 'react95';
 
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
-import DamagedVeteranTemplates from './DamagedVeteranTemplates';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 import SexPicker from './SexPicker';
 import { ButtonsContainer } from '../../Summary';
@@ -28,19 +27,6 @@ const FormContainer = styled.div.attrs<any>({
     & > *:nth-last-child(-n+1) {
         grid-column: span 2;
     }
-`;
-
-// AJS:TODO centralize this style
-const InputContainer = styled.div.attrs<any>({
-    'data-testid': 'personal-details-input-container',
-    'data-component': 'PersonalDetails/InputContainer'
-})`
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    width: 95%;
-    min-width: fit-content;
-    margin-bottom: 1rem;
 `;
 
 
@@ -95,9 +81,7 @@ function PersonalDetails() {
 
                 <DateOfBirthPicker />
 
-                <InputContainer>
-                    <SexPicker />
-                </InputContainer>
+                <SexPicker />
 
                 <PersonalDetailsInput
                     label={t`Appearance`}

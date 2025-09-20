@@ -29,7 +29,8 @@ const StyledLabelContainer = styled.div.attrs<any>({
 
 const ButtonContainer = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    width: 100%;
     margin-top: 0.5rem;
 `;
 
@@ -46,9 +47,11 @@ function DateOfBirthPicker() {
                     </label>
                     <PageNumberTooltip pageNumber={1} />
                 </StyledLabelContainer>
-                <Button onClick={() => setShowDateOfBirth(true)}>
-                    {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
-                </Button>
+                <ButtonContainer>
+                    <Button onClick={() => setShowDateOfBirth(true)} fullWidth>
+                        {personalDetails.dateOfBirth ? personalDetails.dateOfBirth.toLocaleDateString() : t`Select Date of Birth`}
+                    </Button>
+                </ButtonContainer>
                 <Dialogue
                     title={t`Date of Birth`}
                     show={showDateOfBirth}

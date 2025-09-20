@@ -4,6 +4,7 @@ import { Button, Window, WindowContent, WindowHeader } from 'react95';
 import styled from 'styled-components';
 import { FaRegWindowMinimize } from "react-icons/fa";
 import { FaWindowMaximize } from "react-icons/fa6";
+import PageNumberTooltip from '../PageNumberTooltip/PageNumberTooltip';
 
 // AJS: TOOD Make the width stay consistent instead of shrinking when minimized
 const GuidanceContainer = styled.div`
@@ -27,6 +28,9 @@ const StyledButton = styled(Button)`
 
 const StyledButtonText = styled.div`
     text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 `;
 
 const StyledMaximizeIcon = styled(FaWindowMaximize)`
@@ -68,16 +72,20 @@ interface GuidanceProps {
     title: string;
     buttonText: string;
     children: ComponentChildren;
+    pageNumber?: number;
 }
 
-function Guidance({ title, buttonText, children }: GuidanceProps) {
+function Guidance({ title, buttonText, children, pageNumber }: GuidanceProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <GuidanceContainer>
             {!isOpen ? (
                 <StyledButton onClick={() => setIsOpen(true)}>
-                    <StyledButtonText>{buttonText}</StyledButtonText>
+                    <StyledButtonText>
+                        {buttonText}
+                        {pageNumber && <PageNumberTooltip pageNumber={pageNumber} />}
+                    </StyledButtonText>
                     <StyledMaximizeIcon />
                 </StyledButton>
             ) : (
