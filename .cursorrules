@@ -1,196 +1,53 @@
-# Project Instructions
+// PROJECT RULES - SIMPLIFIED FORMAT
+// Last updated: [current date]
 
-## Tech Stack & Core Dependencies
+// TECH STACK - CRITICAL
+// USE PREACT NOT REACT - import from preact/hooks
+// TypeScript, styled-components, react95, @lingui/react/macro, @lingui/core, vite
 
-- Preact (not React)
-- TypeScript
-- styled-components
-- react95 (Windows 95 UI components)
-- @lingui/react/macro
-- @lingui/core
-- vite
+// PREACT IMPORTS - ALWAYS USE THESE
+import { h } from 'preact';
+import { useState, useEffect, useCallback, useMemo } from 'preact/hooks';
 
-## Key Architecture Patterns
-
-### Component Structure
-
-- Use functional components with hooks
-- Export components as default unless there's a specific reason not to
-- Components should be in their own directories when they have sub-components
-- Include data-testid and data-component attributes on styled components
-
-### Styling
-
-- Use styled-components for all styling
-- Follow react95 design patterns for Windows 95 aesthetic
-- Styled components should follow this pattern:
-
-```typescript
+// STYLED COMPONENTS - REQUIRED FORMAT
 const StyledComponent = styled.element.attrs<any>({
-'data-testid': 'component-name',
-    'data-component': 'ParentComponent/ComponentName'
-}) // styles;
-```
+  'data-testid': 'component-name',
+  'data-component': 'ParentComponent/ComponentName'
+})`
+  // styles
+`;
 
-### State Management
+// COMPONENT STRUCTURE 
+// - Use functional components with hooks
+// - Export as default
+// - Props interfaces should be named [Component]Props
+// - Always add data-testid and data-component to styled components
 
-- Check existing Context Providers before creating local state:
-  - SkillsContext: Manages character skills and related calculations
-  - CharacterContext: Manages character-level state
-  - ProfessionContext: Manages profession-related state
-  - ThemeContext: Manages UI theme state
-
-### Context Organization
-
-- Organize context types with clear separation between state and functions:
-
-  ```typescript
-  type ExampleContextType = {
+// CONTEXT USAGE - REQUIRED FORMAT
+// When consuming context:
+function Component() {
+  const {
     // State values (alphabetically ordered)
-    count: number;
-    isLoading: boolean;
-    user: User;
+    valueA,
+    valueB,
     
     // Functions (alphabetically ordered)
-    decrementCount: () => void;
-    incrementCount: () => void;
-    setUser: (user: User) => void;
-  }
-  ```
+    functionA,
+    functionB,
+  } = useContext();
+}
 
-- When consuming context in components, maintain the same ordering:
+// NAMING CONVENTIONS
+// Components: PascalCase
+// Files: PascalCase for components, camelCase for utilities
+// Styled Components: Prefix with 'Styled' or descriptive name
+// Props Interfaces: Suffix with 'Props'
+// Context: Suffix with 'Context'
 
-  ```typescript
-  function Component() {
-    const {
-      // State values (alphabetically ordered)
-      count,
-      isLoading,
-      user,
-      
-      // Functions (alphabetically ordered)
-      decrementCount,
-      incrementCount,
-      setUser,
-    } = useExampleContext();
-  }
-  ```
+// PREACT EVENTS - IMPORTANT DIFFERENCE
+// Use: (value) => handleChange(value) 
+// NOT: (event.target.value) => handleChange(event.target.value)
 
-- Use clear type separation with comments to improve readability
-- Keep related state and functions grouped in the same context
-- Consider splitting contexts if they grow too large or handle unrelated concerns
-
-### File Structure
-
-src/
-├── components/ # Shared components
-├── pages/ # Page components
-├── providers/ # Context providers
-├── types/ # TypeScript types
-├── utils/ # Utility functions
-└── constants/ # Shared constants
-
-### Naming Conventions
-
-- Components: PascalCase
-- Files: PascalCase for components, camelCase for utilities
-- Styled Components: Prefix with 'Styled' or descriptive name
-- Props Interfaces: Suffix with 'Props'
-- Context: Suffix with 'Context'
-
-### Testing
-
-- Include data-testid attributes for component testing
-- Keep components testable by avoiding complex nested logic
-
-### Error Handling
-
-- Use try/catch blocks for async operations
-- Provide meaningful error messages
-- Consider error boundaries for component failures
-
-### Performance
-
-- Memoize callbacks with useCallback when passing to child components
-- Use useMemo for expensive calculations
-- Avoid unnecessary re-renders
-
-### Accessibility
-
-- Include ARIA labels where appropriate
-- Ensure keyboard navigation works
-- Maintain proper heading hierarchy
-
-### Localization
-
-- Use @lingui/react/macro for translations
-- Create a new locale file in the src/locales directory
-
-```typescript
+// LOCALIZATION
+// Always use @lingui/react/macro for user-facing text
 import { Trans } from '@lingui/react/macro';
-
-function Component() {
-    return <Trans>Hello, world!</Trans>;
-}
-```
-
-## Common Gotchas
-
-1. Remember to use Preact's imports:
-
-```typescript
-import { h } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
-```
-
-2. react95 components require ThemeProvider wrapper
-3. Check Context Providers before creating new state
-4. styled-components attrs are typed with <any> for this project
-5. Always include data-testid and data-component attributes
-6. Preact uses native events, not React events 
-  1. For example, (value) => handleChange(value) instead of (event.target.value) => handleChange(event.target.value)
-
-## Code Examples
-
-### Basic Component Template
-
-```typescript
-import styled from 'styled-components';
-
-import { useSkills } from '../providers/SkillsContext';
-const StyledContainer = styled.div.attrs<any>({
-'data-testid': 'component-container',
-'data-component': 'ComponentName/Container'
-}) display: flex; // additional styles;
-interface ComponentProps {
-// props
-}
-function ComponentName({ ...props }: ComponentProps) {
-const { someContextValue } = useSkills();
-return (
-<StyledContainer>
-{/ component content /}
-</StyledContainer>
-);
-}
-export default ComponentName;
-```
-
-### Context Usage Example
-
-```typescript
-import { useSkills } from '../providers/SkillsContext';
-function Component() {
-const { skills, setSkills } = useSkills();
-// use context values
-}
-
-```
-
-## Additional Notes
-
-- Prefer composition over inheritance
-- Keep components focused and single-responsibility
-- Use TypeScript strictly - avoid any types except in styled-components attrs
-- Follow existing patterns in the codebase
-- Consider mobile responsiveness in styled-components

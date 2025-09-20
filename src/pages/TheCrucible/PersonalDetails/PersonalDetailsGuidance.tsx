@@ -21,7 +21,7 @@ const ContentContainer = styled.div.attrs<any>({
 
 
 function PersonalDetailsGuidance() {
-    const content = t`Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character.`;
+    const content = t`Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character. [p. x] indicates the page number where you can later find that information on the final character sheet.`;
 
     return (
         <PersonalDetailsGuidanceContainer>

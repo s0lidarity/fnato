@@ -80,19 +80,24 @@ const baseStats: Statistics = {
 };
 
 export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes {
-	const referenceSanity = stats.power.score * 5;
+	// Apply any damaged veteran adjustments to the stat values for calculations
+	const adjustedStrength = stats.strength.score + (stats.strength.damagedVeteranStatAdjustment || 0);
+	const adjustedConstitution = stats.constitution.score + (stats.constitution.damagedVeteranStatAdjustment || 0);
+	const adjustedPower = stats.power.score + (stats.power.damagedVeteranStatAdjustment || 0);
+	
+	const referenceSanity = adjustedPower * 5;
 
 	return {
 		hitPoints: {
-			maxValue: Math.ceil((stats.strength.score + stats.constitution.score) / 2),
-			currentValue: Math.ceil((stats.strength.score + stats.constitution.score) / 2),
+			maxValue: Math.ceil((adjustedStrength + adjustedConstitution) / 2),
+			currentValue: Math.ceil((adjustedStrength + adjustedConstitution) / 2),
 			labelMsg: msg({
 				message: 'Hit Points'
 			})
 		},
 		willPower: {
-			maxValue: stats.power.score,
-			currentValue: stats.power.score,
+			maxValue: adjustedPower,
+			currentValue: adjustedPower,
 			labelMsg: msg({
 				message: 'Will Power'
 			})
@@ -105,8 +110,8 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 			})
 		},
 		breakingPoint: {
-			maxValue: referenceSanity - stats.power.score,
-			currentValue: referenceSanity - stats.power.score,
+			maxValue: referenceSanity - adjustedPower,
+			currentValue: referenceSanity - adjustedPower,
 			labelMsg: msg({
 				message: 'Breaking Point'
 			})

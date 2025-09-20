@@ -1,7 +1,6 @@
 import { Tooltip } from 'react95';
 import styled from 'styled-components';
-import { Trans } from '@lingui/react';
-import { MessageDescriptor } from '@lingui/core';
+import { i18n, MessageDescriptor } from '@lingui/core';
 
 import TooltipIndicator from '../../TooltipIndicator/TooltipIndicator';
 // AJS TODO: move this folder out of Footer
@@ -31,32 +30,49 @@ interface ReminderTooltipProps {
     reminderText: MessageDescriptor | string;
 }
 
-export function ReminderTooltip({ labelText, reminderText }: ReminderTooltipProps) {
+export function ReminderTooltip(props: ReminderTooltipProps) {
+    // Extract props with defaults
+    const { 
+        labelText = "", 
+        reminderText = "" 
+    } = props;
+    
+    /**
+     * Check if a value is a MessageDescriptor
+     * This is a type guard function to help TypeScript understand our types
+     */
     const isMessageDescriptor = (value: MessageDescriptor | string): value is MessageDescriptor => {
-        return typeof value === 'object' && 'id' in value;
+        return typeof value === 'object' && value !== null && 'id' in value;
     };
+    
+    /**
+     * Process the content - if it's a MessageDescriptor, use i18n to translate it,
+     * otherwise return the string content directly
+     */
+    const getContent = (content: MessageDescriptor | string): string => {
+        if (!content) return "";
+        
+        if (isMessageDescriptor(content)) {
+            // It's a MessageDescriptor object, so translate it
+            return i18n._(content);
+        }
+        
+        // It's already a string
+        return content;
+    };
+
+    const labelContent = getContent(labelText);
+    const reminderContent = getContent(reminderText);
 
     return (
         <Tooltip
             //@ts-ignore seems to work fine
-            text={
-                <StyledTooltipInnerText>
-                    {isMessageDescriptor(reminderText) ? (
-                        <Trans id={reminderText.id} />
-                    ) : (
-                        reminderText
-                    )}
-                </StyledTooltipInnerText>
-            }
+            text={<StyledTooltipInnerText>{reminderContent}</StyledTooltipInnerText>}
             enterDelay={100}
             leaveDelay={500}
         >
             <StyledLabel>
-                {isMessageDescriptor(labelText) ? (
-                    <Trans id={labelText.id} />
-                ) : (
-                    labelText
-                )}
+                {labelContent}
                 <TooltipIndicator />
             </StyledLabel>
         </Tooltip>

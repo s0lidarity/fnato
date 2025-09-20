@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { JSX } from "react";
 import { Radio, TextInput } from "react95";
+import { t } from '@lingui/core/macro';
 
 import { usePersonalDetails } from "../../../providers/PersonalDetailsContext";
 import PageNumberTooltip from "../../../components/PageNumberTooltip/PageNumberTooltip";
@@ -28,8 +29,19 @@ const StyledLabel = styled.label.attrs<any>({
 })`
     display: flex;
     align-items: center;
-    margin-right: 1rem;
     padding-top: 0.3rem;
+`;
+
+const InputContainer = styled.div.attrs<any>({
+    'data-testid': 'personal-details-input-container',
+    'data-component': 'PersonalDetails/InputContainer'
+})`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 95%;
+    min-width: fit-content;
+    margin-bottom: 1rem;
 `;
 
 function SexPicker() {
@@ -51,11 +63,12 @@ function SexPicker() {
     };
 
     return (
-        <span>
+        <InputContainer>
+            <StyledLabel htmlFor="sex">
+                {t`Gender`}
+                <PageNumberTooltip pageNumber={1}></PageNumberTooltip>
+            </StyledLabel>
             <RadioButtons>
-                <StyledLabel htmlFor="sex">
-                    <PageNumberTooltip pageNumber={1}>Sex:</PageNumberTooltip>
-                </StyledLabel>
                 <Radio 
                     value="Male"
                     checked={personalDetails.sex === 'Male'}
@@ -89,7 +102,7 @@ function SexPicker() {
                     placeholder="Please specify"
                 />
             )}
-        </span>
+        </InputContainer>
     );
 }
 

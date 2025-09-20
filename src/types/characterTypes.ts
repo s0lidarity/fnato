@@ -388,6 +388,7 @@ export interface Skill {
     fullLabelMsg?: MessageDescriptor;
     isDefault?: boolean;
     pointsAllocated?: number;
+    damagedVeteranSkillAdjustment?: number;
 }
 
 export const SKILL_REMINDERS: { [key: string]: MessageDescriptor } = {
@@ -514,6 +515,7 @@ export interface Stat {
     distinguishingFeatureMsg?: MessageDescriptor;
     reminderText?: string;
     reminderMsg?: MessageDescriptor;
+    damagedVeteranStatAdjustment?: number;
 }
 
 export const STAT_REMINDERS: { [key in keyof Statistics]: string } = {
@@ -584,9 +586,27 @@ export interface DamagedVeteranAdjustment {
     labelMsg?: MessageDescriptor;
     description: string;
     descriptionMsg?: MessageDescriptor;
-    statAdjustment: { [statName in string]: number };
+    statAdjustment: { 
+        [statName in string]: number | keyof Statistics; // Can be a fixed number or reference another stat
+    };
     skillAdjustment: { [skillName: string]: number };
+    skillSelectionRules?: {
+        count: number;
+        bonus: number;
+        maxValue?: number;
+        excludedSkills?: string[];
+    };
+    mentalDisorderRules?: {
+        gainNewDisorder: boolean;
+        type: 'unnatural' | 'violence' | 'helplessness';
+        count?: number;
+    };
+    bondAdjustment?: {
+        remove?: number;
+        adjustScore?: number;
+    };
 }
+
 // Extreme Violence
 // Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's CHA and each Bond. Your Agent is adapted to violence (see page 73).
 export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
@@ -602,11 +622,13 @@ export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
     statAdjustment: {
         charisma: -3,
         power: -3,
+        sanity: -5,
     },
     skillAdjustment: {
         occult: 10,
     },
 }
+
 // Captivity or Imprisonment
 // Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's POW. Your Agent is adapted to helplessness (see page 73).
 export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
@@ -621,11 +643,13 @@ export const CAPTIVITY_OR_IMPRISONMENT: DamagedVeteranAdjustment = {
     }),
     statAdjustment: {
         power: -3,
+        sanity: -5,
     },
     skillAdjustment: {
         occult: 10,
     },
 }
+
 // Hard Experience
 // Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond.
 // AJS start here: we need a way to represent the cap at 90% and that it is 5 skills of the user's choice
@@ -645,10 +669,19 @@ export const HARD_EXPERIENCE: DamagedVeteranAdjustment = {
     skillAdjustment: {
         occult: 10,
     },
+    skillSelectionRules: {
+        count: 5,
+        bonus: 10,
+        maxValue: 90,
+        excludedSkills: ['unnatural']
+    },
+    bondAdjustment: {
+        remove: 1
+    }
 }
+
 // Things Man Was Not Meant to Know
-// Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or
-// her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW.
+// Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW.
 // AJS: we need a way to represent the new disorder and the breaking point
 export const THINGS_MAN_WAS_NOT_MEANT_TO_KNOW: DamagedVeteranAdjustment = {
     id: "things-man-was-not-meant-to-know",
@@ -661,11 +694,16 @@ export const THINGS_MAN_WAS_NOT_MEANT_TO_KNOW: DamagedVeteranAdjustment = {
         message: "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW.",
     }),
     statAdjustment: {
-        sanity: -5,
+        sanity: 'power' // The logic layer will know to use this as a negative adjustment
     },
     skillAdjustment: {
-        occult: 10,
+        occult: 20,
+        unnatural: 10
     },
+    mentalDisorderRules: {
+        gainNewDisorder: true,
+        type: 'unnatural'
+    }
 }
 
 export type StatisticKeys = keyof Statistics;

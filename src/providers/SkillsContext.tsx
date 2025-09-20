@@ -4,7 +4,7 @@ import { createContext } from 'preact';
 import { Skill, Skills, IProfession } from '../types/characterTypes';
 import { generateDefaultSkills } from './defaultValues';
 import { IBonusSkillPackage } from '../utils/SkillPointPackages';
-import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE } from '../constants/gameRules';
+import { DEFAULT_SKILL_POINTS, MAX_BONUS_POINTS, DEFAULT_TOTAL_CAP, DEFAULT_BONDS, DEFAULT_BONUS_VALUE, DEFAULT_CAP_INCLUDING_DAMAGED_VETERAN_BONUS } from '../constants/gameRules';
 import { DEFAULT_SKILLS } from '../types/characterTypes';
 import { ProfessionConfigOptions } from '../types/componentTypes';
 import { bondCountSignal } from '../signals/bondSignal';
@@ -29,6 +29,7 @@ type SkillsContextType = {
     changeConfig: (newConfig: ProfessionConfigOptions) => void;
     changeProfession: (profession: IProfession) => void;
     clearBonusSkillPackage: () => void;
+    getSkillById: (id: string) => Skill | undefined;
     resetAllBonusPoints: () => void;
     resetProfession: () => void;
     resetSkills: () => void;
@@ -39,7 +40,7 @@ type SkillsContextType = {
     setSkills: (skills: Skills | ((prev: Skills) => Skills)) => void;
     setSkillById: (skillKey: string, skillUpdate: Partial<Skill>) => boolean;
     setSkillPointsRemaining: (skillPointsRemaining: number) => void;
-    getSkillById: (id: string) => Skill | undefined;
+    updateSkillAdjustment: (skillId: string, adjustment: number) => void;
 }
 
 const SkillsContext = createContext<SkillsContextType | undefined>(undefined);
@@ -116,7 +117,19 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 break;
         }
 
-        return Math.min(DEFAULT_TOTAL_CAP, total);
+        // apply default cap
+        total = Math.min(DEFAULT_TOTAL_CAP, total);
+
+        // apply dv bonus if present
+        if(skill.damagedVeteranSkillAdjustment){
+            total = total + skill.damagedVeteranSkillAdjustment;
+        } else {
+            return total;
+        }
+
+        // then apply dv cap
+        return Math.min(DEFAULT_CAP_INCLUDING_DAMAGED_VETERAN_BONUS, total);
+
     };
 
     const adjustBonus = (skillId: string, newBonus: number): boolean => {
@@ -313,9 +326,24 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
         return skills.find(s => s.id === id);
     };
 
+    const updateSkillAdjustment = (skillId: string, adjustment: number) => {
+        setSkills(prevSkills => {
+            return prevSkills.map(skill => {
+                if (skill.id === skillId) {
+                    return {
+                        ...skill,
+                        damagedVeteranSkillAdjustment: (skill.damagedVeteranSkillAdjustment || 0) + adjustment
+                    };
+                }
+                return skill;
+            });
+        });
+    };
+
     return (
-        <SkillsContext.Provider 
-            value={{ 
+        <SkillsContext.Provider
+            value={{
+                // State values
                 bonusPointsRemaining,
                 BonusSkillPackage,
                 config,
@@ -324,13 +352,16 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 selectedSkillsIds,
                 skills,
                 skillPointsRemaining,
+
+                // Functions
                 adjustBonus,
                 applyBonusSkillPackage,
                 applyProfessionSkills,
                 calculateSkillValue,
-                changeProfession,
                 changeConfig,
+                changeProfession,
                 clearBonusSkillPackage,
+                getSkillById,
                 resetAllBonusPoints,
                 resetProfession,
                 resetSkills,
@@ -341,7 +372,7 @@ export const SkillsProvider = ({ children }: { children: React.ReactNode }) => {
                 setSkills,
                 setSkillById,
                 setSkillPointsRemaining,
-                getSkillById,
+                updateSkillAdjustment,
             }}>
             {children}
         </SkillsContext.Provider>

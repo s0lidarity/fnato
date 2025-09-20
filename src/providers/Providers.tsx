@@ -11,6 +11,7 @@ import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';
+import { DamagedVeteranProvider } from './DamagedVeteranContext';
 import GlobalStyles from '../GlobalStyles';
 import StyledComponentsProvider from './StyledComponentsProvider';
 
@@ -76,7 +77,9 @@ function Providers({ children }: { children: ComponentChildren }) {
                                 <SkillsProvider>
                                     <BondsProvider>
                                         <PersonalDetailsProvider>
-                                            {children}
+                                            <DamagedVeteranProvider>
+                                                {children}
+                                            </DamagedVeteranProvider>
                                         </PersonalDetailsProvider>
                                     </BondsProvider>
                                 </SkillsProvider>

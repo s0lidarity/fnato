@@ -1,56 +1,43 @@
 import styled from 'styled-components';
-import { Tooltip } from 'react95';
-import { Trans } from '@lingui/macro';
-
-const SuperscriptNumber = styled.sup.attrs<any>({
-    'data-testid': 'page-number-tooltip-superscript-number',
-    'data-component': 'PageNumberTooltip/SuperscriptNumber',
-})`
-    margin-left: 0.2rem;
-    font-size: 0.7em;
-    color: ${({ theme }) => theme.materialText};
-    cursor: help;
-    vertical-align: super;
-`;
-
-const StyledTooltipInnerText = styled.span.attrs<any>({
-    'data-testid': 'page-number-tooltip-inner-text',
-    'data-component': 'PageNumberTooltip/StyledTooltipInnerText',
-})`
-    padding: 0.5rem;
-    color: ${({ theme }) => theme.materialDark};
-`;
+import { i18n } from '@lingui/core';
+import { t } from '@lingui/core/macro';
+import { h } from 'preact';
 
 const StyledLabel = styled.span.attrs<any>({
     'data-testid': 'page-number-tooltip-label',
     'data-component': 'PageNumberTooltip/StyledLabel',
 })`
-    display: flex;
-    align-items: center;
+    display: inline;
+    margin-left: auto;
+    display: inline-flex;
+`;
+
+const StyledPageBadge = styled.sup.attrs<any>({
+    'data-testid': 'page-badge',
+    'data-component': 'PageNumberTooltip/StyledPageBadge',
+    tabIndex: -1,
+    role: 'note',
+    'aria-hidden': 'true',
+})`
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    font-size: 0.85em;
+    color: ${({ theme }) => theme.materialDark};
+    opacity: 0.8;
 `;
 
 interface PageNumberTooltipProps {
     pageNumber: number;
-    children: React.ReactNode;
 }
 
-function PageNumberTooltip({ pageNumber, children }: PageNumberTooltipProps) {
+function PageNumberTooltip({ pageNumber }: PageNumberTooltipProps) {
     return (
         <StyledLabel>
-            {children}
-            <Tooltip
-                // jsx in the text param works fine, error seems wrong
-                // @ts-ignore
-                text={
-                    <StyledTooltipInnerText>
-                        <Trans>Found on page {pageNumber}</Trans>
-                    </StyledTooltipInnerText>
-                }
-                enterDelay={100}
-                leaveDelay={500}
+            <StyledPageBadge
+                title={i18n._(t`Found on page ${pageNumber}`)}
             >
-                <SuperscriptNumber>{pageNumber}</SuperscriptNumber>
-            </Tooltip>
+                [p. {pageNumber}]
+            </StyledPageBadge>
         </StyledLabel>
     );
 }

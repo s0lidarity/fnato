@@ -7,6 +7,7 @@ import PersonalMotivationInput from './PersonalMotivationInput';
 import { MAX_PERSONAL_MOTIVATIONS } from '../../../constants/gameRules';
 import Guidance from '../../../components/Guidance/Guidance';
 import PageNumberTooltip from '../../../components/PageNumberTooltip/PageNumberTooltip';
+
 const PersonalMotivationsContainer = styled.div.attrs<any>({
     'data-testid': 'personal-motivations-container',
     'data-component': 'PersonalDetails/PersonalMotivationsContainer',
@@ -16,12 +17,11 @@ const PersonalMotivationsContainer = styled.div.attrs<any>({
     width: 100%;
     min-width: fit-content;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     
     & > div {
         width: 100%;
         height: 100%;
-        padding: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -32,7 +32,7 @@ const InputContainer = styled.div.attrs<any>({
     'data-testid': 'personal-details-input-container',
     'data-component': 'PersonalDetails/InputContainer'
 })`
-    width: 95%;
+    width: 100%;
     justify-self: center;
     min-width: fit-content;
     margin-bottom: 1rem;
@@ -47,8 +47,6 @@ const MotivationInputContainer = styled.div.attrs<any>({
     flex-direction: column;
     gap: 1rem;
 `;
-
-
 
 const renderMotivations = (motivations: string[]) => {
     const motivationInputs = [];
@@ -80,12 +78,9 @@ function PersonalMotivations() {
 
     return (
         <InputContainer>
-            <label htmlFor="personalMotivations">
-                <PageNumberTooltip pageNumber={1}>{t`Personal Motivations`}</PageNumberTooltip>
-            </label>
             <GroupBox>
                 <PersonalMotivationsContainer>
-                        <Guidance title={t`Personal Motivations`} buttonText={t`Personal Motivations`}>
+                        <Guidance title={t`Personal Motivations`} buttonText={t`Personal Motivations`} pageNumber={1}>
                             <p>{reminderTextA}</p>
                             <p>{reminderTextB}</p>
                         </Guidance>
