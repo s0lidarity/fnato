@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import styled from 'styled-components';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
@@ -9,6 +9,7 @@ import { DEFAULT_SKILLS } from '../../../../types/characterTypes';
 import { useSkills } from '../../../../providers/SkillsContext';
 import Dialogue from '../../../../components/Dialogue/Dialogue';
 import { Skill } from '../../../../types/characterTypes';
+import { skillSubtypeSignal } from '../../../../signals/skillSubtypeSignal';
 
 const StyledSubtypeInput = styled(TextInput).attrs<any>({
     'data-testid': 'subtype-input',
@@ -74,19 +75,34 @@ function SubtypeEditor({ skill }: SubtypeEditorProps) {
     const applySubtype = () => {
         setSkillById(skill.id, { subType: localSubType });
         setShowModal(false);
+        skillSubtypeSignal.value = false;
     };
 
     if (!skill.subType) return null;
 
     return (
         <>
-            <StyledSubtypeButton onClick={() => setShowModal(true)}>
+        {/* Maybe disable this with a value for isOpen tracked via signals or skills context */}
+        {/* import the skillSubtypeSignal
+        update the onchange to adjust it */}
+            <StyledSubtypeButton
+                onClick={() => {
+                    setShowModal(true);
+                    skillSubtypeSignal.value = true;
+                }}
+                disabled={skillSubtypeSignal.value}
+            >
                 <IoPencilOutline />
             </StyledSubtypeButton>
             <Dialogue
                 title={t`Enter a Subtype`}
                 show={showModal}
-                setShow={setShowModal}
+                setShow={(show: boolean) => {
+                    setShowModal(show);
+                    if (!show) {
+                        skillSubtypeSignal.value = false;
+                    }
+                }}
             >
                 <StyledDialogueContent>
                     <StyledSubtypeInput
