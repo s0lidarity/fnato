@@ -24,6 +24,10 @@ const StyledButton = styled(Button)`
     min-width: 200px;
     box-shadow: inset 1px 1px 0px 1px rgba(255, 255, 255, 0.75),
                 inset -1px -1px 0px 1px rgba(0, 0, 0, 0.25);
+    
+    &.guidance-help {
+        cursor: url('/assets/cursors/help_win95.cur'), help;
+    }
 `;
 
 const StyledButtonText = styled.div`
@@ -81,7 +85,7 @@ function Guidance({ title, buttonText, children, pageNumber }: GuidanceProps) {
     return (
         <GuidanceContainer>
             {!isOpen ? (
-                <StyledButton onClick={() => setIsOpen(true)}>
+                <StyledButton onClick={() => setIsOpen(true)} className="guidance-help">
                     <StyledButtonText>
                         {buttonText}
                         {pageNumber && <PageNumberTooltip pageNumber={pageNumber} />}
