@@ -32,6 +32,10 @@ const ItemContainer = styled.div`
     border-bottom: ${({ theme }) => theme.border};
     cursor: pointer;
     box-sizing: border-box;
+    
+    &.accordion-item {
+        cursor: url('/assets/cursors/VerticalExpand.cur'), pointer;
+    }
 `;
 
 const IconWrapper = styled.span`
@@ -71,7 +75,7 @@ function Accordion({ items }: { items: AccordionConfig }) {
         const isExpandable = !!item.content;
         return (
             <div key={index}>
-                <ItemContainer onClick={() => isExpandable && handleClick(index)}>
+                <ItemContainer onClick={() => isExpandable && handleClick(index)} className="accordion-item">
                     <span style={{ marginRight: '0.5rem' }}>
                         <IconWrapper>{item.icon}</IconWrapper>
                         {item.href ? (<Anchor href={item.href}> {getItemLabel(item)}</Anchor>) : (getItemLabel(item))}
