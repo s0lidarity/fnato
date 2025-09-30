@@ -26,20 +26,20 @@ msgid "(Choose type below)"
 msgstr "(Choisir un type ci-dessous)"
 
 #. placeholder {0}: template.skillSelectionRules!.maxValue
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:357
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:381
 msgid "(max {0}%)"
-msgstr ""
+msgstr "(max {0}%)"
 
+#. placeholder {0}: ra.label
+#. placeholder {0}: ra.stats.join(', ')
 #. placeholder {0}: skill.skillName
-#. placeholder {0}: skill.subType
-#. placeholder {0}: stats[stat as keyof Statistics].label
-#: src/utils/SkillPointPackages.ts:23
-#: src/utils/SkillPointPackages.ts:24
-#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
-#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:137
+#: src/components/Header/ThemeMenu.tsx:110
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:12
 #: src/pages/TheCrucible/Statistics/components/RAReminder/RAReminder.tsx:13
-#: src/components/Header/ThemeMenu.tsx:110
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:136
+#: src/pages/TheCrucible/Statistics/components/StatsDisplays/DiceStats.tsx:137
+#: src/utils/SkillPointPackages.ts:23
+#: src/utils/SkillPointPackages.ts:24
 msgid "{0}"
 msgstr "{0}"
 
@@ -50,10 +50,10 @@ msgstr "{professionName} n'a pas de compétences flexibles à choisir."
 
 #: src/pages/TheCrucible/Profession/components/ProfessionalGuidance.tsx:96
 msgid "{skillCapText}"
-msgstr ""
+msgstr "{skillCapText}"
 
 #: src/types/characterTypes.ts:419
-#: src/types/characterTypes.ts:856
+#: src/types/characterTypes.ts:858
 msgid "010111100001"
 msgstr "010111100001"
 
@@ -129,7 +129,7 @@ msgstr "À propos de l'auteur"
 msgid "About the Game"
 msgstr "À propos du jeu"
 
-#: src/types/characterTypes.ts:717
+#: src/types/characterTypes.ts:719
 msgid "Accounting"
 msgstr "Comptabilité"
 
@@ -150,7 +150,7 @@ msgstr "Actif couch potato"
 msgid "adapted"
 msgstr "adapté"
 
-#: src/types/characterTypes.ts:661
+#: src/types/characterTypes.ts:663
 msgid "Add +10% to your Agent's Occult and +10% to any five skills other than Unnatural. This can bring no skill higher than 90%. Reduce your Agent's SAN by 5. Remove one Bond."
 msgstr "Ajoutez +10% à la compétence Non naturel de votre Agent et +10% à cinq compétences autres que Non naturel. Cela ne peut pas amener une compétence à plus de 90%. Réduisez la SAN de votre Agent de 5. Retirez un lien."
 
@@ -158,7 +158,7 @@ msgstr "Ajoutez +10% à la compétence Non naturel de votre Agent et +10% à cin
 msgid "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's CHA and each Bond. Your Agent is adapted to violence (see page 73)."
 msgstr "Ajoutez +10% à la compétence Non naturel de votre Agent. Réduisez la SAN de 5. Retirez 3 de la CHA de votre Agent et de chaque lien. Votre Agent est adapté à la violence (voir page 73)."
 
-#: src/types/characterTypes.ts:640
+#: src/types/characterTypes.ts:641
 msgid "Add +10% to your Agent's Occult skill. Reduce SAN by 5. Subtract 3 from your Agent's POW. Your Agent is adapted to helplessness (see page 73)."
 msgstr "Ajoutez +10% à la compétence Non naturel de votre Agent. Réduisez la SAN de 5. Retirez 3 de la POW de votre Agent. Votre Agent est adapté à l'impuissance (voir page 73)."
 
@@ -166,6 +166,10 @@ msgstr "Ajoutez +10% à la compétence Non naturel de votre Agent. Réduisez la 
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:109
 msgid "custom-skill-form.bonus-points-reminder"
 msgstr "Ajoute {DEFAULT_BONUS_VALUE} à la compétence totale pour chaque point bonus alloué (limité à {DEFAULT_TOTAL_CAP})"
+
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:166
+msgid "Admire"
+msgstr "Admirer"
 
 #: src/types/characterTypes.ts:192
 msgid "Adroit"
@@ -183,15 +187,15 @@ msgstr "Agile"
 msgid "Air or sea, commercial or military, your duty is to keep your passengers alive and craft intact. This can lead to hard choices when your passengers put the vehicle in danger. Or are you a drone operator, flying a Predator from a thousand miles away? Either way, what op brought you to the attention of Delta Green?"
 msgstr "Air ou mer, commercial ou militaire, votre devoir est de maintenir vos passagers en vie et votre bateau intact. Cela peut mener à des choix difficiles lorsque vos passagers mettent le véhicule en danger. Ou êtes-vous un opérateur de drone, pilotant un Predator à mille miles de distance ? Quoi qu'il en soit, quelle opération vous a fait remarquer à Delta Green ?"
 
-#: src/types/characterTypes.ts:1249
+#: src/types/characterTypes.ts:1251
 msgid "Aircraft"
 msgstr "Aéronef"
 
-#: src/types/characterTypes.ts:733
+#: src/types/characterTypes.ts:735
 msgid "Alertness"
 msgstr "Alerte"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:118
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:75
 msgid "Alias"
 msgstr "Pseudonyme"
 
@@ -204,7 +208,7 @@ msgid "Alluring"
 msgstr "Attirant"
 
 #: src/types/characterTypes.ts:479
-#: src/types/characterTypes.ts:1268
+#: src/types/characterTypes.ts:1270
 msgid "Analysing thought"
 msgstr "Analyse du raisonnement"
 
@@ -216,11 +220,11 @@ msgstr "Andrew Sobiesiak est un ingénieur logiciel qui joue aux JDR sur table e
 msgid "Anthropologist"
 msgstr "Anthropologue"
 
-#: src/types/characterTypes.ts:749
+#: src/types/characterTypes.ts:751
 msgid "Anthropology"
 msgstr "Anthropologie"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:162
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:87
 msgid "Appearance"
 msgstr "Apparence"
 
@@ -236,19 +240,19 @@ msgstr "Appliquer les compétences prédéfinies et choisir des compétences sup
 msgid "Arc Dream Publishing is a small-press publisher that produces high-quality games, including roleplaying games, a horror gaming magazine, and card games. Some of their popular works include Delta Green, Swords & Sorceries, and The Black Company RPG."
 msgstr "Arc Dream Publishing est un petit éditeur qui produit des jeux de haute qualité, notamment des jeux de rôle, un magazine de jeux d'horreur et des jeux de cartes. Parmi leurs œuvres populaires figurent Delta Green, Swords & Sorceries et The Black Company RPG."
 
-#: src/types/characterTypes.ts:765
+#: src/types/characterTypes.ts:767
 msgid "Archeology"
 msgstr "Archéologie"
 
-#: src/types/characterTypes.ts:781
+#: src/types/characterTypes.ts:783
 msgid "Art"
 msgstr "Art"
 
-#: src/types/characterTypes.ts:794
+#: src/types/characterTypes.ts:796
 msgid "Art (Painting)"
 msgstr "Art (Peinture)"
 
-#: src/types/characterTypes.ts:804
+#: src/types/characterTypes.ts:806
 msgid "Artillery"
 msgstr "Artillerie"
 
@@ -264,16 +268,16 @@ msgstr "En tant que membre d'une force comme les Rangers de l'Armée des États-
 msgid "Athletic"
 msgstr "Athlétique"
 
-#: src/types/characterTypes.ts:820
+#: src/types/characterTypes.ts:822
 msgid "Athletics"
 msgstr "Athlétisme"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:131
 msgid "Available Templates"
-msgstr ""
+msgstr "Modèles disponibles"
 
 #: src/types/characterTypes.ts:428
-#: src/types/characterTypes.ts:943
+#: src/types/characterTypes.ts:945
 msgid "Avoiding getting hit"
 msgstr "Éviter d'être touché"
 
@@ -285,7 +289,7 @@ msgstr "Maladroite"
 msgid "Base Statistics"
 msgstr "Statistiques de base"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:231
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:129
 msgid "Beliefs"
 msgstr "Croyances"
 
@@ -293,9 +297,9 @@ msgstr "Croyances"
 msgid "Bland"
 msgstr "Plat"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:368
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:392
 msgid "Bond Changes"
-msgstr ""
+msgstr "Changements de liens"
 
 #: src/pages/Summary/index.tsx:827
 msgid "Bond description"
@@ -309,14 +313,14 @@ msgstr "Détails du lien"
 msgid "Bond Name"
 msgstr "Nom de lien"
 
-#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:115
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:59
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:115
 msgid "Bond Type"
 msgstr "Type de lien"
 
 #: src/pages/TheCrucible/index.tsx:52
-#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 #: src/pages/TheCrucible/Profession/components/ChooseProfession.tsx:178
+#: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:126
 msgid "Bonds"
 msgstr "Liens"
 
@@ -338,20 +342,22 @@ msgid ""
 "                    Any time your Agent's Charisma drops, each bond score drops by the same amount.\n"
 "                    Bonds can be defined as a single person or a group of people. For example, an agent might have bonds with their spouse, their business partner, and their bowling league.\n"
 "                    A Bond must be a real person or small group of people who are alive and can be interacted with."
-msgstr ""
-"Les liens représentent les relations de votre agent avec les autres personnages.\n"
+msgstr "Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et sa ligue de bowling.\n"
+"                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec."
+"Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et sa ligue de bowling.\n"
+"                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec.Les liens représentent les relations de votre agent avec les autres personnages.\n"
 "                    Chaque lien commence avec un score égal à la Charisme de votre agent ({0}).\n"
 "                    Le score d'un lien peut s'améliorer si elle est nourrie entre les opérations. Un lien ne peut jamais avoir un score supérieur à la Charisme de votre agent.\n"
 "                    Chaque fois que le Charisme de votre agent diminue, le score de chaque lien diminue de la même quantité.\n"
 "                    Les liens peuvent être définis comme une personne ou un groupe de personnes. Par exemple, un agent peut avoir des liens avec son époux, son partenaire commercial et son ligue de bowling.\n"
 "                    Un lien doit être une personne ou un petit groupe de personnes qui sont vivantes et peuvent être interagies avec."
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:268
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:292
 msgid "Bonds:"
-msgstr ""
+msgstr "Liens :"
 
-#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:103
 #: src/pages/TheCrucible/Profession/components/CustomSkillInput.tsx:215
+#: src/pages/TheCrucible/Profession/components/ProfessionSkillInput.tsx:103
 msgid "Bonus"
 msgstr "Bonus"
 
@@ -359,13 +365,13 @@ msgstr "Bonus"
 msgid "Bonus Points"
 msgstr "Points bonus"
 
-#: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:164
+#: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:90
 msgid "Bonus Points Remaining"
 msgstr "Points bonus restants"
 
-#: src/utils/CharacterGenerator.ts:115
 #: src/pages/Summary/index.tsx:792
+#: src/utils/CharacterGenerator.ts:115
 msgid "Breaking Point"
 msgstr "Point de rupture"
 
@@ -377,35 +383,35 @@ msgstr "Brillant"
 msgid "Brilliant"
 msgstr "Brillant"
 
-#: src/types/characterTypes.ts:836
+#: src/types/characterTypes.ts:838
 msgid "Bureaucracy"
 msgstr "Bureaucratie"
 
 #: src/types/characterTypes.ts:395
-#: src/types/characterTypes.ts:721
+#: src/types/characterTypes.ts:723
 msgid "Business Math"
 msgstr "Mathématiques commerciales"
 
 #: src/types/characterTypes.ts:494
-#: src/types/characterTypes.ts:1387
+#: src/types/characterTypes.ts:1389
 msgid "Camping, tracking, improvising in nature"
 msgstr "Camping, tracking, improvisation dans la nature"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:286
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:291
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/types/characterTypes.ts:345
 msgid "Captivating"
 msgstr "Captivant"
 
-#: src/types/characterTypes.ts:636
+#: src/types/characterTypes.ts:637
 msgid "Captivity or Imprisonment"
 msgstr "Captivité ou emprisonnement"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
 msgid "Captivity or Imprisonment:"
-msgstr ""
+msgstr "Captivité ou emprisonnement :"
 
 #: src/types/characterTypes.ts:201
 msgid "Cat-like"
@@ -421,7 +427,7 @@ msgstr "Charisme"
 
 #: src/pages/Summary/index.tsx:837
 msgid "Check a Bond's box when projecting sanity damage"
-msgstr ""
+msgstr "Cocher la case d'un lien lors de la projection de dégâts de SAN"
 
 #: src/pages/Summary/index.tsx:767
 #~ msgid "Check a Bond’s box when projecting sanity damage"
@@ -452,9 +458,9 @@ msgstr "Église ou groupe de soutien"
 msgid "Clear"
 msgstr "Effacer"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:327
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:299
 msgid "Clear All Templates"
-msgstr ""
+msgstr "Effacer tous les modèles"
 
 #: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:129
 msgid "Clear Descriptors"
@@ -465,8 +471,8 @@ msgid "Clear Selected Skills"
 msgstr "Effacer les compétences sélectionnées"
 
 #: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:76
-msgid "Clear Templates"
-msgstr "Effacer les modèles"
+#~ msgid "Clear Templates"
+#~ msgstr "Effacer les modèles"
 
 #: src/types/characterTypes.ts:162
 msgid "Clumsy"
@@ -488,7 +494,7 @@ msgstr "Diplôme mineur ou entraînement de base."
 msgid "Compelling"
 msgstr "Captivant"
 
-#: src/types/characterTypes.ts:852
+#: src/types/characterTypes.ts:854
 msgid "Computer Science"
 msgstr "Informatique"
 
@@ -496,20 +502,20 @@ msgstr "Informatique"
 msgid "Computers and machinery are the backbone of modern industry. You are a craftsman with data or machinery, possibly for the government and most definitely for profit. However you use your skills, the overlap between information technology and awareness of the unnatural could make this the most dangerous job on the planet."
 msgstr "Les ordinateurs et les machines sont l'épine dorsale de l'industrie moderne. Vous êtes un artisan des données ou des machines, possiblement pour le gouvernement et très certainement à but lucratif. Quelle que soit la façon dont vous utilisez vos compétences, le chevauchement entre les technologies de l'information et la conscience du surnaturel pourrait faire de ce métier le plus dangereux de la planète."
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:293
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:298
 msgid "Confirm Selection"
-msgstr ""
+msgstr "Confirmer la sélection"
 
 #: src/types/characterTypes.ts:534
 msgid "Constitution"
 msgstr "Constitution"
 
-#: src/types/characterTypes.ts:911
+#: src/types/characterTypes.ts:913
 msgid "Controlled explosions"
 msgstr "Explosions contrôlées"
 
 #: src/types/characterTypes.ts:470
-#: src/types/characterTypes.ts:1213
+#: src/types/characterTypes.ts:1215
 msgid "Convincing people"
 msgstr "Convaincre les gens"
 
@@ -525,15 +531,15 @@ msgstr "Peut prendre les escaliers"
 msgid "Coworker or partner"
 msgstr "Collègue ou partenaire"
 
-#: src/types/characterTypes.ts:868
+#: src/types/characterTypes.ts:870
 msgid "Craft"
 msgstr "Artisanat"
 
-#: src/types/characterTypes.ts:879
+#: src/types/characterTypes.ts:881
 msgid "Craft (Macrame)"
 msgstr "Artisanat (Macramé)"
 
-#: src/types/characterTypes.ts:785
+#: src/types/characterTypes.ts:787
 msgid "Creative pursuits"
 msgstr "Passions créatives"
 
@@ -541,17 +547,17 @@ msgstr "Passions créatives"
 msgid "Criminal"
 msgstr "Criminel"
 
-#: src/types/characterTypes.ts:891
+#: src/types/characterTypes.ts:893
 msgid "Criminology"
 msgstr "Criminologie"
 
 #: src/types/characterTypes.ts:440
-#: src/types/characterTypes.ts:1007
+#: src/types/characterTypes.ts:1009
 msgid "CSI"
 msgstr "Investigation criminelle"
 
 #: src/types/characterTypes.ts:467
-#: src/types/characterTypes.ts:1197
+#: src/types/characterTypes.ts:1199
 msgid "Cult shit"
 msgstr "Crédulité"
 
@@ -571,26 +577,25 @@ msgstr "Professions personnalisées"
 msgid "Dabbler."
 msgstr "Quelqu'un qui essaie de tout faire."
 
-#: src/pages/TheCrucible/index.tsx:54
-#: src/pages/TheCrucible/PersonalDetails/DamagedVeteranTemplates.tsx:66
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:91
+#: src/pages/TheCrucible/index.tsx:54
 msgid "Damaged Veteran Templates"
 msgstr "Modèles de vétéran blessé"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:155
 msgid "Damaged Veteran Templates are permanent character choices that cannot be easily undone. Consider the narrative implications of each template and how it fits with your character's backstory."
-msgstr ""
+msgstr "Les modèles de vétéran blessé sont des choix de personnage permanents qui ne peuvent pas être facilement annulés. Considérez les implications narratives de chaque modèle et comment il s'intègre dans l'histoire de votre personnage."
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:92
 msgid "Damaged Veteran Templates Details"
-msgstr ""
+msgstr "Détails des modèles de vétéran blessé"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:100
 msgid "Damaged Veteran Templates represent traumatic experiences that have left lasting marks on your character. These templates provide both mechanical benefits and narrative depth, reflecting how trauma has shaped your character's abilities and worldview."
-msgstr ""
+msgstr "Les modèles de vétéran blessé représentent des expériences traumatiques qui ont laissé des marques durables sur votre personnage. Ces modèles offrent à la fois des avantages mécaniques et une profondeur narrative, reflétant comment le traumatisme a façonné les capacités et la vision du monde de votre personnage."
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:131
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:137
+#: src/pages/TheCrucible/PersonalDetails/DateOfBirthPicker.tsx:46
+#: src/pages/TheCrucible/PersonalDetails/DateOfBirthPicker.tsx:56
 msgid "Date of Birth"
 msgstr "Date de naissance"
 
@@ -610,7 +615,7 @@ msgstr "Agile"
 msgid "Delicate"
 msgstr "Délicat"
 
-#: src/types/characterTypes.ts:907
+#: src/types/characterTypes.ts:909
 msgid "Demolitions"
 msgstr "Démolition"
 
@@ -638,12 +643,16 @@ msgstr "Dés"
 msgid "Dim"
 msgstr "Fainéant"
 
-#: src/types/characterTypes.ts:923
+#: src/types/characterTypes.ts:925
 msgid "Disguise"
 msgstr "Disguise"
 
-#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:175
+msgid "Dislike"
+msgstr "Ne pas aimer"
+
 #: src/pages/Summary/index.tsx:759
+#: src/pages/TheCrucible/Statistics/components/StatDescriptors/StatDescriptors.tsx:126
 msgid "Distinguishing Features"
 msgstr "Caractéristiques distinctives"
 
@@ -652,7 +661,7 @@ msgid "Do you close your eyes to what you’ve seen and go back to sleep? Or do 
 msgstr "Voulez-vous fermer les yeux à ce que vous avez vu et retourner dormir ? Ou venez avec ce burnout psychique et accomplissez l'impossible contre l'incroyable et maintenir le futur en retrait pour un autre jour ?"
 
 #: src/types/characterTypes.ts:473
-#: src/types/characterTypes.ts:1229
+#: src/types/characterTypes.ts:1231
 msgid "Do you like drugs?"
 msgstr "Voulez-vous des drogues ?"
 
@@ -660,7 +669,7 @@ msgstr "Voulez-vous des drogues ?"
 msgid "Doctors are often the first to uncover signs of an unnatural incursion, and the most valuable investigators of its disastrous effects on humanity."
 msgstr "Les médecins sont souvent les premiers à découvrir les signes d'une incursion non naturelle, et les enquêteurs les plus précieux de ses effets dévastateurs sur l'humanité."
 
-#: src/types/characterTypes.ts:939
+#: src/types/characterTypes.ts:941
 msgid "Dodge"
 msgstr "Dévier"
 
@@ -672,7 +681,7 @@ msgstr "Fait ses « propres recherches »"
 msgid "Dossier"
 msgstr "Dossier"
 
-#: src/types/characterTypes.ts:955
+#: src/types/characterTypes.ts:957
 msgid "Drive"
 msgstr "Conduire"
 
@@ -682,9 +691,9 @@ msgstr "Dénué de toute énergie"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:114
 msgid "Each template provides specific bonuses to skills and penalties to certain statistics. These changes reflect how the trauma has affected your character's mental and physical state, while also granting them hard-won experience in certain areas."
-msgstr ""
+msgstr "Chaque modèle fournit des bonus spécifiques aux compétences et des pénalités à certaines statistiques. Ces changements reflètent comment le traumatisme a affecté l'état mental et physique de votre personnage, tout en lui accordant une expérience durement acquise dans certains domaines."
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:203
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:112
 msgid "Education"
 msgstr "Éducation"
 
@@ -692,7 +701,7 @@ msgstr "Éducation"
 #~ msgid "Effects:"
 #~ msgstr ""
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:177
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:96
 msgid "Employer"
 msgstr "Employeur"
 
@@ -704,7 +713,7 @@ msgstr "Captivant"
 msgid "Engineer"
 msgstr "Ingénieur"
 
-#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:87
+#: src/pages/TheCrucible/Profession/components/SubtypeEditor.tsx:98
 msgid "Enter a Subtype"
 msgstr "Entrez un sous-type"
 
@@ -726,7 +735,7 @@ msgstr "Violence extrême"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
 msgid "Extreme Violence:"
-msgstr ""
+msgstr "Violence extrême :"
 
 #: src/types/characterTypes.ts:133
 msgid "Fair"
@@ -745,16 +754,16 @@ msgid "Feeble"
 msgstr "Faible"
 
 #: src/types/characterTypes.ts:464
-#: src/types/characterTypes.ts:1181
+#: src/types/characterTypes.ts:1183
 msgid "Finding the path"
 msgstr "Trouver le chemin"
 
 #: src/types/characterTypes.ts:488
-#: src/types/characterTypes.ts:1323
+#: src/types/characterTypes.ts:1325
 msgid "Finding things"
 msgstr "Trouver les choses"
 
-#: src/types/characterTypes.ts:971
+#: src/types/characterTypes.ts:973
 msgid "Firearms"
 msgstr "Armes de feu"
 
@@ -766,11 +775,11 @@ msgstr "Pompiers"
 msgid "Firm"
 msgstr "Ferme"
 
-#: src/types/characterTypes.ts:987
+#: src/types/characterTypes.ts:989
 msgid "First Aid"
 msgstr "Premiers soins"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:79
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:51
 msgid "First Name"
 msgstr "Prénom"
 
@@ -792,25 +801,25 @@ msgstr "Paramètres de police"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:138
 msgid "For characters who have been held against their will."
-msgstr ""
+msgstr "Pour les personnages qui ont été retenus contre leur gré."
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:144
 msgid "For characters who have encountered the unnatural and survived."
-msgstr ""
+msgstr "Pour les personnages qui ont rencontré le surnaturel et ont survécu."
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:141
 msgid "For characters who have endured prolonged hardship and danger."
-msgstr ""
+msgstr "Pour les personnages qui ont enduré des difficultés et des dangers prolongés."
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:135
 msgid "For characters who have witnessed or participated in horrific violence."
-msgstr ""
+msgstr "Pour les personnages qui ont été témoins ou ont participé à une violence horrible."
 
-#: src/types/characterTypes.ts:1023
+#: src/types/characterTypes.ts:1025
 msgid "Foreign Languages"
 msgstr "Langues étrangères"
 
-#: src/types/characterTypes.ts:1030
+#: src/types/characterTypes.ts:1032
 msgid "Foreign Languages (French)"
 msgstr "Langues étrangères (Français)"
 
@@ -818,7 +827,7 @@ msgstr "Langues étrangères (Français)"
 msgid "Foreign Service Officer"
 msgstr "Officier de service étranger"
 
-#: src/types/characterTypes.ts:1003
+#: src/types/characterTypes.ts:1005
 msgid "Forensics"
 msgstr "Forensique"
 
@@ -827,7 +836,7 @@ msgid "Forgettable"
 msgstr "Oubliable"
 
 #: src/types/characterTypes.ts:446
-#: src/types/characterTypes.ts:1046
+#: src/types/characterTypes.ts:1048
 msgid "Forklifts, cranes, excavators, etc"
 msgstr "Forklifts, grues, excavateurs, etc"
 
@@ -839,7 +848,7 @@ msgstr "Formidable"
 msgid "Fortified"
 msgstr "Fortifié"
 
-#: src/components/PageNumberTooltip/PageNumberTooltip.tsx:46
+#: src/components/PageNumberTooltip/PageNumberTooltip.tsx:37
 msgid "Found on page {pageNumber}"
 msgstr "Trouvé sur la page {pageNumber}"
 
@@ -851,7 +860,7 @@ msgstr "Fragile"
 msgid "Frail"
 msgstr "Faible"
 
-#: src/types/characterTypes.ts:1019
+#: src/types/characterTypes.ts:1021
 msgid "French"
 msgstr "Français"
 
@@ -859,8 +868,12 @@ msgstr "Français"
 msgid "Fumbling"
 msgstr "Maladroite"
 
+#: src/pages/TheCrucible/PersonalDetails/SexPicker.tsx:68
+msgid "Gender"
+msgstr "Genre"
+
 #: src/types/characterTypes.ts:425
-#: src/types/characterTypes.ts:927
+#: src/types/characterTypes.ts:929
 msgid "Gene Parmesan, he's the best"
 msgstr "Gene Parmesan, il est le meilleur"
 
@@ -877,13 +890,13 @@ msgid "Greased Lightning"
 msgstr "Éclair de glisse"
 
 #: src/types/characterTypes.ts:416
-#: src/types/characterTypes.ts:840
+#: src/types/characterTypes.ts:842
 msgid "Greasing the wheels of government"
 msgstr "Lubrifier les roues de l'État"
 
-#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:128
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:30
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:31
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:128
 msgid "Group"
 msgstr "Groupe"
 
@@ -891,17 +904,17 @@ msgstr "Groupe"
 msgid "Handy"
 msgstr "Pratique"
 
-#: src/types/characterTypes.ts:657
+#: src/types/characterTypes.ts:659
 msgid "Hard Experience"
 msgstr "Expérience difficile"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:229
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:232
 msgid "Hard Experience - Skill Selection"
-msgstr ""
+msgstr "Expérience difficile - Sélection de compétences"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:84
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:89
 msgid "Hard Experience Skill Selection"
-msgstr ""
+msgstr "Sélection de compétences d'expérience difficile"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:356
 #~ msgid "Hard Experience Skills:"
@@ -909,7 +922,7 @@ msgstr ""
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:141
 msgid "Hard Experience:"
-msgstr ""
+msgstr "Expérience difficile :"
 
 #: src/types/characterTypes.ts:556
 msgid "Health and hardiness"
@@ -923,11 +936,11 @@ msgstr "Sain"
 msgid "Hearty"
 msgstr "Robuste"
 
-#: src/types/characterTypes.ts:1042
+#: src/types/characterTypes.ts:1044
 msgid "Heavy Machinery"
 msgstr "Machines lourdes"
 
-#: src/types/characterTypes.ts:1058
+#: src/types/characterTypes.ts:1060
 msgid "Heavy Weapons"
 msgstr "Armes lourdes"
 
@@ -939,16 +952,16 @@ msgstr "Inutilité"
 msgid "Historian"
 msgstr "Historien"
 
-#: src/types/characterTypes.ts:1074
+#: src/types/characterTypes.ts:1076
 msgid "History"
 msgstr "Histoire"
 
-#: src/utils/CharacterGenerator.ts:94
 #: src/pages/Summary/index.tsx:777
+#: src/utils/CharacterGenerator.ts:94
 msgid "Hit Points"
 msgstr "Points de vie"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:246
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:138
 msgid "Hobbies"
 msgstr "Loisirs"
 
@@ -957,19 +970,19 @@ msgid "Home"
 msgstr "Accueil"
 
 #: src/types/characterTypes.ts:482
-#: src/types/characterTypes.ts:1284
+#: src/types/characterTypes.ts:1286
 msgid "Horses and such"
 msgstr "Chevaux et autres"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:111
 msgid "How They Work"
-msgstr ""
+msgstr "Comment ils fonctionnent"
 
 #: src/types/characterTypes.ts:104
 msgid "Huge"
 msgstr "Gigantesque"
 
-#: src/types/characterTypes.ts:1090
+#: src/types/characterTypes.ts:1092
 msgid "HUMINT"
 msgstr "Renseignement humain"
 
@@ -978,7 +991,7 @@ msgid "If the intelligence community was a family, Delta Green would be the uncl
 msgstr "Si la communauté du renseignement était une famille, Delta Green serait l'oncle dont personne ne parle.<0/>Delta Green est un Jeu de Rôle sur Table qui utilise un système D100. Les Gestionnaires dirigent des opérations pour leurs agents, d'autres joueurs, où une opération gouvernementale secrète œuvre pour protéger le monde des horreurs cosmiques inconnues."
 
 #: src/types/characterTypes.ts:452
-#: src/types/characterTypes.ts:1078
+#: src/types/characterTypes.ts:1080
 msgid "If you haven't studied it you're doomed to repeat it"
 msgstr "Si vous ne l'avez pas étudié, vous êtes condamné à le répéter"
 
@@ -988,7 +1001,7 @@ msgstr "Si vous souhaitez soutenir ce travail, vous pouvez acheter du contenu De
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:152
 msgid "Important:"
-msgstr ""
+msgstr "Important :"
 
 #: src/types/characterTypes.ts:268
 msgid "Impulsive"
@@ -1006,9 +1019,9 @@ msgstr "Incurieux"
 msgid "Indecisive"
 msgstr "Indécis"
 
-#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:121
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:28
 #: src/pages/TheCrucible/Bonds/components/BondGuidance.tsx:29
+#: src/pages/TheCrucible/Bonds/components/BondInput.tsx:121
 msgid "Individual"
 msgstr "Individuel"
 
@@ -1021,7 +1034,7 @@ msgid "Infirmed"
 msgstr "Affaibli"
 
 #: src/types/characterTypes.ts:422
-#: src/types/characterTypes.ts:872
+#: src/types/characterTypes.ts:874
 msgid "Inner Adam Savage"
 msgstr "Créer des miracles avec du ruban adhésif"
 
@@ -1045,7 +1058,7 @@ msgstr "Officier de cas d'intelligence"
 msgid "Irrational"
 msgstr "Irrationnel"
 
-#: src/types/characterTypes.ts:1435
+#: src/types/characterTypes.ts:1437
 msgid "It's a jeep thing, you wouldn't understand"
 msgstr "C'est une chose de camion, vous ne le comprenez pas"
 
@@ -1054,12 +1067,12 @@ msgid "Jacked"
 msgstr "Jacked"
 
 #: src/types/characterTypes.ts:413
-#: src/types/characterTypes.ts:824
+#: src/types/characterTypes.ts:826
 msgid "Jumping, ducking, running, climbing, etc"
 msgstr "Sauter, esquiver, courir, grimper, etc"
 
 #: src/types/characterTypes.ts:404
-#: src/types/characterTypes.ts:769
+#: src/types/characterTypes.ts:771
 msgid "Jurassic Park"
 msgstr "Jurassic Park"
 
@@ -1068,7 +1081,7 @@ msgid "Key Stats"
 msgstr "Statistiques clés"
 
 #: src/types/characterTypes.ts:458
-#: src/types/characterTypes.ts:1142
+#: src/types/characterTypes.ts:1144
 msgid "Knives, hatchets, swords, etc"
 msgstr "Couteaux, haches, épées, etc"
 
@@ -1076,15 +1089,15 @@ msgstr "Couteaux, haches, épées, etc"
 #~ msgid "Label"
 #~ msgstr "Étiquette"
 
-#: src/types/characterTypes.ts:1162
+#: src/types/characterTypes.ts:1164
 msgid "Land"
 msgstr "Terre"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:92
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:59
 msgid "Last Name"
 msgstr "Nom de famille"
 
-#: src/types/characterTypes.ts:1106
+#: src/types/characterTypes.ts:1108
 msgid "Law"
 msgstr "Loi"
 
@@ -1097,11 +1110,11 @@ msgid "List character motivations and any mental disorders..."
 msgstr "Listez les motivations de votre personnage et ses troubles mentaux..."
 
 #: src/types/characterTypes.ts:449
-#: src/types/characterTypes.ts:1062
+#: src/types/characterTypes.ts:1064
 msgid "LMGs I think"
 msgstr "LMGs que je pense"
 
-#: src/types/characterTypes.ts:876
+#: src/types/characterTypes.ts:878
 msgid "Macrame"
 msgstr "Macramé"
 
@@ -1110,7 +1123,7 @@ msgid "Magnetic"
 msgstr "Magnétique"
 
 #: src/types/characterTypes.ts:410
-#: src/types/characterTypes.ts:808
+#: src/types/characterTypes.ts:810
 msgid "Making things explode from far away"
 msgstr "Faire exploser des choses à distance"
 
@@ -1135,7 +1148,7 @@ msgid "Media Specialist"
 msgstr "Spécialiste des médias"
 
 #: src/types/characterTypes.ts:455
-#: src/types/characterTypes.ts:1126
+#: src/types/characterTypes.ts:1128
 msgid "Medical practice"
 msgstr "Pratique médicale"
 
@@ -1143,7 +1156,7 @@ msgstr "Pratique médicale"
 msgid "Medical professionals are on the front line when awful things happen. Is that what brought you to the group's attention?"
 msgstr "Les professionnels de la médecine sont au front lorsque de terribles choses arrivent. C'est ce qui vous a amené à l'attention du groupe ?"
 
-#: src/types/characterTypes.ts:1122
+#: src/types/characterTypes.ts:1124
 msgid "Medicine"
 msgstr "Médecine"
 
@@ -1155,7 +1168,7 @@ msgstr "Médiocre"
 msgid "Meet me at <0>The Crucible</0> and tell me a little bit about yourself, agent. What's your deal?"
 msgstr "Retrouvez-moi au <0>Creuset</0> et parlez-moi un peu de vous, agent. Quelle est votre histoire ?"
 
-#: src/types/characterTypes.ts:1138
+#: src/types/characterTypes.ts:1140
 msgid "Melee Weapons"
 msgstr "Armes de combat"
 
@@ -1163,38 +1176,38 @@ msgstr "Armes de combat"
 msgid "Mesmerizing"
 msgstr "Mesmérisant"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:105
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:67
 msgid "Middle Initial"
 msgstr "Initiale du milieu"
 
-#: src/types/characterTypes.ts:1154
+#: src/types/characterTypes.ts:1156
 msgid "Military Science"
 msgstr "Science militaire"
 
-#: src/types/characterTypes.ts:1165
+#: src/types/characterTypes.ts:1167
 msgid "Military Science (Land)"
 msgstr "Science militaire (Terre)"
 
 #: src/types/characterTypes.ts:461
-#: src/types/characterTypes.ts:1158
+#: src/types/characterTypes.ts:1160
 msgid "Military tactics"
 msgstr "Tactiques militaires"
 
 #: src/types/characterTypes.ts:437
-#: src/types/characterTypes.ts:991
+#: src/types/characterTypes.ts:993
 msgid "Minor urgent medical care"
 msgstr "Soins médicaux urgents mineurs"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:276
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:157
 msgid "Motivations"
 msgstr "Motivations"
 
 #: src/types/characterTypes.ts:497
-#: src/types/characterTypes.ts:1403
+#: src/types/characterTypes.ts:1405
 msgid "Moving oneself through water"
 msgstr "Se déplacer dans l'eau"
 
-#: src/types/characterTypes.ts:895
+#: src/types/characterTypes.ts:897
 msgid "Muddying the waters of a crime-scene"
 msgstr "Mélanger les eaux d'un crime"
 
@@ -1202,11 +1215,11 @@ msgstr "Mélanger les eaux d'un crime"
 msgid "Muscular"
 msgstr "Musclé"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:190
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:104
 msgid "Nationality"
 msgstr "Nationalité"
 
-#: src/types/characterTypes.ts:1177
+#: src/types/characterTypes.ts:1179
 msgid "Navigate"
 msgstr "Naviguer"
 
@@ -1226,12 +1239,12 @@ msgstr "Aucun package (Points bonus manuels)"
 msgid "Note additional details about the bond"
 msgstr "Notez les détails supplémentaires sur le lien"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:289
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:261
 msgid "Note: This template requires selecting {MAX_HARDENED_VETERAN_SKILLS} additional skills."
-msgstr ""
+msgstr "Note : Ce modèle nécessite de sélectionner {MAX_HARDENED_VETERAN_SKILLS} compétences supplémentaires."
 
 #: src/types/characterTypes.ts:398
-#: src/types/characterTypes.ts:737
+#: src/types/characterTypes.ts:739
 msgid "Noticing things"
 msgstr "Remarquer les choses"
 
@@ -1243,21 +1256,21 @@ msgstr "Nombre de liens sociaux disponibles pour votre personnage."
 msgid "Nurse"
 msgstr "Infirmière"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:261
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:147
 msgid "Obsessions"
 msgstr "Obsessions"
 
-#: src/types/characterTypes.ts:1193
+#: src/types/characterTypes.ts:1195
 msgid "Occult"
 msgstr "Occultisme"
 
 #: src/types/characterTypes.ts:431
-#: src/types/characterTypes.ts:959
+#: src/types/characterTypes.ts:961
 msgid "Opearting a motor-vehicle"
 msgstr "Conduire une voiture"
 
 #: src/types/characterTypes.ts:476
-#: src/types/characterTypes.ts:1245
+#: src/types/characterTypes.ts:1247
 msgid "Operating flying vehicles"
 msgstr "Conduire un véhicule aérien"
 
@@ -1270,12 +1283,12 @@ msgid "Oracular"
 msgstr "Oraculaire"
 
 #: src/types/characterTypes.ts:407
-#: src/types/characterTypes.ts:791
+#: src/types/characterTypes.ts:793
 msgid "Painting"
 msgstr "Peinture"
 
 #: src/types/characterTypes.ts:443
-#: src/types/characterTypes.ts:1027
+#: src/types/characterTypes.ts:1029
 msgid "Parles-vous Français?"
 msgstr "Parlez-vous français ?"
 
@@ -1306,40 +1319,37 @@ msgstr "Détails personnels"
 msgid "Personal Motivation {0}"
 msgstr "Motivation personnelle {0}"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:84
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:88
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:88
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:83
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:83
 msgid "Personal Motivations"
 msgstr "Motivations personnelles"
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:73
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:71
 msgid ""
 "Personal Motivations represent what drives your Agent beyond their Bonds. \n"
 "    These can be faith, patriotism, hobbies, or even the love of a pet. While \n"
 "    powerful, these motivations aren't as strong as Bonds to other humans."
-msgstr ""
-"msgstrLes motivations personnelles représentent ce qui motive votre agent au-delà de ses liens. \n"
-" Il peut s'agir de la foi, du patriotisme, des loisirs ou même de l'amour d'un animal de compagnie. Bien que \n"
+msgstr "Ces motivations peuvent être la foi, le patriotisme, les loisirs ou même l'amour d'un animal de compagnie. Bien que puissantes, ces motivations ne sont pas aussi fortes que les liens avec d'autres humains."
 " puissantes, ces motivations ne sont pas aussi fortes que les liens avec d'autres humains."
 
 #: src/pages/TheCrucible/Profession/components/BonusSkillPackageChoices.tsx:135
 msgid "personal specialty (any)"
 msgstr "spécialité personnelle (n'importe quelle)"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:216
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:120
 msgid "Personality"
 msgstr "Personnalité"
 
-#: src/types/characterTypes.ts:1209
+#: src/types/characterTypes.ts:1211
 msgid "Persuade"
 msgstr "Convaincre"
 
 #: src/types/characterTypes.ts:434
-#: src/types/characterTypes.ts:975
+#: src/types/characterTypes.ts:977
 msgid "pew-pew"
 msgstr "tir"
 
-#: src/types/characterTypes.ts:1225
+#: src/types/characterTypes.ts:1227
 msgid "Pharmacy"
 msgstr "Pharmacie"
 
@@ -1351,16 +1361,16 @@ msgstr "Physique, chimie, biologie, etc"
 msgid "Physician"
 msgstr "Médecin"
 
-#: src/types/characterTypes.ts:1300
+#: src/types/characterTypes.ts:1302
 msgid "Physics, Chemistry, Biology, etc"
 msgstr "Physique, chimie, biologie, etc"
 
+#: src/types/characterTypes.ts:1243
 #: src/utils/Professions.ts:558
-#: src/types/characterTypes.ts:1241
 msgid "Pilot"
 msgstr "Pilote"
 
-#: src/types/characterTypes.ts:1252
+#: src/types/characterTypes.ts:1254
 msgid "Pilot (Aircraft)"
 msgstr "Pilote (Aéronef)"
 
@@ -1400,10 +1410,10 @@ msgstr "Pouvoir"
 msgid "Preset Professional Skills"
 msgstr "Compétences professionnelles prédéfinies"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:298
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:313
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:322
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:337
 msgid "Preview"
-msgstr ""
+msgstr "Aperçu"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:340
 #~ msgid "Preview Effects"
@@ -1430,12 +1440,12 @@ msgstr "Directeur de programme"
 msgid "Psychological Data"
 msgstr "Données psychologiques"
 
-#: src/types/characterTypes.ts:1264
+#: src/types/characterTypes.ts:1266
 msgid "Psychotherapy"
 msgstr "Psychanalyse"
 
 #: src/types/characterTypes.ts:500
-#: src/types/characterTypes.ts:1419
+#: src/types/characterTypes.ts:1421
 msgid "Punch, kick, grapple, bite, etc"
 msgstr "Coup, pied, grapple, morsure, etc"
 
@@ -1463,7 +1473,7 @@ msgstr "Statistiques recommandées pour votre profession choisie."
 msgid "Regional Settings"
 msgstr "Paramètres régionaux"
 
-#: src/types/characterTypes.ts:1371
+#: src/types/characterTypes.ts:1373
 msgid "Removing a bullet, stitching a wound"
 msgstr "Enlever une balle, coudre une blessure"
 
@@ -1479,8 +1489,8 @@ msgstr "Repoussant"
 msgid "Reset Bonds"
 msgstr "Réinitialiser les liens"
 
-#: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
 #: src/pages/TheCrucible/Profession/components/CustomSkillForm.tsx:169
+#: src/pages/TheCrucible/Profession/components/StandardSkillForm.tsx:94
 msgid "Reset Bonus Points"
 msgstr "Réinitialiser les points bonus"
 
@@ -1488,7 +1498,7 @@ msgstr "Réinitialiser les points bonus"
 msgid "Reset everything"
 msgstr "Réinitialiser tout"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:352
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:204
 msgid "Reset Personal Details"
 msgstr "Réinitialiser les détails personnels"
 
@@ -1516,7 +1526,7 @@ msgstr "Résistant"
 msgid "Resolute"
 msgstr "Déterminé"
 
-#: src/types/characterTypes.ts:1280
+#: src/types/characterTypes.ts:1282
 msgid "Ride"
 msgstr "Chevauchée"
 
@@ -1536,20 +1546,20 @@ msgstr "Sage"
 msgid "Sailor"
 msgstr "Marin"
 
-#: src/utils/CharacterGenerator.ts:108
 #: src/pages/Summary/index.tsx:787
+#: src/utils/CharacterGenerator.ts:108
 msgid "Sanity"
 msgstr "Sanité"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:96
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:105
 msgid "Save Hardened Skills"
-msgstr ""
+msgstr "Sauvegarder les compétences endurcies"
 
-#: src/types/characterTypes.ts:1296
+#: src/types/characterTypes.ts:1298
 msgid "Science"
 msgstr "Science"
 
-#: src/types/characterTypes.ts:1307
+#: src/types/characterTypes.ts:1309
 msgid "Science (Theoretical Physics)"
 msgstr "Science (Physique théorique)"
 
@@ -1562,7 +1572,7 @@ msgstr "Scientifique"
 msgid "Score"
 msgstr "Note"
 
-#: src/types/characterTypes.ts:1319
+#: src/types/characterTypes.ts:1321
 msgid "Search"
 msgstr "Rechercher"
 
@@ -1572,44 +1582,44 @@ msgstr "Sédentaire"
 
 #. placeholder {0}: template.skillSelectionRules!.count
 #. placeholder {1}: template.skillSelectionRules!.bonus
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:353
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:377
 msgid "Select {0} skills for +{1}% bonus"
-msgstr ""
+msgstr "Sélectionner {0} compétences pour un bonus de +{1}%"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:134
+#: src/pages/TheCrucible/PersonalDetails/DateOfBirthPicker.tsx:52
 msgid "Select Date of Birth"
 msgstr "Sélectionner la date de naissance"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:236
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:240
 msgid "Select exactly {MAX_HARDENED_VETERAN_SKILLS} skills to receive a +{DV_BONUS}% bonus. The Occult skill automatically receives this bonus and cannot be deselected."
-msgstr ""
+msgstr "Sélectionnez exactement {MAX_HARDENED_VETERAN_SKILLS} compétences pour recevoir un bonus de +{DV_BONUS}%. La compétence Occultisme reçoit automatiquement ce bonus et ne peut pas être désélectionnée."
 
 #: src/components/Header/SettingsMenu.tsx:69
 msgid "Select Theme"
 msgstr "Sélectionner le thème"
 
-#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:88
+#: src/pages/TheCrucible/PersonalDetails/HardExperienceModal.tsx:93
 msgid "Select up to {MAX_HARDENED_VETERAN_SKILLS} skills for the Hard Experience bonus"
-msgstr ""
+msgstr "Sélectionnez jusqu'à {MAX_HARDENED_VETERAN_SKILLS} compétences pour le bonus d'Expérience difficile"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:295
+#: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:267
 msgid "Selected Skills:"
-msgstr ""
+msgstr "Compétences sélectionnées :"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:245
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:249
 msgid "Selected:"
-msgstr ""
+msgstr "Sélectionné :"
 
 #: src/components/Header/SettingsMenu.tsx:61
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src/types/characterTypes.ts:1335
+#: src/types/characterTypes.ts:1337
 msgid "SIGINT"
 msgstr "Renseignement de signal"
 
 #: src/types/characterTypes.ts:491
-#: src/types/characterTypes.ts:1339
+#: src/types/characterTypes.ts:1341
 msgid "Signal intelligence, breaking codes"
 msgstr "Renseignement de signal, cassage de codes"
 
@@ -1617,9 +1627,9 @@ msgstr "Renseignement de signal, cassage de codes"
 msgid "Simple-minded"
 msgstr "Simplet"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:335
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:359
 msgid "Skill Bonuses"
-msgstr ""
+msgstr "Bonus de compétences"
 
 #: src/pages/TheCrucible/Profession/components/ChooseSkills.tsx:176
 msgid "Skill Choices Remaining"
@@ -1637,9 +1647,9 @@ msgstr "Points de compétence restants"
 msgid "Skill Rating"
 msgstr "Note de compétence"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:349
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:373
 msgid "Skill Selection Rules"
-msgstr ""
+msgstr "Règles de sélection de compétences"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/index.tsx:300
 #~ msgid "Skill Selection:"
@@ -1650,7 +1660,7 @@ msgstr ""
 msgid "professional-guidance.skill-cap-text"
 msgstr "Les compétences peuvent atteindre {DEFAULT_MAX_SKILL_VALUE}% avec l'allocation de points, et atteindre {DEFAULT_TOTAL_CAP}% avec les points bonus. Si vos points bonus dépassaient {DEFAULT_TOTAL_CAP}%, la compétence atteindrait {DEFAULT_TOTAL_CAP}% et tous les points en excès seraient perdus. Les valeurs des compétences peuvent augmenter au-delà de {DEFAULT_TOTAL_CAP}% avec l'expérience acquise pendant le jeu."
 
-#: src/types/characterTypes.ts:1355
+#: src/types/characterTypes.ts:1357
 msgid "Sneaking around"
 msgstr "Se glisser"
 
@@ -1667,12 +1677,12 @@ msgid "Soldier"
 msgstr "Soldat"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:291
-msgid "Something you admire"
-msgstr "Quelque chose que vous admirez"
+#~ msgid "Something you admire"
+#~ msgstr "Quelque chose que vous admirez"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:306
-msgid "Something you dislike"
-msgstr "Quelque chose que vous détestez"
+#~ msgid "Something you dislike"
+#~ msgstr "Quelque chose que vous détestez"
 
 #: src/utils/Professions.ts:280
 msgid "Special Operator"
@@ -1702,9 +1712,9 @@ msgstr "commence à"
 msgid "Starts at:"
 msgstr "Commence à:"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:321
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:345
 msgid "Stat Changes"
-msgstr ""
+msgstr "Changements de statistiques"
 
 #: src/pages/Summary/index.tsx:752
 msgid "Statistical Data"
@@ -1719,7 +1729,7 @@ msgstr "Statistiques"
 msgid "Statistics Details"
 msgstr "Détails des statistiques"
 
-#: src/types/characterTypes.ts:1351
+#: src/types/characterTypes.ts:1353
 msgid "Stealth"
 msgstr "Discrétion"
 
@@ -1736,7 +1746,7 @@ msgid "Stubborn"
 msgstr "Stubborn"
 
 #: src/types/characterTypes.ts:401
-#: src/types/characterTypes.ts:753
+#: src/types/characterTypes.ts:755
 msgid "Study of humans and their cultures"
 msgstr "Étude des humains et de leurs cultures"
 
@@ -1752,7 +1762,7 @@ msgstr "Résumé"
 msgid "Support"
 msgstr "Support"
 
-#: src/types/characterTypes.ts:1367
+#: src/types/characterTypes.ts:1369
 msgid "Surgery"
 msgstr "Chirurgie"
 
@@ -1760,7 +1770,7 @@ msgstr "Chirurgie"
 msgid "Surgically Precise"
 msgstr "Chirurgicalement précis"
 
-#: src/types/characterTypes.ts:1383
+#: src/types/characterTypes.ts:1385
 msgid "Survival"
 msgstr "Survie"
 
@@ -1768,7 +1778,7 @@ msgstr "Survie"
 msgid "Susceptible"
 msgstr "Susceptible"
 
-#: src/types/characterTypes.ts:1399
+#: src/types/characterTypes.ts:1401
 msgid "Swim"
 msgstr "Nager"
 
@@ -1789,8 +1799,8 @@ msgstr "Jetez un coup d'œil derrière le rideau. N'hésitez pas à :<0><1>signa
 msgid "Tenacious"
 msgstr "Persévérant"
 
-#: src/pages/TheCrucible/index.tsx:43
 #: src/components/Header/MenuConfig.ts:30
+#: src/pages/TheCrucible/index.tsx:43
 msgid "The Crucible"
 msgstr "Le Creuset"
 
@@ -1802,7 +1812,7 @@ msgstr "Le nom de l'individu ou du groupe avec lequel votre agent est lié."
 msgid "The title of your agent's day-job"
 msgstr "Le titre de votre métier de l'agent"
 
-#: src/types/characterTypes.ts:1304
+#: src/types/characterTypes.ts:1306
 msgid "Theoretical Physics"
 msgstr "Physique théorique"
 
@@ -1810,17 +1820,17 @@ msgstr "Physique théorique"
 msgid "Thick-skulled"
 msgstr "Épais"
 
-#: src/types/characterTypes.ts:687
+#: src/types/characterTypes.ts:689
 msgid "Things Man Was Not Meant to Know"
 msgstr "Les choses que l'homme n'était pas destiné à savoir"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:144
 msgid "Things Man Was Not Meant to Know:"
-msgstr ""
+msgstr "Les choses que l'homme n'était pas destiné à savoir :"
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:301
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/TemplateEffectsPreview.tsx:325
 msgid "This template has no direct effects on character stats or skills."
-msgstr ""
+msgstr "Ce modèle n'a pas d'effets directs sur les statistiques ou compétences du personnage."
 
 #: src/pages/TheCrucible/Profession/components/BuildProfession.tsx:48
 msgid "Title:"
@@ -1834,7 +1844,11 @@ msgstr "pour acheter les documents sources de Delta Green et en savoir plus."
 msgid "Total"
 msgstr "Total"
 
-#: src/types/characterTypes.ts:1415
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:184
+msgid "Trust in Delta Green"
+msgstr "Confiance en Delta Green"
+
+#: src/types/characterTypes.ts:1417
 msgid "Unarmed Combat"
 msgstr "Combat sans arme"
 
@@ -1846,11 +1860,11 @@ msgstr "Inhabituel"
 msgid "Uncoordinated"
 msgstr "Maladroite"
 
-#: src/types/characterTypes.ts:1110
+#: src/types/characterTypes.ts:1112
 msgid "Understanding and arguing the law"
 msgstr "Comprendre et argumenter la loi"
 
-#: src/types/characterTypes.ts:1094
+#: src/types/characterTypes.ts:1096
 msgid "Understanding human behavior"
 msgstr "Comprendre le comportement humain"
 
@@ -1862,7 +1876,7 @@ msgstr "Insain"
 msgid "Uninspiring"
 msgstr "Dénué de toute énergie"
 
-#: src/types/characterTypes.ts:1431
+#: src/types/characterTypes.ts:1433
 msgid "Unnatural"
 msgstr "Irrationnel"
 
@@ -1883,8 +1897,12 @@ msgid "Use Suggested"
 msgstr "Utiliser les suggestions"
 
 #: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:24
-msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character."
-msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles sont toutes facultatives mais peuvent vous aider à vous mettre dans les pieds de votre personnage."
+#~ msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character."
+#~ msgstr "Utilisez ces prompts pour vous imprégner de votre personnage. Elles sont toutes facultatives mais peuvent vous aider à vous mettre dans les pieds de votre personnage."
+
+#: src/pages/TheCrucible/PersonalDetails/PersonalDetailsGuidance.tsx:24
+msgid "Use these prompts to flesh out your character. They are all optional but can help put you in the shoes of your character. [p. x] indicates the page number where you can later find that information on the final character sheet."
+msgstr "Utilisez ces invites pour développer votre personnage. Elles sont toutes facultatives mais peuvent vous aider à vous mettre dans la peau de votre personnage. [p. x] indique le numéro de page où vous pourrez trouver ces informations plus tard sur la feuille de personnage finale."
 
 #: src/types/characterTypes.ts:145
 msgid "Vigorous"
@@ -1916,7 +1934,7 @@ msgstr "Guerrier de fin de semaine"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:97
 msgid "What Are Damaged Veteran Templates?"
-msgstr ""
+msgstr "Que sont les modèles de vétéran blessé ?"
 
 #: src/pages/Home/index.tsx:72
 msgid "What happens at the opera stays here. Not that anyone outside of the organization would believe you though."
@@ -1934,13 +1952,13 @@ msgstr "Que vous soyez à bord d'un navire de guerre ou d'un navire marchand, vo
 msgid "Whip-smart"
 msgstr "Fougueux"
 
-#: src/pages/TheCrucible/PersonalDetails/index.tsx:321
+#: src/pages/TheCrucible/PersonalDetails/index.tsx:193
 msgid "Why does Delta Green trust this agent?"
 msgstr "Pourquoi Delta Green fait-il confiance à cet agent ?"
 
 #: src/pages/TheCrucible/PersonalDetails/index.tsx:336
-msgid "Why does this agent serve Delta Green?"
-msgstr "Pourquoi cet agent sert-il Delta Green ?"
+#~ msgid "Why does this agent serve Delta Green?"
+#~ msgstr "Pourquoi cet agent sert-il Delta Green ?"
 
 #: src/utils/CharacterGenerator.ts:101
 msgid "Will Power"
@@ -1964,15 +1982,15 @@ msgstr "x5"
 
 #: src/pages/TheCrucible/DamagedVeteranTemplates/components/DamagedVeteranGuidance.tsx:121
 msgid "You can apply multiple templates to represent a character with complex trauma history, but be aware that the cumulative effects can significantly impact your character's capabilities."
-msgstr ""
+msgstr "Vous pouvez appliquer plusieurs modèles pour représenter un personnage avec une histoire de traumatisme complexe, mais sachez que les effets cumulatifs peuvent considérablement impacter les capacités de votre personnage."
 
 #: src/utils/Professions.ts:255
 msgid "You expand human knowledge in a field such as biology, physics, or chemistry. When certain forms of knowledge cause insanity and death, it's easy to conclude that some hypotheses should not be tested."
 msgstr "Vous étendez les connaissances humaines dans un domaine comme la biologie, la physique ou la chimie. Lorsque certaines formes de connaissances provoquent de l'insanité et la mort, il est facile de conclure que certaines hypothèses ne devraient pas être testées."
 
-#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:254
+#: src/pages/TheCrucible/DamagedVeteranTemplates/components/HardExperienceSkillSelector.tsx:258
 msgid "You have selected too many skills. Please deselect some to continue."
-msgstr ""
+msgstr "Vous avez sélectionné trop de compétences. Veuillez en désélectionner certaines pour continuer."
 
 #: src/utils/Professions.ts:498
 msgid "You might be an author, an editor, a researcher for a company or any branch of the government, a blog-ger, a TV reporter, or a scholar of rare texts. With the unnatural, you've uncovered the story of a lifetime."
@@ -2002,7 +2020,7 @@ msgstr "Vous voyagez dans des terres étranges, rencontrez des personnes intére
 msgid "You're a member of the United States Army, Marine Corps, or Air Force. You've been trained to fight, and you've been trained to survive. You've seen things that make the average person blanch."
 msgstr "Vous êtes un membre de l'Armée des États-Unis, de la Marine ou de l'Air Force. Vous avez été formé à la lutte et à la survie. Vous avez vu des choses qui font que le citoyen moyen crie."
 
-#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:77
+#: src/pages/TheCrucible/PersonalDetails/PersonalMotivations.tsx:75
 msgid ""
 "Your Agent can have up to five Personal Motivations. Add them during character \n"
 "    creation or as your story develops. Each time your Agent experiences a Breaking \n"
@@ -2016,7 +2034,7 @@ msgstr "Votre agent peut avoir jusqu'à cinq motivations personnelles. Ajoutez-l
 #~ "Point, remove one motivation to represent their growing trauma."
 #~ msgstr "Votre Agent peut avoir jusqu'à cinq motivations personnelles. Ajoutez-les lors de la création du personnage ou au fur et à mesure que votre histoire se développe. Chaque fois que votre Agent subit un point de rupture, retirez une motivation pour représenter leur traumatisme en croissance."
 
-#: src/types/characterTypes.ts:691
+#: src/types/characterTypes.ts:693
 msgid "Your Agent gains 10% in the Unnatural skill and adds +20% to Occult. Reduce your Agent's SAN by his or her POW. Your Agent gains a new disorder caused by the Unnatural (see page 72). Reset your Agent's Break- ing Point to his or her new SAN minus POW."
 msgstr "Votre Agent gagne 10% dans la compétence Non naturel et ajoute +20% à l'Occult. Réduisez la SAN de votre Agent de son POW. Votre Agent gagne un nouveau trouble causé par le Non naturel (voir page 72). Réinitialisez le point de rupture de votre Agent à sa nouvelle SAN moins POW."
 
