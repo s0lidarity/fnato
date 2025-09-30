@@ -49,34 +49,35 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
 
 	/* Windows 95 cursor styles */
 	* {
-		cursor: default;
+		cursor: url('/assets/cursors/arrow.cur'), default;
 	}
 
-	a, button, [role="button"], 
-	input[type="submit"], 
-	input[type="button"], 
-	input[type="reset"],
-	select {
-		cursor: pointer;
+	a, button, [role="button"], [role="tab"], [role="presentation"],
+	select, label, input[type="radio"], input[type="checkbox"] {
+		cursor: url('/assets/cursors/Finger.cur'), pointer;
 	}
 
 	input[type="text"],
 	input[type="number"],
 	input[type="password"],
 	textarea {
-		cursor: text;
+		cursor: url('/assets/cursors/Pencil.cur'), text;
 	}
 
 	.resizable {
-		cursor: se-resize;
+		cursor: url('/assets/cursors/Cursor_4.cur'), se-resize;
 	}
 
 	.loading {
-		cursor: wait;
+		cursor: url('/assets/cursors/Wait.cur'), wait;
 	}
 
 	.help {
-		cursor: help;
+		cursor: url('/assets/cursors/help_win95.cur'), help;
+	}
+
+	a[href^="http"], a[target="_blank"] {
+		cursor: url('/assets/cursors/RocketG.cur'), pointer;
 	}
 
 	/* Font styles */
