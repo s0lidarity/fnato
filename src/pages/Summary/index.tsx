@@ -5,6 +5,7 @@ import { useEffect } from 'preact/hooks';
 import { t } from '@lingui/core/macro';
 import { i18n } from '@lingui/core';
 import { Button } from 'react95';
+import { useState } from 'preact/hooks';
 
 import { useStats } from '../../providers/StatisticsContext';
 import { useSkills } from '../../providers/SkillsContext';
@@ -12,6 +13,7 @@ import { useBonds } from '../../providers/BondsContext';
 import { usePersonalDetails } from '../../providers/PersonalDetailsContext';
 import { useDamagedVeteran } from '../../providers/DamagedVeteranContext';
 import { generateSkillLabel } from '../TheCrucible/Profession/components/skillLabel';
+import Dialogue from '../../components/Dialogue/Dialogue';
 
 const CharacterSheet = styled.div.attrs<any>({
     'data-component': 'Summary/CharacterSheet',
@@ -636,6 +638,7 @@ export function Summary() {
     const { skills, BonusSkillPackage, profession, resetProfession, calculateSkillValue, resetSkills } = useSkills();
     const { bonds, resetBonds } = useBonds();
     const { personalDetails, resetPersonalDetails } = usePersonalDetails();
+    const [ showConfirmReset, setShowConfirmReset ] = useState(false);
 
     const handleExport = () => {
         const docName = `${personalDetails?.lastName || ''}-${personalDetails.firstName || ''}-${profession?.name || ''}.pdf`
@@ -664,6 +667,7 @@ export function Summary() {
         resetProfession();
         resetPersonalDetails();
         resetBonds();
+        setShowConfirmReset(false); // Close the dialogue after reset
     }
 
     useEffect(() => {
@@ -687,7 +691,7 @@ export function Summary() {
     if (personalDetails.firstName) {
         nameDisplay += `, ${personalDetails.firstName}`;
         if (personalDetails.middleInitial) {
-            nameDisplay += `, ${personalDetails.middleInitial}`;
+            nameDisplay += ` ${personalDetails.middleInitial}`;
         }
     }
 
@@ -892,7 +896,22 @@ export function Summary() {
                     onClick={handleExport}>
                         {t`Export as PDF`} <IoMdPrint />
                 </ExportButton>
-                <Button onClick={handleReset}>{t`Reset everything`}</Button>
+                <Button 
+                    onClick={() => setShowConfirmReset(true)}
+                    style={{ marginLeft: '1rem' }}
+                >
+                    {t`Reset Everything`}
+                </Button>
+                <Dialogue 
+                    title='Clear all input and restart?' 
+                    show={showConfirmReset} 
+                    setShow={setShowConfirmReset}
+                >
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', padding: '1rem' }}>
+                        <Button onClick={handleReset}>{t`Yes, Reset Everything`}</Button>
+                        <Button onClick={() => setShowConfirmReset(false)}>{t`Cancel`}</Button>
+                    </div>
+                </Dialogue>
             </ButtonsContainer>
         </div>
     );
