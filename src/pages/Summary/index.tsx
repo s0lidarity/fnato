@@ -667,6 +667,7 @@ export function Summary() {
         resetProfession();
         resetPersonalDetails();
         resetBonds();
+        setShowConfirmReset(false); // Close the dialogue after reset
     }
 
     useEffect(() => {
@@ -895,12 +896,21 @@ export function Summary() {
                     onClick={handleExport}>
                         {t`Export as PDF`} <IoMdPrint />
                 </ExportButton>
+                <Button 
+                    onClick={() => setShowConfirmReset(true)}
+                    style={{ marginLeft: '1rem' }}
+                >
+                    {t`Reset Everything`}
+                </Button>
                 <Dialogue 
-                    title='Clear all input and restart from scratch?' 
+                    title='Clear all input and restart?' 
                     show={showConfirmReset} 
                     setShow={setShowConfirmReset}
                 >
-                    <Button onClick={handleReset}>{t`Reset everything`}</Button>
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', padding: '1rem' }}>
+                        <Button onClick={handleReset}>{t`Yes, Reset Everything`}</Button>
+                        <Button onClick={() => setShowConfirmReset(false)}>{t`Cancel`}</Button>
+                    </div>
                 </Dialogue>
             </ButtonsContainer>
         </div>
