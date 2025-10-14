@@ -1,11 +1,12 @@
 import { CharacterSheet as StyledCharacterSheet } from '../styles/CharacterSheet.styles';
-import { DataSectionsContainer, SkillsSection } from '../styles/Skills.styles';
+import { DataSectionsContainer } from '../styles/Skills.styles';
+import { SkillsSection } from './SkillsSection';
 import { useStats } from '../../../providers/StatisticsContext';
 import { useSkills } from '../../../providers/SkillsContext';
 import { useBonds } from '../../../providers/BondsContext';
 import { usePersonalDetails } from '../../../providers/PersonalDetailsContext';
-import { PersonalDataSection } from '../styles/PersonalData.styles';
-import { StatisticalDataSection } from '../styles/StatisticalData.styles';
+import { PersonalDataSection } from './PersonalDataSection';
+import { StatisticalDataSection } from './StatisticalDataSection';
 import { PsychologicalDataSection } from './PsychologicalDataSection';
 
 export const CharacterSheet = () => {

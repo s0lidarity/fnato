@@ -10,10 +10,10 @@ import {
 } from '../styles/StatisticalData.styles';
 import { VerticalHeader } from '../styles/CharacterSheet.styles';
 import { MMDTextArea } from '../styles/PersonalData.styles';
-import { DerivedAttributes, DetailedDescription, Stat } from '../../../types/characterTypes';
+import { DerivedAttributes, DetailedDescription, Statistics } from '../../../types/characterTypes';
 
 interface StatisticalDataSectionProps {
-    stats: Stat[];
+    stats: Statistics;
     derivedAttributes: DerivedAttributes;
     personalDetails: DetailedDescription;
 }

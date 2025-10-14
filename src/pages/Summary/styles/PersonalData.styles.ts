@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Section } from './CharacterSheet.styles';
 
-const PersonalDataGrid = styled.div.attrs<any>({
+export const PersonalDataGrid = styled.div.attrs<any>({
     'data-component': 'Summary/PersonalDataGrid',
     'data-testid': 'personal-data-grid',
 })`
