@@ -41,7 +41,7 @@ export const CharacterSheet = () => {
                     derivedAttributes={derivedAttributes}
                     personalDetails={personalDetails}
                 />
-                <PsychologicalDataSection bonds={bonds} />
+                <PsychologicalDataSection bonds={bonds} personalDetails={personalDetails} />
             </DataSectionsContainer>
             <DataSectionsContainer>
                 <SkillsSection 
