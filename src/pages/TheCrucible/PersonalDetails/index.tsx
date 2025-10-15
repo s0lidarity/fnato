@@ -87,7 +87,7 @@ function PersonalDetails() {
                     label={t`Appearance`}
                     htmlFor="appearance"
                     rows={3}
-                    pageNumber={3}
+                    pageNumber={1}
                     value={personalDetails.appearance || ''}
                     onChange={handleChange}
                 />
