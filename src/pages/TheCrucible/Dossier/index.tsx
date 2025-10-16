@@ -1,6 +1,6 @@
 
 import styled from 'styled-components';
-import { Summary2 } from "../../Summary/Summary2";
+import { Summary } from "../../Summary";
 
 const SummaryContainer = styled.div.attrs<any>({
     'data-component': 'TheCrucible/Dossier/SummaryContainer',
@@ -13,7 +13,7 @@ const SummaryContainer = styled.div.attrs<any>({
 function Dossier() {
     return(
         <SummaryContainer>
-            <Summary2 />
+            <Summary />
         </SummaryContainer>
     );
 }

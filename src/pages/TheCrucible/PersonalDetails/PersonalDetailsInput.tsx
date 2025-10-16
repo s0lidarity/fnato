@@ -33,8 +33,6 @@ const Label = styled.label.attrs<any>({
     align-items: left;
 `;
 
-
-
 interface PersonalDetailsInputProps {
     label: string;
     htmlFor: string;
