@@ -40,7 +40,7 @@ export function Summary() {
     }, []);
 
     return (
-        <PageWrapper>
+        <PageWrapper transparent>
             <CharacterSheet />
             <ExportButton onClick={handleExport}>
                 Export as PDF <IoMdPrint />
