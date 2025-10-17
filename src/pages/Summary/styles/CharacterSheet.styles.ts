@@ -4,7 +4,7 @@ export const CharacterSheet = styled.div.attrs<any>({
     'data-component': 'Summary/CharacterSheet',
     'data-testid': 'character-sheet',
 })`
-    border: 0.125rem solid black;
+    border: 0.125rem solid ${({ theme }) => theme.borderDark};
     color: black;
     background: white;
     padding: 0.3125rem;

@@ -7,7 +7,6 @@ import { usePersonalDetails } from '../../../providers/PersonalDetailsContext'
 import PersonalMotivations from './PersonalMotivations';
 import PersonalDetailsGuidance from './PersonalDetailsGuidance';
 import SexPicker from './SexPicker';
-import { ButtonsContainer } from '../../Summary';
 import PersonalDetailsInput from './PersonalDetailsInput';
 import DateOfBirthPicker from './DateOfBirthPicker';
 
@@ -29,8 +28,17 @@ const FormContainer = styled.div.attrs<any>({
     }
 `;
 
+const ButtonsContainer = styled.div.attrs<any>({
+    'data-component': 'Summary/ButtonsContainer',
+    'data-testid': 'buttons-container',
+})`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+`;
 
-// AJS start here: add tiny numbers indicating the character sheet page number that the field will be on
+
 function PersonalDetails() {
     const { personalDetails, resetPersonalDetails, setPersonalDetails } = usePersonalDetails();
 
@@ -87,7 +95,7 @@ function PersonalDetails() {
                     label={t`Appearance`}
                     htmlFor="appearance"
                     rows={3}
-                    pageNumber={3}
+                    pageNumber={1}
                     value={personalDetails.appearance || ''}
                     onChange={handleChange}
                 />

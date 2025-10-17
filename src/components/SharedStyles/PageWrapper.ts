@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-const PageWrapper = styled.div.attrs<any>({
+const PageWrapper = styled.div.attrs<any>(({ transparent }: { transparent?: boolean }) => ({
     'data-component': 'SharedStyles/PageWrapper',
     'data-testid': 'page-wrapper',
-})`
+    transparent: transparent ?? false,
+}))`
 	display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.material};
+  background: ${({ theme, transparent }) => transparent ? 'transparent' : theme.material};
 	align-items: center;
 	justify-content: center;
   width: clamp(300px, 80vw, 1200px);

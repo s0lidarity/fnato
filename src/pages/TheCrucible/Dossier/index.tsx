@@ -1,6 +1,5 @@
 
 import styled from 'styled-components';
-// import { Summary } from "../../Summary";
 import { Summary } from "../../Summary";
 
 const SummaryContainer = styled.div.attrs<any>({
