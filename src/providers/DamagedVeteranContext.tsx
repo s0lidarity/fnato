@@ -49,7 +49,6 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         return templates[templateId];
     };
 
-    // AJS Starting point, adjustments are not being applied correctly
     const activateTemplate = (templateId: string) => {
         const template = getTemplateById(templateId);
         if (!template) return;

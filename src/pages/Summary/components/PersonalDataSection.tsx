@@ -15,6 +15,7 @@ interface PersonalDataSectionProps {
     personalDetails: DetailedDescription;
 }
 
+// AJS: TODO translations
 export const PersonalDataSection = ({ 
     nameDisplay, 
     professionDisplay, 

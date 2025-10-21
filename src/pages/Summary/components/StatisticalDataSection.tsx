@@ -18,6 +18,8 @@ interface StatisticalDataSectionProps {
     personalDetails: DetailedDescription;
 }
 
+
+// AJS: TODO translations
 export const StatisticalDataSection = ({ 
     stats, 
     derivedAttributes,
@@ -42,6 +44,7 @@ export const StatisticalDataSection = ({
                     </StatRow>
                 ))}
 
+                {/* AJS: TODO stats need to include the damaged veteran adjustment */}
                 <DerivedStatsSection>
                     <DerivedStatRow>
                         <label>9. Derived Attributes</label>
