@@ -621,7 +621,6 @@ export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
     }),
     statAdjustment: {
         charisma: -3,
-        power: -3,
         sanity: -5,
     },
     skillAdjustment: {
