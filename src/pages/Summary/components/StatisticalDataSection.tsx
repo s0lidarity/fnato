@@ -11,6 +11,8 @@ import {
 import { VerticalHeader } from '../styles/CharacterSheet.styles';
 import { MMDTextArea } from '../styles/PersonalData.styles';
 import { DerivedAttributes, DetailedDescription, Statistics } from '../../../types/characterTypes';
+import { useStats } from '../../../providers/StatisticsContext';
+import { Trans } from '@lingui/react';
 
 interface StatisticalDataSectionProps {
     stats: Statistics;
@@ -25,6 +27,7 @@ export const StatisticalDataSection = ({
     derivedAttributes,
     personalDetails 
 }: StatisticalDataSectionProps) => {
+    const { getEffectiveStatValue} = useStats();
     return (
         <StyledStatisticalDataSection>
             <VerticalHeader>Statistical Data</VerticalHeader>
@@ -45,32 +48,21 @@ export const StatisticalDataSection = ({
                 ))}
 
                 {/* AJS: TODO stats need to include the damaged veteran adjustment */}
+                {/* AJS refactor, make this a function that we can test separately */}
                 <DerivedStatsSection>
                     <DerivedStatRow>
                         <label>9. Derived Attributes</label>
                         <label style={{ fontSize: '0.8em' }}>Current</label>
                         <label style={{ fontSize: '0.8em' }}>Max</label>
                     </DerivedStatRow>
-                    <DerivedStatRow>
-                        <label>Hit Points</label>
-                        <input type="number" value={derivedAttributes?.hitPoints?.currentValue || 0} readOnly />
-                        <input type="number" value={derivedAttributes?.hitPoints?.maxValue || 0} readOnly />
-                    </DerivedStatRow>
-                    <DerivedStatRow>
-                        <label>Willpower</label>
-                        <input type="number" value={derivedAttributes?.willPower?.currentValue || 0} readOnly />
-                        <input type="number" value={derivedAttributes?.willPower?.maxValue || 0} readOnly />
-                    </DerivedStatRow>
-                    <DerivedStatRow>
-                        <label>Sanity</label>
-                        <input type="number" value={derivedAttributes?.sanity?.currentValue || 0} readOnly />
-                        <input type="number" value={derivedAttributes?.sanity?.maxValue || 0} readOnly />
-                    </DerivedStatRow>
-                    <DerivedStatRow>
-                        <label>Breaking Point</label>
-                        <input type="number" value={derivedAttributes?.breakingPoint?.currentValue || 0} readOnly />
-                        <input type="number" value={derivedAttributes?.breakingPoint?.maxValue || 0} readOnly />
-                    </DerivedStatRow>
+                    {Object.entries(derivedAttributes).map(([derivedAttribute, value]) => (
+                        <DerivedStatRow key={derivedAttribute}>
+                            <label>{value.labelMsg ? <Trans id={value.labelMsg.id} /> : ''}</label>
+                            <input type="number" value={getEffectiveStatValue(derivedAttribute) || 0} readOnly />
+                            {/* // need a next breaking point instead of max */}
+                            <input type="number" value={derivedAttributes[derivedAttribute as keyof DerivedAttributes]?.maxValue || 0} readOnly />
+                        </DerivedStatRow>
+                    ))}
                 </DerivedStatsSection>
                 <PhysicalDescriptionSection>
                     <label>10. Physical Description</label>

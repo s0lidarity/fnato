@@ -6,12 +6,14 @@ import { defaultStats } from './defaultValues';
 import { StatsConfigOptions } from '../types/componentTypes';
 
 type StatsContextType = {
-    // State values (alphabetically ordered)
+    // State values
     config: StatsConfigOptions;
     derivedAttributes: DerivedAttributes;
     stats: Statistics;
 
-    // Functions (alphabetically ordered)
+    // Functions
+    getEffectiveDerivedAttribute: (daName: string) => number;
+    getEffectiveStatValue:(statName: string) => number;
     resetStats: () => void;
     setConfig: (config: StatsConfigOptions) => void;
     setStats: (stats: Statistics) => void;
@@ -44,6 +46,19 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
         setStats(defaultStats);
     };
 
+    // AJS: this is mixing derived attributes and stats
+    const getEffectiveStatValue = (da: string) => {
+        const temp = derivedAttributes[da as keyof DerivedAttributes];
+        console.log('ges: ', da, temp);
+        if(!temp) return 0;
+        // 
+        return temp.currentValue + (0);
+    };
+
+    const getEffectiveDerivedAttribute = ( ) => {
+        return 0;
+    }
+
     const updateStatAdjustment = (statName: string, adjustment: number) => {
         setStats(prevStats => {
             const stat = prevStats[statName as keyof Statistics];
@@ -66,6 +81,8 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
             config,
             derivedAttributes,
             stats,
+            getEffectiveDerivedAttribute,
+            getEffectiveStatValue,
             resetStats,
             setConfig,
             setStats,

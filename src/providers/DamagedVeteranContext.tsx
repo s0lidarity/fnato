@@ -7,11 +7,11 @@ import { useBonds } from './BondsContext';
 import { DV_BONUS, MAX_HARDENED_VETERAN_SKILLS } from '../constants/gameRules';
 
 type DamagedVeteranContextType = {
-    // State values (alphabetically ordered)
+    // State values
     activeTemplates: string[];
     selectedHardExperienceSkills: string[];
 
-    // Functions (alphabetically ordered)
+    // Functions
     activateTemplate: (templateId: string) => void;
     deactivateTemplate: (templateId: string) => void;
     getTemplateById: (templateId: string) => DamagedVeteranAdjustment | undefined;
