@@ -15,7 +15,14 @@ import {
 import { useStats } from '../../../../providers/StatisticsContext';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { useBonds } from '../../../../providers/BondsContext';
-import { DamagedVeteranAdjustment, DerivedAttributes } from '../../../../types/characterTypes';
+import { DamagedVeteranAdjustment, Statistics } from '../../../../types/characterTypes';
+import { 
+    isBaseStat, 
+    isDerivedAttribute, 
+    getStatOrDerivedAttributeLabel,
+    calculateStatEffectValue,
+    calculateDerivedAttributeEffectValue
+} from '../../../../utils/statHelpers';
 
 const PreviewContainer = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-container',
@@ -182,7 +189,7 @@ interface TemplateEffectsPreviewProps {
 }
 
 function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
-    const { stats, derivedAttributes } = useStats();
+    const { stats, derivedAttributes, getEffectiveStatValue, getEffectiveDerivedAttribute } = useStats();
     const { skills } = useSkills();
     const { bonds } = useBonds();
 
@@ -205,54 +212,48 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     };
 
     const renderStatEffect = (statName: string, adjustment: number | string) => {
-        // Check if it's a base stat or derived attribute
-        const stat = stats[statName];
-        const derivedAttr = derivedAttributes[statName as keyof DerivedAttributes];
+        // Determine if it's a base stat or derived attribute
+        const isStat = isBaseStat(statName);
+        const isDerived = isDerivedAttribute(statName);
         
-        if (!stat && !derivedAttr) return null;
+        if (!isStat && !isDerived) return null;
 
+        // Get label using shared utility
+        const label = getStatOrDerivedAttributeLabel(statName, stats, derivedAttributes);
+
+        // Calculate effect value and text using shared utilities
         let effectValue: number;
         let effectText: string;
         let currentValue: number;
-        let label: string;
+        let baseValue: number;
 
-        if (stat) {
-            // Base stat
-            if (typeof adjustment === 'number') {
-                effectValue = adjustment;
-                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-                currentValue = stat.score + adjustment;
-            } else {
-                // Dynamic adjustment based on another stat
-                const sourceStat = stats[adjustment];
-                effectValue = sourceStat ? -sourceStat.score : 0;
-                effectText = `-${sourceStat?.score || 0}`;
-                currentValue = stat.score + effectValue;
-            }
-            label = stat.label;
-        } else if (derivedAttr) {
-            // Derived attribute
-            if (typeof adjustment === 'number') {
-                effectValue = adjustment;
-                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-                currentValue = derivedAttr.currentValue + adjustment;
-            } else {
-                // Dynamic adjustment based on another stat
-                const sourceStat = stats[adjustment];
-                effectValue = sourceStat ? -sourceStat.score : 0;
-                effectText = `-${sourceStat?.score || 0}`;
-                currentValue = derivedAttr.currentValue + effectValue;
-            }
-            label = statName.charAt(0).toUpperCase() + statName.slice(1); // Capitalize the stat name
+        if (isStat) {
+            // Base stat - use effective value from context (includes all adjustments)
+            baseValue = getEffectiveStatValue(statName);
+            const effect = calculateStatEffectValue(
+                adjustment as number | keyof Statistics, 
+                stats
+            );
+            effectValue = effect.effectValue;
+            effectText = effect.effectText;
+            currentValue = baseValue + effectValue;
         } else {
-            return null;
+            // Derived attribute - use effective value from context (includes all adjustments)
+            baseValue = getEffectiveDerivedAttribute(statName);
+            const effect = calculateDerivedAttributeEffectValue(
+                adjustment as number | keyof Statistics, 
+                stats
+            );
+            effectValue = effect.effectValue;
+            effectText = effect.effectText;
+            currentValue = baseValue + effectValue;
         }
 
         return (
             <EffectItem key={statName}>
                 {getStatIcon(statName)}
                 <span>{label}:</span>
-                <span>{stat ? stat.score : derivedAttr?.currentValue}</span>
+                <span>{baseValue}</span>
                 <StatValue isPositive={effectValue > 0}>
                     {effectValue > 0 ? <TrendIcon /> : <TrendDownIcon />}
                     {effectText}

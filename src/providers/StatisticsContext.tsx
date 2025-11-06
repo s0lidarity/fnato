@@ -4,6 +4,12 @@ import { Statistics, DerivedAttributes, Stat } from '../types/characterTypes';
 import { calculateDerivedAttributes } from '../utils/CharacterGenerator';
 import { defaultStats } from './defaultValues';
 import { StatsConfigOptions } from '../types/componentTypes';
+import { 
+    isBaseStat, 
+    isDerivedAttribute, 
+    getCurrentStatValue, 
+    getCurrentDerivedAttributeValue
+} from '../utils/statHelpers';
 
 type StatsContextType = {
     // State values
@@ -18,6 +24,7 @@ type StatsContextType = {
     setConfig: (config: StatsConfigOptions) => void;
     setStats: (stats: Statistics) => void;
     updateStatAdjustment: (statName: string, adjustment: number) => void;
+    updateDerivedAttributeAdjustment: (daName: string, adjustment: number) => void;
 };
 
 const StatsContext = createContext<StatsContextType | undefined>(undefined);
@@ -35,6 +42,8 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const [stats, setStats] = useState<Statistics>(defaultStats);
     const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(calculateDerivedAttributes(defaultStats));
     const [config, setConfig] = useState<StatsConfigOptions>(StatsConfigOptions.ManualInput);
+    // Track direct adjustments to derived attributes (e.g., sanity: -5)
+    const [derivedAttributeAdjustments, setDerivedAttributeAdjustments] = useState<{ [key: string]: number }>({});
 
     // AJS TODO, don't maintain derivedAttributes in state, just calculate on demand
     useEffect(() => {
@@ -44,22 +53,25 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const resetStats = () => {
         setStats(defaultStats);
+        setDerivedAttributeAdjustments({});
     };
 
-    // AJS: this is mixing derived attributes and stats
-    const getEffectiveStatValue = (da: string) => {
-        const temp = derivedAttributes[da as keyof DerivedAttributes];
-        console.log('ges: ', da, temp);
-        if(!temp) return 0;
-        // 
-        return temp.currentValue + (0);
+    const getEffectiveStatValue = (statName: string) => {
+        if (!isBaseStat(statName)) return 0;
+        return getCurrentStatValue(statName, stats);
     };
 
-    const getEffectiveDerivedAttribute = ( ) => {
-        return 0;
-    }
+    const getEffectiveDerivedAttribute = (daName: string) => {
+        if (!isDerivedAttribute(daName)) return 0;
+        return getCurrentDerivedAttributeValue(daName, derivedAttributes, derivedAttributeAdjustments);
+    };
 
     const updateStatAdjustment = (statName: string, adjustment: number) => {
+        if (!isBaseStat(statName)) {
+            console.warn(`Attempted to update stat adjustment for non-base stat: ${statName}`);
+            return;
+        }
+
         setStats(prevStats => {
             const stat = prevStats[statName as keyof Statistics];
             if (!stat) return prevStats;
@@ -76,6 +88,18 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
         });
     };
 
+    const updateDerivedAttributeAdjustment = (daName: string, adjustment: number) => {
+        if (!isDerivedAttribute(daName)) {
+            console.warn(`Attempted to update derived attribute adjustment for non-derived attribute: ${daName}`);
+            return;
+        }
+
+        setDerivedAttributeAdjustments(prev => ({
+            ...prev,
+            [daName]: (prev[daName] || 0) + adjustment
+        }));
+    };
+
     return (
         <StatsContext.Provider value={{
             config,
@@ -87,6 +111,7 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
             setConfig,
             setStats,
             updateStatAdjustment,
+            updateDerivedAttributeAdjustment,
         }}>
             {children}
         </StatsContext.Provider>

@@ -5,6 +5,7 @@ import { useStats } from './StatisticsContext';
 import { useSkills } from './SkillsContext';
 import { useBonds } from './BondsContext';
 import { DV_BONUS, MAX_HARDENED_VETERAN_SKILLS } from '../constants/gameRules';
+import { isBaseStat, isDerivedAttribute, calculateStatEffectValue, calculateDerivedAttributeEffectValue } from '../utils/statHelpers';
 
 type DamagedVeteranContextType = {
     // State values
@@ -30,7 +31,7 @@ export const useDamagedVeteran = () => {
 
 export const DamagedVeteranProvider = ({ children }: { children: preact.ComponentChildren }) => {
     // Dependencies
-    const { stats, updateStatAdjustment } = useStats();
+    const { stats, updateStatAdjustment, updateDerivedAttributeAdjustment } = useStats();
     const { updateSkillAdjustment } = useSkills();
     const { updateBondAdjustments } = useBonds();
 
@@ -53,17 +54,24 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         const template = getTemplateById(templateId);
         if (!template) return;
 
-        // Apply stat adjustments
+        // Apply stat and derived attribute adjustments
         Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
-            if (typeof adjustment === 'number') {
-                updateStatAdjustment(statName, adjustment);
-            } else {
-                // For dynamic adjustments (e.g., 'power' for sanity reduction)
-                const sourceStatName = adjustment;
-                const sourceStat = stats[sourceStatName];
-                if (sourceStat) {
-                    updateStatAdjustment(statName, -sourceStat.score); // Negative because it's a reduction
+            if (isBaseStat(statName)) {
+                // Handle base stat adjustments
+                if (typeof adjustment === 'number') {
+                    updateStatAdjustment(statName, adjustment);
+                } else {
+                    // For dynamic adjustments (e.g., 'power' for sanity reduction)
+                    const sourceStatName = adjustment;
+                    const sourceStat = stats[sourceStatName];
+                    if (sourceStat) {
+                        updateStatAdjustment(statName, -sourceStat.score); // Negative because it's a reduction
+                    }
                 }
+            } else if (isDerivedAttribute(statName)) {
+                // Handle derived attribute adjustments
+                const { effectValue } = calculateDerivedAttributeEffectValue(adjustment, stats);
+                updateDerivedAttributeAdjustment(statName, effectValue);
             }
         });
 
@@ -91,17 +99,24 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         const template = getTemplateById(templateId);
         if (!template) return;
 
-        // Remove stat adjustments
+        // Remove stat and derived attribute adjustments
         Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
-            if (typeof adjustment === 'number') {
-                updateStatAdjustment(statName, -adjustment); // Reverse the adjustment
-            } else {
-                // For dynamic adjustments (e.g., 'power' for sanity reduction)
-                const sourceStatName = adjustment;
-                const sourceStat = stats[sourceStatName];
-                if (sourceStat) {
-                    updateStatAdjustment(statName, sourceStat.score); // Positive because we're reversing
+            if (isBaseStat(statName)) {
+                // Reverse base stat adjustments
+                if (typeof adjustment === 'number') {
+                    updateStatAdjustment(statName, -adjustment); // Reverse the adjustment
+                } else {
+                    // For dynamic adjustments (e.g., 'power' for sanity reduction)
+                    const sourceStatName = adjustment;
+                    const sourceStat = stats[sourceStatName];
+                    if (sourceStat) {
+                        updateStatAdjustment(statName, sourceStat.score); // Positive because we're reversing
+                    }
                 }
+            } else if (isDerivedAttribute(statName)) {
+                // Reverse derived attribute adjustments
+                const { effectValue } = calculateDerivedAttributeEffectValue(adjustment, stats);
+                updateDerivedAttributeAdjustment(statName, -effectValue);
             }
         });
 
