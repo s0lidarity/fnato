@@ -63,7 +63,7 @@ msgstr "010111100001"
 
 #: src/pages/Summary/components/PersonalDataSection.tsx:31
 msgid "1. Name"
-msgstr ""
+msgstr "1. Nom"
 
 #: src/pages/Summary/components/StatisticalDataSection.tsx:69
 msgid "10. Physical Description"
@@ -83,7 +83,7 @@ msgstr "10. Description physique"
 
 #: src/pages/Summary/components/PersonalDataSection.tsx:35
 msgid "2. Profession"
-msgstr ""
+msgstr "2. Profession"
 
 #: src/pages/Summary/index.tsx:713
 #~ msgid "2. Profession (Rank if Applicable)"
