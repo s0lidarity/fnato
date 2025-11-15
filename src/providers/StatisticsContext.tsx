@@ -44,16 +44,56 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const [config, setConfig] = useState<StatsConfigOptions>(StatsConfigOptions.ManualInput);
     // Track direct adjustments to derived attributes (e.g., sanity: -5)
     const [derivedAttributeAdjustments, setDerivedAttributeAdjustments] = useState<{ [key: string]: number }>({});
+    // Track the base values when adjustments were first applied, so we can recalculate correctly when base stats change
+    const [derivedAttributeBaseValues, setDerivedAttributeBaseValues] = useState<{ [key: string]: number }>({});
 
     // AJS TODO, don't maintain derivedAttributes in state, just calculate on demand
     useEffect(() => {
         const newDerivedAttributes = calculateDerivedAttributes(stats);
+        
+        // Check if base values have changed for derived attributes with adjustments
+        // If the base changed (e.g., power changed causing sanity to recalculate),
+        // clear the adjustments since they were relative to the old base value
+        setDerivedAttributeAdjustments(prevAdjustments => {
+            const updatedAdjustments = { ...prevAdjustments };
+            let shouldUpdateBases = false;
+            
+            Object.keys(prevAdjustments).forEach(daName => {
+                const oldBase = derivedAttributeBaseValues[daName];
+                const newBase = newDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue;
+                
+                // If base changed, clear the adjustment (it was relative to the old base)
+                if (oldBase !== undefined && newBase !== undefined && oldBase !== newBase) {
+                    delete updatedAdjustments[daName];
+                    shouldUpdateBases = true;
+                }
+            });
+            
+            if (shouldUpdateBases) {
+                setDerivedAttributeBaseValues(prevBases => {
+                    const updatedBases = { ...prevBases };
+                    Object.keys(updatedAdjustments).forEach(daName => {
+                        const newBase = newDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue;
+                        if (newBase !== undefined) {
+                            updatedBases[daName] = newBase;
+                        } else {
+                            delete updatedBases[daName];
+                        }
+                    });
+                    return updatedBases;
+                });
+            }
+            
+            return updatedAdjustments;
+        });
+        
         setDerivedAttributes(newDerivedAttributes);
-    }, [stats]);
+    }, [stats, derivedAttributeBaseValues]);
 
     const resetStats = () => {
         setStats(defaultStats);
         setDerivedAttributeAdjustments({});
+        setDerivedAttributeBaseValues({});
     };
 
     const getEffectiveStatValue = (statName: string) => {
@@ -63,7 +103,13 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
 
     const getEffectiveDerivedAttribute = (daName: string) => {
         if (!isDerivedAttribute(daName)) return 0;
-        return getCurrentDerivedAttributeValue(daName, derivedAttributes, derivedAttributeAdjustments);
+        const derivedAttr = derivedAttributes[daName as keyof DerivedAttributes];
+        if (!derivedAttr) return 0;
+        
+        const adjustment = derivedAttributeAdjustments[daName] || 0;
+        // Adjustments are always applied to the current base value
+        // The stored base value is kept in sync via useEffect when derived attributes recalculate
+        return derivedAttr.currentValue + adjustment;
     };
 
     const updateStatAdjustment = (statName: string, adjustment: number) => {
@@ -94,10 +140,23 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
             return;
         }
 
-        setDerivedAttributeAdjustments(prev => ({
-            ...prev,
-            [daName]: (prev[daName] || 0) + adjustment
-        }));
+        setDerivedAttributeAdjustments(prev => {
+            const hasExistingAdjustment = prev[daName] !== undefined;
+            
+            // If this is the first adjustment, store the current base value
+            if (!hasExistingAdjustment) {
+                const currentBase = derivedAttributes[daName as keyof DerivedAttributes]?.currentValue || 0;
+                setDerivedAttributeBaseValues(prevBases => ({
+                    ...prevBases,
+                    [daName]: currentBase
+                }));
+            }
+            
+            return {
+                ...prev,
+                [daName]: (prev[daName] || 0) + adjustment
+            };
+        });
     };
 
     return (
