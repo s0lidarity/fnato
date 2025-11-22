@@ -1,14 +1,15 @@
 import { createContext } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
-import { Statistics, DerivedAttributes, Stat } from '../types/characterTypes';
+import { Statistics, DerivedAttributes, Stat, DamagedVeteranAdjustment, EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW } from '../types/characterTypes';
 import { calculateDerivedAttributes } from '../utils/CharacterGenerator';
 import { defaultStats } from './defaultValues';
 import { StatsConfigOptions } from '../types/componentTypes';
 import { 
     isBaseStat, 
     isDerivedAttribute, 
-    getCurrentStatValue, 
-    getCurrentDerivedAttributeValue
+    getCurrentStatValue,
+    calculateStatEffectValue,
+    calculateDerivedAttributeEffectValue
 } from '../utils/statHelpers';
 
 type StatsContextType = {
@@ -18,13 +19,11 @@ type StatsContextType = {
     stats: Statistics;
 
     // Functions
-    getEffectiveDerivedAttribute: (daName: string) => number;
-    getEffectiveStatValue:(statName: string) => number;
+    getEffectiveDerivedAttribute: (daName: string, activeTemplates?: string[]) => number;
+    getEffectiveStatValue:(statName: string, activeTemplates?: string[]) => number;
     resetStats: () => void;
     setConfig: (config: StatsConfigOptions) => void;
     setStats: (stats: Statistics) => void;
-    updateStatAdjustment: (statName: string, adjustment: number) => void;
-    updateDerivedAttributeAdjustment: (daName: string, adjustment: number) => void;
 };
 
 const StatsContext = createContext<StatsContextType | undefined>(undefined);
@@ -38,125 +37,123 @@ export const useStats = () => {
     return context;
 };
 
+// Helper to get all templates
+const getAllTemplates = (): { [key: string]: DamagedVeteranAdjustment } => {
+    return {
+        'extreme-violence': EXTREME_VIOLENCE,
+        'captivity-or-imprisonment': CAPTIVITY_OR_IMPRISONMENT,
+        'hard-experience': HARD_EXPERIENCE,
+        'things-man-was-not-meant-to-know': THINGS_MAN_WAS_NOT_MEANT_TO_KNOW,
+    };
+};
+
 export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const [stats, setStats] = useState<Statistics>(defaultStats);
     const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(calculateDerivedAttributes(defaultStats));
     const [config, setConfig] = useState<StatsConfigOptions>(StatsConfigOptions.ManualInput);
-    // Track direct adjustments to derived attributes (e.g., sanity: -5)
-    const [derivedAttributeAdjustments, setDerivedAttributeAdjustments] = useState<{ [key: string]: number }>({});
-    // Track the base values when adjustments were first applied, so we can recalculate correctly when base stats change
-    const [derivedAttributeBaseValues, setDerivedAttributeBaseValues] = useState<{ [key: string]: number }>({});
 
     // AJS TODO, don't maintain derivedAttributes in state, just calculate on demand
     useEffect(() => {
         const newDerivedAttributes = calculateDerivedAttributes(stats);
-        
-        // Check if base values have changed for derived attributes with adjustments
-        // If the base changed (e.g., power changed causing sanity to recalculate),
-        // clear the adjustments since they were relative to the old base value
-        setDerivedAttributeAdjustments(prevAdjustments => {
-            const updatedAdjustments = { ...prevAdjustments };
-            let shouldUpdateBases = false;
-            
-            Object.keys(prevAdjustments).forEach(daName => {
-                const oldBase = derivedAttributeBaseValues[daName];
-                const newBase = newDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue;
-                
-                // If base changed, clear the adjustment (it was relative to the old base)
-                if (oldBase !== undefined && newBase !== undefined && oldBase !== newBase) {
-                    delete updatedAdjustments[daName];
-                    shouldUpdateBases = true;
-                }
-            });
-            
-            if (shouldUpdateBases) {
-                setDerivedAttributeBaseValues(prevBases => {
-                    const updatedBases = { ...prevBases };
-                    Object.keys(updatedAdjustments).forEach(daName => {
-                        const newBase = newDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue;
-                        if (newBase !== undefined) {
-                            updatedBases[daName] = newBase;
-                        } else {
-                            delete updatedBases[daName];
-                        }
-                    });
-                    return updatedBases;
-                });
-            }
-            
-            return updatedAdjustments;
-        });
-        
         setDerivedAttributes(newDerivedAttributes);
-    }, [stats, derivedAttributeBaseValues]);
+    }, [stats]);
 
     const resetStats = () => {
         setStats(defaultStats);
-        setDerivedAttributeAdjustments({});
-        setDerivedAttributeBaseValues({});
     };
 
-    const getEffectiveStatValue = (statName: string) => {
+    const getEffectiveStatValue = (statName: string, activeTemplates: string[] = []): number => {
         if (!isBaseStat(statName)) return 0;
-        return getCurrentStatValue(statName, stats);
-    };
-
-    const getEffectiveDerivedAttribute = (daName: string) => {
-        if (!isDerivedAttribute(daName)) return 0;
-        const derivedAttr = derivedAttributes[daName as keyof DerivedAttributes];
-        if (!derivedAttr) return 0;
         
-        const adjustment = derivedAttributeAdjustments[daName] || 0;
-        // Adjustments are always applied to the current base value
-        // The stored base value is kept in sync via useEffect when derived attributes recalculate
-        return derivedAttr.currentValue + adjustment;
-    };
-
-    const updateStatAdjustment = (statName: string, adjustment: number) => {
-        if (!isBaseStat(statName)) {
-            console.warn(`Attempted to update stat adjustment for non-base stat: ${statName}`);
-            return;
-        }
-
-        setStats(prevStats => {
-            const stat = prevStats[statName as keyof Statistics];
-            if (!stat) return prevStats;
-
-            const updatedStat: Stat = {
-                ...stat,
-                damagedVeteranStatAdjustment: (stat.damagedVeteranStatAdjustment || 0) + adjustment
-            };
-
-            return {
-                ...prevStats,
-                [statName]: updatedStat
-            };
-        });
-    };
-
-    const updateDerivedAttributeAdjustment = (daName: string, adjustment: number) => {
-        if (!isDerivedAttribute(daName)) {
-            console.warn(`Attempted to update derived attribute adjustment for non-derived attribute: ${daName}`);
-            return;
-        }
-
-        setDerivedAttributeAdjustments(prev => {
-            const hasExistingAdjustment = prev[daName] !== undefined;
+        // Start with base stat value (without any adjustments)
+        const baseValue = stats[statName as keyof Statistics].score;
+        
+        // Calculate total adjustment from all active templates
+        const templates = getAllTemplates();
+        let totalAdjustment = 0;
+        
+        activeTemplates.forEach(templateId => {
+            const template = templates[templateId];
+            if (!template) return;
             
-            // If this is the first adjustment, store the current base value
-            if (!hasExistingAdjustment) {
-                const currentBase = derivedAttributes[daName as keyof DerivedAttributes]?.currentValue || 0;
-                setDerivedAttributeBaseValues(prevBases => ({
-                    ...prevBases,
-                    [daName]: currentBase
-                }));
+            const adjustment = template.statAdjustment[statName];
+            if (adjustment !== undefined) {
+                if (typeof adjustment === 'number') {
+                    totalAdjustment += adjustment;
+                } else {
+                    // Dynamic adjustment based on another stat
+                    // Use effective value of the source stat (recursive call)
+                    const sourceStatEffectiveValue = getEffectiveStatValue(adjustment, activeTemplates);
+                    totalAdjustment += -sourceStatEffectiveValue; // Negative because it's a reduction
+                }
             }
-            
-            return {
-                ...prev,
-                [daName]: (prev[daName] || 0) + adjustment
-            };
         });
+        
+        return baseValue + totalAdjustment;
+    };
+
+    const getEffectiveDerivedAttribute = (daName: string, activeTemplates: string[] = []) => {
+        if (!isDerivedAttribute(daName)) return 0;
+        
+        // First, calculate effective stats with template adjustments
+        // This is needed because derived attributes depend on base stats (e.g., sanity = power * 5)
+        const effectiveStats: Statistics = {
+            ...stats,
+            strength: {
+                ...stats.strength,
+                score: getEffectiveStatValue('strength', activeTemplates),
+                damagedVeteranStatAdjustment: 0 // Clear to avoid double-application
+            },
+            constitution: {
+                ...stats.constitution,
+                score: getEffectiveStatValue('constitution', activeTemplates),
+                damagedVeteranStatAdjustment: 0
+            },
+            dexterity: {
+                ...stats.dexterity,
+                score: getEffectiveStatValue('dexterity', activeTemplates),
+                damagedVeteranStatAdjustment: 0
+            },
+            intelligence: {
+                ...stats.intelligence,
+                score: getEffectiveStatValue('intelligence', activeTemplates),
+                damagedVeteranStatAdjustment: 0
+            },
+            power: {
+                ...stats.power,
+                score: getEffectiveStatValue('power', activeTemplates),
+                damagedVeteranStatAdjustment: 0
+            },
+            charisma: {
+                ...stats.charisma,
+                score: getEffectiveStatValue('charisma', activeTemplates),
+                damagedVeteranStatAdjustment: 0
+            }
+        };
+        
+        // Calculate derived attributes from effective stats
+        const effectiveDerivedAttributes = calculateDerivedAttributes(effectiveStats);
+        const baseValue = effectiveDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue || 0;
+        
+        // Calculate total direct adjustment to this derived attribute from all active templates
+        const templates = getAllTemplates();
+        let totalAdjustment = 0;
+        
+        activeTemplates.forEach(templateId => {
+            const template = templates[templateId];
+            if (!template) return;
+            
+            const adjustment = template.statAdjustment[daName];
+            if (adjustment !== undefined) {
+                // AS TODO: need to leave sanity alone when pow drops. This has been double penalized and is incorrect
+                // AJS TODO: Max sanity needs to be adusted by 99-unknown skill
+                // Use effective stats for dynamic adjustments (e.g., sanity: 'power')
+                const { effectValue } = calculateDerivedAttributeEffectValue(adjustment, effectiveStats);
+                totalAdjustment += effectValue;
+            }
+        });
+        
+        return baseValue + totalAdjustment;
     };
 
     return (
@@ -169,8 +166,6 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
             resetStats,
             setConfig,
             setStats,
-            updateStatAdjustment,
-            updateDerivedAttributeAdjustment,
         }}>
             {children}
         </StatsContext.Provider>

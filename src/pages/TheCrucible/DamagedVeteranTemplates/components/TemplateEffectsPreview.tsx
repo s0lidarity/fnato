@@ -13,6 +13,7 @@ import {
 } from 'react-icons/io5';
 
 import { useStats } from '../../../../providers/StatisticsContext';
+import { useDamagedVeteran } from '../../../../providers/DamagedVeteranContext';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { useBonds } from '../../../../providers/BondsContext';
 import { DamagedVeteranAdjustment, Statistics } from '../../../../types/characterTypes';
@@ -190,6 +191,7 @@ interface TemplateEffectsPreviewProps {
 
 function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     const { stats, derivedAttributes, getEffectiveStatValue, getEffectiveDerivedAttribute } = useStats();
+    const { activeTemplates } = useDamagedVeteran();
     const { skills } = useSkills();
     const { bonds } = useBonds();
 
@@ -227,26 +229,34 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
         let currentValue: number;
         let baseValue: number;
 
+        // For preview, include this template in the active templates to show the effect
+        const previewActiveTemplates = activeTemplates.includes(template.id) 
+            ? activeTemplates 
+            : [...activeTemplates, template.id];
+
         if (isStat) {
             // Base stat - use effective value from context (includes all adjustments)
-            baseValue = getEffectiveStatValue(statName);
+            // AJS TODO: base value needs to be the actual base and not effective value
+            baseValue = getEffectiveStatValue(statName, activeTemplates);
             const effect = calculateStatEffectValue(
                 adjustment as number | keyof Statistics, 
                 stats
             );
             effectValue = effect.effectValue;
             effectText = effect.effectText;
-            currentValue = baseValue + effectValue;
+            // Calculate what the value would be with this template applied
+            currentValue = getEffectiveStatValue(statName, previewActiveTemplates);
         } else {
             // Derived attribute - use effective value from context (includes all adjustments)
-            baseValue = getEffectiveDerivedAttribute(statName);
+            baseValue = getEffectiveDerivedAttribute(statName, activeTemplates);
             const effect = calculateDerivedAttributeEffectValue(
                 adjustment as number | keyof Statistics, 
                 stats
             );
             effectValue = effect.effectValue;
             effectText = effect.effectText;
-            currentValue = baseValue + effectValue;
+            // Calculate what the value would be with this template applied
+            currentValue = getEffectiveDerivedAttribute(statName, previewActiveTemplates);
         }
 
         return (
