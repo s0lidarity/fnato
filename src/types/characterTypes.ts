@@ -22,7 +22,7 @@ export interface DerivedAttribute {
     currentValue: number;
     maxValue: number;
     labelMsg?: MessageDescriptor;
-}
+};
 
 export interface DerivedAttributes {
     // needs max and current
