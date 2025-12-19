@@ -16,7 +16,6 @@ interface PersonalDataSectionProps {
     personalDetails: DetailedDescription;
 }
 
-// AJS: TODO translations
 export const PersonalDataSection = ({ 
     nameDisplay, 
     professionDisplay, 
@@ -24,7 +23,7 @@ export const PersonalDataSection = ({
 }: PersonalDataSectionProps) => {
     return (
         <StyledPersonalDataSection>
-            <VerticalHeader>Personal Data</VerticalHeader>
+            <VerticalHeader>{t`Personal Data`}</VerticalHeader>
             <PersonalDataGrid>
                 <FormRow>
                     <FormField>

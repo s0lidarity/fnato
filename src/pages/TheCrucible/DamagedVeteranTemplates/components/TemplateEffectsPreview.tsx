@@ -25,6 +25,9 @@ import {
     calculateDerivedAttributeEffectValue
 } from '../../../../utils/statHelpers';
 
+
+// AJS TODO: refactor styles into separate file, use theme colors instead of hard-coded
+
 const PreviewContainer = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-container',
     'data-component': 'TemplateEffectsPreview/Container'
@@ -195,6 +198,9 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     const { skills } = useSkills();
     const { bonds } = useBonds();
 
+    const isTemplateActive = activeTemplates.includes(template.id);
+
+    // AJS TODO: make utility and add icons to statistics page
     const getStatIcon = (statName: string) => {
         switch (statName.toLowerCase()) {
             case 'strength':
@@ -236,7 +242,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         if (isStat) {
             // Base stat - use effective value from context (includes all adjustments)
-            // AJS TODO: base value needs to be the actual base and not effective value
+            // AJS TODO: base value needs to be the current/base value exlcuding this template
             baseValue = getEffectiveStatValue(statName, activeTemplates);
             const effect = calculateStatEffectValue(
                 adjustment as number | keyof Statistics, 
@@ -259,6 +265,17 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
             currentValue = getEffectiveDerivedAttribute(statName, previewActiveTemplates);
         }
 
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem key={statName}>
+                    {getStatIcon(statName)}
+                    <span>{label}:</span>
+                    <span>{currentValue}</span>
+                </EffectItem>
+            );
+        }
+
         return (
             <EffectItem key={statName}>
                 {getStatIcon(statName)}
@@ -279,6 +296,16 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         const currentValue = skill.value + adjustment;
 
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem key={skillName}>
+                    <span>{skill.label}:</span>
+                    <span>{currentValue}%</span>
+                </EffectItem>
+            );
+        }
+
         return (
             <EffectItem key={skillName}>
                 <span>{skill.label}:</span>
@@ -297,7 +324,19 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         const { remove, adjustScore } = template.bondAdjustment;
         const currentBonds = bonds.length;
+        const finalBonds = currentBonds + (adjustScore || 0) - (remove || 0);
 
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem>
+                    <span><Trans>Bonds:</Trans></span>
+                    <span>{finalBonds}</span>
+                </EffectItem>
+            );
+        }
+
+        // AJS TODO: bonds cannot be < 0
         return (
             <EffectItem>
                 <span><Trans>Bonds:</Trans></span>
@@ -314,7 +353,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                         {adjustScore > 0 ? '+' : ''}{adjustScore}
                     </BondValue>
                 )}
-                <span>= {currentBonds + (adjustScore || 0) - (remove || 0)}</span>
+                <span>= {finalBonds}</span>
             </EffectItem>
         );
     };

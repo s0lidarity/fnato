@@ -33,7 +33,7 @@ export const StatisticalDataSection = ({
     const { activeTemplates } = useDamagedVeteran();
     return (
         <StyledStatisticalDataSection>
-            <VerticalHeader>Statistical Data</VerticalHeader>
+            <VerticalHeader>{t`Statistical Data`}</VerticalHeader>
             <StatsGrid>
                 <StatsHeaderRow>
                     <span>{t`8. Statistics`}</span>

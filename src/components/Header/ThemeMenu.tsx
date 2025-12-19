@@ -88,8 +88,6 @@ const themes = [
     { name: 'Counter Strike', theme: counterStrike },
 ];
 
-// ajs start here, set theme properly
-
 function ThemeMenu({ onClose }: ThemeMenuProps) {
     const { theme, setTheme } = useTheme();
 
