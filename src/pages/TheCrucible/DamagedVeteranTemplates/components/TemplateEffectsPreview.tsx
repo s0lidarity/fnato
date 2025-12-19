@@ -26,7 +26,9 @@ import {
 } from '../../../../utils/statHelpers';
 
 
-// AJS TODO: refactor styles into separate file, use theme colors instead of hard-coded
+// Local color constants to replace non-existent theme colors
+const POSITIVE_COLOR = '#00aa00'; // Green for positive effects
+const NEGATIVE_COLOR = '#aa0000'; // Red for negative effects
 
 const PreviewContainer = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-container',
@@ -88,14 +90,6 @@ const SectionTitle = styled.h4.attrs<any>({
     font-size: 0.9rem;
 `;
 
-const SectionIcon = styled(IoInformationCircle).attrs<any>({
-    'data-testid': 'template-effects-preview-section-icon',
-    'data-component': 'TemplateEffectsPreview/SectionIcon'
-})`
-    width: 0.875rem;
-    height: 0.875rem;
-`;
-
 const EffectsList = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-effects-list',
     'data-component': 'TemplateEffectsPreview/EffectsList'
@@ -113,25 +107,16 @@ const EffectItem = styled.div.attrs<any>({
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: ${({ theme }) => theme.flatLight};
     border-radius: 4px;
     font-size: 0.85rem;
-`;
-
-const EffectIcon = styled(IoInformationCircle).attrs<any>({
-    'data-testid': 'template-effects-preview-effect-icon',
-    'data-component': 'TemplateEffectsPreview/EffectIcon'
-})`
-    width: 0.75rem;
-    height: 0.75rem;
-    flex-shrink: 0;
 `;
 
 const StatValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-stat-value',
     'data-component': 'TemplateEffectsPreview/StatValue'
 })<{ isPositive: boolean }>`
-    color: ${props => props.isPositive ? '#00ff00' : '#ff0000'};
+    color: ${({ isPositive }) => isPositive ? POSITIVE_COLOR : NEGATIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -142,7 +127,7 @@ const SkillValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-skill-value',
     'data-component': 'TemplateEffectsPreview/SkillValue'
 })`
-    color: #00ff00;
+    color: ${POSITIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -153,7 +138,7 @@ const BondValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-bond-value',
     'data-component': 'TemplateEffectsPreview/BondValue'
 })<{ isPositive: boolean }>`
-    color: ${props => props.isPositive ? '#00ff00' : '#ff0000'};
+    color: ${({ isPositive }) => isPositive ? POSITIVE_COLOR : NEGATIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -183,7 +168,7 @@ const NoEffects = styled.p.attrs<any>({
     'data-component': 'TemplateEffectsPreview/NoEffects'
 })`
     font-style: italic;
-    color: rgba(255, 255, 255, 0.6);
+    color: ${({ theme }) => theme.materialTextDisabled};
     margin: 0;
     font-size: 0.85rem;
 `;
@@ -384,15 +369,14 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                 <PreviewWindow>
                     <PreviewHeader>
                         <HeaderIcon />
-                        <span><Trans>Preview</Trans></span>
+                        <span>{isTemplateActive ? <Trans>Current Changes</Trans> : <Trans>Preview</Trans>}</span>
                     </PreviewHeader>
                 <PreviewContent>
                     {/* AJS: TODO revisit this, some temlates without stat changes still show this block */}
                     {hasStatEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Stat Changes</Trans>
+                                <Trans>Stats</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {Object.entries(template.statAdjustment).map(([statName, adjustment]) => 
@@ -405,8 +389,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Skill Bonuses</Trans>
+                                <Trans>Skills</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {Object.entries(template.skillAdjustment).map(([skillName, adjustment]) => 
@@ -419,7 +402,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillSelection && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
+                                
                                 <Trans>Skill Selection Rules</Trans>
                             </SectionTitle>
                             <EffectItem>
@@ -437,9 +420,8 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
                     {hasBondEffects && (
                         <EffectsSection>
-                            <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Bond Changes</Trans>
+                            <SectionTitle>  
+                                <Trans>Bonds</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {renderBondEffect()}
