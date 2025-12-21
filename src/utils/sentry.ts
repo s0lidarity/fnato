@@ -1,6 +1,16 @@
 import * as Sentry from "@sentry/react";
 
 export const initSentry = () => {
+    // Don't initialize Sentry on localhost
+    const isLocalhost = 
+        window.location.hostname === 'localhost' || 
+        window.location.hostname === '127.0.0.1' ||
+        window.location.hostname === '';
+
+    if (isLocalhost) {
+        return;
+    }
+
     Sentry.init({
         dsn: "https://9b5ab53e6a7bfa3303dd843c367cab80@o4508849940594688.ingest.us.sentry.io/4508849954422784",
     integrations: [

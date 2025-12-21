@@ -13,9 +13,22 @@ import {
 } from 'react-icons/io5';
 
 import { useStats } from '../../../../providers/StatisticsContext';
+import { useDamagedVeteran } from '../../../../providers/DamagedVeteranContext';
 import { useSkills } from '../../../../providers/SkillsContext';
 import { useBonds } from '../../../../providers/BondsContext';
-import { DamagedVeteranAdjustment, DerivedAttributes } from '../../../../types/characterTypes';
+import { DamagedVeteranAdjustment, Statistics } from '../../../../types/characterTypes';
+import { 
+    isBaseStat, 
+    isDerivedAttribute, 
+    getStatOrDerivedAttributeLabel,
+    calculateStatEffectValue,
+    calculateDerivedAttributeEffectValue
+} from '../../../../utils/statHelpers';
+
+
+// Local color constants to replace non-existent theme colors
+const POSITIVE_COLOR = '#00aa00'; // Green for positive effects
+const NEGATIVE_COLOR = '#aa0000'; // Red for negative effects
 
 const PreviewContainer = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-container',
@@ -77,14 +90,6 @@ const SectionTitle = styled.h4.attrs<any>({
     font-size: 0.9rem;
 `;
 
-const SectionIcon = styled(IoInformationCircle).attrs<any>({
-    'data-testid': 'template-effects-preview-section-icon',
-    'data-component': 'TemplateEffectsPreview/SectionIcon'
-})`
-    width: 0.875rem;
-    height: 0.875rem;
-`;
-
 const EffectsList = styled.div.attrs<any>({
     'data-testid': 'template-effects-preview-effects-list',
     'data-component': 'TemplateEffectsPreview/EffectsList'
@@ -102,25 +107,16 @@ const EffectItem = styled.div.attrs<any>({
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
-    background: rgba(0, 0, 0, 0.1);
+    background: ${({ theme }) => theme.canvas};
     border-radius: 4px;
     font-size: 0.85rem;
-`;
-
-const EffectIcon = styled(IoInformationCircle).attrs<any>({
-    'data-testid': 'template-effects-preview-effect-icon',
-    'data-component': 'TemplateEffectsPreview/EffectIcon'
-})`
-    width: 0.75rem;
-    height: 0.75rem;
-    flex-shrink: 0;
 `;
 
 const StatValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-stat-value',
     'data-component': 'TemplateEffectsPreview/StatValue'
 })<{ isPositive: boolean }>`
-    color: ${props => props.isPositive ? '#00ff00' : '#ff0000'};
+    color: ${({ isPositive }) => isPositive ? POSITIVE_COLOR : NEGATIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -131,7 +127,7 @@ const SkillValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-skill-value',
     'data-component': 'TemplateEffectsPreview/SkillValue'
 })`
-    color: #00ff00;
+    color: ${POSITIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -142,7 +138,7 @@ const BondValue = styled.span.attrs<any>({
     'data-testid': 'template-effects-preview-bond-value',
     'data-component': 'TemplateEffectsPreview/BondValue'
 })<{ isPositive: boolean }>`
-    color: ${props => props.isPositive ? '#00ff00' : '#ff0000'};
+    color: ${({ isPositive }) => isPositive ? POSITIVE_COLOR : NEGATIVE_COLOR};
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -172,7 +168,8 @@ const NoEffects = styled.p.attrs<any>({
     'data-component': 'TemplateEffectsPreview/NoEffects'
 })`
     font-style: italic;
-    color: rgba(255, 255, 255, 0.6);
+    color: ${({ theme }) => theme.materialText};
+    opacity: 0.6;
     margin: 0;
     font-size: 0.85rem;
 `;
@@ -182,10 +179,14 @@ interface TemplateEffectsPreviewProps {
 }
 
 function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
-    const { stats, derivedAttributes } = useStats();
+    const { stats, derivedAttributes, getEffectiveStatValue, getEffectiveDerivedAttribute } = useStats();
+    const { activeTemplates } = useDamagedVeteran();
     const { skills } = useSkills();
     const { bonds } = useBonds();
 
+    const isTemplateActive = activeTemplates.includes(template.id);
+
+    // AJS TODO: make utility and add icons to statistics page
     const getStatIcon = (statName: string) => {
         switch (statName.toLowerCase()) {
             case 'strength':
@@ -205,54 +206,67 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
     };
 
     const renderStatEffect = (statName: string, adjustment: number | string) => {
-        // Check if it's a base stat or derived attribute
-        const stat = stats[statName];
-        const derivedAttr = derivedAttributes[statName as keyof DerivedAttributes];
+        // Determine if it's a base stat or derived attribute
+        const isStat = isBaseStat(statName);
+        const isDerived = isDerivedAttribute(statName);
         
-        if (!stat && !derivedAttr) return null;
+        if (!isStat && !isDerived) return null;
 
+        // Get label using shared utility
+        const label = getStatOrDerivedAttributeLabel(statName, stats, derivedAttributes);
+
+        // Calculate effect value and text using shared utilities
         let effectValue: number;
         let effectText: string;
         let currentValue: number;
-        let label: string;
+        let baseValue: number;
 
-        if (stat) {
-            // Base stat
-            if (typeof adjustment === 'number') {
-                effectValue = adjustment;
-                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-                currentValue = stat.score + adjustment;
-            } else {
-                // Dynamic adjustment based on another stat
-                const sourceStat = stats[adjustment];
-                effectValue = sourceStat ? -sourceStat.score : 0;
-                effectText = `-${sourceStat?.score || 0}`;
-                currentValue = stat.score + effectValue;
-            }
-            label = stat.label;
-        } else if (derivedAttr) {
-            // Derived attribute
-            if (typeof adjustment === 'number') {
-                effectValue = adjustment;
-                effectText = `${adjustment > 0 ? '+' : ''}${adjustment}`;
-                currentValue = derivedAttr.currentValue + adjustment;
-            } else {
-                // Dynamic adjustment based on another stat
-                const sourceStat = stats[adjustment];
-                effectValue = sourceStat ? -sourceStat.score : 0;
-                effectText = `-${sourceStat?.score || 0}`;
-                currentValue = derivedAttr.currentValue + effectValue;
-            }
-            label = statName.charAt(0).toUpperCase() + statName.slice(1); // Capitalize the stat name
+        // For preview, include this template in the active templates to show the effect
+        const previewActiveTemplates = activeTemplates.includes(template.id) 
+            ? activeTemplates 
+            : [...activeTemplates, template.id];
+
+        if (isStat) {
+            // Base stat - use effective value from context (includes all adjustments)
+            // AJS TODO: base value needs to be the current/base value exlcuding this template
+            baseValue = getEffectiveStatValue(statName, activeTemplates);
+            const effect = calculateStatEffectValue(
+                adjustment as number | keyof Statistics, 
+                stats
+            );
+            effectValue = effect.effectValue;
+            effectText = effect.effectText;
+            // Calculate what the value would be with this template applied
+            currentValue = getEffectiveStatValue(statName, previewActiveTemplates);
         } else {
-            return null;
+            // Derived attribute - use effective value from context (includes all adjustments)
+            baseValue = getEffectiveDerivedAttribute(statName, activeTemplates);
+            const effect = calculateDerivedAttributeEffectValue(
+                adjustment as number | keyof Statistics, 
+                stats
+            );
+            effectValue = effect.effectValue;
+            effectText = effect.effectText;
+            // Calculate what the value would be with this template applied
+            currentValue = getEffectiveDerivedAttribute(statName, previewActiveTemplates);
+        }
+
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem key={statName}>
+                    {getStatIcon(statName)}
+                    <span>{label}:</span>
+                    <span>{currentValue}</span>
+                </EffectItem>
+            );
         }
 
         return (
             <EffectItem key={statName}>
                 {getStatIcon(statName)}
                 <span>{label}:</span>
-                <span>{stat ? stat.score : derivedAttr?.currentValue}</span>
+                <span>{baseValue}</span>
                 <StatValue isPositive={effectValue > 0}>
                     {effectValue > 0 ? <TrendIcon /> : <TrendDownIcon />}
                     {effectText}
@@ -267,6 +281,16 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
         if (!skill) return null;
 
         const currentValue = skill.value + adjustment;
+
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem key={skillName}>
+                    <span>{skill.label}:</span>
+                    <span>{currentValue}%</span>
+                </EffectItem>
+            );
+        }
 
         return (
             <EffectItem key={skillName}>
@@ -286,7 +310,19 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
         const { remove, adjustScore } = template.bondAdjustment;
         const currentBonds = bonds.length;
+        const finalBonds = currentBonds + (adjustScore || 0) - (remove || 0);
 
+        // If template is already active, show simple format without comparison
+        if (isTemplateActive) {
+            return (
+                <EffectItem>
+                    <span><Trans>Bonds:</Trans></span>
+                    <span>{finalBonds}</span>
+                </EffectItem>
+            );
+        }
+
+        // AJS TODO: bonds cannot be < 0
         return (
             <EffectItem>
                 <span><Trans>Bonds:</Trans></span>
@@ -303,7 +339,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                         {adjustScore > 0 ? '+' : ''}{adjustScore}
                     </BondValue>
                 )}
-                <span>= {currentBonds + (adjustScore || 0) - (remove || 0)}</span>
+                <span>= {finalBonds}</span>
             </EffectItem>
         );
     };
@@ -334,15 +370,14 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                 <PreviewWindow>
                     <PreviewHeader>
                         <HeaderIcon />
-                        <span><Trans>Preview</Trans></span>
+                        <span>{isTemplateActive ? <Trans>Current Changes</Trans> : <Trans>Preview</Trans>}</span>
                     </PreviewHeader>
                 <PreviewContent>
                     {/* AJS: TODO revisit this, some temlates without stat changes still show this block */}
                     {hasStatEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Stat Changes</Trans>
+                                <Trans>Stats</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {Object.entries(template.statAdjustment).map(([statName, adjustment]) => 
@@ -355,8 +390,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillEffects && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Skill Bonuses</Trans>
+                                <Trans>Skills</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {Object.entries(template.skillAdjustment).map(([skillName, adjustment]) => 
@@ -369,7 +403,7 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
                     {hasSkillSelection && (
                         <EffectsSection>
                             <SectionTitle>
-                                <SectionIcon />
+                                
                                 <Trans>Skill Selection Rules</Trans>
                             </SectionTitle>
                             <EffectItem>
@@ -387,9 +421,8 @@ function TemplateEffectsPreview({ template }: TemplateEffectsPreviewProps) {
 
                     {hasBondEffects && (
                         <EffectsSection>
-                            <SectionTitle>
-                                <SectionIcon />
-                                <Trans>Bond Changes</Trans>
+                            <SectionTitle>  
+                                <Trans>Bonds</Trans>
                             </SectionTitle>
                             <EffectsList>
                                 {renderBondEffect()}

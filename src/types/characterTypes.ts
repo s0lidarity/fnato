@@ -22,7 +22,7 @@ export interface DerivedAttribute {
     currentValue: number;
     maxValue: number;
     labelMsg?: MessageDescriptor;
-}
+};
 
 export interface DerivedAttributes {
     // needs max and current
@@ -621,7 +621,6 @@ export const EXTREME_VIOLENCE: DamagedVeteranAdjustment = {
     }),
     statAdjustment: {
         charisma: -3,
-        power: -3,
         sanity: -5,
     },
     skillAdjustment: {

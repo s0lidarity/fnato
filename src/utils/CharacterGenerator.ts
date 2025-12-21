@@ -85,7 +85,7 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 	const adjustedConstitution = stats.constitution.score + (stats.constitution.damagedVeteranStatAdjustment || 0);
 	const adjustedPower = stats.power.score + (stats.power.damagedVeteranStatAdjustment || 0);
 	
-	const referenceSanity = adjustedPower * 5;
+	const referenceSanity = stats.power.score * 5;
 
 	return {
 		hitPoints: {
@@ -131,19 +131,6 @@ export function createDefaultCharacter(): Character {
 	}
 }
 
-// this could be more clever to run faster, but this is easier to read and follow
-export function rollDice(dSize: number, count: number, drop: number = 0): RollResult {
-	const roll = () => Math.floor(Math.random() * dSize) + 1;
-	let total = 0;
-	let rolls = [];
-	for (let i = 0; i < count; i++) {
-		rolls.push(roll());
-	};
-	rolls.sort();
-	rolls = rolls.slice(drop);
-	total = rolls.reduce((acc, val) => acc + val, 0);
-	return { result: total, rolls: rolls };
-}
 
 export function generateStat(name: string, scoreValue: number): Stat {
 	if (!STAT_REMINDERS.hasOwnProperty(name) || !scoreValue || scoreValue < 3 || scoreValue > 18) {

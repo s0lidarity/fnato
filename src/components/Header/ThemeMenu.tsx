@@ -34,20 +34,6 @@ const StyledSubMenuList = styled(MenuList).attrs<any>({
     box-shadow: 1px 1px 0 1px ${({ theme }) => theme.borderLight};
 `;
 
-const StyledMenuListItem = styled(MenuListItem).attrs<any>({
-    'data-testid': 'menu-list-item',
-    'data-component': 'Header/MenuListItem',
-})`
-    cursor: pointer;
-    justify-content: flex-start;
-    width: 100%;
-    display: flex;
-    &:hover {
-        cursor: pointer;
-        background: ${({ theme }) => theme.hoverBackground};
-    }
-`;
-
 const StyledButton = styled(Button).attrs<any>({
     'data-testid': 'button',
     'data-component': 'Header/Button',
@@ -87,8 +73,6 @@ const themes = [
     { name: 'Dark Teal', theme: darkTeal },
     { name: 'Counter Strike', theme: counterStrike },
 ];
-
-// ajs start here, set theme properly
 
 function ThemeMenu({ onClose }: ThemeMenuProps) {
     const { theme, setTheme } = useTheme();

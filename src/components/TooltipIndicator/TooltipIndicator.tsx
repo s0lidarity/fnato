@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 // AJS need to verify styling across themes
 const StyledQuestionmark = styled.span`
     display: flex;
@@ -10,8 +9,8 @@ const StyledQuestionmark = styled.span`
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.materialDark};
-    color: ${({ theme }) => theme.materialLight};
+    background-color: ${({ theme }) => (theme as any).materialDark};
+    color: ${({ theme }) => (theme as any).materialLight};
     padding: 0.1rem;
     cursor: help;
 `;

@@ -20,6 +20,7 @@ vi.mock('@lingui/core', () => ({
     i18n: {
         load: vi.fn(),
         activate: vi.fn(),
+        _: vi.fn((msg) => msg.message || 'mocked'),
     }
 }));
 

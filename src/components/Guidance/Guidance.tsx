@@ -6,7 +6,7 @@ import { FaRegWindowMinimize } from "react-icons/fa";
 import { FaWindowMaximize } from "react-icons/fa6";
 import PageNumberTooltip from '../PageNumberTooltip/PageNumberTooltip';
 
-// AJS: TOOD Make the width stay consistent instead of shrinking when minimized
+// AJS: TODO Make the width stay consistent instead of shrinking when minimized
 const GuidanceContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@ const StyledButtonText = styled.div`
 `;
 
 const StyledMaximizeIcon = styled(FaWindowMaximize)`
-    color: ${({ theme }) => theme.canvasTextInvert};
+    color: ${({ theme }) => theme.canvasText};
     width: 16px;
     height: 16px;
 `;

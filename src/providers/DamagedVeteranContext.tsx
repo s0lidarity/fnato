@@ -7,11 +7,11 @@ import { useBonds } from './BondsContext';
 import { DV_BONUS, MAX_HARDENED_VETERAN_SKILLS } from '../constants/gameRules';
 
 type DamagedVeteranContextType = {
-    // State values (alphabetically ordered)
+    // State values
     activeTemplates: string[];
     selectedHardExperienceSkills: string[];
 
-    // Functions (alphabetically ordered)
+    // Functions
     activateTemplate: (templateId: string) => void;
     deactivateTemplate: (templateId: string) => void;
     getTemplateById: (templateId: string) => DamagedVeteranAdjustment | undefined;
@@ -30,7 +30,6 @@ export const useDamagedVeteran = () => {
 
 export const DamagedVeteranProvider = ({ children }: { children: preact.ComponentChildren }) => {
     // Dependencies
-    const { stats, updateStatAdjustment } = useStats();
     const { updateSkillAdjustment } = useSkills();
     const { updateBondAdjustments } = useBonds();
 
@@ -49,24 +48,9 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
         return templates[templateId];
     };
 
-    // AJS Starting point, adjustments are not being applied correctly
     const activateTemplate = (templateId: string) => {
         const template = getTemplateById(templateId);
         if (!template) return;
-
-        // Apply stat adjustments
-        Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
-            if (typeof adjustment === 'number') {
-                updateStatAdjustment(statName, adjustment);
-            } else {
-                // For dynamic adjustments (e.g., 'power' for sanity reduction)
-                const sourceStatName = adjustment;
-                const sourceStat = stats[sourceStatName];
-                if (sourceStat) {
-                    updateStatAdjustment(statName, -sourceStat.score); // Negative because it's a reduction
-                }
-            }
-        });
 
         // Apply skill adjustments
         Object.entries(template.skillAdjustment).forEach(([skillName, adjustment]) => {
@@ -91,20 +75,6 @@ export const DamagedVeteranProvider = ({ children }: { children: preact.Componen
     const deactivateTemplate = (templateId: string) => {
         const template = getTemplateById(templateId);
         if (!template) return;
-
-        // Remove stat adjustments
-        Object.entries(template.statAdjustment).forEach(([statName, adjustment]) => {
-            if (typeof adjustment === 'number') {
-                updateStatAdjustment(statName, -adjustment); // Reverse the adjustment
-            } else {
-                // For dynamic adjustments (e.g., 'power' for sanity reduction)
-                const sourceStatName = adjustment;
-                const sourceStat = stats[sourceStatName];
-                if (sourceStat) {
-                    updateStatAdjustment(statName, sourceStat.score); // Positive because we're reversing
-                }
-            }
-        });
 
         // Remove skill adjustments
         Object.entries(template.skillAdjustment).forEach(([skillName, adjustment]) => {

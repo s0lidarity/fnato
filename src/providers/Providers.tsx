@@ -2,11 +2,11 @@ import { LocationProvider } from 'preact-iso';
 import { createContext } from 'preact';
 import { useState, useContext, useEffect } from 'preact/hooks';
 import { ThemeProvider } from 'styled-components';
+
 import tokyoDark from 'react95/dist/themes/tokyoDark';
 import type { ComponentChildren } from 'preact';
 import { I18nProvider } from '@lingui/react';
 import { i18n } from "@lingui/core";
-
 import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
