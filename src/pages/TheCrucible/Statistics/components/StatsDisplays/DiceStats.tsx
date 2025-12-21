@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import { PiDiceOne, PiDiceTwo, PiDiceThree, PiDiceFour, PiDiceFive, PiDiceSix } from 'react-icons/pi';
 import { Button } from "react95";
 import styled from 'styled-components';
@@ -7,7 +7,7 @@ import { t } from '@lingui/core/macro';
 import { motion } from 'framer-motion';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
-import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
+import { generateStat } from '../../../../../utils/CharacterGenerator';
 import { Statistics } from '../../../../../types/characterTypes';
 import ReminderTooltip from '../../../../../components/Footer/ReminderTooltip/ReminderTooltip';
 import StatInputContainer from '../../styles/StatInputContainer';
@@ -74,19 +74,69 @@ const StyledDiceRowContainer = styled.div.attrs<any>({
     width: 100%;
 `;
 
+const DiceWrapper = styled.div<{ isDropped?: boolean }>`
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: ${({ isDropped }) => (isDropped ? 0.5 : 1)};
+`;
+
+const MotionWrapper = styled(motion.div)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+const diceIconMap = {
+    1: PiDiceOne,
+    2: PiDiceTwo,
+    3: PiDiceThree,
+    4: PiDiceFour,
+    5: PiDiceFive,
+    6: PiDiceSix,
+};
+
+const AnimatedDice = ({ isRolling, finalRoll, isDropped }: { isRolling: boolean, finalRoll: number, isDropped: boolean }) => {
+    const [displayedRoll, setDisplayedRoll] = useState(finalRoll);
+
+    useEffect(() => {
+        if (isRolling) {
+            const interval = setInterval(() => {
+                setDisplayedRoll(Math.floor(Math.random() * 6) + 1);
+            }, 75);
+
+            return () => clearInterval(interval);
+        } else {
+            setDisplayedRoll(finalRoll);
+        }
+    }, [isRolling, finalRoll]);
+
+    const DiceIcon = diceIconMap[displayedRoll as keyof typeof diceIconMap] || PiDiceOne;
+
+    return (
+        <DiceWrapper isDropped={!isRolling && isDropped}>
+            <MotionWrapper
+                animate={isRolling ? {
+                    rotate: 360,
+                    transition: { duration: 0.4, ease: "linear", repeat: Infinity }
+                } : { rotate: 0 }}
+            >
+                <DiceIcon title={String(displayedRoll)} />
+            </MotionWrapper>
+        </DiceWrapper>
+    );
+};
+
 function DiceStats() {
     const { resetStats, stats, setStats } = useStats();
     const [isRolling, setIsRolling] = useState(false);
     const [rollSets, setRollSets] = useState<Record<keyof Statistics, number[]>>({
-        strength: [],
-        constitution: [],
-        dexterity: [],
-        intelligence: [],
-        power: [],
-        charisma: []
+        // Pre-fill with dummy data to show dice on initial load
+        ...Object.keys(stats).reduce((acc, stat) => ({ ...acc, [stat]: [1, 1, 1, 1] }), {} as Record<keyof Statistics, number[]>)
     });
 
-    // AJS TODO: animate dice rolls
     function rollStats(stats: Statistics): { updatedStats: Statistics, newRollSets: Record<keyof Statistics, number[]> } {
         const updatedStats = { ...stats };
         const newRollSets: Record<keyof Statistics, number[]> = {
@@ -100,7 +150,10 @@ function DiceStats() {
     
         for (const stat in updatedStats) {
             if (updatedStats.hasOwnProperty(stat)) {
-                const {result, rolls} = rollDice(6, 4, 1);
+                const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
+                const minVal = Math.min(...rolls);
+                const result = rolls.reduce((acc, curr) => acc + curr, 0) - minVal;
+
                 updatedStats[stat as keyof Statistics] = generateStat(stat as keyof Statistics, result);
                 newRollSets[stat as keyof Statistics] = rolls;
             }
@@ -109,31 +162,16 @@ function DiceStats() {
         return { updatedStats, newRollSets };
     }
 
+    useEffect(() => {
+        handleRoll();
+    }, []);
+
     const renderDice = (rolls: number[]) => {
-        const diceIconMap = {
-            1: PiDiceOne,
-            2: PiDiceTwo,
-            3: PiDiceThree,
-            4: PiDiceFour,
-            5: PiDiceFive,
-            6: PiDiceSix,
-        };
+        const minVal = Math.min(...rolls);
+        const minIndex = rolls.indexOf(minVal);
 
         return rolls.map((roll, index) => {
-            const DiceIcon = diceIconMap[roll];
-            // AJS TODO: change animation, have it show multiple die faces before stopping on final result
-            return (
-                <motion.div
-                    key={index}
-                    animate={isRolling ? {
-                        rotate: [0, 360],
-                        x: [0, -3, 3, -3, 3, 0],
-                        transition: { duration: 0.5, repeat: Infinity }
-                    } : {}}
-                >
-                    <DiceIcon title={roll} />
-                </motion.div>
-            );
+            return <AnimatedDice key={index} isRolling={isRolling} finalRoll={roll} isDropped={index === minIndex} />;
         });
     }
     
@@ -164,6 +202,7 @@ function DiceStats() {
     };
     
     const handleRoll = () => {
+        if (isRolling) return;
         setIsRolling(true);
         setTimeout(() => {
             const { updatedStats, newRollSets } = rollStats(stats);
@@ -175,14 +214,8 @@ function DiceStats() {
 
     const handleReset = () => {
         resetStats();
-        setRollSets({
-            strength: [],
-            constitution: [],
-            dexterity: [],
-            intelligence: [],
-            power: [],
-            charisma: []
-        });
+        // Set placeholder dice for the next roll
+        setRollSets(Object.keys(stats).reduce((acc, stat) => ({ ...acc, [stat]: [1, 1, 1, 1] }), {} as Record<keyof Statistics, number[]>));
     }
 
     return (
