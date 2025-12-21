@@ -107,7 +107,7 @@ const EffectItem = styled.div.attrs<any>({
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem;
-    background: ${({ theme }) => theme.flatLight};
+    background: ${({ theme }) => theme.canvas};
     border-radius: 4px;
     font-size: 0.85rem;
 `;
@@ -168,7 +168,8 @@ const NoEffects = styled.p.attrs<any>({
     'data-component': 'TemplateEffectsPreview/NoEffects'
 })`
     font-style: italic;
-    color: ${({ theme }) => theme.materialTextDisabled};
+    color: ${({ theme }) => theme.materialText};
+    opacity: 0.6;
     margin: 0;
     font-size: 0.85rem;
 `;

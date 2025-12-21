@@ -85,7 +85,7 @@ export function calculateDerivedAttributes(stats: Statistics): DerivedAttributes
 	const adjustedConstitution = stats.constitution.score + (stats.constitution.damagedVeteranStatAdjustment || 0);
 	const adjustedPower = stats.power.score + (stats.power.damagedVeteranStatAdjustment || 0);
 	
-	const referenceSanity = adjustedPower * 5;
+	const referenceSanity = stats.power.score * 5;
 
 	return {
 		hitPoints: {

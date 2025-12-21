@@ -4,6 +4,7 @@ import { Button } from "react95";
 import styled from 'styled-components';
 import { Trans } from '@lingui/react/macro';
 import { t } from '@lingui/core/macro';
+import { motion } from 'framer-motion';
 
 import { useStats } from '../../../../../providers/StatisticsContext';
 import { rollDice, generateStat } from '../../../../../utils/CharacterGenerator';
@@ -75,6 +76,7 @@ const StyledDiceRowContainer = styled.div.attrs<any>({
 
 function DiceStats() {
     const { resetStats, stats, setStats } = useStats();
+    const [isRolling, setIsRolling] = useState(false);
     const [rollSets, setRollSets] = useState<Record<keyof Statistics, number[]>>({
         strength: [],
         constitution: [],
@@ -119,7 +121,19 @@ function DiceStats() {
 
         return rolls.map((roll, index) => {
             const DiceIcon = diceIconMap[roll];
-            return <DiceIcon key={index} title={roll} />;
+            // AJS TODO: change animation, have it show multiple die faces before stopping on final result
+            return (
+                <motion.div
+                    key={index}
+                    animate={isRolling ? {
+                        rotate: [0, 360],
+                        x: [0, -3, 3, -3, 3, 0],
+                        transition: { duration: 0.5, repeat: Infinity }
+                    } : {}}
+                >
+                    <DiceIcon title={roll} />
+                </motion.div>
+            );
         });
     }
     
@@ -150,9 +164,13 @@ function DiceStats() {
     };
     
     const handleRoll = () => {
-        const { updatedStats, newRollSets } = rollStats(stats);
-        setStats(updatedStats);
-        setRollSets(newRollSets);
+        setIsRolling(true);
+        setTimeout(() => {
+            const { updatedStats, newRollSets } = rollStats(stats);
+            setStats(updatedStats);
+            setRollSets(newRollSets);
+            setIsRolling(false);
+        }, 600);
     }
 
     const handleReset = () => {

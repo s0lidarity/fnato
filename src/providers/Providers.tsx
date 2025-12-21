@@ -3,43 +3,11 @@ import { createContext } from 'preact';
 import { useState, useContext, useEffect } from 'preact/hooks';
 import { ThemeProvider } from 'styled-components';
 
-// AJS TODO: fix this hack of setting a local TokyoDark theme from react95
-const tokyoDark = {
-    name: 'tokyoDark',
-    anchor: '#1034a6',
-    anchorVisited: '#440381',
-    borderDark: '#1f2223',
-    borderDarkest: '#070809',
-    borderLight: '#5e696a',
-    borderLightest: '#93a0a1',
-    canvas: '#2f3435',
-    canvasText: '#F4F4ED',
-    canvasTextDisabled: '#1f2223',
-    canvasTextDisabledShadow: '#93a0a1',
-    canvasTextInvert: '#ffffff',
-    checkmark: '#F4F4ED',
-    checkmarkDisabled: '#1f2223',
-    desktopBackground: '#181a1b',
-    flatDark: '#9e9e9e',
-    flatLight: '#d8d8d8',
-    focusSecondary: '#20FC8F',
-    headerBackground: '#1f2223',
-    headerNotActiveBackground: '#5e696a',
-    headerNotActiveText: '#F4F4ED',
-    headerText: '#F4F4ED',
-    hoverBackground: '#1f2223',
-    material: '#3a3f41',
-    materialDark: '#1f2223',
-    materialText: '#F4F4ED',
-    materialTextDisabled: '#5e696a',
-    materialTextDisabledShadow: '#93a0a1',
-    materialTextInvert: '#2f3435',
-    progress: '#20FC8F',
-    tooltip: '#F4F4ED'
-};
+import tokyoDark from 'react95/dist/themes/tokyoDark';
 import type { ComponentChildren } from 'preact';
 import { I18nProvider } from '@lingui/react';
-import { i18n } from "@lingui/core";import { SkillsProvider } from './SkillsContext';
+import { i18n } from "@lingui/core";
+import { SkillsProvider } from './SkillsContext';
 import { StatsProvider } from './StatisticsContext';
 import { BondsProvider } from './BondsContext';
 import { PersonalDetailsProvider } from './PersonalDetailsContext';

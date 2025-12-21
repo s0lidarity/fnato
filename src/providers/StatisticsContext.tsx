@@ -1,14 +1,12 @@
 import { createContext } from 'preact';
-import { useContext, useEffect, useState } from 'preact/hooks';
-import { Statistics, DerivedAttributes, Stat, DamagedVeteranAdjustment, EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW } from '../types/characterTypes';
+import { useContext, useMemo, useState } from 'preact/hooks';
+import { Statistics, DerivedAttributes, DamagedVeteranAdjustment, EXTREME_VIOLENCE, CAPTIVITY_OR_IMPRISONMENT, HARD_EXPERIENCE, THINGS_MAN_WAS_NOT_MEANT_TO_KNOW } from '../types/characterTypes';
 import { calculateDerivedAttributes } from '../utils/CharacterGenerator';
 import { defaultStats } from './defaultValues';
 import { StatsConfigOptions } from '../types/componentTypes';
 import { 
     isBaseStat, 
     isDerivedAttribute, 
-    getCurrentStatValue,
-    calculateStatEffectValue,
     calculateDerivedAttributeEffectValue
 } from '../utils/statHelpers';
 
@@ -49,14 +47,9 @@ const getAllTemplates = (): { [key: string]: DamagedVeteranAdjustment } => {
 
 export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const [stats, setStats] = useState<Statistics>(defaultStats);
-    const [derivedAttributes, setDerivedAttributes] = useState<DerivedAttributes>(calculateDerivedAttributes(defaultStats));
     const [config, setConfig] = useState<StatsConfigOptions>(StatsConfigOptions.ManualInput);
 
-    // AJS TODO, don't maintain derivedAttributes in state, just calculate on demand
-    useEffect(() => {
-        const newDerivedAttributes = calculateDerivedAttributes(stats);
-        setDerivedAttributes(newDerivedAttributes);
-    }, [stats]);
+    const derivedAttributes = useMemo(() => calculateDerivedAttributes(stats), [stats]);
 
     const resetStats = () => {
         setStats(defaultStats);
@@ -82,7 +75,6 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
                     totalAdjustment += adjustment;
                 } else {
                     // Dynamic adjustment based on another stat
-                    // Use effective value of the source stat (recursive call)
                     const sourceStatEffectiveValue = getEffectiveStatValue(adjustment, activeTemplates);
                     totalAdjustment += -sourceStatEffectiveValue; // Negative because it's a reduction
                 }
@@ -95,45 +87,8 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
     const getEffectiveDerivedAttribute = (daName: string, activeTemplates: string[] = []) => {
         if (!isDerivedAttribute(daName)) return 0;
         
-        // First, calculate effective stats with template adjustments
-        // This is needed because derived attributes depend on base stats (e.g., sanity = power * 5)
-        const effectiveStats: Statistics = {
-            ...stats,
-            strength: {
-                ...stats.strength,
-                score: getEffectiveStatValue('strength', activeTemplates),
-                damagedVeteranStatAdjustment: 0 // Clear to avoid double-application
-            },
-            constitution: {
-                ...stats.constitution,
-                score: getEffectiveStatValue('constitution', activeTemplates),
-                damagedVeteranStatAdjustment: 0
-            },
-            dexterity: {
-                ...stats.dexterity,
-                score: getEffectiveStatValue('dexterity', activeTemplates),
-                damagedVeteranStatAdjustment: 0
-            },
-            intelligence: {
-                ...stats.intelligence,
-                score: getEffectiveStatValue('intelligence', activeTemplates),
-                damagedVeteranStatAdjustment: 0
-            },
-            power: {
-                ...stats.power,
-                score: getEffectiveStatValue('power', activeTemplates),
-                damagedVeteranStatAdjustment: 0
-            },
-            charisma: {
-                ...stats.charisma,
-                score: getEffectiveStatValue('charisma', activeTemplates),
-                damagedVeteranStatAdjustment: 0
-            }
-        };
-        
-        // Calculate derived attributes from effective stats
-        const effectiveDerivedAttributes = calculateDerivedAttributes(effectiveStats);
-        const baseValue = effectiveDerivedAttributes[daName as keyof DerivedAttributes]?.currentValue || 0;
+        // Start with the base derived attribute value (calculated from base stats)
+        const baseValue = derivedAttributes[daName as keyof DerivedAttributes]?.currentValue || 0;
         
         // Calculate total direct adjustment to this derived attribute from all active templates
         const templates = getAllTemplates();
@@ -145,10 +100,8 @@ export const StatsProvider = ({ children }: { children: React.ReactNode }) => {
             
             const adjustment = template.statAdjustment[daName];
             if (adjustment !== undefined) {
-                // AS TODO: need to leave sanity alone when pow drops. This has been double penalized and is incorrect
-                // AJS TODO: Max sanity needs to be adusted by 99-unknown skill
-                // Use effective stats for dynamic adjustments (e.g., sanity: 'power')
-                const { effectValue } = calculateDerivedAttributeEffectValue(adjustment, effectiveStats);
+                // Use base stats for dynamic adjustments to avoid double-dipping
+                const { effectValue } = calculateDerivedAttributeEffectValue(adjustment, stats);
                 totalAdjustment += effectValue;
             }
         });
